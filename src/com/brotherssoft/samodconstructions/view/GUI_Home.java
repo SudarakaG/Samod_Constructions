@@ -73,7 +73,7 @@ public class GUI_Home extends javax.swing.JFrame {
         Site_Meterial_allocation_panel.setVisible(false);
         Vehical_Registration_Panel.setVisible(false);
         Meterial_Registration_Panel1.setVisible(false);
-        Workl_Registration_Panel.setVisible(false);
+        Work_Registration_Panel.setVisible(false);
         Purchaser_Registration_Panel.setVisible(false);
         Equipment_Registration_Panel.setVisible(false);
         Home_Panel.setVisible(false);
@@ -403,26 +403,144 @@ public class GUI_Home extends javax.swing.JFrame {
         jLabel86 = new javax.swing.JLabel();
         jLabel87 = new javax.swing.JLabel();
         jSeparator20 = new javax.swing.JSeparator();
+        bank_panel_input_area5 = new javax.swing.JPanel();
+        jLabel164 = new javax.swing.JLabel();
+        jLabel165 = new javax.swing.JLabel();
+        txt_engine_no = new javax.swing.JTextField();
+        btn_save_vehicle = new javax.swing.JButton();
+        btn_cancel_vehicle = new javax.swing.JButton();
+        cmb_vehicle_year = new javax.swing.JComboBox<>();
+        btn_vehicle = new javax.swing.JButton();
+        jLabel167 = new javax.swing.JLabel();
+        cmb_vehicle_type = new javax.swing.JComboBox<>();
+        jLabel168 = new javax.swing.JLabel();
+        txt_vehi_chasis_no = new javax.swing.JTextField();
+        jLabel169 = new javax.swing.JLabel();
+        txt_vehicle_amount = new javax.swing.JTextField();
+        jLabel170 = new javax.swing.JLabel();
+        cmb_vehi_fuel_type = new javax.swing.JComboBox<>();
+        jLabel171 = new javax.swing.JLabel();
+        txt_vehicle_depriation_rate = new javax.swing.JTextField();
+        jLabel172 = new javax.swing.JLabel();
+        cmb_vehicle_status = new javax.swing.JComboBox<>();
+        bank_panel_tbl5 = new javax.swing.JPanel();
+        jScrollPane21 = new javax.swing.JScrollPane();
+        tbl_vehicle_info = new javax.swing.JTable();
+        jLabel163 = new javax.swing.JLabel();
+        txt_search_vehicle = new javax.swing.JTextField();
         Meterial_Registration_Panel1 = new javax.swing.JPanel();
         user_panel_hedding9 = new javax.swing.JPanel();
         jLabel88 = new javax.swing.JLabel();
         jLabel89 = new javax.swing.JLabel();
         jSeparator21 = new javax.swing.JSeparator();
-        Workl_Registration_Panel = new javax.swing.JPanel();
+        bank_panel_input_area4 = new javax.swing.JPanel();
+        jLabel157 = new javax.swing.JLabel();
+        jLabel158 = new javax.swing.JLabel();
+        jLabel159 = new javax.swing.JLabel();
+        jLabel160 = new javax.swing.JLabel();
+        txt_material_name1 = new javax.swing.JTextField();
+        jScrollPane18 = new javax.swing.JScrollPane();
+        txtArea_material_desc = new javax.swing.JTextArea();
+        btn_save_material = new javax.swing.JButton();
+        btn_cancel_material = new javax.swing.JButton();
+        cmb_material_unit = new javax.swing.JComboBox<>();
+        btn_material = new javax.swing.JButton();
+        jLabel161 = new javax.swing.JLabel();
+        cmb_material_status = new javax.swing.JComboBox<>();
+        datePicker_material_reg_date = new org.jdesktop.swingx.JXDatePicker();
+        bank_panel_tbl4 = new javax.swing.JPanel();
+        jScrollPane19 = new javax.swing.JScrollPane();
+        tbl_material_info = new javax.swing.JTable();
+        jLabel162 = new javax.swing.JLabel();
+        txt_search_material = new javax.swing.JTextField();
+        Work_Registration_Panel = new javax.swing.JPanel();
         user_panel_hedding10 = new javax.swing.JPanel();
         jLabel90 = new javax.swing.JLabel();
         jLabel91 = new javax.swing.JLabel();
         jSeparator22 = new javax.swing.JSeparator();
+        bank_panel_input_area3 = new javax.swing.JPanel();
+        jLabel153 = new javax.swing.JLabel();
+        jLabel155 = new javax.swing.JLabel();
+        jLabel156 = new javax.swing.JLabel();
+        txt_work_name1 = new javax.swing.JTextField();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        txtArea_work_desc1 = new javax.swing.JTextArea();
+        btn_save_work = new javax.swing.JButton();
+        btn_cancel_work = new javax.swing.JButton();
+        cmb_work_states1 = new javax.swing.JComboBox<>();
+        btn_work = new javax.swing.JButton();
+        bank_panel_tbl3 = new javax.swing.JPanel();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        tbl_workInfo = new javax.swing.JTable();
+        txt_search_work = new javax.swing.JTextField();
+        jLabel154 = new javax.swing.JLabel();
         Purchaser_Registration_Panel = new javax.swing.JPanel();
         user_panel_hedding11 = new javax.swing.JPanel();
         jLabel92 = new javax.swing.JLabel();
         jLabel93 = new javax.swing.JLabel();
         jSeparator23 = new javax.swing.JSeparator();
+        bank_panel_input_area6 = new javax.swing.JPanel();
+        jLabel166 = new javax.swing.JLabel();
+        jLabel173 = new javax.swing.JLabel();
+        jLabel174 = new javax.swing.JLabel();
+        txt_purchaser_name = new javax.swing.JTextField();
+        txt_purchaser_address = new javax.swing.JTextField();
+        btn_save_purchaser = new javax.swing.JButton();
+        btn_cancel_purchaser = new javax.swing.JButton();
+        cmb_purchaser_bank = new javax.swing.JComboBox<>();
+        btn_purchaser = new javax.swing.JButton();
+        jLabel176 = new javax.swing.JLabel();
+        txt_purchaser_accountNo = new javax.swing.JTextField();
+        jLabel177 = new javax.swing.JLabel();
+        cmb_purchaser_branch = new javax.swing.JComboBox<>();
+        jLabel178 = new javax.swing.JLabel();
+        txt_purchaser_contact1 = new javax.swing.JTextField();
+        jLabel179 = new javax.swing.JLabel();
+        txt_purchaser_contact2 = new javax.swing.JTextField();
+        jLabel180 = new javax.swing.JLabel();
+        txt_purchaser_repName = new javax.swing.JTextField();
+        jLabel181 = new javax.swing.JLabel();
+        txt_purchaser_repContact = new javax.swing.JTextField();
+        jLabel182 = new javax.swing.JLabel();
+        cmb_purchaser_status = new javax.swing.JComboBox<>();
+        bank_panel_tbl10 = new javax.swing.JPanel();
+        jScrollPane25 = new javax.swing.JScrollPane();
+        tbl_purchaser_info = new javax.swing.JTable();
+        txt_search_purchaser = new javax.swing.JTextField();
+        jLabel175 = new javax.swing.JLabel();
         Equipment_Registration_Panel = new javax.swing.JPanel();
         user_panel_hedding12 = new javax.swing.JPanel();
         jLabel94 = new javax.swing.JLabel();
         jLabel95 = new javax.swing.JLabel();
         jSeparator24 = new javax.swing.JSeparator();
+        bank_panel_input_area2 = new javax.swing.JPanel();
+        jLabel114 = new javax.swing.JLabel();
+        jLabel143 = new javax.swing.JLabel();
+        txt_equipment_name = new javax.swing.JTextField();
+        txt_equipment_regNo = new javax.swing.JTextField();
+        btn_save_equipment = new javax.swing.JButton();
+        btn_cancel_equipment = new javax.swing.JButton();
+        btn_equipment = new javax.swing.JButton();
+        jLabel147 = new javax.swing.JLabel();
+        cmb_assetType = new javax.swing.JComboBox<>();
+        jLabel148 = new javax.swing.JLabel();
+        cmb_asset_category = new javax.swing.JComboBox<>();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        txtArea_equipment_desc = new javax.swing.JTextArea();
+        jLabel149 = new javax.swing.JLabel();
+        jLabel145 = new javax.swing.JLabel();
+        txt_asset_capacity = new javax.swing.JTextField();
+        datePicker_assetRegDate = new org.jdesktop.swingx.JXDatePicker();
+        jLabel144 = new javax.swing.JLabel();
+        jLabel150 = new javax.swing.JLabel();
+        txt_equip_depreRate = new javax.swing.JTextField();
+        jLabel151 = new javax.swing.JLabel();
+        cmb_equipment_status = new javax.swing.JComboBox<>();
+        bank_panel_tbl2 = new javax.swing.JPanel();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        tbl_equipment_info = new javax.swing.JTable();
+        jLabel152 = new javax.swing.JLabel();
+        txt_search_equipment = new javax.swing.JTextField();
         Home_Panel = new javax.swing.JPanel();
         user_panel_hedding13 = new javax.swing.JPanel();
         jLabel96 = new javax.swing.JLabel();
@@ -597,7 +715,7 @@ public class GUI_Home extends javax.swing.JFrame {
         jScrollPane11.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         txt_Input_Panel_Branch4.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Input_Panel_Branch4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Project Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Project Details", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel98.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel98.setText("Project Name");
@@ -1071,7 +1189,7 @@ public class GUI_Home extends javax.swing.JFrame {
         jScrollPane11.setViewportView(txt_Input_Panel_Branch4);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Current Primary Projects", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Current Primary Projects", 0, 0, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         jScrollPane12.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -1328,7 +1446,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         tbl_panel_Branch2.setBackground(new java.awt.Color(255, 255, 255));
-        tbl_panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Infomations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        tbl_panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Infomations", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         btn_branch1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_branch1.setText("New Employee");
@@ -1475,7 +1593,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         txt_Input_Panel_Branch.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Input_Panel_Branch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Branch", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Branch", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel13.setText("Branch Name");
@@ -1601,7 +1719,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         tbl_panel_Branch.setBackground(new java.awt.Color(255, 255, 255));
-        tbl_panel_Branch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Branch Infomations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        tbl_panel_Branch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Branch Infomations", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tb_branch.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tb_branch.setModel(new javax.swing.table.DefaultTableModel(
@@ -1643,6 +1761,8 @@ public class GUI_Home extends javax.swing.JFrame {
         tb_branch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane5.setViewportView(tb_branch);
         if (tb_branch.getColumnModel().getColumnCount() > 0) {
+            tb_branch.getColumnModel().getColumn(1).setHeaderValue("Branch Code");
+            tb_branch.getColumnModel().getColumn(2).setHeaderValue("Branch Name");
             tb_branch.getColumnModel().getColumn(3).setHeaderValue("States");
         }
 
@@ -1736,7 +1856,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_input_area.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_input_area.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Bank", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_input_area.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Bank", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel1.setText("Bank Name");
@@ -1835,7 +1955,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_tbl.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_tbl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bank Infomations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_tbl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bank Infomations", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tbl_bank.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tbl_bank.setModel(new javax.swing.table.DefaultTableModel(
@@ -1877,7 +1997,7 @@ public class GUI_Home extends javax.swing.JFrame {
         tbl_bank.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane3.setViewportView(tbl_bank);
         if (tbl_bank.getColumnModel().getColumnCount() > 0) {
-            tbl_bank.getColumnModel().getColumn(1).setHeaderValue("Branch Code");
+            tbl_bank.getColumnModel().getColumn(1).setHeaderValue("Description");
             tbl_bank.getColumnModel().getColumn(2).setHeaderValue("States");
             tbl_bank.getColumnModel().getColumn(3).setHeaderValue("Description");
         }
@@ -1957,7 +2077,7 @@ public class GUI_Home extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         user_panel_heddingLayout.setVerticalGroup(
             user_panel_heddingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2027,7 +2147,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_input_area1.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_input_area1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify  Bank Accounts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_input_area1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify  Bank Accounts", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel21.setText("Account No");
@@ -2142,7 +2262,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_tbl1.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_tbl1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Account Infomations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_tbl1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Account Infomations", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tbl_acc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tbl_acc.setModel(new javax.swing.table.DefaultTableModel(
@@ -2278,7 +2398,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         txt_Input_Panel_Branch1.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Input_Panel_Branch1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Employee Salary", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Employee Salary", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel37.setText("Employee Name");
@@ -2444,7 +2564,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         tbl_panel_Branch1.setBackground(new java.awt.Color(255, 255, 255));
-        tbl_panel_Branch1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Branch Infomations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        tbl_panel_Branch1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Branch Infomations", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tb_emp_sal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tb_emp_sal.setModel(new javax.swing.table.DefaultTableModel(
@@ -2577,7 +2697,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         txt_Input_Panel_Branch2.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Input_Panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Profile", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Profile", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel31.setText("Title");
@@ -2947,7 +3067,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         txt_Input_Panel_Branch3.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Input_Panel_Branch3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Equipment allocation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Equipment allocation", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel67.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel67.setText("Comment");
@@ -3092,7 +3212,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         tbl_panel_Branch3.setBackground(new java.awt.Color(255, 255, 255));
-        tbl_panel_Branch3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Allocation Equipment Infomations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        tbl_panel_Branch3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Allocation Equipment Infomations", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tb_branch2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tb_branch2.setModel(new javax.swing.table.DefaultTableModel(
@@ -3434,7 +3554,7 @@ public class GUI_Home extends javax.swing.JFrame {
                     .addGroup(user_panel_hedding8Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1108, Short.MAX_VALUE))
+                        .addGap(0, 499, Short.MAX_VALUE))
                     .addGroup(user_panel_hedding8Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jLabel87)
@@ -3454,17 +3574,252 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        bank_panel_input_area5.setBackground(new java.awt.Color(255, 255, 255));
+        bank_panel_input_area5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Vehicle", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+
+        jLabel164.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel164.setText("Engine No");
+
+        jLabel165.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel165.setText("Year");
+
+        txt_engine_no.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_engine_no.setToolTipText("");
+
+        btn_save_vehicle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_save_vehicle.setText("Save");
+
+        btn_cancel_vehicle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_cancel_vehicle.setText("Cancel");
+
+        cmb_vehicle_year.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_vehicle_year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Select Year -" }));
+
+        btn_vehicle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_vehicle.setText("Vehicle");
+        btn_vehicle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_vehicleMouseClicked(evt);
+            }
+        });
+
+        jLabel167.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel167.setText("Type");
+
+        cmb_vehicle_type.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_vehicle_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Vehicle Type -" }));
+
+        jLabel168.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel168.setText("Chasis No");
+
+        txt_vehi_chasis_no.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel169.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel169.setText("Amount");
+
+        txt_vehicle_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel170.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel170.setText("Fuel Type");
+
+        cmb_vehi_fuel_type.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_vehi_fuel_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Fuel Type -" }));
+
+        jLabel171.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel171.setText("Depriation Rate");
+
+        txt_vehicle_depriation_rate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel172.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel172.setText("Status");
+
+        cmb_vehicle_status.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_vehicle_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+
+        javax.swing.GroupLayout bank_panel_input_area5Layout = new javax.swing.GroupLayout(bank_panel_input_area5);
+        bank_panel_input_area5.setLayout(bank_panel_input_area5Layout);
+        bank_panel_input_area5Layout.setHorizontalGroup(
+            bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
+                        .addComponent(jLabel164, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_engine_no))
+                    .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
+                        .addComponent(jLabel165, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_vehicle_year, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_area5Layout.createSequentialGroup()
+                        .addGap(0, 188, Short.MAX_VALUE)
+                        .addComponent(btn_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_save_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_cancel_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
+                        .addComponent(jLabel167, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_vehicle_type, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
+                        .addComponent(jLabel168, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_vehi_chasis_no))
+                    .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
+                        .addComponent(jLabel169, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_vehicle_amount))
+                    .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
+                        .addComponent(jLabel170, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_vehi_fuel_type, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_area5Layout.createSequentialGroup()
+                        .addComponent(jLabel171, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_vehicle_depriation_rate))
+                    .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
+                        .addComponent(jLabel172, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_vehicle_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        bank_panel_input_area5Layout.setVerticalGroup(
+            bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel167, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_vehicle_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel164, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_engine_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel168, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_vehi_chasis_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel165, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_vehicle_year))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel169, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_vehicle_amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel170, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_vehi_fuel_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel171, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_vehicle_depriation_rate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel172, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_vehicle_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_save_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cancel_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        bank_panel_tbl5.setBackground(new java.awt.Color(255, 255, 255));
+        bank_panel_tbl5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vehicle Infomation", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+
+        tbl_vehicle_info.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tbl_vehicle_info.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Vehicle Registration Number"
+            }
+        ));
+        tbl_vehicle_info.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane21.setViewportView(tbl_vehicle_info);
+
+        jLabel163.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel163.setText("Search Vehicle");
+
+        txt_search_vehicle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        javax.swing.GroupLayout bank_panel_tbl5Layout = new javax.swing.GroupLayout(bank_panel_tbl5);
+        bank_panel_tbl5.setLayout(bank_panel_tbl5Layout);
+        bank_panel_tbl5Layout.setHorizontalGroup(
+            bank_panel_tbl5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(bank_panel_tbl5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane21)
+                    .addGroup(bank_panel_tbl5Layout.createSequentialGroup()
+                        .addComponent(jLabel163, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_search_vehicle, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        bank_panel_tbl5Layout.setVerticalGroup(
+            bank_panel_tbl5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(bank_panel_tbl5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel163, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_search_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         javax.swing.GroupLayout Vehical_Registration_PanelLayout = new javax.swing.GroupLayout(Vehical_Registration_Panel);
         Vehical_Registration_Panel.setLayout(Vehical_Registration_PanelLayout);
         Vehical_Registration_PanelLayout.setHorizontalGroup(
             Vehical_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(user_panel_hedding8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(user_panel_hedding8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(Vehical_Registration_PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bank_panel_input_area5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bank_panel_tbl5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Vehical_Registration_PanelLayout.setVerticalGroup(
             Vehical_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Vehical_Registration_PanelLayout.createSequentialGroup()
                 .addComponent(user_panel_hedding8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(687, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(Vehical_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bank_panel_input_area5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bank_panel_tbl5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         Meterial_Registration_Panel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -3489,13 +3844,14 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addGroup(user_panel_hedding9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(user_panel_hedding9Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 499, Short.MAX_VALUE))
                     .addGroup(user_panel_hedding9Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jLabel89)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(398, Short.MAX_VALUE))
+                        .addComponent(jSeparator21)))
+                .addContainerGap())
         );
         user_panel_hedding9Layout.setVerticalGroup(
             user_panel_hedding9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3509,21 +3865,220 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        bank_panel_input_area4.setBackground(new java.awt.Color(255, 255, 255));
+        bank_panel_input_area4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Material", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+
+        jLabel157.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel157.setText("Material Name");
+
+        jLabel158.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel158.setText("Registration Date");
+
+        jLabel159.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel159.setText("Unit");
+
+        jLabel160.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel160.setText("Description");
+
+        txt_material_name1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        txtArea_material_desc.setColumns(20);
+        txtArea_material_desc.setRows(5);
+        jScrollPane18.setViewportView(txtArea_material_desc);
+
+        btn_save_material.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_save_material.setText("Save");
+
+        btn_cancel_material.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_cancel_material.setText("Cancel");
+
+        cmb_material_unit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_material_unit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Unit -" }));
+
+        btn_material.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_material.setText("Material");
+        btn_material.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_materialMouseClicked(evt);
+            }
+        });
+
+        jLabel161.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel161.setText("Status");
+
+        cmb_material_status.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_material_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+
+        javax.swing.GroupLayout bank_panel_input_area4Layout = new javax.swing.GroupLayout(bank_panel_input_area4);
+        bank_panel_input_area4.setLayout(bank_panel_input_area4Layout);
+        bank_panel_input_area4Layout.setHorizontalGroup(
+            bank_panel_input_area4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_input_area4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(bank_panel_input_area4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bank_panel_input_area4Layout.createSequentialGroup()
+                        .addComponent(jLabel157, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_material_name1))
+                    .addGroup(bank_panel_input_area4Layout.createSequentialGroup()
+                        .addComponent(jLabel160, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane18, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE))
+                    .addGroup(bank_panel_input_area4Layout.createSequentialGroup()
+                        .addComponent(jLabel158, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(datePicker_material_reg_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(bank_panel_input_area4Layout.createSequentialGroup()
+                        .addComponent(jLabel159, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_material_unit, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_area4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_material, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_save_material, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_cancel_material, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bank_panel_input_area4Layout.createSequentialGroup()
+                        .addComponent(jLabel161, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_material_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        bank_panel_input_area4Layout.setVerticalGroup(
+            bank_panel_input_area4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_input_area4Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(bank_panel_input_area4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel157, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_material_name1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel160, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel159, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_material_unit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel161, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_material_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel158, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(datePicker_material_reg_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addGroup(bank_panel_input_area4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_save_material, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cancel_material, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_material, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        bank_panel_tbl4.setBackground(new java.awt.Color(255, 255, 255));
+        bank_panel_tbl4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Material Information", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+
+        tbl_material_info.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tbl_material_info.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Material Name", "Status", "Register Date"
+            }
+        ));
+        tbl_material_info.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane19.setViewportView(tbl_material_info);
+        if (tbl_material_info.getColumnModel().getColumnCount() > 0) {
+            tbl_material_info.getColumnModel().getColumn(1).setHeaderValue("Description");
+            tbl_material_info.getColumnModel().getColumn(2).setHeaderValue("States");
+        }
+
+        jLabel162.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel162.setText("Material Name");
+
+        txt_search_material.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        javax.swing.GroupLayout bank_panel_tbl4Layout = new javax.swing.GroupLayout(bank_panel_tbl4);
+        bank_panel_tbl4.setLayout(bank_panel_tbl4Layout);
+        bank_panel_tbl4Layout.setHorizontalGroup(
+            bank_panel_tbl4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(bank_panel_tbl4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane19)
+                    .addGroup(bank_panel_tbl4Layout.createSequentialGroup()
+                        .addComponent(jLabel162, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_search_material, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        bank_panel_tbl4Layout.setVerticalGroup(
+            bank_panel_tbl4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(bank_panel_tbl4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel162, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_search_material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         javax.swing.GroupLayout Meterial_Registration_Panel1Layout = new javax.swing.GroupLayout(Meterial_Registration_Panel1);
         Meterial_Registration_Panel1.setLayout(Meterial_Registration_Panel1Layout);
         Meterial_Registration_Panel1Layout.setHorizontalGroup(
             Meterial_Registration_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(user_panel_hedding9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(user_panel_hedding9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(Meterial_Registration_Panel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bank_panel_input_area4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bank_panel_tbl4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Meterial_Registration_Panel1Layout.setVerticalGroup(
             Meterial_Registration_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Meterial_Registration_Panel1Layout.createSequentialGroup()
                 .addComponent(user_panel_hedding9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(698, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(Meterial_Registration_Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bank_panel_input_area4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bank_panel_tbl4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        Workl_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
-        Workl_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
+        bank_panel_input_area4.getAccessibleContext().setAccessibleName("Save And Modify Material");
+
+        Work_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Work_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding10.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -3545,7 +4100,7 @@ public class GUI_Home extends javax.swing.JFrame {
                     .addGroup(user_panel_hedding10Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1108, Short.MAX_VALUE))
+                        .addGap(0, 499, Short.MAX_VALUE))
                     .addGroup(user_panel_hedding10Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jLabel91)
@@ -3565,18 +4120,191 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout Workl_Registration_PanelLayout = new javax.swing.GroupLayout(Workl_Registration_Panel);
-        Workl_Registration_Panel.setLayout(Workl_Registration_PanelLayout);
-        Workl_Registration_PanelLayout.setHorizontalGroup(
-            Workl_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        bank_panel_input_area3.setBackground(new java.awt.Color(255, 255, 255));
+        bank_panel_input_area3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Work", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+
+        jLabel153.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel153.setText("Work Name");
+
+        jLabel155.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel155.setText("States");
+
+        jLabel156.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel156.setText("Work Description");
+
+        txt_work_name1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        txtArea_work_desc1.setColumns(20);
+        txtArea_work_desc1.setRows(5);
+        jScrollPane13.setViewportView(txtArea_work_desc1);
+
+        btn_save_work.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_save_work.setText("Save");
+
+        btn_cancel_work.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_cancel_work.setText("Cancel");
+
+        cmb_work_states1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_work_states1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+
+        btn_work.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_work.setText("Work");
+        btn_work.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_workMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout bank_panel_input_area3Layout = new javax.swing.GroupLayout(bank_panel_input_area3);
+        bank_panel_input_area3.setLayout(bank_panel_input_area3Layout);
+        bank_panel_input_area3Layout.setHorizontalGroup(
+            bank_panel_input_area3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_input_area3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(bank_panel_input_area3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bank_panel_input_area3Layout.createSequentialGroup()
+                        .addComponent(jLabel153, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_work_name1))
+                    .addGroup(bank_panel_input_area3Layout.createSequentialGroup()
+                        .addComponent(jLabel156, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE))
+                    .addGroup(bank_panel_input_area3Layout.createSequentialGroup()
+                        .addComponent(jLabel155, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_work_states1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_area3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_work, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_save_work, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_cancel_work, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        bank_panel_input_area3Layout.setVerticalGroup(
+            bank_panel_input_area3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_input_area3Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(bank_panel_input_area3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel153, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_work_name1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel156, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel155, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_work_states1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(bank_panel_input_area3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_save_work, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cancel_work, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_work, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        bank_panel_tbl3.setBackground(new java.awt.Color(255, 255, 255));
+        bank_panel_tbl3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Work Infomation", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+
+        tbl_workInfo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tbl_workInfo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Work Name"
+            }
+        ));
+        tbl_workInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane17.setViewportView(tbl_workInfo);
+
+        txt_search_work.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel154.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel154.setText("Search Work");
+
+        javax.swing.GroupLayout bank_panel_tbl3Layout = new javax.swing.GroupLayout(bank_panel_tbl3);
+        bank_panel_tbl3.setLayout(bank_panel_tbl3Layout);
+        bank_panel_tbl3Layout.setHorizontalGroup(
+            bank_panel_tbl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_tbl3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(bank_panel_tbl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane17)
+                    .addGroup(bank_panel_tbl3Layout.createSequentialGroup()
+                        .addComponent(jLabel154, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_search_work, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        bank_panel_tbl3Layout.setVerticalGroup(
+            bank_panel_tbl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(bank_panel_tbl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel154, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_search_work, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout Work_Registration_PanelLayout = new javax.swing.GroupLayout(Work_Registration_Panel);
+        Work_Registration_Panel.setLayout(Work_Registration_PanelLayout);
+        Work_Registration_PanelLayout.setHorizontalGroup(
+            Work_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(user_panel_hedding10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(Work_Registration_PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bank_panel_input_area3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bank_panel_tbl3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        Workl_Registration_PanelLayout.setVerticalGroup(
-            Workl_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Workl_Registration_PanelLayout.createSequentialGroup()
+        Work_Registration_PanelLayout.setVerticalGroup(
+            Work_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Work_Registration_PanelLayout.createSequentialGroup()
                 .addComponent(user_panel_hedding10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(687, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(Work_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bank_panel_input_area3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bank_panel_tbl3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
+
+        bank_panel_input_area3.getAccessibleContext().setAccessibleName("Save And Modify Work");
+        bank_panel_tbl3.getAccessibleContext().setAccessibleName("Work Infomation");
+        bank_panel_tbl3.getAccessibleContext().setAccessibleDescription("");
 
         Purchaser_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Purchaser_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -3605,7 +4333,7 @@ public class GUI_Home extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(jLabel93)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator23, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSeparator23, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         user_panel_hedding11Layout.setVerticalGroup(
@@ -3620,17 +4348,274 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        bank_panel_input_area6.setBackground(new java.awt.Color(255, 255, 255));
+        bank_panel_input_area6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Purchaser", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+
+        jLabel166.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel166.setText("Purchaser Name");
+
+        jLabel173.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel173.setText("Purchaser Address");
+
+        jLabel174.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel174.setText("Bank");
+
+        txt_purchaser_name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        txt_purchaser_address.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        btn_save_purchaser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_save_purchaser.setText("Save");
+
+        btn_cancel_purchaser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_cancel_purchaser.setText("Cancel");
+
+        cmb_purchaser_bank.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_purchaser_bank.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Bank -" }));
+
+        btn_purchaser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_purchaser.setText("Branch");
+        btn_purchaser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_purchaserMouseClicked(evt);
+            }
+        });
+
+        jLabel176.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel176.setText("Account No");
+
+        txt_purchaser_accountNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel177.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel177.setText("Branch");
+
+        cmb_purchaser_branch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_purchaser_branch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Branch -" }));
+
+        jLabel178.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel178.setText("Contact 1");
+
+        txt_purchaser_contact1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel179.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel179.setText("Contact 2");
+
+        txt_purchaser_contact2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel180.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel180.setText("Rep Name");
+
+        txt_purchaser_repName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel181.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel181.setText("Rep Contact");
+
+        txt_purchaser_repContact.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel182.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel182.setText("Status");
+
+        cmb_purchaser_status.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_purchaser_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Branch -" }));
+
+        javax.swing.GroupLayout bank_panel_input_area6Layout = new javax.swing.GroupLayout(bank_panel_input_area6);
+        bank_panel_input_area6.setLayout(bank_panel_input_area6Layout);
+        bank_panel_input_area6Layout.setHorizontalGroup(
+            bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_input_area6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bank_panel_input_area6Layout.createSequentialGroup()
+                        .addComponent(jLabel166, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_purchaser_name))
+                    .addGroup(bank_panel_input_area6Layout.createSequentialGroup()
+                        .addComponent(jLabel173, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_purchaser_address))
+                    .addGroup(bank_panel_input_area6Layout.createSequentialGroup()
+                        .addComponent(jLabel174, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_purchaser_bank, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_area6Layout.createSequentialGroup()
+                        .addGap(0, 188, Short.MAX_VALUE)
+                        .addComponent(btn_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_save_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_cancel_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bank_panel_input_area6Layout.createSequentialGroup()
+                        .addComponent(jLabel176, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_purchaser_accountNo))
+                    .addGroup(bank_panel_input_area6Layout.createSequentialGroup()
+                        .addComponent(jLabel177, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_purchaser_branch, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(bank_panel_input_area6Layout.createSequentialGroup()
+                        .addComponent(jLabel178, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_purchaser_contact1))
+                    .addGroup(bank_panel_input_area6Layout.createSequentialGroup()
+                        .addComponent(jLabel179, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_purchaser_contact2))
+                    .addGroup(bank_panel_input_area6Layout.createSequentialGroup()
+                        .addComponent(jLabel180, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_purchaser_repName))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_area6Layout.createSequentialGroup()
+                        .addComponent(jLabel181, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_purchaser_repContact))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_area6Layout.createSequentialGroup()
+                        .addComponent(jLabel182, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_purchaser_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        bank_panel_input_area6Layout.setVerticalGroup(
+            bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_input_area6Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel166, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_purchaser_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel173, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_purchaser_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel176, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_purchaser_accountNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel174, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_purchaser_bank))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel177, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_purchaser_branch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel178, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_purchaser_contact1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel179, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_purchaser_contact2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel180, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_purchaser_repName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel181, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_purchaser_repContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel182, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_purchaser_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_save_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cancel_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        bank_panel_tbl10.setBackground(new java.awt.Color(255, 255, 255));
+        bank_panel_tbl10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Purchaser Information", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+
+        tbl_purchaser_info.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tbl_purchaser_info.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Purchaser Name"
+            }
+        ));
+        tbl_purchaser_info.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane25.setViewportView(tbl_purchaser_info);
+
+        txt_search_purchaser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel175.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel175.setText("Search Purchaser");
+
+        javax.swing.GroupLayout bank_panel_tbl10Layout = new javax.swing.GroupLayout(bank_panel_tbl10);
+        bank_panel_tbl10.setLayout(bank_panel_tbl10Layout);
+        bank_panel_tbl10Layout.setHorizontalGroup(
+            bank_panel_tbl10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane25, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+            .addGroup(bank_panel_tbl10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel175, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_search_purchaser)
+                .addContainerGap())
+        );
+        bank_panel_tbl10Layout.setVerticalGroup(
+            bank_panel_tbl10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(bank_panel_tbl10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel175, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_search_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane25, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         javax.swing.GroupLayout Purchaser_Registration_PanelLayout = new javax.swing.GroupLayout(Purchaser_Registration_Panel);
         Purchaser_Registration_Panel.setLayout(Purchaser_Registration_PanelLayout);
         Purchaser_Registration_PanelLayout.setHorizontalGroup(
             Purchaser_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(user_panel_hedding11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(user_panel_hedding11, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(Purchaser_Registration_PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bank_panel_input_area6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bank_panel_tbl10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Purchaser_Registration_PanelLayout.setVerticalGroup(
             Purchaser_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Purchaser_Registration_PanelLayout.createSequentialGroup()
                 .addComponent(user_panel_hedding11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(698, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(Purchaser_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bank_panel_input_area6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bank_panel_tbl10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         Equipment_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -3656,7 +4641,7 @@ public class GUI_Home extends javax.swing.JFrame {
                     .addGroup(user_panel_hedding12Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1108, Short.MAX_VALUE))
+                        .addGap(0, 499, Short.MAX_VALUE))
                     .addGroup(user_panel_hedding12Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jLabel95)
@@ -3676,18 +4661,258 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        bank_panel_input_area2.setBackground(new java.awt.Color(255, 255, 255));
+        bank_panel_input_area2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Equipment", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+
+        jLabel114.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel114.setText("Equipment Name");
+
+        jLabel143.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel143.setText("Reg/Serial Number");
+
+        txt_equipment_name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        txt_equipment_regNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        btn_save_equipment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_save_equipment.setText("Save");
+
+        btn_cancel_equipment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_cancel_equipment.setText("Cancel");
+
+        btn_equipment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_equipment.setText("Equipment");
+        btn_equipment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_equipmentMouseClicked(evt);
+            }
+        });
+
+        jLabel147.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel147.setText("Asset Type");
+
+        cmb_assetType.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_assetType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Asset Type -" }));
+
+        jLabel148.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel148.setText("Asset Category");
+
+        cmb_asset_category.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_asset_category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Asset Category -" }));
+
+        txtArea_equipment_desc.setColumns(20);
+        txtArea_equipment_desc.setRows(5);
+        jScrollPane16.setViewportView(txtArea_equipment_desc);
+
+        jLabel149.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel149.setText("Equipment Description");
+
+        jLabel145.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel145.setText("Asset Capacity");
+
+        txt_asset_capacity.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel144.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel144.setText("Asset Registration Date");
+
+        jLabel150.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel150.setText("Depriciation Rate");
+
+        txt_equip_depreRate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel151.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel151.setText("Equipment Status");
+
+        cmb_equipment_status.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_equipment_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+
+        javax.swing.GroupLayout bank_panel_input_area2Layout = new javax.swing.GroupLayout(bank_panel_input_area2);
+        bank_panel_input_area2.setLayout(bank_panel_input_area2Layout);
+        bank_panel_input_area2Layout.setHorizontalGroup(
+            bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_input_area2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bank_panel_input_area2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_save_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_cancel_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bank_panel_input_area2Layout.createSequentialGroup()
+                        .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel145, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel144)
+                            .addComponent(jLabel143, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel149, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel147, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmb_assetType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmb_asset_category, 0, 307, Short.MAX_VALUE)
+                            .addComponent(txt_equipment_name)
+                            .addComponent(jScrollPane16)
+                            .addComponent(txt_equipment_regNo)
+                            .addComponent(txt_asset_capacity)
+                            .addComponent(datePicker_assetRegDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(bank_panel_input_area2Layout.createSequentialGroup()
+                        .addComponent(jLabel150, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_equip_depreRate))
+                    .addGroup(bank_panel_input_area2Layout.createSequentialGroup()
+                        .addComponent(jLabel151, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmb_equipment_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        bank_panel_input_area2Layout.setVerticalGroup(
+            bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_input_area2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel147, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_assetType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel148, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_asset_category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_equipment_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel149, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel143, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_equipment_regNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel145, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_asset_capacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(datePicker_assetRegDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel144, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel151, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_equipment_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel150, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_equip_depreRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_save_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cancel_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        bank_panel_tbl2.setBackground(new java.awt.Color(255, 255, 255));
+        bank_panel_tbl2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Equipment Infomation", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+
+        tbl_equipment_info.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tbl_equipment_info.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Equipment Name"
+            }
+        ));
+        tbl_equipment_info.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane15.setViewportView(tbl_equipment_info);
+
+        jLabel152.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel152.setText("Search Equipment");
+
+        txt_search_equipment.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        javax.swing.GroupLayout bank_panel_tbl2Layout = new javax.swing.GroupLayout(bank_panel_tbl2);
+        bank_panel_tbl2.setLayout(bank_panel_tbl2Layout);
+        bank_panel_tbl2Layout.setHorizontalGroup(
+            bank_panel_tbl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(bank_panel_tbl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+                    .addGroup(bank_panel_tbl2Layout.createSequentialGroup()
+                        .addComponent(jLabel152, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_search_equipment)))
+                .addContainerGap())
+        );
+        bank_panel_tbl2Layout.setVerticalGroup(
+            bank_panel_tbl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(bank_panel_tbl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel152, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_search_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         javax.swing.GroupLayout Equipment_Registration_PanelLayout = new javax.swing.GroupLayout(Equipment_Registration_Panel);
         Equipment_Registration_Panel.setLayout(Equipment_Registration_PanelLayout);
         Equipment_Registration_PanelLayout.setHorizontalGroup(
             Equipment_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(user_panel_hedding12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(Equipment_Registration_PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bank_panel_input_area2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bank_panel_tbl2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Equipment_Registration_PanelLayout.setVerticalGroup(
             Equipment_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Equipment_Registration_PanelLayout.createSequentialGroup()
                 .addComponent(user_panel_hedding12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(687, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(Equipment_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(bank_panel_tbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bank_panel_input_area2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
+
+        bank_panel_input_area2.getAccessibleContext().setAccessibleName("Save And Modify Equipment");
+        bank_panel_tbl2.getAccessibleContext().setAccessibleName("Equipment Infomation");
 
         Home_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Home_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -3762,7 +4987,7 @@ public class GUI_Home extends javax.swing.JFrame {
         main_load_layer.setLayer(Project_Third_Info_view_Panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         main_load_layer.setLayer(Vehical_Registration_Panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         main_load_layer.setLayer(Meterial_Registration_Panel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        main_load_layer.setLayer(Workl_Registration_Panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        main_load_layer.setLayer(Work_Registration_Panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         main_load_layer.setLayer(Purchaser_Registration_Panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         main_load_layer.setLayer(Equipment_Registration_Panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
         main_load_layer.setLayer(Home_Panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -3771,51 +4996,51 @@ public class GUI_Home extends javax.swing.JFrame {
         main_load_layer.setLayout(main_load_layerLayout);
         main_load_layerLayout.setHorizontalGroup(
             main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(user_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE)
+            .addComponent(user_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE)
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Bank_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Bank_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Branch_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Branch_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Employee_Salary, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Employee_Salary, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Employee_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1278, Short.MAX_VALUE)
+                    .addComponent(Employee_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1263, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1278, Short.MAX_VALUE)
+                    .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1263, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Equipment_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Equipment_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Site_Meterial_allocation_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Site_Meterial_allocation_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Primary_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Project_Primary_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Primary_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Project_Primary_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Secondery_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Project_Secondery_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Secondery_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Project_Secondery_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Tertiary_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Project_Tertiary_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Third_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Project_Third_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Vehical_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Vehical_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Meterial_Registration_Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Meterial_Registration_Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Workl_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Work_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Purchaser_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Purchaser_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Equipment_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Equipment_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Home_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
+                .addComponent(Home_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1273, Short.MAX_VALUE))
         );
         main_load_layerLayout.setVerticalGroup(
             main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3877,7 +5102,7 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addComponent(Meterial_Registration_Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Workl_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+                    .addComponent(Work_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(Purchaser_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
@@ -3923,7 +5148,7 @@ public class GUI_Home extends javax.swing.JFrame {
         jScrollPane2.setAutoscrolls(true);
 
         menu_panel.setBackground(new java.awt.Color(50, 33, 89));
-        menu_panel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        menu_panel.setBorder(new javax.swing.border.SoftBevelBorder(0));
         menu_panel.setForeground(new java.awt.Color(50, 33, 89));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -5494,7 +6719,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable11MouseClicked
         panelManager();
-        Workl_Registration_Panel.setVisible(true);
+        Work_Registration_Panel.setVisible(true);
     }//GEN-LAST:event_master_detail_home_lable11MouseClicked
 
     private void master_detail_home_lable9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable9MouseClicked
@@ -5506,6 +6731,26 @@ public class GUI_Home extends javax.swing.JFrame {
         panelManager();
         Home_Panel.setVisible(true);
     }//GEN-LAST:event_master_detail_home_lableMouseClicked
+
+    private void btn_equipmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_equipmentMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_equipmentMouseClicked
+
+    private void btn_workMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_workMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_workMouseClicked
+
+    private void btn_materialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_materialMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_materialMouseClicked
+
+    private void btn_vehicleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_vehicleMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_vehicleMouseClicked
+
+    private void btn_purchaserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_purchaserMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_purchaserMouseClicked
 
     /**
      * @param args the command line arguments
@@ -5568,7 +6813,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JPanel Purchaser_Registration_Panel;
     private javax.swing.JPanel Site_Meterial_allocation_panel;
     private javax.swing.JPanel Vehical_Registration_Panel;
-    private javax.swing.JPanel Workl_Registration_Panel;
+    private javax.swing.JPanel Work_Registration_Panel;
     private javax.swing.JPanel background_panel;
     private javax.swing.JTextArea bank_desc;
     private javax.swing.JPanel bank_panel_hedding;
@@ -5580,8 +6825,21 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JPanel bank_panel_hedding6;
     private javax.swing.JPanel bank_panel_input_area;
     private javax.swing.JPanel bank_panel_input_area1;
+    private javax.swing.JPanel bank_panel_input_area2;
+    private javax.swing.JPanel bank_panel_input_area3;
+    private javax.swing.JPanel bank_panel_input_area4;
+    private javax.swing.JPanel bank_panel_input_area5;
+    private javax.swing.JPanel bank_panel_input_area6;
     private javax.swing.JPanel bank_panel_tbl;
     private javax.swing.JPanel bank_panel_tbl1;
+    private javax.swing.JPanel bank_panel_tbl10;
+    private javax.swing.JPanel bank_panel_tbl2;
+    private javax.swing.JPanel bank_panel_tbl3;
+    private javax.swing.JPanel bank_panel_tbl4;
+    private javax.swing.JPanel bank_panel_tbl5;
+    private javax.swing.JPanel bank_panel_tbl6;
+    private javax.swing.JPanel bank_panel_tbl7;
+    private javax.swing.JPanel bank_panel_tbl8;
     private javax.swing.JButton btn_acc_cancel;
     private javax.swing.JButton btn_acc_save;
     private javax.swing.JButton btn_back_to_bank;
@@ -5591,10 +6849,25 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JButton btn_branch1;
     private javax.swing.JButton btn_branch_cancel;
     private javax.swing.JButton btn_branch_cancel1;
+    private javax.swing.JButton btn_cancel_equipment;
+    private javax.swing.JButton btn_cancel_material;
+    private javax.swing.JButton btn_cancel_purchaser;
+    private javax.swing.JButton btn_cancel_vehicle;
+    private javax.swing.JButton btn_cancel_work;
     private javax.swing.JButton btn_emp_salary_cancel;
+    private javax.swing.JButton btn_equipment;
+    private javax.swing.JButton btn_material;
+    private javax.swing.JButton btn_purchaser;
     private javax.swing.JButton btn_save_branch;
     private javax.swing.JButton btn_save_branch1;
     private javax.swing.JButton btn_save_emp_salary;
+    private javax.swing.JButton btn_save_equipment;
+    private javax.swing.JButton btn_save_material;
+    private javax.swing.JButton btn_save_purchaser;
+    private javax.swing.JButton btn_save_vehicle;
+    private javax.swing.JButton btn_save_work;
+    private javax.swing.JButton btn_vehicle;
+    private javax.swing.JButton btn_work;
     private javax.swing.JComboBox<String> cmbBank;
     private javax.swing.JComboBox<String> cmbBankEmp_Salary;
     private javax.swing.JComboBox<String> cmbBranchEmp_salary;
@@ -5604,22 +6877,37 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmb_CAR_Bank;
     private javax.swing.JComboBox<String> cmb_CAR_Branch;
     private javax.swing.JComboBox<String> cmb_acc_states;
+    private javax.swing.JComboBox<String> cmb_assetType;
+    private javax.swing.JComboBox<String> cmb_asset_category;
     private javax.swing.JComboBox<String> cmb_bank_states;
     private javax.swing.JComboBox<String> cmb_eq_allo_type;
     private javax.swing.JComboBox<String> cmb_eq_asset_type;
     private javax.swing.JComboBox<String> cmb_eq_type;
     private javax.swing.JComboBox<String> cmb_eq_type_stok;
+    private javax.swing.JComboBox<String> cmb_equipment_status;
+    private javax.swing.JComboBox<String> cmb_material_status;
+    private javax.swing.JComboBox<String> cmb_material_unit;
     private javax.swing.JComboBox<String> cmb_project_Specialiti;
     private javax.swing.JComboBox<String> cmb_project_grade_1;
     private javax.swing.JComboBox<String> cmb_project_made_of_payment_1;
     private javax.swing.JComboBox<String> cmb_project_made_of_states_1;
     private javax.swing.JComboBox<String> cmb_project_type_1;
+    private javax.swing.JComboBox<String> cmb_purchaser_bank;
+    private javax.swing.JComboBox<String> cmb_purchaser_branch;
+    private javax.swing.JComboBox<String> cmb_purchaser_status;
+    private javax.swing.JComboBox<String> cmb_vehi_fuel_type;
+    private javax.swing.JComboBox<String> cmb_vehicle_status;
+    private javax.swing.JComboBox<String> cmb_vehicle_type;
+    private javax.swing.JComboBox<String> cmb_vehicle_year;
+    private javax.swing.JComboBox<String> cmb_work_states1;
     private javax.swing.JComboBox<String> cmbtitle;
     private javax.swing.JComboBox<String> cmbtitle1;
     private javax.swing.JComboBox<String> cmbtitle10;
     private javax.swing.JComboBox<String> cmbtitle2;
     private javax.swing.JComboBox<String> cmbtitle3;
     private javax.swing.JComboBox<String> cmbtitle4;
+    private org.jdesktop.swingx.JXDatePicker datePicker_assetRegDate;
+    private org.jdesktop.swingx.JXDatePicker datePicker_material_reg_date;
     private org.jdesktop.swingx.JXDatePicker date_eq;
     private javax.swing.JLabel date_lable;
     private org.jdesktop.swingx.JXDatePicker date_picker_birth;
@@ -5644,6 +6932,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel111;
     private javax.swing.JLabel jLabel112;
+    private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel117;
     private javax.swing.JLabel jLabel118;
     private javax.swing.JLabel jLabel119;
@@ -5668,10 +6957,49 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel136;
     private javax.swing.JLabel jLabel137;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel143;
+    private javax.swing.JLabel jLabel144;
+    private javax.swing.JLabel jLabel145;
+    private javax.swing.JLabel jLabel147;
+    private javax.swing.JLabel jLabel148;
+    private javax.swing.JLabel jLabel149;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel150;
+    private javax.swing.JLabel jLabel151;
+    private javax.swing.JLabel jLabel152;
+    private javax.swing.JLabel jLabel153;
+    private javax.swing.JLabel jLabel154;
+    private javax.swing.JLabel jLabel155;
+    private javax.swing.JLabel jLabel156;
+    private javax.swing.JLabel jLabel157;
+    private javax.swing.JLabel jLabel158;
+    private javax.swing.JLabel jLabel159;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel160;
+    private javax.swing.JLabel jLabel161;
+    private javax.swing.JLabel jLabel162;
+    private javax.swing.JLabel jLabel163;
+    private javax.swing.JLabel jLabel164;
+    private javax.swing.JLabel jLabel165;
+    private javax.swing.JLabel jLabel166;
+    private javax.swing.JLabel jLabel167;
+    private javax.swing.JLabel jLabel168;
+    private javax.swing.JLabel jLabel169;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel170;
+    private javax.swing.JLabel jLabel171;
+    private javax.swing.JLabel jLabel172;
+    private javax.swing.JLabel jLabel173;
+    private javax.swing.JLabel jLabel174;
+    private javax.swing.JLabel jLabel175;
+    private javax.swing.JLabel jLabel176;
+    private javax.swing.JLabel jLabel177;
+    private javax.swing.JLabel jLabel178;
+    private javax.swing.JLabel jLabel179;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel180;
+    private javax.swing.JLabel jLabel181;
+    private javax.swing.JLabel jLabel182;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -5766,7 +7094,18 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane18;
+    private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane20;
+    private javax.swing.JScrollPane jScrollPane21;
+    private javax.swing.JScrollPane jScrollPane22;
+    private javax.swing.JScrollPane jScrollPane23;
+    private javax.swing.JScrollPane jScrollPane25;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -5804,6 +7143,9 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lbl_availble_stock;
     private javax.swing.JPanel load_panel;
     private javax.swing.JLayeredPane main_load_layer;
@@ -5907,11 +7249,22 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JTable tb_emp_sal;
     private javax.swing.JTable tbl_acc;
     private javax.swing.JTable tbl_bank;
+    private javax.swing.JTable tbl_bank1;
+    private javax.swing.JTable tbl_bank2;
+    private javax.swing.JTable tbl_bank3;
+    private javax.swing.JTable tbl_equipment_info;
+    private javax.swing.JTable tbl_material_info;
     private javax.swing.JPanel tbl_panel_Branch;
     private javax.swing.JPanel tbl_panel_Branch1;
     private javax.swing.JPanel tbl_panel_Branch2;
     private javax.swing.JPanel tbl_panel_Branch3;
+    private javax.swing.JTable tbl_purchaser_info;
+    private javax.swing.JTable tbl_vehicle_info;
+    private javax.swing.JTable tbl_workInfo;
     private javax.swing.JLabel time_lable;
+    private javax.swing.JTextArea txtArea_equipment_desc;
+    private javax.swing.JTextArea txtArea_material_desc;
+    private javax.swing.JTextArea txtArea_work_desc1;
     private javax.swing.JTextField txtBranchAddress;
     private javax.swing.JTextField txtBranchCode;
     private javax.swing.JTextField txtBranchName;
@@ -5929,6 +7282,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JTextField txt_address_country;
     private javax.swing.JTextField txt_address_no;
     private javax.swing.JTextField txt_address_street;
+    private javax.swing.JTextField txt_asset_capacity;
     private javax.swing.JTextField txt_bank_code;
     private javax.swing.JTextField txt_bank_name;
     private javax.swing.JTextField txt_branch_search;
@@ -5945,9 +7299,14 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JTextField txt_emp_sal_basic;
     private javax.swing.JTextField txt_emp_sal_search;
     private javax.swing.JTextField txt_employee;
+    private javax.swing.JTextField txt_engine_no;
     private javax.swing.JTextField txt_eq_quantity;
     private javax.swing.JTextArea txt_eq_txt;
+    private javax.swing.JTextField txt_equip_depreRate;
+    private javax.swing.JTextField txt_equipment_name;
+    private javax.swing.JTextField txt_equipment_regNo;
     private javax.swing.JTextField txt_firt_name;
+    private javax.swing.JTextField txt_material_name1;
     private javax.swing.JTextField txt_nic;
     private javax.swing.JTextField txt_project_address_no_1;
     private javax.swing.JTextField txt_project_amount_1;
@@ -5974,8 +7333,24 @@ public class GUI_Home extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker txt_project_tender_open_date_1;
     private javax.swing.JTextField txt_project_tender_open_time_1;
     private javax.swing.JTextField txt_project_tender_result;
+    private javax.swing.JTextField txt_purchaser_accountNo;
+    private javax.swing.JTextField txt_purchaser_address;
+    private javax.swing.JTextField txt_purchaser_contact1;
+    private javax.swing.JTextField txt_purchaser_contact2;
+    private javax.swing.JTextField txt_purchaser_name;
+    private javax.swing.JTextField txt_purchaser_repContact;
+    private javax.swing.JTextField txt_purchaser_repName;
+    private javax.swing.JTextField txt_search_equipment;
+    private javax.swing.JTextField txt_search_material;
     private javax.swing.JTextField txt_search_name_;
+    private javax.swing.JTextField txt_search_purchaser;
+    private javax.swing.JTextField txt_search_vehicle;
+    private javax.swing.JTextField txt_search_work;
     private javax.swing.JTextField txt_sur_Name;
+    private javax.swing.JTextField txt_vehi_chasis_no;
+    private javax.swing.JTextField txt_vehicle_amount;
+    private javax.swing.JTextField txt_vehicle_depriation_rate;
+    private javax.swing.JTextField txt_work_name1;
     private javax.swing.JPanel user_panel;
     private javax.swing.JPanel user_panel_hedding;
     private javax.swing.JPanel user_panel_hedding1;
