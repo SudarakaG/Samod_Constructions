@@ -3626,7 +3626,7 @@ public class GUI_Home extends javax.swing.JFrame {
         cmb_vehi_fuel_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Fuel Type -" }));
 
         jLabel171.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel171.setText("Depriation Rate");
+        jLabel171.setText("Depriciation Rate");
 
         txt_vehicle_depriation_rate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
