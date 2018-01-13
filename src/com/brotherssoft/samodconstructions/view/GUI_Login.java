@@ -98,16 +98,16 @@ public class GUI_Login extends javax.swing.JFrame {
         btn_sign_in.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         login_panel.add(btn_sign_in, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 100, 30));
 
-        login_panel_background_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication6/images/bg-mask.png"))); // NOI18N
+        login_panel_background_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/bg-mask.png"))); // NOI18N
         login_panel.add(login_panel_background_label, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 380, 480));
 
-        login_panel_background_label1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication6/images/bg-mask.png"))); // NOI18N
+        login_panel_background_label1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/bg-mask.png"))); // NOI18N
         login_panel.add(login_panel_background_label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, 3, 380, 480));
 
         getContentPane().add(login_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 200, 380, 480));
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication6/images/construction-hero.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/construction-hero.jpg"))); // NOI18N
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1390, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

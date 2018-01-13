@@ -167,6 +167,11 @@ public class GUI_Home extends javax.swing.JFrame {
         txt_project_tender_open_date_1 = new org.jdesktop.swingx.JXDatePicker();
         jLabel137 = new javax.swing.JLabel();
         txt_project_tender_result = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        txt_search_name_ = new javax.swing.JTextField();
+        jLabel105 = new javax.swing.JLabel();
         Project_Secondery_Info_view_Panel = new javax.swing.JPanel();
         user_panel_hedding5 = new javax.swing.JPanel();
         jLabel80 = new javax.swing.JLabel();
@@ -544,8 +549,10 @@ public class GUI_Home extends javax.swing.JFrame {
         load_panel.setForeground(new java.awt.Color(255, 255, 255));
 
         main_load_layer.setBorder(new javax.swing.border.MatteBorder(null));
+        main_load_layer.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         Project_Primary_Info_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Project_Primary_Info_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding2.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -571,7 +578,7 @@ public class GUI_Home extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(jLabel69)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 902, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         user_panel_hedding2Layout.setVerticalGroup(
@@ -586,7 +593,7 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        jScrollPane11.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane11.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane11.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         txt_Input_Panel_Branch4.setBackground(new java.awt.Color(255, 255, 255));
@@ -823,8 +830,8 @@ public class GUI_Home extends javax.swing.JFrame {
                             .addComponent(jLabel98, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_project_name_1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_project_address_no_1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_project_name_1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
                             .addComponent(txt_project_desc_1)
                             .addComponent(txt_project_street_1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
@@ -910,11 +917,10 @@ public class GUI_Home extends javax.swing.JFrame {
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmb_project_type_1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(1627, 1627, 1627))
+                        .addComponent(cmb_project_type_1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmb_project_Specialiti, cmb_project_grade_1, cmb_project_made_of_payment_1, cmb_project_made_of_states_1, cmb_project_type_1, cmbtitle10, txt_project_address_no_1, txt_project_amount_1, txt_project_city_1, txt_project_client_1, txt_project_client_address_no_1, txt_project_client_city_1, txt_project_client_contact_1, txt_project_client_contact_1_2, txt_project_client_country_1, txt_project_client_street_1, txt_project_contract_bid_1, txt_project_country_1, txt_project_desc_1, txt_project_duration_1, txt_project_engineer_estimate, txt_project_name_1, txt_project_organization, txt_project_states_active_date_1, txt_project_states_inactive_date_1, txt_project_street_1, txt_project_tender_fee_1, txt_project_tender_open_date_1, txt_project_tender_open_time_1, txt_project_tender_result});
+        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmb_project_Specialiti, cmb_project_grade_1, cmb_project_made_of_payment_1, cmb_project_made_of_states_1, cmb_project_type_1, cmbtitle10, txt_project_address_no_1, txt_project_amount_1, txt_project_city_1, txt_project_client_1, txt_project_client_address_no_1, txt_project_client_city_1, txt_project_client_contact_1, txt_project_client_contact_1_2, txt_project_client_country_1, txt_project_client_street_1, txt_project_contract_bid_1, txt_project_country_1, txt_project_desc_1, txt_project_duration_1, txt_project_engineer_estimate, txt_project_organization, txt_project_states_active_date_1, txt_project_states_inactive_date_1, txt_project_street_1, txt_project_tender_fee_1, txt_project_tender_open_date_1, txt_project_tender_open_time_1, txt_project_tender_result});
 
         txt_Input_Panel_Branch4Layout.setVerticalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -973,7 +979,7 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_project_client_city_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(11, 11, 11)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_project_client_country_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1064,25 +1070,112 @@ public class GUI_Home extends javax.swing.JFrame {
 
         jScrollPane11.setViewportView(txt_Input_Panel_Branch4);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Current Primary Projects", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+
+        jScrollPane12.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Project Name"
+            }
+        ));
+        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
+        jTable1.setOpaque(false);
+        jScrollPane12.setViewportView(jTable1);
+
+        txt_search_name_.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        jLabel105.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel105.setText("Search");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel105, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel105, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout Project_Primary_Info_PanelLayout = new javax.swing.GroupLayout(Project_Primary_Info_Panel);
         Project_Primary_Info_Panel.setLayout(Project_Primary_Info_PanelLayout);
         Project_Primary_Info_PanelLayout.setHorizontalGroup(
             Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(user_panel_hedding2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(Project_Primary_Info_PanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 1659, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(user_panel_hedding2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Project_Primary_Info_PanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Project_Primary_Info_PanelLayout.setVerticalGroup(
             Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Project_Primary_Info_PanelLayout.createSequentialGroup()
                 .addComponent(user_panel_hedding2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Project_Secondery_Info_view_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Project_Secondery_Info_view_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding5.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -1104,7 +1197,7 @@ public class GUI_Home extends javax.swing.JFrame {
                     .addGroup(user_panel_hedding5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1108, Short.MAX_VALUE))
+                        .addGap(0, 499, Short.MAX_VALUE))
                     .addGroup(user_panel_hedding5Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jLabel81)
@@ -1134,10 +1227,11 @@ public class GUI_Home extends javax.swing.JFrame {
             Project_Secondery_Info_view_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Project_Secondery_Info_view_PanelLayout.createSequentialGroup()
                 .addComponent(user_panel_hedding5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(694, Short.MAX_VALUE))
+                .addContainerGap(589, Short.MAX_VALUE))
         );
 
         Site_Meterial_allocation_panel.setBackground(new java.awt.Color(255, 255, 255));
+        Site_Meterial_allocation_panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding1.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -1159,7 +1253,7 @@ public class GUI_Home extends javax.swing.JFrame {
                     .addGroup(user_panel_hedding1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1108, Short.MAX_VALUE))
+                        .addGap(0, 499, Short.MAX_VALUE))
                     .addGroup(user_panel_hedding1Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jLabel65)
@@ -1189,10 +1283,11 @@ public class GUI_Home extends javax.swing.JFrame {
             Site_Meterial_allocation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Site_Meterial_allocation_panelLayout.createSequentialGroup()
                 .addComponent(user_panel_hedding1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(687, Short.MAX_VALUE))
+                .addContainerGap(593, Short.MAX_VALUE))
         );
 
         Employee_View_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Employee_View_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         bank_panel_hedding5.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -1326,7 +1421,7 @@ public class GUI_Home extends javax.swing.JFrame {
             .addGroup(Employee_View_PanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(622, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         Employee_View_PanelLayout.setVerticalGroup(
             Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1334,10 +1429,11 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addComponent(bank_panel_hedding5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         Branch_panel.setBackground(new java.awt.Color(255, 255, 255));
+        Branch_panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         bank_panel_hedding1.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -1598,6 +1694,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Bank_panel.setBackground(new java.awt.Color(255, 255, 255));
+        Bank_panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         bank_panel_hedding.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -1833,6 +1930,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         user_panel.setBackground(new java.awt.Color(255, 255, 255));
+        user_panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -1859,7 +1957,7 @@ public class GUI_Home extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(683, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         user_panel_heddingLayout.setVerticalGroup(
             user_panel_heddingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1883,10 +1981,11 @@ public class GUI_Home extends javax.swing.JFrame {
             user_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(user_panelLayout.createSequentialGroup()
                 .addComponent(user_panel_hedding, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(688, Short.MAX_VALUE))
+                .addContainerGap(579, Short.MAX_VALUE))
         );
 
         Company_Account_Registration.setBackground(new java.awt.Color(255, 255, 255));
+        Company_Account_Registration.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         bank_panel_hedding2.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -2137,6 +2236,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Employee_Salary.setBackground(new java.awt.Color(255, 255, 255));
+        Employee_Salary.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         bank_panel_hedding4.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -2435,6 +2535,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Employee_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Employee_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         bank_panel_hedding3.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -2806,6 +2907,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Equipment_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Equipment_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         bank_panel_hedding6.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -3083,6 +3185,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Project_Primary_Info_view_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Project_Primary_Info_view_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding3.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -3138,6 +3241,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Project_Secondery_Info_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Project_Secondery_Info_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding4.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -3193,6 +3297,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Project_Tertiary_Info_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Project_Tertiary_Info_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding6.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -3247,6 +3352,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Project_Third_Info_view_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Project_Third_Info_view_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding7.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -3306,6 +3412,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Vehical_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Vehical_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding8.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -3361,6 +3468,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Meterial_Registration_Panel1.setBackground(new java.awt.Color(255, 255, 255));
+        Meterial_Registration_Panel1.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding9.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -3415,6 +3523,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Workl_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Workl_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding10.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -3470,6 +3579,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Purchaser_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Purchaser_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding11.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -3496,7 +3606,7 @@ public class GUI_Home extends javax.swing.JFrame {
                         .addComponent(jLabel93)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator23, javax.swing.GroupLayout.PREFERRED_SIZE, 979, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(381, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         user_panel_hedding11Layout.setVerticalGroup(
             user_panel_hedding11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3524,6 +3634,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Equipment_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Equipment_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding12.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -3579,6 +3690,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Home_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Home_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         user_panel_hedding13.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -3659,122 +3771,122 @@ public class GUI_Home extends javax.swing.JFrame {
         main_load_layer.setLayout(main_load_layerLayout);
         main_load_layerLayout.setHorizontalGroup(
             main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(user_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(user_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE)
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Bank_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Bank_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Branch_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Branch_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Employee_Salary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Employee_Salary, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Employee_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Employee_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1278, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1278, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Equipment_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Equipment_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Site_Meterial_allocation_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Site_Meterial_allocation_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Primary_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Project_Primary_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Primary_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Project_Primary_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Secondery_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Project_Secondery_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Secondery_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Project_Secondery_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Tertiary_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Project_Tertiary_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Third_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Project_Third_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Vehical_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Vehical_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Meterial_Registration_Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Meterial_Registration_Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Workl_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Workl_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Purchaser_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Purchaser_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Equipment_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Equipment_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Home_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Home_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1288, Short.MAX_VALUE))
         );
         main_load_layerLayout.setVerticalGroup(
             main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(main_load_layerLayout.createSequentialGroup()
-                .addComponent(user_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(user_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Bank_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Bank_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Branch_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Branch_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Employee_Salary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Employee_Salary, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Employee_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Employee_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(main_load_layerLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
                     .addGap(1, 1, 1)))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Equipment_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Equipment_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Site_Meterial_allocation_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Site_Meterial_allocation_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Primary_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Project_Primary_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Project_Primary_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Project_Secondery_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Project_Secondery_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Project_Tertiary_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Project_Primary_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Project_Third_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Project_Secondery_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(Project_Secondery_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
+            .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(main_load_layerLayout.createSequentialGroup()
+                    .addComponent(Project_Tertiary_Info_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Vehical_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Project_Third_Info_view_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Meterial_Registration_Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Workl_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Vehical_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Purchaser_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Meterial_Registration_Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(main_load_layerLayout.createSequentialGroup()
-                    .addComponent(Equipment_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Workl_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Home_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Purchaser_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
+            .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(main_load_layerLayout.createSequentialGroup()
+                    .addComponent(Equipment_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(main_load_layerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(Home_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout load_panelLayout = new javax.swing.GroupLayout(load_panel);
@@ -3787,10 +3899,10 @@ public class GUI_Home extends javax.swing.JFrame {
         );
         load_panelLayout.setVerticalGroup(
             load_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main_load_layer)
+            .addComponent(main_load_layer, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
         );
 
-        getContentPane().add(load_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 52, 1060, 710));
+        getContentPane().add(load_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 52, 1050, 710));
 
         background_panel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -5525,6 +5637,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
     private javax.swing.JLabel jLabel104;
+    private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel107;
     private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
@@ -5648,9 +5761,11 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel97;
     private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -5687,6 +5802,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lbl_availble_stock;
     private javax.swing.JPanel load_panel;
@@ -5858,6 +5974,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private org.jdesktop.swingx.JXDatePicker txt_project_tender_open_date_1;
     private javax.swing.JTextField txt_project_tender_open_time_1;
     private javax.swing.JTextField txt_project_tender_result;
+    private javax.swing.JTextField txt_search_name_;
     private javax.swing.JTextField txt_sur_Name;
     private javax.swing.JPanel user_panel;
     private javax.swing.JPanel user_panel_hedding;
