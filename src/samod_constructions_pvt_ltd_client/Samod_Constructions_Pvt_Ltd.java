@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package samod_constructions_pvt_ltd;
+package samod_constructions_pvt_ltd_client;
 
 /**
  *

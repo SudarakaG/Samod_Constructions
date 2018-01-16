@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.brotherssoft.samodconstructions.view;
+package com.brotherssoft.samodconstructions.client.view;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -715,7 +715,7 @@ public class GUI_Home extends javax.swing.JFrame {
         jScrollPane11.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         txt_Input_Panel_Branch4.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Input_Panel_Branch4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Project Details", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Project Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel98.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel98.setText("Project Name");
@@ -1189,7 +1189,7 @@ public class GUI_Home extends javax.swing.JFrame {
         jScrollPane11.setViewportView(txt_Input_Panel_Branch4);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Current Primary Projects", 0, 0, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Current Primary Projects", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         jScrollPane12.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -1446,7 +1446,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         tbl_panel_Branch2.setBackground(new java.awt.Color(255, 255, 255));
-        tbl_panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Infomations", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        tbl_panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Infomations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         btn_branch1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_branch1.setText("New Employee");
@@ -1593,7 +1593,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         txt_Input_Panel_Branch.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Input_Panel_Branch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Branch", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Branch", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel13.setText("Branch Name");
@@ -1719,7 +1719,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         tbl_panel_Branch.setBackground(new java.awt.Color(255, 255, 255));
-        tbl_panel_Branch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Branch Infomations", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        tbl_panel_Branch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Branch Infomations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tb_branch.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tb_branch.setModel(new javax.swing.table.DefaultTableModel(
@@ -1856,7 +1856,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_input_area.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_input_area.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Bank", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_input_area.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Bank", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel1.setText("Bank Name");
@@ -1955,7 +1955,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_tbl.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_tbl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bank Infomations", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_tbl.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bank Infomations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tbl_bank.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tbl_bank.setModel(new javax.swing.table.DefaultTableModel(
@@ -2147,7 +2147,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_input_area1.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_input_area1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify  Bank Accounts", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_input_area1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify  Bank Accounts", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel21.setText("Account No");
@@ -2262,7 +2262,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_tbl1.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_tbl1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Account Infomations", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_tbl1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Account Infomations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tbl_acc.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tbl_acc.setModel(new javax.swing.table.DefaultTableModel(
@@ -2398,7 +2398,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         txt_Input_Panel_Branch1.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Input_Panel_Branch1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Employee Salary", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Employee Salary", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel37.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel37.setText("Employee Name");
@@ -2564,7 +2564,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         tbl_panel_Branch1.setBackground(new java.awt.Color(255, 255, 255));
-        tbl_panel_Branch1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Branch Infomations", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        tbl_panel_Branch1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Branch Infomations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tb_emp_sal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tb_emp_sal.setModel(new javax.swing.table.DefaultTableModel(
@@ -2697,7 +2697,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         txt_Input_Panel_Branch2.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Input_Panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Profile", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Profile", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel31.setText("Title");
@@ -3067,7 +3067,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         txt_Input_Panel_Branch3.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Input_Panel_Branch3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Equipment allocation", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Equipment allocation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel67.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel67.setText("Comment");
@@ -3212,7 +3212,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         tbl_panel_Branch3.setBackground(new java.awt.Color(255, 255, 255));
-        tbl_panel_Branch3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Allocation Equipment Infomations", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        tbl_panel_Branch3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Allocation Equipment Infomations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tb_branch2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tb_branch2.setModel(new javax.swing.table.DefaultTableModel(
@@ -3575,7 +3575,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_input_area5.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_input_area5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Vehicle", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_input_area5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Vehicle", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel164.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel164.setText("Engine No");
@@ -3728,7 +3728,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_tbl5.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_tbl5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vehicle Infomation", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_tbl5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vehicle Infomation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tbl_vehicle_info.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tbl_vehicle_info.setModel(new javax.swing.table.DefaultTableModel(
@@ -3866,7 +3866,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_input_area4.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_input_area4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Material", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_input_area4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Material", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel157.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel157.setText("Material Name");
@@ -3977,7 +3977,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_tbl4.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_tbl4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Material Information", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_tbl4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Material Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tbl_material_info.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tbl_material_info.setModel(new javax.swing.table.DefaultTableModel(
@@ -4075,8 +4075,6 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        bank_panel_input_area4.getAccessibleContext().setAccessibleName("Save And Modify Material");
-
         Work_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Work_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
@@ -4121,7 +4119,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_input_area3.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_input_area3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Work", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_input_area3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Work", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel153.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel153.setText("Work Name");
@@ -4207,7 +4205,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_tbl3.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_tbl3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Work Infomation", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_tbl3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Work Infomation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tbl_workInfo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tbl_workInfo.setModel(new javax.swing.table.DefaultTableModel(
@@ -4302,8 +4300,6 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        bank_panel_input_area3.getAccessibleContext().setAccessibleName("Save And Modify Work");
-        bank_panel_tbl3.getAccessibleContext().setAccessibleName("Work Infomation");
         bank_panel_tbl3.getAccessibleContext().setAccessibleDescription("");
 
         Purchaser_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -4349,7 +4345,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_input_area6.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_input_area6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Purchaser", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_input_area6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Purchaser", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel166.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel166.setText("Purchaser Name");
@@ -4526,7 +4522,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_tbl10.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_tbl10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Purchaser Information", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_tbl10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Purchaser Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tbl_purchaser_info.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tbl_purchaser_info.setModel(new javax.swing.table.DefaultTableModel(
@@ -4662,7 +4658,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_input_area2.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_input_area2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Equipment", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_input_area2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save And Modify Equipment", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel114.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel114.setText("Equipment Name");
@@ -4816,7 +4812,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         bank_panel_tbl2.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_tbl2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Equipment Infomation", 0, 0, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_tbl2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Equipment Infomation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         tbl_equipment_info.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tbl_equipment_info.setModel(new javax.swing.table.DefaultTableModel(
@@ -4910,9 +4906,6 @@ public class GUI_Home extends javax.swing.JFrame {
                     .addComponent(bank_panel_input_area2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
-
-        bank_panel_input_area2.getAccessibleContext().setAccessibleName("Save And Modify Equipment");
-        bank_panel_tbl2.getAccessibleContext().setAccessibleName("Equipment Infomation");
 
         Home_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Home_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -5148,7 +5141,7 @@ public class GUI_Home extends javax.swing.JFrame {
         jScrollPane2.setAutoscrolls(true);
 
         menu_panel.setBackground(new java.awt.Color(50, 33, 89));
-        menu_panel.setBorder(new javax.swing.border.SoftBevelBorder(0));
+        menu_panel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         menu_panel.setForeground(new java.awt.Color(50, 33, 89));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -6837,9 +6830,6 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JPanel bank_panel_tbl3;
     private javax.swing.JPanel bank_panel_tbl4;
     private javax.swing.JPanel bank_panel_tbl5;
-    private javax.swing.JPanel bank_panel_tbl6;
-    private javax.swing.JPanel bank_panel_tbl7;
-    private javax.swing.JPanel bank_panel_tbl8;
     private javax.swing.JButton btn_acc_cancel;
     private javax.swing.JButton btn_acc_save;
     private javax.swing.JButton btn_back_to_bank;
@@ -7101,10 +7091,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane21;
-    private javax.swing.JScrollPane jScrollPane22;
-    private javax.swing.JScrollPane jScrollPane23;
     private javax.swing.JScrollPane jScrollPane25;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -7143,9 +7130,6 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JLabel lbl_availble_stock;
     private javax.swing.JPanel load_panel;
     private javax.swing.JLayeredPane main_load_layer;
@@ -7249,9 +7233,6 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JTable tb_emp_sal;
     private javax.swing.JTable tbl_acc;
     private javax.swing.JTable tbl_bank;
-    private javax.swing.JTable tbl_bank1;
-    private javax.swing.JTable tbl_bank2;
-    private javax.swing.JTable tbl_bank3;
     private javax.swing.JTable tbl_equipment_info;
     private javax.swing.JTable tbl_material_info;
     private javax.swing.JPanel tbl_panel_Branch;
