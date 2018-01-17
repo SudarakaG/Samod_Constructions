@@ -5,24 +5,26 @@
  */
 package com.brotherssoft.samodconstructions.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author gksde
  */
-public class M_Account {
+public class M_Account implements Serializable{
     
     private int account_id;
     private int account_bank_id;
     private int account_branch_id;
     private String account_accountNo;
     private int account_accountType_id;
-    private String account_status;
+    private char account_status;
     private String account_accountName;
 
     public M_Account() {
     }
 
-    public M_Account(int account_id, int account_bank_id, int account_branch_id, String account_accountNo, int account_accountType_id, String account_status, String account_accountName) {
+    public M_Account(int account_id, int account_bank_id, int account_branch_id, String account_accountNo, int account_accountType_id, char account_status, String account_accountName) {
         this.account_id = account_id;
         this.account_bank_id = account_bank_id;
         this.account_branch_id = account_branch_id;
@@ -31,6 +33,8 @@ public class M_Account {
         this.account_status = account_status;
         this.account_accountName = account_accountName;
     }
+    
+    
 
     /**
      * @return the account_id
@@ -105,14 +109,14 @@ public class M_Account {
     /**
      * @return the account_status
      */
-    public String getAccount_status() {
+    public char getAccount_status() {
         return account_status;
     }
 
     /**
      * @param account_status the account_status to set
      */
-    public void setAccount_status(String account_status) {
+    public void setAccount_status(char account_status) {
         this.account_status = account_status;
     }
 
@@ -129,7 +133,7 @@ public class M_Account {
     public void setAccount_accountName(String account_accountName) {
         this.account_accountName = account_accountName;
     }
-    
+
     
     
 }
