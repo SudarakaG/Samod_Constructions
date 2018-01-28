@@ -36,7 +36,7 @@ public class R_BankDBAccess {
     }
     
     public boolean updateBank(R_Bank bank) throws Exception {
-
+        System.out.println("??????????????"+"dbAcssee runinnng.....");
         String sql = "Update R_Bank set BANK_NAME=?,BANK_CODE=?,BANK_DESC=? BANK_STATUS=? where BANK_ID=?";
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement stm = conn.prepareStatement(sql);
@@ -87,6 +87,22 @@ public class R_BankDBAccess {
                 bankList.add(bank);
             }
             return bankList;
+        
+    }
+    
+    public R_Bank searchBankByName(String name) throws Exception {
+        
+            String sql = "Select * From R_Bank where BANK_NAME=?";
+            Connection conn = DBConnection.getDBConnection().getConnection();
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setObject(1, name);
+            ResultSet rst = stm.executeQuery();
+            R_Bank bank = null;
+            if (rst.next()) {
+                bank = new R_Bank(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getInt(5));
+
+            }
+            return bank;
         
     }
     

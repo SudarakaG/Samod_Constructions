@@ -5,6 +5,7 @@
  */
 package com.brotherssoft.samodconstructions.dbAccessFactoryImpl;
 
+import com.brotherssoft.samodconstructions.dbAccess.ID_DBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BankDBAccess;
 import com.brotherssoft.samodconstructions.dbAccessFactory.DBAccessFactory;
 
@@ -22,6 +23,11 @@ public class DBAccessFactoryImpl implements DBAccessFactory{
     @Override
     public R_BankDBAccess getBankAccess() {
         return new R_BankDBAccess();
+    }
+
+    @Override
+    public ID_DBAccess getIDAccess() {
+        return new ID_DBAccess();
     }
     
 }

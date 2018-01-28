@@ -26,6 +26,7 @@ public class R_BankService {
     }
     
     public boolean updateBank(R_Bank bank)throws Exception{
+        System.out.println("service ynwaa....");
         return dbAccessFactory.getBankAccess().updateBank(bank);
     }
     
@@ -41,4 +42,7 @@ public class R_BankService {
         return dbAccessFactory.getBankAccess().getAllBanks();
     }
     
+    public R_Bank searchBankByName(String name)throws Exception{
+        return dbAccessFactory.getBankAccess().searchBankByName(name);
+    }
 }

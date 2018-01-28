@@ -30,6 +30,7 @@ public class R_BankControllerImpl extends UnicastRemoteObject implements R_BankC
 
     @Override
     public boolean updateBank(R_Bank bank) throws Exception {
+        System.out.println("controller impl yanwa...");
         return sf.getBankService().updateBank(bank);
     }
 
@@ -47,6 +48,12 @@ public class R_BankControllerImpl extends UnicastRemoteObject implements R_BankC
     public List<R_Bank> getAllBanks() throws Exception {
         return sf.getBankService().getAllBanks();
     }
+
+    @Override
+    public R_Bank searchBankByName(String name) throws Exception {
+        return sf.getBankService().searchBankByName(name);
+    }
+    
     
     
     

@@ -24,17 +24,17 @@ public class Samod_Constructions_Pvt_Ltd_SERVER {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+       
         try {
             Registry rr = LocateRegistry.createRegistry(4040);
             System.out.println("Server Statrted Successfully..");
             rr.rebind("Server", new ControllerFactoryImpl());
-
-             int count = 1;
-        } catch (RemoteException ex) {
-            Logger.getLogger(Samod_Constructions_Pvt_Ltd_SERVER.class.getName()).log(Level.SEVERE, null, ex);
+            
+            int count = 1;
         } catch (Exception ex) {
             Logger.getLogger(Samod_Constructions_Pvt_Ltd_SERVER.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
     
 }

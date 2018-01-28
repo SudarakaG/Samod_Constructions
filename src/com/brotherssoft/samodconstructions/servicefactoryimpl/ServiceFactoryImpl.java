@@ -5,6 +5,7 @@
  */
 package com.brotherssoft.samodconstructions.servicefactoryimpl;
 
+import com.brotherssoft.samodconstructions.service.IDService;
 import com.brotherssoft.samodconstructions.service.R_BankService;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 
@@ -20,6 +21,11 @@ public class ServiceFactoryImpl implements ServiceFactory{
     @Override
     public R_BankService getBankService() {
         return new R_BankService();
+    }
+
+    @Override
+    public IDService getIDService() {
+        return new IDService();
     }
     
 }
