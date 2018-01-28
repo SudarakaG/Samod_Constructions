@@ -5,22 +5,26 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.R_BankController;
+import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.model.R_Bank;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Akvasoft
  */
-public class Brance_Panel extends javax.swing.JPanel {
+public class Bank_Panel extends javax.swing.JPanel {
 
     /**
      * Creates new form Brance_Panel
      */
-    public Brance_Panel(int x) {
+    public Bank_Panel(int x) {
         initComponents();
         showPanel(x);
     }
@@ -79,6 +83,7 @@ public class Brance_Panel extends javax.swing.JPanel {
         btn_bank_cancel = new javax.swing.JButton();
         cmb_bank_states = new javax.swing.JComboBox<>();
         btn_branch = new javax.swing.JButton();
+        lbl_bnakId = new javax.swing.JLabel();
         bank_panel_tbl = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl_bank = new javax.swing.JTable();
@@ -429,6 +434,9 @@ public class Brance_Panel extends javax.swing.JPanel {
             }
         });
 
+        lbl_bnakId.setText("jLabel2");
+        lbl_bnakId.setEnabled(false);
+
         javax.swing.GroupLayout bank_panel_input_areaLayout = new javax.swing.GroupLayout(bank_panel_input_area);
         bank_panel_input_area.setLayout(bank_panel_input_areaLayout);
         bank_panel_input_areaLayout.setHorizontalGroup(
@@ -460,6 +468,10 @@ public class Brance_Panel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_bank_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(bank_panel_input_areaLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(lbl_bnakId)
+                .addContainerGap(424, Short.MAX_VALUE))
         );
         bank_panel_input_areaLayout.setVerticalGroup(
             bank_panel_input_areaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -485,7 +497,9 @@ public class Brance_Panel extends javax.swing.JPanel {
                     .addComponent(btn_bank_save, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_bank_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_branch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addComponent(lbl_bnakId)
+                .addGap(54, 54, 54))
         );
 
         bank_panel_tbl.setBackground(new java.awt.Color(255, 255, 255));
@@ -529,6 +543,11 @@ public class Brance_Panel extends javax.swing.JPanel {
             }
         ));
         tbl_bank.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_bank.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_bankMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tbl_bank);
 
         jTextField4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -619,29 +638,19 @@ public class Brance_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_branchMouseClicked
 
     private void btn_bank_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bank_saveActionPerformed
-        int bank_id = 2;
-        String bank_name = txt_bank_name.getText();
-        String bank_code = txt_bank_code.getText();
-        String brach_desc = bank_desc.getText();
-        int bank_status = cmb_bank_states.getSelectedIndex();
-        
-        
-        R_Bank bank = new R_Bank(bank_id, bank_name, bank_code, brach_desc, bank_status);
-        
-        try {
-            boolean addBank = ServerConnector.getServerConnetor().getBankController().addBank(bank);
-            
-            if(addBank){
-                JOptionPane.showMessageDialog(this, "Bank Added Successfully...");
-            }else{
-                JOptionPane.showMessageDialog(this, "Bank Adding Failed...");
-            }
-            
-        } catch (Exception ex) {
-            Logger.getLogger(Brance_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        if (btn_bank_save.getText().equalsIgnoreCase("Save")) {
+            saveBankDetails();
+        } else {
+            updateBankDetails();
         }
-        
+        loadBankTable();
+
+
     }//GEN-LAST:event_btn_bank_saveActionPerformed
+
+    private void tbl_bankMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_bankMouseClicked
+        loadFromTableRow();
+    }//GEN-LAST:event_tbl_bankMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -683,6 +692,7 @@ public class Brance_Panel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel lbl_bnakId;
     private javax.swing.JTextArea taBranchDesc;
     private javax.swing.JTable tb_branch;
     private javax.swing.JTable tbl_bank;
@@ -697,14 +707,105 @@ public class Brance_Panel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void showPanel(int x) {
-        if(x == 1){
-        
+        if (x == 1) {
+
             Branch_panel.setVisible(true);
             Bank_panel.setVisible(false);
-        }else if(x == 2){
-        
+        } else if (x == 2) {
+
             Branch_panel.setVisible(false);
             Bank_panel.setVisible(true);
+            loadBankTable();
         }
+    }
+
+    private void loadBankTable() {
+        System.out.println("tablee run wenooo...");
+        try {
+            DefaultTableModel dtmBank = (DefaultTableModel) tbl_bank.getModel();
+            dtmBank.setRowCount(0);
+            List<R_Bank> allBanks = ServerConnector.getServerConnetor().getBankController().getAllBanks();
+            for (R_Bank allBank : allBanks) {
+                String[] rowDataBank = {allBank.getBank_name(), allBank.getBank_code(), Integer.toString(allBank.getBank_status()), allBank.getBank_description()};
+                System.out.println("////////" + allBank.getBank_name());
+                dtmBank.addRow(rowDataBank);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadFromTableRow() {
+        try {
+            DefaultTableModel dtmBank = (DefaultTableModel) tbl_bank.getModel();
+            int selectedRow = tbl_bank.getSelectedRow();
+            
+            R_BankController bankController = ServerConnector.getServerConnetor().getBankController();
+            R_Bank searchBank = bankController.searchBankByName(dtmBank.getValueAt(selectedRow, 0).toString());
+            
+            txt_bank_name.setText(dtmBank.getValueAt(selectedRow, 0).toString());
+            txt_bank_code.setText(dtmBank.getValueAt(selectedRow, 1).toString());
+            bank_desc.setText(dtmBank.getValueAt(selectedRow, 3).toString());
+            cmb_bank_states.setSelectedIndex(Integer.parseInt(dtmBank.getValueAt(selectedRow, 2).toString()));
+            lbl_bnakId.setText(Integer.toString(searchBank.getBank_id()));
+            btn_bank_save.setText("Update");
+        } catch (Exception ex) {
+            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void saveBankDetails() {
+        try {
+            int bank_id = IDGenerator.getNewID("r_bank", "BANK_ID");
+            String bank_name = txt_bank_name.getText();
+            String bank_code = txt_bank_code.getText();
+            String brach_desc = bank_desc.getText();
+            int bank_status = cmb_bank_states.getSelectedIndex();
+
+            R_Bank bank = new R_Bank(bank_id, bank_name, bank_code, brach_desc, bank_status);
+
+            boolean addBank = ServerConnector.getServerConnetor().getBankController().addBank(bank);
+
+            if (addBank) {
+                JOptionPane.showMessageDialog(this, "Bank Added Successfully...");
+            } else {
+                JOptionPane.showMessageDialog(this, "Bank Adding Failed...");
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void updateBankDetails() {
+        System.out.println("Update ekata yaii...");
+        
+           
+//            DefaultTableModel dtmBank = (DefaultTableModel) tbl_bank.getModel();
+//            int selectedRow = tbl_bank.getSelectedRow();
+//            R_Bank searchBank = bankController.searchBankByName(dtmBank.getValueAt(selectedRow, 0).toString());
+//            System.out.println("////////////////"+searchBank.getBank_id());
+            String bank_name = txt_bank_name.getText();
+            String bank_code = txt_bank_code.getText();
+            String brach_desc = bank_desc.getText();
+            int bank_status = cmb_bank_states.getSelectedIndex();
+
+            R_Bank bank1 = new R_Bank(Integer.parseInt(lbl_bnakId.getText()), bank_name, bank_code, brach_desc, bank_status);
+
+        try {
+            boolean updateBank = ServerConnector.getServerConnetor().getBankController().updateBank(bank1);
+            if (updateBank) {
+                JOptionPane.showMessageDialog(this, "Bank Updated Successfully...");
+            } else {
+                JOptionPane.showMessageDialog(this, "Bank Updating Failed...");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+            
+
+       
     }
 }

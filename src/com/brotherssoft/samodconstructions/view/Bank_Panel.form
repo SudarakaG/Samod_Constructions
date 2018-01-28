@@ -653,6 +653,11 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="lbl_bnakId" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="424" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -684,7 +689,9 @@
                               <Component id="btn_bank_cancel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="btn_branch" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="104" max="32767" attributes="0"/>
+                          <Component id="lbl_bnakId" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -797,6 +804,12 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_branchMouseClicked"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JLabel" name="lbl_bnakId">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jLabel2"/>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="bank_panel_tbl">
@@ -863,6 +876,9 @@
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_bankMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
