@@ -5,6 +5,12 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.model.R_Bank;
+import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Akvasoft
@@ -403,6 +409,11 @@ public class Brance_Panel extends javax.swing.JPanel {
 
         btn_bank_save.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_bank_save.setText("Save");
+        btn_bank_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_bank_saveActionPerformed(evt);
+            }
+        });
 
         btn_bank_cancel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_bank_cancel.setText("Cancel");
@@ -606,6 +617,31 @@ public class Brance_Panel extends javax.swing.JPanel {
         Bank_panel.setVisible(false);
         Branch_panel.setVisible(true);
     }//GEN-LAST:event_btn_branchMouseClicked
+
+    private void btn_bank_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bank_saveActionPerformed
+        int bank_id = 2;
+        String bank_name = txt_bank_name.getText();
+        String bank_code = txt_bank_code.getText();
+        String brach_desc = bank_desc.getText();
+        int bank_status = cmb_bank_states.getSelectedIndex();
+        
+        
+        R_Bank bank = new R_Bank(bank_id, bank_name, bank_code, brach_desc, bank_status);
+        
+        try {
+            boolean addBank = ServerConnector.getServerConnetor().getBankController().addBank(bank);
+            
+            if(addBank){
+                JOptionPane.showMessageDialog(this, "Bank Added Successfully...");
+            }else{
+                JOptionPane.showMessageDialog(this, "Bank Adding Failed...");
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Brance_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btn_bank_saveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
