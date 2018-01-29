@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.servicefactoryimpl;
 
 import com.brotherssoft.samodconstructions.service.IDService;
 import com.brotherssoft.samodconstructions.service.M_EmployeeService;
+import com.brotherssoft.samodconstructions.service.M_Primary_ProjectService;
 import com.brotherssoft.samodconstructions.service.R_BankService;
 import com.brotherssoft.samodconstructions.service.R_BranchService;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
@@ -38,6 +39,11 @@ public class ServiceFactoryImpl implements ServiceFactory{
     @Override
     public R_BranchService getBranchService() {
         return new R_BranchService();
+    }
+
+    @Override
+    public M_Primary_ProjectService getPrimary_ProjectService() {
+        return new M_Primary_ProjectService();
     }
     
 }
