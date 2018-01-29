@@ -22,8 +22,8 @@ public class M_Project implements Serializable{
     private String project_primary_address2;
     private String project_primary_address3;
     private String project_primary_address4;
-    private char project_primary_type;
-    private char project_primary_vatAdded;
+    private int project_primary_type;
+    private String project_primary_vatAdded;
     private String project_primary_contractBidNo;
     private String project_primary_clientName;
     private String project_primary_clientAddress1;
@@ -37,7 +37,7 @@ public class M_Project implements Serializable{
     private int project_primary_ictadGrade_id;
     private double project_primary_engineerEstimate;
     private double project_primary_tenderFee;
-    private char project_primary_bidPaymentMode;
+    private String project_primary_bidPaymentMode;
     private double project_primary_bidAmount;
     private String project_primary_bidDuration;
     private String project_primary_bidOrganization;
@@ -81,26 +81,26 @@ public class M_Project implements Serializable{
     private Date project_final_handOverDate;
     private String project_final_timeExtentionRequestPeriod;
     private String project_final_timeExtentionApprovedPeriod;
-    private char project_final_liquidityDamage;
+    private String project_final_liquidityDamage;
     private String project_final_liquidityDamagePeriod;
     private double project_final_liquidityDamageAmount;
-    private char project_final_completionCertification;
-    private char project_final_retention;
-    private char project_final_retentionMode;
+    private String project_final_completionCertification;
+    private String project_final_retention;
+    private String project_final_retentionMode;
     private double project_final_retentionAmount;
     private String project_final_retentionOrganization;
     private Date project_final_retentionPeriodFrom;
     private Date project_final_retentionPeriodTo;
-    private char project_final_retentionRelease;
+    private String project_final_retentionRelease;
     private double project_final_retentionReleaseAmount;
     private Date project_final_retentionReleaseDate;
-    private char project_final_status;
-    private char project_final_currentStatus;
+    private String project_final_status;
+    private String project_final_currentStatus;
 
     public M_Project() {
     }
 
-    public M_Project(int project_id, String project_primary_name, String project_primary_description, String project_primary_address1, String project_primary_address2, String project_primary_address3, String project_primary_address4, char project_primary_type, char project_primary_vatAdded, String project_primary_contractBidNo, String project_primary_clientName, String project_primary_clientAddress1, String project_primary_clientAddress2, String project_primary_clientAddress3, String project_primary_clientAddress4, String project_primary_clientContact1, String project_primary_clientContact2, String project_primary_intendedDuration, int project_primary_ictadSpeciality_id, int project_primary_ictadGrade_id, double project_primary_engineerEstimate, double project_primary_tenderFee, char project_primary_bidPaymentMode, double project_primary_bidAmount, String project_primary_bidDuration, String project_primary_bidOrganization, Date project_primary_tenderOpenDate, Time project_primary_tenderOpenTime, String project_primary_tenderResult, Date project_primary_statusActiveDate, Date project_primary_statusInactiveDate, double project_secondary_boq, double project_secondary_vat, String project_secondary_duration, Date project_secondary_agreementDate, String project_secondary_consultant, String project_secondary_consultantAddress, String project_secondary_consultantContact, Date project_secondary_commencementDate, Date project_secondary_completionDate, String project_secondary_performanceBondOrganization, double project_secondary_performanceBondAmount, Date project_secondary_performanceBondValidFrom, Date project_secondary_performanceBondValidTo, String project_secondary_advancePaymentBondOrganization, double project_secondary_advancePaymentBondAmount, Date project_secondary_advancePaymentBondValidFrom, Date project_secondary_advancePaymentBondValidTo, String project_secondary_insuranceCover, String project_secondary_insuranceCoverOrganization, double project_secondary_insuranceCoverAmount, Date project_secondary_insuranceValidFrom, Date project_secondary_insuranceValidTo, String project_secondary_paymentMode, double project_final_boq, double project_final_exceed, double project_final_extraWork, double project_final_priceEscallation, double project_final_vat, Date project_final_takeOverDate, Date project_final_completeDate, Date project_final_handOverDate, String project_final_timeExtentionRequestPeriod, String project_final_timeExtentionApprovedPeriod, char project_final_liquidityDamage, String project_final_liquidityDamagePeriod, double project_final_liquidityDamageAmount, char project_final_completionCertification, char project_final_retention, char project_final_retentionMode, double project_final_retentionAmount, String project_final_retentionOrganization, Date project_final_retentionPeriodFrom, Date project_final_retentionPeriodTo, char project_final_retentionRelease, double project_final_retentionReleaseAmount, Date project_final_retentionReleaseDate, char project_final_status, char project_final_currentStatus) {
+    public M_Project(int project_id, String project_primary_name, String project_primary_description, String project_primary_address1, String project_primary_address2, String project_primary_address3, String project_primary_address4, int project_primary_type, String project_primary_vatAdded, String project_primary_contractBidNo, String project_primary_clientName, String project_primary_clientAddress1, String project_primary_clientAddress2, String project_primary_clientAddress3, String project_primary_clientAddress4, String project_primary_clientContact1, String project_primary_clientContact2, String project_primary_intendedDuration, int project_primary_ictadSpeciality_id, int project_primary_ictadGrade_id, double project_primary_engineerEstimate, double project_primary_tenderFee, String project_primary_bidPaymentMode, double project_primary_bidAmount, String project_primary_bidDuration, String project_primary_bidOrganization, Date project_primary_tenderOpenDate, Time project_primary_tenderOpenTime, String project_primary_tenderResult, Date project_primary_statusActiveDate, Date project_primary_statusInactiveDate, double project_secondary_boq, double project_secondary_vat, String project_secondary_duration, Date project_secondary_agreementDate, String project_secondary_consultant, String project_secondary_consultantAddress, String project_secondary_consultantContact, Date project_secondary_commencementDate, Date project_secondary_completionDate, String project_secondary_performanceBondOrganization, double project_secondary_performanceBondAmount, Date project_secondary_performanceBondValidFrom, Date project_secondary_performanceBondValidTo, String project_secondary_advancePaymentBondOrganization, double project_secondary_advancePaymentBondAmount, Date project_secondary_advancePaymentBondValidFrom, Date project_secondary_advancePaymentBondValidTo, String project_secondary_insuranceCover, String project_secondary_insuranceCoverOrganization, double project_secondary_insuranceCoverAmount, Date project_secondary_insuranceValidFrom, Date project_secondary_insuranceValidTo, String project_secondary_paymentMode, double project_final_boq, double project_final_exceed, double project_final_extraWork, double project_final_priceEscallation, double project_final_vat, Date project_final_takeOverDate, Date project_final_completeDate, Date project_final_handOverDate, String project_final_timeExtentionRequestPeriod, String project_final_timeExtentionApprovedPeriod, String project_final_liquidityDamage, String project_final_liquidityDamagePeriod, double project_final_liquidityDamageAmount, String project_final_completionCertification, String project_final_retention, String project_final_retentionMode, double project_final_retentionAmount, String project_final_retentionOrganization, Date project_final_retentionPeriodFrom, Date project_final_retentionPeriodTo, String project_final_retentionRelease, double project_final_retentionReleaseAmount, Date project_final_retentionReleaseDate, String project_final_status, String project_final_currentStatus) {
         this.project_id = project_id;
         this.project_primary_name = project_primary_name;
         this.project_primary_description = project_primary_description;
@@ -283,28 +283,28 @@ public class M_Project implements Serializable{
     /**
      * @return the project_primary_type
      */
-    public char getProject_primary_type() {
+    public int getProject_primary_type() {
         return project_primary_type;
     }
 
     /**
      * @param project_primary_type the project_primary_type to set
      */
-    public void setProject_primary_type(char project_primary_type) {
+    public void setProject_primary_type(int project_primary_type) {
         this.project_primary_type = project_primary_type;
     }
 
     /**
      * @return the project_primary_vatAdded
      */
-    public char getProject_primary_vatAdded() {
+    public String getProject_primary_vatAdded() {
         return project_primary_vatAdded;
     }
 
     /**
      * @param project_primary_vatAdded the project_primary_vatAdded to set
      */
-    public void setProject_primary_vatAdded(char project_primary_vatAdded) {
+    public void setProject_primary_vatAdded(String project_primary_vatAdded) {
         this.project_primary_vatAdded = project_primary_vatAdded;
     }
 
@@ -493,14 +493,14 @@ public class M_Project implements Serializable{
     /**
      * @return the project_primary_bidPaymentMode
      */
-    public char getProject_primary_bidPaymentMode() {
+    public String getProject_primary_bidPaymentMode() {
         return project_primary_bidPaymentMode;
     }
 
     /**
      * @param project_primary_bidPaymentMode the project_primary_bidPaymentMode to set
      */
-    public void setProject_primary_bidPaymentMode(char project_primary_bidPaymentMode) {
+    public void setProject_primary_bidPaymentMode(String project_primary_bidPaymentMode) {
         this.project_primary_bidPaymentMode = project_primary_bidPaymentMode;
     }
 
@@ -1081,14 +1081,14 @@ public class M_Project implements Serializable{
     /**
      * @return the project_final_liquidityDamage
      */
-    public char getProject_final_liquidityDamage() {
+    public String getProject_final_liquidityDamage() {
         return project_final_liquidityDamage;
     }
 
     /**
      * @param project_final_liquidityDamage the project_final_liquidityDamage to set
      */
-    public void setProject_final_liquidityDamage(char project_final_liquidityDamage) {
+    public void setProject_final_liquidityDamage(String project_final_liquidityDamage) {
         this.project_final_liquidityDamage = project_final_liquidityDamage;
     }
 
@@ -1123,42 +1123,42 @@ public class M_Project implements Serializable{
     /**
      * @return the project_final_completionCertification
      */
-    public char getProject_final_completionCertification() {
+    public String getProject_final_completionCertification() {
         return project_final_completionCertification;
     }
 
     /**
      * @param project_final_completionCertification the project_final_completionCertification to set
      */
-    public void setProject_final_completionCertification(char project_final_completionCertification) {
+    public void setProject_final_completionCertification(String project_final_completionCertification) {
         this.project_final_completionCertification = project_final_completionCertification;
     }
 
     /**
      * @return the project_final_retention
      */
-    public char getProject_final_retention() {
+    public String getProject_final_retention() {
         return project_final_retention;
     }
 
     /**
      * @param project_final_retention the project_final_retention to set
      */
-    public void setProject_final_retention(char project_final_retention) {
+    public void setProject_final_retention(String project_final_retention) {
         this.project_final_retention = project_final_retention;
     }
 
     /**
      * @return the project_final_retentionMode
      */
-    public char getProject_final_retentionMode() {
+    public String getProject_final_retentionMode() {
         return project_final_retentionMode;
     }
 
     /**
      * @param project_final_retentionMode the project_final_retentionMode to set
      */
-    public void setProject_final_retentionMode(char project_final_retentionMode) {
+    public void setProject_final_retentionMode(String project_final_retentionMode) {
         this.project_final_retentionMode = project_final_retentionMode;
     }
 
@@ -1221,14 +1221,14 @@ public class M_Project implements Serializable{
     /**
      * @return the project_final_retentionRelease
      */
-    public char getProject_final_retentionRelease() {
+    public String getProject_final_retentionRelease() {
         return project_final_retentionRelease;
     }
 
     /**
      * @param project_final_retentionRelease the project_final_retentionRelease to set
      */
-    public void setProject_final_retentionRelease(char project_final_retentionRelease) {
+    public void setProject_final_retentionRelease(String project_final_retentionRelease) {
         this.project_final_retentionRelease = project_final_retentionRelease;
     }
 
@@ -1263,33 +1263,30 @@ public class M_Project implements Serializable{
     /**
      * @return the project_final_status
      */
-    public char getProject_final_status() {
+    public String getProject_final_status() {
         return project_final_status;
     }
 
     /**
      * @param project_final_status the project_final_status to set
      */
-    public void setProject_final_status(char project_final_status) {
+    public void setProject_final_status(String project_final_status) {
         this.project_final_status = project_final_status;
     }
 
     /**
      * @return the project_final_currentStatus
      */
-    public char getProject_final_currentStatus() {
+    public String getProject_final_currentStatus() {
         return project_final_currentStatus;
     }
 
     /**
      * @param project_final_currentStatus the project_final_currentStatus to set
      */
-    public void setProject_final_currentStatus(char project_final_currentStatus) {
+    public void setProject_final_currentStatus(String project_final_currentStatus) {
         this.project_final_currentStatus = project_final_currentStatus;
     }
-    
-    
-    
-    
+
     
 }

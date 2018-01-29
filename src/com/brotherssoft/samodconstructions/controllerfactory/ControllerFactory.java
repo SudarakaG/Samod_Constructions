@@ -10,6 +10,7 @@ import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
 import java.rmi.Remote;
+import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
 
 /**
  *
@@ -21,5 +22,6 @@ public interface ControllerFactory extends Remote{
     public R_BankController getBankController()throws Exception;
     public R_BranchController getBranchController()throws Exception;
     public M_EmployeeController getEmployeeController()throws Exception;
+    public M_Primary_ProjectController getPrimaryProjectController()throws Exception;
     
 }
