@@ -1712,13 +1712,21 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lable27MouseExited
 
     private void master_detail_home_lable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable4MouseClicked
-       Bank_Panel bp = new Bank_Panel(2);
-        panelManager(bp);
+        try {
+            Bank_Panel bp = new Bank_Panel(2);
+            panelManager(bp);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable4MouseClicked
 
     private void master_detail_home_lable5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable5MouseClicked
-        Bank_Panel bp = new Bank_Panel(1);
-        panelManager(bp);
+        try {
+            Bank_Panel bp = new Bank_Panel(1);
+            panelManager(bp);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable5MouseClicked
 
     private void master_detail_home_lable10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable10MouseClicked

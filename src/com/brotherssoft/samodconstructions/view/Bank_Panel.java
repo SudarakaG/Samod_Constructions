@@ -21,11 +21,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Bank_Panel extends javax.swing.JPanel {
 
+    DefaultTableModel dtmBank;
+    R_BankController bankController;
+
     /**
      * Creates new form Brance_Panel
      */
-    public Bank_Panel(int x) {
+    public Bank_Panel(int x) throws Exception {
         initComponents();
+        dtmBank = (DefaultTableModel) tbl_bank.getModel();
+        bankController = ServerConnector.getServerConnetor().getBankController();
         showPanel(x);
     }
 
@@ -61,6 +66,8 @@ public class Bank_Panel extends javax.swing.JPanel {
         cmbBranchStates = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         btn_back_to_bank = new javax.swing.JButton();
+        btn_remove_branch1 = new javax.swing.JButton();
+        btn_new_branch = new javax.swing.JButton();
         tbl_panel_Branch = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tb_branch = new javax.swing.JTable();
@@ -80,10 +87,11 @@ public class Bank_Panel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         bank_desc = new javax.swing.JTextArea();
         btn_bank_save = new javax.swing.JButton();
-        btn_bank_cancel = new javax.swing.JButton();
         cmb_bank_states = new javax.swing.JComboBox<>();
         btn_branch = new javax.swing.JButton();
         lbl_bnakId = new javax.swing.JLabel();
+        btn_bank_new = new javax.swing.JButton();
+        btn_bank_remove = new javax.swing.JButton();
         bank_panel_tbl = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl_bank = new javax.swing.JTable();
@@ -182,6 +190,12 @@ public class Bank_Panel extends javax.swing.JPanel {
             }
         });
 
+        btn_remove_branch1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_remove_branch1.setText("Remove");
+
+        btn_new_branch.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_new_branch.setText("New");
+
         javax.swing.GroupLayout txt_Input_Panel_BranchLayout = new javax.swing.GroupLayout(txt_Input_Panel_Branch);
         txt_Input_Panel_Branch.setLayout(txt_Input_Panel_BranchLayout);
         txt_Input_Panel_BranchLayout.setHorizontalGroup(
@@ -201,13 +215,6 @@ public class Bank_Panel extends javax.swing.JPanel {
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbBank, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_BranchLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_back_to_bank, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_save_branch, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_branch_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txt_Input_Panel_BranchLayout.createSequentialGroup()
                         .addGroup(txt_Input_Panel_BranchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,7 +226,19 @@ public class Bank_Panel extends javax.swing.JPanel {
                     .addGroup(txt_Input_Panel_BranchLayout.createSequentialGroup()
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbBranchStates, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(cmbBranchStates, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_BranchLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(txt_Input_Panel_BranchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_back_to_bank, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_BranchLayout.createSequentialGroup()
+                                .addComponent(btn_new_branch, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_save_branch, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_remove_branch1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_branch_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         txt_Input_Panel_BranchLayout.setVerticalGroup(
@@ -253,7 +272,10 @@ public class Bank_Panel extends javax.swing.JPanel {
                 .addGroup(txt_Input_Panel_BranchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_save_branch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_branch_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_back_to_bank, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_remove_branch1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_new_branch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_back_to_bank, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -420,9 +442,6 @@ public class Bank_Panel extends javax.swing.JPanel {
             }
         });
 
-        btn_bank_cancel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_bank_cancel.setText("Cancel");
-
         cmb_bank_states.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_bank_states.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
 
@@ -437,10 +456,31 @@ public class Bank_Panel extends javax.swing.JPanel {
         lbl_bnakId.setText("jLabel2");
         lbl_bnakId.setEnabled(false);
 
+        btn_bank_new.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_bank_new.setText("New");
+        btn_bank_new.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_bank_newActionPerformed(evt);
+            }
+        });
+
+        btn_bank_remove.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_bank_remove.setText("Remove");
+        btn_bank_remove.setEnabled(false);
+        btn_bank_remove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_bank_removeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout bank_panel_input_areaLayout = new javax.swing.GroupLayout(bank_panel_input_area);
         bank_panel_input_area.setLayout(bank_panel_input_areaLayout);
         bank_panel_input_areaLayout.setHorizontalGroup(
             bank_panel_input_areaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_input_areaLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(lbl_bnakId)
+                .addContainerGap(424, Short.MAX_VALUE))
             .addGroup(bank_panel_input_areaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(bank_panel_input_areaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -462,16 +502,14 @@ public class Bank_Panel extends javax.swing.JPanel {
                         .addComponent(cmb_bank_states, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_areaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_branch, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_bank_new, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_bank_save, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_bank_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_bank_remove, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_branch, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(bank_panel_input_areaLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(lbl_bnakId)
-                .addContainerGap(424, Short.MAX_VALUE))
         );
         bank_panel_input_areaLayout.setVerticalGroup(
             bank_panel_input_areaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -494,10 +532,11 @@ public class Bank_Panel extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(bank_panel_input_areaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_bank_new, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_bank_save, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_bank_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_bank_remove, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_branch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_bnakId)
                 .addGap(54, 54, 54))
         );
@@ -594,7 +633,7 @@ public class Bank_Panel extends javax.swing.JPanel {
                 .addGroup(Bank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bank_panel_input_area, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bank_panel_tbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(Branch_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -652,6 +691,20 @@ public class Bank_Panel extends javax.swing.JPanel {
         loadFromTableRow();
     }//GEN-LAST:event_tbl_bankMouseClicked
 
+    private void btn_bank_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bank_newActionPerformed
+        txt_bank_name.setText("");
+        txt_bank_code.setText("");
+        cmb_bank_states.setSelectedIndex(0);
+        bank_desc.setText("");
+        
+        btn_bank_save.setText("Save");
+        btn_bank_remove.setEnabled(false);
+    }//GEN-LAST:event_btn_bank_newActionPerformed
+
+    private void btn_bank_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bank_removeActionPerformed
+        removeBank();
+    }//GEN-LAST:event_btn_bank_removeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bank_panel;
@@ -662,10 +715,13 @@ public class Bank_Panel extends javax.swing.JPanel {
     private javax.swing.JPanel bank_panel_input_area;
     private javax.swing.JPanel bank_panel_tbl;
     private javax.swing.JButton btn_back_to_bank;
-    private javax.swing.JButton btn_bank_cancel;
+    private javax.swing.JButton btn_bank_new;
+    private javax.swing.JButton btn_bank_remove;
     private javax.swing.JButton btn_bank_save;
     private javax.swing.JButton btn_branch;
     private javax.swing.JButton btn_branch_cancel;
+    private javax.swing.JButton btn_new_branch;
+    private javax.swing.JButton btn_remove_branch1;
     private javax.swing.JButton btn_save_branch;
     private javax.swing.JComboBox<String> cmbBank;
     private javax.swing.JComboBox<String> cmbBranchStates;
@@ -719,53 +775,17 @@ public class Bank_Panel extends javax.swing.JPanel {
         }
     }
 
-    private void loadBankTable() {
-        System.out.println("tablee run wenooo...");
-        try {
-            DefaultTableModel dtmBank = (DefaultTableModel) tbl_bank.getModel();
-            dtmBank.setRowCount(0);
-            List<R_Bank> allBanks = ServerConnector.getServerConnetor().getBankController().getAllBanks();
-            for (R_Bank allBank : allBanks) {
-                String[] rowDataBank = {allBank.getBank_name(), allBank.getBank_code(), Integer.toString(allBank.getBank_status()), allBank.getBank_description()};
-                System.out.println("////////" + allBank.getBank_name());
-                dtmBank.addRow(rowDataBank);
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void loadFromTableRow() {
-        try {
-            DefaultTableModel dtmBank = (DefaultTableModel) tbl_bank.getModel();
-            int selectedRow = tbl_bank.getSelectedRow();
-            
-            R_BankController bankController = ServerConnector.getServerConnetor().getBankController();
-            R_Bank searchBank = bankController.searchBankByName(dtmBank.getValueAt(selectedRow, 0).toString());
-            
-            txt_bank_name.setText(dtmBank.getValueAt(selectedRow, 0).toString());
-            txt_bank_code.setText(dtmBank.getValueAt(selectedRow, 1).toString());
-            bank_desc.setText(dtmBank.getValueAt(selectedRow, 3).toString());
-            cmb_bank_states.setSelectedIndex(Integer.parseInt(dtmBank.getValueAt(selectedRow, 2).toString()));
-            lbl_bnakId.setText(Integer.toString(searchBank.getBank_id()));
-            btn_bank_save.setText("Update");
-        } catch (Exception ex) {
-            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     private void saveBankDetails() {
         try {
             int bank_id = IDGenerator.getNewID("r_bank", "BANK_ID");
             String bank_name = txt_bank_name.getText();
             String bank_code = txt_bank_code.getText();
             String brach_desc = bank_desc.getText();
-            int bank_status = cmb_bank_states.getSelectedIndex();
+            String bank_status = Integer.toString(cmb_bank_states.getSelectedIndex());
 
             R_Bank bank = new R_Bank(bank_id, bank_name, bank_code, brach_desc, bank_status);
 
-            boolean addBank = ServerConnector.getServerConnetor().getBankController().addBank(bank);
+            boolean addBank = bankController.addBank(bank);
 
             if (addBank) {
                 JOptionPane.showMessageDialog(this, "Bank Added Successfully...");
@@ -778,23 +798,57 @@ public class Bank_Panel extends javax.swing.JPanel {
         }
     }
 
+    private void loadBankTable() {
+        System.out.println("tablee run wenooo...");
+        try {
+            dtmBank.setRowCount(0);
+            List<R_Bank> allBanks = bankController.getAllBanks();
+            for (R_Bank allBank : allBanks) {
+                String[] rowDataBank = {allBank.getBank_name(), allBank.getBank_code(), allBank.getBank_status(), allBank.getBank_description()};
+                System.out.println("////////" + allBank.getBank_name());
+                dtmBank.addRow(rowDataBank);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadFromTableRow() {
+        try {
+
+            int selectedRow = tbl_bank.getSelectedRow();
+
+            R_Bank searchBank = bankController.searchBankByName(dtmBank.getValueAt(selectedRow, 0).toString());
+
+            txt_bank_name.setText(dtmBank.getValueAt(selectedRow, 0).toString());
+            txt_bank_code.setText(dtmBank.getValueAt(selectedRow, 1).toString());
+            bank_desc.setText(dtmBank.getValueAt(selectedRow, 3).toString());
+            cmb_bank_states.setSelectedIndex(Integer.parseInt(dtmBank.getValueAt(selectedRow, 2).toString()));
+            lbl_bnakId.setText(Integer.toString(searchBank.getBank_id()));
+
+            btn_bank_save.setText("Update");
+            btn_bank_remove.setEnabled(true);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     private void updateBankDetails() {
         System.out.println("Update ekata yaii...");
-        
-           
-//            DefaultTableModel dtmBank = (DefaultTableModel) tbl_bank.getModel();
-//            int selectedRow = tbl_bank.getSelectedRow();
-//            R_Bank searchBank = bankController.searchBankByName(dtmBank.getValueAt(selectedRow, 0).toString());
+        try {
+
+            int bankId = searchBankByName().getBank_id();
 //            System.out.println("////////////////"+searchBank.getBank_id());
             String bank_name = txt_bank_name.getText();
             String bank_code = txt_bank_code.getText();
             String brach_desc = bank_desc.getText();
-            int bank_status = cmb_bank_states.getSelectedIndex();
+            String bank_status = Integer.toString(cmb_bank_states.getSelectedIndex());
 
-            R_Bank bank1 = new R_Bank(Integer.parseInt(lbl_bnakId.getText()), bank_name, bank_code, brach_desc, bank_status);
+            R_Bank bank1 = new R_Bank(bankId, bank_name, bank_code, brach_desc, bank_status);
 
-        try {
-            boolean updateBank = ServerConnector.getServerConnetor().getBankController().updateBank(bank1);
+            boolean updateBank = bankController.updateBank(bank1);
             if (updateBank) {
                 JOptionPane.showMessageDialog(this, "Bank Updated Successfully...");
             } else {
@@ -804,8 +858,33 @@ public class Bank_Panel extends javax.swing.JPanel {
             Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-            
-
-       
     }
+
+    private R_Bank searchBankByName() {
+        R_Bank searchBank = null;
+        try {
+            int selectedRow = tbl_bank.getSelectedRow();
+            searchBank = bankController.searchBankByName(dtmBank.getValueAt(selectedRow, 0).toString());
+        } catch (Exception ex) {
+            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return searchBank;
+    }
+
+    private void removeBank() {
+        try {
+            int bank_id = searchBankByName().getBank_id();
+            boolean deleteBank = bankController.deleteBank(bank_id);
+            if (deleteBank) {
+                JOptionPane.showMessageDialog(this, "Bank is Deleted Successfully...");
+            } else {
+                JOptionPane.showMessageDialog(this, "Deleting Bank Failed..");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        loadBankTable();
+    }
+
 }

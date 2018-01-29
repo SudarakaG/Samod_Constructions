@@ -174,7 +174,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -192,14 +192,6 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cmbBank" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="btn_back_to_bank" min="-2" pref="92" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_save_branch" min="-2" pref="92" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_branch_cancel" min="-2" pref="92" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel14" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
@@ -215,6 +207,21 @@
                                   <Component id="jLabel18" min="-2" pref="146" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="cmbBranchStates" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btn_back_to_bank" alignment="1" min="-2" pref="92" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="btn_new_branch" min="-2" pref="92" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btn_save_branch" min="-2" pref="92" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btn_remove_branch1" min="-2" pref="92" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btn_branch_cancel" min="-2" pref="92" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -258,8 +265,11 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btn_save_branch" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="btn_branch_cancel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="btn_back_to_bank" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_remove_branch1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_new_branch" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btn_back_to_bank" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -409,6 +419,22 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_back_to_bankMouseClicked"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JButton" name="btn_remove_branch1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Remove"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_new_branch">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="New"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="tbl_panel_Branch">
@@ -524,7 +550,7 @@
                           <Component id="bank_panel_input_area" alignment="0" max="32767" attributes="0"/>
                           <Component id="bank_panel_tbl" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace pref="33" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -620,6 +646,11 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <Component id="lbl_bnakId" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="424" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -644,19 +675,16 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="btn_branch" min="-2" pref="92" max="-2" attributes="0"/>
+                                  <Component id="btn_bank_new" min="-2" pref="92" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btn_bank_save" min="-2" pref="92" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_bank_cancel" min="-2" pref="92" max="-2" attributes="0"/>
+                                  <Component id="btn_bank_remove" min="-2" pref="92" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btn_branch" min="-2" pref="92" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="lbl_bnakId" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="424" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -685,11 +713,12 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btn_bank_new" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="btn_bank_save" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="btn_bank_cancel" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="btn_bank_remove" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="btn_branch" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="104" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="lbl_bnakId" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       </Group>
@@ -769,14 +798,6 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_bank_saveActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btn_bank_cancel">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Cancel"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JComboBox" name="cmb_bank_states">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -809,6 +830,29 @@
                     <Property name="text" type="java.lang.String" value="jLabel2"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_bank_new">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="New"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_bank_newActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_bank_remove">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Remove"/>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_bank_removeActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
