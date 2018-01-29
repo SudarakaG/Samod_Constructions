@@ -6,6 +6,7 @@
 package com.brotherssoft.samodconstructions.dbAccessFactory;
 
 import com.brotherssoft.samodconstructions.dbAccess.ID_DBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_EmployeeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BankDBAccess;
 
 /**
@@ -16,5 +17,6 @@ public interface DBAccessFactory {
     
     public ID_DBAccess getIDAccess();
     public R_BankDBAccess getBankAccess();
+    public M_EmployeeDBAccess getEmployeeAccess();
     
 }
