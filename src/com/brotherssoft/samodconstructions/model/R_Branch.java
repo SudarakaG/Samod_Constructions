@@ -19,12 +19,12 @@ public class R_Branch implements Serializable{
     private String branch_code;
     private String branch_description;
     private String branch_address;
-    private char branch_status;
+    private int branch_status;
 
     public R_Branch() {
     }
 
-    public R_Branch(int branch_id, int branch_bank_id, String branch_name, String branch_code, String branch_description, String branch_address, char branch_status) {
+    public R_Branch(int branch_id, int branch_bank_id, String branch_name, String branch_code, String branch_description, String branch_address, int branch_status) {
         this.branch_id = branch_id;
         this.branch_bank_id = branch_bank_id;
         this.branch_name = branch_name;
@@ -121,17 +121,17 @@ public class R_Branch implements Serializable{
     /**
      * @return the branch_status
      */
-    public char getBranch_status() {
+    public int getBranch_status() {
         return branch_status;
     }
 
     /**
      * @param branch_status the branch_status to set
      */
-    public void setBranch_status(char branch_status) {
+    public void setBranch_status(int branch_status) {
         this.branch_status = branch_status;
     }
-    
+
     
     
 }
