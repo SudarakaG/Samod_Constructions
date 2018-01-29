@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.serverconnector;
 
 import com.brotherssoft.samodconstructions.controller.IDController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
+import com.brotherssoft.samodconstructions.controller.R_BranchController;
 import com.brotherssoft.samodconstructions.controllerfactory.ControllerFactory;
 import java.rmi.Naming;
 
@@ -20,6 +21,7 @@ public class ServerConnector {
     private ControllerFactory cf;
     private IDController ic;
     private R_BankController bc;
+    private R_BranchController branchController;
     
     //private UserHistoryController uhc;
 
@@ -39,6 +41,13 @@ public class ServerConnector {
             ic = cf.getIDController();
         }
         return ic;
+    }
+    
+    public R_BranchController getBranchController()throws Exception{
+        if(branchController == null){
+            branchController = cf.getBranchController();
+        }
+        return branchController;
     }
 
 //    
