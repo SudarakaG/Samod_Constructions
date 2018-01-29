@@ -10,7 +10,6 @@ import com.brotherssoft.samodconstructions.model.R_Bank;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +36,7 @@ public class R_BankDBAccess {
     
     public boolean updateBank(R_Bank bank) throws Exception {
         System.out.println("??????????????"+"dbAcssee runinnng.....");
-        String sql = "Update R_Bank set BANK_NAME=?,BANK_CODE=?,BANK_DESC=? BANK_STATUS=? where BANK_ID=?";
+        String sql = "Update R_Bank set BANK_NAME=?,BANK_CODE=?,BANK_DESC=?, BANK_STATUS=? where BANK_ID=?";
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement stm = conn.prepareStatement(sql);
             
@@ -69,7 +68,7 @@ public class R_BankDBAccess {
             ResultSet rst = stm.executeQuery();
             R_Bank bank = null;
             if (rst.next()) {
-                bank = new R_Bank(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getInt(5));
+                bank = new R_Bank(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5));
 
             }
             return bank;
@@ -83,7 +82,7 @@ public class R_BankDBAccess {
             ResultSet rst = stm.executeQuery("Select * From R_Bank");
             List<R_Bank> bankList = new ArrayList<>();
             while (rst.next()) {
-                R_Bank bank = new R_Bank(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getInt(5));
+                R_Bank bank = new R_Bank(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5));
                 bankList.add(bank);
             }
             return bankList;
@@ -99,7 +98,7 @@ public class R_BankDBAccess {
             ResultSet rst = stm.executeQuery();
             R_Bank bank = null;
             if (rst.next()) {
-                bank = new R_Bank(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getInt(5));
+                bank = new R_Bank(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5));
 
             }
             return bank;
