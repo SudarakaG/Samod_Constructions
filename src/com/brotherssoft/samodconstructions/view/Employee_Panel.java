@@ -5,6 +5,8 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.model.M_Employee;
+
 /**
  *
  * @author Akvasoft
@@ -235,6 +237,11 @@ public class Employee_Panel extends javax.swing.JPanel {
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setText("Save");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setText("Save");
@@ -596,7 +603,7 @@ public class Employee_Panel extends javax.swing.JPanel {
             .addGroup(Employee_View_PanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         Employee_View_PanelLayout.setVerticalGroup(
             Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -604,7 +611,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                 .addComponent(bank_panel_hedding5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(Employee_Registration_Panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -646,6 +653,10 @@ public class Employee_Panel extends javax.swing.JPanel {
         Employee_Registration_Panel.setVisible(false);
         Employee_View_Panel.setVisible(true);
     }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        addEmployee();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -709,4 +720,13 @@ public class Employee_Panel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_nic;
     private javax.swing.JTextField txt_sur_Name;
     // End of variables declaration//GEN-END:variables
+
+    private void addEmployee() {
+        M_Employee employee = new M_Employee();
+        employee.setEmp_title((char) cmbtitle.getSelectedItem());
+        employee.setEmp_DOB(date_picker_birth.getDate());
+        employee.setEmp_NIC(txt_nic.getText());
+        
+        
+    }
 }
