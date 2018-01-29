@@ -200,9 +200,19 @@ public class Bank_Panel extends javax.swing.JPanel {
         btn_remove_branch1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_remove_branch1.setText("Remove");
         btn_remove_branch1.setEnabled(false);
+        btn_remove_branch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_remove_branch1ActionPerformed(evt);
+            }
+        });
 
         btn_new_branch.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_new_branch.setText("New");
+        btn_new_branch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_new_branchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout txt_Input_Panel_BranchLayout = new javax.swing.GroupLayout(txt_Input_Panel_Branch);
         txt_Input_Panel_Branch.setLayout(txt_Input_Panel_BranchLayout);
@@ -734,6 +744,24 @@ public class Bank_Panel extends javax.swing.JPanel {
         loadFromBranchTable();
     }//GEN-LAST:event_tbl_branchMouseClicked
 
+    private void btn_remove_branch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_remove_branch1ActionPerformed
+        deleteBranch();
+    }//GEN-LAST:event_btn_remove_branch1ActionPerformed
+
+    private void btn_new_branchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_branchActionPerformed
+        
+        txtBranchName.setText("");
+        txtBranchCode.setText("");
+        txtBranchAddress.setText("");
+        cmbBank.setSelectedIndex(0);
+        cmbBranchStates.setSelectedIndex(0);
+        taBranchDesc.setText("");
+        
+        btn_remove_branch1.setEnabled(false);
+        btn_save_branch.setText("Save");
+        
+    }//GEN-LAST:event_btn_new_branchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bank_panel;
@@ -1043,7 +1071,7 @@ public class Bank_Panel extends javax.swing.JPanel {
             
             boolean updateBranch = branchController.updateBranch(branchU);
             if (updateBranch) {
-                JOptionPane.showMessageDialog(this, "Brach Updated Successfully..");
+                JOptionPane.showMessageDialog(this, "Branch Updated Successfully..");
             }else{
                 JOptionPane.showMessageDialog(this, "Branch Updating Failed..");
             }
@@ -1052,7 +1080,24 @@ public class Bank_Panel extends javax.swing.JPanel {
             Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        loadBranchTable();
+    }
+
+    private void deleteBranch() {
         
+        int branch_id = searchBranchBytableCode().getBranch_id();
+        try {
+            boolean deleteBranch = branchController.deleteBranch(branch_id);
+            if (deleteBranch) {
+                JOptionPane.showMessageDialog(this, "Selected Branch Removed From Records..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Removing Brach occured error..");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        loadBranchTable();
     }
 
 }
