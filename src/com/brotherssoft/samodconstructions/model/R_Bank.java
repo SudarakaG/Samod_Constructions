@@ -17,12 +17,12 @@ public class R_Bank implements Serializable{
     private String bank_name;
     private String bank_code;
     private String bank_description;
-    private int bank_status;
+    private String bank_status;
 
     public R_Bank() {
     }
 
-    public R_Bank(int bank_id, String bank_name, String bank_code, String bank_description, int bank_status) {
+    public R_Bank(int bank_id, String bank_name, String bank_code, String bank_description, String bank_status) {
         this.bank_id = bank_id;
         this.bank_name = bank_name;
         this.bank_code = bank_code;
@@ -89,18 +89,16 @@ public class R_Bank implements Serializable{
     /**
      * @return the bank_status
      */
-    public int getBank_status() {
+    public String getBank_status() {
         return bank_status;
     }
 
     /**
      * @param bank_status the bank_status to set
      */
-    public void setBank_status(int bank_status) {
+    public void setBank_status(String bank_status) {
         this.bank_status = bank_status;
     }
-
-    
 
     
     
