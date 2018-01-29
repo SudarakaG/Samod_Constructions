@@ -8,10 +8,12 @@ package com.brotherssoft.samodconstructions.controllerfactoryimpl;
 import com.brotherssoft.samodconstructions.controller.IDController;
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
+import com.brotherssoft.samodconstructions.controller.R_BranchController;
 import com.brotherssoft.samodconstructions.controllerfactory.ControllerFactory;
 import com.brotherssoft.samodconstructions.controllerimpl.IDControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_EmployeeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_BankControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_BranchControllerImpl;
 import java.rmi.server.UnicastRemoteObject;
 
 /**
@@ -37,6 +39,11 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     @Override
     public M_EmployeeController getEmployeeController() throws Exception {
         return new M_EmployeeControllerImpl();
+    }
+
+    @Override
+    public R_BranchController getBranchController() throws Exception {
+        return new R_BranchControllerImpl();
     }
     
 }

@@ -8,6 +8,7 @@ package com.brotherssoft.samodconstructions.dbAccessFactoryImpl;
 import com.brotherssoft.samodconstructions.dbAccess.ID_DBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_EmployeeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BankDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_BranchDBAccess;
 import com.brotherssoft.samodconstructions.dbAccessFactory.DBAccessFactory;
 
 /**
@@ -34,6 +35,11 @@ public class DBAccessFactoryImpl implements DBAccessFactory{
     @Override
     public M_EmployeeDBAccess getEmployeeAccess() {
         return new M_EmployeeDBAccess();
+    }
+
+    @Override
+    public R_BranchDBAccess getBranchDBAccess() {
+        return new R_BranchDBAccess();
     }
     
 }

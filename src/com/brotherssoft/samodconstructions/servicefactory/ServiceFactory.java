@@ -8,6 +8,7 @@ package com.brotherssoft.samodconstructions.servicefactory;
 import com.brotherssoft.samodconstructions.service.IDService;
 import com.brotherssoft.samodconstructions.service.M_EmployeeService;
 import com.brotherssoft.samodconstructions.service.R_BankService;
+import com.brotherssoft.samodconstructions.service.R_BranchService;
 
 /**
  *
@@ -17,6 +18,7 @@ public interface ServiceFactory {
  
     public IDService getIDService();
     public R_BankService getBankService();
+    public R_BranchService getBranchService();
     public M_EmployeeService getEmployeeService();
     
 }
