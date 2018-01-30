@@ -10,6 +10,10 @@ import com.brotherssoft.samodconstructions.dbAccess.M_EmployeeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_Primary_ProjectDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BankDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BranchDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_PaymentModeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_ProjectGradeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_ProjectSpecialityDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_ProjectTypeDBAccess;
 
 /**
  *
@@ -22,5 +26,9 @@ public interface DBAccessFactory {
     public R_BranchDBAccess getBranchDBAccess();
     public M_EmployeeDBAccess getEmployeeAccess();
     public M_Primary_ProjectDBAccess getPrimary_ProjectDBAccess();
+    public R_ProjectGradeDBAccess getProjectGradeDBAccess();
+    public R_ProjectSpecialityDBAccess getProjectSpecialityDBAccess();
+    public R_ProjectTypeDBAccess getProjectTypeDBAccess();
+    public R_PaymentModeDBAccess getPaymentModeDBAccess();
     
 }

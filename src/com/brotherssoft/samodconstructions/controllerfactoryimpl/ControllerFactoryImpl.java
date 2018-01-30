@@ -10,12 +10,20 @@ import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
 import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
+import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
+import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
+import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
+import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
 import com.brotherssoft.samodconstructions.controllerfactory.ControllerFactory;
 import com.brotherssoft.samodconstructions.controllerimpl.IDControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_EmployeeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_Primary_ProjectControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_BankControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_BranchControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_PaymentModeControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_ProjectGradeControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_ProjectSpecialityControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_ProjectTypeControllerImpl;
 import java.rmi.server.UnicastRemoteObject;
 
 /**
@@ -51,6 +59,26 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     @Override
     public M_Primary_ProjectController getPrimaryProjectController() throws Exception {
         return new M_Primary_ProjectControllerImpl();
+    }
+
+    @Override
+    public R_ProjectGradeController getProjectGradeController() throws Exception {
+        return new R_ProjectGradeControllerImpl();
+    }
+
+    @Override
+    public R_ProjectSpecialityController getProjectSpecialityController() throws Exception {
+        return new R_ProjectSpecialityControllerImpl();
+    }
+
+    @Override
+    public R_ProjectTypeController getProjectTypeController() throws Exception {
+        return new R_ProjectTypeControllerImpl();
+    }
+
+    @Override
+    public R_PaymentModeController getPaymentModeController() throws Exception {
+        return new R_PaymentModeControllerImpl();
     }
     
 }
