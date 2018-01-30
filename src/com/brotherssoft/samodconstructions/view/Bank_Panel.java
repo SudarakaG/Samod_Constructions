@@ -378,7 +378,7 @@ public class Bank_Panel extends javax.swing.JPanel {
                 .addComponent(txt_Input_Panel_Branch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tbl_panel_Branch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
             .addComponent(bank_panel_hedding1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         Branch_panelLayout.setVerticalGroup(
@@ -473,6 +473,11 @@ public class Bank_Panel extends javax.swing.JPanel {
         btn_branch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_branchMouseClicked(evt);
+            }
+        });
+        btn_branch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_branchActionPerformed(evt);
             }
         });
 
@@ -694,11 +699,6 @@ public class Bank_Panel extends javax.swing.JPanel {
         Bank_panel.setVisible(true);
     }//GEN-LAST:event_btn_back_to_bankMouseClicked
 
-    private void btn_branchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_branchMouseClicked
-        Bank_panel.setVisible(false);
-        Branch_panel.setVisible(true);
-    }//GEN-LAST:event_btn_branchMouseClicked
-
     private void btn_bank_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bank_saveActionPerformed
         if (btn_bank_save.getText().equalsIgnoreCase("Save")) {
             saveBankDetails();
@@ -761,6 +761,15 @@ public class Bank_Panel extends javax.swing.JPanel {
         btn_save_branch.setText("Save");
         
     }//GEN-LAST:event_btn_new_branchActionPerformed
+
+    private void btn_branchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_branchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_branchActionPerformed
+
+    private void btn_branchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_branchMouseClicked
+        Bank_panel.setVisible(false);
+        Branch_panel.setVisible(true);
+    }//GEN-LAST:event_btn_branchMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

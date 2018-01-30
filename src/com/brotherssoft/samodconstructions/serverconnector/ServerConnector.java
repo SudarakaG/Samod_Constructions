@@ -9,6 +9,10 @@ import com.brotherssoft.samodconstructions.controller.IDController;
 import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
+import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
+import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
+import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
+import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
 import com.brotherssoft.samodconstructions.controllerfactory.ControllerFactory;
 import java.rmi.Naming;
 
@@ -24,6 +28,10 @@ public class ServerConnector {
     private R_BankController bc;
     private R_BranchController branchController;
     private M_Primary_ProjectController primary_ProjectController;
+    private R_ProjectGradeController projectGradeController;
+    private R_ProjectSpecialityController projectSpecialityController;
+    private R_ProjectTypeController projectTypeController;
+    private R_PaymentModeController paymentModeController;
     
     //private UserHistoryController uhc;
 
@@ -57,6 +65,34 @@ public class ServerConnector {
             primary_ProjectController = cf.getPrimaryProjectController();
         }
         return primary_ProjectController;
+    }
+    
+    public R_ProjectGradeController getProjectGradeController()throws Exception{
+        if(projectGradeController == null){
+            projectGradeController = cf.getProjectGradeController();
+        }
+        return projectGradeController;
+    }
+    
+    public R_ProjectSpecialityController getProjectSpecialityController()throws Exception{
+        if(projectSpecialityController == null){
+            projectSpecialityController = cf.getProjectSpecialityController();
+        }
+        return projectSpecialityController;
+    }
+    
+    public R_ProjectTypeController getProjectTypeController()throws Exception{
+        if(projectTypeController == null){
+            projectTypeController = cf.getProjectTypeController();
+        }
+        return projectTypeController;
+    }
+    
+    public R_PaymentModeController getPaymentModeController()throws Exception{
+        if(paymentModeController == null){
+            paymentModeController = cf.getPaymentModeController();
+        }
+        return paymentModeController;
     }
 
 //    

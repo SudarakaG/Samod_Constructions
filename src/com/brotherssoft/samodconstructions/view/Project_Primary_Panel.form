@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -167,17 +167,17 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel111" min="-2" pref="146" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txt_project_client_city_1" linkSize="1" max="32767" attributes="0"/>
+                                          <Component id="txt_project_client_address3" linkSize="1" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel110" min="-2" pref="146" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txt_project_client_street_1" linkSize="1" max="32767" attributes="0"/>
+                                          <Component id="txt_project_client_address2" linkSize="1" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel109" min="-2" pref="146" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txt_project_client_address_no_1" linkSize="1" max="32767" attributes="0"/>
+                                          <Component id="txt_project_client_address1" linkSize="1" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel107" min="-2" pref="146" max="-2" attributes="0"/>
@@ -188,13 +188,13 @@
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="jLabel118" min="-2" pref="146" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txt_project_client_country_1" linkSize="1" min="-2" pref="311" max="-2" attributes="0"/>
+                                      <Component id="txt_project_client_address4" linkSize="1" min="-2" pref="311" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel121" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_project_client_intended_project_duration_1" max="32767" attributes="0"/>
+                                  <Component id="txt_project_intendedDuration_1" max="32767" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
@@ -211,7 +211,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel117" min="-2" pref="146" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cmbtitle10" linkSize="1" max="32767" attributes="0"/>
+                                  <Component id="cmb_project_vatAdded" linkSize="1" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel104" min="-2" pref="146" max="-2" attributes="0"/>
@@ -226,25 +226,25 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="txt_project_name_1" alignment="0" min="-2" pref="401" max="-2" attributes="0"/>
-                                      <Component id="txt_project_address_no_1" alignment="0" min="-2" pref="401" max="-2" attributes="0"/>
+                                      <Component id="txt_project_address1" alignment="0" min="-2" pref="401" max="-2" attributes="0"/>
                                       <Component id="txt_project_desc_1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txt_project_street_1" alignment="0" min="-2" pref="401" max="-2" attributes="0"/>
+                                      <Component id="txt_project_address2" alignment="0" min="-2" pref="401" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel102" min="-2" pref="146" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_project_city_1" min="-2" pref="401" max="-2" attributes="0"/>
+                                  <Component id="txt_project_address3" min="-2" pref="401" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jButton6" min="-2" pref="76" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="btn_new_primary_project" min="-2" pref="76" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton5" min="-2" pref="76" max="-2" attributes="0"/>
+                                      <Component id="btn_add_primary_project" min="-2" pref="76" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btn_to_secondary_project" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel101" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel100" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="jSeparator26" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                                       <Component id="jSeparator27" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
                                       <Component id="jLabel122" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
@@ -263,24 +263,24 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel128" min="-2" pref="146" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="cmb_project_made_of_payment_1" linkSize="1" min="-2" pref="311" max="-2" attributes="0"/>
+                                          <Component id="cmb_project_bid_payment_mode" linkSize="1" min="-2" pref="311" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLabel130" min="-2" pref="146" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txt_project_amount_1" linkSize="1" min="-2" pref="311" max="-2" attributes="0"/>
+                                              <Component id="txt_project_bid_amount_1" linkSize="1" min="-2" pref="311" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
                                               <Component id="jLabel131" min="-2" pref="146" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txt_project_organization" linkSize="1" min="-2" pref="311" max="-2" attributes="0"/>
+                                              <Component id="txt_project_bid_organization" linkSize="1" min="-2" pref="311" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel132" min="-2" pref="146" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txt_project_duration_1" linkSize="1" min="-2" pref="311" max="-2" attributes="0"/>
+                                          <Component id="txt_project_bid_duration_1" linkSize="1" min="-2" pref="311" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel133" min="-2" pref="146" max="-2" attributes="0"/>
@@ -290,7 +290,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel134" min="-2" pref="146" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txt_project_tender_open_time_1" linkSize="1" min="-2" pref="311" max="-2" attributes="0"/>
+                                          <Component id="txt_project_tender_open_time_1" min="-2" pref="200" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel129" min="-2" pref="146" max="-2" attributes="0"/>
@@ -324,12 +324,14 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="txt_project_tender_result" max="32767" attributes="0"/>
                                       </Group>
+                                      <Component id="jLabel100" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jLabel101" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel103" min="-2" pref="146" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_project_country_1" linkSize="1" min="-2" pref="401" max="-2" attributes="0"/>
+                                  <Component id="txt_project_address4" linkSize="1" min="-2" pref="401" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel112" min="-2" pref="146" max="-2" attributes="0"/>
@@ -356,22 +358,22 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel100" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_project_address_no_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_project_address1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_project_street_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_project_address2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel101" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel102" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_project_city_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_project_address3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel103" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_project_country_1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_project_address4" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -381,7 +383,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel117" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cmbtitle10" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmb_project_vatAdded" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -398,22 +400,22 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel109" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_project_client_address_no_1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_project_client_address1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel110" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_project_client_street_1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_project_client_address2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel111" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_project_client_city_1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_project_client_address3" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel118" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_project_client_country_1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_project_client_address4" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -428,7 +430,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel121" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_project_client_intended_project_duration_1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_project_intendedDuration_1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jSeparator27" min="-2" pref="10" max="-2" attributes="0"/>
@@ -461,22 +463,22 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel128" alignment="0" max="32767" attributes="0"/>
-                              <Component id="cmb_project_made_of_payment_1" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmb_project_bid_payment_mode" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel130" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_project_amount_1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_project_bid_amount_1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel131" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_project_organization" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_project_bid_organization" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel132" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_project_duration_1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_project_bid_duration_1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -485,7 +487,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel134" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                                      <Component id="txt_project_tender_open_time_1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_project_tender_open_time_1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -512,8 +514,9 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton5" alignment="3" max="32767" attributes="0"/>
-                              <Component id="jButton6" alignment="3" max="32767" attributes="0"/>
+                              <Component id="btn_to_secondary_project" alignment="3" max="32767" attributes="0"/>
+                              <Component id="btn_add_primary_project" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btn_new_primary_project" alignment="3" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -551,7 +554,7 @@
                     <Property name="text" type="java.lang.String" value="Address No"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_project_address_no_1">
+                <Component class="javax.swing.JTextField" name="txt_project_address1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -566,7 +569,7 @@
                     <Property name="text" type="java.lang.String" value="Street"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_project_street_1">
+                <Component class="javax.swing.JTextField" name="txt_project_address2">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -581,7 +584,7 @@
                     <Property name="text" type="java.lang.String" value="City"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_project_city_1">
+                <Component class="javax.swing.JTextField" name="txt_project_address3">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -596,7 +599,7 @@
                     <Property name="text" type="java.lang.String" value="Country"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_project_country_1">
+                <Component class="javax.swing.JTextField" name="txt_project_address4">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -626,7 +629,7 @@
                     <Property name="text" type="java.lang.String" value="Address No"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_project_client_address_no_1">
+                <Component class="javax.swing.JTextField" name="txt_project_client_address1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -641,7 +644,7 @@
                     <Property name="text" type="java.lang.String" value="Street"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_project_client_street_1">
+                <Component class="javax.swing.JTextField" name="txt_project_client_address2">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -656,7 +659,7 @@
                     <Property name="text" type="java.lang.String" value="City"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_project_client_city_1">
+                <Component class="javax.swing.JTextField" name="txt_project_client_address3">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -677,10 +680,8 @@
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
-                        <StringItem index="0" value="Mr"/>
-                        <StringItem index="1" value="Mrs"/>
-                        <StringItem index="2" value="Hon"/>
+                      <StringArray count="1">
+                        <StringItem index="0" value="- Select Project Type -"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -690,21 +691,24 @@
                 </Component>
                 <Component class="org.jdesktop.swingx.JXDatePicker" name="txt_project_states_active_date_1">
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton5">
+                <Component class="javax.swing.JButton" name="btn_to_secondary_project">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Cancel"/>
+                    <Property name="text" type="java.lang.String" value="To Secondary"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton6">
+                <Component class="javax.swing.JButton" name="btn_add_primary_project">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Save"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_add_primary_projectActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_project_name_1">
                   <Properties>
@@ -721,7 +725,7 @@
                     <Property name="text" type="java.lang.String" value="Vat Added"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cmbtitle10">
+                <Component class="javax.swing.JComboBox" name="cmb_project_vatAdded">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -760,7 +764,7 @@
                     <Property name="text" type="java.lang.String" value="Country"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_project_client_country_1">
+                <Component class="javax.swing.JTextField" name="txt_project_client_address4">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -805,7 +809,7 @@
                     <Property name="text" type="java.lang.String" value="Intended Project Duration(Months)"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_project_client_intended_project_duration_1">
+                <Component class="javax.swing.JTextField" name="txt_project_intendedDuration_1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -838,9 +842,8 @@
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Yes"/>
-                        <StringItem index="1" value="No"/>
+                      <StringArray count="1">
+                        <StringItem index="0" value="- Select ICTAD Speciality -"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -862,9 +865,8 @@
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Yes"/>
-                        <StringItem index="1" value="No"/>
+                      <StringArray count="1">
+                        <StringItem index="0" value="- Select ICTAD Grade -"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -931,18 +933,17 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="3"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Made of Payment"/>
+                    <Property name="text" type="java.lang.String" value="Mode of Payment"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cmb_project_made_of_payment_1">
+                <Component class="javax.swing.JComboBox" name="cmb_project_bid_payment_mode">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
-                        <StringItem index="0" value="Yes"/>
-                        <StringItem index="1" value="No"/>
+                      <StringArray count="1">
+                        <StringItem index="0" value="- Select Payment Mode -"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -958,14 +959,14 @@
                     <Property name="text" type="java.lang.String" value="Amount"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_project_amount_1">
+                <Component class="javax.swing.JTextField" name="txt_project_bid_amount_1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_project_organization">
+                <Component class="javax.swing.JTextField" name="txt_project_bid_organization">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -990,7 +991,7 @@
                     <Property name="text" type="java.lang.String" value="Duration (months)"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_project_duration_1">
+                <Component class="javax.swing.JTextField" name="txt_project_bid_duration_1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
@@ -1003,13 +1004,6 @@
                       <Font name="Segoe UI" size="14" style="3"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Tender Open Date"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txt_project_tender_open_time_1">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="14" style="1"/>
-                    </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel134">
@@ -1079,6 +1073,24 @@
                     </Property>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JSpinner" name="txt_project_tender_open_time_1">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(sdm)"/>
+                    <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="Date date = new Date();&#xa;    SpinnerDateModel sdm = new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);"/>
+                    <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="JSpinner.DateEditor de = new JSpinner.DateEditor(txt_project_tender_open_time_1, &quot;HH:mm a&quot;);&#xa;txt_project_tender_open_time_1.setEditor(de);"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_new_primary_project">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="New"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_new_primary_projectActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -1140,12 +1152,21 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="tblPrimaryProject">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="1" rowCount="32">
                         <Column editable="true" title="Project Name" type="java.lang.Object"/>
                       </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
                     </Property>
                     <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -1155,6 +1176,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPrimaryProjectMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

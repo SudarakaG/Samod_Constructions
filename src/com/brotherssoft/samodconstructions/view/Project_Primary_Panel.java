@@ -5,17 +5,65 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
+import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
+import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
+import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
+import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
+import com.brotherssoft.samodconstructions.custom.IDGenerator;
+import com.brotherssoft.samodconstructions.model.M_Project_Primary;
+import com.brotherssoft.samodconstructions.model.R_PaymentMode;
+import com.brotherssoft.samodconstructions.model.R_ProjectGrade;
+import com.brotherssoft.samodconstructions.model.R_ProjectSpeciality;
+import com.brotherssoft.samodconstructions.model.R_ProjectType;
+import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Akvasoft
  */
 public class Project_Primary_Panel extends javax.swing.JPanel {
 
+    R_ProjectTypeController projectTypeController;
+    R_ProjectSpecialityController projectSpecialityController;
+    R_ProjectGradeController projectGradeController;
+    R_PaymentModeController paymentModeController;
+    M_Primary_ProjectController primary_ProjectController;
+    DefaultTableModel dtmPriProject;
+
+    JSpinner.DateEditor de;
+
     /**
      * Creates new form Project_Primary_Panel
      */
-    public Project_Primary_Panel() {
+    public Project_Primary_Panel() throws Exception {
         initComponents();
+
+        dtmPriProject = (DefaultTableModel) tblPrimaryProject.getModel();
+        projectTypeController = ServerConnector.getServerConnetor().getProjectTypeController();
+        projectSpecialityController = ServerConnector.getServerConnetor().getProjectSpecialityController();
+        projectGradeController = ServerConnector.getServerConnetor().getProjectGradeController();
+        paymentModeController = ServerConnector.getServerConnetor().getPaymentModeController();
+
+        primary_ProjectController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
+
+        loadToCmbProjectType();
+        loadToCmbProjectSpeciality();
+        loadToCmbProjectGrade();
+        loadToCmbPaymentMode();
+        loadToPrimaryProjectTable();
+
+        de = new JSpinner.DateEditor(txt_project_tender_open_time_1, "HH:mm a");
+        txt_project_tender_open_time_1.setEditor(de);
     }
 
     /**
@@ -38,39 +86,39 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel99 = new javax.swing.JLabel();
         txt_project_desc_1 = new javax.swing.JTextField();
         jLabel100 = new javax.swing.JLabel();
-        txt_project_address_no_1 = new javax.swing.JTextField();
+        txt_project_address1 = new javax.swing.JTextField();
         jLabel101 = new javax.swing.JLabel();
-        txt_project_street_1 = new javax.swing.JTextField();
+        txt_project_address2 = new javax.swing.JTextField();
         jLabel102 = new javax.swing.JLabel();
-        txt_project_city_1 = new javax.swing.JTextField();
+        txt_project_address3 = new javax.swing.JTextField();
         jLabel103 = new javax.swing.JLabel();
-        txt_project_country_1 = new javax.swing.JTextField();
+        txt_project_address4 = new javax.swing.JTextField();
         jLabel107 = new javax.swing.JLabel();
         txt_project_client_1 = new javax.swing.JTextField();
         jLabel109 = new javax.swing.JLabel();
-        txt_project_client_address_no_1 = new javax.swing.JTextField();
+        txt_project_client_address1 = new javax.swing.JTextField();
         jLabel110 = new javax.swing.JLabel();
-        txt_project_client_street_1 = new javax.swing.JTextField();
+        txt_project_client_address2 = new javax.swing.JTextField();
         jLabel111 = new javax.swing.JLabel();
-        txt_project_client_city_1 = new javax.swing.JTextField();
+        txt_project_client_address3 = new javax.swing.JTextField();
         jLabel112 = new javax.swing.JLabel();
         cmb_project_type_1 = new javax.swing.JComboBox<>();
         txt_project_states_active_date_1 = new org.jdesktop.swingx.JXDatePicker();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btn_to_secondary_project = new javax.swing.JButton();
+        btn_add_primary_project = new javax.swing.JButton();
         txt_project_name_1 = new javax.swing.JTextField();
         jLabel117 = new javax.swing.JLabel();
-        cmbtitle10 = new javax.swing.JComboBox<>();
+        cmb_project_vatAdded = new javax.swing.JComboBox<>();
         jLabel104 = new javax.swing.JLabel();
         txt_project_contract_bid_1 = new javax.swing.JTextField();
         jLabel118 = new javax.swing.JLabel();
-        txt_project_client_country_1 = new javax.swing.JTextField();
+        txt_project_client_address4 = new javax.swing.JTextField();
         jLabel119 = new javax.swing.JLabel();
         txt_project_client_contact_1 = new javax.swing.JTextField();
         jLabel120 = new javax.swing.JLabel();
         txt_project_client_contact_1_2 = new javax.swing.JTextField();
         jLabel121 = new javax.swing.JLabel();
-        txt_project_client_intended_project_duration_1 = new javax.swing.JTextField();
+        txt_project_intendedDuration_1 = new javax.swing.JTextField();
         jSeparator26 = new javax.swing.JSeparator();
         jSeparator27 = new javax.swing.JSeparator();
         jLabel122 = new javax.swing.JLabel();
@@ -84,16 +132,15 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         txt_project_tender_fee_1 = new javax.swing.JTextField();
         jLabel127 = new javax.swing.JLabel();
         jLabel128 = new javax.swing.JLabel();
-        cmb_project_made_of_payment_1 = new javax.swing.JComboBox<>();
+        cmb_project_bid_payment_mode = new javax.swing.JComboBox<>();
         jLabel130 = new javax.swing.JLabel();
-        txt_project_amount_1 = new javax.swing.JTextField();
-        txt_project_organization = new javax.swing.JTextField();
+        txt_project_bid_amount_1 = new javax.swing.JTextField();
+        txt_project_bid_organization = new javax.swing.JTextField();
         jLabel131 = new javax.swing.JLabel();
         jSeparator28 = new javax.swing.JSeparator();
         jLabel132 = new javax.swing.JLabel();
-        txt_project_duration_1 = new javax.swing.JTextField();
+        txt_project_bid_duration_1 = new javax.swing.JTextField();
         jLabel133 = new javax.swing.JLabel();
-        txt_project_tender_open_time_1 = new javax.swing.JTextField();
         jLabel134 = new javax.swing.JLabel();
         jLabel129 = new javax.swing.JLabel();
         cmb_project_made_of_states_1 = new javax.swing.JComboBox<>();
@@ -103,9 +150,13 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         txt_project_tender_open_date_1 = new org.jdesktop.swingx.JXDatePicker();
         jLabel137 = new javax.swing.JLabel();
         txt_project_tender_result = new javax.swing.JTextField();
+        Date date = new Date();
+        SpinnerDateModel sdm = new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
+        txt_project_tender_open_time_1 = new javax.swing.JSpinner(sdm);
+        btn_new_primary_project = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPrimaryProject = new javax.swing.JTable();
         txt_search_name_ = new javax.swing.JTextField();
         jLabel105 = new javax.swing.JLabel();
 
@@ -168,22 +219,22 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel100.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel100.setText("Address No");
 
-        txt_project_address_no_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_address1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel101.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel101.setText("Street");
 
-        txt_project_street_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_address2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel102.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel102.setText("City");
 
-        txt_project_city_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_address3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel103.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel103.setText("Country");
 
-        txt_project_country_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_address4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel107.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel107.setText("Client Name");
@@ -193,37 +244,42 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel109.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel109.setText("Address No");
 
-        txt_project_client_address_no_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_address1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel110.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel110.setText("Street");
 
-        txt_project_client_street_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_address2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel111.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel111.setText("City");
 
-        txt_project_client_city_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_address3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel112.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel112.setText("Project Type");
 
         cmb_project_type_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmb_project_type_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mrs", "Hon" }));
+        cmb_project_type_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Project Type -" }));
 
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton5.setText("Cancel");
+        btn_to_secondary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_to_secondary_project.setText("To Secondary");
 
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton6.setText("Save");
+        btn_add_primary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_add_primary_project.setText("Save");
+        btn_add_primary_project.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_add_primary_projectActionPerformed(evt);
+            }
+        });
 
         txt_project_name_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel117.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel117.setText("Vat Added");
 
-        cmbtitle10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmbtitle10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        cmb_project_vatAdded.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_project_vatAdded.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
 
         jLabel104.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel104.setText("Contract / Bid No");
@@ -233,7 +289,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel118.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel118.setText("Country");
 
-        txt_project_client_country_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_address4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel119.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel119.setText("Contact No 1");
@@ -248,7 +304,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel121.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel121.setText("Intended Project Duration(Months)");
 
-        txt_project_client_intended_project_duration_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_intendedDuration_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel122.setBackground(new java.awt.Color(102, 102, 255));
         jLabel122.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -258,13 +314,13 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel122.setOpaque(true);
 
         cmb_project_Specialiti.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmb_project_Specialiti.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        cmb_project_Specialiti.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select ICTAD Speciality -" }));
 
         jLabel123.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel123.setText("Specialiti");
 
         cmb_project_grade_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmb_project_grade_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        cmb_project_grade_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select ICTAD Grade -" }));
 
         jLabel124.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel124.setText("Grade");
@@ -287,17 +343,17 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel127.setOpaque(true);
 
         jLabel128.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel128.setText("Made of Payment");
+        jLabel128.setText("Mode of Payment");
 
-        cmb_project_made_of_payment_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmb_project_made_of_payment_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        cmb_project_bid_payment_mode.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_project_bid_payment_mode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Payment Mode -" }));
 
         jLabel130.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel130.setText("Amount");
 
-        txt_project_amount_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_bid_amount_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
-        txt_project_organization.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_bid_organization.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel131.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel131.setText("Organization");
@@ -305,12 +361,10 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel132.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel132.setText("Duration (months)");
 
-        txt_project_duration_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_bid_duration_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel133.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel133.setText("Tender Open Date");
-
-        txt_project_tender_open_time_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel134.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel134.setText("Tender Open Time");
@@ -332,6 +386,17 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
 
         txt_project_tender_result.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
+        JSpinner.DateEditor de = new JSpinner.DateEditor(txt_project_tender_open_time_1, "HH:mm a");
+        txt_project_tender_open_time_1.setEditor(de);
+
+        btn_new_primary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_new_primary_project.setText("New");
+        btn_new_primary_project.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_new_primary_projectActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
         txt_Input_Panel_Branch4Layout.setHorizontalGroup(
@@ -344,15 +409,15 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_client_city_1))
+                                .addComponent(txt_project_client_address3))
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_client_street_1))
+                                .addComponent(txt_project_client_address2))
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(jLabel109, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_client_address_no_1))
+                                .addComponent(txt_project_client_address1))
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(jLabel107, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -360,11 +425,11 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                             .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_project_client_country_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txt_project_client_address4, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(jLabel121)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_project_client_intended_project_duration_1))
+                        .addComponent(txt_project_intendedDuration_1))
                     .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                             .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -377,7 +442,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbtitle10, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cmb_project_vatAdded, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -389,21 +454,21 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_project_name_1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_project_address_no_1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_project_address1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_project_desc_1)
-                            .addComponent(txt_project_street_1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txt_project_address2, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(jLabel102, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_project_city_1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_project_address3, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_new_primary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_add_primary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btn_to_secondary_project))
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel101, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel100, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator26, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator27, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -420,20 +485,20 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(jLabel128, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmb_project_made_of_payment_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cmb_project_bid_payment_mode, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                     .addComponent(jLabel130, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txt_project_amount_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txt_project_bid_amount_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                     .addComponent(jLabel131, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txt_project_organization, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txt_project_bid_organization, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(jLabel132, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_duration_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_project_bid_duration_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(jLabel133, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -441,7 +506,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(jLabel134, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_tender_open_time_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_project_tender_open_time_1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(jLabel129, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -466,18 +531,20 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(jLabel137, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_tender_result))))
+                                .addComponent(txt_project_tender_result))
+                            .addComponent(jLabel100, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel101, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_project_country_1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_project_address4, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmb_project_type_1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmb_project_Specialiti, cmb_project_grade_1, cmb_project_made_of_payment_1, cmb_project_made_of_states_1, cmb_project_type_1, cmbtitle10, txt_project_amount_1, txt_project_client_1, txt_project_client_address_no_1, txt_project_client_city_1, txt_project_client_contact_1, txt_project_client_contact_1_2, txt_project_client_country_1, txt_project_client_street_1, txt_project_contract_bid_1, txt_project_country_1, txt_project_duration_1, txt_project_engineer_estimate, txt_project_organization, txt_project_states_active_date_1, txt_project_states_inactive_date_1, txt_project_tender_fee_1, txt_project_tender_open_date_1, txt_project_tender_open_time_1});
+        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmb_project_Specialiti, cmb_project_bid_payment_mode, cmb_project_grade_1, cmb_project_made_of_states_1, cmb_project_type_1, cmb_project_vatAdded, txt_project_address4, txt_project_bid_amount_1, txt_project_bid_duration_1, txt_project_bid_organization, txt_project_client_1, txt_project_client_address1, txt_project_client_address2, txt_project_client_address3, txt_project_client_address4, txt_project_client_contact_1, txt_project_client_contact_1_2, txt_project_contract_bid_1, txt_project_engineer_estimate, txt_project_states_active_date_1, txt_project_states_inactive_date_1, txt_project_tender_fee_1, txt_project_tender_open_date_1});
 
         txt_Input_Panel_Branch4Layout.setVerticalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -493,19 +560,19 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel100, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_address_no_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_project_address1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_project_street_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_project_address2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel101, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel102, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_city_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_project_address3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_country_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_project_address4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -513,7 +580,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel117, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmbtitle10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_project_vatAdded, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -527,19 +594,19 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel109, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_client_address_no_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_project_client_address1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_client_street_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_project_client_address2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_client_city_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_project_client_address3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_client_country_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_project_client_address4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -551,7 +618,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_client_intended_project_duration_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_project_intendedDuration_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator27, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -579,19 +646,19 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel128, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmb_project_made_of_payment_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_project_bid_payment_mode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel130, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_amount_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_project_bid_amount_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel131, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_organization, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_project_bid_organization, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel132, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_duration_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_project_bid_duration_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
@@ -619,11 +686,12 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                     .addComponent(txt_project_tender_result, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btn_to_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_add_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_new_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmb_project_Specialiti, cmb_project_grade_1, cmb_project_made_of_payment_1, cmb_project_made_of_states_1, cmb_project_type_1, cmbtitle10, txt_project_amount_1, txt_project_client_1, txt_project_client_address_no_1, txt_project_client_city_1, txt_project_client_contact_1, txt_project_client_contact_1_2, txt_project_client_country_1, txt_project_client_street_1, txt_project_contract_bid_1, txt_project_country_1, txt_project_duration_1, txt_project_engineer_estimate, txt_project_organization, txt_project_states_active_date_1, txt_project_states_inactive_date_1, txt_project_tender_fee_1, txt_project_tender_open_date_1, txt_project_tender_open_time_1});
+        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmb_project_Specialiti, cmb_project_bid_payment_mode, cmb_project_grade_1, cmb_project_made_of_states_1, cmb_project_type_1, cmb_project_vatAdded, txt_project_address4, txt_project_bid_amount_1, txt_project_bid_duration_1, txt_project_bid_organization, txt_project_client_1, txt_project_client_address1, txt_project_client_address2, txt_project_client_address3, txt_project_client_address4, txt_project_client_contact_1, txt_project_client_contact_1_2, txt_project_contract_bid_1, txt_project_engineer_estimate, txt_project_states_active_date_1, txt_project_states_inactive_date_1, txt_project_tender_fee_1, txt_project_tender_open_date_1});
 
         jScrollPane11.setViewportView(txt_Input_Panel_Branch4);
 
@@ -632,7 +700,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
 
         jScrollPane12.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPrimaryProject.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -671,9 +739,14 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 "Project Name"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
-        jTable1.setOpaque(false);
-        jScrollPane12.setViewportView(jTable1);
+        tblPrimaryProject.setGridColor(new java.awt.Color(255, 255, 255));
+        tblPrimaryProject.setOpaque(false);
+        tblPrimaryProject.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPrimaryProjectMouseClicked(evt);
+            }
+        });
+        jScrollPane12.setViewportView(tblPrimaryProject);
 
         txt_search_name_.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
@@ -740,17 +813,35 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_add_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_primary_projectActionPerformed
+        if(btn_add_primary_project.getText().equalsIgnoreCase("Save")){
+            savePrimaryProject();
+        }else{
+            updatePrimaryProject();
+        }
+    }//GEN-LAST:event_btn_add_primary_projectActionPerformed
+
+    private void tblPrimaryProjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPrimaryProjectMouseClicked
+        loadFromPrimaryProjectTable();
+    }//GEN-LAST:event_tblPrimaryProjectMouseClicked
+
+    private void btn_new_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_projectActionPerformed
+//        Project_Primary_Info_Panel.revalidate();
+//        Project_Primary_Info_Panel.repaint();
+    }//GEN-LAST:event_btn_new_primary_projectActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Project_Primary_Info_Panel;
+    private javax.swing.JButton btn_add_primary_project;
+    private javax.swing.JButton btn_new_primary_project;
+    private javax.swing.JButton btn_to_secondary_project;
     private javax.swing.JComboBox<String> cmb_project_Specialiti;
+    private javax.swing.JComboBox<String> cmb_project_bid_payment_mode;
     private javax.swing.JComboBox<String> cmb_project_grade_1;
-    private javax.swing.JComboBox<String> cmb_project_made_of_payment_1;
     private javax.swing.JComboBox<String> cmb_project_made_of_states_1;
     private javax.swing.JComboBox<String> cmb_project_type_1;
-    private javax.swing.JComboBox<String> cmbtitle10;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> cmb_project_vatAdded;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
@@ -794,34 +885,274 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator26;
     private javax.swing.JSeparator jSeparator27;
     private javax.swing.JSeparator jSeparator28;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblPrimaryProject;
     private javax.swing.JPanel txt_Input_Panel_Branch4;
-    private javax.swing.JTextField txt_project_address_no_1;
-    private javax.swing.JTextField txt_project_amount_1;
-    private javax.swing.JTextField txt_project_city_1;
+    private javax.swing.JTextField txt_project_address1;
+    private javax.swing.JTextField txt_project_address2;
+    private javax.swing.JTextField txt_project_address3;
+    private javax.swing.JTextField txt_project_address4;
+    private javax.swing.JTextField txt_project_bid_amount_1;
+    private javax.swing.JTextField txt_project_bid_duration_1;
+    private javax.swing.JTextField txt_project_bid_organization;
     private javax.swing.JTextField txt_project_client_1;
-    private javax.swing.JTextField txt_project_client_address_no_1;
-    private javax.swing.JTextField txt_project_client_city_1;
+    private javax.swing.JTextField txt_project_client_address1;
+    private javax.swing.JTextField txt_project_client_address2;
+    private javax.swing.JTextField txt_project_client_address3;
+    private javax.swing.JTextField txt_project_client_address4;
     private javax.swing.JTextField txt_project_client_contact_1;
     private javax.swing.JTextField txt_project_client_contact_1_2;
-    private javax.swing.JTextField txt_project_client_country_1;
-    private javax.swing.JTextField txt_project_client_intended_project_duration_1;
-    private javax.swing.JTextField txt_project_client_street_1;
     private javax.swing.JTextField txt_project_contract_bid_1;
-    private javax.swing.JTextField txt_project_country_1;
     private javax.swing.JTextField txt_project_desc_1;
-    private javax.swing.JTextField txt_project_duration_1;
     private javax.swing.JTextField txt_project_engineer_estimate;
+    private javax.swing.JTextField txt_project_intendedDuration_1;
     private javax.swing.JTextField txt_project_name_1;
-    private javax.swing.JTextField txt_project_organization;
     private org.jdesktop.swingx.JXDatePicker txt_project_states_active_date_1;
     private org.jdesktop.swingx.JXDatePicker txt_project_states_inactive_date_1;
-    private javax.swing.JTextField txt_project_street_1;
     private javax.swing.JTextField txt_project_tender_fee_1;
     private org.jdesktop.swingx.JXDatePicker txt_project_tender_open_date_1;
-    private javax.swing.JTextField txt_project_tender_open_time_1;
+    private javax.swing.JSpinner txt_project_tender_open_time_1;
     private javax.swing.JTextField txt_project_tender_result;
     private javax.swing.JTextField txt_search_name_;
     private javax.swing.JPanel user_panel_hedding2;
     // End of variables declaration//GEN-END:variables
+
+    private void loadToCmbProjectType() {
+
+        try {
+            List<R_ProjectType> allProjectTypes = projectTypeController.getAllProjectTypes();
+            cmb_project_type_1.removeAll();
+            for (R_ProjectType allProjectType : allProjectTypes) {
+                cmb_project_type_1.addItem(allProjectType.getProjectType_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private void loadToCmbProjectSpeciality() {
+        try {
+            List<R_ProjectSpeciality> allProjectSpecialities = projectSpecialityController.getAllProjectSpecialities();
+            cmb_project_Specialiti.removeAll();
+            for (R_ProjectSpeciality allProjectSpeciality : allProjectSpecialities) {
+                cmb_project_Specialiti.addItem(allProjectSpeciality.getProjectSpeciality_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadToCmbProjectGrade() {
+        try {
+            List<R_ProjectGrade> allProjectGrades = projectGradeController.getAllProjectGrades();
+            cmb_project_grade_1.removeAll();
+            for (R_ProjectGrade allProjectGrade : allProjectGrades) {
+                cmb_project_grade_1.addItem(allProjectGrade.getProjectGrade_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadToCmbPaymentMode() {
+        try {
+            List<R_PaymentMode> allPaymentModes = paymentModeController.getAllPaymentModes();
+            cmb_project_bid_payment_mode.removeAll();
+            for (R_PaymentMode allPaymentMode : allPaymentModes) {
+                cmb_project_bid_payment_mode.addItem(allPaymentMode.getPaymentMode_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void savePrimaryProject() {
+
+        try {
+
+//            Date date = new Date();
+//            SpinnerDateModel sdm = new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
+//            txt_project_tender_open_time_1 = new JSpinner(sdm);
+//            JSpinner.DateEditor de = new JSpinner.DateEditor(txt_project_tender_open_time_1, "HH:mm a");
+//            txt_project_tender_open_time_1.setEditor(de);
+//            String format = de.getFormat().format(txt_project_tender_open_time_1.getValue());
+
+//            SimpleDateFormat sdf = new SimpleDateFormat("HHmm");
+//            Date parse = sdf.parse(format);
+            String projectAType = cmb_project_type_1.getSelectedItem().toString();
+            String projectASpeciality = cmb_project_Specialiti.getSelectedItem().toString();
+            String projectAGrade = cmb_project_grade_1.getSelectedItem().toString();
+
+            int projectId = IDGenerator.getNewID("m_project", "PROJECT_ID");
+            String name = txt_project_name_1.getText();
+            String desc = txt_project_desc_1.getText();
+            String address1 = txt_project_address1.getText();
+            String address2 = txt_project_address2.getText();
+            String address3 = txt_project_address3.getText();
+            String address4 = txt_project_address4.getText();
+            int projctTypeId = projectTypeController.searProjectTypeByName(projectAType).getProjectType_id();
+            String vatAdded = Integer.toString(cmb_project_vatAdded.getSelectedIndex());
+            String contractNo = txt_project_contract_bid_1.getText();
+            String clientName = txt_project_client_1.getText();
+            String clientAddress1 = txt_project_client_address1.getText();
+            String clientAddress2 = txt_project_client_address2.getText();
+            String clientAddress3 = txt_project_client_address3.getText();
+            String clientAddress4 = txt_project_client_address4.getText();
+            String clientContact1 = txt_project_client_contact_1.getText();
+            String clientContact2 = txt_project_client_contact_1_2.getText();
+            String projectADuration = txt_project_intendedDuration_1.getText();
+            int specialityId = projectSpecialityController.searProjectSpecialityByName(projectASpeciality).getProjectSpeciality_id();
+            int gradeId = projectGradeController.searProjectGradeByNAme(projectAGrade).getProjectGrade_id();
+            double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText());
+            double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText());
+            String bidPaymentMode = Integer.toString(cmb_project_bid_payment_mode.getSelectedIndex());
+            double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText());
+            String bidDuration = txt_project_bid_duration_1.getText();
+            String bidOrganization = txt_project_bid_organization.getText();
+            Date tenderOpenDate = txt_project_tender_open_date_1.getDate();
+            String tenderOpenTime = de.getFormat().format(txt_project_tender_open_time_1.getValue());
+            String tenderResult = txt_project_tender_result.getText();
+            Date activeDate = txt_project_states_active_date_1.getDate();
+            Date inactiveDate = txt_project_states_inactive_date_1.getDate();
+
+            M_Project_Primary project_Primary = new M_Project_Primary(projectId, name, desc, address1, address2, address3, address4, projctTypeId, vatAdded, contractNo, clientName, clientAddress1, clientAddress2, clientAddress3, clientAddress4, clientContact1, clientContact2, projectADuration, specialityId, gradeId, enginnerEstimate, tenderFee, bidPaymentMode, bidAmount, bidDuration, bidOrganization, tenderOpenDate, tenderOpenTime, tenderResult, activeDate, inactiveDate);
+            boolean addPrimaryProject = primary_ProjectController.addPrimaryProject(project_Primary);
+            if (addPrimaryProject) {
+                JOptionPane.showMessageDialog(this, "Primary Project Added Successfully..");
+            } else {
+                JOptionPane.showMessageDialog(this, "Primary Priject Cannot Add..");
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        loadToPrimaryProjectTable();
+    }
+
+//    Date date = new Date();
+//        SpinnerDateModel sdm = new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
+//        
+//        JSpinner.DateEditor de = new JSpinner.DateEditor(txt_project_tender_open_time_1, "HH:mm");
+//        txt_project_tender_open_time_1.setEditor(de);
+    private void loadToPrimaryProjectTable() {
+        try {
+            dtmPriProject.setRowCount(0);
+            List<M_Project_Primary> allPrimaryProjects = primary_ProjectController.getAllPrimaryProjects();
+            for (M_Project_Primary allPrimaryProject : allPrimaryProjects) {
+                String[] rowData = {allPrimaryProject.getProject_primary_name()};
+                dtmPriProject.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadFromPrimaryProjectTable() {
+
+        try {
+            M_Project_Primary sp = searchProjectPrimaryByTableName();
+            txt_project_name_1.setText(sp.getProject_primary_name());
+            txt_project_desc_1.setText(sp.getProject_primary_description());
+            txt_project_address1.setText(sp.getProject_primary_address1());
+            txt_project_address2.setText(sp.getProject_primary_address2());
+            txt_project_address3.setText(sp.getProject_primary_address3());
+            txt_project_address4.setText(sp.getProject_primary_address4());
+            cmb_project_type_1.setSelectedItem(projectTypeController.searchProjectType(sp.getProject_primary_type()).getProjectType_name());
+            cmb_project_vatAdded.setSelectedIndex(Integer.parseInt(sp.getProject_primary_vatAdded()));
+            txt_project_contract_bid_1.setText(sp.getProject_primary_contractBidNo());
+            txt_project_client_1.setText(sp.getProject_primary_clientName());
+            txt_project_client_address1.setText(sp.getProject_primary_clientAddress1());
+            txt_project_client_address2.setText(sp.getProject_primary_clientAddress2());
+            txt_project_client_address3.setText(sp.getProject_primary_clientAddress3());
+            txt_project_client_address4.setText(sp.getProject_primary_clientAddress4());
+            txt_project_client_contact_1.setText(sp.getProject_primary_clientContact1());
+            txt_project_client_contact_1_2.setText(sp.getProject_primary_clientContact2());
+            txt_project_intendedDuration_1.setText(sp.getProject_primary_intendedDuration());
+            cmb_project_Specialiti.setSelectedItem(projectSpecialityController.searchProjectSpeciality(sp.getProject_primary_ictadSpeciality_id()).getProjectSpeciality_name());
+            cmb_project_grade_1.setSelectedItem(projectGradeController.searchProjectGrade(sp.getProject_primary_ictadGrade_id()).getProjectGrade_name());
+            txt_project_engineer_estimate.setText(Double.toString(sp.getProject_primary_engineerEstimate()));
+            txt_project_tender_fee_1.setText(Double.toString(sp.getProject_primary_tenderFee()));
+            cmb_project_bid_payment_mode.setSelectedIndex(Integer.parseInt(sp.getProject_primary_bidPaymentMode()));
+            txt_project_bid_amount_1.setText(Double.toString(sp.getProject_primary_bidAmount()));
+            txt_project_bid_organization.setText(sp.getProject_primary_bidOrganization());
+            txt_project_bid_duration_1.setText(sp.getProject_primary_bidDuration());
+            txt_project_tender_open_date_1.setDate(sp.getProject_primary_tenderOpenDate());
+            txt_project_tender_open_time_1.setValue(de.getFormat().parse(sp.getProject_primary_tenderOpenTime()));
+            txt_project_states_active_date_1.setDate(sp.getProject_primary_statusActiveDate());
+            txt_project_states_inactive_date_1.setDate(sp.getProject_primary_statusInactiveDate());
+            txt_project_tender_result.setText(sp.getProject_primary_tenderResult());
+
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        btn_add_primary_project.setText("Update");
+        
+    }
+
+    private void updatePrimaryProject() {
+        
+        try {
+            String projectAType = cmb_project_type_1.getSelectedItem().toString();
+            String projectASpeciality = cmb_project_Specialiti.getSelectedItem().toString();
+            String projectAGrade = cmb_project_grade_1.getSelectedItem().toString();
+            int project_id = searchProjectPrimaryByTableName().getProject_id();
+
+            //int projectId = IDGenerator.getNewID("m_project", "PROJECT_ID");
+            String name = txt_project_name_1.getText();
+            String desc = txt_project_desc_1.getText();
+            String address1 = txt_project_address1.getText();
+            String address2 = txt_project_address2.getText();
+            String address3 = txt_project_address3.getText();
+            String address4 = txt_project_address4.getText();
+            int projctTypeId = projectTypeController.searProjectTypeByName(projectAType).getProjectType_id();
+            String vatAdded = Integer.toString(cmb_project_vatAdded.getSelectedIndex());
+            String contractNo = txt_project_contract_bid_1.getText();
+            String clientName = txt_project_client_1.getText();
+            String clientAddress1 = txt_project_client_address1.getText();
+            String clientAddress2 = txt_project_client_address2.getText();
+            String clientAddress3 = txt_project_client_address3.getText();
+            String clientAddress4 = txt_project_client_address4.getText();
+            String clientContact1 = txt_project_client_contact_1.getText();
+            String clientContact2 = txt_project_client_contact_1_2.getText();
+            String projectADuration = txt_project_intendedDuration_1.getText();
+            int specialityId = projectSpecialityController.searProjectSpecialityByName(projectASpeciality).getProjectSpeciality_id();
+            int gradeId = projectGradeController.searProjectGradeByNAme(projectAGrade).getProjectGrade_id();
+            double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText());
+            double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText());
+            String bidPaymentMode = Integer.toString(cmb_project_bid_payment_mode.getSelectedIndex());
+            double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText());
+            String bidDuration = txt_project_bid_duration_1.getText();
+            String bidOrganization = txt_project_bid_organization.getText();
+            Date tenderOpenDate = txt_project_tender_open_date_1.getDate();
+            String tenderOpenTime = de.getFormat().format(txt_project_tender_open_time_1.getValue());
+            String tenderResult = txt_project_tender_result.getText();
+            Date activeDate = txt_project_states_active_date_1.getDate();
+            Date inactiveDate = txt_project_states_inactive_date_1.getDate();
+
+            M_Project_Primary project_Primary = new M_Project_Primary(project_id, name, desc, address1, address2, address3, address4, projctTypeId, vatAdded, contractNo, clientName, clientAddress1, clientAddress2, clientAddress3, clientAddress4, clientContact1, clientContact2, projectADuration, specialityId, gradeId, enginnerEstimate, tenderFee, bidPaymentMode, bidAmount, bidDuration, bidOrganization, tenderOpenDate, tenderOpenTime, tenderResult, activeDate, inactiveDate);
+            
+            boolean updatePrimaryProject = primary_ProjectController.updatePrimaryProject(project_Primary);
+            if (updatePrimaryProject) {
+                JOptionPane.showMessageDialog(this, "Primary Project Details Updated Successfully..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Primary Project Detail Updating Cannot Process..");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    private M_Project_Primary searchProjectPrimaryByTableName() {
+        M_Project_Primary sp = null;
+        try {
+            int selectedRow = tblPrimaryProject.getSelectedRow();
+            sp = primary_ProjectController.searchPrimaryProjectByName((String) dtmPriProject.getValueAt(selectedRow, 0));
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sp;
+    }
 }
