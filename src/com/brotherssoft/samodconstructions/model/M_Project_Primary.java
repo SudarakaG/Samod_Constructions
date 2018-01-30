@@ -42,7 +42,7 @@ public class M_Project_Primary implements Serializable{
     private String project_primary_bidDuration;
     private String project_primary_bidOrganization;
     private Date project_primary_tenderOpenDate;
-    private Time project_primary_tenderOpenTime;
+    private String project_primary_tenderOpenTime;
     private String project_primary_tenderResult;
     private Date project_primary_statusActiveDate;
     private Date project_primary_statusInactiveDate;
@@ -50,7 +50,7 @@ public class M_Project_Primary implements Serializable{
     public M_Project_Primary() {
     }
 
-    public M_Project_Primary(int project_id, String project_primary_name, String project_primary_description, String project_primary_address1, String project_primary_address2, String project_primary_address3, String project_primary_address4, int project_primary_type, String project_primary_vatAdded, String project_primary_contractBidNo, String project_primary_clientName, String project_primary_clientAddress1, String project_primary_clientAddress2, String project_primary_clientAddress3, String project_primary_clientAddress4, String project_primary_clientContact1, String project_primary_clientContact2, String project_primary_intendedDuration, int project_primary_ictadSpeciality_id, int project_primary_ictadGrade_id, double project_primary_engineerEstimate, double project_primary_tenderFee, String project_primary_bidPaymentMode, double project_primary_bidAmount, String project_primary_bidDuration, String project_primary_bidOrganization, Date project_primary_tenderOpenDate, Time project_primary_tenderOpenTime, String project_primary_tenderResult, Date project_primary_statusActiveDate, Date project_primary_statusInactiveDate) {
+    public M_Project_Primary(int project_id, String project_primary_name, String project_primary_description, String project_primary_address1, String project_primary_address2, String project_primary_address3, String project_primary_address4, int project_primary_type, String project_primary_vatAdded, String project_primary_contractBidNo, String project_primary_clientName, String project_primary_clientAddress1, String project_primary_clientAddress2, String project_primary_clientAddress3, String project_primary_clientAddress4, String project_primary_clientContact1, String project_primary_clientContact2, String project_primary_intendedDuration, int project_primary_ictadSpeciality_id, int project_primary_ictadGrade_id, double project_primary_engineerEstimate, double project_primary_tenderFee, String project_primary_bidPaymentMode, double project_primary_bidAmount, String project_primary_bidDuration, String project_primary_bidOrganization, Date project_primary_tenderOpenDate, String project_primary_tenderOpenTime, String project_primary_tenderResult, Date project_primary_statusActiveDate, Date project_primary_statusInactiveDate) {
         this.project_id = project_id;
         this.project_primary_name = project_primary_name;
         this.project_primary_description = project_primary_description;
@@ -465,14 +465,14 @@ public class M_Project_Primary implements Serializable{
     /**
      * @return the project_primary_tenderOpenTime
      */
-    public Time getProject_primary_tenderOpenTime() {
+    public String getProject_primary_tenderOpenTime() {
         return project_primary_tenderOpenTime;
     }
 
     /**
      * @param project_primary_tenderOpenTime the project_primary_tenderOpenTime to set
      */
-    public void setProject_primary_tenderOpenTime(Time project_primary_tenderOpenTime) {
+    public void setProject_primary_tenderOpenTime(String project_primary_tenderOpenTime) {
         this.project_primary_tenderOpenTime = project_primary_tenderOpenTime;
     }
 

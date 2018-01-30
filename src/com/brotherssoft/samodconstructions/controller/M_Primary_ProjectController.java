@@ -21,4 +21,6 @@ public interface M_Primary_ProjectController extends Remote{
     public M_Project_Primary searchPrimaryProject(int projectId)throws Exception;
     public List<M_Project_Primary> getAllPrimaryProjects()throws Exception;
     
+    public M_Project_Primary searchPrimaryProjectByName(String name)throws Exception;
+    
 }
