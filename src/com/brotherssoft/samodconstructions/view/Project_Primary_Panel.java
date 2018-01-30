@@ -11,12 +11,14 @@ import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
 import com.brotherssoft.samodconstructions.custom.IDGenerator;
+import com.brotherssoft.samodconstructions.custom.Validation;
 import com.brotherssoft.samodconstructions.model.M_Project_Primary;
 import com.brotherssoft.samodconstructions.model.R_PaymentMode;
 import com.brotherssoft.samodconstructions.model.R_ProjectGrade;
 import com.brotherssoft.samodconstructions.model.R_ProjectSpeciality;
 import com.brotherssoft.samodconstructions.model.R_ProjectType;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -41,6 +43,8 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     DefaultTableModel dtmPriProject;
 
     JSpinner.DateEditor de;
+    SimpleDateFormat sdf;
+    Date date;
 
     /**
      * Creates new form Project_Primary_Panel
@@ -64,6 +68,8 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
 
         de = new JSpinner.DateEditor(txt_project_tender_open_time_1, "HH:mm a");
         txt_project_tender_open_time_1.setEditor(de);
+        sdf = new SimpleDateFormat("dd/MM/yyyy");
+        date = new Date();
     }
 
     /**
@@ -215,52 +221,108 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel99.setText("Description");
 
         txt_project_desc_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_desc_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_desc_1ActionPerformed(evt);
+            }
+        });
 
         jLabel100.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel100.setText("Address No");
 
         txt_project_address1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_address1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_address1ActionPerformed(evt);
+            }
+        });
 
         jLabel101.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel101.setText("Street");
 
         txt_project_address2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_address2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_address2ActionPerformed(evt);
+            }
+        });
 
         jLabel102.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel102.setText("City");
 
         txt_project_address3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_address3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_address3ActionPerformed(evt);
+            }
+        });
 
         jLabel103.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel103.setText("Country");
 
         txt_project_address4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_address4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_address4ActionPerformed(evt);
+            }
+        });
 
         jLabel107.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel107.setText("Client Name");
 
         txt_project_client_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_client_1ActionPerformed(evt);
+            }
+        });
 
         jLabel109.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel109.setText("Address No");
 
         txt_project_client_address1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_address1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_client_address1ActionPerformed(evt);
+            }
+        });
 
         jLabel110.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel110.setText("Street");
 
         txt_project_client_address2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_address2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_client_address2ActionPerformed(evt);
+            }
+        });
 
         jLabel111.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel111.setText("City");
 
         txt_project_client_address3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_address3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_client_address3ActionPerformed(evt);
+            }
+        });
 
         jLabel112.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel112.setText("Project Type");
 
         cmb_project_type_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_project_type_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Project Type -" }));
+        cmb_project_type_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_project_type_1ActionPerformed(evt);
+            }
+        });
+
+        txt_project_states_active_date_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_states_active_date_1ActionPerformed(evt);
+            }
+        });
 
         btn_to_secondary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_to_secondary_project.setText("To Secondary");
@@ -274,37 +336,91 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         });
 
         txt_project_name_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_name_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_name_1ActionPerformed(evt);
+            }
+        });
 
         jLabel117.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel117.setText("Vat Added");
 
         cmb_project_vatAdded.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_project_vatAdded.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        cmb_project_vatAdded.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_project_vatAddedActionPerformed(evt);
+            }
+        });
 
         jLabel104.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel104.setText("Contract / Bid No");
 
         txt_project_contract_bid_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_contract_bid_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_contract_bid_1ActionPerformed(evt);
+            }
+        });
 
         jLabel118.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel118.setText("Country");
 
         txt_project_client_address4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_address4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_client_address4ActionPerformed(evt);
+            }
+        });
 
         jLabel119.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel119.setText("Contact No 1");
 
         txt_project_client_contact_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_contact_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_client_contact_1ActionPerformed(evt);
+            }
+        });
+        txt_project_client_contact_1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_project_client_contact_1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_project_client_contact_1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_project_client_contact_1KeyTyped(evt);
+            }
+        });
 
         jLabel120.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel120.setText("Contact No 2");
 
         txt_project_client_contact_1_2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_contact_1_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_client_contact_1_2ActionPerformed(evt);
+            }
+        });
+        txt_project_client_contact_1_2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_project_client_contact_1_2KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_project_client_contact_1_2KeyTyped(evt);
+            }
+        });
 
         jLabel121.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel121.setText("Intended Project Duration(Months)");
 
         txt_project_intendedDuration_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_intendedDuration_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_intendedDuration_1ActionPerformed(evt);
+            }
+        });
 
         jLabel122.setBackground(new java.awt.Color(102, 102, 255));
         jLabel122.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -315,12 +431,22 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
 
         cmb_project_Specialiti.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_project_Specialiti.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select ICTAD Speciality -" }));
+        cmb_project_Specialiti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_project_SpecialitiActionPerformed(evt);
+            }
+        });
 
         jLabel123.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel123.setText("Specialiti");
 
         cmb_project_grade_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_project_grade_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select ICTAD Grade -" }));
+        cmb_project_grade_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_project_grade_1ActionPerformed(evt);
+            }
+        });
 
         jLabel124.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel124.setText("Grade");
@@ -332,8 +458,18 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel126.setText("Engineer Estimate");
 
         txt_project_engineer_estimate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_engineer_estimate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_engineer_estimateActionPerformed(evt);
+            }
+        });
 
         txt_project_tender_fee_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_tender_fee_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_tender_fee_1ActionPerformed(evt);
+            }
+        });
 
         jLabel127.setBackground(new java.awt.Color(102, 102, 255));
         jLabel127.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -347,13 +483,28 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
 
         cmb_project_bid_payment_mode.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_project_bid_payment_mode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Payment Mode -" }));
+        cmb_project_bid_payment_mode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_project_bid_payment_modeActionPerformed(evt);
+            }
+        });
 
         jLabel130.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel130.setText("Amount");
 
         txt_project_bid_amount_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_bid_amount_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_bid_amount_1ActionPerformed(evt);
+            }
+        });
 
         txt_project_bid_organization.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_bid_organization.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_bid_organizationActionPerformed(evt);
+            }
+        });
 
         jLabel131.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel131.setText("Organization");
@@ -362,6 +513,11 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel132.setText("Duration (months)");
 
         txt_project_bid_duration_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_bid_duration_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_bid_duration_1ActionPerformed(evt);
+            }
+        });
 
         jLabel133.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel133.setText("Tender Open Date");
@@ -374,6 +530,11 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
 
         cmb_project_made_of_states_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_project_made_of_states_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Approved" }));
+        cmb_project_made_of_states_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_project_made_of_states_1ActionPerformed(evt);
+            }
+        });
 
         jLabel135.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel135.setText("States Active Date");
@@ -381,13 +542,40 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel136.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel136.setText("States Inactive Date");
 
+        txt_project_states_inactive_date_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_states_inactive_date_1ActionPerformed(evt);
+            }
+        });
+
+        txt_project_tender_open_date_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_tender_open_date_1ActionPerformed(evt);
+            }
+        });
+
         jLabel137.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel137.setText("Tender Result");
 
         txt_project_tender_result.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_tender_result.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_project_tender_resultActionPerformed(evt);
+            }
+        });
 
         JSpinner.DateEditor de = new JSpinner.DateEditor(txt_project_tender_open_time_1, "HH:mm a");
         txt_project_tender_open_time_1.setEditor(de);
+        txt_project_tender_open_time_1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                txt_project_tender_open_time_1StateChanged(evt);
+            }
+        });
+        txt_project_tender_open_time_1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txt_project_tender_open_time_1PropertyChange(evt);
+            }
+        });
 
         btn_new_primary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_new_primary_project.setText("New");
@@ -532,8 +720,9 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                                 .addComponent(jLabel137, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_project_tender_result))
-                            .addComponent(jLabel100, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel101, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel101, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel100, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -549,7 +738,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         txt_Input_Panel_Branch4Layout.setVerticalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addGap(20, 20, 20)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel98, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_project_name_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -663,11 +852,11 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(jLabel133, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel134, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_project_tender_open_time_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel129, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmb_project_made_of_states_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -685,10 +874,11 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                     .addComponent(jLabel137, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_project_tender_result, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_to_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_add_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_new_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_to_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_new_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmb_project_Specialiti, cmb_project_bid_payment_mode, cmb_project_grade_1, cmb_project_made_of_states_1, cmb_project_type_1, cmb_project_vatAdded, txt_project_address4, txt_project_bid_amount_1, txt_project_bid_duration_1, txt_project_bid_organization, txt_project_client_1, txt_project_client_address1, txt_project_client_address2, txt_project_client_address3, txt_project_client_address4, txt_project_client_contact_1, txt_project_client_contact_1_2, txt_project_contract_bid_1, txt_project_engineer_estimate, txt_project_states_active_date_1, txt_project_states_inactive_date_1, txt_project_tender_fee_1, txt_project_tender_open_date_1});
@@ -826,9 +1016,188 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblPrimaryProjectMouseClicked
 
     private void btn_new_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_projectActionPerformed
-//        Project_Primary_Info_Panel.revalidate();
-//        Project_Primary_Info_Panel.repaint();
+        txt_project_name_1.setText("");
+        txt_project_desc_1.setText("");
+        txt_project_address1.setText("");
+        txt_project_address2.setText("");
+        txt_project_address3.setText("");
+        txt_project_address4.setText("");
+        cmb_project_type_1.setSelectedIndex(0);
+        cmb_project_vatAdded.setSelectedIndex(0);
+        txt_project_contract_bid_1.setText("");
+        txt_project_client_1.setText("");
+        txt_project_client_address1.setText("");
+        txt_project_client_address2.setText("");
+        txt_project_client_address3.setText("");
+        txt_project_client_address4.setText("");
+        txt_project_client_contact_1.setText("");
+        txt_project_client_contact_1_2.setText("");
+        txt_project_intendedDuration_1.setText("");
+        cmb_project_Specialiti.setSelectedIndex(0);
+        cmb_project_grade_1.setSelectedIndex(0);
+        txt_project_engineer_estimate.setText("");
+        txt_project_tender_fee_1.setText("");
+        cmb_project_bid_payment_mode.setSelectedIndex(0);
+        txt_project_bid_amount_1.setText("");
+        txt_project_bid_organization.setText("");
+        txt_project_bid_duration_1.setText("");
+        txt_project_tender_open_date_1.setDate(date);
+        txt_project_tender_open_time_1.setValue(date);
+        cmb_project_made_of_states_1.setSelectedIndex(0);
+        txt_project_states_active_date_1.setDate(date);
+        txt_project_states_inactive_date_1.setDate(date);
+        txt_project_tender_result.setText("");
+        
+        btn_add_primary_project.setText("Save");
     }//GEN-LAST:event_btn_new_primary_projectActionPerformed
+
+    private void txt_project_name_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_name_1ActionPerformed
+        txt_project_desc_1.requestFocus();
+    }//GEN-LAST:event_txt_project_name_1ActionPerformed
+
+    private void txt_project_desc_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_desc_1ActionPerformed
+        txt_project_address1.requestFocus();
+    }//GEN-LAST:event_txt_project_desc_1ActionPerformed
+
+    private void txt_project_address1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_address1ActionPerformed
+        txt_project_address2.requestFocus();
+    }//GEN-LAST:event_txt_project_address1ActionPerformed
+
+    private void txt_project_address2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_address2ActionPerformed
+        txt_project_address3.requestFocus();
+    }//GEN-LAST:event_txt_project_address2ActionPerformed
+
+    private void txt_project_address3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_address3ActionPerformed
+        txt_project_address4.requestFocus();
+    }//GEN-LAST:event_txt_project_address3ActionPerformed
+
+    private void txt_project_address4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_address4ActionPerformed
+        cmb_project_type_1.requestFocus();
+    }//GEN-LAST:event_txt_project_address4ActionPerformed
+
+    private void cmb_project_type_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_project_type_1ActionPerformed
+        cmb_project_vatAdded.requestFocus();
+    }//GEN-LAST:event_cmb_project_type_1ActionPerformed
+
+    private void cmb_project_vatAddedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_project_vatAddedActionPerformed
+        txt_project_contract_bid_1.requestFocus();
+    }//GEN-LAST:event_cmb_project_vatAddedActionPerformed
+
+    private void txt_project_contract_bid_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_contract_bid_1ActionPerformed
+        txt_project_client_1.requestFocus();
+    }//GEN-LAST:event_txt_project_contract_bid_1ActionPerformed
+
+    private void txt_project_client_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_client_1ActionPerformed
+        txt_project_client_address1.requestFocus();
+    }//GEN-LAST:event_txt_project_client_1ActionPerformed
+
+    private void txt_project_client_address1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_client_address1ActionPerformed
+        txt_project_client_address2.requestFocus();
+    }//GEN-LAST:event_txt_project_client_address1ActionPerformed
+
+    private void txt_project_client_address2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_client_address2ActionPerformed
+        txt_project_client_address3.requestFocus();
+    }//GEN-LAST:event_txt_project_client_address2ActionPerformed
+
+    private void txt_project_client_address3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_client_address3ActionPerformed
+        txt_project_client_address4.requestFocus();
+    }//GEN-LAST:event_txt_project_client_address3ActionPerformed
+
+    private void txt_project_client_address4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_client_address4ActionPerformed
+        txt_project_client_contact_1.requestFocus();
+    }//GEN-LAST:event_txt_project_client_address4ActionPerformed
+
+    private void txt_project_client_contact_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_client_contact_1ActionPerformed
+        txt_project_client_contact_1_2.requestFocus();
+    }//GEN-LAST:event_txt_project_client_contact_1ActionPerformed
+
+    private void txt_project_client_contact_1_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_client_contact_1_2ActionPerformed
+        txt_project_intendedDuration_1.requestFocus();
+    }//GEN-LAST:event_txt_project_client_contact_1_2ActionPerformed
+
+    private void txt_project_intendedDuration_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_intendedDuration_1ActionPerformed
+        cmb_project_Specialiti.requestFocus();
+    }//GEN-LAST:event_txt_project_intendedDuration_1ActionPerformed
+
+    private void cmb_project_SpecialitiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_project_SpecialitiActionPerformed
+        cmb_project_grade_1.requestFocus();
+    }//GEN-LAST:event_cmb_project_SpecialitiActionPerformed
+
+    private void cmb_project_grade_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_project_grade_1ActionPerformed
+        txt_project_engineer_estimate.requestFocus();
+    }//GEN-LAST:event_cmb_project_grade_1ActionPerformed
+
+    private void txt_project_engineer_estimateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_engineer_estimateActionPerformed
+        txt_project_tender_fee_1.requestFocus();
+    }//GEN-LAST:event_txt_project_engineer_estimateActionPerformed
+
+    private void txt_project_tender_fee_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_tender_fee_1ActionPerformed
+        cmb_project_bid_payment_mode.requestFocus();
+    }//GEN-LAST:event_txt_project_tender_fee_1ActionPerformed
+
+    private void cmb_project_bid_payment_modeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_project_bid_payment_modeActionPerformed
+        txt_project_bid_amount_1.requestFocus();
+    }//GEN-LAST:event_cmb_project_bid_payment_modeActionPerformed
+
+    private void txt_project_bid_amount_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_bid_amount_1ActionPerformed
+        txt_project_bid_organization.requestFocus();
+    }//GEN-LAST:event_txt_project_bid_amount_1ActionPerformed
+
+    private void txt_project_bid_organizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_bid_organizationActionPerformed
+        txt_project_bid_duration_1.requestFocus();
+    }//GEN-LAST:event_txt_project_bid_organizationActionPerformed
+
+    private void txt_project_bid_duration_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_bid_duration_1ActionPerformed
+        txt_project_tender_open_date_1.requestFocus();
+    }//GEN-LAST:event_txt_project_bid_duration_1ActionPerformed
+
+    private void txt_project_tender_open_date_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_tender_open_date_1ActionPerformed
+        txt_project_tender_open_time_1.requestFocus();
+    }//GEN-LAST:event_txt_project_tender_open_date_1ActionPerformed
+
+    private void txt_project_tender_open_time_1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_txt_project_tender_open_time_1StateChanged
+        //cmb_project_made_of_states_1.requestFocus();
+    }//GEN-LAST:event_txt_project_tender_open_time_1StateChanged
+
+    private void cmb_project_made_of_states_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_project_made_of_states_1ActionPerformed
+        txt_project_states_active_date_1.requestFocus();
+    }//GEN-LAST:event_cmb_project_made_of_states_1ActionPerformed
+
+    private void txt_project_states_active_date_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_states_active_date_1ActionPerformed
+        txt_project_states_inactive_date_1.requestFocus();
+    }//GEN-LAST:event_txt_project_states_active_date_1ActionPerformed
+
+    private void txt_project_states_inactive_date_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_states_inactive_date_1ActionPerformed
+        txt_project_tender_result.requestFocus();
+    }//GEN-LAST:event_txt_project_states_inactive_date_1ActionPerformed
+
+    private void txt_project_tender_resultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_tender_resultActionPerformed
+        btn_add_primary_project.requestFocus();
+    }//GEN-LAST:event_txt_project_tender_resultActionPerformed
+
+    private void txt_project_tender_open_time_1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txt_project_tender_open_time_1PropertyChange
+        //cmb_project_made_of_states_1.requestFocus();
+    }//GEN-LAST:event_txt_project_tender_open_time_1PropertyChange
+
+    private void txt_project_client_contact_1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_client_contact_1KeyPressed
+        //Validation.phoneNumber(txt_project_client_contact_1, evt);
+    }//GEN-LAST:event_txt_project_client_contact_1KeyPressed
+
+    private void txt_project_client_contact_1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_client_contact_1KeyTyped
+        Validation.phoneNumber(txt_project_client_contact_1, evt);
+    }//GEN-LAST:event_txt_project_client_contact_1KeyTyped
+
+    private void txt_project_client_contact_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_client_contact_1KeyReleased
+        Validation.phoneNumber(txt_project_client_contact_1, evt);
+    }//GEN-LAST:event_txt_project_client_contact_1KeyReleased
+
+    private void txt_project_client_contact_1_2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_client_contact_1_2KeyReleased
+        Validation.phoneNumber(txt_project_client_contact_1_2, evt);
+    }//GEN-LAST:event_txt_project_client_contact_1_2KeyReleased
+
+    private void txt_project_client_contact_1_2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_client_contact_1_2KeyTyped
+        Validation.phoneNumber(txt_project_client_contact_1_2, evt);
+    }//GEN-LAST:event_txt_project_client_contact_1_2KeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -982,6 +1351,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             String projectAType = cmb_project_type_1.getSelectedItem().toString();
             String projectASpeciality = cmb_project_Specialiti.getSelectedItem().toString();
             String projectAGrade = cmb_project_grade_1.getSelectedItem().toString();
+            String payMode = cmb_project_bid_payment_mode.getSelectedItem().toString();
 
             int projectId = IDGenerator.getNewID("m_project", "PROJECT_ID");
             String name = txt_project_name_1.getText();
@@ -1005,17 +1375,18 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             int gradeId = projectGradeController.searProjectGradeByNAme(projectAGrade).getProjectGrade_id();
             double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText());
             double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText());
-            String bidPaymentMode = Integer.toString(cmb_project_bid_payment_mode.getSelectedIndex());
+            int bidPaymentModeId = paymentModeController.searPaymentMode(payMode).getPaymentMode_id();
             double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText());
             String bidDuration = txt_project_bid_duration_1.getText();
             String bidOrganization = txt_project_bid_organization.getText();
             Date tenderOpenDate = txt_project_tender_open_date_1.getDate();
             String tenderOpenTime = de.getFormat().format(txt_project_tender_open_time_1.getValue());
+            String currentStatus = Integer.toString(cmb_project_made_of_states_1.getSelectedIndex());
             String tenderResult = txt_project_tender_result.getText();
             Date activeDate = txt_project_states_active_date_1.getDate();
             Date inactiveDate = txt_project_states_inactive_date_1.getDate();
 
-            M_Project_Primary project_Primary = new M_Project_Primary(projectId, name, desc, address1, address2, address3, address4, projctTypeId, vatAdded, contractNo, clientName, clientAddress1, clientAddress2, clientAddress3, clientAddress4, clientContact1, clientContact2, projectADuration, specialityId, gradeId, enginnerEstimate, tenderFee, bidPaymentMode, bidAmount, bidDuration, bidOrganization, tenderOpenDate, tenderOpenTime, tenderResult, activeDate, inactiveDate);
+            M_Project_Primary project_Primary = new M_Project_Primary(projectId, name, desc, address1, address2, address3, address4, projctTypeId, vatAdded, contractNo, clientName, clientAddress1, clientAddress2, clientAddress3, clientAddress4, clientContact1, clientContact2, projectADuration, specialityId, gradeId, enginnerEstimate, tenderFee, bidPaymentModeId, bidAmount, bidDuration, bidOrganization, tenderOpenDate, tenderOpenTime, tenderResult, activeDate, inactiveDate,currentStatus);
             boolean addPrimaryProject = primary_ProjectController.addPrimaryProject(project_Primary);
             if (addPrimaryProject) {
                 JOptionPane.showMessageDialog(this, "Primary Project Added Successfully..");
@@ -1073,12 +1444,13 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             cmb_project_grade_1.setSelectedItem(projectGradeController.searchProjectGrade(sp.getProject_primary_ictadGrade_id()).getProjectGrade_name());
             txt_project_engineer_estimate.setText(Double.toString(sp.getProject_primary_engineerEstimate()));
             txt_project_tender_fee_1.setText(Double.toString(sp.getProject_primary_tenderFee()));
-            cmb_project_bid_payment_mode.setSelectedIndex(Integer.parseInt(sp.getProject_primary_bidPaymentMode()));
+            cmb_project_bid_payment_mode.setSelectedItem(paymentModeController.searchPaymentMode(sp.getProject_primary_bidPaymentMode()).getPaymentMode_name());
             txt_project_bid_amount_1.setText(Double.toString(sp.getProject_primary_bidAmount()));
             txt_project_bid_organization.setText(sp.getProject_primary_bidOrganization());
             txt_project_bid_duration_1.setText(sp.getProject_primary_bidDuration());
             txt_project_tender_open_date_1.setDate(sp.getProject_primary_tenderOpenDate());
             txt_project_tender_open_time_1.setValue(de.getFormat().parse(sp.getProject_primary_tenderOpenTime()));
+            cmb_project_made_of_states_1.setSelectedIndex(Integer.parseInt(sp.getProject_current_status()));
             txt_project_states_active_date_1.setDate(sp.getProject_primary_statusActiveDate());
             txt_project_states_inactive_date_1.setDate(sp.getProject_primary_statusInactiveDate());
             txt_project_tender_result.setText(sp.getProject_primary_tenderResult());
@@ -1097,6 +1469,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             String projectAType = cmb_project_type_1.getSelectedItem().toString();
             String projectASpeciality = cmb_project_Specialiti.getSelectedItem().toString();
             String projectAGrade = cmb_project_grade_1.getSelectedItem().toString();
+            String pauMode = cmb_project_bid_payment_mode.getSelectedItem().toString();
             int project_id = searchProjectPrimaryByTableName().getProject_id();
 
             //int projectId = IDGenerator.getNewID("m_project", "PROJECT_ID");
@@ -1121,17 +1494,18 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             int gradeId = projectGradeController.searProjectGradeByNAme(projectAGrade).getProjectGrade_id();
             double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText());
             double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText());
-            String bidPaymentMode = Integer.toString(cmb_project_bid_payment_mode.getSelectedIndex());
+            int bidPaymentModeId = paymentModeController.searPaymentMode(pauMode).getPaymentMode_id();
             double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText());
             String bidDuration = txt_project_bid_duration_1.getText();
             String bidOrganization = txt_project_bid_organization.getText();
             Date tenderOpenDate = txt_project_tender_open_date_1.getDate();
             String tenderOpenTime = de.getFormat().format(txt_project_tender_open_time_1.getValue());
+            String currentStatus = Integer.toString(cmb_project_made_of_states_1.getSelectedIndex());
             String tenderResult = txt_project_tender_result.getText();
             Date activeDate = txt_project_states_active_date_1.getDate();
             Date inactiveDate = txt_project_states_inactive_date_1.getDate();
 
-            M_Project_Primary project_Primary = new M_Project_Primary(project_id, name, desc, address1, address2, address3, address4, projctTypeId, vatAdded, contractNo, clientName, clientAddress1, clientAddress2, clientAddress3, clientAddress4, clientContact1, clientContact2, projectADuration, specialityId, gradeId, enginnerEstimate, tenderFee, bidPaymentMode, bidAmount, bidDuration, bidOrganization, tenderOpenDate, tenderOpenTime, tenderResult, activeDate, inactiveDate);
+            M_Project_Primary project_Primary = new M_Project_Primary(project_id, name, desc, address1, address2, address3, address4, projctTypeId, vatAdded, contractNo, clientName, clientAddress1, clientAddress2, clientAddress3, clientAddress4, clientContact1, clientContact2, projectADuration, specialityId, gradeId, enginnerEstimate, tenderFee, bidPaymentModeId, bidAmount, bidDuration, bidOrganization, tenderOpenDate, tenderOpenTime, tenderResult, activeDate, inactiveDate,currentStatus);
             
             boolean updatePrimaryProject = primary_ProjectController.updatePrimaryProject(project_Primary);
             if (updatePrimaryProject) {
