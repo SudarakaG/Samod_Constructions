@@ -103,14 +103,14 @@ public class M_Primary_ProjectDBAccess {
             stm.setObject(76, null);
             stm.setObject(77, null);
             stm.setObject(78, null);
-            stm.setObject(79, null);
+            stm.setObject(79, primary.getProject_current_status());
             return stm.executeUpdate() > 0;
         
     }
     
     public boolean updatePrimaryProject(M_Project_Primary primary) throws Exception {
 
-        String sql = "Update M_Project set PROJECTA_NAME=?, PROJECTA_DESC=?, PROJECTA_ADD1=?, PROJECTA_ADD2=?, PROJECTA_ADD3=?, PROJECTA_ADD4=?, PROJECTA_TYPE=?, PROJECTA_VATADDED=?, PROJECTA_CONBIDNO=?, PROJECTA_CLINTNAME=?, PROJECTA_CLINTADD1=?, PROJECTA_CLINTADD2=?, PROJECTA_CLINTADD3=?, PROJECTA_CLINTADD4=?, PROJECTA_CONTACT1=?, PROJECTA_CONTACT2=?, PROJECTA_INTENTEDDURATION=?, PROJECTA_ICTADSPECI=?, PROJECTA_ICTADGRADE=?, PROJECTA_ENGESTIMATE=?, PROJECTA_TENDERFEE=?, PROJECTA_BIDSECPAYMODE=?, PROJECTA_BIDSECAMOUNT=?, PROJECTA_BIDSECDURATION=?, PROJECTA_BIDSECORGANIZATION=?, PROJECTA_TENDEROPENDATE=?, PROJECTA_TENDEROPENTIME=?, PROJECTA_TENDERRESULT=?, PROJECTA_STATUSACTIVEDATE=?, PROJECTA_STATUSINACTIVEDATE=? where PROJECT_ID=?";
+        String sql = "Update M_Project set PROJECTA_NAME=?, PROJECTA_DESC=?, PROJECTA_ADD1=?, PROJECTA_ADD2=?, PROJECTA_ADD3=?, PROJECTA_ADD4=?, PROJECTA_TYPE=?, PROJECTA_VATADDED=?, PROJECTA_CONBIDNO=?, PROJECTA_CLINTNAME=?, PROJECTA_CLINTADD1=?, PROJECTA_CLINTADD2=?, PROJECTA_CLINTADD3=?, PROJECTA_CLINTADD4=?, PROJECTA_CONTACT1=?, PROJECTA_CONTACT2=?, PROJECTA_INTENTEDDURATION=?, PROJECTA_ICTADSPECI=?, PROJECTA_ICTADGRADE=?, PROJECTA_ENGESTIMATE=?, PROJECTA_TENDERFEE=?, PROJECTA_BIDSECPAYMODE=?, PROJECTA_BIDSECAMOUNT=?, PROJECTA_BIDSECDURATION=?, PROJECTA_BIDSECORGANIZATION=?, PROJECTA_TENDEROPENDATE=?, PROJECTA_TENDEROPENTIME=?, PROJECTA_TENDERRESULT=?, PROJECTA_STATUSACTIVEDATE=?, PROJECTA_STATUSINACTIVEDATE=?, PROJECT_CURRENT_STATUS=? where PROJECT_ID=?";
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement stm = conn.prepareStatement(sql);
                         
@@ -144,7 +144,8 @@ public class M_Primary_ProjectDBAccess {
             stm.setObject(28, primary.getProject_primary_tenderResult());
             stm.setObject(29, primary.getProject_primary_statusActiveDate());
             stm.setObject(30, primary.getProject_primary_statusInactiveDate());
-            stm.setObject(31, primary.getProject_id());
+            stm.setObject(31, primary.getProject_current_status());
+            stm.setObject(32, primary.getProject_id());
             return stm.executeUpdate() > 0;
         
     }
@@ -161,14 +162,14 @@ public class M_Primary_ProjectDBAccess {
 
     public M_Project_Primary searchPrimaryProject(int id) throws Exception {
         
-            String sql = "Select PROJECTA_NAME, PROJECTA_DESC, PROJECTA_ADD1, PROJECTA_ADD2, PROJECTA_ADD3, PROJECTA_ADD4, PROJECTA_TYPE, PROJECTA_VATADDED, PROJECTA_CONBIDNO, PROJECTA_CLINTNAME, PROJECTA_CLINTADD1, PROJECTA_CLINTADD2, PROJECTA_CLINTADD3, PROJECTA_CLINTADD4, PROJECTA_CONTACT1, PROJECTA_CONTACT2, PROJECTA_INTENTEDDURATION, PROJECTA_ICTADSPECI, PROJECTA_ICTADGRADE, PROJECTA_ENGESTIMATE, PROJECTA_TENDERFEE, PROJECTA_BIDSECPAYMODE, PROJECTA_BIDSECAMOUNT, PROJECTA_BIDSECDURATION, PROJECTA_BIDSECORGANIZATION, PROJECTA_TENDEROPENDATE, PROJECTA_TENDEROPENTIME, PROJECTA_TENDERRESULT, PROJECTA_STATUSACTIVEDATE, PROJECTA_STATUSINACTIVEDATE From M_Project where PROJECT_ID=?";
+            String sql = "Select PROJECTA_NAME, PROJECTA_DESC, PROJECTA_ADD1, PROJECTA_ADD2, PROJECTA_ADD3, PROJECTA_ADD4, PROJECTA_TYPE, PROJECTA_VATADDED, PROJECTA_CONBIDNO, PROJECTA_CLINTNAME, PROJECTA_CLINTADD1, PROJECTA_CLINTADD2, PROJECTA_CLINTADD3, PROJECTA_CLINTADD4, PROJECTA_CONTACT1, PROJECTA_CONTACT2, PROJECTA_INTENTEDDURATION, PROJECTA_ICTADSPECI, PROJECTA_ICTADGRADE, PROJECTA_ENGESTIMATE, PROJECTA_TENDERFEE, PROJECTA_BIDSECPAYMODE, PROJECTA_BIDSECAMOUNT, PROJECTA_BIDSECDURATION, PROJECTA_BIDSECORGANIZATION, PROJECTA_TENDEROPENDATE, PROJECTA_TENDEROPENTIME, PROJECTA_TENDERRESULT, PROJECTA_STATUSACTIVEDATE, PROJECTA_STATUSINACTIVEDATE, PROJECT_CURRENT_STATUS From M_Project where PROJECT_ID=?";
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setObject(1, id);
             ResultSet rst = stm.executeQuery();
             M_Project_Primary project_Primary = null;
             if (rst.next()) {
-                project_Primary = new M_Project_Primary(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getInt(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getString(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getString(17), rst.getString(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getString(23), rst.getDouble(24), rst.getString(25), rst.getString(26), rst.getDate(27), rst.getString(28), rst.getString(29), rst.getDate(30), rst.getDate(31));
+                project_Primary = new M_Project_Primary(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getInt(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getString(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getString(17), rst.getString(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getInt(23), rst.getDouble(24), rst.getString(25), rst.getString(26), rst.getDate(27), rst.getString(28), rst.getString(29), rst.getDate(30), rst.getDate(31),rst.getString(32));
 
             }
             return project_Primary;
@@ -179,10 +180,10 @@ public class M_Primary_ProjectDBAccess {
        
             Connection conn = DBConnection.getDBConnection().getConnection();
             Statement stm = conn.createStatement();
-            ResultSet rst = stm.executeQuery("Select PROJECT_ID, PROJECTA_NAME, PROJECTA_DESC, PROJECTA_ADD1, PROJECTA_ADD2, PROJECTA_ADD3, PROJECTA_ADD4, PROJECTA_TYPE, PROJECTA_VATADDED, PROJECTA_CONBIDNO, PROJECTA_CLINTNAME, PROJECTA_CLINTADD1, PROJECTA_CLINTADD2, PROJECTA_CLINTADD3, PROJECTA_CLINTADD4, PROJECTA_CONTACT1, PROJECTA_CONTACT2, PROJECTA_INTENTEDDURATION, PROJECTA_ICTADSPECI, PROJECTA_ICTADGRADE, PROJECTA_ENGESTIMATE, PROJECTA_TENDERFEE, PROJECTA_BIDSECPAYMODE, PROJECTA_BIDSECAMOUNT, PROJECTA_BIDSECDURATION, PROJECTA_BIDSECORGANIZATION, PROJECTA_TENDEROPENDATE, PROJECTA_TENDEROPENTIME, PROJECTA_TENDERRESULT, PROJECTA_STATUSACTIVEDATE, PROJECTA_STATUSINACTIVEDATE From M_Project");
+            ResultSet rst = stm.executeQuery("Select PROJECT_ID, PROJECTA_NAME, PROJECTA_DESC, PROJECTA_ADD1, PROJECTA_ADD2, PROJECTA_ADD3, PROJECTA_ADD4, PROJECTA_TYPE, PROJECTA_VATADDED, PROJECTA_CONBIDNO, PROJECTA_CLINTNAME, PROJECTA_CLINTADD1, PROJECTA_CLINTADD2, PROJECTA_CLINTADD3, PROJECTA_CLINTADD4, PROJECTA_CONTACT1, PROJECTA_CONTACT2, PROJECTA_INTENTEDDURATION, PROJECTA_ICTADSPECI, PROJECTA_ICTADGRADE, PROJECTA_ENGESTIMATE, PROJECTA_TENDERFEE, PROJECTA_BIDSECPAYMODE, PROJECTA_BIDSECAMOUNT, PROJECTA_BIDSECDURATION, PROJECTA_BIDSECORGANIZATION, PROJECTA_TENDEROPENDATE, PROJECTA_TENDEROPENTIME, PROJECTA_TENDERRESULT, PROJECTA_STATUSACTIVEDATE, PROJECTA_STATUSINACTIVEDATE, PROJECT_CURRENT_STATUS From M_Project");
             List<M_Project_Primary> primaryProjectList = new ArrayList<>();
             while (rst.next()) {
-                M_Project_Primary project_Primary = new M_Project_Primary(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getInt(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getString(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getString(17), rst.getString(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getString(23), rst.getDouble(24), rst.getString(25), rst.getString(26), rst.getDate(27), rst.getString(28), rst.getString(29), rst.getDate(30), rst.getDate(31));
+                M_Project_Primary project_Primary = new M_Project_Primary(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getInt(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getString(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getString(17), rst.getString(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getInt(23), rst.getDouble(24), rst.getString(25), rst.getString(26), rst.getDate(27), rst.getString(28), rst.getString(29), rst.getDate(30), rst.getDate(31),rst.getString(32));
                 primaryProjectList.add(project_Primary);
             }
             return primaryProjectList;
@@ -191,14 +192,14 @@ public class M_Primary_ProjectDBAccess {
     
     public M_Project_Primary searchPrimaryProjectByName(String name) throws Exception {
         
-            String sql = "Select PROJECT_ID, PROJECTA_NAME, PROJECTA_DESC, PROJECTA_ADD1, PROJECTA_ADD2, PROJECTA_ADD3, PROJECTA_ADD4, PROJECTA_TYPE, PROJECTA_VATADDED, PROJECTA_CONBIDNO, PROJECTA_CLINTNAME, PROJECTA_CLINTADD1, PROJECTA_CLINTADD2, PROJECTA_CLINTADD3, PROJECTA_CLINTADD4, PROJECTA_CONTACT1, PROJECTA_CONTACT2, PROJECTA_INTENTEDDURATION, PROJECTA_ICTADSPECI, PROJECTA_ICTADGRADE, PROJECTA_ENGESTIMATE, PROJECTA_TENDERFEE, PROJECTA_BIDSECPAYMODE, PROJECTA_BIDSECAMOUNT, PROJECTA_BIDSECDURATION, PROJECTA_BIDSECORGANIZATION, PROJECTA_TENDEROPENDATE, PROJECTA_TENDEROPENTIME, PROJECTA_TENDERRESULT, PROJECTA_STATUSACTIVEDATE, PROJECTA_STATUSINACTIVEDATE From M_Project where PROJECTA_NAME=?";
+            String sql = "Select PROJECT_ID, PROJECTA_NAME, PROJECTA_DESC, PROJECTA_ADD1, PROJECTA_ADD2, PROJECTA_ADD3, PROJECTA_ADD4, PROJECTA_TYPE, PROJECTA_VATADDED, PROJECTA_CONBIDNO, PROJECTA_CLINTNAME, PROJECTA_CLINTADD1, PROJECTA_CLINTADD2, PROJECTA_CLINTADD3, PROJECTA_CLINTADD4, PROJECTA_CONTACT1, PROJECTA_CONTACT2, PROJECTA_INTENTEDDURATION, PROJECTA_ICTADSPECI, PROJECTA_ICTADGRADE, PROJECTA_ENGESTIMATE, PROJECTA_TENDERFEE, PROJECTA_BIDSECPAYMODE, PROJECTA_BIDSECAMOUNT, PROJECTA_BIDSECDURATION, PROJECTA_BIDSECORGANIZATION, PROJECTA_TENDEROPENDATE, PROJECTA_TENDEROPENTIME, PROJECTA_TENDERRESULT, PROJECTA_STATUSACTIVEDATE, PROJECTA_STATUSINACTIVEDATE, PROJECT_CURRENT_STATUS From M_Project where PROJECTA_NAME=?";
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement stm = conn.prepareStatement(sql);
             stm.setObject(1, name);
             ResultSet rst = stm.executeQuery();
             M_Project_Primary project_Primary = null;
             if (rst.next()) {
-                project_Primary = new M_Project_Primary(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getInt(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getString(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getString(17), rst.getString(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getString(23), rst.getDouble(24), rst.getString(25), rst.getString(26), rst.getDate(27), rst.getString(28), rst.getString(29), rst.getDate(30), rst.getDate(31));
+                project_Primary = new M_Project_Primary(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getInt(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getString(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getString(17), rst.getString(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getInt(23), rst.getDouble(24), rst.getString(25), rst.getString(26), rst.getDate(27), rst.getString(28), rst.getString(29), rst.getDate(30), rst.getDate(31),rst.getString(32));
 
             }
             return project_Primary;
