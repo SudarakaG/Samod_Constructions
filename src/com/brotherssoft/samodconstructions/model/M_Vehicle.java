@@ -21,14 +21,14 @@ public class M_Vehicle implements Serializable{
     private String vehicle_year;
     private double vehicle_amount;
     private double vehicle_depreciationRate;
-    private char vehicle_status;
-    private char vehicle_fuelType;
-    private char vehicle_allocatrionStatus;
+    private String vehicle_status;
+    private int vehicle_fuelType;
+    private String vehicle_allocatrionStatus;
 
     public M_Vehicle() {
     }
 
-    public M_Vehicle(int vehicle_id, String vehicle_regNo, int vehicle_type_id, String vehicle_engineNo, String vehicle_chasisNo, String vehicle_year, double vehicle_amount, double vehicle_depreciationRate, char vehicle_status, char vehicle_fuelType, char vehicle_allocatrionStatus) {
+    public M_Vehicle(int vehicle_id, String vehicle_regNo, int vehicle_type_id, String vehicle_engineNo, String vehicle_chasisNo, String vehicle_year, double vehicle_amount, double vehicle_depreciationRate, String vehicle_status, int vehicle_fuelType, String vehicle_allocatrionStatus) {
         this.vehicle_id = vehicle_id;
         this.vehicle_regNo = vehicle_regNo;
         this.vehicle_type_id = vehicle_type_id;
@@ -157,45 +157,44 @@ public class M_Vehicle implements Serializable{
     /**
      * @return the vehicle_status
      */
-    public char getVehicle_status() {
+    public String getVehicle_status() {
         return vehicle_status;
     }
 
     /**
      * @param vehicle_status the vehicle_status to set
      */
-    public void setVehicle_status(char vehicle_status) {
+    public void setVehicle_status(String vehicle_status) {
         this.vehicle_status = vehicle_status;
     }
 
     /**
      * @return the vehicle_fuelType
      */
-    public char getVehicle_fuelType() {
+    public int getVehicle_fuelType() {
         return vehicle_fuelType;
     }
 
     /**
      * @param vehicle_fuelType the vehicle_fuelType to set
      */
-    public void setVehicle_fuelType(char vehicle_fuelType) {
+    public void setVehicle_fuelType(int vehicle_fuelType) {
         this.vehicle_fuelType = vehicle_fuelType;
     }
 
     /**
      * @return the vehicle_allocatrionStatus
      */
-    public char getVehicle_allocatrionStatus() {
+    public String getVehicle_allocatrionStatus() {
         return vehicle_allocatrionStatus;
     }
 
     /**
      * @param vehicle_allocatrionStatus the vehicle_allocatrionStatus to set
      */
-    public void setVehicle_allocatrionStatus(char vehicle_allocatrionStatus) {
+    public void setVehicle_allocatrionStatus(String vehicle_allocatrionStatus) {
         this.vehicle_allocatrionStatus = vehicle_allocatrionStatus;
     }
-    
-    
+
     
 }

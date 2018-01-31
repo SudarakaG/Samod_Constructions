@@ -16,12 +16,12 @@ public class R_FuelType implements Serializable{
     private int fuel_id;
     private String fuel_name;
     private String fuel_description;
-    private char fuel_status;
+    private String fuel_status;
 
     public R_FuelType() {
     }
 
-    public R_FuelType(int fuel_id, String fuel_name, String fuel_description, char fuel_status) {
+    public R_FuelType(int fuel_id, String fuel_name, String fuel_description, String fuel_status) {
         this.fuel_id = fuel_id;
         this.fuel_name = fuel_name;
         this.fuel_description = fuel_description;
@@ -73,17 +73,17 @@ public class R_FuelType implements Serializable{
     /**
      * @return the fuel_status
      */
-    public char getFuel_status() {
+    public String getFuel_status() {
         return fuel_status;
     }
 
     /**
      * @param fuel_status the fuel_status to set
      */
-    public void setFuel_status(char fuel_status) {
+    public void setFuel_status(String fuel_status) {
         this.fuel_status = fuel_status;
     }
-    
+
     
     
 }

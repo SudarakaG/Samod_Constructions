@@ -23,12 +23,12 @@ public class M_Purchaser implements Serializable{
     private String purchaser_contact2;
     private String purchaser_repName;
     private String purchaser_repContact;
-    private char purchaser_status;
+    private String purchaser_status;
 
     public M_Purchaser() {
     }
 
-    public M_Purchaser(int purchaser_id, String purchaser_name, String purchaser_address, String purchaser_accountNo, int purchaser_bank_id, int purchaser_branch_id, String purchaser_contact1, String purchaser_contact2, String purchaser_repName, String purchaser_repContact, char purchaser_status) {
+    public M_Purchaser(int purchaser_id, String purchaser_name, String purchaser_address, String purchaser_accountNo, int purchaser_bank_id, int purchaser_branch_id, String purchaser_contact1, String purchaser_contact2, String purchaser_repName, String purchaser_repContact, String purchaser_status) {
         this.purchaser_id = purchaser_id;
         this.purchaser_name = purchaser_name;
         this.purchaser_address = purchaser_address;
@@ -185,17 +185,16 @@ public class M_Purchaser implements Serializable{
     /**
      * @return the purchaser_status
      */
-    public char getPurchaser_status() {
+    public String getPurchaser_status() {
         return purchaser_status;
     }
 
     /**
      * @param purchaser_status the purchaser_status to set
      */
-    public void setPurchaser_status(char purchaser_status) {
+    public void setPurchaser_status(String purchaser_status) {
         this.purchaser_status = purchaser_status;
     }
-    
-    
+
     
 }

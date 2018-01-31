@@ -12,11 +12,15 @@ import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
 import java.rmi.Remote;
 import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
+import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
+import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
+import com.brotherssoft.samodconstructions.controller.R_FuelTypeController;
 import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
+import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
 
 /**
  *
@@ -35,5 +39,9 @@ public interface ControllerFactory extends Remote{
     public R_PaymentModeController getPaymentModeController()throws Exception;
     public M_AccountController getAccountController()throws Exception;
     public R_AccountTypeController getAccountTypeController()throws Exception;
+    public R_VehivleTypeController getVehivleTypeController()throws Exception;
+    public R_FuelTypeController getFuelTypeController()throws Exception;
+    public M_VehicleController getVehicleController()throws Exception;
+    public M_PurchaserController getPurchaserController()throws Exception;
     
 }
