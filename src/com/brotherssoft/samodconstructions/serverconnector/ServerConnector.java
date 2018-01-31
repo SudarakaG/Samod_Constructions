@@ -6,7 +6,9 @@
 package com.brotherssoft.samodconstructions.serverconnector;
 
 import com.brotherssoft.samodconstructions.controller.IDController;
+import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
+import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
 import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
@@ -32,6 +34,8 @@ public class ServerConnector {
     private R_ProjectSpecialityController projectSpecialityController;
     private R_ProjectTypeController projectTypeController;
     private R_PaymentModeController paymentModeController;
+    private M_AccountController accountController;
+    private R_AccountTypeController accountTypeController;
     
     //private UserHistoryController uhc;
 
@@ -93,6 +97,20 @@ public class ServerConnector {
             paymentModeController = cf.getPaymentModeController();
         }
         return paymentModeController;
+    }
+    
+    public M_AccountController getAccountController()throws Exception{
+        if(accountController == null){
+            accountController = cf.getAccountController();
+        }
+        return accountController;
+    }
+    
+    public R_AccountTypeController getAccountTypeController()throws Exception{
+        if(accountTypeController == null){
+            accountTypeController = cf.getAccountTypeController();
+        }
+        return accountTypeController;
     }
 
 //    

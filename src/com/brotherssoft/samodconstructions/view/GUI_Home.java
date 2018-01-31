@@ -1730,8 +1730,12 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lable5MouseClicked
 
     private void master_detail_home_lable10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable10MouseClicked
-        Company_Account_Registration_Panel carp = new Company_Account_Registration_Panel();
-        panelManager(carp);
+        try {
+            Company_Account_Registration_Panel carp = new Company_Account_Registration_Panel();
+            panelManager(carp);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable10MouseClicked
 
     private void master_detail_home_lable8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable8MouseClicked

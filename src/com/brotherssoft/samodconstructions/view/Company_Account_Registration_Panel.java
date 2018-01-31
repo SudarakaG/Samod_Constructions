@@ -5,17 +5,51 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.M_AccountController;
+import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
+import com.brotherssoft.samodconstructions.controller.R_BankController;
+import com.brotherssoft.samodconstructions.controller.R_BranchController;
+import com.brotherssoft.samodconstructions.custom.IDGenerator;
+import com.brotherssoft.samodconstructions.model.M_Account;
+import com.brotherssoft.samodconstructions.model.R_AccountType;
+import com.brotherssoft.samodconstructions.model.R_Bank;
+import com.brotherssoft.samodconstructions.model.R_Branch;
+import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Akvasoft
  */
 public class Company_Account_Registration_Panel extends javax.swing.JPanel {
 
+    M_AccountController accountController;
+    R_AccountTypeController accountTypeController;
+    R_BankController bankController;
+    R_BranchController branchController;
+
+    DefaultTableModel dtmcomAccount;
+
     /**
      * Creates new form Company_Account_Registration_Panel
      */
-    public Company_Account_Registration_Panel() {
+    public Company_Account_Registration_Panel() throws Exception {
         initComponents();
+
+        accountController = ServerConnector.getServerConnetor().getAccountController();
+        accountTypeController = ServerConnector.getServerConnetor().getAccountTypeController();
+        bankController = ServerConnector.getServerConnetor().getBankController();
+        branchController = ServerConnector.getServerConnetor().getBranchController();
+        dtmcomAccount = (DefaultTableModel) tbl_acc.getModel();
+
+        loadToBankCombo();
+        loadToAccountTypeCombo();
+        loadCompanyAccountTable();
     }
 
     /**
@@ -39,7 +73,7 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
         txt_acc_no = new javax.swing.JTextField();
         txt_acc_name = new javax.swing.JTextField();
         btn_acc_save = new javax.swing.JButton();
-        btn_acc_cancel = new javax.swing.JButton();
+        btn_acc_new = new javax.swing.JButton();
         cmb_acc_states = new javax.swing.JComboBox<>();
         cmb_CAR_Bank = new javax.swing.JComboBox<>();
         jLabel25 = new javax.swing.JLabel();
@@ -112,15 +146,35 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
 
         btn_acc_save.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_acc_save.setText("Save");
+        btn_acc_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_acc_saveActionPerformed(evt);
+            }
+        });
 
-        btn_acc_cancel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_acc_cancel.setText("Cancel");
+        btn_acc_new.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_acc_new.setText("New");
+        btn_acc_new.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_acc_newActionPerformed(evt);
+            }
+        });
 
         cmb_acc_states.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_acc_states.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
 
         cmb_CAR_Bank.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmb_CAR_Bank.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HND", "People Bank" }));
+        cmb_CAR_Bank.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Bank -" }));
+        cmb_CAR_Bank.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmb_CAR_BankItemStateChanged(evt);
+            }
+        });
+        cmb_CAR_Bank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_CAR_BankActionPerformed(evt);
+            }
+        });
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel25.setText("Bank");
@@ -129,13 +183,13 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
         jLabel26.setText("Branch");
 
         cmb_CAR_Branch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmb_CAR_Branch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Galle", "Mathara" }));
+        cmb_CAR_Branch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Branch -" }));
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel27.setText("Account Type");
 
         cmb_CAR_Acc_Type.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmb_CAR_Acc_Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Saving", "Current", "Saving Join", "Current Join" }));
+        cmb_CAR_Acc_Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Account Type -" }));
 
         javax.swing.GroupLayout bank_panel_input_area1Layout = new javax.swing.GroupLayout(bank_panel_input_area1);
         bank_panel_input_area1.setLayout(bank_panel_input_area1Layout);
@@ -160,7 +214,7 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btn_acc_save, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_acc_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_acc_new, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_area1Layout.createSequentialGroup()
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -205,8 +259,8 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(bank_panel_input_area1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_acc_save, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_acc_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_acc_new, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         bank_panel_tbl1.setBackground(new java.awt.Color(255, 255, 255));
@@ -250,6 +304,11 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
             }
         ));
         tbl_acc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_acc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_accMouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(tbl_acc);
 
         txt_acc_search.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -285,7 +344,7 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
                 .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bank_panel_tbl1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
             .addComponent(bank_panel_hedding2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         Company_Account_RegistrationLayout.setVerticalGroup(
@@ -311,13 +370,46 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_acc_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_acc_saveActionPerformed
+        if (btn_acc_save.getText().equalsIgnoreCase("Save")) {
+            saveCompanyAccount();
+        } else {
+            updateCompanyAccount();
+        }
+    }//GEN-LAST:event_btn_acc_saveActionPerformed
+
+    private void cmb_CAR_BankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_CAR_BankActionPerformed
+        if (cmb_CAR_Bank.getSelectedIndex() != 0) {
+            loadToBranchCombo();
+        }
+    }//GEN-LAST:event_cmb_CAR_BankActionPerformed
+
+    private void cmb_CAR_BankItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_CAR_BankItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_CAR_BankItemStateChanged
+
+    private void tbl_accMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_accMouseClicked
+        loadFromAccountTable();
+    }//GEN-LAST:event_tbl_accMouseClicked
+
+    private void btn_acc_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_acc_newActionPerformed
+        cmb_CAR_Bank.setSelectedIndex(0);
+        cmb_CAR_Branch.setSelectedIndex(0);
+        txt_acc_no.setText("");
+        txt_acc_name.setText("");
+        cmb_CAR_Acc_Type.setSelectedIndex(0);
+        cmb_acc_states.setSelectedIndex(0);
+
+        btn_acc_save.setText("Save");
+    }//GEN-LAST:event_btn_acc_newActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Company_Account_Registration;
     private javax.swing.JPanel bank_panel_hedding2;
     private javax.swing.JPanel bank_panel_input_area1;
     private javax.swing.JPanel bank_panel_tbl1;
-    private javax.swing.JButton btn_acc_cancel;
+    private javax.swing.JButton btn_acc_new;
     private javax.swing.JButton btn_acc_save;
     private javax.swing.JComboBox<String> cmb_CAR_Acc_Type;
     private javax.swing.JComboBox<String> cmb_CAR_Bank;
@@ -338,4 +430,163 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_acc_no;
     private javax.swing.JTextField txt_acc_search;
     // End of variables declaration//GEN-END:variables
+
+    private void saveCompanyAccount() {
+        try {
+
+            int accountId = IDGenerator.getNewID("m_account", "ACCOUNT_ID");
+            int bankId = bankController.searchBankByName(cmb_CAR_Bank.getSelectedItem().toString()).getBank_id();
+            int branchId = branchController.searchBranch(cmb_CAR_Branch.getSelectedItem().toString(), bankId).getBranch_id();
+            String accountNo = txt_acc_no.getText();
+            int accTypeId = accountTypeController.searchAccountType(cmb_CAR_Acc_Type.getSelectedItem().toString()).getAccountType_id();
+            String accountStatus = null;
+            if (cmb_acc_states.getSelectedIndex() == 0) {
+                accountStatus = "A";
+            } else {
+                accountStatus = "I";
+            }
+            String accountName = txt_acc_name.getText();
+
+            M_Account account = new M_Account(accountId, bankId, branchId, accountNo, accTypeId, accountStatus, accountName);
+            boolean addAccount = accountController.addAccount(account);
+            if (addAccount) {
+                JOptionPane.showMessageDialog(this, "Company Account Details Saved Successfully..");
+            } else {
+                JOptionPane.showMessageDialog(this, "Account Details Cannot Save..");
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        loadCompanyAccountTable();
+
+    }
+
+    private void loadToBankCombo() {
+        try {
+
+            List<R_Bank> allBanks = bankController.getAllBanks();
+            cmb_CAR_Bank.removeAll();
+            for (R_Bank allBank : allBanks) {
+                cmb_CAR_Bank.addItem(allBank.getBank_name());
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadToBranchCombo() {
+        try {
+
+            for (int i = 1; i < cmb_CAR_Branch.getItemCount(); i++) {
+                cmb_CAR_Branch.removeItemAt(i);
+            }
+
+            List<R_Branch> allBranches = branchController.getAllBranches();
+            int bankId = bankController.searchBankByName(cmb_CAR_Bank.getSelectedItem().toString()).getBank_id();
+//            cmb_CAR_Branch.removeAll();
+//            cmb_CAR_Branch.revalidate();
+//            cmb_CAR_Branch.repaint();
+            for (R_Branch allBranche : allBranches) {
+                if (allBranche.getBranch_bank_id() == bankId) {
+                    cmb_CAR_Branch.addItem(allBranche.getBranch_name());
+                } else {
+                    cmb_CAR_Branch.removeAll();
+                    cmb_CAR_Branch.revalidate();
+                    cmb_CAR_Branch.repaint();
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadToAccountTypeCombo() {
+        try {
+
+            List<R_AccountType> allAccountTypes = accountTypeController.getAllAccountTypes();
+            cmb_CAR_Acc_Type.removeAll();
+            for (R_AccountType allAccountType : allAccountTypes) {
+                cmb_CAR_Acc_Type.addItem(allAccountType.getAccountType_name());
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadCompanyAccountTable() {
+        try {
+
+            List<M_Account> allAccounts = accountController.getAllAccounts();
+            dtmcomAccount.setRowCount(0);
+            for (M_Account allAccount : allAccounts) {
+                String[] rowData = {bankController.searchBank(allAccount.getAccount_bank_id()).getBank_name(), branchController.searchBranch(allAccount.getAccount_branch_id()).getBranch_name(), allAccount.getAccount_accountNo()};
+                dtmcomAccount.addRow(rowData);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadFromAccountTable() {
+        try {
+
+            M_Account account = accountController.searchAccount(dtmcomAccount.getValueAt(tbl_acc.getSelectedRow(), 2).toString());
+
+            cmb_CAR_Bank.setSelectedItem(bankController.searchBank(account.getAccount_bank_id()).getBank_name());
+            cmb_CAR_Branch.setSelectedItem(branchController.searchBranch(account.getAccount_branch_id()).getBranch_name());
+            txt_acc_no.setText(account.getAccount_accountNo());
+            txt_acc_name.setText(account.getAccount_accountName());
+            cmb_CAR_Acc_Type.setSelectedItem(accountTypeController.searchAccountType(account.getAccount_accountType_id()).getAccountType_name());
+
+            if (account.getAccount_status().equalsIgnoreCase("A")) {
+                cmb_acc_states.setSelectedIndex(0);
+            } else {
+                cmb_acc_states.setSelectedIndex(1);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        btn_acc_save.setText("Update");
+    }
+
+    private void updateCompanyAccount() {
+        try {
+
+            int accountId = accountController.searchAccount(dtmcomAccount.getValueAt(tbl_acc.getSelectedRow(), 2).toString()).getAccount_id();
+            int bankId = bankController.searchBankByName(cmb_CAR_Bank.getSelectedItem().toString()).getBank_id();
+            int branchId = branchController.searchBranch(cmb_CAR_Branch.getSelectedItem().toString(), bankId).getBranch_id();
+            String accountNo = txt_acc_no.getText();
+            int accTypeId = accountTypeController.searchAccountType(cmb_CAR_Acc_Type.getSelectedItem().toString()).getAccountType_id();
+            String accountStatus = null;
+            if (cmb_acc_states.getSelectedIndex() == 0) {
+                accountStatus = "A";
+            } else {
+                accountStatus = "I";
+            }
+            String accountName = txt_acc_name.getText();
+
+            M_Account account = new M_Account(accountId, bankId, branchId, accountNo, accTypeId, accountStatus, accountName);
+            boolean updateAccount = accountController.updateAccount(account);
+            if (updateAccount) {
+                JOptionPane.showMessageDialog(this, "Account Details Updated Successfully..");
+            } else {
+                JOptionPane.showMessageDialog(this, "Account Detail Updating Failed..");
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        loadCompanyAccountTable();
+
+    }
+
 }
