@@ -6,8 +6,10 @@
 package com.brotherssoft.samodconstructions.dbAccessFactory;
 
 import com.brotherssoft.samodconstructions.dbAccess.ID_DBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_AccountDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_EmployeeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_Primary_ProjectDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_AccountTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BankDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BranchDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_PaymentModeDBAccess;
@@ -30,5 +32,7 @@ public interface DBAccessFactory {
     public R_ProjectSpecialityDBAccess getProjectSpecialityDBAccess();
     public R_ProjectTypeDBAccess getProjectTypeDBAccess();
     public R_PaymentModeDBAccess getPaymentModeDBAccess();
+    public M_AccountDBAccess getAccountDBAccess();
+    public R_AccountTypeDBAccess getAccountTypeDBAccess();
     
 }

@@ -48,4 +48,8 @@ public class R_BranchService {
         return dbAccessFactory.getBranchDBAccess().searchBranchByCode(code);
     }
     
+    public R_Branch searBranch(String branchName, int bankId)throws Exception{
+        return dbAccessFactory.getBranchDBAccess().searchBranch(branchName, bankId);
+    }
+    
 }

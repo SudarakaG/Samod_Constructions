@@ -108,4 +108,21 @@ public class R_BranchDBAccess {
         
     }
     
+    public R_Branch searchBranch(String branchName,int bankId) throws Exception {
+        
+            String sql = "Select * From R_Branch where BRANCH_NAME=? AND BRANCH_BANKID=?";
+            Connection conn = DBConnection.getDBConnection().getConnection();
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setObject(1, branchName);
+            stm.setObject(2, bankId);
+            ResultSet rst = stm.executeQuery();
+            R_Branch branch = null;
+            if (rst.next()) {
+                branch = new R_Branch(rst.getInt(1), rst.getInt(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getInt(7));
+
+            }
+            return branch;
+        
+    }
+    
 }

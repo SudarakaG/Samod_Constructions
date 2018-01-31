@@ -6,8 +6,10 @@
 package com.brotherssoft.samodconstructions.controllerfactoryimpl;
 
 import com.brotherssoft.samodconstructions.controller.IDController;
+import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
 import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
+import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
 import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
@@ -16,8 +18,10 @@ import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityControl
 import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
 import com.brotherssoft.samodconstructions.controllerfactory.ControllerFactory;
 import com.brotherssoft.samodconstructions.controllerimpl.IDControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.M_AccountControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_EmployeeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_Primary_ProjectControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_AccountTypeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_BankControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_BranchControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_PaymentModeControllerImpl;
@@ -79,6 +83,16 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     @Override
     public R_PaymentModeController getPaymentModeController() throws Exception {
         return new R_PaymentModeControllerImpl();
+    }
+
+    @Override
+    public M_AccountController getAccountController() throws Exception {
+        return new M_AccountControllerImpl();
+    }
+
+    @Override
+    public R_AccountTypeController getAccountTypeController() throws Exception {
+        return new R_AccountTypeControllerImpl();
     }
     
 }

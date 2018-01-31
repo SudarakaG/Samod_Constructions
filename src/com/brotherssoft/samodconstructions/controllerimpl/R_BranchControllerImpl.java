@@ -53,5 +53,10 @@ public class R_BranchControllerImpl extends UnicastRemoteObject implements R_Bra
     public R_Branch searchBranchByCode(String branchCode) throws Exception {
         return sf.getBranchService().searchBranchByCode(branchCode);
     }
+
+    @Override
+    public R_Branch searchBranch(String branchName, int bankId) throws Exception {
+        return sf.getBranchService().searBranch(branchName, bankId);
+    }
     
 }
