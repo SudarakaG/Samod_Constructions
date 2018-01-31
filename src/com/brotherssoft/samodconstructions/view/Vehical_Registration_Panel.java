@@ -5,17 +5,50 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.M_VehicleController;
+import com.brotherssoft.samodconstructions.controller.R_FuelTypeController;
+import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
+import com.brotherssoft.samodconstructions.custom.IDGenerator;
+import com.brotherssoft.samodconstructions.model.M_Vehicle;
+import com.brotherssoft.samodconstructions.model.R_FuelType;
+import com.brotherssoft.samodconstructions.model.R_VehicleType;
+import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Akvasoft
  */
 public class Vehical_Registration_Panel extends javax.swing.JPanel {
 
+    R_VehivleTypeController vehivleTypeController;
+    R_FuelTypeController fuelTypeController;
+    M_VehicleController vehicleController;
+    
+    DefaultTableModel dtmVehicle;
+    
     /**
      * Creates new form Vehical_Registration_Panel
      */
-    public Vehical_Registration_Panel() {
+    public Vehical_Registration_Panel() throws Exception {
         initComponents();
+        
+        vehivleTypeController = ServerConnector.getServerConnetor().getVehivleTypeController();
+        fuelTypeController = ServerConnector.getServerConnetor().getFuelTypeController();
+        vehicleController = ServerConnector.getServerConnetor().getVehicleController();
+        dtmVehicle = (DefaultTableModel) tbl_vehicle_info.getModel();
+        
+        loadYearCombo();
+        loadVehicleTypeCombo();
+        loadFuelTypeCombo();
+        loadVehicleTable();
+        
     }
 
     /**
@@ -37,9 +70,9 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         jLabel165 = new javax.swing.JLabel();
         txt_engine_no = new javax.swing.JTextField();
         btn_save_vehicle = new javax.swing.JButton();
-        btn_cancel_vehicle = new javax.swing.JButton();
+        btn_vehicle_new = new javax.swing.JButton();
         cmb_vehicle_year = new javax.swing.JComboBox<>();
-        btn_vehicle = new javax.swing.JButton();
+        btn_vehicle_allocation = new javax.swing.JButton();
         jLabel167 = new javax.swing.JLabel();
         cmb_vehicle_type = new javax.swing.JComboBox<>();
         jLabel168 = new javax.swing.JLabel();
@@ -52,6 +85,8 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         txt_vehicle_depriation_rate = new javax.swing.JTextField();
         jLabel172 = new javax.swing.JLabel();
         cmb_vehicle_status = new javax.swing.JComboBox<>();
+        jLabel166 = new javax.swing.JLabel();
+        txt_vehicle_regNo = new javax.swing.JTextField();
         bank_panel_tbl5 = new javax.swing.JPanel();
         jScrollPane21 = new javax.swing.JScrollPane();
         tbl_vehicle_info = new javax.swing.JTable();
@@ -115,18 +150,28 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
 
         btn_save_vehicle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_save_vehicle.setText("Save");
+        btn_save_vehicle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_save_vehicleActionPerformed(evt);
+            }
+        });
 
-        btn_cancel_vehicle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_cancel_vehicle.setText("Cancel");
+        btn_vehicle_new.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_vehicle_new.setText("New");
+        btn_vehicle_new.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_vehicle_newActionPerformed(evt);
+            }
+        });
 
         cmb_vehicle_year.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_vehicle_year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Select Year -" }));
 
-        btn_vehicle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_vehicle.setText("Vehicle");
-        btn_vehicle.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_vehicle_allocation.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_vehicle_allocation.setText("Vehicle Allocation");
+        btn_vehicle_allocation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_vehicleMouseClicked(evt);
+                btn_vehicle_allocationMouseClicked(evt);
             }
         });
 
@@ -163,6 +208,12 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         cmb_vehicle_status.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_vehicle_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
 
+        jLabel166.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel166.setText("Registration No");
+
+        txt_vehicle_regNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_vehicle_regNo.setToolTipText("");
+
         javax.swing.GroupLayout bank_panel_input_area5Layout = new javax.swing.GroupLayout(bank_panel_input_area5);
         bank_panel_input_area5.setLayout(bank_panel_input_area5Layout);
         bank_panel_input_area5Layout.setHorizontalGroup(
@@ -179,16 +230,16 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmb_vehicle_year, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_area5Layout.createSequentialGroup()
-                        .addGap(0, 188, Short.MAX_VALUE)
-                        .addComponent(btn_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_vehicle_allocation)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_save_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_cancel_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_vehicle_new, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
                         .addComponent(jLabel167, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmb_vehicle_type, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cmb_vehicle_type, 0, 326, Short.MAX_VALUE))
                     .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
                         .addComponent(jLabel168, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -208,16 +259,24 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
                     .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
                         .addComponent(jLabel172, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmb_vehicle_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(cmb_vehicle_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
+                        .addComponent(jLabel166, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_vehicle_regNo)))
                 .addContainerGap())
         );
         bank_panel_input_area5Layout.setVerticalGroup(
             bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(26, 26, 26)
                 .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel167, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmb_vehicle_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel166, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_vehicle_regNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel164, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -249,8 +308,8 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(bank_panel_input_area5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_save_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cancel_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_vehicle_new, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_vehicle_allocation, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -295,6 +354,11 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
             }
         ));
         tbl_vehicle_info.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_vehicle_info.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_vehicle_infoMouseClicked(evt);
+            }
+        });
         jScrollPane21.setViewportView(tbl_vehicle_info);
 
         jLabel163.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
@@ -362,18 +426,46 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_vehicleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_vehicleMouseClicked
+    private void btn_vehicle_allocationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_vehicle_allocationMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_vehicleMouseClicked
+    }//GEN-LAST:event_btn_vehicle_allocationMouseClicked
+
+    private void btn_save_vehicleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_vehicleActionPerformed
+        if(btn_save_vehicle.getText().equalsIgnoreCase("Save")){
+            saveVehicle();
+        }else{
+            updateVehicle();
+        }
+    }//GEN-LAST:event_btn_save_vehicleActionPerformed
+
+    private void tbl_vehicle_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_vehicle_infoMouseClicked
+        loadFromVehicleTable();
+    }//GEN-LAST:event_tbl_vehicle_infoMouseClicked
+
+    private void btn_vehicle_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vehicle_newActionPerformed
+        
+        cmb_vehicle_type.setSelectedIndex(0);
+        txt_vehicle_regNo.setText("");
+        txt_engine_no.setText("");
+        txt_vehi_chasis_no.setText("");
+        cmb_vehicle_year.setSelectedIndex(0);
+        txt_vehicle_amount.setText("");
+        cmb_vehi_fuel_type.setSelectedIndex(0);
+        txt_vehicle_depriation_rate.setText("");
+        cmb_vehicle_status.setSelectedIndex(0);
+        
+        btn_save_vehicle.setText("Save");
+        
+    }//GEN-LAST:event_btn_vehicle_newActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Vehical_Registration_Panel;
     private javax.swing.JPanel bank_panel_input_area5;
     private javax.swing.JPanel bank_panel_tbl5;
-    private javax.swing.JButton btn_cancel_vehicle;
     private javax.swing.JButton btn_save_vehicle;
-    private javax.swing.JButton btn_vehicle;
+    private javax.swing.JButton btn_vehicle_allocation;
+    private javax.swing.JButton btn_vehicle_new;
     private javax.swing.JComboBox<String> cmb_vehi_fuel_type;
     private javax.swing.JComboBox<String> cmb_vehicle_status;
     private javax.swing.JComboBox<String> cmb_vehicle_type;
@@ -381,6 +473,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel163;
     private javax.swing.JLabel jLabel164;
     private javax.swing.JLabel jLabel165;
+    private javax.swing.JLabel jLabel166;
     private javax.swing.JLabel jLabel167;
     private javax.swing.JLabel jLabel168;
     private javax.swing.JLabel jLabel169;
@@ -397,6 +490,174 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_vehi_chasis_no;
     private javax.swing.JTextField txt_vehicle_amount;
     private javax.swing.JTextField txt_vehicle_depriation_rate;
+    private javax.swing.JTextField txt_vehicle_regNo;
     private javax.swing.JPanel user_panel_hedding8;
     // End of variables declaration//GEN-END:variables
+
+    private void loadYearCombo() {
+        
+        ArrayList<String> years = new ArrayList<>();
+        for (int i = 1950; i <= Calendar.getInstance().get(Calendar.YEAR); i++) {
+            years.add(i+"");
+        }
+        cmb_vehicle_year.removeAll();
+        for (String year : years) {
+            cmb_vehicle_year.addItem(year);
+        }
+        
+    }
+
+    private void loadVehicleTypeCombo() {
+        try {
+            
+            List<R_VehicleType> allVehicleTypes = vehivleTypeController.getAllVehicleTypes();
+            cmb_vehicle_type.removeAll();
+            for (R_VehicleType allVehicleType : allVehicleTypes) {
+                cmb_vehicle_type.addItem(allVehicleType.getVehicleType_name());
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadFuelTypeCombo() {
+        try {
+            
+            List<R_FuelType> allFuelTypes = fuelTypeController.getAllFuelTypes();
+            cmb_vehi_fuel_type.removeAll();
+            for (R_FuelType allFuelType : allFuelTypes) {
+                cmb_vehi_fuel_type.addItem(allFuelType.getFuel_name());
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadVehicleTable() {
+        try {
+            
+            dtmVehicle.setRowCount(0);
+            List<M_Vehicle> allVehicles = vehicleController.getAllVehicles();
+            for (M_Vehicle allVehicle : allVehicles) {
+                String[] rowData = {allVehicle.getVehicle_regNo()};
+                dtmVehicle.addRow(rowData);
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void saveVehicle() {
+        try {
+            
+            int vehicleId = IDGenerator.getNewID("m_vehicle", "VEHICLE_ID");
+            String regNo = txt_vehicle_regNo.getText();
+            int vehicleTypeId = vehivleTypeController.searchVehicleType(cmb_vehicle_type.getSelectedItem().toString()).getVehicleType_id();
+            String engineNo = txt_engine_no.getText();
+            String chasisNo = txt_vehi_chasis_no.getText();
+            String year = cmb_vehicle_year.getSelectedItem().toString();
+            double amount = Double.parseDouble(txt_vehicle_amount.getText());
+            double depriationRate = Double.parseDouble(txt_vehicle_depriation_rate.getText());
+            String status = null;
+                if(cmb_vehicle_status.getSelectedIndex() == 0){
+                    status = "A";
+                }else{
+                    status = "I";
+                }
+            int fuelTypeId = fuelTypeController.searchFuelType(cmb_vehi_fuel_type.getSelectedItem().toString()).getFuel_id();
+            String vehicleAllocationStatus = "";
+            
+            M_Vehicle vehicle = new M_Vehicle(vehicleId, regNo, vehicleTypeId, engineNo, chasisNo, year, amount, depriationRate, status, fuelTypeId, vehicleAllocationStatus);
+            boolean addVehivle = vehicleController.addVehivle(vehicle);
+            if (addVehivle) {
+                JOptionPane.showMessageDialog(this, "Vehicle Added Succesfully..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Vehicle Adding Failed");
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        loadVehicleTable();
+    }
+
+    private void loadFromVehicleTable() {            
+        try {
+            
+            M_Vehicle vehicle = getSelectedVehicleNoFromTable();
+            cmb_vehicle_type.setSelectedItem(vehivleTypeController.searchVehicleType(vehicle.getVehicle_type_id()).getVehicleType_name());
+            txt_vehicle_regNo.setText(vehicle.getVehicle_regNo());
+            txt_engine_no.setText(vehicle.getVehicle_engineNo());
+            txt_vehi_chasis_no.setText(vehicle.getVehicle_chasisNo());
+            cmb_vehicle_year.setSelectedItem(vehicle.getVehicle_year());
+            txt_vehicle_amount.setText(Double.toString(vehicle.getVehicle_amount()));
+            cmb_vehi_fuel_type.setSelectedItem(fuelTypeController.searchFuelType(vehicle.getVehicle_fuelType()).getFuel_name());
+            txt_vehicle_depriation_rate.setText(Double.toString(vehicle.getVehicle_depreciationRate()));
+            if(vehicle.getVehicle_status().equalsIgnoreCase("A")){
+                cmb_vehicle_status.setSelectedIndex(0);
+            }else{
+                cmb_vehicle_status.setSelectedIndex(1);
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        btn_save_vehicle.setText("Update");
+               
+    }
+
+    private M_Vehicle getSelectedVehicleNoFromTable() {
+        M_Vehicle searchVehicle = null;
+        try {
+            
+            int selectedRow = tbl_vehicle_info.getSelectedRow();
+            String vehicleNo = dtmVehicle.getValueAt(selectedRow, 0).toString();
+            searchVehicle = vehicleController.searchVehicle(vehicleNo);
+            
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return searchVehicle;
+    }
+
+    private void updateVehicle() {
+        try {
+            
+            int vehicleId = getSelectedVehicleNoFromTable().getVehicle_id();
+            String regNo = txt_vehicle_regNo.getText();
+            int vehicleTypeId = vehivleTypeController.searchVehicleType(cmb_vehicle_type.getSelectedItem().toString()).getVehicleType_id();
+            String engineNo = txt_engine_no.getText();
+            String chasisNo = txt_vehi_chasis_no.getText();
+            String year = cmb_vehicle_year.getSelectedItem().toString();
+            double amount = Double.parseDouble(txt_vehicle_amount.getText());
+            double depriationRate = Double.parseDouble(txt_vehicle_depriation_rate.getText());
+            String status = null;
+            if(cmb_vehicle_status.getSelectedIndex() == 0){
+                status = "A";
+            }else{
+                status = "I";
+            }
+            int fuelTypeId = fuelTypeController.searchFuelType(cmb_vehi_fuel_type.getSelectedItem().toString()).getFuel_id();
+            String vehicleAllocationStatus = "";
+            
+            M_Vehicle vehicle = new M_Vehicle(vehicleId, regNo, vehicleTypeId, engineNo, chasisNo, year, amount, depriationRate, status, fuelTypeId, vehicleAllocationStatus);
+            boolean updateVehicle = vehicleController.updateVehicle(vehicle);
+            if (updateVehicle) {
+                JOptionPane.showMessageDialog(this, "Vehicle Details Updated Successfully..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Vehicle Detail Updating Failed..");
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        loadVehicleTable();
+    }
 }

@@ -5,17 +5,46 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
+import com.brotherssoft.samodconstructions.controller.R_BankController;
+import com.brotherssoft.samodconstructions.controller.R_BranchController;
+import com.brotherssoft.samodconstructions.custom.IDGenerator;
+import com.brotherssoft.samodconstructions.model.M_Purchaser;
+import com.brotherssoft.samodconstructions.model.R_Bank;
+import com.brotherssoft.samodconstructions.model.R_Branch;
+import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Akvasoft
  */
 public class Purchaser_Registration_Panel extends javax.swing.JPanel {
 
+    R_BankController bankController;
+    R_BranchController branchController;
+    M_PurchaserController purchaserController;
+
+    DefaultTableModel dtmPurchaser;
+
     /**
      * Creates new form Purchaser_Registration_Panel
      */
-    public Purchaser_Registration_Panel() {
+    public Purchaser_Registration_Panel() throws Exception {
         initComponents();
+
+        bankController = ServerConnector.getServerConnetor().getBankController();
+        branchController = ServerConnector.getServerConnetor().getBranchController();
+        purchaserController = ServerConnector.getServerConnetor().getPurchaserController();
+        dtmPurchaser = (DefaultTableModel) tbl_purchaser_info.getModel();
+
+        loadBankCombo();
+        loadPurchaserTable();
+
     }
 
     /**
@@ -39,7 +68,7 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         txt_purchaser_name = new javax.swing.JTextField();
         txt_purchaser_address = new javax.swing.JTextField();
         btn_save_purchaser = new javax.swing.JButton();
-        btn_cancel_purchaser = new javax.swing.JButton();
+        btn_purchaser_new = new javax.swing.JButton();
         cmb_purchaser_bank = new javax.swing.JComboBox<>();
         btn_purchaser = new javax.swing.JButton();
         jLabel176 = new javax.swing.JLabel();
@@ -123,12 +152,27 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
 
         btn_save_purchaser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_save_purchaser.setText("Save");
+        btn_save_purchaser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_save_purchaserActionPerformed(evt);
+            }
+        });
 
-        btn_cancel_purchaser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_cancel_purchaser.setText("Cancel");
+        btn_purchaser_new.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_purchaser_new.setText("New");
+        btn_purchaser_new.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_purchaser_newActionPerformed(evt);
+            }
+        });
 
         cmb_purchaser_bank.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_purchaser_bank.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Bank -" }));
+        cmb_purchaser_bank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_purchaser_bankActionPerformed(evt);
+            }
+        });
 
         btn_purchaser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_purchaser.setText("Branch");
@@ -173,7 +217,7 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         jLabel182.setText("Status");
 
         cmb_purchaser_status.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmb_purchaser_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Branch -" }));
+        cmb_purchaser_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
 
         javax.swing.GroupLayout bank_panel_input_area6Layout = new javax.swing.GroupLayout(bank_panel_input_area6);
         bank_panel_input_area6.setLayout(bank_panel_input_area6Layout);
@@ -200,7 +244,7 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_save_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_cancel_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_purchaser_new, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(bank_panel_input_area6Layout.createSequentialGroup()
                         .addComponent(jLabel176, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -277,7 +321,7 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addGroup(bank_panel_input_area6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_save_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cancel_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_purchaser_new, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -323,6 +367,11 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
             }
         ));
         tbl_purchaser_info.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_purchaser_info.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_purchaser_infoMouseClicked(evt);
+            }
+        });
         jScrollPane25.setViewportView(tbl_purchaser_info);
 
         txt_search_purchaser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -392,13 +441,46 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_purchaserMouseClicked
 
+    private void cmb_purchaser_bankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_purchaser_bankActionPerformed
+        if (cmb_purchaser_bank.getSelectedIndex() != 0) {
+            loadBranchCombo();
+        }
+    }//GEN-LAST:event_cmb_purchaser_bankActionPerformed
+
+    private void btn_save_purchaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_purchaserActionPerformed
+        if (btn_save_purchaser.getText().equalsIgnoreCase("Save")) {
+            savePurchaser();
+        }else{
+            updatePurchaser();
+        }
+    }//GEN-LAST:event_btn_save_purchaserActionPerformed
+
+    private void tbl_purchaser_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_purchaser_infoMouseClicked
+        getFromPurchaserTable();
+    }//GEN-LAST:event_tbl_purchaser_infoMouseClicked
+
+    private void btn_purchaser_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_purchaser_newActionPerformed
+        txt_purchaser_name.setText("");
+        txt_purchaser_address.setText("");
+        txt_purchaser_accountNo.setText("");
+        cmb_purchaser_bank.setSelectedIndex(0);
+        cmb_purchaser_branch.setSelectedIndex(0);
+        txt_purchaser_contact1.setText("");
+        txt_purchaser_contact2.setText("");
+        txt_purchaser_repName.setText("");
+        txt_purchaser_repContact.setText("");
+        cmb_purchaser_status.setSelectedIndex(0);
+        
+        btn_save_purchaser.setText("Save");
+    }//GEN-LAST:event_btn_purchaser_newActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Purchaser_Registration_Panel;
     private javax.swing.JPanel bank_panel_input_area6;
     private javax.swing.JPanel bank_panel_tbl10;
-    private javax.swing.JButton btn_cancel_purchaser;
     private javax.swing.JButton btn_purchaser;
+    private javax.swing.JButton btn_purchaser_new;
     private javax.swing.JButton btn_save_purchaser;
     private javax.swing.JComboBox<String> cmb_purchaser_bank;
     private javax.swing.JComboBox<String> cmb_purchaser_branch;
@@ -429,4 +511,169 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_search_purchaser;
     private javax.swing.JPanel user_panel_hedding11;
     // End of variables declaration//GEN-END:variables
+
+    private void loadBankCombo() {
+        try {
+
+            List<R_Bank> allBanks = bankController.getAllBanks();
+            cmb_purchaser_bank.removeAll();
+            for (R_Bank allBank : allBanks) {
+                cmb_purchaser_bank.addItem(allBank.getBank_name());
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadPurchaserTable() {
+        try {
+            
+            dtmPurchaser.setRowCount(0);
+            List<M_Purchaser> allPurchasers = purchaserController.getAllPurchasers();
+            for (M_Purchaser allPurchaser : allPurchasers) {
+                String[] rowData = {allPurchaser.getPurchaser_name()};
+                dtmPurchaser.addRow(rowData);
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadBranchCombo() {
+        try {
+
+            for (int i = 1; i < cmb_purchaser_branch.getItemCount(); i++) {
+                cmb_purchaser_branch.removeItemAt(i);
+            }
+
+            List<R_Branch> allBranches = branchController.getAllBranches();
+            int bankId = bankController.searchBankByName(cmb_purchaser_bank.getSelectedItem().toString()).getBank_id();
+//
+            for (R_Branch allBranche : allBranches) {
+                if (allBranche.getBranch_bank_id() == bankId) {
+                    cmb_purchaser_branch.addItem(allBranche.getBranch_name());
+                } else {
+                    cmb_purchaser_branch.removeAll();
+                    cmb_purchaser_branch.revalidate();
+                    cmb_purchaser_branch.repaint();
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void savePurchaser() {
+        try {
+
+            int purchaserId = IDGenerator.getNewID("m_purchaser", "PURCHASER_ID");
+            String purchaserName = txt_purchaser_name.getText();
+            String purchaserAddress = txt_purchaser_address.getText();
+            String purchaserAccountNo = txt_purchaser_accountNo.getText();
+            int bankId = bankController.searchBankByName(cmb_purchaser_bank.getSelectedItem().toString()).getBank_id();
+            int branchId = branchController.searchBranch(cmb_purchaser_branch.getSelectedItem().toString(), bankId).getBranch_id();
+            String contact1 = txt_purchaser_contact1.getText();
+            String contact2 = txt_purchaser_contact2.getText();
+            String repName = txt_purchaser_repName.getText();
+            String repContact = txt_purchaser_repContact.getText();
+            String status = null;
+            if (cmb_purchaser_status.getSelectedIndex() == 0) {
+                status = "A";
+            } else {
+                status = "I";
+            }
+            
+            M_Purchaser purchaser = new M_Purchaser(purchaserId, purchaserName, purchaserAddress, purchaserAccountNo, bankId, branchId, contact1, contact2, repName, repContact, status);
+            boolean addPurchaser = purchaserController.addPurchaser(purchaser);
+            if (addPurchaser) {
+                JOptionPane.showMessageDialog(this, "Purchaser Details Saved Successfully..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Purchaser Details Saving Cannot Proceed..");
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        loadPurchaserTable();
+    }
+
+    private void getFromPurchaserTable() {        
+        try {
+            
+            M_Purchaser purchaser = searchFromTablePurchaserName();
+            
+            txt_purchaser_name.setText(purchaser.getPurchaser_name());
+            txt_purchaser_address.setText(purchaser.getPurchaser_address());
+            txt_purchaser_accountNo.setText(purchaser.getPurchaser_accountNo());
+            cmb_purchaser_bank.setSelectedItem(bankController.searchBank(purchaser.getPurchaser_bank_id()).getBank_name());
+            cmb_purchaser_branch.setSelectedItem(branchController.searchBranch(purchaser.getPurchaser_branch_id()).getBranch_name());
+            txt_purchaser_contact1.setText(purchaser.getPurchaser_contact1());
+            txt_purchaser_contact2.setText(purchaser.getPurchaser_contact2());
+            txt_purchaser_repName.setText(purchaser.getPurchaser_repName());
+            txt_purchaser_repContact.setText(purchaser.getPurchaser_repContact());
+            if(purchaser.getPurchaser_status().equalsIgnoreCase("A")){
+                cmb_purchaser_status.setSelectedIndex(0);
+            }else{
+                cmb_purchaser_status.setSelectedIndex(1);
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        btn_save_purchaser.setText("Update");
+    }
+
+    private M_Purchaser searchFromTablePurchaserName() {
+        M_Purchaser searchPurchaser = null;
+        try {
+            
+            int selectedRow = tbl_purchaser_info.getSelectedRow();
+            String purchaserName = (String) dtmPurchaser.getValueAt(selectedRow, 0);
+            searchPurchaser = purchaserController.searchPurchaser(purchaserName);
+            
+                    } catch (Exception ex) {
+            Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return searchPurchaser;
+    }
+
+    private void updatePurchaser() {
+        try {
+            
+            int purchaserId = searchFromTablePurchaserName().getPurchaser_id();
+            String purchaserName = txt_purchaser_name.getText();
+            String purchaserAddress = txt_purchaser_address.getText();
+            String purchaserAccountNo = txt_purchaser_accountNo.getText();
+            int bankId = bankController.searchBankByName(cmb_purchaser_bank.getSelectedItem().toString()).getBank_id();
+            int branchId = branchController.searchBranch(cmb_purchaser_branch.getSelectedItem().toString(), bankId).getBranch_id();
+            String contact1 = txt_purchaser_contact1.getText();
+            String contact2 = txt_purchaser_contact2.getText();
+            String repName = txt_purchaser_repName.getText();
+            String repContact = txt_purchaser_repContact.getText();
+            String status = null;
+            if (cmb_purchaser_status.getSelectedIndex() == 0) {
+                status = "A";
+            } else {
+                status = "I";
+            }
+            
+            M_Purchaser purchaser = new M_Purchaser(purchaserId, purchaserName, purchaserAddress, purchaserAccountNo, bankId, branchId, contact1, contact2, repName, repContact, status);
+            boolean updatePuchaser = purchaserController.updatePuchaser(purchaser);
+            if (updatePuchaser) {
+                JOptionPane.showMessageDialog(this, "Purchaser Details Updated Successfully..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Updating Purchaser Details Failed..");
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        loadPurchaserTable();
+    }
 }

@@ -1785,8 +1785,12 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lable3MouseClicked
 
     private void master_detail_home_lable12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable12MouseClicked
-        Vehical_Registration_Panel panel = new Vehical_Registration_Panel();
-        panelManager(panel);
+        try {
+            Vehical_Registration_Panel panel = new Vehical_Registration_Panel();
+            panelManager(panel);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable12MouseClicked
 
     private void master_detail_home_lable13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable13MouseClicked
@@ -1800,8 +1804,12 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lable11MouseClicked
 
     private void master_detail_home_lable9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable9MouseClicked
-       Purchaser_Registration_Panel panel = new Purchaser_Registration_Panel();
-        panelManager(panel);
+        try {
+            Purchaser_Registration_Panel panel = new Purchaser_Registration_Panel();
+            panelManager(panel);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable9MouseClicked
 
     private void master_detail_home_lableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lableMouseClicked

@@ -8,13 +8,17 @@ package com.brotherssoft.samodconstructions.serverconnector;
 import com.brotherssoft.samodconstructions.controller.IDController;
 import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
+import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
+import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
+import com.brotherssoft.samodconstructions.controller.R_FuelTypeController;
 import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
+import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
 import com.brotherssoft.samodconstructions.controllerfactory.ControllerFactory;
 import java.rmi.Naming;
 
@@ -25,7 +29,7 @@ import java.rmi.Naming;
 public class ServerConnector {
     
     private static ServerConnector sc;
-    private ControllerFactory cf;
+    private final ControllerFactory cf;
     private IDController ic;
     private R_BankController bc;
     private R_BranchController branchController;
@@ -36,6 +40,10 @@ public class ServerConnector {
     private R_PaymentModeController paymentModeController;
     private M_AccountController accountController;
     private R_AccountTypeController accountTypeController;
+    private R_VehivleTypeController vehivleTypeController;
+    private R_FuelTypeController fuelTypeController;
+    private M_VehicleController vehicleController;
+    private M_PurchaserController purchaserController;
     
     //private UserHistoryController uhc;
 
@@ -111,6 +119,34 @@ public class ServerConnector {
             accountTypeController = cf.getAccountTypeController();
         }
         return accountTypeController;
+    }
+    
+    public R_VehivleTypeController getVehivleTypeController()throws Exception{
+        if(vehivleTypeController == null){
+            vehivleTypeController = cf.getVehivleTypeController();
+        }
+        return vehivleTypeController;
+    }
+    
+    public R_FuelTypeController getFuelTypeController()throws Exception{
+        if(fuelTypeController == null){
+            fuelTypeController = cf.getFuelTypeController();
+        }
+        return fuelTypeController;
+    }
+    
+    public M_VehicleController getVehicleController()throws Exception{
+        if(vehicleController == null){
+            vehicleController = cf.getVehicleController();
+        }
+        return vehicleController;
+    }
+    
+    public M_PurchaserController getPurchaserController()throws Exception{
+        if(purchaserController == null){
+            purchaserController = cf.getPurchaserController();
+        }
+        return purchaserController;
     }
 
 //    
