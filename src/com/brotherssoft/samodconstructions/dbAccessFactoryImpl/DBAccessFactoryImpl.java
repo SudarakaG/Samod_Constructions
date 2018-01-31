@@ -9,15 +9,18 @@ import com.brotherssoft.samodconstructions.dbAccess.ID_DBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_AccountDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_EmployeeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_Primary_ProjectDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_PurchaserDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_VehicleDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_AccountTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BankDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BranchDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_FuelTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_PaymentModeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectGradeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectSpecialityDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccessFactory.DBAccessFactory;
-import com.brotherssoft.samodconstructions.model.M_Project_Primary;
 
 /**
  *
@@ -83,6 +86,26 @@ public class DBAccessFactoryImpl implements DBAccessFactory{
     @Override
     public R_AccountTypeDBAccess getAccountTypeDBAccess() {
         return new R_AccountTypeDBAccess();
+    }
+
+    @Override
+    public R_VehicleTypeDBAccess getR_VehicleTypeDBAccess() {
+        return new R_VehicleTypeDBAccess();
+    }
+
+    @Override
+    public R_FuelTypeDBAccess getFuelTypeDBAccess() {
+        return new R_FuelTypeDBAccess();
+    }
+
+    @Override
+    public M_VehicleDBAccess getVehicleDBAccess() {
+        return new M_VehicleDBAccess();
+    }
+
+    @Override
+    public M_PurchaserDBAccess getPurchaserDBAccess() {
+        return new M_PurchaserDBAccess();
     }
 
     

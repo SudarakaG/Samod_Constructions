@@ -9,13 +9,17 @@ import com.brotherssoft.samodconstructions.service.IDService;
 import com.brotherssoft.samodconstructions.service.M_AccountService;
 import com.brotherssoft.samodconstructions.service.M_EmployeeService;
 import com.brotherssoft.samodconstructions.service.M_Primary_ProjectService;
+import com.brotherssoft.samodconstructions.service.M_PurchaserService;
+import com.brotherssoft.samodconstructions.service.M_VehicleService;
 import com.brotherssoft.samodconstructions.service.R_AccountTypeService;
 import com.brotherssoft.samodconstructions.service.R_BankService;
 import com.brotherssoft.samodconstructions.service.R_BranchService;
+import com.brotherssoft.samodconstructions.service.R_FuelTypeService;
 import com.brotherssoft.samodconstructions.service.R_PaymentModeService;
 import com.brotherssoft.samodconstructions.service.R_ProjectGradeService;
 import com.brotherssoft.samodconstructions.service.R_ProjectSpecialityService;
 import com.brotherssoft.samodconstructions.service.R_ProjectTypeService;
+import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 
 /**
@@ -80,6 +84,26 @@ public class ServiceFactoryImpl implements ServiceFactory{
     @Override
     public R_AccountTypeService getAccountTypeService() {
         return new R_AccountTypeService();
+    }
+
+    @Override
+    public R_VehicleTypeService getVehicleTypeService() {
+        return new R_VehicleTypeService();
+    }
+
+    @Override
+    public R_FuelTypeService getFuelTypeService() {
+        return new R_FuelTypeService();
+    }
+
+    @Override
+    public M_VehicleService getVehicleService() {
+        return new M_VehicleService();
+    }
+
+    @Override
+    public M_PurchaserService getPurchaserService() {
+        return new M_PurchaserService();
     }
     
 }
