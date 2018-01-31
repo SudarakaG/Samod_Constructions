@@ -18,13 +18,13 @@ public class M_Account implements Serializable{
     private int account_branch_id;
     private String account_accountNo;
     private int account_accountType_id;
-    private char account_status;
+    private String account_status;
     private String account_accountName;
 
     public M_Account() {
     }
 
-    public M_Account(int account_id, int account_bank_id, int account_branch_id, String account_accountNo, int account_accountType_id, char account_status, String account_accountName) {
+    public M_Account(int account_id, int account_bank_id, int account_branch_id, String account_accountNo, int account_accountType_id, String account_status, String account_accountName) {
         this.account_id = account_id;
         this.account_bank_id = account_bank_id;
         this.account_branch_id = account_branch_id;
@@ -33,8 +33,6 @@ public class M_Account implements Serializable{
         this.account_status = account_status;
         this.account_accountName = account_accountName;
     }
-    
-    
 
     /**
      * @return the account_id
@@ -109,14 +107,14 @@ public class M_Account implements Serializable{
     /**
      * @return the account_status
      */
-    public char getAccount_status() {
+    public String getAccount_status() {
         return account_status;
     }
 
     /**
      * @param account_status the account_status to set
      */
-    public void setAccount_status(char account_status) {
+    public void setAccount_status(String account_status) {
         this.account_status = account_status;
     }
 
@@ -134,6 +132,5 @@ public class M_Account implements Serializable{
         this.account_accountName = account_accountName;
     }
 
-    
     
 }

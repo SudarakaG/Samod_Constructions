@@ -15,14 +15,14 @@ public class R_AccountType implements Serializable{
     
     private int accountType_id;
     private String accountType_name;
-    private char accountType_code;
+    private String accountType_code;
     private String accountType_description;
-    private char accountType_status;
+    private String accountType_status;
 
     public R_AccountType() {
     }
 
-    public R_AccountType(int accountType_id, String accountType_name, char accountType_code, String accountType_description, char accountType_status) {
+    public R_AccountType(int accountType_id, String accountType_name, String accountType_code, String accountType_description, String accountType_status) {
         this.accountType_id = accountType_id;
         this.accountType_name = accountType_name;
         this.accountType_code = accountType_code;
@@ -61,14 +61,14 @@ public class R_AccountType implements Serializable{
     /**
      * @return the accountType_code
      */
-    public char getAccountType_code() {
+    public String getAccountType_code() {
         return accountType_code;
     }
 
     /**
      * @param accountType_code the accountType_code to set
      */
-    public void setAccountType_code(char accountType_code) {
+    public void setAccountType_code(String accountType_code) {
         this.accountType_code = accountType_code;
     }
 
@@ -89,17 +89,17 @@ public class R_AccountType implements Serializable{
     /**
      * @return the accountType_status
      */
-    public char getAccountType_status() {
+    public String getAccountType_status() {
         return accountType_status;
     }
 
     /**
      * @param accountType_status the accountType_status to set
      */
-    public void setAccountType_status(char accountType_status) {
+    public void setAccountType_status(String accountType_status) {
         this.accountType_status = accountType_status;
     }
-    
+
     
     
 }

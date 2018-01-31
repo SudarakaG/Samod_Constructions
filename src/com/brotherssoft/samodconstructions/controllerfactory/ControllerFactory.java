@@ -6,11 +6,13 @@
 package com.brotherssoft.samodconstructions.controllerfactory;
 
 import com.brotherssoft.samodconstructions.controller.IDController;
+import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
 import java.rmi.Remote;
 import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
+import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
 import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
@@ -31,5 +33,7 @@ public interface ControllerFactory extends Remote{
     public R_ProjectSpecialityController getProjectSpecialityController()throws Exception;
     public R_ProjectTypeController getProjectTypeController()throws Exception;
     public R_PaymentModeController getPaymentModeController()throws Exception;
+    public M_AccountController getAccountController()throws Exception;
+    public R_AccountTypeController getAccountTypeController()throws Exception;
     
 }
