@@ -5,7 +5,20 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
+import com.brotherssoft.samodconstructions.controller.R_DesignationController;
+import com.brotherssoft.samodconstructions.controller.R_JobTypeController;
+import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.model.M_Employee;
+import com.brotherssoft.samodconstructions.model.R_Designation;
+import com.brotherssoft.samodconstructions.model.R_JobType;
+import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,13 +26,28 @@ import com.brotherssoft.samodconstructions.model.M_Employee;
  */
 public class Employee_Panel extends javax.swing.JPanel {
 
+    R_JobTypeController jobTypeController;
+    R_DesignationController designationController;
+    M_EmployeeController employeeController;
+    DefaultTableModel dtmEmployee;
+
     /**
      * Creates new form Employee_Panel
      */
-    public Employee_Panel() {
+    public Employee_Panel() throws Exception {
         initComponents();
         Employee_Registration_Panel.setVisible(false);
         Employee_View_Panel.setVisible(true);
+
+        jobTypeController = ServerConnector.getServerConnetor().getJobTypeController();
+        designationController = ServerConnector.getServerConnetor().getDesignationController();
+        employeeController = ServerConnector.getServerConnetor().getEmployeeController();
+        dtmEmployee = (DefaultTableModel) tbl_employeeInfo.getModel();
+        
+        loadJobTypeCombo();
+        loadDesignationCombo();
+        loadEmployeeTable();
+        
     }
 
     /**
@@ -39,7 +67,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         jSeparator9 = new javax.swing.JSeparator();
         txt_Input_Panel_Branch2 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
-        cmbtitle = new javax.swing.JComboBox<>();
+        cmb_employee_title = new javax.swing.JComboBox<>();
         jLabel29 = new javax.swing.JLabel();
         txt_Initials = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
@@ -67,18 +95,16 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel55 = new javax.swing.JLabel();
         txt_contact_3 = new javax.swing.JTextField();
         jLabel48 = new javax.swing.JLabel();
-        cmbtitle1 = new javax.swing.JComboBox<>();
-        cmbtitle2 = new javax.swing.JComboBox<>();
+        cmb_emp_jobType = new javax.swing.JComboBox<>();
+        cmb_emp_status = new javax.swing.JComboBox<>();
         jLabel56 = new javax.swing.JLabel();
         jLabel57 = new javax.swing.JLabel();
-        cmbtitle3 = new javax.swing.JComboBox<>();
-        jLabel58 = new javax.swing.JLabel();
-        cmbtitle4 = new javax.swing.JComboBox<>();
+        cmb_emp_designation = new javax.swing.JComboBox<>();
         jLabel59 = new javax.swing.JLabel();
-        date_picker_birth1 = new org.jdesktop.swingx.JXDatePicker();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        date_picker_joinDate = new org.jdesktop.swingx.JXDatePicker();
+        btn_emp_new = new javax.swing.JButton();
+        btn_emp_save = new javax.swing.JButton();
+        btn_emp_salary = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         Employee_View_Panel = new javax.swing.JPanel();
         bank_panel_hedding5 = new javax.swing.JPanel();
@@ -88,7 +114,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         tbl_panel_Branch2 = new javax.swing.JPanel();
         btn_branch1 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
-        tb_branch1 = new javax.swing.JTable();
+        tbl_employeeInfo = new javax.swing.JTable();
         txt_branch_search1 = new javax.swing.JTextField();
 
         Employee_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -139,8 +165,8 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel31.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel31.setText("Title");
 
-        cmbtitle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmbtitle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mrs", "Hon" }));
+        cmb_employee_title.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_employee_title.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mrs", "Ms", "Rev", "Dr", "Master" }));
 
         jLabel29.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel29.setText("Initials");
@@ -158,7 +184,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         txt_Middle_Name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel47.setText("Surname");
+        jLabel47.setText("Last Name");
 
         txt_sur_Name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
@@ -191,7 +217,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel52.setText("Date of Birth");
 
         jLabel53.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel53.setText("Contact No");
+        jLabel53.setText("Contact No 1");
 
         txt_contact_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
@@ -208,11 +234,11 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel48.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel48.setText("Job Type");
 
-        cmbtitle1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmbtitle1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mrs", "Hon" }));
+        cmb_emp_jobType.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_emp_jobType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Job Type -" }));
 
-        cmbtitle2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmbtitle2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mrs", "Hon" }));
+        cmb_emp_status.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_emp_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
 
         jLabel56.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel56.setText("Designation");
@@ -220,31 +246,35 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel57.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel57.setText("States");
 
-        cmbtitle3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmbtitle3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mrs", "Hon" }));
-
-        jLabel58.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel58.setText("EPF Granted");
-
-        cmbtitle4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmbtitle4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mrs", "Hon" }));
+        cmb_emp_designation.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_emp_designation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Designation -" }));
 
         jLabel59.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel59.setText("Date of Join");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Cancel");
-
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton3.setText("Save");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_emp_new.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_emp_new.setText("New");
+        btn_emp_new.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn_emp_newActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("Save");
+        btn_emp_save.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_emp_save.setText("Save");
+        btn_emp_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_emp_saveActionPerformed(evt);
+            }
+        });
+
+        btn_emp_salary.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_emp_salary.setText("Salary");
+        btn_emp_salary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_emp_salaryActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout txt_Input_Panel_Branch2Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch2);
         txt_Input_Panel_Branch2.setLayout(txt_Input_Panel_Branch2Layout);
@@ -273,7 +303,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                                     .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbtitle, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmb_employee_title, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_Initials, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -317,29 +347,25 @@ public class Employee_Panel extends javax.swing.JPanel {
                             .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                                 .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(date_picker_birth1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(date_picker_joinDate, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(36, 62, Short.MAX_VALUE)
-                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel56)
                                     .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbtitle1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbtitle4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbtitle2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                                .addComponent(jLabel58)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cmbtitle3, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmb_emp_jobType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmb_emp_designation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmb_emp_status, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_emp_save, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_emp_new, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btn_emp_salary, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         txt_Input_Panel_Branch2Layout.setVerticalGroup(
@@ -350,7 +376,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbtitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmb_employee_title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -408,32 +434,25 @@ public class Employee_Panel extends javax.swing.JPanel {
                             .addComponent(txt_address_country, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(date_picker_birth1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(date_picker_joinDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                                .addGap(100, 100, 100)
-                                .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbtitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbtitle4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmbtitle2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbtitle3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmb_emp_jobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_emp_designation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_emp_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btn_emp_new, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_emp_save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_emp_salary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(33, 33, 33))
         );
 
@@ -455,13 +474,13 @@ public class Employee_Panel extends javax.swing.JPanel {
                 .addGroup(Employee_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txt_Input_Panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         Employee_Registration_PanelLayout.setVerticalGroup(
             Employee_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Employee_Registration_PanelLayout.createSequentialGroup()
                 .addComponent(bank_panel_hedding3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_Input_Panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -519,9 +538,14 @@ public class Employee_Panel extends javax.swing.JPanel {
                 btn_branch1MouseClicked(evt);
             }
         });
+        btn_branch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_branch1ActionPerformed(evt);
+            }
+        });
 
-        tb_branch1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tb_branch1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_employeeInfo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tbl_employeeInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -565,8 +589,13 @@ public class Employee_Panel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tb_branch1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jScrollPane8.setViewportView(tb_branch1);
+        tbl_employeeInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_employeeInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_employeeInfoMouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(tbl_employeeInfo);
 
         txt_branch_search1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txt_branch_search1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -647,16 +676,48 @@ public class Employee_Panel extends javax.swing.JPanel {
     private void btn_branch1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_branch1MouseClicked
         Employee_View_Panel.setVisible(false);
         Employee_Registration_Panel.setVisible(true);
+        refreshFields();
     }//GEN-LAST:event_btn_branch1MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         Employee_Registration_Panel.setVisible(false);
         Employee_View_Panel.setVisible(true);
+        loadEmployeeTable();
     }//GEN-LAST:event_jButton4MouseClicked
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        addEmployee();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btn_emp_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_saveActionPerformed
+        if(btn_emp_save.getText().equalsIgnoreCase("Save")){
+            addEmployee();
+        }else{
+            updateEmployee();
+        }
+    }//GEN-LAST:event_btn_emp_saveActionPerformed
+
+    private void btn_emp_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_newActionPerformed
+        refreshFields();
+    }//GEN-LAST:event_btn_emp_newActionPerformed
+
+    private void btn_branch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_branch1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_branch1ActionPerformed
+
+    private void tbl_employeeInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_employeeInfoMouseClicked
+        getDataFromTable();
+    }//GEN-LAST:event_tbl_employeeInfoMouseClicked
+
+    private void btn_emp_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_salaryActionPerformed
+        try {
+            Employee_Salary employee_Salary = new Employee_Salary(txt_nic.getText());
+            GUI_Home.load_panel.repaint();
+            GUI_Home.load_panel.revalidate();
+            employee_Salary.setSize(GUI_Home.load_panel.getSize());
+            GUI_Home.load_panel.add(employee_Salary);
+            employee_Salary.setVisible(true);
+            this.setVisible(false);
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_emp_salaryActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -665,16 +726,15 @@ public class Employee_Panel extends javax.swing.JPanel {
     private javax.swing.JPanel bank_panel_hedding3;
     private javax.swing.JPanel bank_panel_hedding5;
     private javax.swing.JButton btn_branch1;
-    private javax.swing.JComboBox<String> cmbtitle;
-    private javax.swing.JComboBox<String> cmbtitle1;
-    private javax.swing.JComboBox<String> cmbtitle2;
-    private javax.swing.JComboBox<String> cmbtitle3;
-    private javax.swing.JComboBox<String> cmbtitle4;
+    private javax.swing.JButton btn_emp_new;
+    private javax.swing.JButton btn_emp_salary;
+    private javax.swing.JButton btn_emp_save;
+    private javax.swing.JComboBox<String> cmb_emp_designation;
+    private javax.swing.JComboBox<String> cmb_emp_jobType;
+    private javax.swing.JComboBox<String> cmb_emp_status;
+    private javax.swing.JComboBox<String> cmb_employee_title;
     private org.jdesktop.swingx.JXDatePicker date_picker_birth;
-    private org.jdesktop.swingx.JXDatePicker date_picker_birth1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private org.jdesktop.swingx.JXDatePicker date_picker_joinDate;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel28;
@@ -695,7 +755,6 @@ public class Employee_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
@@ -703,7 +762,7 @@ public class Employee_Panel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTable tb_branch1;
+    private javax.swing.JTable tbl_employeeInfo;
     private javax.swing.JPanel tbl_panel_Branch2;
     private javax.swing.JTextField txt_Address_city;
     private javax.swing.JTextField txt_Initials;
@@ -722,11 +781,189 @@ public class Employee_Panel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void addEmployee() {
-        M_Employee employee = new M_Employee();
-        employee.setEmp_title((char) cmbtitle.getSelectedItem());
-        employee.setEmp_DOB(date_picker_birth.getDate());
-        employee.setEmp_NIC(txt_nic.getText());
+        try {
+            
+            int empId = IDGenerator.getNewID("m_emp", "EMP_ID");
+            String empTitle = Integer.toString(cmb_employee_title.getSelectedIndex());
+            String empInitials = txt_Initials.getText();
+            String firstName = txt_firt_name.getText();
+            String middleName = txt_Middle_Name.getText();
+            String lastNAme = txt_sur_Name.getText();
+            String address1 = txt_address_no.getText();
+            String address2 = txt_address_street.getText();
+            String address3 = txt_Address_city.getText();
+            String address4 = txt_address_country.getText();
+            Date joinDate = date_picker_joinDate.getDate();
+            String nic = txt_nic.getText();
+            Date birthDay = date_picker_birth.getDate();
+            String contact1 = txt_contact_1.getText();
+            String contact2 = txt_contact_2.getText();
+            String contact3 = txt_contact_3.getText();
+            int jobTypeId = jobTypeController.searchJobType(cmb_emp_jobType.getSelectedItem().toString()).getJobType_id();
+            int destinationId = designationController.searchDesignation(cmb_emp_designation.getSelectedItem().toString()).getDesignation_id();
+            String status = Integer.toString(cmb_emp_status.getSelectedIndex());
+            
+            M_Employee employee = new M_Employee(empId, empTitle, empInitials, firstName, middleName, lastNAme, address1, address2, address3, address4, nic, birthDay, contact1, contact2, contact3, null, 0, 0, destinationId, 0, 0, 0, 0, 0, status, null, jobTypeId, joinDate, 0, 0, 0);
+            boolean addEmployee = employeeController.addEmployee(employee);
+            if (addEmployee) {
+                JOptionPane.showMessageDialog(this, "Employee Details Added Successfully..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Adding Employee Details Failed..");
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }        
         
+    }
+
+    private void loadJobTypeCombo() {
+        try {
+            
+            List<R_JobType> allJobTypes = jobTypeController.getAllJobTypes();
+            cmb_emp_jobType.removeAll();
+            for (R_JobType allJobType : allJobTypes) {
+                cmb_emp_jobType.addItem(allJobType.getJobType_name());
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadDesignationCombo() {
+        try {
+            
+            List<R_Designation> allDesignations = designationController.getAllDesignations();
+            cmb_emp_designation.removeAll();
+            for (R_Designation allDesignation : allDesignations) {
+                cmb_emp_designation.addItem(allDesignation.getDesignation_name());
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadEmployeeTable() {
+        try {
+            
+            dtmEmployee.setRowCount(0);
+            List<M_Employee> allEmployees = employeeController.getAllEmployees();
+            for (M_Employee allEmployee : allEmployees) {
+                
+                String jobType = jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name();
+                String designation = designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name();
+                
+                String[] rowData = {allEmployee.getEmp_firstName(),jobType,designation};
+                dtmEmployee.addRow(rowData);
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void getDataFromTable() {
+        try {
+            M_Employee employee = searchFromTableName();
+            cmb_employee_title.setSelectedIndex(Integer.parseInt(employee.getEmp_title()));
+            txt_Initials.setText(employee.getEmp_initials());
+            txt_firt_name.setText(employee.getEmp_firstName());
+            txt_Middle_Name.setText(employee.getEmp_middleName());
+            txt_sur_Name.setText(employee.getEmp_surName());
+            txt_address_no.setText(employee.getEmp_address1());
+            txt_address_street.setText(employee.getEmp_address2());
+            txt_Address_city.setText(employee.getEmp_address3());
+            txt_address_country.setText(employee.getEmp_address4());
+            date_picker_joinDate.setDate(employee.getEmp_joinDate());
+            txt_nic.setText(employee.getEmp_NIC());
+            date_picker_birth.setDate(employee.getEmp_DOB());
+            txt_contact_1.setText(employee.getEmp_contact1());
+            txt_contact_2.setText(employee.getEmp_contact2());
+            txt_contact_3.setText(employee.getEmp_contatct3());
+            cmb_emp_jobType.setSelectedItem(jobTypeController.searchJobType(employee.getEmp_jobType_id()).getJobType_name());
+            cmb_emp_designation.setSelectedItem(designationController.searchDesignation(employee.getEmp_designation_id()).getDesignation_name());
+            cmb_emp_status.setSelectedIndex(Integer.parseInt(employee.getEmp_status()));
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
+        Employee_Registration_Panel.setVisible(true);
+        Employee_View_Panel.setVisible(false);
+        btn_emp_save.setText("Update");
+    }
+
+    private M_Employee searchFromTableName() {
+        int selectedRow = tbl_employeeInfo.getSelectedRow();
+        String name = (String) dtmEmployee.getValueAt(selectedRow, 0);
+        
+        M_Employee employee = null;
+        try {
+            employee = employeeController.searchEmployee(name);
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return employee;
+    }
+
+    private void updateEmployee() {
+        try {
+            
+            int empId = searchFromTableName().getEmp_id();
+            String empTitle = Integer.toString(cmb_employee_title.getSelectedIndex());
+            String empInitials = txt_Initials.getText();
+            String firstName = txt_firt_name.getText();
+            String middleName = txt_Middle_Name.getText();
+            String lastNAme = txt_sur_Name.getText();
+            String address1 = txt_address_no.getText();
+            String address2 = txt_address_street.getText();
+            String address3 = txt_Address_city.getText();
+            String address4 = txt_address_country.getText();
+            Date joinDate = date_picker_joinDate.getDate();
+            String nic = txt_nic.getText();
+            Date birthDay = date_picker_birth.getDate();
+            String contact1 = txt_contact_1.getText();
+            String contact2 = txt_contact_2.getText();
+            String contact3 = txt_contact_3.getText();
+            int jobTypeId = jobTypeController.searchJobType(cmb_emp_jobType.getSelectedItem().toString()).getJobType_id();
+            int destinationId = designationController.searchDesignation(cmb_emp_designation.getSelectedItem().toString()).getDesignation_id();
+            String status = Integer.toString(cmb_emp_status.getSelectedIndex());
+            
+            M_Employee employee = new M_Employee(empId, empTitle, empInitials, firstName, middleName, lastNAme, address1, address2, address3, address4, nic, birthDay, contact1, contact2, contact3, null, 0, 0, destinationId, 0, 0, 0, 0, 0, status, null, jobTypeId, joinDate, 0, 0, 0);
+            boolean updateEmployee = employeeController.updateEmployee(employee);
+            if (updateEmployee) {
+                JOptionPane.showMessageDialog(this, "Employee Details Updated Successfully..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Updating Employee Details Failed..");
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void refreshFields() {
+        Date date = new Date();
+        cmb_employee_title.setSelectedIndex(0);
+        txt_Initials.setText("");
+        txt_firt_name.setText("");
+        txt_Middle_Name.setText("");
+        txt_sur_Name.setText("");
+        txt_address_no.setText("");
+        txt_address_street.setText("");
+        txt_Address_city.setText("");
+        txt_address_country.setText("");
+        date_picker_joinDate.setDate(date);
+        txt_nic.setText("");
+        date_picker_birth.setDate(date);
+        txt_contact_1.setText("");
+        txt_contact_2.setText("");
+        txt_contact_3.setText("");
+        cmb_emp_jobType.setSelectedIndex(0);
+        cmb_emp_designation.setSelectedIndex(0);
+        cmb_emp_status.setSelectedIndex(0);
+        btn_emp_save.setText("Save");
     }
 }

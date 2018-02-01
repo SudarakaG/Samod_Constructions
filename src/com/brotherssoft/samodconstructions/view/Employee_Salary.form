@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -58,7 +58,7 @@
                       <Component id="txt_Input_Panel_Branch1" alignment="0" max="32767" attributes="0"/>
                       <Component id="tbl_panel_Branch1" alignment="0" pref="504" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="33" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -153,7 +153,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -212,6 +212,11 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txt_emp_al_4" max="32767" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel47" min="-2" pref="146" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cmbEPFStatus" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -220,7 +225,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="65" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel37" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="txt_employee" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -244,6 +249,11 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel43" alignment="0" max="32767" attributes="0"/>
                           <Component id="cmbSalaryType" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel47" alignment="0" max="32767" attributes="0"/>
+                          <Component id="cmbEPFStatus" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -326,6 +336,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Save"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_save_emp_salaryActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_emp_salary_cancel">
               <Properties>
@@ -341,12 +354,14 @@
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Peoples Bank"/>
-                    <StringItem index="1" value="HND"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="- Select Bank -"/>
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbBankEmp_SalaryActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -357,9 +372,8 @@
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Galle"/>
-                    <StringItem index="1" value="Mathara"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="- Select Branch -"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -389,9 +403,8 @@
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Weekly"/>
-                    <StringItem index="1" value="Monthly"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="- Select Salary Type -"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -474,6 +487,30 @@
                 </Property>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="jLabel47">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="EPF Granted"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbEPFStatus">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="Yes"/>
+                    <StringItem index="1" value="No"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="tbl_panel_Branch1">
@@ -538,6 +575,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tb_emp_salMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

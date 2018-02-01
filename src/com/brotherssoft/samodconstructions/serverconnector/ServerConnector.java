@@ -7,17 +7,21 @@ package com.brotherssoft.samodconstructions.serverconnector;
 
 import com.brotherssoft.samodconstructions.controller.IDController;
 import com.brotherssoft.samodconstructions.controller.M_AccountController;
+import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
 import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
 import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
+import com.brotherssoft.samodconstructions.controller.R_DesignationController;
 import com.brotherssoft.samodconstructions.controller.R_FuelTypeController;
+import com.brotherssoft.samodconstructions.controller.R_JobTypeController;
 import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
+import com.brotherssoft.samodconstructions.controller.R_SalaryTypeController;
 import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
 import com.brotherssoft.samodconstructions.controllerfactory.ControllerFactory;
 import java.rmi.Naming;
@@ -44,6 +48,10 @@ public class ServerConnector {
     private R_FuelTypeController fuelTypeController;
     private M_VehicleController vehicleController;
     private M_PurchaserController purchaserController;
+    private R_JobTypeController jobTypeController;
+    private R_DesignationController designationController;
+    private M_EmployeeController employeeController;
+    private R_SalaryTypeController salaryTypeController;
     
     //private UserHistoryController uhc;
 
@@ -147,6 +155,34 @@ public class ServerConnector {
             purchaserController = cf.getPurchaserController();
         }
         return purchaserController;
+    }
+    
+    public R_JobTypeController getJobTypeController()throws Exception{
+        if(jobTypeController == null){
+            jobTypeController = cf.getJobTypeController();
+        }
+        return jobTypeController;
+    }
+    
+    public R_DesignationController getDesignationController()throws Exception{
+        if(designationController == null){
+            designationController = cf.getDesignationController();
+        }
+        return designationController;
+    }
+    
+    public M_EmployeeController getEmployeeController()throws Exception{
+        if(employeeController == null){
+            employeeController = cf.getEmployeeController();
+        }
+        return employeeController;
+    }
+    
+    public R_SalaryTypeController getSalaryTypeController()throws Exception{
+        if(salaryTypeController == null){
+            salaryTypeController = cf.getSalaryTypeController();
+        }
+        return salaryTypeController;
     }
 
 //    

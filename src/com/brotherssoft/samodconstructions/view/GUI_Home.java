@@ -1739,13 +1739,21 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lable10MouseClicked
 
     private void master_detail_home_lable8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable8MouseClicked
-       Employee_Salary es = new Employee_Salary();
-        panelManager(es);
+        try {
+            Employee_Salary es = new Employee_Salary();
+            panelManager(es);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable8MouseClicked
 
     private void master_detail_home_lable6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable6MouseClicked
-        Employee_Panel employee_Panel = new Employee_Panel();
-        panelManager(employee_Panel);
+        try {
+            Employee_Panel employee_Panel = new Employee_Panel();
+            panelManager(employee_Panel);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable6MouseClicked
 
     private void master_detail_home_lable7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable7MouseClicked
@@ -1868,7 +1876,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JPanel load_panel;
+    public static javax.swing.JPanel load_panel;
     private javax.swing.JLabel master_detail_home_lable;
     private javax.swing.JLabel master_detail_home_lable1;
     private javax.swing.JLabel master_detail_home_lable10;
