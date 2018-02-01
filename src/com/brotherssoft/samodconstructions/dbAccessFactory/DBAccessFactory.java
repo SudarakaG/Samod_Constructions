@@ -14,11 +14,14 @@ import com.brotherssoft.samodconstructions.dbAccess.M_VehicleDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_AccountTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BankDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BranchDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_DesignationDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_FuelTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_JobTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_PaymentModeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectGradeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectSpecialityDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_SalaryTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
 
 /**
@@ -42,5 +45,8 @@ public interface DBAccessFactory {
     public R_FuelTypeDBAccess getFuelTypeDBAccess();
     public M_VehicleDBAccess getVehicleDBAccess();
     public M_PurchaserDBAccess getPurchaserDBAccess();
+    public R_JobTypeDBAccess getJobTypeDBAccess();
+    public R_DesignationDBAccess getDesignationDBAccess();
+    public R_SalaryTypeDBAccess getSalaryTypeDBAccess();
     
 }

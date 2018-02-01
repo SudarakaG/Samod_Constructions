@@ -10,6 +10,7 @@ import com.brotherssoft.samodconstructions.model.M_Employee;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
 
 /**
  *
@@ -20,9 +21,40 @@ public class M_EmployeeControllerImpl extends UnicastRemoteObject implements M_E
     private ServiceFactory sf = new ServiceFactoryImpl();
 
     public M_EmployeeControllerImpl()throws Exception{}
+    
     @Override
-    public boolean add_Employee(M_Employee employee) throws Exception {
+    public boolean addEmployee(M_Employee employee) throws Exception {
         return sf.getEmployeeService().addEmployee(employee);
+    }   
+
+    @Override
+    public boolean updateEmployee(M_Employee employee) throws Exception {
+        return sf.getEmployeeService().updateEmployee(employee);
+    }
+
+    @Override
+    public boolean deleteEmployee(int id) throws Exception {
+        return sf.getEmployeeService().deleteEmployee(id);
+    }
+
+    @Override
+    public M_Employee searchEmployee(int id) throws Exception {
+        return sf.getEmployeeService().searchEmployee(id);
+    }
+
+    @Override
+    public M_Employee searchEmployee(String name) throws Exception {
+        return sf.getEmployeeService().searchEmployee(name);
+    }
+
+    @Override
+    public M_Employee searchEmployeeByNIC(String nic) throws Exception {
+        return sf.getEmployeeService().searchEmployeeByNIC(nic);
+    }
+
+    @Override
+    public List<M_Employee> getAllEmployees() throws Exception {
+        return sf.getEmployeeService().getAllEmployees();
     }
 
     

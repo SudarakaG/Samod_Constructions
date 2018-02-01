@@ -86,7 +86,9 @@ public class R_BranchDBAccess {
             List<R_Branch> branchList = new ArrayList<>();
             while (rst.next()) {
                 R_Branch branch = new R_Branch(rst.getInt(1), rst.getInt(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getInt(7));
+                if(branch.getBranch_id() != 0){
                 branchList.add(branch);
+                }
             }
             return branchList;
         

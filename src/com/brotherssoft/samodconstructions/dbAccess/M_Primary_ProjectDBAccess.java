@@ -184,7 +184,9 @@ public class M_Primary_ProjectDBAccess {
             List<M_Project_Primary> primaryProjectList = new ArrayList<>();
             while (rst.next()) {
                 M_Project_Primary project_Primary = new M_Project_Primary(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getInt(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getString(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getString(17), rst.getString(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getInt(23), rst.getDouble(24), rst.getString(25), rst.getString(26), rst.getDate(27), rst.getString(28), rst.getString(29), rst.getDate(30), rst.getDate(31),rst.getString(32));
+                if(project_Primary.getProject_id() != 0){
                 primaryProjectList.add(project_Primary);
+                }
             }
             return primaryProjectList;
         

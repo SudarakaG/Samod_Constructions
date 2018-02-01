@@ -14,11 +14,14 @@ import com.brotherssoft.samodconstructions.service.M_VehicleService;
 import com.brotherssoft.samodconstructions.service.R_AccountTypeService;
 import com.brotherssoft.samodconstructions.service.R_BankService;
 import com.brotherssoft.samodconstructions.service.R_BranchService;
+import com.brotherssoft.samodconstructions.service.R_DesignationService;
 import com.brotherssoft.samodconstructions.service.R_FuelTypeService;
+import com.brotherssoft.samodconstructions.service.R_JobTypeService;
 import com.brotherssoft.samodconstructions.service.R_PaymentModeService;
 import com.brotherssoft.samodconstructions.service.R_ProjectGradeService;
 import com.brotherssoft.samodconstructions.service.R_ProjectSpecialityService;
 import com.brotherssoft.samodconstructions.service.R_ProjectTypeService;
+import com.brotherssoft.samodconstructions.service.R_SalaryTypeService;
 import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
 
 /**
@@ -42,5 +45,8 @@ public interface ServiceFactory {
     public R_FuelTypeService getFuelTypeService();
     public M_VehicleService getVehicleService();
     public M_PurchaserService getPurchaserService();
+    public R_JobTypeService getJobTypeService();
+    public R_DesignationService getDesignationService();
+    public R_SalaryTypeService getSalaryTypeService();
     
 }

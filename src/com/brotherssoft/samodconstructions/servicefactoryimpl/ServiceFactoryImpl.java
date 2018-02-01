@@ -14,11 +14,14 @@ import com.brotherssoft.samodconstructions.service.M_VehicleService;
 import com.brotherssoft.samodconstructions.service.R_AccountTypeService;
 import com.brotherssoft.samodconstructions.service.R_BankService;
 import com.brotherssoft.samodconstructions.service.R_BranchService;
+import com.brotherssoft.samodconstructions.service.R_DesignationService;
 import com.brotherssoft.samodconstructions.service.R_FuelTypeService;
+import com.brotherssoft.samodconstructions.service.R_JobTypeService;
 import com.brotherssoft.samodconstructions.service.R_PaymentModeService;
 import com.brotherssoft.samodconstructions.service.R_ProjectGradeService;
 import com.brotherssoft.samodconstructions.service.R_ProjectSpecialityService;
 import com.brotherssoft.samodconstructions.service.R_ProjectTypeService;
+import com.brotherssoft.samodconstructions.service.R_SalaryTypeService;
 import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 
@@ -104,6 +107,21 @@ public class ServiceFactoryImpl implements ServiceFactory{
     @Override
     public M_PurchaserService getPurchaserService() {
         return new M_PurchaserService();
+    }
+
+    @Override
+    public R_JobTypeService getJobTypeService() {
+        return new R_JobTypeService();
+    }
+
+    @Override
+    public R_DesignationService getDesignationService() {
+        return new R_DesignationService();
+    }
+
+    @Override
+    public R_SalaryTypeService getSalaryTypeService() {
+        return new R_SalaryTypeService();
     }
     
 }

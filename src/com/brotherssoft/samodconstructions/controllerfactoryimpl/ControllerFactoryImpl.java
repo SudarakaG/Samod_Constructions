@@ -14,11 +14,14 @@ import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
+import com.brotherssoft.samodconstructions.controller.R_DesignationController;
 import com.brotherssoft.samodconstructions.controller.R_FuelTypeController;
+import com.brotherssoft.samodconstructions.controller.R_JobTypeController;
 import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
+import com.brotherssoft.samodconstructions.controller.R_SalaryTypeController;
 import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
 import com.brotherssoft.samodconstructions.controllerfactory.ControllerFactory;
 import com.brotherssoft.samodconstructions.controllerimpl.IDControllerImpl;
@@ -30,11 +33,14 @@ import com.brotherssoft.samodconstructions.controllerimpl.M_VehicleControllerImp
 import com.brotherssoft.samodconstructions.controllerimpl.R_AccountTypeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_BankControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_BranchControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_DesignationControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_FuelTypeControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_JobTypeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_PaymentModeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_ProjectGradeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_ProjectSpecialityControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_ProjectTypeControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_SalaryTypeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_VehicleTypeControllerImpl;
 import java.rmi.server.UnicastRemoteObject;
 
@@ -121,6 +127,21 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     @Override
     public M_PurchaserController getPurchaserController() throws Exception {
         return new M_PurchaserControllerImpl();
+    }
+
+    @Override
+    public R_JobTypeController getJobTypeController() throws Exception {
+        return new R_JobTypeControllerImpl();
+    }
+
+    @Override
+    public R_DesignationController getDesignationController() throws Exception {
+        return new R_DesignationControllerImpl();
+    }
+
+    @Override
+    public R_SalaryTypeController getSalaryTypeController() throws Exception {
+        return new R_SalaryTypeControllerImpl();
     }
     
 }
