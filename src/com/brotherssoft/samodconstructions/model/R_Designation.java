@@ -16,13 +16,13 @@ public class R_Designation implements Serializable{
     private int designation_id;
     private String designation_name;
     private String designation_description;
-    private char designation_status;
-    private char designation_code;
+    private String designation_status;
+    private String designation_code;
 
     public R_Designation() {
     }
 
-    public R_Designation(int designation_id, String designation_name, String designation_description, char designation_status, char designation_code) {
+    public R_Designation(int designation_id, String designation_name, String designation_description, String designation_status, String designation_code) {
         this.designation_id = designation_id;
         this.designation_name = designation_name;
         this.designation_description = designation_description;
@@ -75,31 +75,30 @@ public class R_Designation implements Serializable{
     /**
      * @return the designation_status
      */
-    public char getDesignation_status() {
+    public String getDesignation_status() {
         return designation_status;
     }
 
     /**
      * @param designation_status the designation_status to set
      */
-    public void setDesignation_status(char designation_status) {
+    public void setDesignation_status(String designation_status) {
         this.designation_status = designation_status;
     }
 
     /**
      * @return the designation_code
      */
-    public char getDesignation_code() {
+    public String getDesignation_code() {
         return designation_code;
     }
 
     /**
      * @param designation_code the designation_code to set
      */
-    public void setDesignation_code(char designation_code) {
+    public void setDesignation_code(String designation_code) {
         this.designation_code = designation_code;
     }
-    
-    
+
     
 }

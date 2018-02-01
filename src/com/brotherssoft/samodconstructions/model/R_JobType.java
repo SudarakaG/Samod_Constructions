@@ -16,13 +16,13 @@ public class R_JobType implements Serializable{
     private int jobType_id;
     private String jobType_name;
     private String jobType_description;
-    private char jobType_status;
-    private char jobType_att;
+    private String jobType_status;
+    private String jobType_att;
 
     public R_JobType() {
     }
 
-    public R_JobType(int jobType_id, String jobType_name, String jobType_description, char jobType_status, char jobType_att) {
+    public R_JobType(int jobType_id, String jobType_name, String jobType_description, String jobType_status, String jobType_att) {
         this.jobType_id = jobType_id;
         this.jobType_name = jobType_name;
         this.jobType_description = jobType_description;
@@ -75,31 +75,30 @@ public class R_JobType implements Serializable{
     /**
      * @return the jobType_status
      */
-    public char getJobType_status() {
+    public String getJobType_status() {
         return jobType_status;
     }
 
     /**
      * @param jobType_status the jobType_status to set
      */
-    public void setJobType_status(char jobType_status) {
+    public void setJobType_status(String jobType_status) {
         this.jobType_status = jobType_status;
     }
 
     /**
      * @return the jobType_att
      */
-    public char getJobType_att() {
+    public String getJobType_att() {
         return jobType_att;
     }
 
     /**
      * @param jobType_att the jobType_att to set
      */
-    public void setJobType_att(char jobType_att) {
+    public void setJobType_att(String jobType_att) {
         this.jobType_att = jobType_att;
     }
-    
-    
+
     
 }

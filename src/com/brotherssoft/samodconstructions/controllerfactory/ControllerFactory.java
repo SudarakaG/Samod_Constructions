@@ -15,11 +15,14 @@ import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectControlle
 import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
+import com.brotherssoft.samodconstructions.controller.R_DesignationController;
 import com.brotherssoft.samodconstructions.controller.R_FuelTypeController;
+import com.brotherssoft.samodconstructions.controller.R_JobTypeController;
 import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
+import com.brotherssoft.samodconstructions.controller.R_SalaryTypeController;
 import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
 
 /**
@@ -43,5 +46,8 @@ public interface ControllerFactory extends Remote{
     public R_FuelTypeController getFuelTypeController()throws Exception;
     public M_VehicleController getVehicleController()throws Exception;
     public M_PurchaserController getPurchaserController()throws Exception;
+    public R_JobTypeController getJobTypeController()throws Exception;
+    public R_DesignationController getDesignationController()throws Exception;
+    public R_SalaryTypeController getSalaryTypeController()throws Exception;
     
 }

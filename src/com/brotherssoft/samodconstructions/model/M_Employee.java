@@ -15,7 +15,7 @@ import java.util.Date;
 public class M_Employee implements Serializable{
     
     private int emp_id;
-    private char emp_title;
+    private String emp_title;
     private String emp_initials;
     private String emp_firstName;
     private String emp_middleName;
@@ -38,8 +38,8 @@ public class M_Employee implements Serializable{
     private double emp_otherAllowance1;
     private double emp_otherAllowance2;
     private int emp_site_id;
-    private char emp_status;
-    private char emp_epf_status;
+    private String emp_status;
+    private String emp_epf_status;
     private int emp_jobType_id;
     private Date emp_joinDate;
     private int emp_subContractor_id;
@@ -49,7 +49,7 @@ public class M_Employee implements Serializable{
     public M_Employee() {
     }
 
-    public M_Employee(int emp_id, char emp_title, String emp_initials, String emp_firstName, String emp_middleName, String emp_surName, String emp_address1, String emp_address2, String emp_address3, String emp_address4, String emp_NIC, Date emp_DOB, String emp_contact1, String emp_contact2, String emp_contatct3, String emp_accountNo, int emp_bank_id, int emp_branch_id, int emp_designation_id, int emp_salaryType_id, double emp_salary, double emp_otherAllowance1, double emp_otherAllowance2, int emp_site_id, char emp_status, char emp_epf_status, int emp_jobType_id, Date emp_joinDate, int emp_subContractor_id, double emp_otherAllowance3, double emp_otherAllowance4) {
+    public M_Employee(int emp_id, String emp_title, String emp_initials, String emp_firstName, String emp_middleName, String emp_surName, String emp_address1, String emp_address2, String emp_address3, String emp_address4, String emp_NIC, Date emp_DOB, String emp_contact1, String emp_contact2, String emp_contatct3, String emp_accountNo, int emp_bank_id, int emp_branch_id, int emp_designation_id, int emp_salaryType_id, double emp_salary, double emp_otherAllowance1, double emp_otherAllowance2, int emp_site_id, String emp_status, String emp_epf_status, int emp_jobType_id, Date emp_joinDate, int emp_subContractor_id, double emp_otherAllowance3, double emp_otherAllowance4) {
         this.emp_id = emp_id;
         this.emp_title = emp_title;
         this.emp_initials = emp_initials;
@@ -100,14 +100,14 @@ public class M_Employee implements Serializable{
     /**
      * @return the emp_title
      */
-    public char getEmp_title() {
+    public String getEmp_title() {
         return emp_title;
     }
 
     /**
      * @param emp_title the emp_title to set
      */
-    public void setEmp_title(char emp_title) {
+    public void setEmp_title(String emp_title) {
         this.emp_title = emp_title;
     }
 
@@ -422,28 +422,28 @@ public class M_Employee implements Serializable{
     /**
      * @return the emp_status
      */
-    public char getEmp_status() {
+    public String getEmp_status() {
         return emp_status;
     }
 
     /**
      * @param emp_status the emp_status to set
      */
-    public void setEmp_status(char emp_status) {
+    public void setEmp_status(String emp_status) {
         this.emp_status = emp_status;
     }
 
     /**
      * @return the emp_epf_status
      */
-    public char getEmp_epf_status() {
+    public String getEmp_epf_status() {
         return emp_epf_status;
     }
 
     /**
      * @param emp_epf_status the emp_epf_status to set
      */
-    public void setEmp_epf_status(char emp_epf_status) {
+    public void setEmp_epf_status(String emp_epf_status) {
         this.emp_epf_status = emp_epf_status;
     }
 
@@ -517,6 +517,5 @@ public class M_Employee implements Serializable{
         this.emp_otherAllowance4 = emp_otherAllowance4;
     }
 
-    
     
 }
