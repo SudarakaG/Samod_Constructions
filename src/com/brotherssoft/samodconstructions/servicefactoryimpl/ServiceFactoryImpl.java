@@ -23,6 +23,7 @@ import com.brotherssoft.samodconstructions.service.R_ProjectSpecialityService;
 import com.brotherssoft.samodconstructions.service.R_ProjectTypeService;
 import com.brotherssoft.samodconstructions.service.R_SalaryTypeService;
 import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
+import com.brotherssoft.samodconstructions.service.R_WorkService;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 
 /**
@@ -122,6 +123,11 @@ public class ServiceFactoryImpl implements ServiceFactory{
     @Override
     public R_SalaryTypeService getSalaryTypeService() {
         return new R_SalaryTypeService();
+    }
+
+    @Override
+    public R_WorkService getWorkService() {
+        return new R_WorkService();
     }
     
 }

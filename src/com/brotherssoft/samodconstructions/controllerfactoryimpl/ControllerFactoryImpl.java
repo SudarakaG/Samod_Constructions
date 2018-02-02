@@ -23,6 +23,7 @@ import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityControl
 import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
 import com.brotherssoft.samodconstructions.controller.R_SalaryTypeController;
 import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
+import com.brotherssoft.samodconstructions.controller.R_WorkController;
 import com.brotherssoft.samodconstructions.controllerfactory.ControllerFactory;
 import com.brotherssoft.samodconstructions.controllerimpl.IDControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_AccountControllerImpl;
@@ -42,6 +43,7 @@ import com.brotherssoft.samodconstructions.controllerimpl.R_ProjectSpecialityCon
 import com.brotherssoft.samodconstructions.controllerimpl.R_ProjectTypeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_SalaryTypeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_VehicleTypeControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_WorkControllerImpl;
 import java.rmi.server.UnicastRemoteObject;
 
 /**
@@ -142,6 +144,11 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     @Override
     public R_SalaryTypeController getSalaryTypeController() throws Exception {
         return new R_SalaryTypeControllerImpl();
+    }
+
+    @Override
+    public R_WorkController getWorkController() throws Exception {
+        return new R_WorkControllerImpl();
     }
     
 }

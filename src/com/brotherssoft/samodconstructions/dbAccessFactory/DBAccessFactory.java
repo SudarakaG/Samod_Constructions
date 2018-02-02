@@ -23,6 +23,7 @@ import com.brotherssoft.samodconstructions.dbAccess.R_ProjectSpecialityDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_SalaryTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_WorkDBAccess;
 
 /**
  *
@@ -48,5 +49,6 @@ public interface DBAccessFactory {
     public R_JobTypeDBAccess getJobTypeDBAccess();
     public R_DesignationDBAccess getDesignationDBAccess();
     public R_SalaryTypeDBAccess getSalaryTypeDBAccess();
+    public R_WorkDBAccess getWorkDBAccess();
     
 }

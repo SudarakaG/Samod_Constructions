@@ -23,6 +23,7 @@ import com.brotherssoft.samodconstructions.service.R_ProjectSpecialityService;
 import com.brotherssoft.samodconstructions.service.R_ProjectTypeService;
 import com.brotherssoft.samodconstructions.service.R_SalaryTypeService;
 import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
+import com.brotherssoft.samodconstructions.service.R_WorkService;
 
 /**
  *
@@ -48,5 +49,6 @@ public interface ServiceFactory {
     public R_JobTypeService getJobTypeService();
     public R_DesignationService getDesignationService();
     public R_SalaryTypeService getSalaryTypeService();
+    public R_WorkService getWorkService();
     
 }

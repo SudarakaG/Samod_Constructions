@@ -23,6 +23,7 @@ import com.brotherssoft.samodconstructions.dbAccess.R_ProjectSpecialityDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_SalaryTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_WorkDBAccess;
 import com.brotherssoft.samodconstructions.dbAccessFactory.DBAccessFactory;
 
 /**
@@ -124,6 +125,11 @@ public class DBAccessFactoryImpl implements DBAccessFactory{
     @Override
     public R_SalaryTypeDBAccess getSalaryTypeDBAccess() {
         return new R_SalaryTypeDBAccess();
+    }
+
+    @Override
+    public R_WorkDBAccess getWorkDBAccess() {
+        return new R_WorkDBAccess();
     }
 
     
