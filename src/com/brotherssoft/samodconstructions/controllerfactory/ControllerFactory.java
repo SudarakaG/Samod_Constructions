@@ -24,6 +24,7 @@ import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityControl
 import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
 import com.brotherssoft.samodconstructions.controller.R_SalaryTypeController;
 import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
+import com.brotherssoft.samodconstructions.controller.R_WorkController;
 
 /**
  *
@@ -49,5 +50,6 @@ public interface ControllerFactory extends Remote{
     public R_JobTypeController getJobTypeController()throws Exception;
     public R_DesignationController getDesignationController()throws Exception;
     public R_SalaryTypeController getSalaryTypeController()throws Exception;
+    public R_WorkController getWorkController()throws Exception;
     
 }
