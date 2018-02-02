@@ -6,6 +6,7 @@
 package com.brotherssoft.samodconstructions.custom;
 
 import java.awt.event.KeyEvent;
+import java.text.DecimalFormat;
 import javax.swing.JTextField;
 
 /**
@@ -52,7 +53,7 @@ public class Validation {
     public static void textNIC(JTextField textField) {
         String text = textField.getText();
         if (!text.isEmpty()) {
-            boolean res = text.matches("[0-9]{0,9}[v]{0,1}");
+            boolean res = text.matches("[0-9]{0,9}[v,V]{0,1}");
             if (!res) {
                 textField.setText(text.substring(0, text.length() - 1));
             }
@@ -86,5 +87,19 @@ public class Validation {
             }
         }
     }
-
+    
+    public static void priceText(JTextField textField) {
+        String text = textField.getText();
+        if (!text.isEmpty()) {
+            boolean res = text.matches("[0-9]+[.]?[0-9]{0,2}");
+            if (!res) {
+                textField.setText(text.substring(0, text.length() - 1));
+            }
+        }
+    }
+    
+    public static String formatDouble(double d) {
+        return new DecimalFormat("#,###.00").format(d);
+    }
+    
 }

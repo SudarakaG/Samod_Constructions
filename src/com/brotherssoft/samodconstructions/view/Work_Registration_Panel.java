@@ -5,17 +5,36 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.R_WorkController;
+import com.brotherssoft.samodconstructions.custom.IDGenerator;
+import com.brotherssoft.samodconstructions.model.R_Work;
+import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Akvasoft
  */
 public class Work_Registration_Panel extends javax.swing.JPanel {
 
+    R_WorkController workController;
+    DefaultTableModel dtmWork;
+    
     /**
      * Creates new form Work_Registration_Panel
      */
-    public Work_Registration_Panel() {
+    public Work_Registration_Panel() throws Exception {
         initComponents();
+        
+        workController = ServerConnector.getServerConnetor().getWorkController();
+        dtmWork = (DefaultTableModel) tbl_workInfo.getModel();
+        
+        loadWorkTable();
+        
     }
 
     /**
@@ -40,7 +59,7 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         jScrollPane13 = new javax.swing.JScrollPane();
         txtArea_work_desc1 = new javax.swing.JTextArea();
         btn_save_work = new javax.swing.JButton();
-        btn_cancel_work = new javax.swing.JButton();
+        btn_work_new = new javax.swing.JButton();
         cmb_work_states1 = new javax.swing.JComboBox<>();
         btn_work = new javax.swing.JButton();
         bank_panel_tbl3 = new javax.swing.JPanel();
@@ -112,9 +131,19 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
 
         btn_save_work.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_save_work.setText("Save");
+        btn_save_work.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_save_workActionPerformed(evt);
+            }
+        });
 
-        btn_cancel_work.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_cancel_work.setText("Cancel");
+        btn_work_new.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_work_new.setText("New");
+        btn_work_new.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_work_newActionPerformed(evt);
+            }
+        });
 
         cmb_work_states1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_work_states1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
@@ -152,7 +181,7 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_save_work, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_cancel_work, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_work_new, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         bank_panel_input_area3Layout.setVerticalGroup(
@@ -173,7 +202,7 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addGroup(bank_panel_input_area3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_save_work, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cancel_work, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_work_new, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_work, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -219,6 +248,11 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
             }
         ));
         tbl_workInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_workInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_workInfoMouseClicked(evt);
+            }
+        });
         jScrollPane17.setViewportView(tbl_workInfo);
 
         txt_search_work.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -290,14 +324,34 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_workMouseClicked
 
+    private void btn_save_workActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_workActionPerformed
+        if(btn_save_work.getText().equalsIgnoreCase("Save")){
+            saveWork();
+        }else{
+            updateWork();
+        }
+    }//GEN-LAST:event_btn_save_workActionPerformed
+
+    private void tbl_workInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_workInfoMouseClicked
+        loadFieldsFromTable();
+    }//GEN-LAST:event_tbl_workInfoMouseClicked
+
+    private void btn_work_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_work_newActionPerformed
+        txt_work_name1.setText("");
+        txtArea_work_desc1.setText("");
+        cmb_work_states1.setSelectedIndex(0);
+        
+        btn_save_work.setText("Save");
+    }//GEN-LAST:event_btn_work_newActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Work_Registration_Panel;
     private javax.swing.JPanel bank_panel_input_area3;
     private javax.swing.JPanel bank_panel_tbl3;
-    private javax.swing.JButton btn_cancel_work;
     private javax.swing.JButton btn_save_work;
     private javax.swing.JButton btn_work;
+    private javax.swing.JButton btn_work_new;
     private javax.swing.JComboBox<String> cmb_work_states1;
     private javax.swing.JLabel jLabel153;
     private javax.swing.JLabel jLabel154;
@@ -314,4 +368,84 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_work_name1;
     private javax.swing.JPanel user_panel_hedding10;
     // End of variables declaration//GEN-END:variables
+
+    private void saveWork() {
+        try {
+            
+            int workId = IDGenerator.getNewID("r_work", "WORK_ID");
+            String workName = txt_work_name1.getText();
+            String workDesc = txtArea_work_desc1.getText();
+            String workStatus = Integer.toString(cmb_work_states1.getSelectedIndex());
+            
+            R_Work work = new R_Work(workId, workName, workDesc, workStatus);
+            boolean addWork = workController.addWork(work);
+            if (addWork) {
+                JOptionPane.showMessageDialog(this, "Work Details Added Successfully..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Adding Work Details Occured Some Error.. Please Check Again..");
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Work_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        loadWorkTable();
+    }
+
+    private void loadWorkTable() {
+        try {
+            
+            dtmWork.setRowCount(0);
+            List<R_Work> allWorks = workController.getAllWorks();
+            for (R_Work allWork : allWorks) {
+                String[] rowData = {allWork.getWork_name()};
+                dtmWork.addRow(rowData);
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Work_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void updateWork() {
+        try {
+            
+            int workId = searchWorkFromTableName().getWork_id();
+            String workName = txt_work_name1.getText();
+            String workDesc = txtArea_work_desc1.getText();
+            String workStatus = Integer.toString(cmb_work_states1.getSelectedIndex());
+            
+            R_Work work = new R_Work(workId, workName, workDesc, workStatus);
+            boolean updateWork = workController.updateWork(work);
+            if (updateWork) {
+                JOptionPane.showMessageDialog(this, "Work Details Updated Successfully..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Updating Work Details Occured Some Error.. Please Check Again..");
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Work_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        loadWorkTable();
+    }
+
+    private void loadFieldsFromTable() {
+        R_Work work = searchWorkFromTableName();
+        txt_work_name1.setText(work.getWork_name());
+        txtArea_work_desc1.setText(work.getWork_description());
+        cmb_work_states1.setSelectedIndex(Integer.parseInt(work.getWork_status()));
+        
+        btn_save_work.setText("Update");
+    }
+
+    private R_Work searchWorkFromTableName() {
+        int selectedRow = tbl_workInfo.getSelectedRow();
+        String workName = (String) dtmWork.getValueAt(selectedRow, 0);
+        R_Work searchWork = null;
+        try {
+            searchWork = workController.searchWork(workName);
+        } catch (Exception ex) {
+            Logger.getLogger(Work_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return searchWork;
+    }
 }

@@ -18,6 +18,8 @@ import com.brotherssoft.samodconstructions.model.R_ProjectGrade;
 import com.brotherssoft.samodconstructions.model.R_ProjectSpeciality;
 import com.brotherssoft.samodconstructions.model.R_ProjectType;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -45,6 +47,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     JSpinner.DateEditor de;
     SimpleDateFormat sdf;
     Date date;
+    DecimalFormat decimalFormat;
 
     /**
      * Creates new form Project_Primary_Panel
@@ -57,7 +60,6 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         projectSpecialityController = ServerConnector.getServerConnetor().getProjectSpecialityController();
         projectGradeController = ServerConnector.getServerConnetor().getProjectGradeController();
         paymentModeController = ServerConnector.getServerConnetor().getPaymentModeController();
-
         primary_ProjectController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
 
         loadToCmbProjectType();
@@ -70,6 +72,10 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         txt_project_tender_open_time_1.setEditor(de);
         sdf = new SimpleDateFormat("dd/MM/yyyy");
         date = new Date();
+        
+//        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+//        symbols.setGroupingSeparator(' ');
+        decimalFormat = new DecimalFormat("0.00");
     }
 
     /**
@@ -421,6 +427,14 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 txt_project_intendedDuration_1ActionPerformed(evt);
             }
         });
+        txt_project_intendedDuration_1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_project_intendedDuration_1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_project_intendedDuration_1KeyReleased(evt);
+            }
+        });
 
         jLabel122.setBackground(new java.awt.Color(102, 102, 255));
         jLabel122.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -463,11 +477,30 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 txt_project_engineer_estimateActionPerformed(evt);
             }
         });
+        txt_project_engineer_estimate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_project_engineer_estimateKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_project_engineer_estimateKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_project_engineer_estimateKeyTyped(evt);
+            }
+        });
 
         txt_project_tender_fee_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_project_tender_fee_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_tender_fee_1ActionPerformed(evt);
+            }
+        });
+        txt_project_tender_fee_1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_project_tender_fee_1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_project_tender_fee_1KeyReleased(evt);
             }
         });
 
@@ -498,6 +531,14 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 txt_project_bid_amount_1ActionPerformed(evt);
             }
         });
+        txt_project_bid_amount_1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_project_bid_amount_1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_project_bid_amount_1KeyReleased(evt);
+            }
+        });
 
         txt_project_bid_organization.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_project_bid_organization.addActionListener(new java.awt.event.ActionListener() {
@@ -516,6 +557,14 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         txt_project_bid_duration_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_bid_duration_1ActionPerformed(evt);
+            }
+        });
+        txt_project_bid_duration_1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_project_bid_duration_1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_project_bid_duration_1KeyReleased(evt);
             }
         });
 
@@ -720,9 +769,8 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                                 .addComponent(jLabel137, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_project_tender_result))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel101, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel100, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))))
+                            .addComponent(jLabel101, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel100, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1199,6 +1247,50 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         Validation.phoneNumber(txt_project_client_contact_1_2, evt);
     }//GEN-LAST:event_txt_project_client_contact_1_2KeyTyped
 
+    private void txt_project_intendedDuration_1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_intendedDuration_1KeyPressed
+        Validation.priceText(txt_project_intendedDuration_1);
+    }//GEN-LAST:event_txt_project_intendedDuration_1KeyPressed
+
+    private void txt_project_intendedDuration_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_intendedDuration_1KeyReleased
+        Validation.priceText(txt_project_intendedDuration_1);
+    }//GEN-LAST:event_txt_project_intendedDuration_1KeyReleased
+
+    private void txt_project_engineer_estimateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_engineer_estimateKeyPressed
+        Validation.priceText(txt_project_engineer_estimate);
+    }//GEN-LAST:event_txt_project_engineer_estimateKeyPressed
+
+    private void txt_project_engineer_estimateKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_engineer_estimateKeyReleased
+        Validation.priceText(txt_project_engineer_estimate);
+    }//GEN-LAST:event_txt_project_engineer_estimateKeyReleased
+
+    private void txt_project_tender_fee_1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_tender_fee_1KeyPressed
+        Validation.priceText(txt_project_tender_fee_1);
+    }//GEN-LAST:event_txt_project_tender_fee_1KeyPressed
+
+    private void txt_project_tender_fee_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_tender_fee_1KeyReleased
+        Validation.priceText(txt_project_tender_fee_1);
+    }//GEN-LAST:event_txt_project_tender_fee_1KeyReleased
+
+    private void txt_project_bid_amount_1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_bid_amount_1KeyPressed
+        Validation.priceText(txt_project_bid_amount_1);
+    }//GEN-LAST:event_txt_project_bid_amount_1KeyPressed
+
+    private void txt_project_bid_amount_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_bid_amount_1KeyReleased
+        Validation.priceText(txt_project_bid_amount_1);
+    }//GEN-LAST:event_txt_project_bid_amount_1KeyReleased
+
+    private void txt_project_bid_duration_1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_bid_duration_1KeyPressed
+        Validation.priceText(txt_project_bid_duration_1);
+    }//GEN-LAST:event_txt_project_bid_duration_1KeyPressed
+
+    private void txt_project_bid_duration_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_bid_duration_1KeyReleased
+        Validation.priceText(txt_project_bid_duration_1);
+    }//GEN-LAST:event_txt_project_bid_duration_1KeyReleased
+
+    private void txt_project_engineer_estimateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_engineer_estimateKeyTyped
+        
+    }//GEN-LAST:event_txt_project_engineer_estimateKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Project_Primary_Info_Panel;
@@ -1373,10 +1465,10 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             String projectADuration = txt_project_intendedDuration_1.getText();
             int specialityId = projectSpecialityController.searProjectSpecialityByName(projectASpeciality).getProjectSpeciality_id();
             int gradeId = projectGradeController.searProjectGradeByNAme(projectAGrade).getProjectGrade_id();
-            double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText());
-            double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText());
+            double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText().trim());
+            double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText().trim());
             int bidPaymentModeId = paymentModeController.searPaymentMode(payMode).getPaymentMode_id();
-            double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText());
+            double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText().trim());
             String bidDuration = txt_project_bid_duration_1.getText();
             String bidOrganization = txt_project_bid_organization.getText();
             Date tenderOpenDate = txt_project_tender_open_date_1.getDate();
@@ -1439,15 +1531,15 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             txt_project_client_address4.setText(sp.getProject_primary_clientAddress4());
             txt_project_client_contact_1.setText(sp.getProject_primary_clientContact1());
             txt_project_client_contact_1_2.setText(sp.getProject_primary_clientContact2());
-            txt_project_intendedDuration_1.setText(sp.getProject_primary_intendedDuration());
+            txt_project_intendedDuration_1.setText(decimalFormat.format(Double.parseDouble(sp.getProject_primary_intendedDuration())));
             cmb_project_Specialiti.setSelectedItem(projectSpecialityController.searchProjectSpeciality(sp.getProject_primary_ictadSpeciality_id()).getProjectSpeciality_name());
             cmb_project_grade_1.setSelectedItem(projectGradeController.searchProjectGrade(sp.getProject_primary_ictadGrade_id()).getProjectGrade_name());
-            txt_project_engineer_estimate.setText(Double.toString(sp.getProject_primary_engineerEstimate()));
-            txt_project_tender_fee_1.setText(Double.toString(sp.getProject_primary_tenderFee()));
+            txt_project_engineer_estimate.setText(decimalFormat.format(sp.getProject_primary_engineerEstimate()));
+            txt_project_tender_fee_1.setText(decimalFormat.format(sp.getProject_primary_tenderFee()));
             cmb_project_bid_payment_mode.setSelectedItem(paymentModeController.searchPaymentMode(sp.getProject_primary_bidPaymentMode()).getPaymentMode_name());
-            txt_project_bid_amount_1.setText(Double.toString(sp.getProject_primary_bidAmount()));
+            txt_project_bid_amount_1.setText(decimalFormat.format(sp.getProject_primary_bidAmount()));
             txt_project_bid_organization.setText(sp.getProject_primary_bidOrganization());
-            txt_project_bid_duration_1.setText(sp.getProject_primary_bidDuration());
+            txt_project_bid_duration_1.setText(decimalFormat.format(Double.parseDouble(sp.getProject_primary_bidDuration())));
             txt_project_tender_open_date_1.setDate(sp.getProject_primary_tenderOpenDate());
             txt_project_tender_open_time_1.setValue(de.getFormat().parse(sp.getProject_primary_tenderOpenTime()));
             cmb_project_made_of_states_1.setSelectedIndex(Integer.parseInt(sp.getProject_current_status()));
@@ -1492,10 +1584,10 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             String projectADuration = txt_project_intendedDuration_1.getText();
             int specialityId = projectSpecialityController.searProjectSpecialityByName(projectASpeciality).getProjectSpeciality_id();
             int gradeId = projectGradeController.searProjectGradeByNAme(projectAGrade).getProjectGrade_id();
-            double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText());
-            double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText());
+            double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText().trim());
+            double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText().trim());
             int bidPaymentModeId = paymentModeController.searPaymentMode(pauMode).getPaymentMode_id();
-            double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText());
+            double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText().trim());
             String bidDuration = txt_project_bid_duration_1.getText();
             String bidOrganization = txt_project_bid_organization.getText();
             Date tenderOpenDate = txt_project_tender_open_date_1.getDate();

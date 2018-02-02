@@ -23,6 +23,7 @@ import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityControl
 import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
 import com.brotherssoft.samodconstructions.controller.R_SalaryTypeController;
 import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
+import com.brotherssoft.samodconstructions.controller.R_WorkController;
 import com.brotherssoft.samodconstructions.controllerfactory.ControllerFactory;
 import java.rmi.Naming;
 
@@ -52,6 +53,7 @@ public class ServerConnector {
     private R_DesignationController designationController;
     private M_EmployeeController employeeController;
     private R_SalaryTypeController salaryTypeController;
+    private R_WorkController workController;
     
     //private UserHistoryController uhc;
 
@@ -183,6 +185,13 @@ public class ServerConnector {
             salaryTypeController = cf.getSalaryTypeController();
         }
         return salaryTypeController;
+    }
+    
+    public R_WorkController getWorkController()throws Exception{
+        if(workController == null){
+            workController = cf.getWorkController();
+        }
+        return workController;
     }
 
 //    

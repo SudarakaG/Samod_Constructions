@@ -9,11 +9,14 @@ import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
 import com.brotherssoft.samodconstructions.controller.R_SalaryTypeController;
+import com.brotherssoft.samodconstructions.custom.Validation;
 import com.brotherssoft.samodconstructions.model.M_Employee;
 import com.brotherssoft.samodconstructions.model.R_Bank;
 import com.brotherssoft.samodconstructions.model.R_Branch;
 import com.brotherssoft.samodconstructions.model.R_SalaryType;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -33,6 +36,7 @@ public class Employee_Salary extends javax.swing.JPanel {
     R_BranchController branchController;
     R_SalaryTypeController salaryTypeController;
     DefaultTableModel dtmEmpSalary;
+    DecimalFormat decimalFormat;
 
     /**
      * Creates new form Employee_Salary
@@ -45,6 +49,9 @@ public class Employee_Salary extends javax.swing.JPanel {
         branchController = ServerConnector.getServerConnetor().getBranchController();
         salaryTypeController = ServerConnector.getServerConnetor().getSalaryTypeController();
         dtmEmpSalary = (DefaultTableModel) tb_emp_sal.getModel();
+        
+        decimalFormat = new DecimalFormat("0.00");
+        decimalFormat.setGroupingSize(3);
 
         loadBankCombo();
         loadSalTypeCombo();
@@ -60,6 +67,10 @@ public class Employee_Salary extends javax.swing.JPanel {
         branchController = ServerConnector.getServerConnetor().getBranchController();
         salaryTypeController = ServerConnector.getServerConnetor().getSalaryTypeController();
         dtmEmpSalary = (DefaultTableModel) tb_emp_sal.getModel();
+//        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+//        symbols.setGroupingSeparator(' ');
+        decimalFormat = new DecimalFormat("0.00");
+        decimalFormat.setGroupingSize(3);
 
         loadBankCombo();
         loadSalTypeCombo();
@@ -207,8 +218,27 @@ public class Employee_Salary extends javax.swing.JPanel {
         jLabel40.setText("Basic Salary");
 
         txt_emp_sal_basic.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_emp_sal_basic.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_emp_sal_basicKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_emp_sal_basicKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_emp_sal_basicKeyTyped(evt);
+            }
+        });
 
         txt_emp_sal_al_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_emp_sal_al_1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_emp_sal_al_1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_emp_sal_al_1KeyReleased(evt);
+            }
+        });
 
         jLabel41.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel41.setText("Allowance 1");
@@ -217,16 +247,40 @@ public class Employee_Salary extends javax.swing.JPanel {
         jLabel44.setText("Allowance 2");
 
         txt_emp_al_2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_emp_al_2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_emp_al_2KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_emp_al_2KeyReleased(evt);
+            }
+        });
 
         jLabel45.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel45.setText("Allowance 3");
 
         txt_emp_al_3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_emp_al_3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_emp_al_3KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_emp_al_3KeyReleased(evt);
+            }
+        });
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel46.setText("Allowance 4");
 
         txt_emp_al_4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_emp_al_4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_emp_al_4KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_emp_al_4KeyReleased(evt);
+            }
+        });
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel47.setText("EPF Granted");
@@ -415,8 +469,8 @@ public class Employee_Salary extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txt_emp_sal_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout Employee_SalaryLayout = new javax.swing.GroupLayout(Employee_Salary);
@@ -460,11 +514,11 @@ public class Employee_Salary extends javax.swing.JPanel {
             String empName = (String) dtmEmpSalary.getValueAt(selectedRow, 0);
             employee = employeeController.searchEmployee(empName);
             loadEmployeeData();
-            
+
         } catch (Exception ex) {
             Logger.getLogger(Employee_Salary.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         btn_save_emp_salary.setText("Update");
     }//GEN-LAST:event_tb_emp_salMouseClicked
 
@@ -477,6 +531,50 @@ public class Employee_Salary extends javax.swing.JPanel {
     private void btn_save_emp_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_emp_salaryActionPerformed
         updateEmployeeSalaryDetails();
     }//GEN-LAST:event_btn_save_emp_salaryActionPerformed
+
+    private void txt_emp_sal_basicKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicKeyPressed
+        Validation.priceText(txt_emp_sal_basic);
+    }//GEN-LAST:event_txt_emp_sal_basicKeyPressed
+
+    private void txt_emp_sal_basicKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicKeyReleased
+        Validation.priceText(txt_emp_sal_basic);
+    }//GEN-LAST:event_txt_emp_sal_basicKeyReleased
+
+    private void txt_emp_sal_al_1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_al_1KeyPressed
+        Validation.priceText(txt_emp_sal_al_1);
+    }//GEN-LAST:event_txt_emp_sal_al_1KeyPressed
+
+    private void txt_emp_sal_al_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_al_1KeyReleased
+        Validation.priceText(txt_emp_sal_al_1);
+    }//GEN-LAST:event_txt_emp_sal_al_1KeyReleased
+
+    private void txt_emp_al_2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_al_2KeyPressed
+        Validation.priceText(txt_emp_al_2);
+    }//GEN-LAST:event_txt_emp_al_2KeyPressed
+
+    private void txt_emp_al_2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_al_2KeyReleased
+        Validation.priceText(txt_emp_al_2);
+    }//GEN-LAST:event_txt_emp_al_2KeyReleased
+
+    private void txt_emp_al_3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_al_3KeyPressed
+        Validation.priceText(txt_emp_al_3);
+    }//GEN-LAST:event_txt_emp_al_3KeyPressed
+
+    private void txt_emp_al_3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_al_3KeyReleased
+        Validation.priceText(txt_emp_al_3);
+    }//GEN-LAST:event_txt_emp_al_3KeyReleased
+
+    private void txt_emp_al_4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_al_4KeyPressed
+        Validation.priceText(txt_emp_al_4);
+    }//GEN-LAST:event_txt_emp_al_4KeyPressed
+
+    private void txt_emp_al_4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_al_4KeyReleased
+        Validation.priceText(txt_emp_al_4);
+    }//GEN-LAST:event_txt_emp_al_4KeyReleased
+
+    private void txt_emp_sal_basicKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicKeyTyped
+        
+    }//GEN-LAST:event_txt_emp_sal_basicKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -518,11 +616,10 @@ public class Employee_Salary extends javax.swing.JPanel {
 
     private void loadEmployeeData() {
         try {
-            
+
 //            if (employee.getEmp_accountNo() == null) {
 //                JOptionPane.showMessageDialog(this, "Salary Details not Added to this Employee Yet..");
 //            }
-            
             txt_employee.setText(employee.getEmp_firstName() + " " + employee.getEmp_middleName() + " " + employee.getEmp_surName());
             txt_emp_acc_no.setText(employee.getEmp_accountNo());
             if (employee.getEmp_bank_id() != 0 && employee.getEmp_branch_id() != 0 && employee.getEmp_salaryType_id() != 0) {
@@ -530,17 +627,18 @@ public class Employee_Salary extends javax.swing.JPanel {
                 cmbBranchEmp_salary.setSelectedItem(branchController.searchBranch(employee.getEmp_branch_id()).getBranch_name());
                 cmbSalaryType.setSelectedItem(salaryTypeController.searchSalaryType(employee.getEmp_salaryType_id()).getSalaryType_name());
                 cmbEPFStatus.setSelectedIndex(Integer.parseInt(employee.getEmp_epf_status()));
-            }else{
+            } else {
                 cmbBankEmp_Salary.setSelectedIndex(0);
                 cmbBranchEmp_salary.setSelectedIndex(0);
                 cmbSalaryType.setSelectedIndex(0);
                 cmbEPFStatus.setSelectedIndex(0);
             }
-            txt_emp_sal_basic.setText(Double.toString(employee.getEmp_salary()));
-            txt_emp_sal_al_1.setText(Double.toString(employee.getEmp_otherAllowance1()));
-            txt_emp_al_2.setText(Double.toString(employee.getEmp_otherAllowance2()));
-            txt_emp_al_3.setText(Double.toString(employee.getEmp_otherAllowance3()));
-            txt_emp_al_4.setText(Double.toString(employee.getEmp_otherAllowance4()));
+
+            txt_emp_sal_basic.setText(decimalFormat.format(employee.getEmp_salary()));
+            txt_emp_sal_al_1.setText(decimalFormat.format(employee.getEmp_otherAllowance1()));
+            txt_emp_al_2.setText(decimalFormat.format(employee.getEmp_otherAllowance2()));
+            txt_emp_al_3.setText(decimalFormat.format(employee.getEmp_otherAllowance3()));
+            txt_emp_al_4.setText(decimalFormat.format(employee.getEmp_otherAllowance4()));
 
         } catch (Exception ex) {
             Logger.getLogger(Employee_Salary.class.getName()).log(Level.SEVERE, null, ex);
@@ -554,7 +652,7 @@ public class Employee_Salary extends javax.swing.JPanel {
             for (R_Bank allBank : allBanks) {
                 cmbBankEmp_Salary.addItem(allBank.getBank_name());
             }
-            
+
         } catch (Exception ex) {
             Logger.getLogger(Employee_Salary.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -625,39 +723,39 @@ public class Employee_Salary extends javax.swing.JPanel {
             String contact1 = employee.getEmp_contact1();
             String contact2 = employee.getEmp_contact2();
             String contact3 = employee.getEmp_contatct3();
-            
+
             String accountNo = txt_emp_acc_no.getText();
             int bankId = bankController.searchBankByName(cmbBankEmp_Salary.getSelectedItem().toString()).getBank_id();
             int branchId = branchController.searchBranch(cmbBranchEmp_salary.getSelectedItem().toString(), bankId).getBranch_id();
-            
+
             int designationId = employee.getEmp_designation_id();
-            
+
             int salaryTypeId = salaryTypeController.searchSalaryType(cmbSalaryType.getSelectedItem().toString()).getSalaryType_id();
-            double salary = Double.parseDouble(txt_emp_sal_basic.getText());
-            double otherAllowance1 = Double.parseDouble(txt_emp_sal_al_1.getText());
-            double otherAlloowance2 = Double.parseDouble(txt_emp_al_2.getText());
-            
-            int siteId = employee.getEmp_site_id();            
+            double salary = Double.parseDouble(txt_emp_sal_basic.getText().trim());
+            double otherAllowance1 = Double.parseDouble(txt_emp_sal_al_1.getText().trim());
+            double otherAlloowance2 = Double.parseDouble(txt_emp_al_2.getText().trim());
+
+            int siteId = employee.getEmp_site_id();
             String status = employee.getEmp_status();
-            
+
             String epfStatus = Integer.toString(cmbEPFStatus.getSelectedIndex());
-            
+
             int jobTypeId = employee.getEmp_jobType_id();
-            Date joinDate = employee.getEmp_joinDate();            
+            Date joinDate = employee.getEmp_joinDate();
             int subContractorId = employee.getEmp_subContractor_id();
-            
-            double otherAllowance3 = Double.parseDouble(txt_emp_al_3.getText());
-            double otherAllowance4 = Double.parseDouble(txt_emp_al_4.getText());
-            
+
+            double otherAllowance3 = Double.parseDouble(txt_emp_al_3.getText().trim());
+            double otherAllowance4 = Double.parseDouble(txt_emp_al_4.getText().trim());
+
             M_Employee employeeUpdate = new M_Employee(empId, title, initials, firstName, midName, lastName, address1, address2, address3, address4, nic, dob, contact1, contact2, contact3, accountNo, bankId, branchId, designationId, salaryTypeId, salary, otherAllowance1, otherAlloowance2, siteId, status, epfStatus, jobTypeId, joinDate, subContractorId, otherAllowance3, otherAllowance4);
             boolean updateEmployee = employeeController.updateEmployee(employeeUpdate);
             if (updateEmployee) {
                 JOptionPane.showMessageDialog(this, "Employee Salary Details Updated Successfully..");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Updating Employee Salary Details Occured a Error..");
             }
             loadEmpSalTable();
-            
+
         } catch (Exception ex) {
             Logger.getLogger(Employee_Salary.class.getName()).log(Level.SEVERE, null, ex);
         }
