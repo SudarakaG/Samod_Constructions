@@ -57,5 +57,15 @@ public class M_EmployeeControllerImpl extends UnicastRemoteObject implements M_E
         return sf.getEmployeeService().getAllEmployees();
     }
 
+    @Override
+    public M_Employee searchBySubContractorId(int subId) throws Exception {
+        return sf.getEmployeeService().searchBySubContractorId(subId);
+    }
+
+    @Override
+    public M_Employee searchByFullName(String initials, String fName, String mName, String lName) throws Exception {
+        return sf.getEmployeeService().searchByFullName(initials, fName, mName, lName);
+    }
+
     
 }

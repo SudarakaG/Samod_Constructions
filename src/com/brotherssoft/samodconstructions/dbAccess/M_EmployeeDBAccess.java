@@ -176,5 +176,40 @@ public class M_EmployeeDBAccess {
         return employees;
         
     }
+    
+    public M_Employee searchBySubContractorId(int subId)throws Exception{
+        
+        String sql = "SELECT * FROM m_emp WHERE EMP_SUBCONID=?";
+        Connection connection = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = connection.prepareStatement(sql);
+        stm.setObject(1, subId);
+        ResultSet rst = stm.executeQuery();
+        
+        M_Employee employee = null;
+        if(rst.next()){
+            employee = new M_Employee(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getDate(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getInt(17), rst.getInt(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getDouble(23), rst.getInt(24), rst.getString(25), rst.getString(26), rst.getInt(27), rst.getDate(28), rst.getInt(29), rst.getDouble(30), rst.getDouble(31));
+        }
+        return employee;
+        
+    }
+    
+    public M_Employee searchByFullName(String initials,String fName,String mName,String lName)throws Exception{
+        
+        String sql = "SELECT * FROM m_emp WHERE EMP_INITIALS=? AND EMP_FIRSTNAME=? AND EMP_MIDLENAMES=? AND EMP_SURNAME=?";
+        Connection connection = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = connection.prepareStatement(sql);
+        stm.setObject(1, initials);
+        stm.setObject(2, fName);
+        stm.setObject(3, mName);
+        stm.setObject(4, lName);
+        ResultSet rst = stm.executeQuery();
+        
+        M_Employee employee = null;
+        if(rst.next()){
+            employee = new M_Employee(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getDate(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getInt(17), rst.getInt(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getDouble(23), rst.getInt(24), rst.getString(25), rst.getString(26), rst.getInt(27), rst.getDate(28), rst.getInt(29), rst.getDouble(30), rst.getDouble(31));
+        }
+        return employee;
+        
+    }
 
 }

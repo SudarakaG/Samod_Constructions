@@ -48,4 +48,12 @@ public class M_EmployeeService {
     public List<M_Employee> getAllEmployees()throws Exception{
         return dbAccessFactory.getEmployeeAccess().getAllEmployees();
     }
+    
+    public M_Employee searchBySubContractorId(int subId)throws Exception{
+        return dbAccessFactory.getEmployeeAccess().searchBySubContractorId(subId);
+    }
+    
+    public M_Employee searchByFullName(String initials,String fName,String mName,String lName)throws Exception{
+        return dbAccessFactory.getEmployeeAccess().searchByFullName(initials, fName, mName, lName);
+    }
 }
