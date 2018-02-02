@@ -406,38 +406,38 @@ public class Employee_Salary extends javax.swing.JPanel {
         tb_emp_sal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tb_emp_sal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Employee Name"
+                "Initials", "First Name", "Middle Name", "Last Name"
             }
         ));
         tb_emp_sal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -511,8 +511,11 @@ public class Employee_Salary extends javax.swing.JPanel {
     private void tb_emp_salMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_emp_salMouseClicked
         try {
             int selectedRow = tb_emp_sal.getSelectedRow();
-            String empName = (String) dtmEmpSalary.getValueAt(selectedRow, 0);
-            employee = employeeController.searchEmployee(empName);
+            String initials = (String) dtmEmpSalary.getValueAt(selectedRow, 0);
+            String fName = (String) dtmEmpSalary.getValueAt(selectedRow, 1);
+            String mName = (String) dtmEmpSalary.getValueAt(selectedRow, 2);
+            String lNAme = (String) dtmEmpSalary.getValueAt(selectedRow, 3);
+            employee = employeeController.searchByFullName(initials, fName, mName, lNAme);
             loadEmployeeData();
 
         } catch (Exception ex) {
@@ -675,7 +678,7 @@ public class Employee_Salary extends javax.swing.JPanel {
             dtmEmpSalary.setRowCount(0);
             List<M_Employee> allEmployees = employeeController.getAllEmployees();
             for (M_Employee allEmployee : allEmployees) {
-                String[] rowData = {allEmployee.getEmp_firstName()};
+                String[] rowData = {allEmployee.getEmp_initials(), allEmployee.getEmp_firstName(), allEmployee.getEmp_middleName(), allEmployee.getEmp_surName()};
                 dtmEmpSalary.addRow(rowData);
             }
         } catch (Exception ex) {

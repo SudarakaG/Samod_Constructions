@@ -39,6 +39,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         initComponents();
         lblSubContractor.setVisible(false);
         cmb_emp_subContractor.setVisible(false);
+        cmb_searchEmp_subContractor.setVisible(false);
 
         Employee_Registration_Panel.setVisible(false);
         Employee_View_Panel.setVisible(true);
@@ -122,6 +123,8 @@ public class Employee_Panel extends javax.swing.JPanel {
         jScrollPane8 = new javax.swing.JScrollPane();
         tbl_employeeInfo = new javax.swing.JTable();
         txt_branch_search1 = new javax.swing.JTextField();
+        cmb_searchEmp_jobType = new javax.swing.JComboBox<>();
+        cmb_searchEmp_subContractor = new javax.swing.JComboBox<>();
 
         Employee_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Employee_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -609,42 +612,42 @@ public class Employee_Panel extends javax.swing.JPanel {
         tbl_employeeInfo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tbl_employeeInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Employee Name", "Job Type", "Designatios"
+                "Employee Name", "NIC", "Job Type", "Designatios"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, true, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -664,6 +667,20 @@ public class Employee_Panel extends javax.swing.JPanel {
         txt_branch_search1.setText("Search");
         txt_branch_search1.setToolTipText("Use Bank Nname To Search !");
 
+        cmb_searchEmp_jobType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Job Type -" }));
+        cmb_searchEmp_jobType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_searchEmp_jobTypeActionPerformed(evt);
+            }
+        });
+
+        cmb_searchEmp_subContractor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Sub Contractor -" }));
+        cmb_searchEmp_subContractor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_searchEmp_subContractorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tbl_panel_Branch2Layout = new javax.swing.GroupLayout(tbl_panel_Branch2);
         tbl_panel_Branch2.setLayout(tbl_panel_Branch2Layout);
         tbl_panel_Branch2Layout.setHorizontalGroup(
@@ -671,6 +688,10 @@ public class Employee_Panel extends javax.swing.JPanel {
             .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE)
             .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
                 .addComponent(btn_branch1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103)
+                .addComponent(cmb_searchEmp_jobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(cmb_searchEmp_subContractor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txt_branch_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -685,7 +706,10 @@ public class Employee_Panel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btn_branch1)
+                        .addGroup(tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_branch1)
+                            .addComponent(cmb_searchEmp_jobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_searchEmp_subContractor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -698,7 +722,7 @@ public class Employee_Panel extends javax.swing.JPanel {
             .addGroup(Employee_View_PanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         Employee_View_PanelLayout.setVerticalGroup(
             Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -742,6 +766,7 @@ public class Employee_Panel extends javax.swing.JPanel {
     private void btn_branch1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_branch1MouseClicked
         Employee_View_Panel.setVisible(false);
         Employee_Registration_Panel.setVisible(true);
+        cmb_searchEmp_jobType.setSelectedIndex(0);
         refreshFields();
     }//GEN-LAST:event_btn_branch1MouseClicked
 
@@ -769,6 +794,7 @@ public class Employee_Panel extends javax.swing.JPanel {
 
     private void tbl_employeeInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_employeeInfoMouseClicked
         getDataFromTable();
+        cmb_searchEmp_jobType.setSelectedIndex(0);
     }//GEN-LAST:event_tbl_employeeInfoMouseClicked
 
     private void btn_emp_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_salaryActionPerformed
@@ -794,7 +820,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                 for (int i = 1; i < cmb_emp_subContractor.getItemCount(); i++) {
                     cmb_emp_subContractor.removeItemAt(i);
                 }
-                
+
                 List<M_Employee> allEmployees = employeeController.getAllEmployees();
                 for (M_Employee allEmployee : allEmployees) {
                     if (allEmployee.getEmp_jobType_id() == 5) {
@@ -845,6 +871,59 @@ public class Employee_Panel extends javax.swing.JPanel {
         Validation.phoneNumber(txt_contact_3, evt);
     }//GEN-LAST:event_txt_contact_3KeyReleased
 
+    private void cmb_searchEmp_jobTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_searchEmp_jobTypeActionPerformed
+        if (cmb_searchEmp_jobType.getSelectedIndex() != 0) {
+            try {
+                List<M_Employee> allEmployees = employeeController.getAllEmployees();
+                if (cmb_searchEmp_jobType.getSelectedItem().toString().equalsIgnoreCase("Sub contractor staff")) {
+
+                    cmb_searchEmp_subContractor.setVisible(true);
+
+                    for (int i = 1; i < cmb_searchEmp_subContractor.getItemCount(); i++) {
+                        cmb_searchEmp_subContractor.removeItemAt(i);
+                    }
+
+                    for (M_Employee allEmployee : allEmployees) {
+                        if (allEmployee.getEmp_jobType_id() == 5) {
+                            cmb_searchEmp_subContractor.addItem(allEmployee.getEmp_firstName());
+                        }
+                    }
+
+                } else {
+                    cmb_searchEmp_subContractor.setVisible(false);
+                    dtmEmployee.setRowCount(0);
+                    for (M_Employee allEmployee : allEmployees) {
+                        if (jobTypeController.searchJobType(cmb_searchEmp_jobType.getSelectedItem().toString()).getJobType_id() == allEmployee.getEmp_jobType_id()) {
+
+                            String[] rowData = {allEmployee.getEmp_firstName()};
+                            dtmEmployee.addRow(rowData);
+
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_cmb_searchEmp_jobTypeActionPerformed
+
+    private void cmb_searchEmp_subContractorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_searchEmp_subContractorActionPerformed
+        try {
+
+            dtmEmployee.setRowCount(0);
+            List<M_Employee> allEmployees = employeeController.getAllEmployees();
+            for (M_Employee allEmployee : allEmployees) {
+                if (allEmployee.getEmp_subContractor_id() == employeeController.searchEmployee(cmb_searchEmp_subContractor.getSelectedItem().toString()).getEmp_id()) {
+                    String[] rowData = {allEmployee.getEmp_firstName()};
+                    dtmEmployee.addRow(rowData);
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cmb_searchEmp_subContractorActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Employee_Registration_Panel;
@@ -860,6 +939,8 @@ public class Employee_Panel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmb_emp_status;
     private javax.swing.JComboBox<String> cmb_emp_subContractor;
     private javax.swing.JComboBox<String> cmb_employee_title;
+    private javax.swing.JComboBox<String> cmb_searchEmp_jobType;
+    private javax.swing.JComboBox<String> cmb_searchEmp_subContractor;
     private org.jdesktop.swingx.JXDatePicker date_picker_birth;
     private org.jdesktop.swingx.JXDatePicker date_picker_joinDate;
     private javax.swing.JButton jButton4;
@@ -958,6 +1039,7 @@ public class Employee_Panel extends javax.swing.JPanel {
             cmb_emp_jobType.removeAll();
             for (R_JobType allJobType : allJobTypes) {
                 cmb_emp_jobType.addItem(allJobType.getJobType_name());
+                cmb_searchEmp_jobType.addItem(allJobType.getJobType_name());
             }
 
         } catch (Exception ex) {
@@ -989,7 +1071,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                 String jobType = jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name();
                 String designation = designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name();
 
-                String[] rowData = {allEmployee.getEmp_firstName(), jobType, designation};
+                String[] rowData = {allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobType, designation};
                 dtmEmployee.addRow(rowData);
             }
 
@@ -1000,7 +1082,7 @@ public class Employee_Panel extends javax.swing.JPanel {
 
     private void getDataFromTable() {
         try {
-            M_Employee employee = searchFromTableName();
+            M_Employee employee = searchFromTableNIC();
             cmb_employee_title.setSelectedIndex(Integer.parseInt(employee.getEmp_title()));
             txt_Initials.setText(employee.getEmp_initials());
             txt_firt_name.setText(employee.getEmp_firstName());
@@ -1019,8 +1101,8 @@ public class Employee_Panel extends javax.swing.JPanel {
             cmb_emp_jobType.setSelectedItem(jobTypeController.searchJobType(employee.getEmp_jobType_id()).getJobType_name());
             cmb_emp_designation.setSelectedItem(designationController.searchDesignation(employee.getEmp_designation_id()).getDesignation_name());
             cmb_emp_status.setSelectedIndex(Integer.parseInt(employee.getEmp_status()));
-            if(cmb_emp_jobType.getSelectedItem().toString().equalsIgnoreCase("Sub contractor staff")){
-            cmb_emp_subContractor.setSelectedItem(employeeController.searchEmployee(employee.getEmp_subContractor_id()).getEmp_firstName());
+            if (cmb_emp_jobType.getSelectedItem().toString().equalsIgnoreCase("Sub contractor staff")) {
+                cmb_emp_subContractor.setSelectedItem(employeeController.searchEmployee(employee.getEmp_subContractor_id()).getEmp_firstName());
             }
 
         } catch (Exception ex) {
@@ -1032,13 +1114,13 @@ public class Employee_Panel extends javax.swing.JPanel {
         btn_emp_save.setText("Update");
     }
 
-    private M_Employee searchFromTableName() {
+    private M_Employee searchFromTableNIC() {
         int selectedRow = tbl_employeeInfo.getSelectedRow();
-        String name = (String) dtmEmployee.getValueAt(selectedRow, 0);
+        String nic = (String) dtmEmployee.getValueAt(selectedRow, 1);
 
         M_Employee employee = null;
         try {
-            employee = employeeController.searchEmployee(name);
+            employee = employeeController.searchEmployeeByNIC(nic);
         } catch (Exception ex) {
             Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1048,7 +1130,7 @@ public class Employee_Panel extends javax.swing.JPanel {
     private void updateEmployee() {
         try {
 
-            int empId = searchFromTableName().getEmp_id();
+            int empId = searchFromTableNIC().getEmp_id();
             String empTitle = Integer.toString(cmb_employee_title.getSelectedIndex());
             String empInitials = txt_Initials.getText();
             String firstName = txt_firt_name.getText();
