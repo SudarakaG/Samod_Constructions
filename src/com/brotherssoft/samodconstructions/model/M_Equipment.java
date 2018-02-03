@@ -22,13 +22,13 @@ public class M_Equipment implements Serializable{
     private String equipment_regNo;
     private String equipment_capacity;
     private Date equipment_regDate;
-    private char equipment_status;
+    private int equipment_status;
     private double equipment_depreciationRate;
 
     public M_Equipment() {
     }
 
-    public M_Equipment(int equipment_id, int equipment_asset_id, int equipment_asset_category_id, String equipment_name, String equipment_description, String equipment_regNo, String equipment_capacity, Date equipment_regDate, char equipment_status, double equipment_depreciationRate) {
+    public M_Equipment(int equipment_id, int equipment_asset_id, int equipment_asset_category_id, String equipment_name, String equipment_description, String equipment_regNo, String equipment_capacity, Date equipment_regDate, int equipment_status, double equipment_depreciationRate) {
         this.equipment_id = equipment_id;
         this.equipment_asset_id = equipment_asset_id;
         this.equipment_asset_category_id = equipment_asset_category_id;
@@ -156,14 +156,14 @@ public class M_Equipment implements Serializable{
     /**
      * @return the equipment_status
      */
-    public char getEquipment_status() {
+    public int getEquipment_status() {
         return equipment_status;
     }
 
     /**
      * @param equipment_status the equipment_status to set
      */
-    public void setEquipment_status(char equipment_status) {
+    public void setEquipment_status(int equipment_status) {
         this.equipment_status = equipment_status;
     }
 
@@ -181,6 +181,5 @@ public class M_Equipment implements Serializable{
         this.equipment_depreciationRate = equipment_depreciationRate;
     }
 
-    
     
 }

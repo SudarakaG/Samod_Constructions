@@ -15,12 +15,12 @@ public class R_AssetCategory implements Serializable{
     
     private int assetCategory_id;
     private String assetCategory_description;
-    private char assetCategory_status;
+    private String assetCategory_status;
 
     public R_AssetCategory() {
     }
 
-    public R_AssetCategory(int assetCategory_id, String assetCategory_description, char assetCategory_status) {
+    public R_AssetCategory(int assetCategory_id, String assetCategory_description, String assetCategory_status) {
         this.assetCategory_id = assetCategory_id;
         this.assetCategory_description = assetCategory_description;
         this.assetCategory_status = assetCategory_status;
@@ -57,17 +57,16 @@ public class R_AssetCategory implements Serializable{
     /**
      * @return the assetCategory_status
      */
-    public char getAssetCategory_status() {
+    public String getAssetCategory_status() {
         return assetCategory_status;
     }
 
     /**
      * @param assetCategory_status the assetCategory_status to set
      */
-    public void setAssetCategory_status(char assetCategory_status) {
+    public void setAssetCategory_status(String assetCategory_status) {
         this.assetCategory_status = assetCategory_status;
     }
-    
-    
+
     
 }

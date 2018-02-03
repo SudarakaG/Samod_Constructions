@@ -18,13 +18,13 @@ public class M_Material implements Serializable{
     private String material_name;
     private String material_description;
     private int material_unit_id;
-    private char material_status;
+    private int material_status;
     private Date material_regDate;
 
     public M_Material() {
     }
 
-    public M_Material(int material_id, String material_name, String material_description, int material_unit_id, char material_status, Date material_regDate) {
+    public M_Material(int material_id, String material_name, String material_description, int material_unit_id, int material_status, Date material_regDate) {
         this.material_id = material_id;
         this.material_name = material_name;
         this.material_description = material_description;
@@ -92,14 +92,14 @@ public class M_Material implements Serializable{
     /**
      * @return the material_status
      */
-    public char getMaterial_status() {
+    public int getMaterial_status() {
         return material_status;
     }
 
     /**
      * @param material_status the material_status to set
      */
-    public void setMaterial_status(char material_status) {
+    public void setMaterial_status(int material_status) {
         this.material_status = material_status;
     }
 
@@ -117,6 +117,5 @@ public class M_Material implements Serializable{
         this.material_regDate = material_regDate;
     }
 
-    
     
 }

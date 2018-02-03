@@ -8,6 +8,8 @@ package com.brotherssoft.samodconstructions.controllerfactory;
 import com.brotherssoft.samodconstructions.controller.IDController;
 import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
+import com.brotherssoft.samodconstructions.controller.M_EquipmentController;
+import com.brotherssoft.samodconstructions.controller.M_MaterialController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
 import java.rmi.Remote;
@@ -15,6 +17,7 @@ import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectControlle
 import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
+import com.brotherssoft.samodconstructions.controller.R_AssetCategoryController;
 import com.brotherssoft.samodconstructions.controller.R_DesignationController;
 import com.brotherssoft.samodconstructions.controller.R_FuelTypeController;
 import com.brotherssoft.samodconstructions.controller.R_JobTypeController;
@@ -25,6 +28,8 @@ import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
 import com.brotherssoft.samodconstructions.controller.R_SalaryTypeController;
 import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
 import com.brotherssoft.samodconstructions.controller.R_WorkController;
+import com.brotherssoft.samodconstructions.controller.R_AssetController;
+import com.brotherssoft.samodconstructions.controller.R_UnitController;
 
 /**
  *
@@ -51,5 +56,10 @@ public interface ControllerFactory extends Remote{
     public R_DesignationController getDesignationController()throws Exception;
     public R_SalaryTypeController getSalaryTypeController()throws Exception;
     public R_WorkController getWorkController()throws Exception;
+    public R_AssetController getAssetController()throws Exception;
+    public R_AssetCategoryController getAssetCategoryController()throws Exception;
+    public R_UnitController getUnitController()throws Exception;
+    public M_EquipmentController getEquipmentController()throws Exception;
+    public M_MaterialController getMaterialController()throws Exception;
     
 }

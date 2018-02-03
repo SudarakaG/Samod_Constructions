@@ -16,13 +16,13 @@ public class R_Asset implements Serializable{
     private int asset_id;
     private String asset_name;
     private String asset_description;
-    private char asset_status;
+    private String asset_status;
     private int asset_category_id;
 
     public R_Asset() {
     }
 
-    public R_Asset(int asset_id, String asset_name, String asset_description, char asset_status, int asset_category_id) {
+    public R_Asset(int asset_id, String asset_name, String asset_description, String asset_status, int asset_category_id) {
         this.asset_id = asset_id;
         this.asset_name = asset_name;
         this.asset_description = asset_description;
@@ -75,14 +75,14 @@ public class R_Asset implements Serializable{
     /**
      * @return the asset_status
      */
-    public char getAsset_status() {
+    public String getAsset_status() {
         return asset_status;
     }
 
     /**
      * @param asset_status the asset_status to set
      */
-    public void setAsset_status(char asset_status) {
+    public void setAsset_status(String asset_status) {
         this.asset_status = asset_status;
     }
 
@@ -99,7 +99,7 @@ public class R_Asset implements Serializable{
     public void setAsset_category_id(int asset_category_id) {
         this.asset_category_id = asset_category_id;
     }
-    
+
     
     
 }
