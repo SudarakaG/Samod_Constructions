@@ -130,7 +130,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Project Registration"/>
+                <Property name="text" type="java.lang.String" value="Project Secondary Info"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator14">
@@ -251,59 +251,57 @@
                                   <EmptySpace pref="395" max="-2" attributes="0"/>
                                   <Component id="btn_add_secondary_project" min="-2" pref="76" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel138" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txt_agreement_date" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel139" min="-2" pref="146" max="-2" attributes="0"/>
-                                                  <Component id="jLabel145" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txt_name" linkSize="6" min="-2" pref="321" max="-2" attributes="0"/>
-                                                  <Component id="jScrollPane1" linkSize="6" min="-2" pref="407" max="-2" attributes="0"/>
-                                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel138" min="-2" pref="146" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txt_agreement_date" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel139" min="-2" pref="146" max="-2" attributes="0"/>
+                                              <Component id="jLabel145" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel123" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                                  <Component id="jLabel124" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txt_boq" linkSize="6" min="-2" pref="407" max="-2" attributes="0"/>
-                                                  <Component id="txt_vat" linkSize="6" min="-2" pref="407" max="-2" attributes="0"/>
-                                              </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txt_name" linkSize="6" min="-2" pref="321" max="-2" attributes="0"/>
+                                              <Component id="jScrollPane1" linkSize="6" min="-2" pref="407" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel125" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                                  <Component id="jLabel126" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="txt_total" linkSize="6" min="-2" pref="407" max="-2" attributes="0"/>
-                                                  <Component id="txt_project_duration" linkSize="6" min="-2" pref="321" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Component id="jSeparator30" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                          <Component id="jSeparator31" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                          <Component id="jLabel140" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                          <Component id="jSeparator29" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                          <Component id="jLabel141" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                          <Component id="jLabel155" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
-                                          <Component id="jLabel147" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
-                                          <Component id="jLabel122" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                          <Component id="jSeparator28" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel123" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                              <Component id="jLabel124" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txt_boq" linkSize="6" min="-2" pref="407" max="-2" attributes="0"/>
+                                              <Component id="txt_vat" linkSize="6" min="-2" pref="407" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel125" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                              <Component id="jLabel126" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txt_total" linkSize="6" min="-2" pref="407" max="-2" attributes="0"/>
+                                              <Component id="txt_project_duration" linkSize="6" min="-2" pref="321" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="jSeparator30" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                      <Component id="jSeparator31" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                      <Component id="jLabel140" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                      <Component id="jSeparator29" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                      <Component id="jLabel141" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                      <Component id="jLabel155" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
+                                      <Component id="jLabel147" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
+                                      <Component id="jLabel122" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                      <Component id="jSeparator28" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
