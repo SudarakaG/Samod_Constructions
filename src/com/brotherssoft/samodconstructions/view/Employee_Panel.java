@@ -799,13 +799,23 @@ public class Employee_Panel extends javax.swing.JPanel {
 
     private void btn_emp_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_salaryActionPerformed
         try {
-            Employee_Salary employee_Salary = new Employee_Salary(txt_nic.getText());
-            GUI_Home.load_panel.repaint();
-            GUI_Home.load_panel.revalidate();
-            employee_Salary.setSize(GUI_Home.load_panel.getSize());
-            GUI_Home.load_panel.add(employee_Salary);
-            employee_Salary.setVisible(true);
-            this.setVisible(false);
+            if (!txt_nic.getText().equalsIgnoreCase("")) {
+                Employee_Salary employee_Salary = new Employee_Salary(txt_nic.getText());
+                GUI_Home.load_panel.repaint();
+                GUI_Home.load_panel.revalidate();
+                employee_Salary.setSize(GUI_Home.load_panel.getSize());
+                GUI_Home.load_panel.add(employee_Salary);
+                employee_Salary.setVisible(true);
+                this.setVisible(false);
+            } else {
+                Employee_Salary employee_Salary = new Employee_Salary();
+                GUI_Home.load_panel.repaint();
+                GUI_Home.load_panel.revalidate();
+                employee_Salary.setSize(GUI_Home.load_panel.getSize());
+                GUI_Home.load_panel.add(employee_Salary);
+                employee_Salary.setVisible(true);
+                this.setVisible(false);
+            }
         } catch (Exception ex) {
             Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
