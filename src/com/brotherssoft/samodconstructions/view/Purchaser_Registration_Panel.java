@@ -450,7 +450,7 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
     private void btn_save_purchaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_purchaserActionPerformed
         if (btn_save_purchaser.getText().equalsIgnoreCase("Save")) {
             savePurchaser();
-        }else{
+        } else {
             updatePurchaser();
         }
     }//GEN-LAST:event_btn_save_purchaserActionPerformed
@@ -470,7 +470,7 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         txt_purchaser_repName.setText("");
         txt_purchaser_repContact.setText("");
         cmb_purchaser_status.setSelectedIndex(0);
-        
+
         btn_save_purchaser.setText("Save");
     }//GEN-LAST:event_btn_purchaser_newActionPerformed
 
@@ -528,14 +528,14 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
 
     private void loadPurchaserTable() {
         try {
-            
+
             dtmPurchaser.setRowCount(0);
             List<M_Purchaser> allPurchasers = purchaserController.getAllPurchasers();
             for (M_Purchaser allPurchaser : allPurchasers) {
                 String[] rowData = {allPurchaser.getPurchaser_name()};
                 dtmPurchaser.addRow(rowData);
             }
-            
+
         } catch (Exception ex) {
             Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -585,27 +585,27 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
             } else {
                 status = "I";
             }
-            
+
             M_Purchaser purchaser = new M_Purchaser(purchaserId, purchaserName, purchaserAddress, purchaserAccountNo, bankId, branchId, contact1, contact2, repName, repContact, status);
             boolean addPurchaser = purchaserController.addPurchaser(purchaser);
             if (addPurchaser) {
                 JOptionPane.showMessageDialog(this, "Purchaser Details Saved Successfully..");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Purchaser Details Saving Cannot Proceed..");
             }
 
         } catch (Exception ex) {
             Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         loadPurchaserTable();
     }
 
-    private void getFromPurchaserTable() {        
+    private void getFromPurchaserTable() {
         try {
-            
+
             M_Purchaser purchaser = searchFromTablePurchaserName();
-            
+
             txt_purchaser_name.setText(purchaser.getPurchaser_name());
             txt_purchaser_address.setText(purchaser.getPurchaser_address());
             txt_purchaser_accountNo.setText(purchaser.getPurchaser_accountNo());
@@ -615,28 +615,28 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
             txt_purchaser_contact2.setText(purchaser.getPurchaser_contact2());
             txt_purchaser_repName.setText(purchaser.getPurchaser_repName());
             txt_purchaser_repContact.setText(purchaser.getPurchaser_repContact());
-            if(purchaser.getPurchaser_status().equalsIgnoreCase("A")){
+            if (purchaser.getPurchaser_status().equalsIgnoreCase("A")) {
                 cmb_purchaser_status.setSelectedIndex(0);
-            }else{
+            } else {
                 cmb_purchaser_status.setSelectedIndex(1);
             }
-            
+
         } catch (Exception ex) {
             Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         btn_save_purchaser.setText("Update");
     }
 
     private M_Purchaser searchFromTablePurchaserName() {
         M_Purchaser searchPurchaser = null;
         try {
-            
+
             int selectedRow = tbl_purchaser_info.getSelectedRow();
             String purchaserName = (String) dtmPurchaser.getValueAt(selectedRow, 0);
             searchPurchaser = purchaserController.searchPurchaser(purchaserName);
-            
-                    } catch (Exception ex) {
+
+        } catch (Exception ex) {
             Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return searchPurchaser;
@@ -644,7 +644,7 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
 
     private void updatePurchaser() {
         try {
-            
+
             int purchaserId = searchFromTablePurchaserName().getPurchaser_id();
             String purchaserName = txt_purchaser_name.getText();
             String purchaserAddress = txt_purchaser_address.getText();
@@ -661,19 +661,19 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
             } else {
                 status = "I";
             }
-            
+
             M_Purchaser purchaser = new M_Purchaser(purchaserId, purchaserName, purchaserAddress, purchaserAccountNo, bankId, branchId, contact1, contact2, repName, repContact, status);
             boolean updatePuchaser = purchaserController.updatePuchaser(purchaser);
             if (updatePuchaser) {
                 JOptionPane.showMessageDialog(this, "Purchaser Details Updated Successfully..");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Updating Purchaser Details Failed..");
             }
-            
+
         } catch (Exception ex) {
             Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         loadPurchaserTable();
     }
 }

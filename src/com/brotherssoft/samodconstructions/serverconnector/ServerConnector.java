@@ -8,10 +8,14 @@ package com.brotherssoft.samodconstructions.serverconnector;
 import com.brotherssoft.samodconstructions.controller.IDController;
 import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
+import com.brotherssoft.samodconstructions.controller.M_EquipmentController;
+import com.brotherssoft.samodconstructions.controller.M_MaterialController;
 import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
 import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
+import com.brotherssoft.samodconstructions.controller.R_AssetCategoryController;
+import com.brotherssoft.samodconstructions.controller.R_AssetController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
 import com.brotherssoft.samodconstructions.controller.R_DesignationController;
@@ -22,6 +26,7 @@ import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
 import com.brotherssoft.samodconstructions.controller.R_SalaryTypeController;
+import com.brotherssoft.samodconstructions.controller.R_UnitController;
 import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
 import com.brotherssoft.samodconstructions.controller.R_WorkController;
 import com.brotherssoft.samodconstructions.controllerfactory.ControllerFactory;
@@ -54,6 +59,11 @@ public class ServerConnector {
     private M_EmployeeController employeeController;
     private R_SalaryTypeController salaryTypeController;
     private R_WorkController workController;
+    private R_AssetController assetController;
+    private R_AssetCategoryController assetCategoryController;
+    private R_UnitController unitController;
+    private M_EquipmentController equipmentController;
+    private M_MaterialController materialController;
     
     //private UserHistoryController uhc;
 
@@ -192,6 +202,41 @@ public class ServerConnector {
             workController = cf.getWorkController();
         }
         return workController;
+    }
+    
+    public R_AssetController getAssetController()throws Exception{
+        if(assetController == null){
+            assetController = cf.getAssetController();
+        }
+        return assetController;
+    }
+    
+    public R_AssetCategoryController getAssetCategoryController()throws Exception{
+        if(assetCategoryController == null){
+            assetCategoryController = cf.getAssetCategoryController();
+        }
+        return assetCategoryController;
+    }
+    
+    public R_UnitController getUnitController()throws Exception{
+        if(unitController == null){
+            unitController = cf.getUnitController();
+        }
+        return unitController;
+    }
+    
+    public M_EquipmentController getEquipmentController() throws Exception{
+        if(equipmentController == null){
+            equipmentController = cf.getEquipmentController();
+        }
+        return equipmentController;
+    }
+    
+    public M_MaterialController getMaterialController()throws Exception{
+        if(materialController == null){
+            materialController = cf.getMaterialController();
+        }
+        return materialController;
     }
 
 //    

@@ -5,17 +5,51 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.M_EquipmentController;
+import com.brotherssoft.samodconstructions.controller.R_AssetCategoryController;
+import com.brotherssoft.samodconstructions.controller.R_AssetController;
+import com.brotherssoft.samodconstructions.custom.IDGenerator;
+import com.brotherssoft.samodconstructions.model.M_Equipment;
+import com.brotherssoft.samodconstructions.model.R_Asset;
+import com.brotherssoft.samodconstructions.model.R_AssetCategory;
+import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Akvasoft
  */
 public class Equipment_Registration_Panel extends javax.swing.JPanel {
 
+    R_AssetController assetController;
+    R_AssetCategoryController assetCategoryController;
+    M_EquipmentController equipmentController;
+    DefaultTableModel dtmEquipment;
+    DefaultComboBoxModel cmbModel; 
+    
+
     /**
      * Creates new form Equipment_Registration_Panel
      */
-    public Equipment_Registration_Panel() {
+    public Equipment_Registration_Panel() throws Exception {
         initComponents();
+
+        assetController = ServerConnector.getServerConnetor().getAssetController();
+        assetCategoryController = ServerConnector.getServerConnetor().getAssetCategoryController();
+        equipmentController = ServerConnector.getServerConnetor().getEquipmentController();
+        dtmEquipment = (DefaultTableModel) tbl_equipment_info.getModel();
+        cmbModel = (DefaultComboBoxModel) cmb_assetType.getModel();
+
+        //loadAssetCombo();
+        loadAssetCategoryCombo();
+        loadEquipmentTable();
+
     }
 
     /**
@@ -38,7 +72,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         txt_equipment_name = new javax.swing.JTextField();
         txt_equipment_regNo = new javax.swing.JTextField();
         btn_save_equipment = new javax.swing.JButton();
-        btn_cancel_equipment = new javax.swing.JButton();
+        btn_new_equipment = new javax.swing.JButton();
         btn_equipment = new javax.swing.JButton();
         jLabel147 = new javax.swing.JLabel();
         cmb_assetType = new javax.swing.JComboBox<>();
@@ -119,9 +153,19 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
 
         btn_save_equipment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_save_equipment.setText("Save");
+        btn_save_equipment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_save_equipmentActionPerformed(evt);
+            }
+        });
 
-        btn_cancel_equipment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_cancel_equipment.setText("Cancel");
+        btn_new_equipment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_new_equipment.setText("New");
+        btn_new_equipment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_new_equipmentActionPerformed(evt);
+            }
+        });
 
         btn_equipment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_equipment.setText("Equipment");
@@ -142,6 +186,11 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
 
         cmb_asset_category.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_asset_category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Asset Category -" }));
+        cmb_asset_category.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_asset_categoryActionPerformed(evt);
+            }
+        });
 
         txtArea_equipment_desc.setColumns(20);
         txtArea_equipment_desc.setRows(5);
@@ -182,7 +231,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_save_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_cancel_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_new_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(bank_panel_input_area2Layout.createSequentialGroup()
                         .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel145, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,11 +239,9 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
                             .addComponent(jLabel143, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel149, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel147, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmb_assetType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmb_asset_category, 0, 307, Short.MAX_VALUE)
                             .addComponent(txt_equipment_name)
                             .addComponent(jScrollPane16)
@@ -208,7 +255,11 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
                     .addGroup(bank_panel_input_area2Layout.createSequentialGroup()
                         .addComponent(jLabel151, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(cmb_equipment_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(cmb_equipment_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(bank_panel_input_area2Layout.createSequentialGroup()
+                        .addComponent(jLabel147, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmb_assetType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         bank_panel_input_area2Layout.setVerticalGroup(
@@ -216,12 +267,12 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
             .addGroup(bank_panel_input_area2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel147, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmb_assetType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel148, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmb_asset_category, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel147, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_assetType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,7 +304,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_save_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cancel_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_new_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -299,6 +350,11 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
             }
         ));
         tbl_equipment_info.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_equipment_info.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_equipment_infoMouseClicked(evt);
+            }
+        });
         jScrollPane15.setViewportView(tbl_equipment_info);
 
         jLabel152.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
@@ -323,7 +379,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         bank_panel_tbl2Layout.setVerticalGroup(
             bank_panel_tbl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(bank_panel_tbl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel152, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_search_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -351,7 +407,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
                 .addGroup(Equipment_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bank_panel_tbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bank_panel_input_area2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -370,13 +426,71 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_equipmentMouseClicked
 
+    private void cmb_asset_categoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_asset_categoryActionPerformed
+        if (cmb_asset_category.getSelectedIndex() != 0) {
+            
+//            for (int i = 1; i < cmb_assetType.getItemCount(); i++) {
+//                cmbModel.removeElementAt(i);
+//            }
+            
+            cmbModel = new DefaultComboBoxModel();
+            cmbModel.addElement("- Select Asset Type -");
+            cmbModel.setSelectedItem("- Select Asset Type -");
+            cmb_assetType.setModel(cmbModel);
+            
+            try {
+                List<R_Asset> allAssets = assetController.getAllAssets();
+                int categoryId = assetCategoryController.searchAssetCategory(cmb_asset_category.getSelectedItem().toString()).getAssetCategory_id();
+//
+                for (R_Asset asset : allAssets) {
+                    if (asset.getAsset_category_id() == categoryId) {
+                        cmb_assetType.addItem(asset.getAsset_name());
+                    } else {
+                        cmb_assetType.removeAll();
+                        cmb_assetType.revalidate();
+                        cmb_assetType.repaint();
+                    }
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_cmb_asset_categoryActionPerformed
+
+    private void btn_save_equipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_equipmentActionPerformed
+        if(btn_save_equipment.getText().equalsIgnoreCase("Save")){
+            addEquipment();
+        }else{
+            updateEquipment();
+        }
+        loadEquipmentTable();
+    }//GEN-LAST:event_btn_save_equipmentActionPerformed
+
+    private void tbl_equipment_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_equipment_infoMouseClicked
+        loadFieldsFromTable();
+    }//GEN-LAST:event_tbl_equipment_infoMouseClicked
+
+    private void btn_new_equipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_equipmentActionPerformed
+        cmb_asset_category.setSelectedIndex(0);
+        cmb_assetType.setSelectedIndex(0);
+        txt_equipment_name.setText("");
+        txtArea_equipment_desc.setText("");
+        txt_equipment_regNo.setText("");
+        txt_asset_capacity.setText("");
+        datePicker_assetRegDate.setDate(new Date());
+        cmb_equipment_status.setSelectedIndex(0);
+        txt_equip_depreRate.setText("");
+        
+        btn_save_equipment.setText("Save");
+    }//GEN-LAST:event_btn_new_equipmentActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Equipment_Registration_Panel;
     private javax.swing.JPanel bank_panel_input_area2;
     private javax.swing.JPanel bank_panel_tbl2;
-    private javax.swing.JButton btn_cancel_equipment;
     private javax.swing.JButton btn_equipment;
+    private javax.swing.JButton btn_new_equipment;
     private javax.swing.JButton btn_save_equipment;
     private javax.swing.JComboBox<String> cmb_assetType;
     private javax.swing.JComboBox<String> cmb_asset_category;
@@ -406,4 +520,127 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_search_equipment;
     private javax.swing.JPanel user_panel_hedding12;
     // End of variables declaration//GEN-END:variables
+
+    private void loadAssetCombo() {
+        try {
+            cmb_assetType.removeAll();
+            List<R_Asset> allAssets = assetController.getAllAssets();
+            for (R_Asset allAsset : allAssets) {
+                cmb_assetType.addItem(allAsset.getAsset_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadAssetCategoryCombo() {
+        try {
+            cmb_asset_category.removeAll();
+            List<R_AssetCategory> allAssetCategorys = assetCategoryController.getAllAssetCategorys();
+            for (R_AssetCategory allAssetCategory : allAssetCategorys) {
+                cmb_asset_category.addItem(allAssetCategory.getAssetCategory_description());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadEquipmentTable() {
+        try {
+            dtmEquipment.setRowCount(0);
+            List<M_Equipment> allEquipments = equipmentController.getAllEquipments();
+            for (M_Equipment allEquipment : allEquipments) {
+                String[] rowData = {allEquipment.getEquipment_name()};
+                dtmEquipment.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void addEquipment() {
+        try {
+            
+            int eqId = IDGenerator.getNewID("m_equipment", "EQUIPMENT_ID");
+            int assetId = assetController.searchAsset(cmb_assetType.getSelectedItem().toString()).getAsset_id();
+            int assetCatId = assetCategoryController.searchAssetCategory(cmb_asset_category.getSelectedItem().toString()).getAssetCategory_id();
+            String name = txt_equipment_name.getText();
+            String desc = txtArea_equipment_desc.getText();
+            String regNo = txt_equipment_regNo.getText();
+            String capacity = txt_asset_capacity.getText();
+            Date regDate = datePicker_assetRegDate.getDate();
+            int status = cmb_equipment_status.getSelectedIndex();
+            double depreRate = Double.parseDouble(txt_equip_depreRate.getText());
+            
+            M_Equipment equipment = new M_Equipment(eqId, assetId, assetCatId, name, desc, regNo, capacity, regDate, status, depreRate);
+            boolean addEquipment = equipmentController.addEquipment(equipment);
+            if (addEquipment) {
+                JOptionPane.showMessageDialog(this, "Equipment Successfully Added to the System..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Adding Equipment Failed.. Please Check Again..");
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void updateEquipment() {
+        try {
+            
+            int eqId = searchByTableName().getEquipment_id();
+            int assetId = assetController.searchAsset(cmb_assetType.getSelectedItem().toString()).getAsset_id();
+            int assetCatId = assetCategoryController.searchAssetCategory(cmb_asset_category.getSelectedItem().toString()).getAssetCategory_id();
+            String name = txt_equipment_name.getText();
+            String desc = txtArea_equipment_desc.getText();
+            String regNo = txt_equipment_regNo.getText();
+            String capacity = txt_asset_capacity.getText();
+            Date regDate = datePicker_assetRegDate.getDate();
+            int status = cmb_equipment_status.getSelectedIndex();
+            double depreRate = Double.parseDouble(txt_equip_depreRate.getText());
+            
+            M_Equipment equipment = new M_Equipment(eqId, assetId, assetCatId, name, desc, regNo, capacity, regDate, status, depreRate);
+            boolean updateEquipment = equipmentController.updateEuipment(equipment);
+            if (updateEquipment) {
+                JOptionPane.showMessageDialog(this, "Equipment Successfully Updated..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Updating Equipment Failed.. Please Check Again..");
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadFieldsFromTable() {
+        try {
+            M_Equipment equipment = searchByTableName();
+            cmb_asset_category.setSelectedItem(assetCategoryController.searchAssetCategory(equipment.getEquipment_asset_category_id()).getAssetCategory_description());
+            cmb_assetType.setSelectedItem(assetController.searchAsset(equipment.getEquipment_asset_id()).getAsset_name());
+            txt_equipment_name.setText(equipment.getEquipment_name());
+            txtArea_equipment_desc.setText(equipment.getEquipment_description());
+            txt_equipment_regNo.setText(equipment.getEquipment_regNo());
+            txt_asset_capacity.setText(equipment.getEquipment_capacity());
+            datePicker_assetRegDate.setDate(equipment.getEquipment_regDate());
+            cmb_equipment_status.setSelectedIndex(equipment.getEquipment_status());
+            txt_equip_depreRate.setText(Double.toString(equipment.getEquipment_depreciationRate()));
+            
+            btn_save_equipment.setText("Update");
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private M_Equipment searchByTableName() {
+        int selectedRow = tbl_equipment_info.getSelectedRow();
+        String name = (String) dtmEquipment.getValueAt(selectedRow, 0);
+        M_Equipment searEquipment = null;
+        try {
+            searEquipment = equipmentController.searEquipment(name);
+        } catch (Exception ex) {
+            Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return searEquipment;
+    }
 }
