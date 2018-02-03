@@ -5,17 +5,43 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.M_MaterialController;
+import com.brotherssoft.samodconstructions.controller.R_UnitController;
+import com.brotherssoft.samodconstructions.custom.IDGenerator;
+import com.brotherssoft.samodconstructions.model.M_Material;
+import com.brotherssoft.samodconstructions.model.R_Unit;
+import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Akvasoft
  */
 public class Meterial_Registration_Panel extends javax.swing.JPanel {
 
+    R_UnitController unitController;
+    M_MaterialController materialController;
+    DefaultTableModel dtmMaterial;
+    
     /**
      * Creates new form Meterial_Registration_Panel
      */
-    public Meterial_Registration_Panel() {
+    public Meterial_Registration_Panel() throws Exception {
         initComponents();
+        
+        unitController = ServerConnector.getServerConnetor().getUnitController();
+        materialController = ServerConnector.getServerConnetor().getMaterialController();
+        dtmMaterial = (DefaultTableModel) tbl_material_info.getModel();
+        
+        loadUnitCombo();
+        loadMaterialTable();
+        
     }
 
     /**
@@ -41,7 +67,7 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         jScrollPane18 = new javax.swing.JScrollPane();
         txtArea_material_desc = new javax.swing.JTextArea();
         btn_save_material = new javax.swing.JButton();
-        btn_cancel_material = new javax.swing.JButton();
+        btn_new_material = new javax.swing.JButton();
         cmb_material_unit = new javax.swing.JComboBox<>();
         btn_material = new javax.swing.JButton();
         jLabel161 = new javax.swing.JLabel();
@@ -119,9 +145,19 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
 
         btn_save_material.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_save_material.setText("Save");
+        btn_save_material.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_save_materialActionPerformed(evt);
+            }
+        });
 
-        btn_cancel_material.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_cancel_material.setText("Cancel");
+        btn_new_material.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_new_material.setText("New");
+        btn_new_material.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_new_materialActionPerformed(evt);
+            }
+        });
 
         cmb_material_unit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_material_unit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Unit -" }));
@@ -169,7 +205,7 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_save_material, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_cancel_material, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_new_material, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(bank_panel_input_area4Layout.createSequentialGroup()
                         .addComponent(jLabel161, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -202,7 +238,7 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
                 .addGap(40, 40, 40)
                 .addGroup(bank_panel_input_area4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_save_material, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cancel_material, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_new_material, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_material, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -248,6 +284,11 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
             }
         ));
         tbl_material_info.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_material_info.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_material_infoMouseClicked(evt);
+            }
+        });
         jScrollPane19.setViewportView(tbl_material_info);
 
         jLabel162.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
@@ -319,13 +360,36 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_materialMouseClicked
 
+    private void btn_save_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_materialActionPerformed
+        if(btn_save_material.getText().equalsIgnoreCase("Save")){
+            saveMaterial();
+        }else{
+            updateMaterial();
+        }
+        loadMaterialTable();
+    }//GEN-LAST:event_btn_save_materialActionPerformed
+
+    private void tbl_material_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_material_infoMouseClicked
+        loadFieldsFromTable();
+    }//GEN-LAST:event_tbl_material_infoMouseClicked
+
+    private void btn_new_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_materialActionPerformed
+        txt_material_name1.setText("");
+        txtArea_material_desc.setText("");
+        cmb_material_unit.setSelectedIndex(0);
+        cmb_material_status.setSelectedIndex(0);
+        datePicker_material_reg_date.setDate(new Date());
+        
+        btn_save_material.setText("Save");
+    }//GEN-LAST:event_btn_new_materialActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Meterial_Registration_Panel1;
     private javax.swing.JPanel bank_panel_input_area4;
     private javax.swing.JPanel bank_panel_tbl4;
-    private javax.swing.JButton btn_cancel_material;
     private javax.swing.JButton btn_material;
+    private javax.swing.JButton btn_new_material;
     private javax.swing.JButton btn_save_material;
     private javax.swing.JComboBox<String> cmb_material_status;
     private javax.swing.JComboBox<String> cmb_material_unit;
@@ -347,4 +411,114 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_search_material;
     private javax.swing.JPanel user_panel_hedding9;
     // End of variables declaration//GEN-END:variables
+
+    private void loadUnitCombo() {
+        try {
+            cmb_material_unit.removeAll();
+            List<R_Unit> allUnits = unitController.getAllUnits();
+            for (R_Unit allUnit : allUnits) {
+                cmb_material_unit.addItem(allUnit.getUnit_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadMaterialTable() {
+        try {
+            dtmMaterial.setRowCount(0);
+            List<M_Material> allMaterials = materialController.getAllMaterials();
+            for (M_Material allMaterial : allMaterials) {
+                String status = "";
+                if(allMaterial.getMaterial_status() == 0){
+                    status = "Active";
+                }else{
+                    status = "Inactive";
+                }
+                Date material_regDate = allMaterial.getMaterial_regDate();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                String format = sdf.format(material_regDate);
+                String[] rowData = {allMaterial.getMaterial_name(),status,format};
+                dtmMaterial.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void saveMaterial() {
+        try {
+            
+            int materialId = IDGenerator.getNewID("m_material", "MATERIAL_ID");
+            String materialName = txt_material_name1.getText();
+            String materialDesc = txtArea_material_desc.getText();
+            int unitId = unitController.searchUnit(cmb_material_unit.getSelectedItem().toString()).getUnit_id();
+            int status = cmb_material_status.getSelectedIndex();
+            Date regDate = datePicker_material_reg_date.getDate();
+            
+            M_Material material = new M_Material(materialId, materialName, materialDesc, unitId, status, regDate);
+            boolean addMaterial = materialController.addMaterial(material);
+            if (addMaterial) {
+                JOptionPane.showMessageDialog(this, "Material Successfulley Added..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Adding Material Failed.. Please Check Again..");
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void updateMaterial() {
+        try {
+            
+            int materialId = searchByTableName().getMaterial_id();
+            String materialName = txt_material_name1.getText();
+            String materialDesc = txtArea_material_desc.getText();
+            int unitId = unitController.searchUnit(cmb_material_unit.getSelectedItem().toString()).getUnit_id();
+            int status = cmb_material_status.getSelectedIndex();
+            Date regDate = datePicker_material_reg_date.getDate();
+            
+            M_Material material = new M_Material(materialId, materialName, materialDesc, unitId, status, regDate);
+            boolean updateMaterial = materialController.updateMaterial(material);
+            if (updateMaterial) {
+                JOptionPane.showMessageDialog(this, "Material Successfulley Updated..");
+            }else{
+                JOptionPane.showMessageDialog(this, "Updating Material Failed.. Please Check Again..");
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadFieldsFromTable() {
+        try {
+            
+            M_Material material = searchByTableName();
+            txt_material_name1.setText(material.getMaterial_name());
+            txtArea_material_desc.setText(material.getMaterial_description());
+            cmb_material_unit.setSelectedItem(unitController.searchUnit(material.getMaterial_unit_id()).getUnit_name());
+            cmb_material_status.setSelectedIndex(material.getMaterial_status());
+            datePicker_material_reg_date.setDate(material.getMaterial_regDate());
+            
+            btn_save_material.setText("Update");
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
+    private M_Material searchByTableName() {
+        int selectedRow = tbl_material_info.getSelectedRow();
+        String name = (String) dtmMaterial.getValueAt(selectedRow, 0);
+        M_Material searchMaterial = null;
+        try {
+            searchMaterial = materialController.searchMaterial(name);
+        } catch (Exception ex) {
+            Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return searchMaterial;
+    }
 }
