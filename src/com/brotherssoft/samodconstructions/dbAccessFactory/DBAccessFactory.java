@@ -8,10 +8,14 @@ package com.brotherssoft.samodconstructions.dbAccessFactory;
 import com.brotherssoft.samodconstructions.dbAccess.ID_DBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_AccountDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_EmployeeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_EquipmentDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_MaterialDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_Primary_ProjectDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_PurchaserDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_VehicleDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_AccountTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_AssetCategoryDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_AssetDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BankDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BranchDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_DesignationDBAccess;
@@ -22,6 +26,7 @@ import com.brotherssoft.samodconstructions.dbAccess.R_ProjectGradeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectSpecialityDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_SalaryTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_UnitDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_WorkDBAccess;
 
@@ -50,5 +55,10 @@ public interface DBAccessFactory {
     public R_DesignationDBAccess getDesignationDBAccess();
     public R_SalaryTypeDBAccess getSalaryTypeDBAccess();
     public R_WorkDBAccess getWorkDBAccess();
+    public R_AssetDBAccess getAssetDBAccess();
+    public R_AssetCategoryDBAccess getAssetCategoryDBAccess();
+    public R_UnitDBAccess getUnitDBAccess();
+    public M_EquipmentDBAccess getEquipmentDBAccess();
+    public M_MaterialDBAccess getMaterialDBAccess();
     
 }

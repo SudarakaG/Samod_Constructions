@@ -8,10 +8,14 @@ package com.brotherssoft.samodconstructions.dbAccessFactoryImpl;
 import com.brotherssoft.samodconstructions.dbAccess.ID_DBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_AccountDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_EmployeeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_EquipmentDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_MaterialDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_Primary_ProjectDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_PurchaserDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_VehicleDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_AccountTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_AssetCategoryDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_AssetDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BankDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BranchDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_DesignationDBAccess;
@@ -22,6 +26,7 @@ import com.brotherssoft.samodconstructions.dbAccess.R_ProjectGradeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectSpecialityDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_SalaryTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_UnitDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_WorkDBAccess;
 import com.brotherssoft.samodconstructions.dbAccessFactory.DBAccessFactory;
@@ -130,6 +135,31 @@ public class DBAccessFactoryImpl implements DBAccessFactory{
     @Override
     public R_WorkDBAccess getWorkDBAccess() {
         return new R_WorkDBAccess();
+    }
+
+    @Override
+    public R_AssetDBAccess getAssetDBAccess() {
+        return new R_AssetDBAccess();
+    }
+
+    @Override
+    public R_AssetCategoryDBAccess getAssetCategoryDBAccess() {
+        return new R_AssetCategoryDBAccess();
+    }
+
+    @Override
+    public R_UnitDBAccess getUnitDBAccess() {
+        return new R_UnitDBAccess();
+    }
+
+    @Override
+    public M_EquipmentDBAccess getEquipmentDBAccess() {
+        return new M_EquipmentDBAccess();
+    }
+
+    @Override
+    public M_MaterialDBAccess getMaterialDBAccess() {
+        return new M_MaterialDBAccess();
     }
 
     

@@ -8,10 +8,14 @@ package com.brotherssoft.samodconstructions.servicefactory;
 import com.brotherssoft.samodconstructions.service.IDService;
 import com.brotherssoft.samodconstructions.service.M_AccountService;
 import com.brotherssoft.samodconstructions.service.M_EmployeeService;
+import com.brotherssoft.samodconstructions.service.M_EquipmentService;
+import com.brotherssoft.samodconstructions.service.M_MaterialService;
 import com.brotherssoft.samodconstructions.service.M_Primary_ProjectService;
 import com.brotherssoft.samodconstructions.service.M_PurchaserService;
 import com.brotherssoft.samodconstructions.service.M_VehicleService;
 import com.brotherssoft.samodconstructions.service.R_AccountTypeService;
+import com.brotherssoft.samodconstructions.service.R_AssetCategoryService;
+import com.brotherssoft.samodconstructions.service.R_AssetService;
 import com.brotherssoft.samodconstructions.service.R_BankService;
 import com.brotherssoft.samodconstructions.service.R_BranchService;
 import com.brotherssoft.samodconstructions.service.R_DesignationService;
@@ -22,6 +26,7 @@ import com.brotherssoft.samodconstructions.service.R_ProjectGradeService;
 import com.brotherssoft.samodconstructions.service.R_ProjectSpecialityService;
 import com.brotherssoft.samodconstructions.service.R_ProjectTypeService;
 import com.brotherssoft.samodconstructions.service.R_SalaryTypeService;
+import com.brotherssoft.samodconstructions.service.R_UnitService;
 import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
 import com.brotherssoft.samodconstructions.service.R_WorkService;
 
@@ -50,5 +55,10 @@ public interface ServiceFactory {
     public R_DesignationService getDesignationService();
     public R_SalaryTypeService getSalaryTypeService();
     public R_WorkService getWorkService();
+    public R_AssetService getAssetService();
+    public R_AssetCategoryService getAssetCategoryService();
+    public R_UnitService getUnitService();
+    public M_EquipmentService getEquipmentService();
+    public M_MaterialService getMaterialService();
     
 }

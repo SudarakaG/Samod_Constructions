@@ -8,10 +8,14 @@ package com.brotherssoft.samodconstructions.servicefactoryimpl;
 import com.brotherssoft.samodconstructions.service.IDService;
 import com.brotherssoft.samodconstructions.service.M_AccountService;
 import com.brotherssoft.samodconstructions.service.M_EmployeeService;
+import com.brotherssoft.samodconstructions.service.M_EquipmentService;
+import com.brotherssoft.samodconstructions.service.M_MaterialService;
 import com.brotherssoft.samodconstructions.service.M_Primary_ProjectService;
 import com.brotherssoft.samodconstructions.service.M_PurchaserService;
 import com.brotherssoft.samodconstructions.service.M_VehicleService;
 import com.brotherssoft.samodconstructions.service.R_AccountTypeService;
+import com.brotherssoft.samodconstructions.service.R_AssetCategoryService;
+import com.brotherssoft.samodconstructions.service.R_AssetService;
 import com.brotherssoft.samodconstructions.service.R_BankService;
 import com.brotherssoft.samodconstructions.service.R_BranchService;
 import com.brotherssoft.samodconstructions.service.R_DesignationService;
@@ -22,6 +26,7 @@ import com.brotherssoft.samodconstructions.service.R_ProjectGradeService;
 import com.brotherssoft.samodconstructions.service.R_ProjectSpecialityService;
 import com.brotherssoft.samodconstructions.service.R_ProjectTypeService;
 import com.brotherssoft.samodconstructions.service.R_SalaryTypeService;
+import com.brotherssoft.samodconstructions.service.R_UnitService;
 import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
 import com.brotherssoft.samodconstructions.service.R_WorkService;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
@@ -128,6 +133,31 @@ public class ServiceFactoryImpl implements ServiceFactory{
     @Override
     public R_WorkService getWorkService() {
         return new R_WorkService();
+    }
+
+    @Override
+    public R_AssetService getAssetService() {
+        return new R_AssetService();
+    }
+
+    @Override
+    public R_AssetCategoryService getAssetCategoryService() {
+        return new R_AssetCategoryService();
+    }
+
+    @Override
+    public R_UnitService getUnitService() {
+        return new R_UnitService();
+    }
+
+    @Override
+    public M_EquipmentService getEquipmentService() {
+        return new M_EquipmentService();
+    }
+
+    @Override
+    public M_MaterialService getMaterialService() {
+        return new M_MaterialService();
     }
     
 }

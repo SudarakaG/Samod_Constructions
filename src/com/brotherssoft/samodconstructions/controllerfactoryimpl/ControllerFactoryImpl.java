@@ -8,10 +8,14 @@ package com.brotherssoft.samodconstructions.controllerfactoryimpl;
 import com.brotherssoft.samodconstructions.controller.IDController;
 import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
+import com.brotherssoft.samodconstructions.controller.M_EquipmentController;
+import com.brotherssoft.samodconstructions.controller.M_MaterialController;
 import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
 import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
+import com.brotherssoft.samodconstructions.controller.R_AssetCategoryController;
+import com.brotherssoft.samodconstructions.controller.R_AssetController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
 import com.brotherssoft.samodconstructions.controller.R_DesignationController;
@@ -22,16 +26,21 @@ import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
 import com.brotherssoft.samodconstructions.controller.R_SalaryTypeController;
+import com.brotherssoft.samodconstructions.controller.R_UnitController;
 import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
 import com.brotherssoft.samodconstructions.controller.R_WorkController;
 import com.brotherssoft.samodconstructions.controllerfactory.ControllerFactory;
 import com.brotherssoft.samodconstructions.controllerimpl.IDControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_AccountControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_EmployeeControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.M_EquipmentControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.M_MaterialControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_Primary_ProjectControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_PurchaserControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_VehicleControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_AccountTypeControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_AssetCategoryControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_AssetControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_BankControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_BranchControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_DesignationControllerImpl;
@@ -42,6 +51,7 @@ import com.brotherssoft.samodconstructions.controllerimpl.R_ProjectGradeControll
 import com.brotherssoft.samodconstructions.controllerimpl.R_ProjectSpecialityControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_ProjectTypeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_SalaryTypeControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_UnitControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_VehicleTypeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_WorkControllerImpl;
 import java.rmi.server.UnicastRemoteObject;
@@ -149,6 +159,31 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     @Override
     public R_WorkController getWorkController() throws Exception {
         return new R_WorkControllerImpl();
+    }
+
+    @Override
+    public R_AssetController getAssetController() throws Exception {
+        return new R_AssetControllerImpl();
+    }
+
+    @Override
+    public R_AssetCategoryController getAssetCategoryController() throws Exception {
+        return new R_AssetCategoryControllerImpl();
+    }
+
+    @Override
+    public R_UnitController getUnitController() throws Exception {
+        return new R_UnitControllerImpl();
+    }
+
+    @Override
+    public M_EquipmentController getEquipmentController() throws Exception {
+        return new M_EquipmentControllerImpl();
+    }
+
+    @Override
+    public M_MaterialController getMaterialController() throws Exception {
+        return new M_MaterialControllerImpl();
     }
     
 }
