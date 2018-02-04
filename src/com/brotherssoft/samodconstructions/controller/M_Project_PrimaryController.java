@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author gksde
  */
-public interface M_Primary_ProjectController extends Remote{
+public interface M_Project_PrimaryController extends Remote{
     
     public boolean addPrimaryProject(M_Project_Primary project_Primary)throws Exception;
     public boolean updatePrimaryProject(M_Project_Primary project_Primary)throws Exception;

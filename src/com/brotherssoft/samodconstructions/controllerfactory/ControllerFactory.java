@@ -13,7 +13,6 @@ import com.brotherssoft.samodconstructions.controller.M_MaterialController;
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
 import java.rmi.Remote;
-import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
 import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
@@ -30,6 +29,9 @@ import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
 import com.brotherssoft.samodconstructions.controller.R_WorkController;
 import com.brotherssoft.samodconstructions.controller.R_AssetController;
 import com.brotherssoft.samodconstructions.controller.R_UnitController;
+import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
+import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
+import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
 
 /**
  *
@@ -41,7 +43,7 @@ public interface ControllerFactory extends Remote{
     public R_BankController getBankController()throws Exception;
     public R_BranchController getBranchController()throws Exception;
     public M_EmployeeController getEmployeeController()throws Exception;
-    public M_Primary_ProjectController getPrimaryProjectController()throws Exception;
+    public M_Project_PrimaryController getPrimaryProjectController()throws Exception;
     public R_ProjectGradeController getProjectGradeController()throws Exception;
     public R_ProjectSpecialityController getProjectSpecialityController()throws Exception;
     public R_ProjectTypeController getProjectTypeController()throws Exception;
@@ -61,5 +63,7 @@ public interface ControllerFactory extends Remote{
     public R_UnitController getUnitController()throws Exception;
     public M_EquipmentController getEquipmentController()throws Exception;
     public M_MaterialController getMaterialController()throws Exception;
+    public M_Project_SecondaryController getSecondary_ProjectController()throws Exception;
+    public M_Project_ThirdController getThird_ProjectController()throws Exception;
     
 }
