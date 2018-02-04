@@ -10,7 +10,6 @@ import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
 import com.brotherssoft.samodconstructions.controller.M_EquipmentController;
 import com.brotherssoft.samodconstructions.controller.M_MaterialController;
-import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
 import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
@@ -31,6 +30,9 @@ import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
 import com.brotherssoft.samodconstructions.controller.R_WorkController;
 import com.brotherssoft.samodconstructions.controllerfactory.ControllerFactory;
 import java.rmi.Naming;
+import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
+import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
+import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
 
 /**
  *
@@ -43,7 +45,7 @@ public class ServerConnector {
     private IDController ic;
     private R_BankController bc;
     private R_BranchController branchController;
-    private M_Primary_ProjectController primary_ProjectController;
+    private M_Project_PrimaryController primary_ProjectController;
     private R_ProjectGradeController projectGradeController;
     private R_ProjectSpecialityController projectSpecialityController;
     private R_ProjectTypeController projectTypeController;
@@ -64,6 +66,8 @@ public class ServerConnector {
     private R_UnitController unitController;
     private M_EquipmentController equipmentController;
     private M_MaterialController materialController;
+    private M_Project_SecondaryController secondaryController;
+    private M_Project_ThirdController thirdController;
     
     //private UserHistoryController uhc;
 
@@ -92,7 +96,7 @@ public class ServerConnector {
         return branchController;
     }
     
-    public M_Primary_ProjectController getPrimary_ProjectController()throws Exception{
+    public M_Project_PrimaryController getPrimary_ProjectController()throws Exception{
         if (primary_ProjectController == null) {
             primary_ProjectController = cf.getPrimaryProjectController();
         }
@@ -237,6 +241,20 @@ public class ServerConnector {
             materialController = cf.getMaterialController();
         }
         return materialController;
+    }
+    
+    public M_Project_SecondaryController getSecondaryController()throws Exception{
+        if(secondaryController == null){
+            secondaryController = cf.getSecondary_ProjectController();
+        }
+        return secondaryController;
+    }
+    
+    public M_Project_ThirdController getThirdController()throws Exception{
+        if(thirdController == null){
+            thirdController = cf.getThird_ProjectController();
+        }
+        return thirdController;
     }
 
 //    

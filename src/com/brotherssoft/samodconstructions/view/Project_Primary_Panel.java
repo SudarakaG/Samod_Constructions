@@ -5,7 +5,6 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
-import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
 import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
 import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
@@ -19,7 +18,6 @@ import com.brotherssoft.samodconstructions.model.R_ProjectSpeciality;
 import com.brotherssoft.samodconstructions.model.R_ProjectType;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,6 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
+import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 
 /**
  *
@@ -41,13 +40,15 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     R_ProjectSpecialityController projectSpecialityController;
     R_ProjectGradeController projectGradeController;
     R_PaymentModeController paymentModeController;
-    M_Primary_ProjectController primary_ProjectController;
+    M_Project_PrimaryController primary_ProjectController;
     DefaultTableModel dtmPriProject;
 
     JSpinner.DateEditor de;
     SimpleDateFormat sdf;
     Date date;
     DecimalFormat decimalFormat;
+    
+    M_Project_Primary primary = null;
 
     /**
      * Creates new form Project_Primary_Panel
@@ -76,6 +77,35 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
         decimalFormat = new DecimalFormat("0.00");
+    }
+
+    Project_Primary_Panel(int id) throws Exception {
+        initComponents();
+
+        dtmPriProject = (DefaultTableModel) tblPrimaryProject.getModel();
+        projectTypeController = ServerConnector.getServerConnetor().getProjectTypeController();
+        projectSpecialityController = ServerConnector.getServerConnetor().getProjectSpecialityController();
+        projectGradeController = ServerConnector.getServerConnetor().getProjectGradeController();
+        paymentModeController = ServerConnector.getServerConnetor().getPaymentModeController();
+        primary_ProjectController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
+
+        loadToCmbProjectType();
+        loadToCmbProjectSpeciality();
+        loadToCmbProjectGrade();
+        loadToCmbPaymentMode();
+        loadToPrimaryProjectTable();
+
+        de = new JSpinner.DateEditor(txt_project_tender_open_time_1, "HH:mm a");
+        txt_project_tender_open_time_1.setEditor(de);
+        sdf = new SimpleDateFormat("dd/MM/yyyy");
+        date = new Date();
+        
+//        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+//        symbols.setGroupingSeparator(' ');
+        decimalFormat = new DecimalFormat("0.00");
+        
+        primary = primary_ProjectController.searchPrimaryProject(id);
+        loadFromPrimaryProjectTable();
     }
 
     /**
@@ -332,6 +362,11 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
 
         btn_to_secondary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_to_secondary_project.setText("To Secondary");
+        btn_to_secondary_project.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_to_secondary_projectActionPerformed(evt);
+            }
+        });
 
         btn_add_primary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_add_primary_project.setText("Save");
@@ -578,7 +613,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel129.setText("Project States");
 
         cmb_project_made_of_states_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmb_project_made_of_states_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pending", "Approved" }));
+        cmb_project_made_of_states_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PENDING", "APPROVED", "ONGOING", "COMPLETED" }));
         cmb_project_made_of_states_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_project_made_of_states_1ActionPerformed(evt);
@@ -1062,6 +1097,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_add_primary_projectActionPerformed
 
     private void tblPrimaryProjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPrimaryProjectMouseClicked
+        searchProjectPrimaryByTableName();
         loadFromPrimaryProjectTable();
     }//GEN-LAST:event_tblPrimaryProjectMouseClicked
 
@@ -1293,6 +1329,29 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_txt_project_engineer_estimateKeyTyped
 
+    private void btn_to_secondary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_to_secondary_projectActionPerformed
+        Project_Secondery_Panel secondery_Panel = null;
+        if(primary != null){
+            try {
+                secondery_Panel = new Project_Secondery_Panel(primary.getProject_id());
+            } catch (Exception ex) {
+                Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            try {
+                secondery_Panel = new Project_Secondery_Panel();
+            } catch (Exception ex) {
+                Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        GUI_Home.load_panel.removeAll();
+        GUI_Home.load_panel.repaint();
+        GUI_Home.load_panel.revalidate();
+        secondery_Panel.setSize(GUI_Home.load_panel.getSize());
+        GUI_Home.load_panel.add(secondery_Panel);
+        secondery_Panel.setVisible(true);
+    }//GEN-LAST:event_btn_to_secondary_projectActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Project_Primary_Info_Panel;
@@ -1516,38 +1575,38 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     private void loadFromPrimaryProjectTable() {
 
         try {
-            M_Project_Primary sp = searchProjectPrimaryByTableName();
-            txt_project_name_1.setText(sp.getProject_primary_name());
-            txt_project_desc_1.setText(sp.getProject_primary_description());
-            txt_project_address1.setText(sp.getProject_primary_address1());
-            txt_project_address2.setText(sp.getProject_primary_address2());
-            txt_project_address3.setText(sp.getProject_primary_address3());
-            txt_project_address4.setText(sp.getProject_primary_address4());
-            cmb_project_type_1.setSelectedItem(projectTypeController.searchProjectType(sp.getProject_primary_type()).getProjectType_name());
-            cmb_project_vatAdded.setSelectedIndex(Integer.parseInt(sp.getProject_primary_vatAdded()));
-            txt_project_contract_bid_1.setText(sp.getProject_primary_contractBidNo());
-            txt_project_client_1.setText(sp.getProject_primary_clientName());
-            txt_project_client_address1.setText(sp.getProject_primary_clientAddress1());
-            txt_project_client_address2.setText(sp.getProject_primary_clientAddress2());
-            txt_project_client_address3.setText(sp.getProject_primary_clientAddress3());
-            txt_project_client_address4.setText(sp.getProject_primary_clientAddress4());
-            txt_project_client_contact_1.setText(sp.getProject_primary_clientContact1());
-            txt_project_client_contact_1_2.setText(sp.getProject_primary_clientContact2());
-            txt_project_intendedDuration_1.setText(decimalFormat.format(Double.parseDouble(sp.getProject_primary_intendedDuration())));
-            cmb_project_Specialiti.setSelectedItem(projectSpecialityController.searchProjectSpeciality(sp.getProject_primary_ictadSpeciality_id()).getProjectSpeciality_name());
-            cmb_project_grade_1.setSelectedItem(projectGradeController.searchProjectGrade(sp.getProject_primary_ictadGrade_id()).getProjectGrade_name());
-            txt_project_engineer_estimate.setText(decimalFormat.format(sp.getProject_primary_engineerEstimate()));
-            txt_project_tender_fee_1.setText(decimalFormat.format(sp.getProject_primary_tenderFee()));
-            cmb_project_bid_payment_mode.setSelectedItem(paymentModeController.searchPaymentMode(sp.getProject_primary_bidPaymentMode()).getPaymentMode_name());
-            txt_project_bid_amount_1.setText(decimalFormat.format(sp.getProject_primary_bidAmount()));
-            txt_project_bid_organization.setText(sp.getProject_primary_bidOrganization());
-            txt_project_bid_duration_1.setText(decimalFormat.format(Double.parseDouble(sp.getProject_primary_bidDuration())));
-            txt_project_tender_open_date_1.setDate(sp.getProject_primary_tenderOpenDate());
-            txt_project_tender_open_time_1.setValue(de.getFormat().parse(sp.getProject_primary_tenderOpenTime()));
-            cmb_project_made_of_states_1.setSelectedIndex(Integer.parseInt(sp.getProject_current_status()));
-            txt_project_states_active_date_1.setDate(sp.getProject_primary_statusActiveDate());
-            txt_project_states_inactive_date_1.setDate(sp.getProject_primary_statusInactiveDate());
-            txt_project_tender_result.setText(sp.getProject_primary_tenderResult());
+            
+            txt_project_name_1.setText(primary.getProject_primary_name());
+            txt_project_desc_1.setText(primary.getProject_primary_description());
+            txt_project_address1.setText(primary.getProject_primary_address1());
+            txt_project_address2.setText(primary.getProject_primary_address2());
+            txt_project_address3.setText(primary.getProject_primary_address3());
+            txt_project_address4.setText(primary.getProject_primary_address4());
+            cmb_project_type_1.setSelectedItem(projectTypeController.searchProjectType(primary.getProject_primary_type()).getProjectType_name());
+            cmb_project_vatAdded.setSelectedIndex(Integer.parseInt(primary.getProject_primary_vatAdded()));
+            txt_project_contract_bid_1.setText(primary.getProject_primary_contractBidNo());
+            txt_project_client_1.setText(primary.getProject_primary_clientName());
+            txt_project_client_address1.setText(primary.getProject_primary_clientAddress1());
+            txt_project_client_address2.setText(primary.getProject_primary_clientAddress2());
+            txt_project_client_address3.setText(primary.getProject_primary_clientAddress3());
+            txt_project_client_address4.setText(primary.getProject_primary_clientAddress4());
+            txt_project_client_contact_1.setText(primary.getProject_primary_clientContact1());
+            txt_project_client_contact_1_2.setText(primary.getProject_primary_clientContact2());
+            txt_project_intendedDuration_1.setText(decimalFormat.format(Double.parseDouble(primary.getProject_primary_intendedDuration())));
+            cmb_project_Specialiti.setSelectedItem(projectSpecialityController.searchProjectSpeciality(primary.getProject_primary_ictadSpeciality_id()).getProjectSpeciality_name());
+            cmb_project_grade_1.setSelectedItem(projectGradeController.searchProjectGrade(primary.getProject_primary_ictadGrade_id()).getProjectGrade_name());
+            txt_project_engineer_estimate.setText(decimalFormat.format(primary.getProject_primary_engineerEstimate()));
+            txt_project_tender_fee_1.setText(decimalFormat.format(primary.getProject_primary_tenderFee()));
+            cmb_project_bid_payment_mode.setSelectedItem(paymentModeController.searchPaymentMode(primary.getProject_primary_bidPaymentMode()).getPaymentMode_name());
+            txt_project_bid_amount_1.setText(decimalFormat.format(primary.getProject_primary_bidAmount()));
+            txt_project_bid_organization.setText(primary.getProject_primary_bidOrganization());
+            txt_project_bid_duration_1.setText(decimalFormat.format(Double.parseDouble(primary.getProject_primary_bidDuration())));
+            txt_project_tender_open_date_1.setDate(primary.getProject_primary_tenderOpenDate());
+            txt_project_tender_open_time_1.setValue(de.getFormat().parse(primary.getProject_primary_tenderOpenTime()));
+            cmb_project_made_of_states_1.setSelectedIndex(Integer.parseInt(primary.getProject_current_status()));
+            txt_project_states_active_date_1.setDate(primary.getProject_primary_statusActiveDate());
+            txt_project_states_inactive_date_1.setDate(primary.getProject_primary_statusInactiveDate());
+            txt_project_tender_result.setText(primary.getProject_primary_tenderResult());
 
         } catch (Exception ex) {
             Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
@@ -1564,7 +1623,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             String projectASpeciality = cmb_project_Specialiti.getSelectedItem().toString();
             String projectAGrade = cmb_project_grade_1.getSelectedItem().toString();
             String pauMode = cmb_project_bid_payment_mode.getSelectedItem().toString();
-            int project_id = searchProjectPrimaryByTableName().getProject_id();
+            int project_id = primary.getProject_id();
 
             //int projectId = IDGenerator.getNewID("m_project", "PROJECT_ID");
             String name = txt_project_name_1.getText();
@@ -1613,14 +1672,13 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         
     }
 
-    private M_Project_Primary searchProjectPrimaryByTableName() {
-        M_Project_Primary sp = null;
+    private void searchProjectPrimaryByTableName() {
+        
         try {
             int selectedRow = tblPrimaryProject.getSelectedRow();
-            sp = primary_ProjectController.searchPrimaryProjectByName((String) dtmPriProject.getValueAt(selectedRow, 0));
+            primary = primary_ProjectController.searchPrimaryProjectByName((String) dtmPriProject.getValueAt(selectedRow, 0));
         } catch (Exception ex) {
             Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return sp;
     }
 }

@@ -167,147 +167,136 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel146" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jLabel150" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel149" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jLabel148" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txt_Valid_Period_To" max="32767" attributes="0"/>
-                                      <Component id="txt_Valid_Period_From" max="32767" attributes="0"/>
-                                      <Component id="txt_organization" max="32767" attributes="0"/>
-                                      <Component id="txt_amount" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel151" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jLabel153" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel152" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jLabel154" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txt_payment_Valid_Period_From" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txt_payment_amount" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txt_payment_Valid_Period_To" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txt_payment_organization" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel156" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jLabel158" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel159" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jLabel157" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txt_insurance_Valid_Period_From" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txt_insuarance_covers" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txt_insurance_Valid_Period_To" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="cmb_Insuarance_Covers" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel160" min="-2" pref="146" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_insuarance_covers_amount" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabel161" min="-2" pref="146" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cmb_made_of_payment" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel143" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="txt_Commencement_date" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel151" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                              <Component id="jLabel153" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel152" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                              <Component id="jLabel154" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel142" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="txt_Completion_date" linkSize="6" min="-2" pref="317" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="dp_payment_Valid_Period_From" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txt_payment_amount" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="dp_payment_Valid_Period_To" max="32767" attributes="0"/>
+                                              <Component id="txt_payment_organization" alignment="1" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" attributes="0">
-                                          <Component id="jLabel144" min="-2" pref="132" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="txt_tel" linkSize="6" min="-2" pref="319" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel146" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                              <Component id="jLabel150" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel149" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                              <Component id="jLabel148" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="dp_performance_Valid_Period_From" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txt_performance_amount" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txt_performance_organization" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="dp_performance_Valid_Period_To" alignment="1" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel143" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel142" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel144" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txt_Completion_date" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel123" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                                  <Component id="jLabel124" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="txt_boq" min="-2" pref="393" max="-2" attributes="0"/>
+                                                  <Component id="txt_vat" min="-2" pref="393" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Component id="jSeparator30" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <Component id="jSeparator31" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <Component id="jLabel140" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <Component id="jSeparator29" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <Component id="jLabel141" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <Component id="jLabel155" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
+                                          <Component id="jLabel147" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
+                                          <Component id="jLabel122" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <Component id="jSeparator28" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel138" min="-2" pref="146" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="dp_agreement_date" min="-2" pref="393" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel125" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                                  <Component id="jLabel126" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="txt_total" pref="393" max="32767" attributes="0"/>
+                                                  <Component id="txt_project_duration" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="jLabel139" min="-2" pref="146" max="-2" attributes="0"/>
+                                                  <Component id="jLabel145" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="dp_Commencement_date" max="32767" attributes="0"/>
+                                                  <Component id="txt_tel" max="32767" attributes="0"/>
+                                                  <Component id="jScrollPane1" pref="397" max="32767" attributes="0"/>
+                                                  <Component id="txt_name" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel160" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <Component id="jLabel161" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <Component id="jLabel156" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <Component id="jLabel158" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel159" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <Component id="jLabel157" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="cmb_Insuarance_Covers" pref="393" max="32767" attributes="0"/>
+                                              <Component id="txt_insuarance_covers" max="32767" attributes="0"/>
+                                              <Component id="cmb_made_of_payment" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="dp_insurance_Valid_Period_From" alignment="1" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="txt_insuarance_covers_amount" alignment="0" min="-2" pref="393" max="-2" attributes="0"/>
+                                          <Component id="dp_insurance_Valid_Period_To" alignment="0" min="-2" pref="393" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btn_new_primary_project" linkSize="9" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btn_to_secondary_project" linkSize="9" min="-2" pref="227" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace pref="395" max="-2" attributes="0"/>
+                                  <Component id="btn_to_primary_project" linkSize="9" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="btn_add_secondary_project" min="-2" pref="76" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="btn_to_final_project" linkSize="9" min="-2" pref="227" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel138" min="-2" pref="146" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_agreement_date" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel139" min="-2" pref="146" max="-2" attributes="0"/>
-                                              <Component id="jLabel145" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txt_name" linkSize="6" min="-2" pref="321" max="-2" attributes="0"/>
-                                              <Component id="jScrollPane1" linkSize="6" min="-2" pref="407" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel123" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                              <Component id="jLabel124" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txt_boq" linkSize="6" min="-2" pref="407" max="-2" attributes="0"/>
-                                              <Component id="txt_vat" linkSize="6" min="-2" pref="407" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel125" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                              <Component id="jLabel126" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txt_total" linkSize="6" min="-2" pref="407" max="-2" attributes="0"/>
-                                              <Component id="txt_project_duration" linkSize="6" min="-2" pref="321" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="jSeparator30" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jSeparator31" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jLabel140" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jSeparator29" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jLabel141" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jLabel155" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
-                                      <Component id="jLabel147" alignment="0" min="-2" pref="169" max="-2" attributes="0"/>
-                                      <Component id="jLabel122" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <Component id="jSeparator28" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel162" min="-2" pref="146" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="cmb_current_status" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace pref="39" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -315,6 +304,11 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel162" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="cmb_current_status" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel122" min="-2" pref="23" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -340,9 +334,12 @@
                               <Component id="txt_project_duration" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel138" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_agreement_date" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jLabel138" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="dp_agreement_date" min="-2" pref="26" max="-2" attributes="0"/>
+                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator28" min="-2" pref="10" max="-2" attributes="0"/>
@@ -365,7 +362,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_Commencement_date" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="dp_Commencement_date" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel143" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -380,22 +377,22 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel146" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="txt_organization" linkSize="4" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_performance_organization" linkSize="4" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel148" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="txt_amount" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_performance_amount" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_Valid_Period_From" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="dp_performance_Valid_Period_From" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel150" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel149" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_Valid_Period_To" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="dp_performance_Valid_Period_To" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator30" min="-2" pref="10" max="-2" attributes="0"/>
@@ -413,13 +410,13 @@
                           </Group>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_payment_Valid_Period_From" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="dp_payment_Valid_Period_From" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel153" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel154" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_payment_Valid_Period_To" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="dp_payment_Valid_Period_To" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jSeparator31" min="-2" pref="10" max="-2" attributes="0"/>
@@ -442,25 +439,24 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_insurance_Valid_Period_From" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="dp_insurance_Valid_Period_From" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel158" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel157" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                              <Component id="txt_insurance_Valid_Period_To" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="dp_insurance_Valid_Period_To" linkSize="7" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel161" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                               <Component id="cmb_made_of_payment" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btn_add_secondary_project" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btn_to_secondary_project" alignment="3" max="32767" attributes="0"/>
-                              <Component id="btn_new_primary_project" alignment="3" max="32767" attributes="0"/>
+                              <Component id="btn_to_final_project" alignment="3" max="32767" attributes="0"/>
+                              <Component id="btn_to_primary_project" alignment="3" max="32767" attributes="0"/>
+                              <Component id="btn_add_secondary_project" alignment="3" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -468,13 +464,16 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="btn_to_secondary_project">
+                <Component class="javax.swing.JButton" name="btn_to_final_project">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="To Final Information"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_to_final_projectActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btn_add_secondary_project">
                   <Properties>
@@ -563,12 +562,12 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator28">
                 </Component>
-                <Component class="org.jdesktop.swingx.JXDatePicker" name="txt_Commencement_date">
+                <Component class="org.jdesktop.swingx.JXDatePicker" name="dp_Commencement_date">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_Commencement_dateActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dp_Commencement_dateActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btn_new_primary_project">
+                <Component class="javax.swing.JButton" name="btn_to_primary_project">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="12" style="1"/>
@@ -576,7 +575,7 @@
                     <Property name="text" type="java.lang.String" value="To Project Primary Infomation"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_new_primary_projectActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_to_primary_projectActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txt_boq">
@@ -739,17 +738,17 @@
                     <Property name="text" type="java.lang.String" value="Organization"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_organization">
+                <Component class="javax.swing.JTextField" name="txt_performance_organization">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_organizationActionPerformed"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_organizationKeyPressed"/>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_organizationKeyReleased"/>
-                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_organizationKeyTyped"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_performance_organizationActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_performance_organizationKeyPressed"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_performance_organizationKeyReleased"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_performance_organizationKeyTyped"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel148">
@@ -760,26 +759,26 @@
                     <Property name="text" type="java.lang.String" value="Amount"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txt_amount">
+                <Component class="javax.swing.JTextField" name="txt_performance_amount">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_amountActionPerformed"/>
-                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_amountKeyPressed"/>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_amountKeyReleased"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_performance_amountActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_performance_amountKeyPressed"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_performance_amountKeyReleased"/>
                   </Events>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXDatePicker" name="txt_Valid_Period_From">
+                <Component class="org.jdesktop.swingx.JXDatePicker" name="dp_performance_Valid_Period_From">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_Valid_Period_FromActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dp_performance_Valid_Period_FromActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXDatePicker" name="txt_Valid_Period_To">
+                <Component class="org.jdesktop.swingx.JXDatePicker" name="dp_performance_Valid_Period_To">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_Valid_Period_ToActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dp_performance_Valid_Period_ToActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel149">
@@ -865,14 +864,14 @@
                     <Property name="text" type="java.lang.String" value="Valid Period From"/>
                   </Properties>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXDatePicker" name="txt_payment_Valid_Period_From">
+                <Component class="org.jdesktop.swingx.JXDatePicker" name="dp_payment_Valid_Period_From">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_payment_Valid_Period_FromActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dp_payment_Valid_Period_FromActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXDatePicker" name="txt_payment_Valid_Period_To">
+                <Component class="org.jdesktop.swingx.JXDatePicker" name="dp_payment_Valid_Period_To">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_payment_Valid_Period_ToActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dp_payment_Valid_Period_ToActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel154">
@@ -921,14 +920,14 @@
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_insuarance_coversKeyReleased"/>
                   </Events>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXDatePicker" name="txt_insurance_Valid_Period_From">
+                <Component class="org.jdesktop.swingx.JXDatePicker" name="dp_insurance_Valid_Period_From">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_insurance_Valid_Period_FromActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dp_insurance_Valid_Period_FromActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXDatePicker" name="txt_insurance_Valid_Period_To">
+                <Component class="org.jdesktop.swingx.JXDatePicker" name="dp_insurance_Valid_Period_To">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_insurance_Valid_Period_ToActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dp_insurance_Valid_Period_ToActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel157">
@@ -961,8 +960,12 @@
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="- Insuarance Covers -"/>
+                      <StringArray count="5">
+                        <StringItem index="0" value="- Select Insuarance Cover -"/>
+                        <StringItem index="1" value="INSURANCE COVER"/>
+                        <StringItem index="2" value="CONTRACTORS ALL RISKY POLICY"/>
+                        <StringItem index="3" value="PERSONNEL ACCIDENT COVER"/>
+                        <StringItem index="4" value="WORKMEN COMPENSATION INSURANCE"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1007,8 +1010,11 @@
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="- Made of Payment -"/>
+                      <StringArray count="4">
+                        <StringItem index="0" value="- Select Mode of Payment -"/>
+                        <StringItem index="1" value="MEASURE &amp; PAY"/>
+                        <StringItem index="2" value="LUM SUM"/>
+                        <StringItem index="3" value="ADVANCE BASIS"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1019,10 +1025,39 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXDatePicker" name="txt_agreement_date">
+                <Component class="org.jdesktop.swingx.JXDatePicker" name="dp_agreement_date">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_agreement_dateActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dp_agreement_dateActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cmb_current_status">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="1"/>
+                    </Property>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="4">
+                        <StringItem index="0" value="PENDING"/>
+                        <StringItem index="1" value="APPROVED"/>
+                        <StringItem index="2" value="ONGOING"/>
+                        <StringItem index="3" value="COMPLETED"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmb_current_statusActionPerformed"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel162">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="14" style="3"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Current Status"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -1085,7 +1120,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tblPrimaryProject">
+                <Component class="javax.swing.JTable" name="tblSecondaryProject">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="1" rowCount="32">
@@ -1110,7 +1145,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPrimaryProjectMouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblSecondaryProjectMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>

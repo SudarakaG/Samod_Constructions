@@ -5,31 +5,18 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
-import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
+import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
+import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
 import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
-import com.brotherssoft.samodconstructions.controller.R_ProjectGradeController;
-import com.brotherssoft.samodconstructions.controller.R_ProjectSpecialityController;
-import com.brotherssoft.samodconstructions.controller.R_ProjectTypeController;
-import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.custom.Validation;
-import com.brotherssoft.samodconstructions.model.M_Project_Primary;
 import com.brotherssoft.samodconstructions.model.M_Project_Secondary;
-import com.brotherssoft.samodconstructions.model.R_PaymentMode;
-import com.brotherssoft.samodconstructions.model.R_ProjectGrade;
-import com.brotherssoft.samodconstructions.model.R_ProjectSpeciality;
-import com.brotherssoft.samodconstructions.model.R_ProjectType;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
 import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -38,18 +25,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Project_Secondery_Panel extends javax.swing.JPanel {
 
-    R_ProjectTypeController projectTypeController;
-    R_ProjectSpecialityController projectSpecialityController;
-    R_ProjectGradeController projectGradeController;
     R_PaymentModeController paymentModeController;
-    M_Primary_ProjectController primary_ProjectController;
-    DefaultTableModel dtmPriProject;
+    M_Project_SecondaryController secondaryController;
+    M_Project_PrimaryController primaryController;
+    DefaultTableModel dtmSecProject;
 
-    JSpinner.DateEditor de;
-    SimpleDateFormat sdf;
-    Date date;
     DecimalFormat decimalFormat;
-    int projectID;
+    M_Project_Secondary secondary = null;
 
     /**
      * Creates new form Project_Primary_Panel
@@ -57,26 +39,32 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     public Project_Secondery_Panel() throws Exception {
         initComponents();
 
-        dtmPriProject = (DefaultTableModel) tblPrimaryProject.getModel();
-        projectTypeController = ServerConnector.getServerConnetor().getProjectTypeController();
-        projectSpecialityController = ServerConnector.getServerConnetor().getProjectSpecialityController();
-        projectGradeController = ServerConnector.getServerConnetor().getProjectGradeController();
-        paymentModeController = ServerConnector.getServerConnetor().getPaymentModeController();
-        primary_ProjectController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
+        dtmSecProject = (DefaultTableModel) tblSecondaryProject.getModel();
+        secondaryController = ServerConnector.getServerConnetor().getSecondaryController();
+        primaryController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
 
-        loadToCmbProjectType();
-        loadToCmbProjectSpeciality();
-        loadToCmbProjectGrade();
-        loadToCmbPaymentMode();
-     
+        loadSecondaryProjectTable();
 
-       
-        sdf = new SimpleDateFormat("dd/MM/yyyy");
-        date = new Date();
-        
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
         decimalFormat = new DecimalFormat("0.00");
+    }
+
+    Project_Secondery_Panel(int project_id) throws Exception {
+        initComponents();
+
+        dtmSecProject = (DefaultTableModel) tblSecondaryProject.getModel();
+        secondaryController = ServerConnector.getServerConnetor().getSecondaryController();
+        primaryController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
+
+        loadSecondaryProjectTable();
+
+//        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+//        symbols.setGroupingSeparator(' ');
+        decimalFormat = new DecimalFormat("0.00");
+
+        secondary = secondaryController.searchSecondary(project_id);
+        loadFromSecondaryProjectTable();
     }
 
     /**
@@ -95,7 +83,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jSeparator14 = new javax.swing.JSeparator();
         jScrollPane11 = new javax.swing.JScrollPane();
         txt_Input_Panel_Branch4 = new javax.swing.JPanel();
-        btn_to_secondary_project = new javax.swing.JButton();
+        btn_to_final_project = new javax.swing.JButton();
         btn_add_secondary_project = new javax.swing.JButton();
         jLabel122 = new javax.swing.JLabel();
         jLabel123 = new javax.swing.JLabel();
@@ -105,8 +93,8 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         txt_total = new javax.swing.JTextField();
         txt_project_duration = new javax.swing.JTextField();
         jSeparator28 = new javax.swing.JSeparator();
-        txt_Commencement_date = new org.jdesktop.swingx.JXDatePicker();
-        btn_new_primary_project = new javax.swing.JButton();
+        dp_Commencement_date = new org.jdesktop.swingx.JXDatePicker();
+        btn_to_primary_project = new javax.swing.JButton();
         txt_boq = new javax.swing.JTextField();
         txt_vat = new javax.swing.JTextField();
         jLabel138 = new javax.swing.JLabel();
@@ -124,11 +112,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jSeparator29 = new javax.swing.JSeparator();
         jLabel141 = new javax.swing.JLabel();
         jLabel146 = new javax.swing.JLabel();
-        txt_organization = new javax.swing.JTextField();
+        txt_performance_organization = new javax.swing.JTextField();
         jLabel148 = new javax.swing.JLabel();
-        txt_amount = new javax.swing.JTextField();
-        txt_Valid_Period_From = new org.jdesktop.swingx.JXDatePicker();
-        txt_Valid_Period_To = new org.jdesktop.swingx.JXDatePicker();
+        txt_performance_amount = new javax.swing.JTextField();
+        dp_performance_Valid_Period_From = new org.jdesktop.swingx.JXDatePicker();
+        dp_performance_Valid_Period_To = new org.jdesktop.swingx.JXDatePicker();
         jLabel149 = new javax.swing.JLabel();
         jLabel150 = new javax.swing.JLabel();
         jSeparator30 = new javax.swing.JSeparator();
@@ -138,15 +126,15 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         txt_payment_amount = new javax.swing.JTextField();
         jLabel152 = new javax.swing.JLabel();
         jLabel153 = new javax.swing.JLabel();
-        txt_payment_Valid_Period_From = new org.jdesktop.swingx.JXDatePicker();
-        txt_payment_Valid_Period_To = new org.jdesktop.swingx.JXDatePicker();
+        dp_payment_Valid_Period_From = new org.jdesktop.swingx.JXDatePicker();
+        dp_payment_Valid_Period_To = new org.jdesktop.swingx.JXDatePicker();
         jLabel154 = new javax.swing.JLabel();
         jSeparator31 = new javax.swing.JSeparator();
         jLabel155 = new javax.swing.JLabel();
         jLabel156 = new javax.swing.JLabel();
         txt_insuarance_covers = new javax.swing.JTextField();
-        txt_insurance_Valid_Period_From = new org.jdesktop.swingx.JXDatePicker();
-        txt_insurance_Valid_Period_To = new org.jdesktop.swingx.JXDatePicker();
+        dp_insurance_Valid_Period_From = new org.jdesktop.swingx.JXDatePicker();
+        dp_insurance_Valid_Period_To = new org.jdesktop.swingx.JXDatePicker();
         jLabel157 = new javax.swing.JLabel();
         jLabel158 = new javax.swing.JLabel();
         jLabel159 = new javax.swing.JLabel();
@@ -155,10 +143,12 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         txt_insuarance_covers_amount = new javax.swing.JTextField();
         jLabel161 = new javax.swing.JLabel();
         cmb_made_of_payment = new javax.swing.JComboBox<>();
-        txt_agreement_date = new org.jdesktop.swingx.JXDatePicker();
+        dp_agreement_date = new org.jdesktop.swingx.JXDatePicker();
+        cmb_current_status = new javax.swing.JComboBox<>();
+        jLabel162 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        tblPrimaryProject = new javax.swing.JTable();
+        tblSecondaryProject = new javax.swing.JTable();
         txt_search_name_ = new javax.swing.JTextField();
         jLabel105 = new javax.swing.JLabel();
 
@@ -210,8 +200,13 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         txt_Input_Panel_Branch4.setBackground(new java.awt.Color(255, 255, 255));
         txt_Input_Panel_Branch4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Project Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
-        btn_to_secondary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_to_secondary_project.setText("To Final Information");
+        btn_to_final_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_to_final_project.setText("To Final Information");
+        btn_to_final_project.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_to_final_projectActionPerformed(evt);
+            }
+        });
 
         btn_add_secondary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_add_secondary_project.setText("Save");
@@ -274,17 +269,17 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             }
         });
 
-        txt_Commencement_date.addActionListener(new java.awt.event.ActionListener() {
+        dp_Commencement_date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_Commencement_dateActionPerformed(evt);
+                dp_Commencement_dateActionPerformed(evt);
             }
         });
 
-        btn_new_primary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_new_primary_project.setText("To Project Primary Infomation");
-        btn_new_primary_project.addActionListener(new java.awt.event.ActionListener() {
+        btn_to_primary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_to_primary_project.setText("To Project Primary Infomation");
+        btn_to_primary_project.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_new_primary_projectActionPerformed(evt);
+                btn_to_primary_projectActionPerformed(evt);
             }
         });
 
@@ -399,51 +394,51 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel146.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel146.setText("Organization");
 
-        txt_organization.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txt_organization.addActionListener(new java.awt.event.ActionListener() {
+        txt_performance_organization.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_performance_organization.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_organizationActionPerformed(evt);
+                txt_performance_organizationActionPerformed(evt);
             }
         });
-        txt_organization.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_performance_organization.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_organizationKeyPressed(evt);
+                txt_performance_organizationKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_organizationKeyReleased(evt);
+                txt_performance_organizationKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_organizationKeyTyped(evt);
+                txt_performance_organizationKeyTyped(evt);
             }
         });
 
         jLabel148.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel148.setText("Amount");
 
-        txt_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txt_amount.addActionListener(new java.awt.event.ActionListener() {
+        txt_performance_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_performance_amount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_amountActionPerformed(evt);
+                txt_performance_amountActionPerformed(evt);
             }
         });
-        txt_amount.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_performance_amount.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_amountKeyPressed(evt);
+                txt_performance_amountKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_amountKeyReleased(evt);
+                txt_performance_amountKeyReleased(evt);
             }
         });
 
-        txt_Valid_Period_From.addActionListener(new java.awt.event.ActionListener() {
+        dp_performance_Valid_Period_From.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_Valid_Period_FromActionPerformed(evt);
+                dp_performance_Valid_Period_FromActionPerformed(evt);
             }
         });
 
-        txt_Valid_Period_To.addActionListener(new java.awt.event.ActionListener() {
+        dp_performance_Valid_Period_To.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_Valid_Period_ToActionPerformed(evt);
+                dp_performance_Valid_Period_ToActionPerformed(evt);
             }
         });
 
@@ -502,15 +497,15 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel153.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel153.setText("Valid Period From");
 
-        txt_payment_Valid_Period_From.addActionListener(new java.awt.event.ActionListener() {
+        dp_payment_Valid_Period_From.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_payment_Valid_Period_FromActionPerformed(evt);
+                dp_payment_Valid_Period_FromActionPerformed(evt);
             }
         });
 
-        txt_payment_Valid_Period_To.addActionListener(new java.awt.event.ActionListener() {
+        dp_payment_Valid_Period_To.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_payment_Valid_Period_ToActionPerformed(evt);
+                dp_payment_Valid_Period_ToActionPerformed(evt);
             }
         });
 
@@ -542,15 +537,15 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             }
         });
 
-        txt_insurance_Valid_Period_From.addActionListener(new java.awt.event.ActionListener() {
+        dp_insurance_Valid_Period_From.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_insurance_Valid_Period_FromActionPerformed(evt);
+                dp_insurance_Valid_Period_FromActionPerformed(evt);
             }
         });
 
-        txt_insurance_Valid_Period_To.addActionListener(new java.awt.event.ActionListener() {
+        dp_insurance_Valid_Period_To.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_insurance_Valid_Period_ToActionPerformed(evt);
+                dp_insurance_Valid_Period_ToActionPerformed(evt);
             }
         });
 
@@ -564,7 +559,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel159.setText("Organization");
 
         cmb_Insuarance_Covers.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmb_Insuarance_Covers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Insuarance Covers -" }));
+        cmb_Insuarance_Covers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Insuarance Cover -", "INSURANCE COVER", "CONTRACTORS ALL RISKY POLICY", "PERSONNEL ACCIDENT COVER", "WORKMEN COMPENSATION INSURANCE" }));
         cmb_Insuarance_Covers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_Insuarance_CoversActionPerformed(evt);
@@ -593,18 +588,29 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel161.setText("Made of Payment");
 
         cmb_made_of_payment.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        cmb_made_of_payment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Made of Payment -" }));
+        cmb_made_of_payment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Mode of Payment -", "MEASURE & PAY", "LUM SUM", "ADVANCE BASIS" }));
         cmb_made_of_payment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_made_of_paymentActionPerformed(evt);
             }
         });
 
-        txt_agreement_date.addActionListener(new java.awt.event.ActionListener() {
+        dp_agreement_date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_agreement_dateActionPerformed(evt);
+                dp_agreement_dateActionPerformed(evt);
             }
         });
+
+        cmb_current_status.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_current_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PENDING", "APPROVED", "ONGOING", "COMPLETED" }));
+        cmb_current_status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_current_statusActionPerformed(evt);
+            }
+        });
+
+        jLabel162.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel162.setText("Current Status");
 
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
@@ -612,125 +618,120 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel146, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel150)
-                            .addComponent(jLabel149, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_Valid_Period_To, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_Valid_Period_From, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_organization)
-                            .addComponent(txt_amount)))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel151, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel153)
-                            .addComponent(jLabel152, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel154, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_payment_Valid_Period_From, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_payment_amount)
-                            .addComponent(txt_payment_Valid_Period_To, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_payment_organization)))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel156, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel158)
-                            .addComponent(jLabel159, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel157, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_insurance_Valid_Period_From, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txt_insuarance_covers)
-                            .addComponent(txt_insurance_Valid_Period_To, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cmb_Insuarance_Covers, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jLabel160, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_insuarance_covers_amount))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jLabel161, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmb_made_of_payment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel151, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel153)
+                                    .addComponent(jLabel152, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel154, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(dp_payment_Valid_Period_From, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txt_payment_amount, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dp_payment_Valid_Period_To, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txt_payment_organization)))
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel146, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel150)
+                                    .addComponent(jLabel149, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(dp_performance_Valid_Period_From, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txt_performance_amount, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_performance_organization)
+                                    .addComponent(dp_performance_Valid_Period_To, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel143)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txt_Commencement_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                     .addComponent(jLabel142)
+                                    .addComponent(jLabel144, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_Completion_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(18, 18, 18)
-                                    .addComponent(txt_Completion_date, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel144, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_tel, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txt_boq, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_vat, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jSeparator30, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator31, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel140, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator29, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel141, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel155, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel147, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator28, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel138, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(dp_agreement_date, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txt_total, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+                                        .addComponent(txt_project_duration)))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel139, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel145, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(14, 14, 14)
+                                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(dp_Commencement_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txt_tel)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                                        .addComponent(txt_name)))))
+                        .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel160, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel161, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel156, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel158)
+                                .addComponent(jLabel159, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel157, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cmb_Insuarance_Covers, 0, 393, Short.MAX_VALUE)
+                                    .addComponent(txt_insuarance_covers)
+                                    .addComponent(cmb_made_of_payment, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(dp_insurance_Valid_Period_From, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txt_insuarance_covers_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dp_insurance_Valid_Period_To, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(btn_new_primary_project)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_to_secondary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_add_secondary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_to_primary_project)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_add_secondary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_to_final_project, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jLabel138, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_agreement_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel139, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel145, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_name, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_boq, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_vat, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_project_duration, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jSeparator30, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator31, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel140, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator29, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel141, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel155, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel147, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator28, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(jLabel162, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmb_current_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jScrollPane1, txt_Completion_date, txt_boq, txt_name, txt_project_duration, txt_tel, txt_total, txt_vat});
-
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_new_primary_project, btn_to_secondary_project});
+        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_to_final_project, btn_to_primary_project});
 
         txt_Input_Panel_Branch4Layout.setVerticalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel162, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_current_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -751,9 +752,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                     .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_project_duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel138, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_agreement_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addComponent(dp_agreement_date, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator28, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -772,7 +775,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                     .addComponent(txt_tel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_Commencement_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dp_Commencement_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel143, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -785,19 +788,19 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel146, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_organization, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_performance_organization, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_performance_amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_Valid_Period_From, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dp_performance_Valid_Period_From, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel150, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel149, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Valid_Period_To, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dp_performance_Valid_Period_To, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator30, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -812,12 +815,12 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                     .addComponent(txt_payment_amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_payment_Valid_Period_From, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dp_payment_Valid_Period_From, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel153, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel154, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_payment_Valid_Period_To, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dp_payment_Valid_Period_To, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator31, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -836,30 +839,29 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                     .addComponent(txt_insuarance_covers_amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_insurance_Valid_Period_From, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dp_insurance_Valid_Period_From, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel158, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel157, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_insurance_Valid_Period_To, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dp_insurance_Valid_Period_To, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel161, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_made_of_payment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_add_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(42, 42, 42)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_to_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_new_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_to_final_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_to_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_add_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txt_Commencement_date, txt_Completion_date, txt_agreement_date, txt_project_duration, txt_tel, txt_total});
+        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dp_Commencement_date, txt_Completion_date, txt_project_duration, txt_tel, txt_total});
 
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txt_Valid_Period_From, txt_Valid_Period_To, txt_amount, txt_organization});
+        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dp_performance_Valid_Period_From, dp_performance_Valid_Period_To, txt_performance_amount, txt_performance_organization});
 
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txt_insuarance_covers, txt_insuarance_covers_amount, txt_insurance_Valid_Period_From, txt_insurance_Valid_Period_To});
+        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dp_insurance_Valid_Period_From, dp_insurance_Valid_Period_To, txt_insuarance_covers, txt_insuarance_covers_amount});
 
         jScrollPane11.setViewportView(txt_Input_Panel_Branch4);
 
@@ -868,7 +870,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
         jScrollPane12.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        tblPrimaryProject.setModel(new javax.swing.table.DefaultTableModel(
+        tblSecondaryProject.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -907,14 +909,14 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                 "Project Name"
             }
         ));
-        tblPrimaryProject.setGridColor(new java.awt.Color(255, 255, 255));
-        tblPrimaryProject.setOpaque(false);
-        tblPrimaryProject.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblSecondaryProject.setGridColor(new java.awt.Color(255, 255, 255));
+        tblSecondaryProject.setOpaque(false);
+        tblSecondaryProject.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPrimaryProjectMouseClicked(evt);
+                tblSecondaryProjectMouseClicked(evt);
             }
         });
-        jScrollPane12.setViewportView(tblPrimaryProject);
+        jScrollPane12.setViewportView(tblSecondaryProject);
 
         txt_search_name_.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
@@ -968,7 +970,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -985,32 +987,55 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_add_secondary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_secondary_projectActionPerformed
-        if(btn_add_secondary_project.getText().equalsIgnoreCase("Save")){
+        if (btn_add_secondary_project.getText().equalsIgnoreCase("Save")) {
             saveSecondaryProject();
-        }else{
+        } else {
             updateSecondaryProject();
         }
+        loadSecondaryProjectTable();
     }//GEN-LAST:event_btn_add_secondary_projectActionPerformed
 
-    private void tblPrimaryProjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPrimaryProjectMouseClicked
-        loadFromPrimaryProjectTable();
-    }//GEN-LAST:event_tblPrimaryProjectMouseClicked
+    private void tblSecondaryProjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSecondaryProjectMouseClicked
 
-    private void btn_new_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_projectActionPerformed
-       btn_add_secondary_project.setText("Save");
-    }//GEN-LAST:event_btn_new_primary_projectActionPerformed
+        searchByTableName();
+        loadFromSecondaryProjectTable();
+        btn_add_secondary_project.setText("Update");
+    }//GEN-LAST:event_tblSecondaryProjectMouseClicked
+
+    private void btn_to_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_to_primary_projectActionPerformed
+        Project_Primary_Panel primary_Panel = null;
+        if (secondary != null) {
+            try {
+                primary_Panel = new Project_Primary_Panel(secondary.getProject_id());
+            } catch (Exception ex) {
+                Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            try {
+                primary_Panel = new Project_Primary_Panel();
+            } catch (Exception ex) {
+                Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        GUI_Home.load_panel.removeAll();
+        GUI_Home.load_panel.repaint();
+        GUI_Home.load_panel.revalidate();
+        primary_Panel.setSize(GUI_Home.load_panel.getSize());
+        GUI_Home.load_panel.add(primary_Panel);
+        primary_Panel.setVisible(true);
+    }//GEN-LAST:event_btn_to_primary_projectActionPerformed
 
     private void txt_totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_totalActionPerformed
-        txt_project_duration.requestFocus();
+
     }//GEN-LAST:event_txt_totalActionPerformed
 
     private void txt_project_durationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_durationActionPerformed
-        
+
     }//GEN-LAST:event_txt_project_durationActionPerformed
 
-    private void txt_Commencement_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Commencement_dateActionPerformed
-      
-    }//GEN-LAST:event_txt_Commencement_dateActionPerformed
+    private void dp_Commencement_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_Commencement_dateActionPerformed
+
+    }//GEN-LAST:event_dp_Commencement_dateActionPerformed
 
     private void txt_totalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_totalKeyPressed
         Validation.priceText(txt_total);
@@ -1029,11 +1054,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_project_durationKeyReleased
 
     private void txt_totalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_totalKeyTyped
-        
+
     }//GEN-LAST:event_txt_totalKeyTyped
 
     private void txt_boqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_boqActionPerformed
-        // TODO add your handling code here:
+        txt_total.setText(txt_boq.getText());
     }//GEN-LAST:event_txt_boqActionPerformed
 
     private void txt_boqKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_boqKeyPressed
@@ -1049,7 +1074,10 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_boqKeyTyped
 
     private void txt_vatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vatActionPerformed
-        // TODO add your handling code here:
+        double boq = Double.parseDouble(txt_boq.getText());
+        double vat = Double.parseDouble(txt_vat.getText());
+        double tot = boq + vat;
+        txt_total.setText(Double.toString(tot));
     }//GEN-LAST:event_txt_vatActionPerformed
 
     private void txt_vatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatKeyPressed
@@ -1092,41 +1120,41 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_Completion_dateActionPerformed
 
-    private void txt_organizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_organizationActionPerformed
+    private void txt_performance_organizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_performance_organizationActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_organizationActionPerformed
+    }//GEN-LAST:event_txt_performance_organizationActionPerformed
 
-    private void txt_organizationKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_organizationKeyPressed
+    private void txt_performance_organizationKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_performance_organizationKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_organizationKeyPressed
+    }//GEN-LAST:event_txt_performance_organizationKeyPressed
 
-    private void txt_organizationKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_organizationKeyReleased
+    private void txt_performance_organizationKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_performance_organizationKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_organizationKeyReleased
+    }//GEN-LAST:event_txt_performance_organizationKeyReleased
 
-    private void txt_organizationKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_organizationKeyTyped
+    private void txt_performance_organizationKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_performance_organizationKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_organizationKeyTyped
+    }//GEN-LAST:event_txt_performance_organizationKeyTyped
 
-    private void txt_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_amountActionPerformed
+    private void txt_performance_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_performance_amountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_amountActionPerformed
+    }//GEN-LAST:event_txt_performance_amountActionPerformed
 
-    private void txt_amountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_amountKeyPressed
+    private void txt_performance_amountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_performance_amountKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_amountKeyPressed
+    }//GEN-LAST:event_txt_performance_amountKeyPressed
 
-    private void txt_amountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_amountKeyReleased
+    private void txt_performance_amountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_performance_amountKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_amountKeyReleased
+    }//GEN-LAST:event_txt_performance_amountKeyReleased
 
-    private void txt_Valid_Period_FromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Valid_Period_FromActionPerformed
+    private void dp_performance_Valid_Period_FromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_performance_Valid_Period_FromActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_Valid_Period_FromActionPerformed
+    }//GEN-LAST:event_dp_performance_Valid_Period_FromActionPerformed
 
-    private void txt_Valid_Period_ToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Valid_Period_ToActionPerformed
+    private void dp_performance_Valid_Period_ToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_performance_Valid_Period_ToActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_Valid_Period_ToActionPerformed
+    }//GEN-LAST:event_dp_performance_Valid_Period_ToActionPerformed
 
     private void txt_payment_organizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_payment_organizationActionPerformed
         // TODO add your handling code here:
@@ -1156,13 +1184,13 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_payment_amountKeyReleased
 
-    private void txt_payment_Valid_Period_FromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_payment_Valid_Period_FromActionPerformed
+    private void dp_payment_Valid_Period_FromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_payment_Valid_Period_FromActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_payment_Valid_Period_FromActionPerformed
+    }//GEN-LAST:event_dp_payment_Valid_Period_FromActionPerformed
 
-    private void txt_payment_Valid_Period_ToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_payment_Valid_Period_ToActionPerformed
+    private void dp_payment_Valid_Period_ToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_payment_Valid_Period_ToActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_payment_Valid_Period_ToActionPerformed
+    }//GEN-LAST:event_dp_payment_Valid_Period_ToActionPerformed
 
     private void txt_insuarance_coversActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_insuarance_coversActionPerformed
         // TODO add your handling code here:
@@ -1176,16 +1204,16 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_insuarance_coversKeyReleased
 
-    private void txt_insurance_Valid_Period_FromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_insurance_Valid_Period_FromActionPerformed
+    private void dp_insurance_Valid_Period_FromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_insurance_Valid_Period_FromActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_insurance_Valid_Period_FromActionPerformed
+    }//GEN-LAST:event_dp_insurance_Valid_Period_FromActionPerformed
 
-    private void txt_insurance_Valid_Period_ToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_insurance_Valid_Period_ToActionPerformed
+    private void dp_insurance_Valid_Period_ToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_insurance_Valid_Period_ToActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_insurance_Valid_Period_ToActionPerformed
+    }//GEN-LAST:event_dp_insurance_Valid_Period_ToActionPerformed
 
     private void cmb_Insuarance_CoversActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_Insuarance_CoversActionPerformed
-      
+
     }//GEN-LAST:event_cmb_Insuarance_CoversActionPerformed
 
     private void txt_insuarance_covers_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_insuarance_covers_amountActionPerformed
@@ -1204,18 +1232,54 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_made_of_paymentActionPerformed
 
-    private void txt_agreement_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_agreement_dateActionPerformed
+    private void dp_agreement_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_agreement_dateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_agreement_dateActionPerformed
+    }//GEN-LAST:event_dp_agreement_dateActionPerformed
+
+    private void cmb_current_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_current_statusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_current_statusActionPerformed
+
+    private void btn_to_final_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_to_final_projectActionPerformed
+        GUI_Home.load_panel.removeAll();
+        GUI_Home.load_panel.repaint();
+        GUI_Home.load_panel.revalidate();
+        Project_Tertiary_Panel third = null;
+        if (secondary != null) {
+            try {
+                third = new Project_Tertiary_Panel(secondary.getProject_id());
+            } catch (Exception ex) {
+                Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            try {
+                third = new Project_Tertiary_Panel();
+            } catch (Exception ex) {
+                Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        third.setSize(GUI_Home.load_panel.getSize());
+        GUI_Home.load_panel.add(third);
+        third.setVisible(true);
+    }//GEN-LAST:event_btn_to_final_projectActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Project_Primary_Info_Panel;
     private javax.swing.JButton btn_add_secondary_project;
-    private javax.swing.JButton btn_new_primary_project;
-    private javax.swing.JButton btn_to_secondary_project;
+    private javax.swing.JButton btn_to_final_project;
+    private javax.swing.JButton btn_to_primary_project;
     private javax.swing.JComboBox<String> cmb_Insuarance_Covers;
+    private javax.swing.JComboBox<String> cmb_current_status;
     private javax.swing.JComboBox<String> cmb_made_of_payment;
+    private org.jdesktop.swingx.JXDatePicker dp_Commencement_date;
+    private org.jdesktop.swingx.JXDatePicker dp_agreement_date;
+    private org.jdesktop.swingx.JXDatePicker dp_insurance_Valid_Period_From;
+    private org.jdesktop.swingx.JXDatePicker dp_insurance_Valid_Period_To;
+    private org.jdesktop.swingx.JXDatePicker dp_payment_Valid_Period_From;
+    private org.jdesktop.swingx.JXDatePicker dp_payment_Valid_Period_To;
+    private org.jdesktop.swingx.JXDatePicker dp_performance_Valid_Period_From;
+    private org.jdesktop.swingx.JXDatePicker dp_performance_Valid_Period_To;
     private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
@@ -1246,6 +1310,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel159;
     private javax.swing.JLabel jLabel160;
     private javax.swing.JLabel jLabel161;
+    private javax.swing.JLabel jLabel162;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JPanel jPanel1;
@@ -1257,26 +1322,18 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator29;
     private javax.swing.JSeparator jSeparator30;
     private javax.swing.JSeparator jSeparator31;
-    private javax.swing.JTable tblPrimaryProject;
-    private org.jdesktop.swingx.JXDatePicker txt_Commencement_date;
+    private javax.swing.JTable tblSecondaryProject;
     private org.jdesktop.swingx.JXDatePicker txt_Completion_date;
     private javax.swing.JPanel txt_Input_Panel_Branch4;
-    private org.jdesktop.swingx.JXDatePicker txt_Valid_Period_From;
-    private org.jdesktop.swingx.JXDatePicker txt_Valid_Period_To;
     private javax.swing.JTextArea txt_address;
-    private org.jdesktop.swingx.JXDatePicker txt_agreement_date;
-    private javax.swing.JTextField txt_amount;
     private javax.swing.JTextField txt_boq;
     private javax.swing.JTextField txt_insuarance_covers;
     private javax.swing.JTextField txt_insuarance_covers_amount;
-    private org.jdesktop.swingx.JXDatePicker txt_insurance_Valid_Period_From;
-    private org.jdesktop.swingx.JXDatePicker txt_insurance_Valid_Period_To;
     private javax.swing.JTextField txt_name;
-    private javax.swing.JTextField txt_organization;
-    private org.jdesktop.swingx.JXDatePicker txt_payment_Valid_Period_From;
-    private org.jdesktop.swingx.JXDatePicker txt_payment_Valid_Period_To;
     private javax.swing.JTextField txt_payment_amount;
     private javax.swing.JTextField txt_payment_organization;
+    private javax.swing.JTextField txt_performance_amount;
+    private javax.swing.JTextField txt_performance_organization;
     private javax.swing.JTextField txt_project_duration;
     private javax.swing.JTextField txt_search_name_;
     private javax.swing.JTextField txt_tel;
@@ -1285,93 +1342,158 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private javax.swing.JPanel user_panel_hedding2;
     // End of variables declaration//GEN-END:variables
 
-    private void loadToCmbProjectType() {
-
-        }
-
-    private void loadToCmbProjectSpeciality() {
-        try {
-            List<R_ProjectSpeciality> allProjectSpecialities = projectSpecialityController.getAllProjectSpecialities();
-           
-        } catch (Exception ex) {
-            Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void loadToCmbProjectGrade() {
-        try {
-            List<R_ProjectGrade> allProjectGrades = projectGradeController.getAllProjectGrades();
-            
-        } catch (Exception ex) {
-            Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void loadToCmbPaymentMode() {
-        try {
-            List<R_PaymentMode> allPaymentModes = paymentModeController.getAllPaymentModes();
-            
-        } catch (Exception ex) {
-            Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     private void saveSecondaryProject() {
-        
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        
-        
-        M_Project_Secondary m = new M_Project_Secondary();
-        m.setProject_id(projectID);
-        m.setProject_secondary_vat(Double.parseDouble(txt_vat.getText()));
-        m.setProject_secondary_duration(txt_project_duration.getText());
-        m.setProject_secondary_agreementDate(txt_agreement_date.getDate());
-        
-        m.setProject_secondary_consultant(txt_name.getText());
-        m.setProject_secondary_consultantAddress(txt_address.getText());
-        m.setProject_secondary_consultantContact(txt_tel.getText());
-        m.setProject_secondary_commencementDate(txt_Commencement_date.getDate());
-        m.setProject_secondary_completionDate(txt_Completion_date.getDate());
-        
-        m.setProject_secondary_performanceBondOrganization(txt_organization.getText());
-        m.setProject_secondary_performanceBondAmount(Double.parseDouble(txt_amount.getText()));
-        m.setProject_secondary_performanceBondValidFrom(txt_Valid_Period_From.getDate());
-        m.setProject_secondary_performanceBondValidTo(txt_Valid_Period_To.getDate());
-        
-        m.setProject_secondary_advancePaymentBondAmount(Double.parseDouble(txt_payment_amount.getText()));
-        m.setProject_secondary_advancePaymentBondOrganization(txt_payment_organization.getText());
-        m.setProject_secondary_advancePaymentBondValidFrom(txt_payment_Valid_Period_From.getDate());
-        m.setProject_secondary_advancePaymentBondValidTo(txt_payment_Valid_Period_To.getDate());
-        
-        m.setProject_secondary_insuranceCover((String) cmb_Insuarance_Covers.getSelectedItem());
-        m.setProject_secondary_insuranceCoverOrganization(txt_insuarance_covers.getText());
-        m.setProject_secondary_insuranceCoverAmount(Double.parseDouble(txt_insuarance_covers_amount.getText()));
-        m.setProject_secondary_insuranceValidFrom(txt_insurance_Valid_Period_From.getDate());
-        m.setProject_secondary_insuranceValidTo(txt_insurance_Valid_Period_To.getDate());
-        m.setProject_secondary_paymentMode((String) cmb_made_of_payment.getSelectedItem());
-        
-        
-    }
+        try {
+            int projectId = secondary.getProject_id();
+            double boq = Double.parseDouble(txt_boq.getText());
+            double vat = Double.parseDouble(txt_vat.getText());
+            String duration = txt_project_duration.getText();
+            Date agreementDate = dp_agreement_date.getDate();
+            String coultatnt = txt_name.getText();
+            String consultAddress = txt_address.getText();
+            String consultTp = txt_tel.getText();
+            Date commenceDate = dp_Commencement_date.getDate();
+            Date completeDate = txt_Completion_date.getDate();
+            String performBondOrg = txt_performance_organization.getText();
+            double performAmount = Double.parseDouble(txt_performance_amount.getText());
+            Date performFrom = dp_performance_Valid_Period_From.getDate();
+            Date performTo = dp_performance_Valid_Period_To.getDate();
+            String advanceOrg = txt_payment_organization.getText();
+            double advanceAmount = Double.parseDouble(txt_payment_amount.getText());
+            Date advanceFrom = dp_payment_Valid_Period_From.getDate();
+            Date advanceTo = dp_payment_Valid_Period_To.getDate();
+            String insuranceCover = cmb_Insuarance_Covers.getSelectedItem().toString();
+            String insuranceOrg = txt_insuarance_covers.getText();
+            double insuranceAmount = Double.parseDouble(txt_insuarance_covers_amount.getText());
+            Date insuranceFrom = dp_insurance_Valid_Period_From.getDate();
+            Date insuranceTo = dp_insurance_Valid_Period_To.getDate();
+            String paymentMode = cmb_made_of_payment.getSelectedItem().toString();
+            String currentStatus = Integer.toString(cmb_current_status.getSelectedIndex());
 
-    private void loadFromPrimaryProjectTable() {
+            M_Project_Secondary secondUpdate = new M_Project_Secondary(projectId, boq, vat, duration, agreementDate, coultatnt, consultAddress, consultTp, commenceDate, completeDate, performBondOrg, performAmount, performFrom, performTo, advanceOrg, advanceAmount, advanceFrom, advanceTo, insuranceCover, insuranceOrg, insuranceAmount, insuranceFrom, insuranceTo, paymentMode, currentStatus);
+            boolean updateSecondaryProject = secondaryController.updateSecondaryProject(secondUpdate);
+            if (updateSecondaryProject) {
+                JOptionPane.showMessageDialog(this, "Secondary Project Information Updated Successfully..");
+            } else {
+                JOptionPane.showMessageDialog(this, "Updating Secondary Project Information Failed..");
+            }
 
-       
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     private void updateSecondaryProject() {
-        
-       
-        
-    }
-
-    private M_Project_Primary searchProjectPrimaryByTableName() {
-        M_Project_Primary sp = null;
         try {
-            int selectedRow = tblPrimaryProject.getSelectedRow();
-            sp = primary_ProjectController.searchPrimaryProjectByName((String) dtmPriProject.getValueAt(selectedRow, 0));
+            int projectId = secondary.getProject_id();
+            double boq = Double.parseDouble(txt_boq.getText());
+            double vat = Double.parseDouble(txt_vat.getText());
+            String duration = txt_project_duration.getText();
+            Date agreementDate = dp_agreement_date.getDate();
+            String coultatnt = txt_name.getText();
+            String consultAddress = txt_address.getText();
+            String consultTp = txt_tel.getText();
+            Date commenceDate = dp_Commencement_date.getDate();
+            Date completeDate = txt_Completion_date.getDate();
+            String performBondOrg = txt_performance_organization.getText();
+            double performAmount = Double.parseDouble(txt_performance_amount.getText());
+            Date performFrom = dp_performance_Valid_Period_From.getDate();
+            Date performTo = dp_performance_Valid_Period_To.getDate();
+            String advanceOrg = txt_payment_organization.getText();
+            double advanceAmount = Double.parseDouble(txt_payment_amount.getText());
+            Date advanceFrom = dp_payment_Valid_Period_From.getDate();
+            Date advanceTo = dp_payment_Valid_Period_To.getDate();
+            String insuranceCover = cmb_Insuarance_Covers.getSelectedItem().toString();
+            String insuranceOrg = txt_insuarance_covers.getText();
+            double insuranceAmount = Double.parseDouble(txt_insuarance_covers_amount.getText());
+            Date insuranceFrom = dp_insurance_Valid_Period_From.getDate();
+            Date insuranceTo = dp_insurance_Valid_Period_To.getDate();
+            String paymentMode = cmb_made_of_payment.getSelectedItem().toString();
+            String currentStatus = Integer.toString(cmb_current_status.getSelectedIndex());
+
+            M_Project_Secondary secondUpdate = new M_Project_Secondary(projectId, boq, vat, duration, agreementDate, coultatnt, consultAddress, consultTp, commenceDate, completeDate, performBondOrg, performAmount, performFrom, performTo, advanceOrg, advanceAmount, advanceFrom, advanceTo, insuranceCover, insuranceOrg, insuranceAmount, insuranceFrom, insuranceTo, paymentMode, currentStatus);
+            boolean updateSecondaryProject = secondaryController.updateSecondaryProject(secondUpdate);
+            if (updateSecondaryProject) {
+                JOptionPane.showMessageDialog(this, "Secondary Project Information Updated Successfully..");
+            } else {
+                JOptionPane.showMessageDialog(this, "Updating Secondary Project Information Failed..");
+            }
+
         } catch (Exception ex) {
             Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return sp;
     }
+
+    private void loadFromSecondaryProjectTable() {
+
+        txt_boq.setText(Double.toString(secondary.getProject_secondary_boq()));
+        txt_vat.setText(Double.toString(secondary.getProject_secondary_vat()));
+        txt_total.setText(Double.toString(secondary.getProject_secondary_boq() + secondary.getProject_secondary_vat()));
+        txt_project_duration.setText(secondary.getProject_secondary_duration());
+
+        txt_name.setText(secondary.getProject_secondary_consultant());
+        txt_address.setText(secondary.getProject_secondary_consultantAddress());
+        txt_tel.setText(secondary.getProject_secondary_consultantContact());
+
+        txt_Completion_date.setDate(secondary.getProject_secondary_completionDate());
+        txt_payment_organization.setText(secondary.getProject_secondary_performanceBondOrganization());
+        txt_performance_amount.setText(Double.toString(secondary.getProject_secondary_performanceBondAmount()));
+
+        txt_payment_organization.setText(secondary.getProject_secondary_advancePaymentBondOrganization());
+        txt_payment_amount.setText(Double.toString(secondary.getProject_secondary_advancePaymentBondAmount()));
+
+        txt_insuarance_covers.setText(secondary.getProject_secondary_insuranceCoverOrganization());
+        txt_insuarance_covers_amount.setText(Double.toString(secondary.getProject_secondary_insuranceCoverAmount()));
+
+        if (secondary.getProject_secondary_boq() != 0) {
+            cmb_Insuarance_Covers.setSelectedItem(secondary.getProject_secondary_insuranceCover());
+            cmb_made_of_payment.setSelectedItem(secondary.getProject_secondary_paymentMode());
+            dp_agreement_date.setDate(secondary.getProject_secondary_agreementDate());
+            dp_Commencement_date.setDate(secondary.getProject_secondary_commencementDate());
+            dp_performance_Valid_Period_From.setDate(secondary.getProject_secondary_performanceBondValidFrom());
+            dp_performance_Valid_Period_To.setDate(secondary.getProject_secondary_performanceBondValidTo());
+            dp_payment_Valid_Period_From.setDate(secondary.getProject_secondary_advancePaymentBondValidFrom());
+            dp_payment_Valid_Period_To.setDate(secondary.getProject_secondary_advancePaymentBondValidTo());
+            dp_insurance_Valid_Period_From.setDate(secondary.getProject_secondary_insuranceValidFrom());
+            dp_insurance_Valid_Period_To.setDate(secondary.getProject_secondary_insuranceValidTo());
+        } else {
+            cmb_Insuarance_Covers.setSelectedIndex(0);
+            cmb_made_of_payment.setSelectedIndex(0);
+            dp_Commencement_date.setDate(new Date());
+            dp_agreement_date.setDate(new Date());
+            dp_insurance_Valid_Period_From.setDate(new Date());
+            dp_insurance_Valid_Period_To.setDate(new Date());
+            dp_payment_Valid_Period_From.setDate(new Date());
+            dp_payment_Valid_Period_To.setDate(new Date());
+            dp_performance_Valid_Period_From.setDate(new Date());
+            dp_performance_Valid_Period_To.setDate(new Date());
+        }
+        cmb_current_status.setSelectedIndex(Integer.parseInt(secondary.getProject_currentStatus()));
+
+    }
+
+    private void loadSecondaryProjectTable() {
+        try {
+            dtmSecProject.setRowCount(0);
+            List<M_Project_Secondary> allSecondarys = secondaryController.getAllSecondarys();
+            for (M_Project_Secondary allSecondary : allSecondarys) {
+                String[] rowData = {primaryController.searchPrimaryProject(allSecondary.getProject_id()).getProject_primary_name()};
+                dtmSecProject.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void searchByTableName() {
+        int selRow = tblSecondaryProject.getSelectedRow();
+        String name = (String) dtmSecProject.getValueAt(selRow, 0);
+        try {
+            secondary = secondaryController.searchSecondary(name);
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
