@@ -10,7 +10,9 @@ import com.brotherssoft.samodconstructions.service.M_AccountService;
 import com.brotherssoft.samodconstructions.service.M_EmployeeService;
 import com.brotherssoft.samodconstructions.service.M_EquipmentService;
 import com.brotherssoft.samodconstructions.service.M_MaterialService;
-import com.brotherssoft.samodconstructions.service.M_Primary_ProjectService;
+import com.brotherssoft.samodconstructions.service.M_Project_PrimaryService;
+import com.brotherssoft.samodconstructions.service.M_Project_SecondaryService;
+import com.brotherssoft.samodconstructions.service.M_Project_ThirdService;
 import com.brotherssoft.samodconstructions.service.M_PurchaserService;
 import com.brotherssoft.samodconstructions.service.M_VehicleService;
 import com.brotherssoft.samodconstructions.service.R_AccountTypeService;
@@ -40,7 +42,7 @@ public interface ServiceFactory {
     public R_BankService getBankService();
     public R_BranchService getBranchService();
     public M_EmployeeService getEmployeeService();
-    public M_Primary_ProjectService getPrimary_ProjectService();
+    public M_Project_PrimaryService getPrimary_ProjectService();
     public R_ProjectGradeService getProjectGradeService();
     public R_ProjectSpecialityService getProjectSpecialityService();
     public R_ProjectTypeService getProjectTypeService();
@@ -60,5 +62,7 @@ public interface ServiceFactory {
     public R_UnitService getUnitService();
     public M_EquipmentService getEquipmentService();
     public M_MaterialService getMaterialService();
+    public M_Project_SecondaryService getSecondaryService();
+    public M_Project_ThirdService getThirdService();
     
 }

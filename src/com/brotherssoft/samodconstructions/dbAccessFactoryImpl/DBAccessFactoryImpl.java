@@ -10,7 +10,9 @@ import com.brotherssoft.samodconstructions.dbAccess.M_AccountDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_EmployeeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_EquipmentDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_MaterialDBAccess;
-import com.brotherssoft.samodconstructions.dbAccess.M_Primary_ProjectDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_Project_PrimaryDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_Project_SecondaryDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_Project_ThirdDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_PurchaserDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_VehicleDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_AccountTypeDBAccess;
@@ -63,8 +65,8 @@ public class DBAccessFactoryImpl implements DBAccessFactory{
     }
 
     @Override
-    public M_Primary_ProjectDBAccess getPrimary_ProjectDBAccess() {
-        return new M_Primary_ProjectDBAccess();
+    public M_Project_PrimaryDBAccess getPrimary_ProjectDBAccess() {
+        return new M_Project_PrimaryDBAccess();
     }
 
     @Override
@@ -160,6 +162,16 @@ public class DBAccessFactoryImpl implements DBAccessFactory{
     @Override
     public M_MaterialDBAccess getMaterialDBAccess() {
         return new M_MaterialDBAccess();
+    }
+
+    @Override
+    public M_Project_SecondaryDBAccess getSecondaryDBAccess() {
+        return new M_Project_SecondaryDBAccess();
+    }
+
+    @Override
+    public M_Project_ThirdDBAccess getThirdDBAccess() {
+        return new M_Project_ThirdDBAccess();
     }
 
     

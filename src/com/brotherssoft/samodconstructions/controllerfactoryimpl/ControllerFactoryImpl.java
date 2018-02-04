@@ -10,7 +10,6 @@ import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
 import com.brotherssoft.samodconstructions.controller.M_EquipmentController;
 import com.brotherssoft.samodconstructions.controller.M_MaterialController;
-import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
 import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.controller.R_AccountTypeController;
@@ -35,7 +34,7 @@ import com.brotherssoft.samodconstructions.controllerimpl.M_AccountControllerImp
 import com.brotherssoft.samodconstructions.controllerimpl.M_EmployeeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_EquipmentControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_MaterialControllerImpl;
-import com.brotherssoft.samodconstructions.controllerimpl.M_Primary_ProjectControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.M_Project_PrimaryControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_PurchaserControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_VehicleControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_AccountTypeControllerImpl;
@@ -55,6 +54,11 @@ import com.brotherssoft.samodconstructions.controllerimpl.R_UnitControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_VehicleTypeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_WorkControllerImpl;
 import java.rmi.server.UnicastRemoteObject;
+import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
+import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
+import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
+import com.brotherssoft.samodconstructions.controllerimpl.M_Project_SecondaryControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.M_Project_ThirdControllerImpl;
 
 /**
  *
@@ -87,8 +91,8 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     }
 
     @Override
-    public M_Primary_ProjectController getPrimaryProjectController() throws Exception {
-        return new M_Primary_ProjectControllerImpl();
+    public M_Project_PrimaryController getPrimaryProjectController() throws Exception {
+        return new M_Project_PrimaryControllerImpl();
     }
 
     @Override
@@ -184,6 +188,16 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     @Override
     public M_MaterialController getMaterialController() throws Exception {
         return new M_MaterialControllerImpl();
+    }
+
+    @Override
+    public M_Project_SecondaryController getSecondary_ProjectController() throws Exception {
+        return new M_Project_SecondaryControllerImpl();
+    }
+
+    @Override
+    public M_Project_ThirdController getThird_ProjectController() throws Exception {
+        return new M_Project_ThirdControllerImpl();
     }
     
 }

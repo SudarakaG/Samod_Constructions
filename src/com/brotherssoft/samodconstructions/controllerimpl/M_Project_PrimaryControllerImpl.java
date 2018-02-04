@@ -5,22 +5,22 @@
  */
 package com.brotherssoft.samodconstructions.controllerimpl;
 
-import com.brotherssoft.samodconstructions.controller.M_Primary_ProjectController;
 import com.brotherssoft.samodconstructions.model.M_Project_Primary;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
+import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 
 /**
  *
  * @author gksde
  */
-public class M_Primary_ProjectControllerImpl extends UnicastRemoteObject implements M_Primary_ProjectController{
+public class M_Project_PrimaryControllerImpl extends UnicastRemoteObject implements M_Project_PrimaryController{
 
     private ServiceFactory sf = new ServiceFactoryImpl();
     
-    public M_Primary_ProjectControllerImpl() throws Exception{
+    public M_Project_PrimaryControllerImpl() throws Exception{
         
     }
     

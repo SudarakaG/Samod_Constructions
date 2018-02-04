@@ -14,11 +14,11 @@ import java.util.List;
  *
  * @author gksde
  */
-public class M_Primary_ProjectService {
+public class M_Project_PrimaryService {
     
     private final DBAccessFactory dbAccessFactory = new DBAccessFactoryImpl();
 
-    public M_Primary_ProjectService(){
+    public M_Project_PrimaryService(){
     }
         
     public boolean addPrimaryProject(M_Project_Primary primary)throws Exception{

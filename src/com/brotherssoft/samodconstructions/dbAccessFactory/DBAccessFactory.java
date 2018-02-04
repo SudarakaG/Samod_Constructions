@@ -10,7 +10,9 @@ import com.brotherssoft.samodconstructions.dbAccess.M_AccountDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_EmployeeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_EquipmentDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_MaterialDBAccess;
-import com.brotherssoft.samodconstructions.dbAccess.M_Primary_ProjectDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_Project_PrimaryDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_Project_SecondaryDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_Project_ThirdDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_PurchaserDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_VehicleDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_AccountTypeDBAccess;
@@ -40,7 +42,7 @@ public interface DBAccessFactory {
     public R_BankDBAccess getBankAccess();
     public R_BranchDBAccess getBranchDBAccess();
     public M_EmployeeDBAccess getEmployeeAccess();
-    public M_Primary_ProjectDBAccess getPrimary_ProjectDBAccess();
+    public M_Project_PrimaryDBAccess getPrimary_ProjectDBAccess();
     public R_ProjectGradeDBAccess getProjectGradeDBAccess();
     public R_ProjectSpecialityDBAccess getProjectSpecialityDBAccess();
     public R_ProjectTypeDBAccess getProjectTypeDBAccess();
@@ -60,5 +62,7 @@ public interface DBAccessFactory {
     public R_UnitDBAccess getUnitDBAccess();
     public M_EquipmentDBAccess getEquipmentDBAccess();
     public M_MaterialDBAccess getMaterialDBAccess();
+    public M_Project_SecondaryDBAccess getSecondaryDBAccess();
+    public M_Project_ThirdDBAccess getThirdDBAccess();
     
 }
