@@ -44,5 +44,9 @@ public class M_VehicleService {
     public List<M_Vehicle> getAllVehicles()throws Exception{
         return dbaf.getVehicleDBAccess().getAllVehicles();
     }
+    
+    public List<M_Vehicle> getAllVehiclesByLetter(String phrase)throws Exception{
+        return dbaf.getVehicleDBAccess().getAllVehiclesByLetter(phrase);
+    }
             
 }

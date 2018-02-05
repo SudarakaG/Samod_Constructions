@@ -208,4 +208,20 @@ public class M_Project_PrimaryDBAccess {
         
     }
     
+    public List<M_Project_Primary> getAllPrimaryProjectsByLetter(String phrase) throws Exception {
+       
+            Connection conn = DBConnection.getDBConnection().getConnection();
+            Statement stm = conn.createStatement();
+            ResultSet rst = stm.executeQuery("Select PROJECT_ID, PROJECTA_NAME, PROJECTA_DESC, PROJECTA_ADD1, PROJECTA_ADD2, PROJECTA_ADD3, PROJECTA_ADD4, PROJECTA_TYPE, PROJECTA_VATADDED, PROJECTA_CONBIDNO, PROJECTA_CLINTNAME, PROJECTA_CLINTADD1, PROJECTA_CLINTADD2, PROJECTA_CLINTADD3, PROJECTA_CLINTADD4, PROJECTA_CONTACT1, PROJECTA_CONTACT2, PROJECTA_INTENTEDDURATION, PROJECTA_ICTADSPECI, PROJECTA_ICTADGRADE, PROJECTA_ENGESTIMATE, PROJECTA_TENDERFEE, PROJECTA_BIDSECPAYMODE, PROJECTA_BIDSECAMOUNT, PROJECTA_BIDSECDURATION, PROJECTA_BIDSECORGANIZATION, PROJECTA_TENDEROPENDATE, PROJECTA_TENDEROPENTIME, PROJECTA_TENDERRESULT, PROJECTA_STATUSACTIVEDATE, PROJECTA_STATUSINACTIVEDATE, PROJECT_CURRENT_STATUS From M_Project WHERE PROJECTA_NAME LIKE '"+phrase+"%'");
+            List<M_Project_Primary> primaryProjectList = new ArrayList<>();
+            while (rst.next()) {
+                M_Project_Primary project_Primary = new M_Project_Primary(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getInt(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getString(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getString(17), rst.getString(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getInt(23), rst.getDouble(24), rst.getString(25), rst.getString(26), rst.getDate(27), rst.getString(28), rst.getString(29), rst.getDate(30), rst.getDate(31),rst.getString(32));
+                if(project_Primary.getProject_id() != 0){
+                primaryProjectList.add(project_Primary);
+                }
+            }
+            return primaryProjectList;
+        
+    }
+    
 }

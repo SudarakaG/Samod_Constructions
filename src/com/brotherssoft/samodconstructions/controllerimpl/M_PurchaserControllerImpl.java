@@ -52,6 +52,11 @@ public class M_PurchaserControllerImpl extends UnicastRemoteObject implements M_
     public List<M_Purchaser> getAllPurchasers() throws Exception {
         return sf.getPurchaserService().getAllPurchasers();
     }
+
+    @Override
+    public List<M_Purchaser> getAllPurchasersByLetter(String phrase) throws Exception {
+        return sf.getPurchaserService().getAllPurchasersByLetter(phrase);
+    }
  
     
     

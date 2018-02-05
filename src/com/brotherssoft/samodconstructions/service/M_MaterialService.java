@@ -45,4 +45,8 @@ public class M_MaterialService {
         return dbaf.getMaterialDBAccess().getAllMaterials();
     }
     
+    public List<M_Material> getAllMaterialsByLetter(String phrase)throws Exception{
+        return dbaf.getMaterialDBAccess().getAllMaterialsByLetter(phrase);
+    }
+    
 }

@@ -45,4 +45,8 @@ public class R_BankService {
     public R_Bank searchBankByName(String name)throws Exception{
         return dbAccessFactory.getBankAccess().searchBankByName(name);
     }
+    
+    public List<R_Bank> getAllBanksByLetter(String phrase)throws Exception{
+        return dbAccessFactory.getBankAccess().getAllBanksByLetter(phrase);
+    }
 }

@@ -45,4 +45,8 @@ public class M_Project_PrimaryService {
         return dbAccessFactory.getPrimary_ProjectDBAccess().searchPrimaryProjectByName(name);
     }
     
+    public List<M_Project_Primary> getAllPrimaryProjectsByLetter(String phrase)throws Exception{
+        return dbAccessFactory.getPrimary_ProjectDBAccess().getAllPrimaryProjectsByLetter(phrase);
+    }
+    
 }

@@ -45,4 +45,8 @@ public class R_WorkService {
         return dbAccessFactory.getWorkDBAccess().searchWork(name);
     }
     
+    public List<R_Work> getAllWorksByLetter(String phrase)throws Exception{
+        return dbAccessFactory.getWorkDBAccess().getAllWorksByLetter(phrase);
+    }
+    
 }

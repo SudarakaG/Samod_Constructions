@@ -45,4 +45,8 @@ public class M_PurchaserService {
         return dbaf.getPurchaserDBAccess().getAllM_Purchasers();
     }
     
+    public List<M_Purchaser> getAllPurchasersByLetter(String phrase)throws Exception{
+        return dbaf.getPurchaserDBAccess().getAllPurchasersByLetter(phrase);
+    }
+    
 }

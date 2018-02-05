@@ -123,4 +123,20 @@ public class M_EquipmentDBAccess {
         
     }
     
+    public List<M_Equipment> getAllEquipmentsByLetter(String phrase)throws Exception{
+        
+        String sql = "SELECT * FROM m_equipment WHERE EQUIPMENT_NAME LIKE '"+phrase+"%'";
+        Connection connection = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = connection.prepareStatement(sql);
+        ResultSet rst = stm.executeQuery();
+        
+        List<M_Equipment> equipments = new ArrayList<>();
+        while (rst.next()) {            
+            M_Equipment equipment = new M_Equipment(rst.getInt(1), rst.getInt(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getDate(8), rst.getInt(9), rst.getDouble(10));
+            equipments.add(equipment);
+        }
+        return equipments;
+        
+    }
+    
 }

@@ -52,6 +52,11 @@ public class M_VehicleControllerImpl extends UnicastRemoteObject implements M_Ve
     public List<M_Vehicle> getAllVehicles() throws Exception {
         return sf.getVehicleService().getAllVehicles();
     }
+
+    @Override
+    public List<M_Vehicle> getAllVehiclesByLetter(String phrase) throws Exception {
+        return sf.getVehicleService().getAllVehiclesByLetter(phrase);
+    }
     
     
     

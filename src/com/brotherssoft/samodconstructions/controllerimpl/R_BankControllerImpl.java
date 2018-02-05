@@ -53,6 +53,11 @@ public class R_BankControllerImpl extends UnicastRemoteObject implements R_BankC
     public R_Bank searchBankByName(String name) throws Exception {
         return sf.getBankService().searchBankByName(name);
     }
+
+    @Override
+    public List<R_Bank> getAllBanksByLetter(String phrase) throws Exception {
+        return sf.getBankService().getAllBanksByLetter(phrase);
+    }
     
     
     

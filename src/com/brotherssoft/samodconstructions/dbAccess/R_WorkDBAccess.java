@@ -107,4 +107,20 @@ public class R_WorkDBAccess {
         
     }
     
+    public List<R_Work> getAllWorksByLetter(String phrase) throws Exception {
+       
+            Connection conn = DBConnection.getDBConnection().getConnection();
+            Statement stm = conn.createStatement();
+            ResultSet rst = stm.executeQuery("Select * From r_work WHERE WORK_NAME LIKE '"+phrase+"%'");
+            List<R_Work> works = new ArrayList<>();
+            while (rst.next()) {
+                R_Work work = new R_Work(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4));
+                if(work.getWork_id()!= 0){
+                works.add(work);
+                }
+            }
+            return works;
+        
+    }
+    
 }

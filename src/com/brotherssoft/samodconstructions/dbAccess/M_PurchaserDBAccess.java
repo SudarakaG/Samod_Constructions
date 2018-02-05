@@ -125,4 +125,20 @@ public class M_PurchaserDBAccess {
         
     }
     
+    public List<M_Purchaser> getAllPurchasersByLetter(String phrase)throws Exception{
+        
+        String sql = "SELECT * FROM M_Purchaser WHERE PURCHASER_NAME LIKE '"+phrase+"%'";
+        Connection connection = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = connection.prepareStatement(sql);
+        ResultSet rst = stm.executeQuery();
+        
+        List<M_Purchaser> purchasers = new ArrayList<>();
+        while (rst.next()) {            
+            M_Purchaser purchaser = new M_Purchaser(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getInt(5), rst.getInt(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11));
+            purchasers.add(purchaser);
+        }
+        return purchasers;
+        
+    }
+    
 }

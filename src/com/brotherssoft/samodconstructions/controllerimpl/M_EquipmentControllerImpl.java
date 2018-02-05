@@ -52,6 +52,11 @@ public class M_EquipmentControllerImpl extends UnicastRemoteObject implements M_
     public M_Equipment searEquipment(String name) throws Exception {
         return sf.getEquipmentService().searchEquipment(name);
     }
+
+    @Override
+    public List<M_Equipment> getAllEquipmentsByLetter(String phrase) throws Exception {
+        return sf.getEquipmentService().getAllEquipmentsByLetter(phrase);
+    }
     
     
     

@@ -45,4 +45,8 @@ public class M_AccountService {
         return dbAccessFactory.getAccountDBAccess().searchAccount(accountNo);
     }
     
+    public List<M_Account> getAllAccountsByLetter(String phrase)throws Exception{
+        return dbAccessFactory.getAccountDBAccess().getAllAccountsByLetter(phrase);
+    }
+    
 }

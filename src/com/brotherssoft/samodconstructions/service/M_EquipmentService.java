@@ -45,4 +45,8 @@ public class M_EquipmentService {
         return dbaf.getEquipmentDBAccess().getAllEquipments();
     }
     
+    public List<M_Equipment> getAllEquipmentsByLetter(String phrase)throws Exception{
+        return dbaf.getEquipmentDBAccess().getAllEquipmentsByLetter(phrase);
+    }
+    
 }

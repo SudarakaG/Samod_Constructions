@@ -52,6 +52,11 @@ public class M_MaterialControllerImpl extends UnicastRemoteObject implements M_M
     public M_Material searchMaterial(String name) throws Exception {
         return sf.getMaterialService().searchMaterial(name);
     }
+
+    @Override
+    public List<M_Material> getAllMaterialsByLetter(String phrase) throws Exception {
+        return sf.getMaterialService().getAllMaterialsByLetter(phrase);
+    }
     
     
 }

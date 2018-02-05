@@ -124,4 +124,19 @@ public class M_VehicleDBAccess {
         
     }
     
+    public List<M_Vehicle> getAllVehiclesByLetter(String phrase)throws Exception{
+        
+        String sql = "SELECT * FROM M_Vehicle WHERE VEHICLE_REGNO LIKE '"+phrase+"%'";
+        Connection connection = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = connection.prepareStatement(sql);
+        ResultSet rst = stm.executeQuery();
+        List<M_Vehicle> vehicles = new ArrayList<>();
+        while(rst.next()){
+            M_Vehicle vehicle = new M_Vehicle(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getString(9), rst.getInt(10), rst.getString(11));
+            vehicles.add(vehicle);
+        }
+        return vehicles;
+        
+    }
+    
 }

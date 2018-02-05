@@ -52,4 +52,8 @@ public class R_BranchService {
         return dbAccessFactory.getBranchDBAccess().searchBranch(branchName, bankId);
     }
     
+    public List<R_Branch> getAllBranchesByLetter(String phrase)throws Exception{
+        return dbAccessFactory.getBranchDBAccess().getAllBranchesNyLetter(phrase);
+    }
+    
 }

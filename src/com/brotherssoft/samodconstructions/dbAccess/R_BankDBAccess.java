@@ -107,4 +107,20 @@ public class R_BankDBAccess {
         
     }
     
+    public List<R_Bank> getAllBanksByLetter(String phrase) throws Exception {
+       
+            Connection conn = DBConnection.getDBConnection().getConnection();
+            Statement stm = conn.createStatement();
+            ResultSet rst = stm.executeQuery("Select * From R_Bank WHERE BANK_NAME LIKE '"+phrase+"%'");
+            List<R_Bank> bankList = new ArrayList<>();
+            while (rst.next()) {
+                R_Bank bank = new R_Bank(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5));
+                if(bank.getBank_id() != 0){
+                bankList.add(bank);
+                }
+            }
+            return bankList;
+        
+    }
+    
 }

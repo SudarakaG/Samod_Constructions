@@ -53,5 +53,10 @@ public class M_Project_PrimaryControllerImpl extends UnicastRemoteObject impleme
     public M_Project_Primary searchPrimaryProjectByName(String name) throws Exception {
         return sf.getPrimary_ProjectService().searchPrimaryProjectByName(name);
     }
+
+    @Override
+    public List<M_Project_Primary> getAllPrimaryProjectsByLetter(String phrase) throws Exception {
+        return sf.getPrimary_ProjectService().getAllPrimaryProjectsByLetter(phrase);
+    }
     
 }

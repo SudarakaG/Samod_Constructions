@@ -52,6 +52,11 @@ public class M_AccountControllerImpl extends UnicastRemoteObject implements M_Ac
     public M_Account searchAccount(String accountNo) throws Exception {
         return sf.getAccountService().searchAccount(accountNo);
     }
+
+    @Override
+    public List<M_Account> getAllAccountsByLetter(String phrase) throws Exception {
+        return sf.getAccountService().getAllAccountsByLetter(phrase);
+    }
     
     
 }

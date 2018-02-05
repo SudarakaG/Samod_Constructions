@@ -115,4 +115,20 @@ public class M_MaterialDBAccess {
         
     }
     
+    public List<M_Material> getAllMaterialsByLetter(String phrase)throws Exception{
+        
+        String sql = "SELECT * FROM m_material WHERE MATERIAL_NAME LIKE '"+phrase+"%'";
+        Connection connection = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = connection.prepareStatement(sql);
+        ResultSet rst = stm.executeQuery();
+        
+        List<M_Material> materials = new ArrayList<>();
+        while (rst.next()) {            
+            M_Material material = new M_Material(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getInt(5), rst.getDate(6));
+            materials.add(material);
+        }
+        return materials;
+        
+    }
+    
 }

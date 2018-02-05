@@ -108,4 +108,18 @@ public class M_AccountDBAccess {
         
     }
     
+    public List<M_Account> getAllAccountsByLetter(String phrase) throws Exception {
+       
+            Connection conn = DBConnection.getDBConnection().getConnection();
+            Statement stm = conn.createStatement();
+            ResultSet rst = stm.executeQuery("Select * From M_Account WHERE ACCOUNT_ACCOUNTNO LIKE '"+phrase+"%'");
+            List<M_Account> accountList = new ArrayList<>();
+            while (rst.next()) {
+                M_Account account = new M_Account(rst.getInt(1), rst.getInt(2), rst.getInt(3), rst.getString(4), rst.getInt(5), rst.getString(6), rst.getString(7));
+                accountList.add(account);
+            }
+            return accountList;
+        
+    }
+    
 }

@@ -52,6 +52,11 @@ public class R_WorkControllerImpl extends UnicastRemoteObject implements R_WorkC
     public List<R_Work> getAllWorks() throws Exception {
         return sf.getWorkService().getAllWorks();
     }
+
+    @Override
+    public List<R_Work> getAllWorksByLetter(String phrase) throws Exception {
+        return sf.getWorkService().getAllWorksByLetter(phrase);
+    }
     
     
     
