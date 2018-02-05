@@ -22,5 +22,6 @@ public interface M_AccountController extends Remote{
     public List<M_Account> getAllAccounts()throws Exception;
     
     public M_Account searchAccount(String accountNo)throws Exception;
+    public List<M_Account> getAllAccountsByLetter(String phrase)throws Exception;
     
 }

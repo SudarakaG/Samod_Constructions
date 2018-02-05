@@ -21,5 +21,6 @@ public interface R_WorkController extends Remote{
     public R_Work searchWork(int id)throws Exception;
     public R_Work searchWork(String name)throws Exception;
     public List<R_Work> getAllWorks()throws Exception;
+    public List<R_Work> getAllWorksByLetter(String phrase)throws Exception;
     
 }

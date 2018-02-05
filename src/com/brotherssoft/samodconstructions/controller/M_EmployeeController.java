@@ -24,4 +24,5 @@ public interface M_EmployeeController extends Remote{
     public List<M_Employee> getAllEmployees()throws Exception;
     public M_Employee searchBySubContractorId(int subId)throws Exception;
     public M_Employee searchByFullName(String initials,String fName,String mName,String lName)throws Exception;
+    public List<M_Employee> getAllEmployeesByLetter(String phrase)throws Exception;
 }

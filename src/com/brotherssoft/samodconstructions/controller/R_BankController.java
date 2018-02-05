@@ -21,5 +21,6 @@ public interface R_BankController extends Remote{
     public R_Bank searchBank(int bankId)throws Exception;
     public List<R_Bank> getAllBanks()throws Exception;
     public R_Bank searchBankByName(String name)throws Exception;
+    public List<R_Bank> getAllBanksByLetter(String phrase)throws Exception;
     
 }

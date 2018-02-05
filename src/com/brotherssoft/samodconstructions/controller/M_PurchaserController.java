@@ -21,5 +21,6 @@ public interface M_PurchaserController extends Remote{
     public M_Purchaser searchPurchaser(int id)throws Exception;
     public M_Purchaser searchPurchaser(String name)throws Exception;
     public List<M_Purchaser> getAllPurchasers()throws Exception;
+    public List<M_Purchaser> getAllPurchasersByLetter(String phrase)throws Exception;
     
 }
