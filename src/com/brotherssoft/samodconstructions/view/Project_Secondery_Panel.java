@@ -265,7 +265,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             }
         });
 
-        txt_project_duration.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_duration.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_duration.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_project_durationMouseClicked(evt);
@@ -299,7 +299,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             }
         });
 
-        txt_boq.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_boq.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_boq.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_boqMouseClicked(evt);
@@ -322,7 +322,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             }
         });
 
-        txt_vat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_vat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_vat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_vatMouseClicked(evt);
@@ -355,7 +355,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel140.setText("Consultant");
         jLabel140.setOpaque(true);
 
-        txt_name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nameActionPerformed(evt);
@@ -373,7 +373,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             }
         });
 
-        txt_tel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_tel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_tel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_telActionPerformed(evt);
@@ -425,7 +425,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel146.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel146.setText("Organization");
 
-        txt_performance_organization.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_performance_organization.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_performance_organization.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_performance_organizationActionPerformed(evt);
@@ -446,7 +446,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel148.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel148.setText("Amount");
 
-        txt_performance_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_performance_amount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_performance_amount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_performance_amountMouseClicked(evt);
@@ -499,7 +499,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel151.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel151.setText("Organization");
 
-        txt_payment_organization.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_payment_organization.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_payment_organization.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_payment_organizationActionPerformed(evt);
@@ -517,7 +517,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             }
         });
 
-        txt_payment_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_payment_amount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_payment_amount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_payment_amountMouseClicked(evt);
@@ -573,7 +573,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel156.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel156.setText("Insuarance Covers ");
 
-        txt_insuarance_covers.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_insuarance_covers.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_insuarance_covers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_insuarance_coversActionPerformed(evt);
@@ -614,7 +614,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel159.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel159.setText("Organization");
 
-        cmb_Insuarance_Covers.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_Insuarance_Covers.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_Insuarance_Covers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Insuarance Cover -", "INSURANCE COVER", "CONTRACTORS ALL RISKY POLICY", "PERSONNEL ACCIDENT COVER", "WORKMEN COMPENSATION INSURANCE" }));
         cmb_Insuarance_Covers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -625,7 +625,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel160.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel160.setText("Amount");
 
-        txt_insuarance_covers_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_insuarance_covers_amount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_insuarance_covers_amount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_insuarance_covers_amountMouseClicked(evt);
@@ -648,7 +648,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel161.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel161.setText("Made of Payment");
 
-        cmb_made_of_payment.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_made_of_payment.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_made_of_payment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Mode of Payment -", "MEASURE & PAY", "LUM SUM", "ADVANCE BASIS" }));
         cmb_made_of_payment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -681,7 +681,6 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         lbl_projectName.setBackground(new java.awt.Color(255, 255, 255));
         lbl_projectName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_projectName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_projectName.setEnabled(false);
 
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
@@ -1632,7 +1631,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             dp_insurance_Valid_Period_From.setDate(secondary.getProject_secondary_insuranceValidFrom());
             dp_insurance_Valid_Period_To.setDate(secondary.getProject_secondary_insuranceValidTo());
             dp_Completion_date.setDate(secondary.getProject_secondary_completionDate());
-            txt_project_duration.setText(decimalFormat.format(secondary.getProject_secondary_duration()));
+            txt_project_duration.setText(decimalFormat.format(Double.parseDouble(secondary.getProject_secondary_duration())));
         } else {
             cmb_Insuarance_Covers.setSelectedIndex(0);
             cmb_made_of_payment.setSelectedIndex(0);

@@ -256,7 +256,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel99.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel99.setText("Description");
 
-        txt_project_desc_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_desc_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_desc_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_desc_1ActionPerformed(evt);
@@ -266,7 +266,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel100.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel100.setText("Address No");
 
-        txt_project_address1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_address1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_address1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_address1ActionPerformed(evt);
@@ -276,7 +276,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel101.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel101.setText("Street");
 
-        txt_project_address2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_address2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_address2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_address2ActionPerformed(evt);
@@ -286,7 +286,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel102.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel102.setText("City");
 
-        txt_project_address3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_address3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_address3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_address3ActionPerformed(evt);
@@ -296,7 +296,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel103.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel103.setText("Country");
 
-        txt_project_address4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_address4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_address4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_address4ActionPerformed(evt);
@@ -306,7 +306,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel107.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel107.setText("Client Name");
 
-        txt_project_client_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_client_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_client_1ActionPerformed(evt);
@@ -316,7 +316,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel109.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel109.setText("Address No");
 
-        txt_project_client_address1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_address1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_client_address1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_client_address1ActionPerformed(evt);
@@ -326,7 +326,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel110.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel110.setText("Street");
 
-        txt_project_client_address2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_address2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_client_address2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_client_address2ActionPerformed(evt);
@@ -336,7 +336,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel111.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel111.setText("City");
 
-        txt_project_client_address3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_address3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_client_address3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_client_address3ActionPerformed(evt);
@@ -346,7 +346,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel112.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel112.setText("Project Type");
 
-        cmb_project_type_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_project_type_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_project_type_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Project Type -" }));
         cmb_project_type_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -376,7 +376,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             }
         });
 
-        txt_project_name_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_name_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_name_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_name_1ActionPerformed(evt);
@@ -386,7 +386,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel117.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel117.setText("Vat Added");
 
-        cmb_project_vatAdded.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_project_vatAdded.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_project_vatAdded.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
         cmb_project_vatAdded.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -397,7 +397,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel104.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel104.setText("Contract / Bid No");
 
-        txt_project_contract_bid_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_contract_bid_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_contract_bid_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_contract_bid_1ActionPerformed(evt);
@@ -407,7 +407,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel118.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel118.setText("Country");
 
-        txt_project_client_address4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_address4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_client_address4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_client_address4ActionPerformed(evt);
@@ -417,7 +417,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel119.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel119.setText("Contact No 1");
 
-        txt_project_client_contact_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_contact_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_client_contact_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_client_contact_1ActionPerformed(evt);
@@ -438,7 +438,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel120.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel120.setText("Contact No 2");
 
-        txt_project_client_contact_1_2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_client_contact_1_2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_client_contact_1_2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_client_contact_1_2ActionPerformed(evt);
@@ -456,7 +456,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel121.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel121.setText("Intended Project Duration(Months)");
 
-        txt_project_intendedDuration_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_intendedDuration_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_intendedDuration_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_intendedDuration_1ActionPerformed(evt);
@@ -478,7 +478,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel122.setText("ICTAD Qualifications");
         jLabel122.setOpaque(true);
 
-        cmb_project_Specialiti.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_project_Specialiti.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_project_Specialiti.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select ICTAD Speciality -" }));
         cmb_project_Specialiti.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -489,7 +489,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel123.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel123.setText("Specialiti");
 
-        cmb_project_grade_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_project_grade_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_project_grade_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select ICTAD Grade -" }));
         cmb_project_grade_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -506,7 +506,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel126.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel126.setText("Engineer Estimate");
 
-        txt_project_engineer_estimate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_engineer_estimate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_engineer_estimate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_engineer_estimateActionPerformed(evt);
@@ -524,7 +524,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             }
         });
 
-        txt_project_tender_fee_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_tender_fee_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_tender_fee_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_tender_fee_1ActionPerformed(evt);
@@ -549,7 +549,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel128.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel128.setText("Mode of Payment");
 
-        cmb_project_bid_payment_mode.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_project_bid_payment_mode.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_project_bid_payment_mode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Payment Mode -" }));
         cmb_project_bid_payment_mode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -560,7 +560,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel130.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel130.setText("Amount");
 
-        txt_project_bid_amount_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_bid_amount_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_bid_amount_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_bid_amount_1ActionPerformed(evt);
@@ -575,7 +575,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             }
         });
 
-        txt_project_bid_organization.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_bid_organization.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_bid_organization.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_bid_organizationActionPerformed(evt);
@@ -588,7 +588,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel132.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel132.setText("Duration (months)");
 
-        txt_project_bid_duration_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_bid_duration_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_bid_duration_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_bid_duration_1ActionPerformed(evt);
@@ -612,7 +612,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel129.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel129.setText("Project States");
 
-        cmb_project_made_of_states_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_project_made_of_states_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_project_made_of_states_1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PENDING", "APPROVED", "ONGOING", "COMPLETED" }));
         cmb_project_made_of_states_1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -641,7 +641,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jLabel137.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel137.setText("Tender Result");
 
-        txt_project_tender_result.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_tender_result.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_project_tender_result.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_tender_resultActionPerformed(evt);
@@ -650,6 +650,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
 
         JSpinner.DateEditor de = new JSpinner.DateEditor(txt_project_tender_open_time_1, "HH:mm a");
         txt_project_tender_open_time_1.setEditor(de);
+        txt_project_tender_open_time_1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txt_project_tender_open_time_1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 txt_project_tender_open_time_1StateChanged(evt);
@@ -675,50 +676,11 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_client_address3))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_client_address2))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel109, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_client_address1))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel107, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_client_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                            .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_project_client_address4, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(jLabel121)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txt_project_intendedDuration_1))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                            .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_project_client_contact_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                            .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_project_client_contact_1_2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmb_project_vatAdded, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_project_contract_bid_1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel99, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -729,91 +691,134 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                             .addComponent(txt_project_address1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_project_desc_1)
                             .addComponent(txt_project_address2, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jLabel102, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_new_primary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_project_address3, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                            .addComponent(btn_new_primary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btn_add_primary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btn_to_secondary_project))
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator26, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator27, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmb_project_Specialiti, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmb_project_grade_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator28, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel127, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel128, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmb_project_bid_payment_mode, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                    .addComponent(jLabel130, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txt_project_bid_amount_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                    .addComponent(jLabel131, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txt_project_bid_organization, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel132, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_bid_duration_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel133, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_tender_open_date_1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addComponent(btn_add_primary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_to_secondary_project))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addComponent(jLabel137, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_project_tender_result))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(jLabel134, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_tender_open_time_1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel129, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmb_project_made_of_states_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel135, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_states_active_date_1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel136, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_states_inactive_date_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txt_project_tender_open_time_1))
                             .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                    .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                            .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txt_project_client_address3))
+                                        .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                            .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txt_project_client_address2))
+                                        .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                            .addComponent(jLabel109, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txt_project_client_address1))
+                                        .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                            .addComponent(jLabel107, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txt_project_client_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                        .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_project_client_address4, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                        .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_project_client_contact_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                        .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_project_client_contact_1_2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txt_project_engineer_estimate, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                    .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmb_project_vatAdded, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txt_project_tender_fee_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel137, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_project_tender_result))
-                            .addComponent(jLabel101, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel100, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_project_address4, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmb_project_type_1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txt_project_contract_bid_1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel102, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txt_project_address3, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jSeparator26, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator27, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cmb_project_Specialiti, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cmb_project_grade_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jSeparator28, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel127, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel128, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cmb_project_bid_payment_mode, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                        .addComponent(jLabel130, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_project_bid_amount_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                        .addComponent(jLabel131, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_project_bid_organization, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel132, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txt_project_bid_duration_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel133, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txt_project_tender_open_date_1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel129, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cmb_project_made_of_states_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel135, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txt_project_states_active_date_1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel136, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txt_project_states_inactive_date_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                        .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_project_engineer_estimate, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                        .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_project_tender_fee_1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel101, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel100, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txt_project_address4, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(cmb_project_type_1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmb_project_Specialiti, cmb_project_bid_payment_mode, cmb_project_grade_1, cmb_project_made_of_states_1, cmb_project_type_1, cmb_project_vatAdded, txt_project_address4, txt_project_bid_amount_1, txt_project_bid_duration_1, txt_project_bid_organization, txt_project_client_1, txt_project_client_address1, txt_project_client_address2, txt_project_client_address3, txt_project_client_address4, txt_project_client_contact_1, txt_project_client_contact_1_2, txt_project_contract_bid_1, txt_project_engineer_estimate, txt_project_states_active_date_1, txt_project_states_inactive_date_1, txt_project_tender_fee_1, txt_project_tender_open_date_1});
@@ -938,7 +943,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel134, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_project_tender_open_time_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_project_tender_open_time_1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel129, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -957,11 +962,12 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                     .addComponent(jLabel137, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_project_tender_result, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_add_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_to_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_new_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_to_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_new_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addComponent(btn_add_primary_project)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmb_project_Specialiti, cmb_project_bid_payment_mode, cmb_project_grade_1, cmb_project_made_of_states_1, cmb_project_type_1, cmb_project_vatAdded, txt_project_address4, txt_project_bid_amount_1, txt_project_bid_duration_1, txt_project_bid_organization, txt_project_client_1, txt_project_client_address1, txt_project_client_address2, txt_project_client_address3, txt_project_client_address4, txt_project_client_contact_1, txt_project_client_contact_1_2, txt_project_contract_bid_1, txt_project_engineer_estimate, txt_project_states_active_date_1, txt_project_states_inactive_date_1, txt_project_tender_fee_1, txt_project_tender_open_date_1});

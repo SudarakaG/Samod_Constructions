@@ -259,7 +259,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             }
         });
 
-        txt_boq.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_boq.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_boq.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_boqMouseClicked(evt);
@@ -282,7 +282,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             }
         });
 
-        txt_vat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_vat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_vat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_vatMouseClicked(evt);
@@ -312,7 +312,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jLabel146.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel146.setText("Required Period");
 
-        txt_req_period.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_req_period.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_req_period.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_req_periodActionPerformed(evt);
@@ -333,7 +333,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jLabel148.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel148.setText("Approved Period");
 
-        txt_approved_period.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_approved_period.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_approved_period.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_approved_periodMouseClicked(evt);
@@ -360,7 +360,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jLabel147.setText("Liquidity Damage");
         jLabel147.setOpaque(true);
 
-        txt_retain_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_retain_amount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_retain_amount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_retain_amountMouseClicked(evt);
@@ -428,7 +428,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jLabel127.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel127.setText("Exceed");
 
-        txt_exceed.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_exceed.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_exceed.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_exceedMouseClicked(evt);
@@ -451,7 +451,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             }
         });
 
-        txt_extra_work.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_extra_work.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_extra_work.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_extra_workMouseClicked(evt);
@@ -477,7 +477,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jLabel128.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel128.setText("Extra Work");
 
-        txt_price_excallation.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_price_excallation.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_price_excallation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_price_excallationMouseClicked(evt);
@@ -593,7 +593,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         lbl_retenton_org.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lbl_retenton_org.setText("Organization");
 
-        txt_retain_organization.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_retain_organization.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_retain_organization.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_retain_organizationMouseClicked(evt);
@@ -623,7 +623,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         lbl_liq_damagePeriod.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lbl_liq_damagePeriod.setText("Damage Period");
 
-        txt_liquidityDamage_period.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_liquidityDamage_period.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_liquidityDamage_period.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_liquidityDamage_periodActionPerformed(evt);
@@ -644,7 +644,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         lbl_liq_damageAmount.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lbl_liq_damageAmount.setText("Damage Amount");
 
-        txt_liquidityDamage_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_liquidityDamage_amount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_liquidityDamage_amount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_liquidityDamage_amountMouseClicked(evt);
@@ -667,7 +667,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         lbl_retention_releaseAmount.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lbl_retention_releaseAmount.setText("Release Amount");
 
-        txt_retain_releaseAmount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_retain_releaseAmount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_retain_releaseAmount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_retain_releaseAmountMouseClicked(evt);
@@ -704,7 +704,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jLabel170.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel170.setText("Current Status");
 
-        cmb_current_status.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_current_status.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_current_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PENDING", "APPROVED", "ONGOING", "COMPLETED" }));
         cmb_current_status.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -715,7 +715,6 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         lbl_projectName.setBackground(new java.awt.Color(255, 255, 255));
         lbl_projectName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_projectName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_projectName.setEnabled(false);
 
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
