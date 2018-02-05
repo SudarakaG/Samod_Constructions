@@ -148,6 +148,9 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jLabel170 = new javax.swing.JLabel();
         cmb_current_status = new javax.swing.JComboBox<>();
         lbl_projectName = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
         tblFinalProject = new javax.swing.JTable();
@@ -716,6 +719,15 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         lbl_projectName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_projectName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel1.setText("Months");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel2.setText("Months");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel3.setText("Months");
+
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
         txt_Input_Panel_Branch4Layout.setHorizontalGroup(
@@ -776,16 +788,6 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel141, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel146, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(txt_req_period, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(txt_approved_period, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jSeparator30, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -860,11 +862,13 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                         .addGap(175, 175, 175)
                         .addComponent(btn_save_third_project, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(lbl_liq_damagePeriod, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(txt_liquidityDamage_period, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_liquidityDamage_period)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3))
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(lbl_liq_damageAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(4, 4, 4)
@@ -885,7 +889,22 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                             .addComponent(cmb_current_status, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lbl_projectName, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lbl_projectName, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(jLabel146, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_req_period, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE))
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_approved_period)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))))
                 .addGap(53, 53, 53))
         );
         txt_Input_Panel_Branch4Layout.setVerticalGroup(
@@ -942,13 +961,17 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                 .addGap(6, 6, 6)
                 .addComponent(jLabel141, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel146, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_req_period, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel146, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_req_period)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(6, 6, 6)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_approved_period, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_approved_period, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(11, 11, 11)
                 .addComponent(jSeparator30, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6)
@@ -960,7 +983,9 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_liq_damagePeriod, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_liquidityDamage_period, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_liquidityDamage_period, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(6, 6, 6)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_liq_damageAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1394,11 +1419,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblFinalProjectMouseClicked
 
     private void btn_save_third_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_third_projectActionPerformed
-        if (btn_save_third_project.getText().equalsIgnoreCase("Save")) {
-            saveThirdProject();
-        } else {
-            updateThirdProject();
-        }
+        updateThirdProject();
         loadProjectTable();
     }//GEN-LAST:event_btn_save_third_projectActionPerformed
 
@@ -1544,6 +1565,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXDatePicker dp_retain_Valid_Period_To;
     private org.jdesktop.swingx.JXDatePicker dp_retain_releaseDate;
     private org.jdesktop.swingx.JXDatePicker dp_take_over_date;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
@@ -1567,6 +1589,8 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel166;
     private javax.swing.JLabel jLabel169;
     private javax.swing.JLabel jLabel170;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel82;
     private javax.swing.JLabel jLabel83;
     private javax.swing.JPanel jPanel1;
@@ -1688,89 +1712,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             Logger.getLogger(Project_Tertiary_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    private void saveThirdProject() {
-        double finalBOQ = 0;
-        double exeed = 0;
-        double extraWork = 0;
-        double escallation = 0;
-        double finalVat = 0;
-        double liqDamageAmount = 0;
-        double retentionAmount = 0;
-        double retentionReleaseAmount = 0;
-
-        int projectId = third.getProject_id();
-        if (!"".equals(txt_boq.getText())) {
-            finalBOQ = Double.parseDouble(txt_boq.getText());
-        } else {
-            finalBOQ = 0;
-        }
-        if (!"".equals(txt_exceed.getText())) {
-            exeed = Double.parseDouble(txt_exceed.getText());
-        } else {
-            exeed = 0;
-        }
-        if (!"".equals(txt_extra_work.getText())) {
-            extraWork = Double.parseDouble(txt_extra_work.getText());
-        } else {
-            extraWork = 0;
-        }
-        if (!"".equals(txt_price_excallation.getText())) {
-            escallation = Double.parseDouble(txt_price_excallation.getText());
-        } else {
-            escallation = 0;
-        }
-        if (!"".equals(txt_vat.getText())) {
-            finalVat = Double.parseDouble(txt_vat.getText());
-        } else {
-            finalVat = 0;
-        }
-        Date takeOverDate = dp_take_over_date.getDate();
-        Date completeDate = dp_completed_date.getDate();
-        Date handOverDate = dp_hand_over_date.getDate();
-        String reqExtention = txt_req_period.getText();
-        String approvedPeriod = txt_approved_period.getText();
-        String liqDamage = Integer.toString(cmb_Liquidity_Damage.getSelectedIndex());
-        String liqDamagePeriod = txt_liquidityDamage_period.getText();
-        if (!"".equals(txt_liquidityDamage_amount.getText())) {
-            liqDamageAmount = Double.parseDouble(txt_liquidityDamage_amount.getText());
-        } else {
-            liqDamageAmount = 0;
-        }
-        String certification = Integer.toString(cmb_Completion_Certification.getSelectedIndex());
-        String retention = Integer.toString(cmb_Retention.getSelectedIndex());
-        String retentionMode = Integer.toString(cmb_Retain_mode.getSelectedIndex());
-        if (!"".equals(txt_retain_amount.getText())) {
-            retentionAmount = Double.parseDouble(txt_retain_amount.getText());
-        } else {
-            retentionAmount = 0;
-        }
-        String retentionOrg = txt_retain_organization.getText();
-        Date retentionFrom = dp_retain_Valid_Period_From.getDate();
-        Date retentionTo = dp_retain_Valid_Period_To.getDate();
-        String retentionRelease = Integer.toString(cmb_retention_release.getSelectedIndex());
-        if (!"".equals(txt_retain_releaseAmount.getText())) {
-            retentionReleaseAmount = Double.parseDouble(txt_retain_releaseAmount.getText());
-        } else {
-            retentionReleaseAmount = 0;
-        }
-        Date retentonReleaseDate = dp_retain_releaseDate.getDate();
-        String finalStatus = Integer.toString(cmb_current_status.getSelectedIndex());
-        String currentStatus = Integer.toString(cmb_current_status.getSelectedIndex());
-
-        M_Project_Third thirdUpdate = new M_Project_Third(projectId, finalBOQ, exeed, extraWork, escallation, finalVat, takeOverDate, completeDate, handOverDate, reqExtention, approvedPeriod, liqDamage, liqDamagePeriod, liqDamageAmount, certification, retention, retentionMode, retentionAmount, retentionOrg, retentionFrom, retentionTo, retentionRelease, retentionReleaseAmount, retentonReleaseDate, finalStatus, currentStatus);
-        try {
-            boolean updateThirdProject = thirdController.updateThirdProject(thirdUpdate);
-            if (updateThirdProject) {
-                JOptionPane.showMessageDialog(this, "Final Project Information Updated Successfully..");
-            } else {
-                JOptionPane.showMessageDialog(this, "Updating Final Information was Failed..");
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Project_Tertiary_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
+    
     private void updateThirdProject() {
         double finalBOQ = 0;
         double exeed = 0;

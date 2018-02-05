@@ -152,6 +152,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         cmb_current_status = new javax.swing.JComboBox<>();
         jLabel162 = new javax.swing.JLabel();
         lbl_projectName = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
         tblSecondaryProject = new javax.swing.JTable();
@@ -682,6 +683,9 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         lbl_projectName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_projectName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel1.setText("Months");
+
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
         txt_Input_Panel_Branch4Layout.setHorizontalGroup(
@@ -750,8 +754,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                                         .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(18, 18, 18)
                                     .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txt_total, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
-                                        .addComponent(txt_project_duration)))
+                                        .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                            .addComponent(txt_project_duration)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel1))))
                                 .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                     .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel139, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -823,7 +830,8 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_project_duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel138, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1060,11 +1068,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_add_secondary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_secondary_projectActionPerformed
-        if (btn_add_secondary_project.getText().equalsIgnoreCase("Save")) {
-            saveSecondaryProject();
-        } else {
-            updateSecondaryProject();
-        }
+        updateSecondaryProject();
         loadSecondaryProjectTable();
     }//GEN-LAST:event_btn_add_secondary_projectActionPerformed
 
@@ -1417,6 +1421,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXDatePicker dp_payment_Valid_Period_To;
     private org.jdesktop.swingx.JXDatePicker dp_performance_Valid_Period_From;
     private org.jdesktop.swingx.JXDatePicker dp_performance_Valid_Period_To;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
@@ -1478,64 +1483,6 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_vat;
     private javax.swing.JPanel user_panel_hedding2;
     // End of variables declaration//GEN-END:variables
-
-    private void saveSecondaryProject() {
-        try {
-            double boq = 0;
-            double vat = 0;
-            double performAmount = 0;
-            double advanceAmount = 0;
-            double insuranceAmount = 0;
-
-            int projectId = secondary.getProject_id();
-            if (!"".equals(txt_boq.getText())) {
-                boq = Double.parseDouble(txt_boq.getText());
-            }
-            if (!"".equals(txt_vat.getText())) {
-                vat = Double.parseDouble(txt_vat.getText());
-            }
-            String duration = txt_project_duration.getText();
-            Date agreementDate = dp_agreement_date.getDate();
-            String coultatnt = txt_name.getText();
-            String consultAddress = txt_address.getText();
-            String consultTp = txt_tel.getText();
-            Date commenceDate = dp_Commencement_date.getDate();
-            Date completeDate = dp_Completion_date.getDate();
-            String performBondOrg = txt_performance_organization.getText();
-            if (!"".equals(txt_performance_amount.getText())) {
-                performAmount = Double.parseDouble(txt_performance_amount.getText());
-            }
-            Date performFrom = dp_performance_Valid_Period_From.getDate();
-            Date performTo = dp_performance_Valid_Period_To.getDate();
-            String advanceOrg = txt_payment_organization.getText();
-            if (!"".equals(txt_payment_amount.getText())) {
-                advanceAmount = Double.parseDouble(txt_payment_amount.getText());
-            }
-            Date advanceFrom = dp_payment_Valid_Period_From.getDate();
-            Date advanceTo = dp_payment_Valid_Period_To.getDate();
-            String insuranceCover = cmb_Insuarance_Covers.getSelectedItem().toString();
-            String insuranceOrg = txt_insuarance_covers.getText();
-            if (!"".equals(txt_insuarance_covers_amount.getText())) {
-                insuranceAmount = Double.parseDouble(txt_insuarance_covers_amount.getText());
-            }
-            Date insuranceFrom = dp_insurance_Valid_Period_From.getDate();
-            Date insuranceTo = dp_insurance_Valid_Period_To.getDate();
-            String paymentMode = cmb_made_of_payment.getSelectedItem().toString();
-            String currentStatus = Integer.toString(cmb_current_status.getSelectedIndex());
-
-            M_Project_Secondary secondUpdate = new M_Project_Secondary(projectId, boq, vat, duration, agreementDate, coultatnt, consultAddress, consultTp, commenceDate, completeDate, performBondOrg, performAmount, performFrom, performTo, advanceOrg, advanceAmount, advanceFrom, advanceTo, insuranceCover, insuranceOrg, insuranceAmount, insuranceFrom, insuranceTo, paymentMode, currentStatus);
-            boolean updateSecondaryProject = secondaryController.updateSecondaryProject(secondUpdate);
-            if (updateSecondaryProject) {
-                JOptionPane.showMessageDialog(this, "Secondary Project Information Updated Successfully..");
-            } else {
-                JOptionPane.showMessageDialog(this, "Updating Secondary Project Information Failed..");
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
 
     private void updateSecondaryProject() {
         try {

@@ -606,7 +606,7 @@ public class Bank_Panel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Bank Name", "Bank Code", "States", "Description"
+                "Bank Name", "Bank Code", "Status", "Description"
             }
         ));
         tbl_bank.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

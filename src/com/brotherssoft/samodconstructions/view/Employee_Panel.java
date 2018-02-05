@@ -174,53 +174,53 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel31.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel31.setText("Title");
 
-        cmb_employee_title.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_employee_title.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_employee_title.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mrs", "Ms", "Rev", "Dr", "Master" }));
 
         jLabel29.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel29.setText("Initials");
 
-        txt_Initials.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_Initials.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel30.setText("Frist Name");
 
-        txt_firt_name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_firt_name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel33.setText("Middle Name");
 
-        txt_Middle_Name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_Middle_Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel47.setText("Last Name");
 
-        txt_sur_Name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_sur_Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel32.setText("Address No");
 
-        txt_address_no.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_address_no.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel34.setText("Address Street");
 
-        txt_address_street.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_address_street.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel49.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel49.setText("Address City");
 
-        txt_Address_city.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_Address_city.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel50.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel50.setText("Address Country");
 
-        txt_address_country.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_address_country.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel51.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel51.setText("NIC");
 
-        txt_nic.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_nic.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_nic.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_nicKeyPressed(evt);
@@ -239,7 +239,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel53.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel53.setText("Contact No 1");
 
-        txt_contact_1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_contact_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_contact_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_contact_1KeyPressed(evt);
@@ -252,7 +252,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel54.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel54.setText("Contact No 2");
 
-        txt_contact_2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_contact_2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_contact_2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_contact_2KeyPressed(evt);
@@ -265,7 +265,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel55.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel55.setText("Contact No 3");
 
-        txt_contact_3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_contact_3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_contact_3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_contact_3KeyPressed(evt);
@@ -278,7 +278,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel48.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel48.setText("Job Type");
 
-        cmb_emp_jobType.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_emp_jobType.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_emp_jobType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Job Type -" }));
         cmb_emp_jobType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -286,7 +286,7 @@ public class Employee_Panel extends javax.swing.JPanel {
             }
         });
 
-        cmb_emp_status.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_emp_status.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_emp_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
 
         jLabel56.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -295,7 +295,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel57.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel57.setText("States");
 
-        cmb_emp_designation.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_emp_designation.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_emp_designation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Designation -" }));
 
         jLabel59.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -328,7 +328,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         lblSubContractor.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lblSubContractor.setText("Sub Contractor");
 
-        cmb_emp_subContractor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_emp_subContractor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_emp_subContractor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Sub Contractor -" }));
 
         javax.swing.GroupLayout txt_Input_Panel_Branch2Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch2);
@@ -643,7 +643,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Employee Name", "NIC", "Job Type", "Designatios"
+                "Employee Name", "NIC", "Job Type", "Designation"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -667,7 +667,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         txt_branch_search1.setText("Search");
         txt_branch_search1.setToolTipText("Use Bank Nname To Search !");
 
-        cmb_searchEmp_jobType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Job Type -" }));
+        cmb_searchEmp_jobType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Job Type -", "LOAD ALL" }));
         cmb_searchEmp_jobType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_searchEmp_jobTypeActionPerformed(evt);
@@ -900,14 +900,23 @@ public class Employee_Panel extends javax.swing.JPanel {
                     }
 
                 } else {
-                    cmb_searchEmp_subContractor.setVisible(false);
-                    dtmEmployee.setRowCount(0);
-                    for (M_Employee allEmployee : allEmployees) {
-                        if (jobTypeController.searchJobType(cmb_searchEmp_jobType.getSelectedItem().toString()).getJobType_id() == allEmployee.getEmp_jobType_id()) {
-
-                            String[] rowData = {allEmployee.getEmp_firstName()};
+                    if (cmb_searchEmp_jobType.getSelectedIndex() == 1) {
+                        cmb_searchEmp_subContractor.setVisible(false);
+                        dtmEmployee.setRowCount(0);
+                        for (M_Employee allEmployee : allEmployees) {
+                            String[] rowData = {allEmployee.getEmp_initials() +"  "+ allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name(), designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name()};
                             dtmEmployee.addRow(rowData);
+                        }
+                    } else {
+                        cmb_searchEmp_subContractor.setVisible(false);
+                        dtmEmployee.setRowCount(0);
+                        for (M_Employee allEmployee : allEmployees) {
+                            if (jobTypeController.searchJobType(cmb_searchEmp_jobType.getSelectedItem().toString()).getJobType_id() == allEmployee.getEmp_jobType_id()) {
 
+                                String[] rowData = {allEmployee.getEmp_initials() +"  "+ allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name(), designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name()};
+                                dtmEmployee.addRow(rowData);
+
+                            }
                         }
                     }
                 }
@@ -919,13 +928,14 @@ public class Employee_Panel extends javax.swing.JPanel {
 
     private void cmb_searchEmp_subContractorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_searchEmp_subContractorActionPerformed
         try {
-
-            dtmEmployee.setRowCount(0);
-            List<M_Employee> allEmployees = employeeController.getAllEmployees();
-            for (M_Employee allEmployee : allEmployees) {
-                if (allEmployee.getEmp_subContractor_id() == employeeController.searchEmployee(cmb_searchEmp_subContractor.getSelectedItem().toString()).getEmp_id()) {
-                    String[] rowData = {allEmployee.getEmp_firstName()};
-                    dtmEmployee.addRow(rowData);
+            if (cmb_searchEmp_subContractor.getSelectedIndex() != 0) {
+                dtmEmployee.setRowCount(0);
+                List<M_Employee> allEmployees = employeeController.getAllEmployees();
+                for (M_Employee allEmployee : allEmployees) {
+                    if (allEmployee.getEmp_subContractor_id() == employeeController.searchEmployee(cmb_searchEmp_subContractor.getSelectedItem().toString()).getEmp_id()) {
+                        String[] rowData = {allEmployee.getEmp_initials() +"  "+ allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name(), designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name()};
+                        dtmEmployee.addRow(rowData);
+                    }
                 }
             }
 
@@ -1081,7 +1091,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                 String jobType = jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name();
                 String designation = designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name();
 
-                String[] rowData = {allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobType, designation};
+                String[] rowData = {allEmployee.getEmp_initials() +"  "+ allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobType, designation};
                 dtmEmployee.addRow(rowData);
             }
 
