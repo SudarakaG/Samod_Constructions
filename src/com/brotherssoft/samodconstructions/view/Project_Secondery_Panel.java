@@ -8,9 +8,11 @@ package com.brotherssoft.samodconstructions.view;
 import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
 import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
+import com.brotherssoft.samodconstructions.custom.AmountFieldFormat;
 import com.brotherssoft.samodconstructions.custom.Validation;
 import com.brotherssoft.samodconstructions.model.M_Project_Secondary;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +34,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
     DecimalFormat decimalFormat;
     M_Project_Secondary secondary = null;
+    AmountFieldFormat formatField = null;
 
     /**
      * Creates new form Project_Primary_Panel
@@ -48,6 +51,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
         decimalFormat = new DecimalFormat("0.00");
+        formatField = new AmountFieldFormat();
     }
 
     Project_Secondery_Panel(int project_id) throws Exception {
@@ -62,6 +66,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
         decimalFormat = new DecimalFormat("0.00");
+        formatField = new AmountFieldFormat();
 
         secondary = secondaryController.searchSecondary(project_id);
         loadFromSecondaryProjectTable();
@@ -108,7 +113,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_address = new javax.swing.JTextArea();
         jLabel145 = new javax.swing.JLabel();
-        txt_Completion_date = new org.jdesktop.swingx.JXDatePicker();
+        dp_Completion_date = new org.jdesktop.swingx.JXDatePicker();
         jSeparator29 = new javax.swing.JSeparator();
         jLabel141 = new javax.swing.JLabel();
         jLabel146 = new javax.swing.JLabel();
@@ -146,6 +151,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         dp_agreement_date = new org.jdesktop.swingx.JXDatePicker();
         cmb_current_status = new javax.swing.JComboBox<>();
         jLabel162 = new javax.swing.JLabel();
+        lbl_projectName = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
         tblSecondaryProject = new javax.swing.JTable();
@@ -237,6 +243,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
         txt_total.setEditable(false);
         txt_total.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_total.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_totalMouseClicked(evt);
+            }
+        });
         txt_total.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_totalActionPerformed(evt);
@@ -255,6 +266,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         });
 
         txt_project_duration.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_project_duration.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_project_durationMouseClicked(evt);
+            }
+        });
         txt_project_duration.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_project_durationActionPerformed(evt);
@@ -284,6 +300,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         });
 
         txt_boq.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_boq.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_boqMouseClicked(evt);
+            }
+        });
         txt_boq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_boqActionPerformed(evt);
@@ -302,6 +323,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         });
 
         txt_vat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_vat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_vatMouseClicked(evt);
+            }
+        });
         txt_vat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_vatActionPerformed(evt);
@@ -373,14 +399,19 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
         txt_address.setColumns(20);
         txt_address.setRows(5);
+        txt_address.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_addressKeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(txt_address);
 
         jLabel145.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel145.setText("Address");
 
-        txt_Completion_date.addActionListener(new java.awt.event.ActionListener() {
+        dp_Completion_date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_Completion_dateActionPerformed(evt);
+                dp_Completion_dateActionPerformed(evt);
             }
         });
 
@@ -416,6 +447,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel148.setText("Amount");
 
         txt_performance_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_performance_amount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_performance_amountMouseClicked(evt);
+            }
+        });
         txt_performance_amount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_performance_amountActionPerformed(evt);
@@ -430,6 +466,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             }
         });
 
+        dp_performance_Valid_Period_From.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dp_performance_Valid_Period_FromMouseClicked(evt);
+            }
+        });
         dp_performance_Valid_Period_From.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dp_performance_Valid_Period_FromActionPerformed(evt);
@@ -477,6 +518,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         });
 
         txt_payment_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_payment_amount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_payment_amountMouseClicked(evt);
+            }
+        });
         txt_payment_amount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_payment_amountActionPerformed(evt);
@@ -497,6 +543,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel153.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel153.setText("Valid Period From");
 
+        dp_payment_Valid_Period_From.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dp_payment_Valid_Period_FromMouseClicked(evt);
+            }
+        });
         dp_payment_Valid_Period_From.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dp_payment_Valid_Period_FromActionPerformed(evt);
@@ -537,6 +588,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             }
         });
 
+        dp_insurance_Valid_Period_From.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dp_insurance_Valid_Period_FromMouseClicked(evt);
+            }
+        });
         dp_insurance_Valid_Period_From.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dp_insurance_Valid_Period_FromActionPerformed(evt);
@@ -570,6 +626,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel160.setText("Amount");
 
         txt_insuarance_covers_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_insuarance_covers_amount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_insuarance_covers_amountMouseClicked(evt);
+            }
+        });
         txt_insuarance_covers_amount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_insuarance_covers_amountActionPerformed(evt);
@@ -595,6 +656,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             }
         });
 
+        dp_agreement_date.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dp_agreement_dateMouseClicked(evt);
+            }
+        });
         dp_agreement_date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dp_agreement_dateActionPerformed(evt);
@@ -611,6 +677,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
         jLabel162.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel162.setText("Current Status");
+
+        lbl_projectName.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_projectName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_projectName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_projectName.setEnabled(false);
 
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
@@ -651,7 +722,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                                     .addComponent(jLabel142)
                                     .addComponent(jLabel144, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_Completion_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(dp_Completion_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                     .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -718,7 +789,8 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(jLabel162, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(cmb_current_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(cmb_current_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_projectName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
@@ -727,7 +799,9 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         txt_Input_Panel_Branch4Layout.setVerticalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
+                .addComponent(lbl_projectName, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel162, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_current_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -780,7 +854,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel142, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Completion_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(dp_Completion_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addComponent(jSeparator29, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -857,7 +931,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dp_Commencement_date, txt_Completion_date, txt_project_duration, txt_tel, txt_total});
+        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dp_Commencement_date, dp_Completion_date, txt_project_duration, txt_tel, txt_total});
 
         txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dp_performance_Valid_Period_From, dp_performance_Valid_Period_To, txt_performance_amount, txt_performance_organization});
 
@@ -1030,11 +1104,12 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_totalActionPerformed
 
     private void txt_project_durationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_durationActionPerformed
-
+        formatField.formatDecimalAmount(txt_project_duration);
+        dp_agreement_date.requestFocus();
     }//GEN-LAST:event_txt_project_durationActionPerformed
 
     private void dp_Commencement_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_Commencement_dateActionPerformed
-
+        dp_Completion_date.requestFocus();
     }//GEN-LAST:event_dp_Commencement_dateActionPerformed
 
     private void txt_totalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_totalKeyPressed
@@ -1058,38 +1133,39 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_totalKeyTyped
 
     private void txt_boqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_boqActionPerformed
-        txt_total.setText(txt_boq.getText());
+        formatField.formatDecimalAmount(txt_boq);
+        getTotal();
+        txt_vat.requestFocus();
     }//GEN-LAST:event_txt_boqActionPerformed
 
     private void txt_boqKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_boqKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_boq);
     }//GEN-LAST:event_txt_boqKeyPressed
 
     private void txt_boqKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_boqKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_boq);
     }//GEN-LAST:event_txt_boqKeyReleased
 
     private void txt_boqKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_boqKeyTyped
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txt_boqKeyTyped
 
     private void txt_vatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vatActionPerformed
-        double boq = Double.parseDouble(txt_boq.getText());
-        double vat = Double.parseDouble(txt_vat.getText());
-        double tot = boq + vat;
-        txt_total.setText(Double.toString(tot));
+        formatField.formatDecimalAmount(txt_vat);
+        getTotal();
+        txt_project_duration.requestFocus();
     }//GEN-LAST:event_txt_vatActionPerformed
 
     private void txt_vatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_vat);
     }//GEN-LAST:event_txt_vatKeyPressed
 
     private void txt_vatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_vat);
     }//GEN-LAST:event_txt_vatKeyReleased
 
     private void txt_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nameActionPerformed
-        // TODO add your handling code here:
+        txt_address.requestFocus();
     }//GEN-LAST:event_txt_nameActionPerformed
 
     private void txt_nameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nameKeyPressed
@@ -1105,23 +1181,24 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_nameKeyTyped
 
     private void txt_telActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_telActionPerformed
-        // TODO add your handling code here:
+        dp_Commencement_date.requestFocus();
     }//GEN-LAST:event_txt_telActionPerformed
 
     private void txt_telKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telKeyPressed
-        // TODO add your handling code here:
+        Validation.phoneNumber(txt_tel, evt);
     }//GEN-LAST:event_txt_telKeyPressed
 
     private void txt_telKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telKeyReleased
-        // TODO add your handling code here:
+        Validation.phoneNumber(txt_tel, evt);
     }//GEN-LAST:event_txt_telKeyReleased
 
-    private void txt_Completion_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Completion_dateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_Completion_dateActionPerformed
+    private void dp_Completion_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_Completion_dateActionPerformed
+        txt_performance_organization.requestFocus();
+    }//GEN-LAST:event_dp_Completion_dateActionPerformed
 
     private void txt_performance_organizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_performance_organizationActionPerformed
-        // TODO add your handling code here:
+        txt_performance_amount.requestFocus();
+        formatField.clearAmountField(txt_performance_amount);
     }//GEN-LAST:event_txt_performance_organizationActionPerformed
 
     private void txt_performance_organizationKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_performance_organizationKeyPressed
@@ -1137,27 +1214,29 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_performance_organizationKeyTyped
 
     private void txt_performance_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_performance_amountActionPerformed
-        // TODO add your handling code here:
+        formatField.formatDecimalAmount(txt_performance_amount);
+        dp_performance_Valid_Period_From.requestFocus();
     }//GEN-LAST:event_txt_performance_amountActionPerformed
 
     private void txt_performance_amountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_performance_amountKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_performance_amount);
     }//GEN-LAST:event_txt_performance_amountKeyPressed
 
     private void txt_performance_amountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_performance_amountKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_performance_amount);
     }//GEN-LAST:event_txt_performance_amountKeyReleased
 
     private void dp_performance_Valid_Period_FromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_performance_Valid_Period_FromActionPerformed
-        // TODO add your handling code here:
+        dp_performance_Valid_Period_To.requestFocus();
     }//GEN-LAST:event_dp_performance_Valid_Period_FromActionPerformed
 
     private void dp_performance_Valid_Period_ToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_performance_Valid_Period_ToActionPerformed
-        // TODO add your handling code here:
+        txt_payment_organization.requestFocus();
     }//GEN-LAST:event_dp_performance_Valid_Period_ToActionPerformed
 
     private void txt_payment_organizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_payment_organizationActionPerformed
-        // TODO add your handling code here:
+        txt_payment_amount.requestFocus();
+        formatField.clearAmountField(txt_payment_amount);
     }//GEN-LAST:event_txt_payment_organizationActionPerformed
 
     private void txt_payment_organizationKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_payment_organizationKeyPressed
@@ -1173,27 +1252,29 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_payment_organizationKeyTyped
 
     private void txt_payment_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_payment_amountActionPerformed
-        // TODO add your handling code here:
+        formatField.formatDecimalAmount(txt_payment_amount);
+        dp_payment_Valid_Period_From.requestFocus();
     }//GEN-LAST:event_txt_payment_amountActionPerformed
 
     private void txt_payment_amountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_payment_amountKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_payment_amount);
     }//GEN-LAST:event_txt_payment_amountKeyPressed
 
     private void txt_payment_amountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_payment_amountKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_payment_amount);
     }//GEN-LAST:event_txt_payment_amountKeyReleased
 
     private void dp_payment_Valid_Period_FromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_payment_Valid_Period_FromActionPerformed
-        // TODO add your handling code here:
+        dp_insurance_Valid_Period_To.requestFocus();
     }//GEN-LAST:event_dp_payment_Valid_Period_FromActionPerformed
 
     private void dp_payment_Valid_Period_ToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_payment_Valid_Period_ToActionPerformed
-        // TODO add your handling code here:
+        cmb_Insuarance_Covers.requestFocus();
     }//GEN-LAST:event_dp_payment_Valid_Period_ToActionPerformed
 
     private void txt_insuarance_coversActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_insuarance_coversActionPerformed
-        // TODO add your handling code here:
+        txt_insuarance_covers_amount.requestFocus();
+        formatField.clearAmountField(txt_insuarance_covers_amount);
     }//GEN-LAST:event_txt_insuarance_coversActionPerformed
 
     private void txt_insuarance_coversKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_insuarance_coversKeyPressed
@@ -1205,27 +1286,28 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_insuarance_coversKeyReleased
 
     private void dp_insurance_Valid_Period_FromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_insurance_Valid_Period_FromActionPerformed
-        // TODO add your handling code here:
+        dp_insurance_Valid_Period_To.requestFocus();
     }//GEN-LAST:event_dp_insurance_Valid_Period_FromActionPerformed
 
     private void dp_insurance_Valid_Period_ToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_insurance_Valid_Period_ToActionPerformed
-        // TODO add your handling code here:
+        cmb_made_of_payment.requestFocus();
     }//GEN-LAST:event_dp_insurance_Valid_Period_ToActionPerformed
 
     private void cmb_Insuarance_CoversActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_Insuarance_CoversActionPerformed
-
+        txt_insuarance_covers.requestFocus();
     }//GEN-LAST:event_cmb_Insuarance_CoversActionPerformed
 
     private void txt_insuarance_covers_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_insuarance_covers_amountActionPerformed
-        // TODO add your handling code here:
+        formatField.formatDecimalAmount(txt_insuarance_covers_amount);
+        dp_insurance_Valid_Period_From.requestFocus();
     }//GEN-LAST:event_txt_insuarance_covers_amountActionPerformed
 
     private void txt_insuarance_covers_amountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_insuarance_covers_amountKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_insuarance_covers_amount);
     }//GEN-LAST:event_txt_insuarance_covers_amountKeyPressed
 
     private void txt_insuarance_covers_amountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_insuarance_covers_amountKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_insuarance_covers_amount);
     }//GEN-LAST:event_txt_insuarance_covers_amountKeyReleased
 
     private void cmb_made_of_paymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_made_of_paymentActionPerformed
@@ -1233,11 +1315,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_cmb_made_of_paymentActionPerformed
 
     private void dp_agreement_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_agreement_dateActionPerformed
-        // TODO add your handling code here:
+        txt_name.requestFocus();
     }//GEN-LAST:event_dp_agreement_dateActionPerformed
 
     private void cmb_current_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_current_statusActionPerformed
-        // TODO add your handling code here:
+        txt_boq.requestFocus();
     }//GEN-LAST:event_cmb_current_statusActionPerformed
 
     private void btn_to_final_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_to_final_projectActionPerformed
@@ -1263,6 +1345,61 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         third.setVisible(true);
     }//GEN-LAST:event_btn_to_final_projectActionPerformed
 
+    private void txt_boqMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_boqMouseClicked
+        getTotal();
+        formatField.clearAmountField(txt_boq);
+    }//GEN-LAST:event_txt_boqMouseClicked
+
+    private void txt_vatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_vatMouseClicked
+        formatField.formatDecimalAmount(txt_boq);
+        getTotal();
+        formatField.clearAmountField(txt_vat);
+    }//GEN-LAST:event_txt_vatMouseClicked
+
+    private void txt_totalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_totalMouseClicked
+        formatField.formatDecimalAmount(txt_vat);
+        getTotal();
+    }//GEN-LAST:event_txt_totalMouseClicked
+
+    private void txt_project_durationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_project_durationMouseClicked
+        formatField.formatDecimalAmount(txt_vat);
+        getTotal();
+    }//GEN-LAST:event_txt_project_durationMouseClicked
+
+    private void dp_performance_Valid_Period_FromMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dp_performance_Valid_Period_FromMouseClicked
+        formatField.formatDecimalAmount(txt_performance_amount);
+    }//GEN-LAST:event_dp_performance_Valid_Period_FromMouseClicked
+
+    private void dp_insurance_Valid_Period_FromMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dp_insurance_Valid_Period_FromMouseClicked
+        formatField.formatDecimalAmount(txt_insuarance_covers_amount);
+    }//GEN-LAST:event_dp_insurance_Valid_Period_FromMouseClicked
+
+    private void dp_payment_Valid_Period_FromMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dp_payment_Valid_Period_FromMouseClicked
+        formatField.formatDecimalAmount(txt_payment_amount);
+    }//GEN-LAST:event_dp_payment_Valid_Period_FromMouseClicked
+
+    private void txt_performance_amountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_performance_amountMouseClicked
+        formatField.clearAmountField(txt_performance_amount);
+    }//GEN-LAST:event_txt_performance_amountMouseClicked
+
+    private void txt_payment_amountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_payment_amountMouseClicked
+        formatField.clearAmountField(txt_payment_amount);
+    }//GEN-LAST:event_txt_payment_amountMouseClicked
+
+    private void txt_insuarance_covers_amountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_insuarance_covers_amountMouseClicked
+        formatField.clearAmountField(txt_insuarance_covers_amount);
+    }//GEN-LAST:event_txt_insuarance_covers_amountMouseClicked
+
+    private void txt_addressKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_addressKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txt_tel.requestFocus();
+        }
+    }//GEN-LAST:event_txt_addressKeyPressed
+
+    private void dp_agreement_dateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dp_agreement_dateMouseClicked
+        formatField.formatDecimalAmount(txt_project_duration);
+    }//GEN-LAST:event_dp_agreement_dateMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Project_Primary_Info_Panel;
@@ -1273,6 +1410,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmb_current_status;
     private javax.swing.JComboBox<String> cmb_made_of_payment;
     private org.jdesktop.swingx.JXDatePicker dp_Commencement_date;
+    private org.jdesktop.swingx.JXDatePicker dp_Completion_date;
     private org.jdesktop.swingx.JXDatePicker dp_agreement_date;
     private org.jdesktop.swingx.JXDatePicker dp_insurance_Valid_Period_From;
     private org.jdesktop.swingx.JXDatePicker dp_insurance_Valid_Period_To;
@@ -1322,8 +1460,8 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator29;
     private javax.swing.JSeparator jSeparator30;
     private javax.swing.JSeparator jSeparator31;
+    private javax.swing.JLabel lbl_projectName;
     private javax.swing.JTable tblSecondaryProject;
-    private org.jdesktop.swingx.JXDatePicker txt_Completion_date;
     private javax.swing.JPanel txt_Input_Panel_Branch4;
     private javax.swing.JTextArea txt_address;
     private javax.swing.JTextField txt_boq;
@@ -1344,27 +1482,43 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
     private void saveSecondaryProject() {
         try {
+            double boq = 0;
+            double vat = 0;
+            double performAmount = 0;
+            double advanceAmount = 0;
+            double insuranceAmount = 0;
+
             int projectId = secondary.getProject_id();
-            double boq = Double.parseDouble(txt_boq.getText());
-            double vat = Double.parseDouble(txt_vat.getText());
+            if (!"".equals(txt_boq.getText())) {
+                boq = Double.parseDouble(txt_boq.getText());
+            }
+            if (!"".equals(txt_vat.getText())) {
+                vat = Double.parseDouble(txt_vat.getText());
+            }
             String duration = txt_project_duration.getText();
             Date agreementDate = dp_agreement_date.getDate();
             String coultatnt = txt_name.getText();
             String consultAddress = txt_address.getText();
             String consultTp = txt_tel.getText();
             Date commenceDate = dp_Commencement_date.getDate();
-            Date completeDate = txt_Completion_date.getDate();
+            Date completeDate = dp_Completion_date.getDate();
             String performBondOrg = txt_performance_organization.getText();
-            double performAmount = Double.parseDouble(txt_performance_amount.getText());
+            if (!"".equals(txt_performance_amount.getText())) {
+                performAmount = Double.parseDouble(txt_performance_amount.getText());
+            }
             Date performFrom = dp_performance_Valid_Period_From.getDate();
             Date performTo = dp_performance_Valid_Period_To.getDate();
             String advanceOrg = txt_payment_organization.getText();
-            double advanceAmount = Double.parseDouble(txt_payment_amount.getText());
+            if (!"".equals(txt_payment_amount.getText())) {
+                advanceAmount = Double.parseDouble(txt_payment_amount.getText());
+            }
             Date advanceFrom = dp_payment_Valid_Period_From.getDate();
             Date advanceTo = dp_payment_Valid_Period_To.getDate();
             String insuranceCover = cmb_Insuarance_Covers.getSelectedItem().toString();
             String insuranceOrg = txt_insuarance_covers.getText();
-            double insuranceAmount = Double.parseDouble(txt_insuarance_covers_amount.getText());
+            if (!"".equals(txt_insuarance_covers_amount.getText())) {
+                insuranceAmount = Double.parseDouble(txt_insuarance_covers_amount.getText());
+            }
             Date insuranceFrom = dp_insurance_Valid_Period_From.getDate();
             Date insuranceTo = dp_insurance_Valid_Period_To.getDate();
             String paymentMode = cmb_made_of_payment.getSelectedItem().toString();
@@ -1386,27 +1540,43 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
     private void updateSecondaryProject() {
         try {
+            double boq = 0;
+            double vat = 0;
+            double performAmount = 0;
+            double advanceAmount = 0;
+            double insuranceAmount = 0;
+
             int projectId = secondary.getProject_id();
-            double boq = Double.parseDouble(txt_boq.getText());
-            double vat = Double.parseDouble(txt_vat.getText());
+            if (!"".equals(txt_boq.getText())) {
+                boq = Double.parseDouble(txt_boq.getText());
+            }
+            if (!"".equals(txt_vat.getText())) {
+                vat = Double.parseDouble(txt_vat.getText());
+            }
             String duration = txt_project_duration.getText();
             Date agreementDate = dp_agreement_date.getDate();
             String coultatnt = txt_name.getText();
             String consultAddress = txt_address.getText();
             String consultTp = txt_tel.getText();
             Date commenceDate = dp_Commencement_date.getDate();
-            Date completeDate = txt_Completion_date.getDate();
+            Date completeDate = dp_Completion_date.getDate();
             String performBondOrg = txt_performance_organization.getText();
-            double performAmount = Double.parseDouble(txt_performance_amount.getText());
+            if (!"".equals(txt_performance_amount.getText())) {
+                performAmount = Double.parseDouble(txt_performance_amount.getText());
+            }
             Date performFrom = dp_performance_Valid_Period_From.getDate();
             Date performTo = dp_performance_Valid_Period_To.getDate();
             String advanceOrg = txt_payment_organization.getText();
-            double advanceAmount = Double.parseDouble(txt_payment_amount.getText());
+            if (!"".equals(txt_payment_amount.getText())) {
+                advanceAmount = Double.parseDouble(txt_payment_amount.getText());
+            }
             Date advanceFrom = dp_payment_Valid_Period_From.getDate();
             Date advanceTo = dp_payment_Valid_Period_To.getDate();
             String insuranceCover = cmb_Insuarance_Covers.getSelectedItem().toString();
             String insuranceOrg = txt_insuarance_covers.getText();
-            double insuranceAmount = Double.parseDouble(txt_insuarance_covers_amount.getText());
+            if (!"".equals(txt_insuarance_covers_amount.getText())) {
+                insuranceAmount = Double.parseDouble(txt_insuarance_covers_amount.getText());
+            }
             Date insuranceFrom = dp_insurance_Valid_Period_From.getDate();
             Date insuranceTo = dp_insurance_Valid_Period_To.getDate();
             String paymentMode = cmb_made_of_payment.getSelectedItem().toString();
@@ -1427,24 +1597,28 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
     private void loadFromSecondaryProjectTable() {
 
-        txt_boq.setText(Double.toString(secondary.getProject_secondary_boq()));
-        txt_vat.setText(Double.toString(secondary.getProject_secondary_vat()));
-        txt_total.setText(Double.toString(secondary.getProject_secondary_boq() + secondary.getProject_secondary_vat()));
-        txt_project_duration.setText(secondary.getProject_secondary_duration());
+        try {
+            lbl_projectName.setText(primaryController.searchPrimaryProject(secondary.getProject_id()).getProject_primary_name());
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        txt_boq.setText(decimalFormat.format(secondary.getProject_secondary_boq()));
+        txt_vat.setText(decimalFormat.format(secondary.getProject_secondary_vat()));
+        txt_total.setText(decimalFormat.format(secondary.getProject_secondary_boq() + secondary.getProject_secondary_vat()));
 
         txt_name.setText(secondary.getProject_secondary_consultant());
         txt_address.setText(secondary.getProject_secondary_consultantAddress());
         txt_tel.setText(secondary.getProject_secondary_consultantContact());
 
-        txt_Completion_date.setDate(secondary.getProject_secondary_completionDate());
         txt_payment_organization.setText(secondary.getProject_secondary_performanceBondOrganization());
-        txt_performance_amount.setText(Double.toString(secondary.getProject_secondary_performanceBondAmount()));
+        txt_performance_amount.setText(decimalFormat.format(secondary.getProject_secondary_performanceBondAmount()));
 
         txt_payment_organization.setText(secondary.getProject_secondary_advancePaymentBondOrganization());
-        txt_payment_amount.setText(Double.toString(secondary.getProject_secondary_advancePaymentBondAmount()));
+        txt_payment_amount.setText(decimalFormat.format(secondary.getProject_secondary_advancePaymentBondAmount()));
 
         txt_insuarance_covers.setText(secondary.getProject_secondary_insuranceCoverOrganization());
-        txt_insuarance_covers_amount.setText(Double.toString(secondary.getProject_secondary_insuranceCoverAmount()));
+        txt_insuarance_covers_amount.setText(decimalFormat.format(secondary.getProject_secondary_insuranceCoverAmount()));
 
         if (secondary.getProject_secondary_boq() != 0) {
             cmb_Insuarance_Covers.setSelectedItem(secondary.getProject_secondary_insuranceCover());
@@ -1457,6 +1631,8 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             dp_payment_Valid_Period_To.setDate(secondary.getProject_secondary_advancePaymentBondValidTo());
             dp_insurance_Valid_Period_From.setDate(secondary.getProject_secondary_insuranceValidFrom());
             dp_insurance_Valid_Period_To.setDate(secondary.getProject_secondary_insuranceValidTo());
+            dp_Completion_date.setDate(secondary.getProject_secondary_completionDate());
+            txt_project_duration.setText(decimalFormat.format(secondary.getProject_secondary_duration()));
         } else {
             cmb_Insuarance_Covers.setSelectedIndex(0);
             cmb_made_of_payment.setSelectedIndex(0);
@@ -1468,6 +1644,8 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             dp_payment_Valid_Period_To.setDate(new Date());
             dp_performance_Valid_Period_From.setDate(new Date());
             dp_performance_Valid_Period_To.setDate(new Date());
+            dp_Completion_date.setDate(new Date());
+            txt_project_duration.setText("");
         }
         cmb_current_status.setSelectedIndex(Integer.parseInt(secondary.getProject_currentStatus()));
 
@@ -1494,6 +1672,19 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void getTotal() {
+        double boq = 0;
+        double vat = 0;
+        if (!"".equals(txt_boq.getText())) {
+            boq = Double.parseDouble(txt_boq.getText());
+        }
+        if (!"".equals(txt_vat.getText())) {
+            vat = Double.parseDouble(txt_vat.getText());
+        }
+        double tot = boq + vat;
+        txt_total.setText(decimalFormat.format(tot));
     }
 
 }

@@ -7,8 +7,11 @@ package com.brotherssoft.samodconstructions.view;
 
 import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
+import com.brotherssoft.samodconstructions.custom.AmountFieldFormat;
+import com.brotherssoft.samodconstructions.custom.Validation;
 import com.brotherssoft.samodconstructions.model.M_Project_Third;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -27,6 +30,8 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     DefaultTableModel dtmThird;
 
     M_Project_Third third = null;
+    AmountFieldFormat fieldFormat = new AmountFieldFormat();
+    DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
     /**
      * Creates new form Project_Tertiary_Panel
@@ -39,6 +44,9 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         dtmThird = (DefaultTableModel) tblFinalProject.getModel();
 
         loadProjectTable();
+        cmbLiqDamageAction();
+        cmbRetentionAction();
+        cmbRetentionReleaseAction();
 
     }
 
@@ -50,6 +58,10 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         dtmThird = (DefaultTableModel) tblFinalProject.getModel();
 
         loadProjectTable();
+        loadProjectTable();
+        cmbLiqDamageAction();
+        cmbRetentionAction();
+        cmbRetentionReleaseAction();
 
         third = thirdController.searchThird(projectId);
         loadFeilsFromSearch();
@@ -90,11 +102,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jSeparator30 = new javax.swing.JSeparator();
         jLabel147 = new javax.swing.JLabel();
         txt_retain_amount = new javax.swing.JTextField();
-        jLabel152 = new javax.swing.JLabel();
-        jLabel153 = new javax.swing.JLabel();
+        lbl_retention_amount = new javax.swing.JLabel();
+        lbl_retention_validFrom = new javax.swing.JLabel();
         dp_retain_Valid_Period_From = new org.jdesktop.swingx.JXDatePicker();
         dp_retain_Valid_Period_To = new org.jdesktop.swingx.JXDatePicker();
-        jLabel154 = new javax.swing.JLabel();
+        lbl_retention_validTo = new javax.swing.JLabel();
         cmb_Liquidity_Damage = new javax.swing.JComboBox<>();
         jLabel161 = new javax.swing.JLabel();
         cmb_retention_release = new javax.swing.JComboBox<>();
@@ -120,8 +132,8 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jLabel166 = new javax.swing.JLabel();
         cmb_Retention = new javax.swing.JComboBox<>();
         cmb_Retain_mode = new javax.swing.JComboBox<>();
-        jLabel167 = new javax.swing.JLabel();
-        jLabel168 = new javax.swing.JLabel();
+        lbl_retention_mode = new javax.swing.JLabel();
+        lbl_retenton_org = new javax.swing.JLabel();
         txt_retain_organization = new javax.swing.JTextField();
         jSeparator34 = new javax.swing.JSeparator();
         jLabel169 = new javax.swing.JLabel();
@@ -135,6 +147,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         dp_retain_releaseDate = new org.jdesktop.swingx.JXDatePicker();
         jLabel170 = new javax.swing.JLabel();
         cmb_current_status = new javax.swing.JComboBox<>();
+        lbl_projectName = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
         tblFinalProject = new javax.swing.JTable();
@@ -216,6 +229,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
 
         txt_total.setEditable(false);
         txt_total.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_total.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_totalMouseClicked(evt);
+            }
+        });
         txt_total.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_totalActionPerformed(evt);
@@ -242,6 +260,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         });
 
         txt_boq.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_boq.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_boqMouseClicked(evt);
+            }
+        });
         txt_boq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_boqActionPerformed(evt);
@@ -260,6 +283,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         });
 
         txt_vat.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_vat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_vatMouseClicked(evt);
+            }
+        });
         txt_vat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_vatActionPerformed(evt);
@@ -306,6 +334,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jLabel148.setText("Approved Period");
 
         txt_approved_period.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_approved_period.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_approved_periodMouseClicked(evt);
+            }
+        });
         txt_approved_period.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_approved_periodActionPerformed(evt);
@@ -328,6 +361,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jLabel147.setOpaque(true);
 
         txt_retain_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_retain_amount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_retain_amountMouseClicked(evt);
+            }
+        });
         txt_retain_amount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_retain_amountActionPerformed(evt);
@@ -342,11 +380,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             }
         });
 
-        jLabel152.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel152.setText("Amount");
+        lbl_retention_amount.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lbl_retention_amount.setText("Amount");
 
-        jLabel153.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel153.setText("Valid Period From");
+        lbl_retention_validFrom.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lbl_retention_validFrom.setText("Valid Period From");
 
         dp_retain_Valid_Period_From.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -360,11 +398,16 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             }
         });
 
-        jLabel154.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel154.setText("Valid Period To");
+        lbl_retention_validTo.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lbl_retention_validTo.setText("Valid Period To");
 
         cmb_Liquidity_Damage.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_Liquidity_Damage.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NOT APPLICABLE", "APPLICABLE" }));
+        cmb_Liquidity_Damage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmb_Liquidity_DamageMouseClicked(evt);
+            }
+        });
         cmb_Liquidity_Damage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_Liquidity_DamageActionPerformed(evt);
@@ -386,6 +429,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jLabel127.setText("Exceed");
 
         txt_exceed.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_exceed.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_exceedMouseClicked(evt);
+            }
+        });
         txt_exceed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_exceedActionPerformed(evt);
@@ -404,6 +452,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         });
 
         txt_extra_work.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_extra_work.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_extra_workMouseClicked(evt);
+            }
+        });
         txt_extra_work.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_extra_workActionPerformed(evt);
@@ -425,6 +478,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jLabel128.setText("Extra Work");
 
         txt_price_excallation.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_price_excallation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_price_excallationMouseClicked(evt);
+            }
+        });
         txt_price_excallation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_price_excallationActionPerformed(evt);
@@ -448,6 +506,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jLabel139.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel139.setText("Date of Take Over");
 
+        dp_take_over_date.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dp_take_over_dateMouseClicked(evt);
+            }
+        });
         dp_take_over_date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dp_take_over_dateActionPerformed(evt);
@@ -487,6 +550,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
 
         cmb_Completion_Certification.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_Completion_Certification.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NOT APPLICABLE", "APPLICABLE RECEIVED", "APPLICABLE NOT RECEIVED" }));
+        cmb_Completion_Certification.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmb_Completion_CertificationMouseClicked(evt);
+            }
+        });
         cmb_Completion_Certification.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_Completion_CertificationActionPerformed(evt);
@@ -519,13 +587,18 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             }
         });
 
-        jLabel167.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel167.setText("Retain Mode");
+        lbl_retention_mode.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lbl_retention_mode.setText("Retain Mode");
 
-        jLabel168.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel168.setText("Organization");
+        lbl_retenton_org.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lbl_retenton_org.setText("Organization");
 
         txt_retain_organization.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_retain_organization.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_retain_organizationMouseClicked(evt);
+            }
+        });
         txt_retain_organization.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_retain_organizationActionPerformed(evt);
@@ -572,6 +645,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         lbl_liq_damageAmount.setText("Damage Amount");
 
         txt_liquidityDamage_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_liquidityDamage_amount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_liquidityDamage_amountMouseClicked(evt);
+            }
+        });
         txt_liquidityDamage_amount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_liquidityDamage_amountActionPerformed(evt);
@@ -590,6 +668,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         lbl_retention_releaseAmount.setText("Release Amount");
 
         txt_retain_releaseAmount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_retain_releaseAmount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_retain_releaseAmountMouseClicked(evt);
+            }
+        });
         txt_retain_releaseAmount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_retain_releaseAmountActionPerformed(evt);
@@ -607,6 +690,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         lbl_retention_releaseDate.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lbl_retention_releaseDate.setText("Release Date");
 
+        dp_retain_releaseDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dp_retain_releaseDateMouseClicked(evt);
+            }
+        });
         dp_retain_releaseDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dp_retain_releaseDateActionPerformed(evt);
@@ -623,6 +711,11 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                 cmb_current_statusActionPerformed(evt);
             }
         });
+
+        lbl_projectName.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_projectName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_projectName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_projectName.setEnabled(false);
 
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
@@ -729,27 +822,27 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                         .addComponent(cmb_Retention, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel167, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_retention_mode, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(cmb_Retain_mode, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel152, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_retention_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(txt_retain_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel168, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_retenton_org, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(txt_retain_organization, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel153)
+                        .addComponent(lbl_retention_validFrom)
                         .addGap(33, 33, 33)
                         .addComponent(dp_retain_Valid_Period_From, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel154, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_retention_validTo, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(dp_retain_Valid_Period_To, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
@@ -790,13 +883,18 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                             .addContainerGap()
                             .addComponent(jLabel170, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(4, 4, 4)
-                            .addComponent(cmb_current_status, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                            .addComponent(cmb_current_status, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl_projectName, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(53, 53, 53))
         );
         txt_Input_Panel_Branch4Layout.setVerticalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
+                .addComponent(lbl_projectName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel170, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_current_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -886,23 +984,23 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                     .addComponent(cmb_Retention, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel167, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_retention_mode, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_Retain_mode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel152, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_retention_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_retain_amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel168, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_retenton_org, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_retain_organization, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel153, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_retention_validFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dp_retain_Valid_Period_From, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel154, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_retention_validTo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dp_retain_Valid_Period_To, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addComponent(jSeparator34, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1068,13 +1166,13 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
 
     private void btn_to_secondary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_to_secondary_projectActionPerformed
         Project_Secondery_Panel secondery_Panel = null;
-        if(third != null){
+        if (third != null) {
             try {
                 secondery_Panel = new Project_Secondery_Panel(third.getProject_id());
             } catch (Exception ex) {
                 Logger.getLogger(Project_Tertiary_Panel.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
+        } else {
             try {
                 secondery_Panel = new Project_Secondery_Panel();
             } catch (Exception ex) {
@@ -1090,16 +1188,18 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_to_secondary_projectActionPerformed
 
     private void txt_boqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_boqActionPerformed
+        fieldFormat.formatDecimalAmount(txt_boq);
         getTotal();
         txt_exceed.requestFocus();
+        fieldFormat.clearAmountField(txt_exceed);
     }//GEN-LAST:event_txt_boqActionPerformed
 
     private void txt_boqKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_boqKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_boq);
     }//GEN-LAST:event_txt_boqKeyPressed
 
     private void txt_boqKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_boqKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_boq);
     }//GEN-LAST:event_txt_boqKeyReleased
 
     private void txt_boqKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_boqKeyTyped
@@ -1107,28 +1207,30 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_boqKeyTyped
 
     private void txt_vatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vatActionPerformed
+        fieldFormat.formatDecimalAmount(txt_vat);
         getTotal();
         dp_take_over_date.requestFocus();
     }//GEN-LAST:event_txt_vatActionPerformed
 
     private void txt_vatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_vat);
     }//GEN-LAST:event_txt_vatKeyPressed
 
     private void txt_vatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_vat);
     }//GEN-LAST:event_txt_vatKeyReleased
 
     private void txt_req_periodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_req_periodActionPerformed
-        // TODO add your handling code here:
+        fieldFormat.formatDecimalAmount(txt_req_period);
+        txt_approved_period.requestFocus();
     }//GEN-LAST:event_txt_req_periodActionPerformed
 
     private void txt_req_periodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_req_periodKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_req_period);
     }//GEN-LAST:event_txt_req_periodKeyPressed
 
     private void txt_req_periodKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_req_periodKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_req_period);
     }//GEN-LAST:event_txt_req_periodKeyReleased
 
     private void txt_req_periodKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_req_periodKeyTyped
@@ -1136,56 +1238,67 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_req_periodKeyTyped
 
     private void txt_approved_periodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_approved_periodActionPerformed
-        // TODO add your handling code here:
+        fieldFormat.formatDecimalAmount(txt_approved_period);
+        cmb_Liquidity_Damage.requestFocus();
     }//GEN-LAST:event_txt_approved_periodActionPerformed
 
     private void txt_approved_periodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_approved_periodKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_approved_period);
     }//GEN-LAST:event_txt_approved_periodKeyPressed
 
     private void txt_approved_periodKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_approved_periodKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_approved_period);
     }//GEN-LAST:event_txt_approved_periodKeyReleased
 
     private void txt_retain_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_retain_amountActionPerformed
-        // TODO add your handling code here:
+        fieldFormat.formatDecimalAmount(txt_retain_amount);
+        txt_retain_organization.requestFocus();
     }//GEN-LAST:event_txt_retain_amountActionPerformed
 
     private void txt_retain_amountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_retain_amountKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_retain_amount);
     }//GEN-LAST:event_txt_retain_amountKeyPressed
 
     private void txt_retain_amountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_retain_amountKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_retain_amount);
     }//GEN-LAST:event_txt_retain_amountKeyReleased
 
     private void dp_retain_Valid_Period_FromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_retain_Valid_Period_FromActionPerformed
-        // TODO add your handling code here:
+        dp_retain_Valid_Period_To.requestFocus();
     }//GEN-LAST:event_dp_retain_Valid_Period_FromActionPerformed
 
     private void dp_retain_Valid_Period_ToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_retain_Valid_Period_ToActionPerformed
-        // TODO add your handling code here:
+        cmb_retention_release.requestFocus();
     }//GEN-LAST:event_dp_retain_Valid_Period_ToActionPerformed
 
     private void cmb_Liquidity_DamageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_Liquidity_DamageActionPerformed
-
+        cmbLiqDamageAction();
+        if (cmb_Liquidity_Damage.getSelectedIndex() != 0) {
+            txt_liquidityDamage_period.requestFocus();
+        } else {
+            cmb_Completion_Certification.requestFocus();
+        }
     }//GEN-LAST:event_cmb_Liquidity_DamageActionPerformed
 
     private void cmb_retention_releaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_retention_releaseActionPerformed
-        // TODO add your handling code here:
+        cmbRetentionReleaseAction();
+        txt_retain_releaseAmount.requestFocus();
+        fieldFormat.clearAmountField(txt_retain_releaseAmount);
     }//GEN-LAST:event_cmb_retention_releaseActionPerformed
 
     private void txt_exceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_exceedActionPerformed
+        fieldFormat.formatDecimalAmount(txt_exceed);
         getTotal();
         txt_extra_work.requestFocus();
+        fieldFormat.clearAmountField(txt_extra_work);
     }//GEN-LAST:event_txt_exceedActionPerformed
 
     private void txt_exceedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_exceedKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_exceed);
     }//GEN-LAST:event_txt_exceedKeyPressed
 
     private void txt_exceedKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_exceedKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_exceed);
     }//GEN-LAST:event_txt_exceedKeyReleased
 
     private void txt_exceedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_exceedKeyTyped
@@ -1193,16 +1306,18 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_exceedKeyTyped
 
     private void txt_extra_workActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_extra_workActionPerformed
+        fieldFormat.formatDecimalAmount(txt_extra_work);
         getTotal();
         txt_price_excallation.requestFocus();
+        fieldFormat.clearAmountField(txt_price_excallation);
     }//GEN-LAST:event_txt_extra_workActionPerformed
 
     private void txt_extra_workKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_extra_workKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_extra_work);
     }//GEN-LAST:event_txt_extra_workKeyPressed
 
     private void txt_extra_workKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_extra_workKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_extra_work);
     }//GEN-LAST:event_txt_extra_workKeyReleased
 
     private void txt_extra_workKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_extra_workKeyTyped
@@ -1210,16 +1325,18 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_extra_workKeyTyped
 
     private void txt_price_excallationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_price_excallationActionPerformed
+        fieldFormat.formatDecimalAmount(txt_price_excallation);
         getTotal();
         txt_vat.requestFocus();
+        fieldFormat.clearAmountField(txt_vat);
     }//GEN-LAST:event_txt_price_excallationActionPerformed
 
     private void txt_price_excallationKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_price_excallationKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_price_excallation);
     }//GEN-LAST:event_txt_price_excallationKeyPressed
 
     private void txt_price_excallationKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_price_excallationKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_price_excallation);
     }//GEN-LAST:event_txt_price_excallationKeyReleased
 
     private void txt_price_excallationKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_price_excallationKeyTyped
@@ -1227,31 +1344,39 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_price_excallationKeyTyped
 
     private void dp_take_over_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_take_over_dateActionPerformed
-        // TODO add your handling code here:
+        fieldFormat.formatDecimalAmount(txt_vat);
+        getTotal();
+        dp_completed_date.requestFocus();
     }//GEN-LAST:event_dp_take_over_dateActionPerformed
 
     private void dp_completed_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_completed_dateActionPerformed
-        // TODO add your handling code here:
+        dp_hand_over_date.requestFocus();
     }//GEN-LAST:event_dp_completed_dateActionPerformed
 
     private void dp_hand_over_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_hand_over_dateActionPerformed
-        // TODO add your handling code here:
+        txt_req_period.requestFocus();
     }//GEN-LAST:event_dp_hand_over_dateActionPerformed
 
     private void cmb_Completion_CertificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_Completion_CertificationActionPerformed
-        // TODO add your handling code here:
+        cmb_Retention.requestFocus();
     }//GEN-LAST:event_cmb_Completion_CertificationActionPerformed
 
     private void cmb_RetentionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_RetentionActionPerformed
-        // TODO add your handling code here:
+        cmbRetentionAction();
+        if (cmb_Retention.getSelectedIndex() != 0) {
+            cmb_Retain_mode.requestFocus();
+        } else {
+            cmb_retention_release.requestFocus();
+        }
     }//GEN-LAST:event_cmb_RetentionActionPerformed
 
     private void cmb_Retain_modeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_Retain_modeActionPerformed
-        // TODO add your handling code here:
+        txt_retain_amount.requestFocus();
+        fieldFormat.clearAmountField(txt_retain_amount);
     }//GEN-LAST:event_cmb_Retain_modeActionPerformed
 
     private void txt_retain_organizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_retain_organizationActionPerformed
-        // TODO add your handling code here:
+        dp_retain_Valid_Period_From.requestFocus();
     }//GEN-LAST:event_txt_retain_organizationActionPerformed
 
     private void txt_retain_organizationKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_retain_organizationKeyPressed
@@ -1279,15 +1404,17 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_save_third_projectActionPerformed
 
     private void txt_liquidityDamage_periodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_liquidityDamage_periodActionPerformed
-        // TODO add your handling code here:
+        fieldFormat.formatDecimalAmount(txt_liquidityDamage_period);
+        txt_liquidityDamage_amount.requestFocus();
+        fieldFormat.clearAmountField(txt_liquidityDamage_amount);
     }//GEN-LAST:event_txt_liquidityDamage_periodActionPerformed
 
     private void txt_liquidityDamage_periodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_liquidityDamage_periodKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_liquidityDamage_period);
     }//GEN-LAST:event_txt_liquidityDamage_periodKeyPressed
 
     private void txt_liquidityDamage_periodKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_liquidityDamage_periodKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_liquidityDamage_period);
     }//GEN-LAST:event_txt_liquidityDamage_periodKeyReleased
 
     private void txt_liquidityDamage_periodKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_liquidityDamage_periodKeyTyped
@@ -1295,27 +1422,29 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_liquidityDamage_periodKeyTyped
 
     private void txt_liquidityDamage_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_liquidityDamage_amountActionPerformed
-        // TODO add your handling code here:
+        fieldFormat.formatDecimalAmount(txt_liquidityDamage_amount);
+        cmb_Completion_Certification.requestFocus();
     }//GEN-LAST:event_txt_liquidityDamage_amountActionPerformed
 
     private void txt_liquidityDamage_amountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_liquidityDamage_amountKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_liquidityDamage_amount);
     }//GEN-LAST:event_txt_liquidityDamage_amountKeyPressed
 
     private void txt_liquidityDamage_amountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_liquidityDamage_amountKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_liquidityDamage_amount);
     }//GEN-LAST:event_txt_liquidityDamage_amountKeyReleased
 
     private void txt_retain_releaseAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_retain_releaseAmountActionPerformed
-        // TODO add your handling code here:
+        fieldFormat.formatDecimalAmount(txt_retain_releaseAmount);
+        dp_retain_releaseDate.requestFocus();
     }//GEN-LAST:event_txt_retain_releaseAmountActionPerformed
 
     private void txt_retain_releaseAmountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_retain_releaseAmountKeyPressed
-        // TODO add your handling code here:
+        Validation.priceText(txt_retain_releaseAmount);
     }//GEN-LAST:event_txt_retain_releaseAmountKeyPressed
 
     private void txt_retain_releaseAmountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_retain_releaseAmountKeyReleased
-        // TODO add your handling code here:
+        Validation.priceText(txt_retain_releaseAmount);
     }//GEN-LAST:event_txt_retain_releaseAmountKeyReleased
 
     private void dp_retain_releaseDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_retain_releaseDateActionPerformed
@@ -1323,8 +1452,81 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_dp_retain_releaseDateActionPerformed
 
     private void cmb_current_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_current_statusActionPerformed
-        // TODO add your handling code here:
+        txt_boq.requestFocus();
+        fieldFormat.clearAmountField(txt_boq);
     }//GEN-LAST:event_cmb_current_statusActionPerformed
+
+    private void txt_boqMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_boqMouseClicked
+        getTotal();
+        fieldFormat.clearAmountField(txt_boq);
+    }//GEN-LAST:event_txt_boqMouseClicked
+
+    private void txt_exceedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_exceedMouseClicked
+        fieldFormat.formatDecimalAmount(txt_boq);
+        getTotal();
+        fieldFormat.clearAmountField(txt_exceed);
+    }//GEN-LAST:event_txt_exceedMouseClicked
+
+    private void txt_extra_workMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_extra_workMouseClicked
+        fieldFormat.formatDecimalAmount(txt_exceed);
+        getTotal();
+        fieldFormat.clearAmountField(txt_extra_work);
+    }//GEN-LAST:event_txt_extra_workMouseClicked
+
+    private void txt_price_excallationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_price_excallationMouseClicked
+        fieldFormat.formatDecimalAmount(txt_extra_work);
+        getTotal();
+        fieldFormat.clearAmountField(txt_price_excallation);
+    }//GEN-LAST:event_txt_price_excallationMouseClicked
+
+    private void txt_vatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_vatMouseClicked
+        fieldFormat.formatDecimalAmount(txt_price_excallation);
+        getTotal();
+        fieldFormat.clearAmountField(txt_vat);
+    }//GEN-LAST:event_txt_vatMouseClicked
+
+    private void txt_liquidityDamage_amountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_liquidityDamage_amountMouseClicked
+        fieldFormat.formatDecimalAmount(txt_liquidityDamage_period);
+        fieldFormat.clearAmountField(txt_liquidityDamage_amount);
+    }//GEN-LAST:event_txt_liquidityDamage_amountMouseClicked
+
+    private void txt_retain_amountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_retain_amountMouseClicked
+        fieldFormat.clearAmountField(txt_retain_amount);
+    }//GEN-LAST:event_txt_retain_amountMouseClicked
+
+    private void txt_retain_releaseAmountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_retain_releaseAmountMouseClicked
+        fieldFormat.clearAmountField(txt_retain_releaseAmount);
+    }//GEN-LAST:event_txt_retain_releaseAmountMouseClicked
+
+    private void txt_totalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_totalMouseClicked
+        fieldFormat.formatDecimalAmount(txt_vat);
+        getTotal();
+    }//GEN-LAST:event_txt_totalMouseClicked
+
+    private void dp_take_over_dateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dp_take_over_dateMouseClicked
+        fieldFormat.formatDecimalAmount(txt_vat);
+        getTotal();
+    }//GEN-LAST:event_dp_take_over_dateMouseClicked
+
+    private void cmb_Completion_CertificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmb_Completion_CertificationMouseClicked
+        fieldFormat.formatDecimalAmount(txt_liquidityDamage_amount);
+    }//GEN-LAST:event_cmb_Completion_CertificationMouseClicked
+
+    private void txt_retain_organizationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_retain_organizationMouseClicked
+        fieldFormat.formatDecimalAmount(txt_retain_amount);
+    }//GEN-LAST:event_txt_retain_organizationMouseClicked
+
+    private void dp_retain_releaseDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dp_retain_releaseDateMouseClicked
+        fieldFormat.formatDecimalAmount(txt_retain_releaseAmount);
+    }//GEN-LAST:event_dp_retain_releaseDateMouseClicked
+
+    private void txt_approved_periodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_approved_periodMouseClicked
+        fieldFormat.formatDecimalAmount(txt_req_period);
+    }//GEN-LAST:event_txt_approved_periodMouseClicked
+
+    private void cmb_Liquidity_DamageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmb_Liquidity_DamageMouseClicked
+        fieldFormat.formatDecimalAmount(txt_approved_period);
+    }//GEN-LAST:event_cmb_Liquidity_DamageMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1358,17 +1560,12 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel146;
     private javax.swing.JLabel jLabel147;
     private javax.swing.JLabel jLabel148;
-    private javax.swing.JLabel jLabel152;
-    private javax.swing.JLabel jLabel153;
-    private javax.swing.JLabel jLabel154;
     private javax.swing.JLabel jLabel161;
     private javax.swing.JLabel jLabel162;
     private javax.swing.JLabel jLabel163;
     private javax.swing.JLabel jLabel164;
     private javax.swing.JLabel jLabel165;
     private javax.swing.JLabel jLabel166;
-    private javax.swing.JLabel jLabel167;
-    private javax.swing.JLabel jLabel168;
     private javax.swing.JLabel jLabel169;
     private javax.swing.JLabel jLabel170;
     private javax.swing.JLabel jLabel82;
@@ -1384,8 +1581,14 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator34;
     private javax.swing.JLabel lbl_liq_damageAmount;
     private javax.swing.JLabel lbl_liq_damagePeriod;
+    private javax.swing.JLabel lbl_projectName;
+    private javax.swing.JLabel lbl_retention_amount;
+    private javax.swing.JLabel lbl_retention_mode;
     private javax.swing.JLabel lbl_retention_releaseAmount;
     private javax.swing.JLabel lbl_retention_releaseDate;
+    private javax.swing.JLabel lbl_retention_validFrom;
+    private javax.swing.JLabel lbl_retention_validTo;
+    private javax.swing.JLabel lbl_retenton_org;
     private javax.swing.JTable tblFinalProject;
     private javax.swing.JPanel txt_Input_Panel_Branch4;
     private javax.swing.JTextField txt_approved_period;
@@ -1421,23 +1624,26 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     }
 
     private void loadFeilsFromSearch() {
-        txt_boq.setText(Double.toString(third.getProject_final_boq()));
-        txt_exceed.setText(Double.toString(third.getProject_final_exceed()));
-        txt_extra_work.setText(Double.toString(third.getProject_final_extraWork()));
-        txt_price_excallation.setText(Double.toString(third.getProject_final_priceEscallation()));
-        txt_vat.setText(Double.toString(third.getProject_final_vat()));
-        txt_total.setText(Double.toString(third.getProject_final_boq() + third.getProject_final_exceed() + third.getProject_final_extraWork() + third.getProject_final_priceEscallation() + third.getProject_final_vat()));
 
-        txt_req_period.setText(third.getProject_final_timeExtentionRequestPeriod());
-        txt_approved_period.setText(third.getProject_final_timeExtentionApprovedPeriod());
+        try {
+            lbl_projectName.setText(primaryController.searchPrimaryProject(third.getProject_id()).getProject_primary_name());
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Tertiary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        txt_liquidityDamage_period.setText(third.getProject_final_liquidityDamagePeriod());
-        txt_liquidityDamage_amount.setText(Double.toString(third.getProject_final_liquidityDamageAmount()));
+        txt_boq.setText(decimalFormat.format(third.getProject_final_boq()));
+        txt_exceed.setText(decimalFormat.format(third.getProject_final_exceed()));
+        txt_extra_work.setText(decimalFormat.format(third.getProject_final_extraWork()));
+        txt_price_excallation.setText(decimalFormat.format(third.getProject_final_priceEscallation()));
+        txt_vat.setText(decimalFormat.format(third.getProject_final_vat()));
+        txt_total.setText(decimalFormat.format(third.getProject_final_boq() + third.getProject_final_exceed() + third.getProject_final_extraWork() + third.getProject_final_priceEscallation() + third.getProject_final_vat()));
 
-        txt_retain_amount.setText(Double.toString(third.getProject_final_retentionAmount()));
+        txt_liquidityDamage_amount.setText(decimalFormat.format(third.getProject_final_liquidityDamageAmount()));
+
+        txt_retain_amount.setText(decimalFormat.format(third.getProject_final_retentionAmount()));
         txt_retain_organization.setText(third.getProject_final_retentionOrganization());
 
-        txt_retain_releaseAmount.setText(Double.toString(third.getProject_final_retentionReleaseAmount()));
+        txt_retain_releaseAmount.setText(decimalFormat.format(third.getProject_final_retentionReleaseAmount()));
 
         cmb_current_status.setSelectedIndex(Integer.parseInt(third.getProject_final_currentStatus()));
 
@@ -1453,6 +1659,9 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             dp_retain_Valid_Period_From.setDate(third.getProject_final_retentionPeriodFrom());
             dp_retain_Valid_Period_To.setDate(third.getProject_final_retentionPeriodTo());
             dp_retain_releaseDate.setDate(third.getProject_final_retentionReleaseDate());
+            txt_req_period.setText(decimalFormat.format(Double.parseDouble(third.getProject_final_timeExtentionRequestPeriod())));
+            txt_approved_period.setText(decimalFormat.format(Double.parseDouble(third.getProject_final_timeExtentionApprovedPeriod())));
+            txt_liquidityDamage_period.setText(decimalFormat.format(Double.parseDouble(third.getProject_final_liquidityDamagePeriod())));
         } else {
             cmb_Liquidity_Damage.setSelectedIndex(0);
             cmb_Completion_Certification.setSelectedIndex(0);
@@ -1465,6 +1674,9 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             dp_retain_Valid_Period_From.setDate(new Date());
             dp_retain_Valid_Period_To.setDate(new Date());
             dp_retain_releaseDate.setDate(new Date());
+            txt_req_period.setText("");
+            txt_approved_period.setText("");
+            txt_liquidityDamage_period.setText("");
         }
     }
 
@@ -1479,12 +1691,41 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     }
 
     private void saveThirdProject() {
+        double finalBOQ = 0;
+        double exeed = 0;
+        double extraWork = 0;
+        double escallation = 0;
+        double finalVat = 0;
+        double liqDamageAmount = 0;
+        double retentionAmount = 0;
+        double retentionReleaseAmount = 0;
+
         int projectId = third.getProject_id();
-        double finalBOQ = Double.parseDouble(txt_boq.getText());
-        double exeed = Double.parseDouble(txt_exceed.getText());
-        double extraWork = Double.parseDouble(txt_extra_work.getText());
-        double escallation = Double.parseDouble(txt_price_excallation.getText());
-        double finalVat = Double.parseDouble(txt_vat.getText());
+        if (!"".equals(txt_boq.getText())) {
+            finalBOQ = Double.parseDouble(txt_boq.getText());
+        } else {
+            finalBOQ = 0;
+        }
+        if (!"".equals(txt_exceed.getText())) {
+            exeed = Double.parseDouble(txt_exceed.getText());
+        } else {
+            exeed = 0;
+        }
+        if (!"".equals(txt_extra_work.getText())) {
+            extraWork = Double.parseDouble(txt_extra_work.getText());
+        } else {
+            extraWork = 0;
+        }
+        if (!"".equals(txt_price_excallation.getText())) {
+            escallation = Double.parseDouble(txt_price_excallation.getText());
+        } else {
+            escallation = 0;
+        }
+        if (!"".equals(txt_vat.getText())) {
+            finalVat = Double.parseDouble(txt_vat.getText());
+        } else {
+            finalVat = 0;
+        }
         Date takeOverDate = dp_take_over_date.getDate();
         Date completeDate = dp_completed_date.getDate();
         Date handOverDate = dp_hand_over_date.getDate();
@@ -1492,16 +1733,28 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         String approvedPeriod = txt_approved_period.getText();
         String liqDamage = Integer.toString(cmb_Liquidity_Damage.getSelectedIndex());
         String liqDamagePeriod = txt_liquidityDamage_period.getText();
-        double liqDamageAmount = Double.parseDouble(txt_liquidityDamage_amount.getText());
+        if (!"".equals(txt_liquidityDamage_amount.getText())) {
+            liqDamageAmount = Double.parseDouble(txt_liquidityDamage_amount.getText());
+        } else {
+            liqDamageAmount = 0;
+        }
         String certification = Integer.toString(cmb_Completion_Certification.getSelectedIndex());
         String retention = Integer.toString(cmb_Retention.getSelectedIndex());
         String retentionMode = Integer.toString(cmb_Retain_mode.getSelectedIndex());
-        double retentionAmount = Double.parseDouble(txt_retain_amount.getText());
+        if (!"".equals(txt_retain_amount.getText())) {
+            retentionAmount = Double.parseDouble(txt_retain_amount.getText());
+        } else {
+            retentionAmount = 0;
+        }
         String retentionOrg = txt_retain_organization.getText();
         Date retentionFrom = dp_retain_Valid_Period_From.getDate();
         Date retentionTo = dp_retain_Valid_Period_To.getDate();
         String retentionRelease = Integer.toString(cmb_retention_release.getSelectedIndex());
-        double retentionReleaseAmount = Double.parseDouble(txt_retain_releaseAmount.getText());
+        if (!"".equals(txt_retain_releaseAmount.getText())) {
+            retentionReleaseAmount = Double.parseDouble(txt_retain_releaseAmount.getText());
+        } else {
+            retentionReleaseAmount = 0;
+        }
         Date retentonReleaseDate = dp_retain_releaseDate.getDate();
         String finalStatus = Integer.toString(cmb_current_status.getSelectedIndex());
         String currentStatus = Integer.toString(cmb_current_status.getSelectedIndex());
@@ -1520,12 +1773,41 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     }
 
     private void updateThirdProject() {
+        double finalBOQ = 0;
+        double exeed = 0;
+        double extraWork = 0;
+        double escallation = 0;
+        double finalVat = 0;
+        double liqDamageAmount = 0;
+        double retentionAmount = 0;
+        double retentionReleaseAmount = 0;
+
         int projectId = third.getProject_id();
-        double finalBOQ = Double.parseDouble(txt_boq.getText());
-        double exeed = Double.parseDouble(txt_exceed.getText());
-        double extraWork = Double.parseDouble(txt_extra_work.getText());
-        double escallation = Double.parseDouble(txt_price_excallation.getText());
-        double finalVat = Double.parseDouble(txt_vat.getText());
+        if (!"".equals(txt_boq.getText())) {
+            finalBOQ = Double.parseDouble(txt_boq.getText());
+        } else {
+            finalBOQ = 0;
+        }
+        if (!"".equals(txt_exceed.getText())) {
+            exeed = Double.parseDouble(txt_exceed.getText());
+        } else {
+            exeed = 0;
+        }
+        if (!"".equals(txt_extra_work.getText())) {
+            extraWork = Double.parseDouble(txt_extra_work.getText());
+        } else {
+            extraWork = 0;
+        }
+        if (!"".equals(txt_price_excallation.getText())) {
+            escallation = Double.parseDouble(txt_price_excallation.getText());
+        } else {
+            escallation = 0;
+        }
+        if (!"".equals(txt_vat.getText())) {
+            finalVat = Double.parseDouble(txt_vat.getText());
+        } else {
+            finalVat = 0;
+        }
         Date takeOverDate = dp_take_over_date.getDate();
         Date completeDate = dp_completed_date.getDate();
         Date handOverDate = dp_hand_over_date.getDate();
@@ -1533,16 +1815,28 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         String approvedPeriod = txt_approved_period.getText();
         String liqDamage = Integer.toString(cmb_Liquidity_Damage.getSelectedIndex());
         String liqDamagePeriod = txt_liquidityDamage_period.getText();
-        double liqDamageAmount = Double.parseDouble(txt_liquidityDamage_amount.getText());
+        if (!"".equals(txt_liquidityDamage_amount.getText())) {
+            liqDamageAmount = Double.parseDouble(txt_liquidityDamage_amount.getText());
+        } else {
+            liqDamageAmount = 0;
+        }
         String certification = Integer.toString(cmb_Completion_Certification.getSelectedIndex());
         String retention = Integer.toString(cmb_Retention.getSelectedIndex());
         String retentionMode = Integer.toString(cmb_Retain_mode.getSelectedIndex());
-        double retentionAmount = Double.parseDouble(txt_retain_amount.getText());
+        if (!"".equals(txt_retain_amount.getText())) {
+            retentionAmount = Double.parseDouble(txt_retain_amount.getText());
+        } else {
+            retentionAmount = 0;
+        }
         String retentionOrg = txt_retain_organization.getText();
         Date retentionFrom = dp_retain_Valid_Period_From.getDate();
         Date retentionTo = dp_retain_Valid_Period_To.getDate();
         String retentionRelease = Integer.toString(cmb_retention_release.getSelectedIndex());
-        double retentionReleaseAmount = Double.parseDouble(txt_retain_releaseAmount.getText());
+        if (!"".equals(txt_retain_releaseAmount.getText())) {
+            retentionReleaseAmount = Double.parseDouble(txt_retain_releaseAmount.getText());
+        } else {
+            retentionReleaseAmount = 0;
+        }
         Date retentonReleaseDate = dp_retain_releaseDate.getDate();
         String finalStatus = Integer.toString(cmb_current_status.getSelectedIndex());
         String currentStatus = Integer.toString(cmb_current_status.getSelectedIndex());
@@ -1582,6 +1876,60 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         if (!"".equals(txt_vat.getText())) {
             vat = Double.parseDouble(txt_vat.getText());
         }
-        txt_total.setText(Double.toString(boq + exeed + extra + escal + vat));
+        txt_total.setText(decimalFormat.format(boq + exeed + extra + escal + vat));
+    }
+
+    private void cmbRetentionAction() {
+        if (cmb_Retention.getSelectedIndex() == 0) {
+            lbl_retention_mode.setVisible(false);
+            cmb_Retain_mode.setVisible(false);
+            lbl_retention_amount.setVisible(false);
+            txt_retain_amount.setVisible(false);
+            lbl_retenton_org.setVisible(false);
+            txt_retain_organization.setVisible(false);
+            lbl_retention_validFrom.setVisible(false);
+            dp_retain_Valid_Period_From.setVisible(false);
+            lbl_retention_validTo.setVisible(false);
+            dp_retain_Valid_Period_To.setVisible(false);
+        } else {
+            lbl_retention_mode.setVisible(true);
+            cmb_Retain_mode.setVisible(true);
+            lbl_retention_amount.setVisible(true);
+            txt_retain_amount.setVisible(true);
+            lbl_retenton_org.setVisible(true);
+            txt_retain_organization.setVisible(true);
+            lbl_retention_validFrom.setVisible(true);
+            dp_retain_Valid_Period_From.setVisible(true);
+            lbl_retention_validTo.setVisible(true);
+            dp_retain_Valid_Period_To.setVisible(true);
+        }
+    }
+
+    private void cmbRetentionReleaseAction() {
+        if (cmb_retention_release.getSelectedIndex() == 0) {
+            lbl_retention_releaseAmount.setVisible(false);
+            txt_retain_releaseAmount.setVisible(false);
+            lbl_retention_releaseDate.setVisible(false);
+            dp_retain_releaseDate.setVisible(false);
+        } else {
+            lbl_retention_releaseAmount.setVisible(true);
+            txt_retain_releaseAmount.setVisible(true);
+            lbl_retention_releaseDate.setVisible(true);
+            dp_retain_releaseDate.setVisible(true);
+        }
+    }
+
+    private void cmbLiqDamageAction() {
+        if (cmb_Liquidity_Damage.getSelectedItem().toString().equalsIgnoreCase("NOT APPLICABLE")) {
+            lbl_liq_damagePeriod.setVisible(false);
+            txt_liquidityDamage_period.setVisible(false);
+            lbl_liq_damageAmount.setVisible(false);
+            txt_liquidityDamage_amount.setVisible(false);
+        } else {
+            lbl_liq_damagePeriod.setVisible(true);
+            txt_liquidityDamage_period.setVisible(true);
+            lbl_liq_damageAmount.setVisible(true);
+            txt_liquidityDamage_amount.setVisible(true);
+        }
     }
 }
