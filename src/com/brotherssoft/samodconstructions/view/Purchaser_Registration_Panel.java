@@ -13,6 +13,7 @@ import com.brotherssoft.samodconstructions.model.M_Purchaser;
 import com.brotherssoft.samodconstructions.model.R_Bank;
 import com.brotherssoft.samodconstructions.model.R_Branch;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -89,7 +90,6 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         jScrollPane25 = new javax.swing.JScrollPane();
         tbl_purchaser_info = new javax.swing.JTable();
         txt_search_purchaser = new javax.swing.JTextField();
-        jLabel175 = new javax.swing.JLabel();
 
         Purchaser_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Purchaser_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -374,32 +374,38 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         });
         jScrollPane25.setViewportView(tbl_purchaser_info);
 
-        txt_search_purchaser.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        jLabel175.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel175.setText("Search Purchaser");
+        txt_search_purchaser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_search_purchaser.setForeground(new java.awt.Color(102, 102, 102));
+        txt_search_purchaser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_search_purchaser.setText("Search Purchaser");
+        txt_search_purchaser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_search_purchaserMouseClicked(evt);
+            }
+        });
+        txt_search_purchaser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_search_purchaserKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout bank_panel_tbl10Layout = new javax.swing.GroupLayout(bank_panel_tbl10);
         bank_panel_tbl10.setLayout(bank_panel_tbl10Layout);
         bank_panel_tbl10Layout.setHorizontalGroup(
             bank_panel_tbl10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane25, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
-            .addGroup(bank_panel_tbl10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel175, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_search_purchaser)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txt_search_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         bank_panel_tbl10Layout.setVerticalGroup(
             bank_panel_tbl10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl10Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(bank_panel_tbl10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel175, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_search_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_search_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane25, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane25, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Purchaser_Registration_PanelLayout = new javax.swing.GroupLayout(Purchaser_Registration_Panel);
@@ -457,6 +463,8 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
 
     private void tbl_purchaser_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_purchaser_infoMouseClicked
         getFromPurchaserTable();
+        txt_search_purchaser.setText("Search Purchaser");
+        txt_search_purchaser.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_purchaser_infoMouseClicked
 
     private void btn_purchaser_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_purchaser_newActionPerformed
@@ -474,6 +482,26 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         btn_save_purchaser.setText("Save");
     }//GEN-LAST:event_btn_purchaser_newActionPerformed
 
+    private void txt_search_purchaserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_purchaserKeyReleased
+        try {
+
+            dtmPurchaser.setRowCount(0);
+            List<M_Purchaser> allPurchasers = purchaserController.getAllPurchasersByLetter(txt_search_purchaser.getText());
+            for (M_Purchaser allPurchaser : allPurchasers) {
+                String[] rowData = {allPurchaser.getPurchaser_name()};
+                dtmPurchaser.addRow(rowData);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_search_purchaserKeyReleased
+
+    private void txt_search_purchaserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_search_purchaserMouseClicked
+        txt_search_purchaser.setText("");
+        txt_search_purchaser.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_search_purchaserMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Purchaser_Registration_Panel;
@@ -488,7 +516,6 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel166;
     private javax.swing.JLabel jLabel173;
     private javax.swing.JLabel jLabel174;
-    private javax.swing.JLabel jLabel175;
     private javax.swing.JLabel jLabel176;
     private javax.swing.JLabel jLabel177;
     private javax.swing.JLabel jLabel178;

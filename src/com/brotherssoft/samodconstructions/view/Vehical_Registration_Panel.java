@@ -13,6 +13,7 @@ import com.brotherssoft.samodconstructions.model.M_Vehicle;
 import com.brotherssoft.samodconstructions.model.R_FuelType;
 import com.brotherssoft.samodconstructions.model.R_VehicleType;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -90,7 +91,6 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         bank_panel_tbl5 = new javax.swing.JPanel();
         jScrollPane21 = new javax.swing.JScrollPane();
         tbl_vehicle_info = new javax.swing.JTable();
-        jLabel163 = new javax.swing.JLabel();
         txt_search_vehicle = new javax.swing.JTextField();
 
         Vehical_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -361,10 +361,20 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         });
         jScrollPane21.setViewportView(tbl_vehicle_info);
 
-        jLabel163.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel163.setText("Search Vehicle");
-
-        txt_search_vehicle.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_search_vehicle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_search_vehicle.setForeground(new java.awt.Color(102, 102, 102));
+        txt_search_vehicle.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_search_vehicle.setText("Search Vehicle");
+        txt_search_vehicle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_search_vehicleMouseClicked(evt);
+            }
+        });
+        txt_search_vehicle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_search_vehicleKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout bank_panel_tbl5Layout = new javax.swing.GroupLayout(bank_panel_tbl5);
         bank_panel_tbl5.setLayout(bank_panel_tbl5Layout);
@@ -372,21 +382,18 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
             bank_panel_tbl5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(bank_panel_tbl5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane21)
-                    .addGroup(bank_panel_tbl5Layout.createSequentialGroup()
-                        .addComponent(jLabel163, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_search_vehicle, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)))
+                .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(bank_panel_tbl5Layout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addComponent(txt_search_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bank_panel_tbl5Layout.setVerticalGroup(
             bank_panel_tbl5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(bank_panel_tbl5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel163, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_search_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_search_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -440,6 +447,8 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
 
     private void tbl_vehicle_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_vehicle_infoMouseClicked
         loadFromVehicleTable();
+        txt_search_vehicle.setText("Search Vehicle");
+        txt_search_vehicle.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_vehicle_infoMouseClicked
 
     private void btn_vehicle_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vehicle_newActionPerformed
@@ -458,6 +467,26 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btn_vehicle_newActionPerformed
 
+    private void txt_search_vehicleKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_vehicleKeyReleased
+        try {
+            
+            dtmVehicle.setRowCount(0);
+            List<M_Vehicle> allVehicles = vehicleController.getAllVehiclesByLetter(txt_search_vehicle.getText());
+            for (M_Vehicle allVehicle : allVehicles) {
+                String[] rowData = {allVehicle.getVehicle_regNo()};
+                dtmVehicle.addRow(rowData);
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_search_vehicleKeyReleased
+
+    private void txt_search_vehicleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_search_vehicleMouseClicked
+        txt_search_vehicle.setText("");
+        txt_search_vehicle.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_search_vehicleMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Vehical_Registration_Panel;
@@ -470,7 +499,6 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmb_vehicle_status;
     private javax.swing.JComboBox<String> cmb_vehicle_type;
     private javax.swing.JComboBox<String> cmb_vehicle_year;
-    private javax.swing.JLabel jLabel163;
     private javax.swing.JLabel jLabel164;
     private javax.swing.JLabel jLabel165;
     private javax.swing.JLabel jLabel166;

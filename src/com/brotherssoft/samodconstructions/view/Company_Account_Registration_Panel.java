@@ -15,6 +15,7 @@ import com.brotherssoft.samodconstructions.model.R_AccountType;
 import com.brotherssoft.samodconstructions.model.R_Bank;
 import com.brotherssoft.samodconstructions.model.R_Branch;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -260,7 +261,7 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
                 .addGroup(bank_panel_input_area1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_acc_save, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_acc_new, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bank_panel_tbl1.setBackground(new java.awt.Color(255, 255, 255));
@@ -312,9 +313,23 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
         jScrollPane7.setViewportView(tbl_acc);
 
         txt_acc_search.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_acc_search.setForeground(new java.awt.Color(102, 102, 102));
         txt_acc_search.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_acc_search.setText("Search");
+        txt_acc_search.setText("Search Account");
         txt_acc_search.setToolTipText("Use Bank Nname To Search !");
+        txt_acc_search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_acc_searchMouseClicked(evt);
+            }
+        });
+        txt_acc_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_acc_searchKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_acc_searchKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout bank_panel_tbl1Layout = new javax.swing.GroupLayout(bank_panel_tbl1);
         bank_panel_tbl1.setLayout(bank_panel_tbl1Layout);
@@ -323,16 +338,16 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
             .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txt_acc_search, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_acc_search, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         bank_panel_tbl1Layout.setVerticalGroup(
             bank_panel_tbl1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl1Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(txt_acc_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout Company_Account_RegistrationLayout = new javax.swing.GroupLayout(Company_Account_Registration);
@@ -353,9 +368,9 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
                 .addComponent(bank_panel_hedding2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(Company_Account_RegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bank_panel_tbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bank_panel_tbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -390,6 +405,8 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
 
     private void tbl_accMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_accMouseClicked
         loadFromAccountTable();
+        txt_acc_search.setText("Search Account");
+        txt_acc_search.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_accMouseClicked
 
     private void btn_acc_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_acc_newActionPerformed
@@ -402,6 +419,30 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
 
         btn_acc_save.setText("Save");
     }//GEN-LAST:event_btn_acc_newActionPerformed
+
+    private void txt_acc_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_acc_searchMouseClicked
+        txt_acc_search.setText("");
+        txt_acc_search.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_acc_searchMouseClicked
+
+    private void txt_acc_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_acc_searchKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_acc_searchKeyPressed
+
+    private void txt_acc_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_acc_searchKeyReleased
+        try {
+
+            List<M_Account> allAccounts = accountController.getAllAccountsByLetter(txt_acc_search.getText());
+            dtmcomAccount.setRowCount(0);
+            for (M_Account allAccount : allAccounts) {
+                String[] rowData = {bankController.searchBank(allAccount.getAccount_bank_id()).getBank_name(), branchController.searchBranch(allAccount.getAccount_branch_id()).getBranch_name(), allAccount.getAccount_accountNo()};
+                dtmcomAccount.addRow(rowData);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_acc_searchKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

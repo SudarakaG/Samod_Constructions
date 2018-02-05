@@ -11,6 +11,7 @@ import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.model.R_Bank;
 import com.brotherssoft.samodconstructions.model.R_Branch;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -94,13 +95,12 @@ public class Bank_Panel extends javax.swing.JPanel {
         btn_bank_save = new javax.swing.JButton();
         cmb_bank_states = new javax.swing.JComboBox<>();
         btn_branch = new javax.swing.JButton();
-        lbl_bnakId = new javax.swing.JLabel();
         btn_bank_new = new javax.swing.JButton();
         btn_bank_remove = new javax.swing.JButton();
         bank_panel_tbl = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbl_bank = new javax.swing.JTable();
-        jTextField4 = new javax.swing.JTextField();
+        txt_bankSearch = new javax.swing.JTextField();
 
         Branch_panel.setBackground(new java.awt.Color(255, 255, 255));
         Branch_panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -346,9 +346,25 @@ public class Bank_Panel extends javax.swing.JPanel {
         jScrollPane5.setViewportView(tbl_branch);
 
         txt_branch_search.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_branch_search.setForeground(new java.awt.Color(102, 102, 102));
         txt_branch_search.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_branch_search.setText("Search");
+        txt_branch_search.setText("Search Branch");
         txt_branch_search.setToolTipText("Use Bank Nname To Search !");
+        txt_branch_search.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_branch_searchMouseClicked(evt);
+            }
+        });
+        txt_branch_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_branch_searchActionPerformed(evt);
+            }
+        });
+        txt_branch_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_branch_searchKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout tbl_panel_BranchLayout = new javax.swing.GroupLayout(tbl_panel_Branch);
         tbl_panel_Branch.setLayout(tbl_panel_BranchLayout);
@@ -357,15 +373,15 @@ public class Bank_Panel extends javax.swing.JPanel {
             .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbl_panel_BranchLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txt_branch_search, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_branch_search, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         tbl_panel_BranchLayout.setVerticalGroup(
             tbl_panel_BranchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbl_panel_BranchLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(txt_branch_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -481,9 +497,6 @@ public class Bank_Panel extends javax.swing.JPanel {
             }
         });
 
-        lbl_bnakId.setText("jLabel2");
-        lbl_bnakId.setEnabled(false);
-
         btn_bank_new.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_bank_new.setText("New");
         btn_bank_new.addActionListener(new java.awt.event.ActionListener() {
@@ -505,10 +518,6 @@ public class Bank_Panel extends javax.swing.JPanel {
         bank_panel_input_area.setLayout(bank_panel_input_areaLayout);
         bank_panel_input_areaLayout.setHorizontalGroup(
             bank_panel_input_areaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bank_panel_input_areaLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(lbl_bnakId)
-                .addContainerGap(424, Short.MAX_VALUE))
             .addGroup(bank_panel_input_areaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(bank_panel_input_areaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -564,9 +573,7 @@ public class Bank_Panel extends javax.swing.JPanel {
                     .addComponent(btn_bank_save, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_bank_remove, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_branch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_bnakId)
-                .addGap(54, 54, 54))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bank_panel_tbl.setBackground(new java.awt.Color(255, 255, 255));
@@ -617,28 +624,46 @@ public class Bank_Panel extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tbl_bank);
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setText("Search");
-        jTextField4.setToolTipText("Use Bank Nname To Search !");
+        txt_bankSearch.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_bankSearch.setForeground(new java.awt.Color(102, 102, 102));
+        txt_bankSearch.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_bankSearch.setText("Search Bank");
+        txt_bankSearch.setToolTipText("Use Bank Nname To Search !");
+        txt_bankSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_bankSearchMouseClicked(evt);
+            }
+        });
+        txt_bankSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_bankSearchActionPerformed(evt);
+            }
+        });
+        txt_bankSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_bankSearchKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout bank_panel_tblLayout = new javax.swing.GroupLayout(bank_panel_tbl);
         bank_panel_tbl.setLayout(bank_panel_tblLayout);
         bank_panel_tblLayout.setHorizontalGroup(
             bank_panel_tblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tblLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(bank_panel_tblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+                    .addGroup(bank_panel_tblLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txt_bankSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         bank_panel_tblLayout.setVerticalGroup(
             bank_panel_tblLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tblLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_bankSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout Bank_panelLayout = new javax.swing.GroupLayout(Bank_panel);
@@ -650,7 +675,7 @@ public class Bank_Panel extends javax.swing.JPanel {
                 .addComponent(bank_panel_input_area, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bank_panel_tbl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
             .addComponent(bank_panel_hedding, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         Bank_panelLayout.setVerticalGroup(
@@ -659,9 +684,9 @@ public class Bank_Panel extends javax.swing.JPanel {
                 .addComponent(bank_panel_hedding, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(Bank_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bank_panel_input_area, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bank_panel_tbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                    .addComponent(bank_panel_tbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bank_panel_input_area, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(Branch_panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -711,7 +736,9 @@ public class Bank_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_bank_saveActionPerformed
 
     private void tbl_bankMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_bankMouseClicked
-        loadFromTableRow();
+        loadFromTableRow();     
+        txt_bankSearch.setText("Search Bank");
+        txt_branch_search.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_bankMouseClicked
 
     private void btn_bank_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bank_newActionPerformed
@@ -742,6 +769,8 @@ public class Bank_Panel extends javax.swing.JPanel {
 
     private void tbl_branchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_branchMouseClicked
         loadFromBranchTable();
+        txt_branch_search.setText("Search Branch");
+        txt_branch_search.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_branchMouseClicked
 
     private void btn_remove_branch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_remove_branch1ActionPerformed
@@ -770,6 +799,70 @@ public class Bank_Panel extends javax.swing.JPanel {
         Bank_panel.setVisible(false);
         Branch_panel.setVisible(true);
     }//GEN-LAST:event_btn_branchMouseClicked
+
+    private void txt_branch_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_branch_searchKeyReleased
+        try {
+
+            dtmBranch.setRowCount(0);
+            List<R_Branch> allBranches = branchController.getAllBranchesByLetter(txt_branch_search.getText());
+            for (R_Branch allBranche : allBranches) {
+                R_Bank searchBank = bankController.searchBank(allBranche.getBranch_bank_id());
+                String branchStatus = "";
+                if (allBranche.getBranch_status() == 0) {
+                    branchStatus = "Avtive";
+                } else {
+                    branchStatus = "Inactive";
+                }
+                String rowData[] = {searchBank.getBank_name(), allBranche.getBranch_code(), allBranche.getBranch_name(), branchStatus};
+                dtmBranch.addRow(rowData);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_branch_searchKeyReleased
+
+    private void txt_bankSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_bankSearchMouseClicked
+        txt_bankSearch.setText("");
+        txt_branch_search.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_bankSearchMouseClicked
+
+    private void txt_bankSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_bankSearchKeyReleased
+        try {
+            dtmBank.setRowCount(0);
+            List<R_Bank> allBanks = bankController.getAllBanksByLetter(txt_bankSearch.getText());
+            for (R_Bank allBank : allBanks) {
+
+                String bankStatus = "";
+                if (allBank.getBank_status().equalsIgnoreCase("0")) {
+                    bankStatus = "Active";
+                } else {
+                    bankStatus = "Inactive";
+                }
+
+                String[] rowDataBank = {allBank.getBank_name(), allBank.getBank_code(), bankStatus, allBank.getBank_description()};
+                System.out.println("////////" + allBank.getBank_name());
+                dtmBank.addRow(rowDataBank);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_txt_bankSearchKeyReleased
+
+    private void txt_branch_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_branch_searchMouseClicked
+        txt_branch_search.setText("");
+        txt_branch_search.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_branch_searchMouseClicked
+
+    private void txt_branch_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_branch_searchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_branch_searchActionPerformed
+
+    private void txt_bankSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_bankSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_bankSearchActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -812,8 +905,6 @@ public class Bank_Panel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JLabel lbl_bnakId;
     private javax.swing.JTextArea taBranchDesc;
     private javax.swing.JTable tbl_bank;
     private javax.swing.JTable tbl_branch;
@@ -822,6 +913,7 @@ public class Bank_Panel extends javax.swing.JPanel {
     private javax.swing.JTextField txtBranchCode;
     private javax.swing.JTextField txtBranchName;
     private javax.swing.JPanel txt_Input_Panel_Branch;
+    private javax.swing.JTextField txt_bankSearch;
     private javax.swing.JTextField txt_bank_code;
     private javax.swing.JTextField txt_bank_name;
     private javax.swing.JTextField txt_branch_search;
@@ -900,7 +992,6 @@ public class Bank_Panel extends javax.swing.JPanel {
             txt_bank_code.setText(searchBank.getBank_code());
             bank_desc.setText(searchBank.getBank_description());
             cmb_bank_states.setSelectedIndex(Integer.parseInt(searchBank.getBank_status()));
-            lbl_bnakId.setText(Integer.toString(searchBank.getBank_id()));
 
             btn_bank_save.setText("Update");
             btn_bank_remove.setEnabled(true);

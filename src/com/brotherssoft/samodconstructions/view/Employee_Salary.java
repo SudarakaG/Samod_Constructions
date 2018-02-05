@@ -502,6 +502,11 @@ public class Employee_Salary extends javax.swing.JPanel {
                 txt_emp_sal_searchActionPerformed(evt);
             }
         });
+        txt_emp_sal_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_emp_sal_searchKeyReleased(evt);
+            }
+        });
 
         cmb_searchEmp_subContractor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Sub Contractor -" }));
         cmb_searchEmp_subContractor.addActionListener(new java.awt.event.ActionListener() {
@@ -524,13 +529,13 @@ public class Employee_Salary extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbl_panel_Branch1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tbl_panel_Branch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane9)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
                     .addGroup(tbl_panel_Branch1Layout.createSequentialGroup()
                         .addComponent(cmb_searchEmp_jobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmb_searchEmp_subContractor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_emp_sal_search)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txt_emp_sal_search, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         tbl_panel_Branch1Layout.setVerticalGroup(
@@ -597,6 +602,8 @@ public class Employee_Salary extends javax.swing.JPanel {
         }
 
         btn_save_emp_salary.setText("Update");
+        txt_emp_sal_search.setText("Search Employee");
+        txt_emp_sal_search.setForeground(Color.GRAY);
     }//GEN-LAST:event_tb_emp_salMouseClicked
 
     private void cmbBankEmp_SalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBankEmp_SalaryActionPerformed
@@ -752,6 +759,19 @@ public class Employee_Salary extends javax.swing.JPanel {
         fieldFormat.formatDecimalAmount(txt_emp_al_3);
         fieldFormat.clearAmountField(txt_emp_al_4);
     }//GEN-LAST:event_txt_emp_al_4MouseClicked
+
+    private void txt_emp_sal_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_searchKeyReleased
+        try {
+            dtmEmpSalary.setRowCount(0);
+            List<M_Employee> allEmployees = employeeController.getAllEmployeesByLetter(txt_emp_sal_search.getText());
+            for (M_Employee allEmployee : allEmployees) {
+                String[] rowData = {allEmployee.getEmp_initials(), allEmployee.getEmp_firstName(), allEmployee.getEmp_middleName(), allEmployee.getEmp_surName()};
+                dtmEmpSalary.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Salary.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_emp_sal_searchKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

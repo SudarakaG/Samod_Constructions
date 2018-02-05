@@ -13,6 +13,7 @@ import com.brotherssoft.samodconstructions.model.M_Equipment;
 import com.brotherssoft.samodconstructions.model.R_Asset;
 import com.brotherssoft.samodconstructions.model.R_AssetCategory;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.Color;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -92,7 +93,6 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         bank_panel_tbl2 = new javax.swing.JPanel();
         jScrollPane15 = new javax.swing.JScrollPane();
         tbl_equipment_info = new javax.swing.JTable();
-        jLabel152 = new javax.swing.JLabel();
         txt_search_equipment = new javax.swing.JTextField();
 
         Equipment_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -357,10 +357,20 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         });
         jScrollPane15.setViewportView(tbl_equipment_info);
 
-        jLabel152.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel152.setText("Search Equipment");
-
-        txt_search_equipment.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_search_equipment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_search_equipment.setForeground(new java.awt.Color(102, 102, 102));
+        txt_search_equipment.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_search_equipment.setText("Search Equipment");
+        txt_search_equipment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_search_equipmentMouseClicked(evt);
+            }
+        });
+        txt_search_equipment.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_search_equipmentKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout bank_panel_tbl2Layout = new javax.swing.GroupLayout(bank_panel_tbl2);
         bank_panel_tbl2.setLayout(bank_panel_tbl2Layout);
@@ -368,21 +378,18 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
             bank_panel_tbl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(bank_panel_tbl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(bank_panel_tbl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                     .addGroup(bank_panel_tbl2Layout.createSequentialGroup()
-                        .addComponent(jLabel152, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_search_equipment)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txt_search_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         bank_panel_tbl2Layout.setVerticalGroup(
             bank_panel_tbl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl2Layout.createSequentialGroup()
                 .addContainerGap(17, Short.MAX_VALUE)
-                .addGroup(bank_panel_tbl2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel152, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_search_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_search_equipment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -397,7 +404,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
                 .addComponent(bank_panel_input_area2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bank_panel_tbl2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         Equipment_Registration_PanelLayout.setVerticalGroup(
             Equipment_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,7 +414,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
                 .addGroup(Equipment_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bank_panel_tbl2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bank_panel_input_area2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -468,6 +475,8 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
 
     private void tbl_equipment_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_equipment_infoMouseClicked
         loadFieldsFromTable();
+        txt_search_equipment.setText("Search Equipment");
+        txt_search_equipment.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_equipment_infoMouseClicked
 
     private void btn_new_equipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_equipmentActionPerformed
@@ -483,6 +492,24 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         
         btn_save_equipment.setText("Save");
     }//GEN-LAST:event_btn_new_equipmentActionPerformed
+
+    private void txt_search_equipmentKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_equipmentKeyReleased
+        try {
+            dtmEquipment.setRowCount(0);
+            List<M_Equipment> allEquipments = equipmentController.getAllEquipmentsByLetter(txt_search_equipment.getText());
+            for (M_Equipment allEquipment : allEquipments) {
+                String[] rowData = {allEquipment.getEquipment_name()};
+                dtmEquipment.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_search_equipmentKeyReleased
+
+    private void txt_search_equipmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_search_equipmentMouseClicked
+        txt_search_equipment.setText("");
+        txt_search_equipment.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_search_equipmentMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -505,7 +532,6 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel149;
     private javax.swing.JLabel jLabel150;
     private javax.swing.JLabel jLabel151;
-    private javax.swing.JLabel jLabel152;
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
     private javax.swing.JScrollPane jScrollPane15;

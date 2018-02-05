@@ -9,8 +9,10 @@ import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryControlle
 import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
 import com.brotherssoft.samodconstructions.custom.AmountFieldFormat;
 import com.brotherssoft.samodconstructions.custom.Validation;
+import com.brotherssoft.samodconstructions.model.M_Project_Primary;
 import com.brotherssoft.samodconstructions.model.M_Project_Third;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.Color;
 import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
@@ -155,7 +157,6 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jScrollPane12 = new javax.swing.JScrollPane();
         tblFinalProject = new javax.swing.JTable();
         txt_search_name_ = new javax.swing.JTextField();
-        jLabel105 = new javax.swing.JLabel();
 
         Project_Tertiary_Info_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Project_Tertiary_Info_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -1103,10 +1104,20 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         });
         jScrollPane12.setViewportView(tblFinalProject);
 
-        txt_search_name_.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        jLabel105.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel105.setText("Search");
+        txt_search_name_.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_search_name_.setForeground(new java.awt.Color(102, 102, 102));
+        txt_search_name_.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_search_name_.setText("Search Project");
+        txt_search_name_.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_search_name_MouseClicked(evt);
+            }
+        });
+        txt_search_name_.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_search_name_KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1118,18 +1129,14 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel105, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel105, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1156,7 +1163,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Project_Tertiary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1416,6 +1423,9 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         searchByTableName();
         loadFeilsFromSearch();
         btn_save_third_project.setText("Update");
+        txt_search_name_.setText("Search Project");
+        txt_search_name_.setForeground(Color.GRAY);
+        
     }//GEN-LAST:event_tblFinalProjectMouseClicked
 
     private void btn_save_third_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_third_projectActionPerformed
@@ -1548,6 +1558,24 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         fieldFormat.formatDecimalAmount(txt_approved_period);
     }//GEN-LAST:event_cmb_Liquidity_DamageMouseClicked
 
+    private void txt_search_name_KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_name_KeyReleased
+        try {
+            dtmThird.setRowCount(0);
+            List<M_Project_Primary> allPrimaryProjects = primaryController.getAllPrimaryProjectsByLetter(txt_search_name_.getText());
+            for (M_Project_Primary allPrimaryProject : allPrimaryProjects) {
+                String[] rowData = {allPrimaryProject.getProject_primary_name()};
+                dtmThird.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Tertiary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_search_name_KeyReleased
+
+    private void txt_search_name_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_search_name_MouseClicked
+        txt_search_name_.setText("");
+        txt_search_name_.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_search_name_MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Project_Tertiary_Info_Panel;
@@ -1566,7 +1594,6 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     private org.jdesktop.swingx.JXDatePicker dp_retain_releaseDate;
     private org.jdesktop.swingx.JXDatePicker dp_take_over_date;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel122;
     private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel124;

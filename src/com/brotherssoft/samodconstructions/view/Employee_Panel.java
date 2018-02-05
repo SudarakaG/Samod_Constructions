@@ -14,6 +14,7 @@ import com.brotherssoft.samodconstructions.model.M_Employee;
 import com.brotherssoft.samodconstructions.model.R_Designation;
 import com.brotherssoft.samodconstructions.model.R_JobType;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.Color;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -122,7 +123,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         btn_branch1 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         tbl_employeeInfo = new javax.swing.JTable();
-        txt_branch_search1 = new javax.swing.JTextField();
+        txt_emp_search1 = new javax.swing.JTextField();
         cmb_searchEmp_jobType = new javax.swing.JComboBox<>();
         cmb_searchEmp_subContractor = new javax.swing.JComboBox<>();
 
@@ -221,6 +222,11 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel51.setText("NIC");
 
         txt_nic.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_nic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nicActionPerformed(evt);
+            }
+        });
         txt_nic.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_nicKeyPressed(evt);
@@ -662,10 +668,27 @@ public class Employee_Panel extends javax.swing.JPanel {
         });
         jScrollPane8.setViewportView(tbl_employeeInfo);
 
-        txt_branch_search1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txt_branch_search1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_branch_search1.setText("Search");
-        txt_branch_search1.setToolTipText("Use Bank Nname To Search !");
+        txt_emp_search1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_emp_search1.setForeground(new java.awt.Color(102, 102, 102));
+        txt_emp_search1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_emp_search1.setText("Search Employee");
+        txt_emp_search1.setToolTipText("Use Bank Nname To Search !");
+        txt_emp_search1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_emp_search1MouseClicked(evt);
+            }
+        });
+        txt_emp_search1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_emp_search1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_emp_search1KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_emp_search1KeyTyped(evt);
+            }
+        });
 
         cmb_searchEmp_jobType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Job Type -", "LOAD ALL" }));
         cmb_searchEmp_jobType.addActionListener(new java.awt.event.ActionListener() {
@@ -693,24 +716,19 @@ public class Employee_Panel extends javax.swing.JPanel {
                 .addGap(61, 61, 61)
                 .addComponent(cmb_searchEmp_subContractor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txt_branch_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_emp_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         tbl_panel_Branch2Layout.setVerticalGroup(
             tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbl_panel_Branch2Layout.createSequentialGroup()
-                .addGroup(tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
-                        .addContainerGap(20, Short.MAX_VALUE)
-                        .addComponent(txt_branch_search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_branch1)
-                            .addComponent(cmb_searchEmp_jobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmb_searchEmp_subContractor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addGroup(tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_branch1)
+                    .addComponent(cmb_searchEmp_jobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_searchEmp_subContractor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_emp_search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -793,8 +811,10 @@ public class Employee_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_branch1ActionPerformed
 
     private void tbl_employeeInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_employeeInfoMouseClicked
-        getDataFromTable();
         cmb_searchEmp_jobType.setSelectedIndex(0);
+        getDataFromTable(searchFromTableNIC());
+        txt_emp_search1.setText("Search Employee");
+        txt_emp_search1.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_employeeInfoMouseClicked
 
     private void btn_emp_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_salaryActionPerformed
@@ -855,6 +875,15 @@ public class Employee_Panel extends javax.swing.JPanel {
 
     private void txt_nicKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nicKeyReleased
         Validation.textNIC(txt_nic);
+        try {
+            M_Employee searchEmployeeByNIC = employeeController.searchEmployeeByNIC(txt_nic.getText());
+            if(searchEmployeeByNIC != null){
+                JOptionPane.showMessageDialog(this, "An Employee Already Registered on this NIC..");
+                getDataFromTable(searchEmployeeByNIC);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_txt_nicKeyReleased
 
     private void txt_contact_1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_contact_1KeyPressed
@@ -944,6 +973,36 @@ public class Employee_Panel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cmb_searchEmp_subContractorActionPerformed
 
+    private void txt_emp_search1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyTyped
+        
+    }//GEN-LAST:event_txt_emp_search1KeyTyped
+
+    private void txt_emp_search1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyPressed
+        
+    }//GEN-LAST:event_txt_emp_search1KeyPressed
+
+    private void txt_emp_search1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_emp_search1MouseClicked
+        txt_emp_search1.setText("");
+        txt_emp_search1.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_emp_search1MouseClicked
+
+    private void txt_emp_search1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyReleased
+        try {
+            dtmEmployee.setRowCount(0);
+            List<M_Employee> allEmployeesByLetter = employeeController.getAllEmployeesByLetter(txt_emp_search1.getText());
+            for (M_Employee m_Employee : allEmployeesByLetter) {
+                String[] rowData = {m_Employee.getEmp_initials() +"  "+ m_Employee.getEmp_firstName(), m_Employee.getEmp_NIC(), jobTypeController.searchJobType(m_Employee.getEmp_jobType_id()).getJobType_name(), designationController.searchDesignation(m_Employee.getEmp_designation_id()).getDesignation_name()};
+                dtmEmployee.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_emp_search1KeyReleased
+
+    private void txt_nicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nicActionPerformed
+        date_picker_birth.requestFocus();
+    }//GEN-LAST:event_txt_nicActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Employee_Registration_Panel;
@@ -1000,10 +1059,10 @@ public class Employee_Panel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_address_country;
     private javax.swing.JTextField txt_address_no;
     private javax.swing.JTextField txt_address_street;
-    private javax.swing.JTextField txt_branch_search1;
     private javax.swing.JTextField txt_contact_1;
     private javax.swing.JTextField txt_contact_2;
     private javax.swing.JTextField txt_contact_3;
+    private javax.swing.JTextField txt_emp_search1;
     private javax.swing.JTextField txt_firt_name;
     private javax.swing.JTextField txt_nic;
     private javax.swing.JTextField txt_sur_Name;
@@ -1100,9 +1159,9 @@ public class Employee_Panel extends javax.swing.JPanel {
         }
     }
 
-    private void getDataFromTable() {
+    private void getDataFromTable(M_Employee employee) {
         try {
-            M_Employee employee = searchFromTableNIC();
+             
             cmb_employee_title.setSelectedIndex(Integer.parseInt(employee.getEmp_title()));
             txt_Initials.setText(employee.getEmp_initials());
             txt_firt_name.setText(employee.getEmp_firstName());

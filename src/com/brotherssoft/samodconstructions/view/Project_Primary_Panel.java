@@ -29,6 +29,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
 import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
+import java.awt.Color;
 
 /**
  *
@@ -200,7 +201,6 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jScrollPane12 = new javax.swing.JScrollPane();
         tblPrimaryProject = new javax.swing.JTable();
         txt_search_name_ = new javax.swing.JTextField();
-        jLabel105 = new javax.swing.JLabel();
 
         Project_Primary_Info_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Project_Primary_Info_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -962,12 +962,13 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                     .addComponent(jLabel137, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_project_tender_result, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_to_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_new_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(btn_add_primary_project)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_to_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_new_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmb_project_Specialiti, cmb_project_bid_payment_mode, cmb_project_grade_1, cmb_project_made_of_states_1, cmb_project_type_1, cmb_project_vatAdded, txt_project_address4, txt_project_bid_amount_1, txt_project_bid_duration_1, txt_project_bid_organization, txt_project_client_1, txt_project_client_address1, txt_project_client_address2, txt_project_client_address3, txt_project_client_address4, txt_project_client_contact_1, txt_project_client_contact_1_2, txt_project_contract_bid_1, txt_project_engineer_estimate, txt_project_states_active_date_1, txt_project_states_inactive_date_1, txt_project_tender_fee_1, txt_project_tender_open_date_1});
@@ -1027,10 +1028,20 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         });
         jScrollPane12.setViewportView(tblPrimaryProject);
 
-        txt_search_name_.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        jLabel105.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel105.setText("Search");
+        txt_search_name_.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_search_name_.setForeground(new java.awt.Color(102, 102, 102));
+        txt_search_name_.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_search_name_.setText("Search Project");
+        txt_search_name_.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_search_name_MouseClicked(evt);
+            }
+        });
+        txt_search_name_.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_search_name_KeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1042,19 +1053,15 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel105, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel105, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1105,6 +1112,8 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     private void tblPrimaryProjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPrimaryProjectMouseClicked
         searchProjectPrimaryByTableName();
         loadFromPrimaryProjectTable();
+        txt_search_name_.setText("Search Project");
+        txt_search_name_.setForeground(Color.GRAY);
     }//GEN-LAST:event_tblPrimaryProjectMouseClicked
 
     private void btn_new_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_projectActionPerformed
@@ -1358,6 +1367,24 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         secondery_Panel.setVisible(true);
     }//GEN-LAST:event_btn_to_secondary_projectActionPerformed
 
+    private void txt_search_name_KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_name_KeyReleased
+        try {
+            dtmPriProject.setRowCount(0);
+            List<M_Project_Primary> allPrimaryProjects = primary_ProjectController.getAllPrimaryProjectsByLetter(txt_search_name_.getText());
+            for (M_Project_Primary allPrimaryProject : allPrimaryProjects) {
+                String[] rowData = {allPrimaryProject.getProject_primary_name()};
+                dtmPriProject.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_search_name_KeyReleased
+
+    private void txt_search_name_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_search_name_MouseClicked
+        txt_search_name_.setText("");
+        txt_search_name_.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_search_name_MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Project_Primary_Info_Panel;
@@ -1375,7 +1402,6 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
     private javax.swing.JLabel jLabel104;
-    private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel107;
     private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel110;

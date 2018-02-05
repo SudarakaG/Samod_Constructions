@@ -9,6 +9,7 @@ import com.brotherssoft.samodconstructions.controller.R_WorkController;
 import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.model.R_Work;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -66,7 +67,6 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         jScrollPane17 = new javax.swing.JScrollPane();
         tbl_workInfo = new javax.swing.JTable();
         txt_search_work = new javax.swing.JTextField();
-        jLabel154 = new javax.swing.JLabel();
 
         Work_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Work_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -255,10 +255,20 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         });
         jScrollPane17.setViewportView(tbl_workInfo);
 
-        txt_search_work.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-
-        jLabel154.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel154.setText("Search Work");
+        txt_search_work.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_search_work.setForeground(new java.awt.Color(102, 102, 102));
+        txt_search_work.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_search_work.setText("Search Work");
+        txt_search_work.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_search_workMouseClicked(evt);
+            }
+        });
+        txt_search_work.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_search_workKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout bank_panel_tbl3Layout = new javax.swing.GroupLayout(bank_panel_tbl3);
         bank_panel_tbl3.setLayout(bank_panel_tbl3Layout);
@@ -266,21 +276,18 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
             bank_panel_tbl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bank_panel_tbl3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(bank_panel_tbl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane17)
-                    .addGroup(bank_panel_tbl3Layout.createSequentialGroup()
-                        .addComponent(jLabel154, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_search_work)))
+                .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(bank_panel_tbl3Layout.createSequentialGroup()
+                .addGap(243, 243, 243)
+                .addComponent(txt_search_work, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bank_panel_tbl3Layout.setVerticalGroup(
             bank_panel_tbl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(bank_panel_tbl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel154, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_search_work, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_search_work, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -334,6 +341,8 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
 
     private void tbl_workInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_workInfoMouseClicked
         loadFieldsFromTable();
+        txt_search_work.setText("Search Work");
+        txt_search_work.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_workInfoMouseClicked
 
     private void btn_work_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_work_newActionPerformed
@@ -343,6 +352,26 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         
         btn_save_work.setText("Save");
     }//GEN-LAST:event_btn_work_newActionPerformed
+
+    private void txt_search_workKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_workKeyReleased
+        try {
+            
+            dtmWork.setRowCount(0);
+            List<R_Work> allWorks = workController.getAllWorksByLetter(txt_search_work.getText());
+            for (R_Work allWork : allWorks) {
+                String[] rowData = {allWork.getWork_name()};
+                dtmWork.addRow(rowData);
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Work_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_search_workKeyReleased
+
+    private void txt_search_workMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_search_workMouseClicked
+        txt_search_work.setText("");
+        txt_search_work.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_search_workMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -354,7 +383,6 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
     private javax.swing.JButton btn_work_new;
     private javax.swing.JComboBox<String> cmb_work_states1;
     private javax.swing.JLabel jLabel153;
-    private javax.swing.JLabel jLabel154;
     private javax.swing.JLabel jLabel155;
     private javax.swing.JLabel jLabel156;
     private javax.swing.JLabel jLabel90;

@@ -11,6 +11,7 @@ import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.model.M_Material;
 import com.brotherssoft.samodconstructions.model.R_Unit;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -76,7 +77,6 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         bank_panel_tbl4 = new javax.swing.JPanel();
         jScrollPane19 = new javax.swing.JScrollPane();
         tbl_material_info = new javax.swing.JTable();
-        jLabel162 = new javax.swing.JLabel();
         txt_search_material = new javax.swing.JTextField();
 
         Meterial_Registration_Panel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -291,10 +291,20 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         });
         jScrollPane19.setViewportView(tbl_material_info);
 
-        jLabel162.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel162.setText("Material Name");
-
-        txt_search_material.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_search_material.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_search_material.setForeground(new java.awt.Color(102, 102, 102));
+        txt_search_material.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_search_material.setText("Search Material");
+        txt_search_material.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_search_materialMouseClicked(evt);
+            }
+        });
+        txt_search_material.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_search_materialKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout bank_panel_tbl4Layout = new javax.swing.GroupLayout(bank_panel_tbl4);
         bank_panel_tbl4.setLayout(bank_panel_tbl4Layout);
@@ -302,21 +312,18 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
             bank_panel_tbl4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(bank_panel_tbl4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane19)
+                .addGroup(bank_panel_tbl4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                     .addGroup(bank_panel_tbl4Layout.createSequentialGroup()
-                        .addComponent(jLabel162, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_search_material, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txt_search_material, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         bank_panel_tbl4Layout.setVerticalGroup(
             bank_panel_tbl4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(bank_panel_tbl4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel162, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_search_material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_search_material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -371,6 +378,8 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
 
     private void tbl_material_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_material_infoMouseClicked
         loadFieldsFromTable();
+        txt_search_material.setText("Search Material");
+        txt_search_material.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_material_infoMouseClicked
 
     private void btn_new_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_materialActionPerformed
@@ -382,6 +391,33 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         
         btn_save_material.setText("Save");
     }//GEN-LAST:event_btn_new_materialActionPerformed
+
+    private void txt_search_materialKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_materialKeyReleased
+        try {
+            dtmMaterial.setRowCount(0);
+            List<M_Material> allMaterials = materialController.getAllMaterialsByLetter(txt_search_material.getText());
+            for (M_Material allMaterial : allMaterials) {
+                String status = "";
+                if(allMaterial.getMaterial_status() == 0){
+                    status = "Active";
+                }else{
+                    status = "Inactive";
+                }
+                Date material_regDate = allMaterial.getMaterial_regDate();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                String format = sdf.format(material_regDate);
+                String[] rowData = {allMaterial.getMaterial_name(),status,format};
+                dtmMaterial.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_search_materialKeyReleased
+
+    private void txt_search_materialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_search_materialMouseClicked
+        txt_search_material.setText("");
+        txt_search_material.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_search_materialMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -399,7 +435,6 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel159;
     private javax.swing.JLabel jLabel160;
     private javax.swing.JLabel jLabel161;
-    private javax.swing.JLabel jLabel162;
     private javax.swing.JLabel jLabel88;
     private javax.swing.JLabel jLabel89;
     private javax.swing.JScrollPane jScrollPane18;
