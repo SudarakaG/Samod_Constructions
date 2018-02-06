@@ -160,8 +160,18 @@ public class Bank_Panel extends javax.swing.JPanel {
         jLabel16.setText("Description");
 
         txtBranchName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtBranchName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBranchNameActionPerformed(evt);
+            }
+        });
 
         txtBranchCode.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtBranchCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBranchCodeActionPerformed(evt);
+            }
+        });
 
         taBranchDesc.setColumns(20);
         taBranchDesc.setRows(5);
@@ -177,14 +187,29 @@ public class Bank_Panel extends javax.swing.JPanel {
 
         cmbBank.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmbBank.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Bank -" }));
+        cmbBank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbBankActionPerformed(evt);
+            }
+        });
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel17.setText("Branch Address");
 
         txtBranchAddress.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtBranchAddress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBranchAddressActionPerformed(evt);
+            }
+        });
 
         cmbBranchStates.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmbBranchStates.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+        cmbBranchStates.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbBranchStatesActionPerformed(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel18.setText("States");
@@ -466,8 +491,18 @@ public class Bank_Panel extends javax.swing.JPanel {
         jLabel9.setText("Description");
 
         txt_bank_name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_bank_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_bank_nameActionPerformed(evt);
+            }
+        });
 
         txt_bank_code.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_bank_code.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_bank_codeActionPerformed(evt);
+            }
+        });
 
         bank_desc.setColumns(20);
         bank_desc.setRows(5);
@@ -483,6 +518,11 @@ public class Bank_Panel extends javax.swing.JPanel {
 
         cmb_bank_states.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_bank_states.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+        cmb_bank_states.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_bank_statesActionPerformed(evt);
+            }
+        });
 
         btn_branch.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_branch.setText("Branch");
@@ -864,6 +904,38 @@ public class Bank_Panel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_bankSearchActionPerformed
 
+    private void txt_bank_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_bank_nameActionPerformed
+        txt_bank_code.requestFocus();
+    }//GEN-LAST:event_txt_bank_nameActionPerformed
+
+    private void txt_bank_codeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_bank_codeActionPerformed
+        cmb_bank_states.requestFocus();
+    }//GEN-LAST:event_txt_bank_codeActionPerformed
+
+    private void cmb_bank_statesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_bank_statesActionPerformed
+        bank_desc.requestFocus();
+    }//GEN-LAST:event_cmb_bank_statesActionPerformed
+
+    private void txtBranchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBranchNameActionPerformed
+        txtBranchCode.requestFocus();
+    }//GEN-LAST:event_txtBranchNameActionPerformed
+
+    private void txtBranchCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBranchCodeActionPerformed
+        txtBranchAddress.requestFocus();
+    }//GEN-LAST:event_txtBranchCodeActionPerformed
+
+    private void txtBranchAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBranchAddressActionPerformed
+        cmbBank.requestFocus();
+    }//GEN-LAST:event_txtBranchAddressActionPerformed
+
+    private void cmbBankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBankActionPerformed
+        cmbBranchStates.requestFocus();
+    }//GEN-LAST:event_cmbBankActionPerformed
+
+    private void cmbBranchStatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBranchStatesActionPerformed
+        taBranchDesc.requestFocus();
+    }//GEN-LAST:event_cmbBranchStatesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bank_panel;
@@ -1071,7 +1143,7 @@ public class Bank_Panel extends javax.swing.JPanel {
     }
 
     private void saveBranch() {
-
+        if(cmbBank.getSelectedIndex() != 0){
         try {
 
             int branch_id = IDGenerator.getNewID("r_branch", "BRANCH_ID");
@@ -1094,6 +1166,9 @@ public class Bank_Panel extends javax.swing.JPanel {
 
         } catch (Exception ex) {
             Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Select the Bank");
         }
         loadBranchTable();
 
@@ -1156,7 +1231,7 @@ public class Bank_Panel extends javax.swing.JPanel {
     }
 
     private void updateBranch() {
-        
+        if(cmbBank.getSelectedIndex() != 0){
         try {
             
             int branch_id = searchBranchBytableCode().getBranch_id();
@@ -1178,6 +1253,9 @@ public class Bank_Panel extends javax.swing.JPanel {
             
         } catch (Exception ex) {
             Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Select the Bank");
         }
         
         loadBranchTable();

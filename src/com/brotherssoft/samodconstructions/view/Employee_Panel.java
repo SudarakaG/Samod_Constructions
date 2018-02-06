@@ -177,46 +177,96 @@ public class Employee_Panel extends javax.swing.JPanel {
 
         cmb_employee_title.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_employee_title.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mrs", "Ms", "Rev", "Dr", "Master" }));
+        cmb_employee_title.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_employee_titleActionPerformed(evt);
+            }
+        });
 
         jLabel29.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel29.setText("Initials");
 
         txt_Initials.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_Initials.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_InitialsActionPerformed(evt);
+            }
+        });
 
         jLabel30.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel30.setText("Frist Name");
 
         txt_firt_name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_firt_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_firt_nameActionPerformed(evt);
+            }
+        });
 
         jLabel33.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel33.setText("Middle Name");
 
         txt_Middle_Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_Middle_Name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Middle_NameActionPerformed(evt);
+            }
+        });
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel47.setText("Last Name");
 
         txt_sur_Name.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_sur_Name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_sur_NameActionPerformed(evt);
+            }
+        });
+        txt_sur_Name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_sur_NameKeyReleased(evt);
+            }
+        });
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel32.setText("Address No");
 
         txt_address_no.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_address_no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_address_noActionPerformed(evt);
+            }
+        });
 
         jLabel34.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel34.setText("Address Street");
 
         txt_address_street.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_address_street.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_address_streetActionPerformed(evt);
+            }
+        });
 
         jLabel49.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel49.setText("Address City");
 
         txt_Address_city.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_Address_city.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_Address_cityActionPerformed(evt);
+            }
+        });
 
         jLabel50.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel50.setText("Address Country");
 
         txt_address_country.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_address_country.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_address_countryActionPerformed(evt);
+            }
+        });
 
         jLabel51.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel51.setText("NIC");
@@ -242,10 +292,21 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel52.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel52.setText("Date of Birth");
 
+        date_picker_birth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                date_picker_birthActionPerformed(evt);
+            }
+        });
+
         jLabel53.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel53.setText("Contact No 1");
 
         txt_contact_1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_contact_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_contact_1ActionPerformed(evt);
+            }
+        });
         txt_contact_1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_contact_1KeyPressed(evt);
@@ -259,6 +320,11 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel54.setText("Contact No 2");
 
         txt_contact_2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_contact_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_contact_2ActionPerformed(evt);
+            }
+        });
         txt_contact_2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_contact_2KeyPressed(evt);
@@ -272,6 +338,11 @@ public class Employee_Panel extends javax.swing.JPanel {
         jLabel55.setText("Contact No 3");
 
         txt_contact_3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_contact_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_contact_3ActionPerformed(evt);
+            }
+        });
         txt_contact_3.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_contact_3KeyPressed(evt);
@@ -303,9 +374,25 @@ public class Employee_Panel extends javax.swing.JPanel {
 
         cmb_emp_designation.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_emp_designation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Designation -" }));
+        cmb_emp_designation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmb_emp_designationMouseClicked(evt);
+            }
+        });
+        cmb_emp_designation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_emp_designationActionPerformed(evt);
+            }
+        });
 
         jLabel59.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel59.setText("Date of Join");
+
+        date_picker_joinDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                date_picker_joinDateActionPerformed(evt);
+            }
+        });
 
         btn_emp_new.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_emp_new.setText("New");
@@ -336,6 +423,11 @@ public class Employee_Panel extends javax.swing.JPanel {
 
         cmb_emp_subContractor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_emp_subContractor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Sub Contractor -" }));
+        cmb_emp_subContractor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_emp_subContractorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout txt_Input_Panel_Branch2Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch2);
         txt_Input_Panel_Branch2.setLayout(txt_Input_Panel_Branch2Layout);
@@ -401,11 +493,12 @@ public class Employee_Panel extends javax.swing.JPanel {
                             .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                                 .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_address_street, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_address_no, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txt_address_no, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                .addGap(150, 150, 150)
+                                .addComponent(txt_address_street, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblSubContractor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -489,15 +582,12 @@ public class Employee_Panel extends javax.swing.JPanel {
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_Address_city, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_address_country, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(37, 37, 37))
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmb_emp_jobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmb_emp_subContractor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSubContractor, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -507,7 +597,10 @@ public class Employee_Panel extends javax.swing.JPanel {
                             .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_address_country, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(cmb_emp_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(5, 5, 5)))
                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -520,13 +613,13 @@ public class Employee_Panel extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(date_picker_joinDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(date_picker_joinDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton4.setText("List of Employee");
+        jButton4.setText("List of Employees");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
@@ -542,17 +635,17 @@ public class Employee_Panel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(Employee_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_Input_Panel_Branch2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Employee_Registration_PanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(Employee_Registration_PanelLayout.createSequentialGroup()
+                        .addGap(0, 888, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         Employee_Registration_PanelLayout.setVerticalGroup(
             Employee_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Employee_Registration_PanelLayout.createSequentialGroup()
                 .addComponent(bank_panel_hedding3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_Input_Panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
@@ -860,9 +953,11 @@ public class Employee_Panel extends javax.swing.JPanel {
             } catch (Exception ex) {
                 Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
             }
+            cmb_emp_subContractor.requestFocus();
         } else {
             lblSubContractor.setVisible(false);
             cmb_emp_subContractor.setVisible(false);
+            cmb_emp_designation.requestFocus();
         }
     }//GEN-LAST:event_cmb_emp_jobTypeActionPerformed
 
@@ -1003,6 +1098,89 @@ public class Employee_Panel extends javax.swing.JPanel {
         date_picker_birth.requestFocus();
     }//GEN-LAST:event_txt_nicActionPerformed
 
+    private void cmb_employee_titleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_employee_titleActionPerformed
+        txt_Initials.requestFocus();
+    }//GEN-LAST:event_cmb_employee_titleActionPerformed
+
+    private void txt_InitialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_InitialsActionPerformed
+        txt_firt_name.requestFocus();
+    }//GEN-LAST:event_txt_InitialsActionPerformed
+
+    private void txt_firt_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_firt_nameActionPerformed
+        txt_Middle_Name.requestFocus();
+    }//GEN-LAST:event_txt_firt_nameActionPerformed
+
+    private void txt_Middle_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Middle_NameActionPerformed
+        txt_sur_Name.requestFocus();
+    }//GEN-LAST:event_txt_Middle_NameActionPerformed
+
+    private void txt_sur_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_sur_NameActionPerformed
+        txt_address_no.requestFocus();
+    }//GEN-LAST:event_txt_sur_NameActionPerformed
+
+    private void txt_address_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_address_noActionPerformed
+        txt_address_street.requestFocus();
+    }//GEN-LAST:event_txt_address_noActionPerformed
+
+    private void txt_address_streetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_address_streetActionPerformed
+        txt_Address_city.requestFocus();
+    }//GEN-LAST:event_txt_address_streetActionPerformed
+
+    private void txt_Address_cityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_Address_cityActionPerformed
+        txt_address_country.requestFocus();
+    }//GEN-LAST:event_txt_Address_cityActionPerformed
+
+    private void txt_address_countryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_address_countryActionPerformed
+        date_picker_joinDate.requestFocus();
+    }//GEN-LAST:event_txt_address_countryActionPerformed
+
+    private void date_picker_joinDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_date_picker_joinDateActionPerformed
+        txt_nic.requestFocus();
+    }//GEN-LAST:event_date_picker_joinDateActionPerformed
+
+    private void txt_sur_NameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_sur_NameKeyReleased
+        try {
+            M_Employee searchByFullName = employeeController.searchByFullName(txt_Initials.getText(), txt_firt_name.getText(), txt_Middle_Name.getText(), txt_sur_Name.getText());
+            if(searchByFullName != null){
+                JOptionPane.showMessageDialog(this, "An Employee Registered from this Name.. \n" +searchByFullName.getEmp_firstName()+"  "+searchByFullName.getEmp_middleName()+"  "+searchByFullName.getEmp_surName());
+                getDataFromTable(searchByFullName);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_sur_NameKeyReleased
+
+    private void date_picker_birthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_date_picker_birthActionPerformed
+        txt_contact_1.requestFocus();
+    }//GEN-LAST:event_date_picker_birthActionPerformed
+
+    private void txt_contact_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contact_1ActionPerformed
+        txt_contact_2.requestFocus();
+    }//GEN-LAST:event_txt_contact_1ActionPerformed
+
+    private void txt_contact_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contact_2ActionPerformed
+        txt_contact_3.requestFocus();
+    }//GEN-LAST:event_txt_contact_2ActionPerformed
+
+    private void txt_contact_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contact_3ActionPerformed
+        cmb_emp_jobType.requestFocus();
+    }//GEN-LAST:event_txt_contact_3ActionPerformed
+
+    private void cmb_emp_subContractorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_emp_subContractorActionPerformed
+        cmb_emp_designation.requestFocus();
+    }//GEN-LAST:event_cmb_emp_subContractorActionPerformed
+
+    private void cmb_emp_designationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_emp_designationActionPerformed
+        cmb_emp_status.requestFocus();
+    }//GEN-LAST:event_cmb_emp_designationActionPerformed
+
+    private void cmb_emp_designationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmb_emp_designationMouseClicked
+        if (cmb_emp_jobType.getSelectedItem().toString().equalsIgnoreCase("Sub Contractor Staff") && cmb_emp_subContractor.getSelectedIndex() == 0) {
+            cmb_emp_designation.getUI().setPopupVisible(cmb_emp_designation, false);
+            JOptionPane.showMessageDialog(this, "Please Select the Sub Contractor Name");
+        }
+    }//GEN-LAST:event_cmb_emp_designationMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Employee_Registration_Panel;
@@ -1069,6 +1247,7 @@ public class Employee_Panel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void addEmployee() {
+        if(cmb_emp_jobType.getSelectedIndex() != 0 && cmb_emp_designation.getSelectedIndex() != 0){
         try {
 
             int empId = IDGenerator.getNewID("m_emp", "EMP_ID");
@@ -1107,6 +1286,8 @@ public class Employee_Panel extends javax.swing.JPanel {
 
         } catch (Exception ex) {
             Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }}else{
+            JOptionPane.showMessageDialog(this, "Please Select the Job Type & Designation");
         }
 
     }
@@ -1207,6 +1388,7 @@ public class Employee_Panel extends javax.swing.JPanel {
     }
 
     private void updateEmployee() {
+        if(cmb_emp_jobType.getSelectedIndex() != 0 && cmb_emp_designation.getSelectedIndex() != 0){
         try {
 
             int empId = searchFromTableNIC().getEmp_id();
@@ -1245,6 +1427,9 @@ public class Employee_Panel extends javax.swing.JPanel {
 
         } catch (Exception ex) {
             Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Select the Job Type & Designation");
         }
     }
 

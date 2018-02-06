@@ -8,12 +8,14 @@ package com.brotherssoft.samodconstructions.view;
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.controller.R_FuelTypeController;
 import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
+import com.brotherssoft.samodconstructions.custom.AmountFieldFormat;
 import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.model.M_Vehicle;
 import com.brotherssoft.samodconstructions.model.R_FuelType;
 import com.brotherssoft.samodconstructions.model.R_VehicleType;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
 import java.awt.Color;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -33,6 +35,8 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
     M_VehicleController vehicleController;
     
     DefaultTableModel dtmVehicle;
+    DecimalFormat decimalFormat = new DecimalFormat("0.00");
+    AmountFieldFormat fieldFormat = new AmountFieldFormat();
     
     /**
      * Creates new form Vehical_Registration_Panel
@@ -147,6 +151,11 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
 
         txt_engine_no.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_engine_no.setToolTipText("");
+        txt_engine_no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_engine_noActionPerformed(evt);
+            }
+        });
 
         btn_save_vehicle.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_save_vehicle.setText("Save");
@@ -166,6 +175,11 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
 
         cmb_vehicle_year.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_vehicle_year.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Select Year -" }));
+        cmb_vehicle_year.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_vehicle_yearActionPerformed(evt);
+            }
+        });
 
         btn_vehicle_allocation.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_vehicle_allocation.setText("Vehicle Allocation");
@@ -180,39 +194,99 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
 
         cmb_vehicle_type.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_vehicle_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Vehicle Type -" }));
+        cmb_vehicle_type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_vehicle_typeActionPerformed(evt);
+            }
+        });
 
         jLabel168.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel168.setText("Chasis No");
 
         txt_vehi_chasis_no.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_vehi_chasis_no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_vehi_chasis_noActionPerformed(evt);
+            }
+        });
 
         jLabel169.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel169.setText("Amount");
 
         txt_vehicle_amount.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_vehicle_amount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_vehicle_amountMouseClicked(evt);
+            }
+        });
+        txt_vehicle_amount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_vehicle_amountActionPerformed(evt);
+            }
+        });
 
         jLabel170.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel170.setText("Fuel Type");
 
         cmb_vehi_fuel_type.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_vehi_fuel_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Fuel Type -" }));
+        cmb_vehi_fuel_type.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmb_vehi_fuel_typeMouseClicked(evt);
+            }
+        });
+        cmb_vehi_fuel_type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_vehi_fuel_typeActionPerformed(evt);
+            }
+        });
 
         jLabel171.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel171.setText("Depriciation Rate");
 
         txt_vehicle_depriation_rate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_vehicle_depriation_rate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_vehicle_depriation_rateMouseClicked(evt);
+            }
+        });
+        txt_vehicle_depriation_rate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_vehicle_depriation_rateActionPerformed(evt);
+            }
+        });
 
         jLabel172.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel172.setText("Status");
 
         cmb_vehicle_status.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_vehicle_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+        cmb_vehicle_status.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmb_vehicle_statusMouseClicked(evt);
+            }
+        });
+        cmb_vehicle_status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_vehicle_statusActionPerformed(evt);
+            }
+        });
 
         jLabel166.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel166.setText("Registration No");
 
         txt_vehicle_regNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_vehicle_regNo.setToolTipText("");
+        txt_vehicle_regNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_vehicle_regNoActionPerformed(evt);
+            }
+        });
+        txt_vehicle_regNo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_vehicle_regNoKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout bank_panel_input_area5Layout = new javax.swing.GroupLayout(bank_panel_input_area5);
         bank_panel_input_area5.setLayout(bank_panel_input_area5Layout);
@@ -446,7 +520,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_save_vehicleActionPerformed
 
     private void tbl_vehicle_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_vehicle_infoMouseClicked
-        loadFromVehicleTable();
+        loadFromVehicleTable(getSelectedVehicleNoFromTable());
         txt_search_vehicle.setText("Search Vehicle");
         txt_search_vehicle.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_vehicle_infoMouseClicked
@@ -486,6 +560,73 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         txt_search_vehicle.setText("");
         txt_search_vehicle.setForeground(Color.BLACK);
     }//GEN-LAST:event_txt_search_vehicleMouseClicked
+
+    private void cmb_vehicle_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_vehicle_typeActionPerformed
+        txt_vehicle_regNo.requestFocus();
+    }//GEN-LAST:event_cmb_vehicle_typeActionPerformed
+
+    private void txt_vehicle_regNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vehicle_regNoActionPerformed
+        txt_engine_no.requestFocus();
+    }//GEN-LAST:event_txt_vehicle_regNoActionPerformed
+
+    private void txt_engine_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_engine_noActionPerformed
+        txt_vehi_chasis_no.requestFocus();
+    }//GEN-LAST:event_txt_engine_noActionPerformed
+
+    private void txt_vehi_chasis_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vehi_chasis_noActionPerformed
+        cmb_vehicle_year.requestFocus();
+    }//GEN-LAST:event_txt_vehi_chasis_noActionPerformed
+
+    private void cmb_vehicle_yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_vehicle_yearActionPerformed
+        txt_vehicle_amount.requestFocus();
+    }//GEN-LAST:event_cmb_vehicle_yearActionPerformed
+
+    private void txt_vehicle_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vehicle_amountActionPerformed
+        fieldFormat.formatDecimalAmount(txt_vehicle_amount);
+        cmb_vehi_fuel_type.requestFocus();
+    }//GEN-LAST:event_txt_vehicle_amountActionPerformed
+
+    private void cmb_vehi_fuel_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_vehi_fuel_typeActionPerformed
+        fieldFormat.formatDecimalAmount(txt_vehicle_amount);
+        txt_vehicle_depriation_rate.requestFocus();
+    }//GEN-LAST:event_cmb_vehi_fuel_typeActionPerformed
+
+    private void txt_vehicle_depriation_rateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vehicle_depriation_rateActionPerformed
+        fieldFormat.formatDecimalAmount(txt_vehicle_depriation_rate);
+        cmb_vehicle_status.requestFocus();
+    }//GEN-LAST:event_txt_vehicle_depriation_rateActionPerformed
+
+    private void txt_vehicle_regNoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vehicle_regNoKeyReleased
+        try {
+            M_Vehicle searchVehicle = vehicleController.searchVehicle(txt_vehicle_regNo.getText());
+            if (searchVehicle != null) {
+                JOptionPane.showMessageDialog(this, "A Vehicle Already Saved from this Regitration Number");
+                loadFromVehicleTable(searchVehicle);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_vehicle_regNoKeyReleased
+
+    private void txt_vehicle_amountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_vehicle_amountMouseClicked
+        fieldFormat.clearAmountField(txt_vehicle_amount);
+    }//GEN-LAST:event_txt_vehicle_amountMouseClicked
+
+    private void cmb_vehi_fuel_typeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmb_vehi_fuel_typeMouseClicked
+        fieldFormat.formatDecimalAmount(txt_vehicle_amount);
+    }//GEN-LAST:event_cmb_vehi_fuel_typeMouseClicked
+
+    private void txt_vehicle_depriation_rateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_vehicle_depriation_rateMouseClicked
+        fieldFormat.clearAmountField(txt_vehicle_depriation_rate);
+    }//GEN-LAST:event_txt_vehicle_depriation_rateMouseClicked
+
+    private void cmb_vehicle_statusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmb_vehicle_statusMouseClicked
+        fieldFormat.formatDecimalAmount(txt_vehicle_depriation_rate);
+    }//GEN-LAST:event_cmb_vehicle_statusMouseClicked
+
+    private void cmb_vehicle_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_vehicle_statusActionPerformed
+        fieldFormat.formatDecimalAmount(txt_vehicle_depriation_rate);
+    }//GEN-LAST:event_cmb_vehicle_statusActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -579,6 +720,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
     }
 
     private void saveVehicle() {
+        if(cmb_vehicle_type.getSelectedIndex() != 0 && cmb_vehi_fuel_type.getSelectedIndex() != 0 ){
         try {
             
             int vehicleId = IDGenerator.getNewID("m_vehicle", "VEHICLE_ID");
@@ -609,22 +751,25 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(Vehical_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Check that Vehicle Type & Fuel Type are Selected");
+        }
         
         loadVehicleTable();
     }
 
-    private void loadFromVehicleTable() {            
+    private void loadFromVehicleTable(M_Vehicle vehicle) {            
         try {
             
-            M_Vehicle vehicle = getSelectedVehicleNoFromTable();
+             
             cmb_vehicle_type.setSelectedItem(vehivleTypeController.searchVehicleType(vehicle.getVehicle_type_id()).getVehicleType_name());
             txt_vehicle_regNo.setText(vehicle.getVehicle_regNo());
             txt_engine_no.setText(vehicle.getVehicle_engineNo());
             txt_vehi_chasis_no.setText(vehicle.getVehicle_chasisNo());
             cmb_vehicle_year.setSelectedItem(vehicle.getVehicle_year());
-            txt_vehicle_amount.setText(Double.toString(vehicle.getVehicle_amount()));
+            txt_vehicle_amount.setText(decimalFormat.format(vehicle.getVehicle_amount()));
             cmb_vehi_fuel_type.setSelectedItem(fuelTypeController.searchFuelType(vehicle.getVehicle_fuelType()).getFuel_name());
-            txt_vehicle_depriation_rate.setText(Double.toString(vehicle.getVehicle_depreciationRate()));
+            txt_vehicle_depriation_rate.setText(decimalFormat.format(vehicle.getVehicle_depreciationRate()));
             if(vehicle.getVehicle_status().equalsIgnoreCase("A")){
                 cmb_vehicle_status.setSelectedIndex(0);
             }else{
@@ -655,6 +800,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
     }
 
     private void updateVehicle() {
+        if(cmb_vehicle_type.getSelectedIndex() != 0 && cmb_vehi_fuel_type.getSelectedIndex() != 0 ){
         try {
             
             int vehicleId = getSelectedVehicleNoFromTable().getVehicle_id();
@@ -685,7 +831,9 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(Vehical_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Check that Vehicle Type & Fuel Type are Selected");
+        }
         loadVehicleTable();
     }
 }

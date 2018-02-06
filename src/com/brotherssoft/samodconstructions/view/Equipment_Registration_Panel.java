@@ -14,6 +14,7 @@ import com.brotherssoft.samodconstructions.model.R_Asset;
 import com.brotherssoft.samodconstructions.model.R_AssetCategory;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -148,8 +149,23 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         jLabel143.setText("Reg/Serial Number");
 
         txt_equipment_name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_equipment_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_equipment_nameActionPerformed(evt);
+            }
+        });
+        txt_equipment_name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_equipment_nameKeyReleased(evt);
+            }
+        });
 
         txt_equipment_regNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_equipment_regNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_equipment_regNoActionPerformed(evt);
+            }
+        });
 
         btn_save_equipment.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_save_equipment.setText("Save");
@@ -180,6 +196,11 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
 
         cmb_assetType.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_assetType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Asset Type -" }));
+        cmb_assetType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_assetTypeActionPerformed(evt);
+            }
+        });
 
         jLabel148.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel148.setText("Asset Category");
@@ -194,6 +215,11 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
 
         txtArea_equipment_desc.setColumns(20);
         txtArea_equipment_desc.setRows(5);
+        txtArea_equipment_desc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtArea_equipment_descKeyPressed(evt);
+            }
+        });
         jScrollPane16.setViewportView(txtArea_equipment_desc);
 
         jLabel149.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -203,6 +229,17 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         jLabel145.setText("Asset Capacity");
 
         txt_asset_capacity.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_asset_capacity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_asset_capacityActionPerformed(evt);
+            }
+        });
+
+        datePicker_assetRegDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                datePicker_assetRegDateActionPerformed(evt);
+            }
+        });
 
         jLabel144.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel144.setText("Asset Registration Date");
@@ -217,6 +254,11 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
 
         cmb_equipment_status.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_equipment_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+        cmb_equipment_status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_equipment_statusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bank_panel_input_area2Layout = new javax.swing.GroupLayout(bank_panel_input_area2);
         bank_panel_input_area2.setLayout(bank_panel_input_area2Layout);
@@ -462,6 +504,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
                 Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        cmb_assetType.requestFocus();
     }//GEN-LAST:event_cmb_asset_categoryActionPerformed
 
     private void btn_save_equipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_equipmentActionPerformed
@@ -474,7 +517,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_save_equipmentActionPerformed
 
     private void tbl_equipment_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_equipment_infoMouseClicked
-        loadFieldsFromTable();
+        loadFieldsFromTable(searchByTableName());
         txt_search_equipment.setText("Search Equipment");
         txt_search_equipment.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_equipment_infoMouseClicked
@@ -510,6 +553,53 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         txt_search_equipment.setText("");
         txt_search_equipment.setForeground(Color.BLACK);
     }//GEN-LAST:event_txt_search_equipmentMouseClicked
+
+    private void cmb_assetTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_assetTypeActionPerformed
+        txt_equipment_name.requestFocus();
+    }//GEN-LAST:event_cmb_assetTypeActionPerformed
+
+    private void txt_equipment_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_equipment_nameActionPerformed
+        txtArea_equipment_desc.requestFocus();
+    }//GEN-LAST:event_txt_equipment_nameActionPerformed
+
+    private void txtArea_equipment_descKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtArea_equipment_descKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            txt_equipment_regNo.requestFocus();
+        }
+    }//GEN-LAST:event_txtArea_equipment_descKeyPressed
+
+    private void txt_equipment_regNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_equipment_regNoActionPerformed
+        txt_asset_capacity.requestFocus();
+    }//GEN-LAST:event_txt_equipment_regNoActionPerformed
+
+    private void txt_asset_capacityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_asset_capacityActionPerformed
+        datePicker_assetRegDate.requestFocus();
+    }//GEN-LAST:event_txt_asset_capacityActionPerformed
+
+    private void datePicker_assetRegDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datePicker_assetRegDateActionPerformed
+        cmb_equipment_status.requestFocus();
+    }//GEN-LAST:event_datePicker_assetRegDateActionPerformed
+
+    private void cmb_equipment_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_equipment_statusActionPerformed
+        txt_equip_depreRate.requestFocus();
+    }//GEN-LAST:event_cmb_equipment_statusActionPerformed
+
+    private void txt_equipment_nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_equipment_nameKeyReleased
+        if(cmb_asset_category.getSelectedIndex() != 0 && cmb_assetType.getSelectedIndex() != 0){
+        try {
+            M_Equipment searEquipment = equipmentController.searEquipment(txt_equipment_name.getText());
+            if (searEquipment != null && searEquipment.getEquipment_asset_category_id() == assetCategoryController.searchAssetCategory(cmb_asset_category.getSelectedItem().toString()).getAssetCategory_id() && searEquipment.getEquipment_asset_id() == assetController.searchAsset(cmb_assetType.getSelectedItem().toString()).getAsset_id()) {
+                JOptionPane.showMessageDialog(this, "An Equipment Already Saved from this Category & Type");
+                loadFieldsFromTable(searEquipment);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Select Asset Category & Asset Type");
+            cmb_asset_category.requestFocus();
+        }
+    }//GEN-LAST:event_txt_equipment_nameKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -585,6 +675,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
     }
 
     private void addEquipment() {
+        if(cmb_asset_category.getSelectedIndex() != 0 && cmb_assetType.getSelectedIndex() != 0){
         try {
             
             int eqId = IDGenerator.getNewID("m_equipment", "EQUIPMENT_ID");
@@ -609,9 +700,14 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Select Asset Category & Asset Type");
+            cmb_asset_category.requestFocus();
+        }
     }
 
     private void updateEquipment() {
+        if(cmb_asset_category.getSelectedIndex() != 0 && cmb_assetType.getSelectedIndex() != 0){
         try {
             
             int eqId = searchByTableName().getEquipment_id();
@@ -636,11 +732,15 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Select Asset Category & Asset Type");
+            cmb_asset_category.requestFocus();
+        }
     }
 
-    private void loadFieldsFromTable() {
+    private void loadFieldsFromTable(M_Equipment equipment) {
         try {
-            M_Equipment equipment = searchByTableName();
+             
             cmb_asset_category.setSelectedItem(assetCategoryController.searchAssetCategory(equipment.getEquipment_asset_category_id()).getAssetCategory_description());
             cmb_assetType.setSelectedItem(assetController.searchAsset(equipment.getEquipment_asset_id()).getAsset_name());
             txt_equipment_name.setText(equipment.getEquipment_name());

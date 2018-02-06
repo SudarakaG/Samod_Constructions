@@ -196,6 +196,11 @@ public class Employee_Salary extends javax.swing.JPanel {
         txt_employee.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         txt_emp_acc_no.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_emp_acc_no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_emp_acc_noActionPerformed(evt);
+            }
+        });
 
         btn_save_emp_salary.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_save_emp_salary.setText("Save");
@@ -218,6 +223,11 @@ public class Employee_Salary extends javax.swing.JPanel {
 
         cmbBranchEmp_salary.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbBranchEmp_salary.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Branch -" }));
+        cmbBranchEmp_salary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbBranchEmp_salaryActionPerformed(evt);
+            }
+        });
 
         jLabel42.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel42.setText("Branch");
@@ -227,6 +237,11 @@ public class Employee_Salary extends javax.swing.JPanel {
 
         cmbSalaryType.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbSalaryType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Salary Type -" }));
+        cmbSalaryType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSalaryTypeActionPerformed(evt);
+            }
+        });
 
         jLabel40.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel40.setText("Basic Salary");
@@ -235,6 +250,11 @@ public class Employee_Salary extends javax.swing.JPanel {
         txt_emp_sal_basic.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_emp_sal_basicMouseClicked(evt);
+            }
+        });
+        txt_emp_sal_basic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_emp_sal_basicActionPerformed(evt);
             }
         });
         txt_emp_sal_basic.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -253,6 +273,11 @@ public class Employee_Salary extends javax.swing.JPanel {
         txt_emp_sal_al_1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_emp_sal_al_1MouseClicked(evt);
+            }
+        });
+        txt_emp_sal_al_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_emp_sal_al_1ActionPerformed(evt);
             }
         });
         txt_emp_sal_al_1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -276,6 +301,11 @@ public class Employee_Salary extends javax.swing.JPanel {
                 txt_emp_al_2MouseClicked(evt);
             }
         });
+        txt_emp_al_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_emp_al_2ActionPerformed(evt);
+            }
+        });
         txt_emp_al_2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_emp_al_2KeyPressed(evt);
@@ -292,6 +322,11 @@ public class Employee_Salary extends javax.swing.JPanel {
         txt_emp_al_3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_emp_al_3MouseClicked(evt);
+            }
+        });
+        txt_emp_al_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_emp_al_3ActionPerformed(evt);
             }
         });
         txt_emp_al_3.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -312,6 +347,11 @@ public class Employee_Salary extends javax.swing.JPanel {
                 txt_emp_al_4MouseClicked(evt);
             }
         });
+        txt_emp_al_4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_emp_al_4ActionPerformed(evt);
+            }
+        });
         txt_emp_al_4.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_emp_al_4KeyPressed(evt);
@@ -326,6 +366,11 @@ public class Employee_Salary extends javax.swing.JPanel {
 
         cmbEPFStatus.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbEPFStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Yes", "No" }));
+        cmbEPFStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbEPFStatusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout txt_Input_Panel_Branch1Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch1);
         txt_Input_Panel_Branch1.setLayout(txt_Input_Panel_Branch1Layout);
@@ -609,7 +654,9 @@ public class Employee_Salary extends javax.swing.JPanel {
     private void cmbBankEmp_SalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBankEmp_SalaryActionPerformed
         if (cmbBankEmp_Salary.getSelectedIndex() != 0) {
             loadBranchCombo();
+            cmbBranchEmp_salary.requestFocus();
         }
+        
     }//GEN-LAST:event_cmbBankEmp_SalaryActionPerformed
 
     private void btn_save_emp_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_emp_salaryActionPerformed
@@ -621,7 +668,7 @@ public class Employee_Salary extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_emp_sal_basicKeyPressed
 
     private void txt_emp_sal_basicKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicKeyReleased
-        Validation.priceText(txt_emp_sal_basic);
+        Validation.priceText(txt_emp_sal_basic);                
     }//GEN-LAST:event_txt_emp_sal_basicKeyReleased
 
     private void txt_emp_sal_al_1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_al_1KeyPressed
@@ -773,6 +820,46 @@ public class Employee_Salary extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txt_emp_sal_searchKeyReleased
 
+    private void txt_emp_sal_basicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicActionPerformed
+        fieldFormat.formatDecimalAmount(txt_emp_sal_basic);
+        txt_emp_sal_al_1.requestFocus();
+    }//GEN-LAST:event_txt_emp_sal_basicActionPerformed
+
+    private void txt_emp_sal_al_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emp_sal_al_1ActionPerformed
+        fieldFormat.formatDecimalAmount(txt_emp_sal_al_1);
+        txt_emp_al_2.requestFocus();
+    }//GEN-LAST:event_txt_emp_sal_al_1ActionPerformed
+
+    private void txt_emp_al_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emp_al_2ActionPerformed
+        fieldFormat.formatDecimalAmount(txt_emp_al_2);
+        txt_emp_al_3.requestFocus();
+    }//GEN-LAST:event_txt_emp_al_2ActionPerformed
+
+    private void txt_emp_al_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emp_al_3ActionPerformed
+        fieldFormat.formatDecimalAmount(txt_emp_al_3);
+        txt_emp_al_4.requestFocus();
+    }//GEN-LAST:event_txt_emp_al_3ActionPerformed
+
+    private void txt_emp_al_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emp_al_4ActionPerformed
+        fieldFormat.formatDecimalAmount(txt_emp_al_4);
+    }//GEN-LAST:event_txt_emp_al_4ActionPerformed
+
+    private void txt_emp_acc_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emp_acc_noActionPerformed
+        cmbBankEmp_Salary.requestFocus();
+    }//GEN-LAST:event_txt_emp_acc_noActionPerformed
+
+    private void cmbBranchEmp_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbBranchEmp_salaryActionPerformed
+        cmbSalaryType.requestFocus();
+    }//GEN-LAST:event_cmbBranchEmp_salaryActionPerformed
+
+    private void cmbSalaryTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSalaryTypeActionPerformed
+        cmbEPFStatus.requestFocus();
+    }//GEN-LAST:event_cmbSalaryTypeActionPerformed
+
+    private void cmbEPFStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEPFStatusActionPerformed
+        txt_emp_sal_basic.requestFocus();
+    }//GEN-LAST:event_cmbEPFStatusActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Employee_Salary;
@@ -911,6 +998,7 @@ public class Employee_Salary extends javax.swing.JPanel {
     }
 
     private void updateEmployeeSalaryDetails() {
+        if(cmbBankEmp_Salary.getSelectedIndex() != 0 && cmbBranchEmp_salary.getSelectedIndex() != 0 && cmbSalaryType.getSelectedIndex() != 0){
         try {
             double salary = 0;
             double otherAllowance1 = 0;
@@ -983,6 +1071,9 @@ public class Employee_Salary extends javax.swing.JPanel {
 
         } catch (Exception ex) {
             Logger.getLogger(Employee_Salary.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Check that the Bank , Branch & Salary Type are Selected");
         }
     }
 

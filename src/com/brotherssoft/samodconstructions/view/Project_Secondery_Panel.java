@@ -1278,7 +1278,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_payment_amountKeyReleased
 
     private void dp_payment_Valid_Period_FromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_payment_Valid_Period_FromActionPerformed
-        dp_insurance_Valid_Period_To.requestFocus();
+        dp_payment_Valid_Period_To.requestFocus();
     }//GEN-LAST:event_dp_payment_Valid_Period_FromActionPerformed
 
     private void dp_payment_Valid_Period_ToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_payment_Valid_Period_ToActionPerformed

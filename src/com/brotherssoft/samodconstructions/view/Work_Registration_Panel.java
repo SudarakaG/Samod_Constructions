@@ -10,6 +10,7 @@ import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.model.R_Work;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -124,9 +125,27 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         jLabel156.setText("Work Description");
 
         txt_work_name1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_work_name1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_work_name1ActionPerformed(evt);
+            }
+        });
+        txt_work_name1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_work_name1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_work_name1KeyReleased(evt);
+            }
+        });
 
         txtArea_work_desc1.setColumns(20);
         txtArea_work_desc1.setRows(5);
+        txtArea_work_desc1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtArea_work_desc1KeyPressed(evt);
+            }
+        });
         jScrollPane13.setViewportView(txtArea_work_desc1);
 
         btn_save_work.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -340,7 +359,7 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_save_workActionPerformed
 
     private void tbl_workInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_workInfoMouseClicked
-        loadFieldsFromTable();
+        loadFieldsFromTable(searchWorkFromTableName());
         txt_search_work.setText("Search Work");
         txt_search_work.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_workInfoMouseClicked
@@ -372,6 +391,32 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         txt_search_work.setText("");
         txt_search_work.setForeground(Color.BLACK);
     }//GEN-LAST:event_txt_search_workMouseClicked
+
+    private void txt_work_name1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_work_name1ActionPerformed
+        txtArea_work_desc1.requestFocus();
+    }//GEN-LAST:event_txt_work_name1ActionPerformed
+
+    private void txtArea_work_desc1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtArea_work_desc1KeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            cmb_work_states1.requestFocus();
+        }
+    }//GEN-LAST:event_txtArea_work_desc1KeyPressed
+
+    private void txt_work_name1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_work_name1KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_work_name1KeyPressed
+
+    private void txt_work_name1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_work_name1KeyReleased
+        try {
+            R_Work searchWork = workController.searchWork(txt_work_name1.getText());
+            if(searchWork  != null){
+                JOptionPane.showMessageDialog(this, "A Work Already Registered on this Name");
+                loadFieldsFromTable(searchWork);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Work_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_work_name1KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -456,8 +501,8 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         loadWorkTable();
     }
 
-    private void loadFieldsFromTable() {
-        R_Work work = searchWorkFromTableName();
+    private void loadFieldsFromTable(R_Work work) {
+        
         txt_work_name1.setText(work.getWork_name());
         txtArea_work_desc1.setText(work.getWork_description());
         cmb_work_states1.setSelectedIndex(Integer.parseInt(work.getWork_status()));

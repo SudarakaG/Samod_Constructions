@@ -147,8 +147,23 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         jLabel174.setText("Bank");
 
         txt_purchaser_name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_purchaser_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_purchaser_nameActionPerformed(evt);
+            }
+        });
+        txt_purchaser_name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_purchaser_nameKeyReleased(evt);
+            }
+        });
 
         txt_purchaser_address.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_purchaser_address.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_purchaser_addressActionPerformed(evt);
+            }
+        });
 
         btn_save_purchaser.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_save_purchaser.setText("Save");
@@ -186,32 +201,62 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         jLabel176.setText("Account No");
 
         txt_purchaser_accountNo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_purchaser_accountNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_purchaser_accountNoActionPerformed(evt);
+            }
+        });
 
         jLabel177.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel177.setText("Branch");
 
         cmb_purchaser_branch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_purchaser_branch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Branch -" }));
+        cmb_purchaser_branch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_purchaser_branchActionPerformed(evt);
+            }
+        });
 
         jLabel178.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel178.setText("Contact 1");
 
         txt_purchaser_contact1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_purchaser_contact1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_purchaser_contact1ActionPerformed(evt);
+            }
+        });
 
         jLabel179.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel179.setText("Contact 2");
 
         txt_purchaser_contact2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_purchaser_contact2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_purchaser_contact2ActionPerformed(evt);
+            }
+        });
 
         jLabel180.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel180.setText("Rep Name");
 
         txt_purchaser_repName.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_purchaser_repName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_purchaser_repNameActionPerformed(evt);
+            }
+        });
 
         jLabel181.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel181.setText("Rep Contact");
 
         txt_purchaser_repContact.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_purchaser_repContact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_purchaser_repContactActionPerformed(evt);
+            }
+        });
 
         jLabel182.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel182.setText("Status");
@@ -451,6 +496,7 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         if (cmb_purchaser_bank.getSelectedIndex() != 0) {
             loadBranchCombo();
         }
+        cmb_purchaser_branch.requestFocus();
     }//GEN-LAST:event_cmb_purchaser_bankActionPerformed
 
     private void btn_save_purchaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_purchaserActionPerformed
@@ -462,7 +508,7 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_save_purchaserActionPerformed
 
     private void tbl_purchaser_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_purchaser_infoMouseClicked
-        getFromPurchaserTable();
+        getFromPurchaserTable(searchFromTablePurchaserName());
         txt_search_purchaser.setText("Search Purchaser");
         txt_search_purchaser.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_purchaser_infoMouseClicked
@@ -501,6 +547,50 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         txt_search_purchaser.setText("");
         txt_search_purchaser.setForeground(Color.BLACK);
     }//GEN-LAST:event_txt_search_purchaserMouseClicked
+
+    private void txt_purchaser_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_purchaser_nameActionPerformed
+        txt_purchaser_address.requestFocus();
+    }//GEN-LAST:event_txt_purchaser_nameActionPerformed
+
+    private void txt_purchaser_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_purchaser_addressActionPerformed
+        txt_purchaser_accountNo.requestFocus();
+    }//GEN-LAST:event_txt_purchaser_addressActionPerformed
+
+    private void txt_purchaser_accountNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_purchaser_accountNoActionPerformed
+        cmb_purchaser_bank.requestFocus();
+    }//GEN-LAST:event_txt_purchaser_accountNoActionPerformed
+
+    private void cmb_purchaser_branchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_purchaser_branchActionPerformed
+        txt_purchaser_contact1.requestFocus();
+    }//GEN-LAST:event_cmb_purchaser_branchActionPerformed
+
+    private void txt_purchaser_contact1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_purchaser_contact1ActionPerformed
+        txt_purchaser_contact2.requestFocus();
+    }//GEN-LAST:event_txt_purchaser_contact1ActionPerformed
+
+    private void txt_purchaser_contact2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_purchaser_contact2ActionPerformed
+        txt_purchaser_repName.requestFocus();
+    }//GEN-LAST:event_txt_purchaser_contact2ActionPerformed
+
+    private void txt_purchaser_repNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_purchaser_repNameActionPerformed
+        txt_purchaser_repContact.requestFocus();
+    }//GEN-LAST:event_txt_purchaser_repNameActionPerformed
+
+    private void txt_purchaser_repContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_purchaser_repContactActionPerformed
+        cmb_purchaser_status.requestFocus();
+    }//GEN-LAST:event_txt_purchaser_repContactActionPerformed
+
+    private void txt_purchaser_nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_purchaser_nameKeyReleased
+        try {
+            M_Purchaser searchPurchaser = purchaserController.searchPurchaser(txt_purchaser_name.getText());
+            if (searchPurchaser != null) {
+                JOptionPane.showMessageDialog(this, "A Purchaser Already Registered from this Name");
+                getFromPurchaserTable(searchPurchaser);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_purchaser_nameKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -594,6 +684,7 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
     }
 
     private void savePurchaser() {
+        if(cmb_purchaser_bank.getSelectedIndex() != 0 && cmb_purchaser_branch.getSelectedIndex() != 0){
         try {
 
             int purchaserId = IDGenerator.getNewID("m_purchaser", "PURCHASER_ID");
@@ -624,14 +715,16 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Select the Bank & Branch");
+        }
 
         loadPurchaserTable();
     }
 
-    private void getFromPurchaserTable() {
+    private void getFromPurchaserTable(M_Purchaser purchaser) {
         try {
 
-            M_Purchaser purchaser = searchFromTablePurchaserName();
 
             txt_purchaser_name.setText(purchaser.getPurchaser_name());
             txt_purchaser_address.setText(purchaser.getPurchaser_address());
@@ -670,6 +763,7 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
     }
 
     private void updatePurchaser() {
+        if(cmb_purchaser_bank.getSelectedIndex() != 0 && cmb_purchaser_branch.getSelectedIndex() != 0){
         try {
 
             int purchaserId = searchFromTablePurchaserName().getPurchaser_id();
@@ -699,6 +793,9 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
 
         } catch (Exception ex) {
             Logger.getLogger(Purchaser_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Select the Bank & Branch");
         }
 
         loadPurchaserTable();

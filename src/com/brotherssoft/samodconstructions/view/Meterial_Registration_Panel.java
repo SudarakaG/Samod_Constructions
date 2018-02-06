@@ -138,9 +138,24 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         jLabel160.setText("Description");
 
         txt_material_name1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_material_name1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_material_name1ActionPerformed(evt);
+            }
+        });
+        txt_material_name1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_material_name1KeyReleased(evt);
+            }
+        });
 
         txtArea_material_desc.setColumns(20);
         txtArea_material_desc.setRows(5);
+        txtArea_material_desc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtArea_material_descKeyPressed(evt);
+            }
+        });
         jScrollPane18.setViewportView(txtArea_material_desc);
 
         btn_save_material.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -161,6 +176,11 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
 
         cmb_material_unit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_material_unit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Unit -" }));
+        cmb_material_unit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_material_unitActionPerformed(evt);
+            }
+        });
 
         btn_material.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_material.setText("Material");
@@ -175,6 +195,11 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
 
         cmb_material_status.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_material_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive" }));
+        cmb_material_status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_material_statusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bank_panel_input_area4Layout = new javax.swing.GroupLayout(bank_panel_input_area4);
         bank_panel_input_area4.setLayout(bank_panel_input_area4Layout);
@@ -377,7 +402,7 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_save_materialActionPerformed
 
     private void tbl_material_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_material_infoMouseClicked
-        loadFieldsFromTable();
+        loadFieldsFromTable(searchByTableName());
         txt_search_material.setText("Search Material");
         txt_search_material.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_material_infoMouseClicked
@@ -418,6 +443,34 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         txt_search_material.setText("");
         txt_search_material.setForeground(Color.BLACK);
     }//GEN-LAST:event_txt_search_materialMouseClicked
+
+    private void txt_material_name1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_material_name1ActionPerformed
+        txtArea_material_desc.requestFocus();
+    }//GEN-LAST:event_txt_material_name1ActionPerformed
+
+    private void txtArea_material_descKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtArea_material_descKeyPressed
+        cmb_material_unit.requestFocus();
+    }//GEN-LAST:event_txtArea_material_descKeyPressed
+
+    private void cmb_material_unitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_material_unitActionPerformed
+        cmb_material_status.requestFocus();
+    }//GEN-LAST:event_cmb_material_unitActionPerformed
+
+    private void cmb_material_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_material_statusActionPerformed
+        datePicker_material_reg_date.requestFocus();
+    }//GEN-LAST:event_cmb_material_statusActionPerformed
+
+    private void txt_material_name1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_material_name1KeyReleased
+        try {
+            M_Material searchMaterial = materialController.searchMaterial(txt_material_name1.getText());
+            if(searchMaterial != null){
+                JOptionPane.showMessageDialog(this, "A Material Already Save in this Name..");
+                loadFieldsFromTable(searchMaterial);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_material_name1KeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -482,6 +535,7 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
     }
 
     private void saveMaterial() {
+        if(cmb_material_unit.getSelectedIndex() != 0){
         try {
             
             int materialId = IDGenerator.getNewID("m_material", "MATERIAL_ID");
@@ -502,9 +556,13 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Select the Unit");
+        }
     }
 
     private void updateMaterial() {
+        if(cmb_material_unit.getSelectedIndex() != 0){
         try {
             
             int materialId = searchByTableName().getMaterial_id();
@@ -525,12 +583,15 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }else{
+            JOptionPane.showMessageDialog(this, "Please Select the Unit");
+        }
     }
 
-    private void loadFieldsFromTable() {
+    private void loadFieldsFromTable(M_Material material) {
         try {
             
-            M_Material material = searchByTableName();
+            
             txt_material_name1.setText(material.getMaterial_name());
             txtArea_material_desc.setText(material.getMaterial_description());
             cmb_material_unit.setSelectedItem(unitController.searchUnit(material.getMaterial_unit_id()).getUnit_name());

@@ -48,7 +48,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     SimpleDateFormat sdf;
     Date date;
     DecimalFormat decimalFormat;
-    
+
     M_Project_Primary primary = null;
 
     /**
@@ -74,7 +74,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         txt_project_tender_open_time_1.setEditor(de);
         sdf = new SimpleDateFormat("dd/MM/yyyy");
         date = new Date();
-        
+
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
         decimalFormat = new DecimalFormat("0.00");
@@ -100,11 +100,11 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         txt_project_tender_open_time_1.setEditor(de);
         sdf = new SimpleDateFormat("dd/MM/yyyy");
         date = new Date();
-        
+
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
         decimalFormat = new DecimalFormat("0.00");
-        
+
         primary = primary_ProjectController.searchPrimaryProject(id);
         loadFromPrimaryProjectTable();
     }
@@ -1102,9 +1102,9 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_add_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_primary_projectActionPerformed
-        if(btn_add_primary_project.getText().equalsIgnoreCase("Save")){
+        if (btn_add_primary_project.getText().equalsIgnoreCase("Save")) {
             savePrimaryProject();
-        }else{
+        } else {
             updatePrimaryProject();
         }
     }//GEN-LAST:event_btn_add_primary_projectActionPerformed
@@ -1148,7 +1148,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         txt_project_states_active_date_1.setDate(date);
         txt_project_states_inactive_date_1.setDate(date);
         txt_project_tender_result.setText("");
-        
+
         btn_add_primary_project.setText("Save");
     }//GEN-LAST:event_btn_new_primary_projectActionPerformed
 
@@ -1341,18 +1341,18 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_project_bid_duration_1KeyReleased
 
     private void txt_project_engineer_estimateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_project_engineer_estimateKeyTyped
-        
+
     }//GEN-LAST:event_txt_project_engineer_estimateKeyTyped
 
     private void btn_to_secondary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_to_secondary_projectActionPerformed
         Project_Secondery_Panel secondery_Panel = null;
-        if(primary != null){
+        if (primary != null) {
             try {
                 secondery_Panel = new Project_Secondery_Panel(primary.getProject_id());
             } catch (Exception ex) {
                 Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
+        } else {
             try {
                 secondery_Panel = new Project_Secondery_Panel();
             } catch (Exception ex) {
@@ -1521,8 +1521,8 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     }
 
     private void savePrimaryProject() {
-
-        try {
+        if (cmb_project_type_1.getSelectedIndex() != 0 && cmb_project_Specialiti.getSelectedIndex() != 0 && cmb_project_grade_1.getSelectedIndex() != 0 && cmb_project_bid_payment_mode.getSelectedIndex() != 0) {
+            try {
 
 //            Date date = new Date();
 //            SpinnerDateModel sdm = new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
@@ -1530,57 +1530,59 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
 //            JSpinner.DateEditor de = new JSpinner.DateEditor(txt_project_tender_open_time_1, "HH:mm a");
 //            txt_project_tender_open_time_1.setEditor(de);
 //            String format = de.getFormat().format(txt_project_tender_open_time_1.getValue());
-
 //            SimpleDateFormat sdf = new SimpleDateFormat("HHmm");
 //            Date parse = sdf.parse(format);
-            String projectAType = cmb_project_type_1.getSelectedItem().toString();
-            String projectASpeciality = cmb_project_Specialiti.getSelectedItem().toString();
-            String projectAGrade = cmb_project_grade_1.getSelectedItem().toString();
-            String payMode = cmb_project_bid_payment_mode.getSelectedItem().toString();
+                String projectAType = cmb_project_type_1.getSelectedItem().toString();
+                String projectASpeciality = cmb_project_Specialiti.getSelectedItem().toString();
+                String projectAGrade = cmb_project_grade_1.getSelectedItem().toString();
+                String payMode = cmb_project_bid_payment_mode.getSelectedItem().toString();
 
-            int projectId = IDGenerator.getNewID("m_project", "PROJECT_ID");
-            String name = txt_project_name_1.getText();
-            String desc = txt_project_desc_1.getText();
-            String address1 = txt_project_address1.getText();
-            String address2 = txt_project_address2.getText();
-            String address3 = txt_project_address3.getText();
-            String address4 = txt_project_address4.getText();
-            int projctTypeId = projectTypeController.searProjectTypeByName(projectAType).getProjectType_id();
-            String vatAdded = Integer.toString(cmb_project_vatAdded.getSelectedIndex());
-            String contractNo = txt_project_contract_bid_1.getText();
-            String clientName = txt_project_client_1.getText();
-            String clientAddress1 = txt_project_client_address1.getText();
-            String clientAddress2 = txt_project_client_address2.getText();
-            String clientAddress3 = txt_project_client_address3.getText();
-            String clientAddress4 = txt_project_client_address4.getText();
-            String clientContact1 = txt_project_client_contact_1.getText();
-            String clientContact2 = txt_project_client_contact_1_2.getText();
-            String projectADuration = txt_project_intendedDuration_1.getText();
-            int specialityId = projectSpecialityController.searProjectSpecialityByName(projectASpeciality).getProjectSpeciality_id();
-            int gradeId = projectGradeController.searProjectGradeByNAme(projectAGrade).getProjectGrade_id();
-            double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText().trim());
-            double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText().trim());
-            int bidPaymentModeId = paymentModeController.searPaymentMode(payMode).getPaymentMode_id();
-            double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText().trim());
-            String bidDuration = txt_project_bid_duration_1.getText();
-            String bidOrganization = txt_project_bid_organization.getText();
-            Date tenderOpenDate = txt_project_tender_open_date_1.getDate();
-            String tenderOpenTime = de.getFormat().format(txt_project_tender_open_time_1.getValue());
-            String currentStatus = Integer.toString(cmb_project_made_of_states_1.getSelectedIndex());
-            String tenderResult = txt_project_tender_result.getText();
-            Date activeDate = txt_project_states_active_date_1.getDate();
-            Date inactiveDate = txt_project_states_inactive_date_1.getDate();
+                int projectId = IDGenerator.getNewID("m_project", "PROJECT_ID");
+                String name = txt_project_name_1.getText();
+                String desc = txt_project_desc_1.getText();
+                String address1 = txt_project_address1.getText();
+                String address2 = txt_project_address2.getText();
+                String address3 = txt_project_address3.getText();
+                String address4 = txt_project_address4.getText();
+                int projctTypeId = projectTypeController.searProjectTypeByName(projectAType).getProjectType_id();
+                String vatAdded = Integer.toString(cmb_project_vatAdded.getSelectedIndex());
+                String contractNo = txt_project_contract_bid_1.getText();
+                String clientName = txt_project_client_1.getText();
+                String clientAddress1 = txt_project_client_address1.getText();
+                String clientAddress2 = txt_project_client_address2.getText();
+                String clientAddress3 = txt_project_client_address3.getText();
+                String clientAddress4 = txt_project_client_address4.getText();
+                String clientContact1 = txt_project_client_contact_1.getText();
+                String clientContact2 = txt_project_client_contact_1_2.getText();
+                String projectADuration = txt_project_intendedDuration_1.getText();
+                int specialityId = projectSpecialityController.searProjectSpecialityByName(projectASpeciality).getProjectSpeciality_id();
+                int gradeId = projectGradeController.searProjectGradeByNAme(projectAGrade).getProjectGrade_id();
+                double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText().trim());
+                double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText().trim());
+                int bidPaymentModeId = paymentModeController.searPaymentMode(payMode).getPaymentMode_id();
+                double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText().trim());
+                String bidDuration = txt_project_bid_duration_1.getText();
+                String bidOrganization = txt_project_bid_organization.getText();
+                Date tenderOpenDate = txt_project_tender_open_date_1.getDate();
+                String tenderOpenTime = de.getFormat().format(txt_project_tender_open_time_1.getValue());
+                String currentStatus = Integer.toString(cmb_project_made_of_states_1.getSelectedIndex());
+                String tenderResult = txt_project_tender_result.getText();
+                Date activeDate = txt_project_states_active_date_1.getDate();
+                Date inactiveDate = txt_project_states_inactive_date_1.getDate();
 
-            M_Project_Primary project_Primary = new M_Project_Primary(projectId, name, desc, address1, address2, address3, address4, projctTypeId, vatAdded, contractNo, clientName, clientAddress1, clientAddress2, clientAddress3, clientAddress4, clientContact1, clientContact2, projectADuration, specialityId, gradeId, enginnerEstimate, tenderFee, bidPaymentModeId, bidAmount, bidDuration, bidOrganization, tenderOpenDate, tenderOpenTime, tenderResult, activeDate, inactiveDate,currentStatus);
-            boolean addPrimaryProject = primary_ProjectController.addPrimaryProject(project_Primary);
-            if (addPrimaryProject) {
-                JOptionPane.showMessageDialog(this, "Primary Project Added Successfully..");
-            } else {
-                JOptionPane.showMessageDialog(this, "Primary Priject Cannot Add..");
+                M_Project_Primary project_Primary = new M_Project_Primary(projectId, name, desc, address1, address2, address3, address4, projctTypeId, vatAdded, contractNo, clientName, clientAddress1, clientAddress2, clientAddress3, clientAddress4, clientContact1, clientContact2, projectADuration, specialityId, gradeId, enginnerEstimate, tenderFee, bidPaymentModeId, bidAmount, bidDuration, bidOrganization, tenderOpenDate, tenderOpenTime, tenderResult, activeDate, inactiveDate, currentStatus);
+                boolean addPrimaryProject = primary_ProjectController.addPrimaryProject(project_Primary);
+                if (addPrimaryProject) {
+                    JOptionPane.showMessageDialog(this, "Primary Project Added Successfully..");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Primary Priject Cannot Add..");
+                }
+
+            } catch (Exception ex) {
+                Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-        } catch (Exception ex) {
-            Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please Check that Project Type , ICTAD Speciality , ICTAD Grade & BID Security Payemnt Mode are Selected");
         }
 
         loadToPrimaryProjectTable();
@@ -1607,7 +1609,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     private void loadFromPrimaryProjectTable() {
 
         try {
-            
+
             txt_project_name_1.setText(primary.getProject_primary_name());
             txt_project_desc_1.setText(primary.getProject_primary_description());
             txt_project_address1.setText(primary.getProject_primary_address1());
@@ -1643,69 +1645,72 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         btn_add_primary_project.setText("Update");
-        
+
     }
 
     private void updatePrimaryProject() {
-        
-        try {
-            String projectAType = cmb_project_type_1.getSelectedItem().toString();
-            String projectASpeciality = cmb_project_Specialiti.getSelectedItem().toString();
-            String projectAGrade = cmb_project_grade_1.getSelectedItem().toString();
-            String pauMode = cmb_project_bid_payment_mode.getSelectedItem().toString();
-            int project_id = primary.getProject_id();
+        if (cmb_project_type_1.getSelectedIndex() != 0 && cmb_project_Specialiti.getSelectedIndex() != 0 && cmb_project_grade_1.getSelectedIndex() != 0 && cmb_project_bid_payment_mode.getSelectedIndex() != 0) {
+            try {
+                String projectAType = cmb_project_type_1.getSelectedItem().toString();
+                String projectASpeciality = cmb_project_Specialiti.getSelectedItem().toString();
+                String projectAGrade = cmb_project_grade_1.getSelectedItem().toString();
+                String pauMode = cmb_project_bid_payment_mode.getSelectedItem().toString();
+                int project_id = primary.getProject_id();
 
-            //int projectId = IDGenerator.getNewID("m_project", "PROJECT_ID");
-            String name = txt_project_name_1.getText();
-            String desc = txt_project_desc_1.getText();
-            String address1 = txt_project_address1.getText();
-            String address2 = txt_project_address2.getText();
-            String address3 = txt_project_address3.getText();
-            String address4 = txt_project_address4.getText();
-            int projctTypeId = projectTypeController.searProjectTypeByName(projectAType).getProjectType_id();
-            String vatAdded = Integer.toString(cmb_project_vatAdded.getSelectedIndex());
-            String contractNo = txt_project_contract_bid_1.getText();
-            String clientName = txt_project_client_1.getText();
-            String clientAddress1 = txt_project_client_address1.getText();
-            String clientAddress2 = txt_project_client_address2.getText();
-            String clientAddress3 = txt_project_client_address3.getText();
-            String clientAddress4 = txt_project_client_address4.getText();
-            String clientContact1 = txt_project_client_contact_1.getText();
-            String clientContact2 = txt_project_client_contact_1_2.getText();
-            String projectADuration = txt_project_intendedDuration_1.getText();
-            int specialityId = projectSpecialityController.searProjectSpecialityByName(projectASpeciality).getProjectSpeciality_id();
-            int gradeId = projectGradeController.searProjectGradeByNAme(projectAGrade).getProjectGrade_id();
-            double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText().trim());
-            double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText().trim());
-            int bidPaymentModeId = paymentModeController.searPaymentMode(pauMode).getPaymentMode_id();
-            double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText().trim());
-            String bidDuration = txt_project_bid_duration_1.getText();
-            String bidOrganization = txt_project_bid_organization.getText();
-            Date tenderOpenDate = txt_project_tender_open_date_1.getDate();
-            String tenderOpenTime = de.getFormat().format(txt_project_tender_open_time_1.getValue());
-            String currentStatus = Integer.toString(cmb_project_made_of_states_1.getSelectedIndex());
-            String tenderResult = txt_project_tender_result.getText();
-            Date activeDate = txt_project_states_active_date_1.getDate();
-            Date inactiveDate = txt_project_states_inactive_date_1.getDate();
+                //int projectId = IDGenerator.getNewID("m_project", "PROJECT_ID");
+                String name = txt_project_name_1.getText();
+                String desc = txt_project_desc_1.getText();
+                String address1 = txt_project_address1.getText();
+                String address2 = txt_project_address2.getText();
+                String address3 = txt_project_address3.getText();
+                String address4 = txt_project_address4.getText();
+                int projctTypeId = projectTypeController.searProjectTypeByName(projectAType).getProjectType_id();
+                String vatAdded = Integer.toString(cmb_project_vatAdded.getSelectedIndex());
+                String contractNo = txt_project_contract_bid_1.getText();
+                String clientName = txt_project_client_1.getText();
+                String clientAddress1 = txt_project_client_address1.getText();
+                String clientAddress2 = txt_project_client_address2.getText();
+                String clientAddress3 = txt_project_client_address3.getText();
+                String clientAddress4 = txt_project_client_address4.getText();
+                String clientContact1 = txt_project_client_contact_1.getText();
+                String clientContact2 = txt_project_client_contact_1_2.getText();
+                String projectADuration = txt_project_intendedDuration_1.getText();
+                int specialityId = projectSpecialityController.searProjectSpecialityByName(projectASpeciality).getProjectSpeciality_id();
+                int gradeId = projectGradeController.searProjectGradeByNAme(projectAGrade).getProjectGrade_id();
+                double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText().trim());
+                double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText().trim());
+                int bidPaymentModeId = paymentModeController.searPaymentMode(pauMode).getPaymentMode_id();
+                double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText().trim());
+                String bidDuration = txt_project_bid_duration_1.getText();
+                String bidOrganization = txt_project_bid_organization.getText();
+                Date tenderOpenDate = txt_project_tender_open_date_1.getDate();
+                String tenderOpenTime = de.getFormat().format(txt_project_tender_open_time_1.getValue());
+                String currentStatus = Integer.toString(cmb_project_made_of_states_1.getSelectedIndex());
+                String tenderResult = txt_project_tender_result.getText();
+                Date activeDate = txt_project_states_active_date_1.getDate();
+                Date inactiveDate = txt_project_states_inactive_date_1.getDate();
 
-            M_Project_Primary project_Primary = new M_Project_Primary(project_id, name, desc, address1, address2, address3, address4, projctTypeId, vatAdded, contractNo, clientName, clientAddress1, clientAddress2, clientAddress3, clientAddress4, clientContact1, clientContact2, projectADuration, specialityId, gradeId, enginnerEstimate, tenderFee, bidPaymentModeId, bidAmount, bidDuration, bidOrganization, tenderOpenDate, tenderOpenTime, tenderResult, activeDate, inactiveDate,currentStatus);
-            
-            boolean updatePrimaryProject = primary_ProjectController.updatePrimaryProject(project_Primary);
-            if (updatePrimaryProject) {
-                JOptionPane.showMessageDialog(this, "Primary Project Details Updated Successfully..");
-            }else{
-                JOptionPane.showMessageDialog(this, "Primary Project Detail Updating Cannot Process..");
+                M_Project_Primary project_Primary = new M_Project_Primary(project_id, name, desc, address1, address2, address3, address4, projctTypeId, vatAdded, contractNo, clientName, clientAddress1, clientAddress2, clientAddress3, clientAddress4, clientContact1, clientContact2, projectADuration, specialityId, gradeId, enginnerEstimate, tenderFee, bidPaymentModeId, bidAmount, bidDuration, bidOrganization, tenderOpenDate, tenderOpenTime, tenderResult, activeDate, inactiveDate, currentStatus);
+
+                boolean updatePrimaryProject = primary_ProjectController.updatePrimaryProject(project_Primary);
+                if (updatePrimaryProject) {
+                    JOptionPane.showMessageDialog(this, "Primary Project Details Updated Successfully..");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Primary Project Detail Updating Cannot Process..");
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (Exception ex) {
-            Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please Check that Project Type , ICTAD Speciality , ICTAD Grade & BID Security Payemnt Mode are Selected");
         }
-        
+
     }
 
     private void searchProjectPrimaryByTableName() {
-        
+
         try {
             int selectedRow = tblPrimaryProject.getSelectedRow();
             primary = primary_ProjectController.searchPrimaryProjectByName((String) dtmPriProject.getValueAt(selectedRow, 0));
