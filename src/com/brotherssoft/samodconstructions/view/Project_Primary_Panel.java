@@ -75,6 +75,8 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         sdf = new SimpleDateFormat("dd/MM/yyyy");
         date = new Date();
 
+        jScrollPane11.getVerticalScrollBar().setUnitIncrement(16);
+        jScrollPane12.getVerticalScrollBar().setUnitIncrement(16);
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
         decimalFormat = new DecimalFormat("0.00");
@@ -244,6 +246,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        jScrollPane11.setBorder(null);
         jScrollPane11.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane11.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
