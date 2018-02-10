@@ -214,8 +214,6 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btn_save_branch" min="-2" pref="92" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_remove_branch1" min="-2" pref="92" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btn_back_to_bank" min="-2" pref="92" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -259,11 +257,10 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btn_save_branch" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="btn_remove_branch1" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="btn_new_branch" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="btn_back_to_bank" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="91" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -421,18 +418,6 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_back_to_bankMouseClicked"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="btn_remove_branch1">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Remove"/>
-                    <Property name="enabled" type="boolean" value="false"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_remove_branch1ActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JButton" name="btn_new_branch">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -557,7 +542,7 @@
                       <Component id="bank_panel_input_area" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="bank_panel_tbl" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
                   </Group>
                   <Component id="bank_panel_hedding" alignment="0" max="32767" attributes="0"/>
               </Group>
@@ -695,8 +680,6 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btn_bank_save" min="-2" pref="92" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_bank_remove" min="-2" pref="92" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btn_branch" min="-2" pref="92" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -731,10 +714,9 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btn_bank_new" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="btn_bank_save" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="btn_bank_remove" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="btn_branch" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="189" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -858,18 +840,6 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_bank_newActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btn_bank_remove">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="12" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Remove"/>
-                    <Property name="enabled" type="boolean" value="false"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_bank_removeActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
