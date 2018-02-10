@@ -183,6 +183,9 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable27 = new javax.swing.JPanel();
         master_detail_sub_home_icon_lable27 = new javax.swing.JLabel();
         master_detail_home_lable27 = new javax.swing.JLabel();
+        master_detail_sub_home_lable28 = new javax.swing.JPanel();
+        master_detail_sub_home_icon_lable28 = new javax.swing.JLabel();
+        master_detail_home_lable28 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -1001,7 +1004,7 @@ public class GUI_Home extends javax.swing.JFrame {
             .addGroup(master_detail_sub_home_lable19Layout.createSequentialGroup()
                 .addComponent(master_detail_sub_home_icon_lable19, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable19, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
+                .addComponent(master_detail_home_lable19, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
         );
         master_detail_sub_home_lable19Layout.setVerticalGroup(
             master_detail_sub_home_lable19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1315,14 +1318,49 @@ public class GUI_Home extends javax.swing.JFrame {
             .addGroup(master_detail_sub_home_lable27Layout.createSequentialGroup()
                 .addComponent(master_detail_sub_home_icon_lable27, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(master_detail_home_lable27, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         master_detail_sub_home_lable27Layout.setVerticalGroup(
             master_detail_sub_home_lable27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable27Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+            .addComponent(master_detail_sub_home_icon_lable27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_home_lable27, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+        );
+
+        master_detail_sub_home_lable28.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable28.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable28.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable28.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable28.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable28.setText("Developers");
+        master_detail_home_lable28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable28MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable28MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable28MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable28Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable28);
+        master_detail_sub_home_lable28.setLayout(master_detail_sub_home_lable28Layout);
+        master_detail_sub_home_lable28Layout.setHorizontalGroup(
+            master_detail_sub_home_lable28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable28Layout.createSequentialGroup()
+                .addComponent(master_detail_sub_home_icon_lable28, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_home_lable28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        master_detail_sub_home_lable28Layout.setVerticalGroup(
+            master_detail_sub_home_lable28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable28Layout.createSequentialGroup()
+                .addGroup(master_detail_sub_home_lable28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(master_detail_sub_home_icon_lable28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(master_detail_home_lable28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                 .addGap(0, 2, Short.MAX_VALUE))
         );
 
@@ -1379,6 +1417,7 @@ public class GUI_Home extends javax.swing.JFrame {
                         .addComponent(master_detail_sub_home_lable23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(master_detail_sub_home_lable27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(master_detail_sub_home_lable28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menu_panelLayout.setVerticalGroup(
             menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1457,7 +1496,9 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addComponent(Master_Detail_Menu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(master_detail_sub_home_lable27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(master_detail_sub_home_lable28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(menu_panel);
@@ -1861,6 +1902,23 @@ public class GUI_Home extends javax.swing.JFrame {
         panelManager(allocated);
     }//GEN-LAST:event_master_detail_home_lable17MouseClicked
 
+    private void master_detail_home_lable28MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable28MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_master_detail_home_lable28MouseEntered
+
+    private void master_detail_home_lable28MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable28MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_master_detail_home_lable28MouseExited
+
+    private void master_detail_home_lable28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable28MouseClicked
+        try {
+            Developers d = new Developers();
+            panelManager(d);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_master_detail_home_lable28MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1934,6 +1992,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JLabel master_detail_home_lable25;
     private javax.swing.JLabel master_detail_home_lable26;
     private javax.swing.JLabel master_detail_home_lable27;
+    private javax.swing.JLabel master_detail_home_lable28;
     private javax.swing.JLabel master_detail_home_lable3;
     private javax.swing.JLabel master_detail_home_lable4;
     private javax.swing.JLabel master_detail_home_lable5;
@@ -1970,6 +2029,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JLabel master_detail_sub_home_icon_lable25;
     private javax.swing.JLabel master_detail_sub_home_icon_lable26;
     private javax.swing.JLabel master_detail_sub_home_icon_lable27;
+    private javax.swing.JLabel master_detail_sub_home_icon_lable28;
     private javax.swing.JLabel master_detail_sub_home_icon_lable3;
     private javax.swing.JLabel master_detail_sub_home_icon_lable4;
     private javax.swing.JLabel master_detail_sub_home_icon_lable5;
@@ -1998,6 +2058,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JPanel master_detail_sub_home_lable25;
     private javax.swing.JPanel master_detail_sub_home_lable26;
     private javax.swing.JPanel master_detail_sub_home_lable27;
+    private javax.swing.JPanel master_detail_sub_home_lable28;
     private javax.swing.JPanel master_detail_sub_home_lable3;
     private javax.swing.JPanel master_detail_sub_home_lable4;
     private javax.swing.JPanel master_detail_sub_home_lable5;

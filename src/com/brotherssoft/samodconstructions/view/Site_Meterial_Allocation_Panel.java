@@ -5,6 +5,8 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import org.jdesktop.swingx.util.OS;
+
 /**
  *
  * @author Akvasoft
@@ -16,6 +18,8 @@ public class Site_Meterial_Allocation_Panel extends javax.swing.JPanel {
      */
     public Site_Meterial_Allocation_Panel() {
         initComponents();
+        
+       
     }
 
     /**
@@ -27,11 +31,16 @@ public class Site_Meterial_Allocation_Panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        oS1 = new org.jdesktop.swingx.util.OS();
+        jVM1 = new org.jdesktop.swingx.util.JVM();
         Site_Meterial_allocation_panel = new javax.swing.JPanel();
         user_panel_hedding1 = new javax.swing.JPanel();
         jLabel64 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
         jSeparator13 = new javax.swing.JSeparator();
+        jXLoginPane1 = new org.jdesktop.swingx.JXLoginPane();
+        jXGraph1 = new org.jdesktop.swingx.JXGraph();
+        jXErrorPane1 = new org.jdesktop.swingx.JXErrorPane();
 
         Site_Meterial_allocation_panel.setBackground(new java.awt.Color(255, 255, 255));
         Site_Meterial_allocation_panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -76,17 +85,47 @@ public class Site_Meterial_Allocation_Panel extends javax.swing.JPanel {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout jXGraph1Layout = new javax.swing.GroupLayout(jXGraph1);
+        jXGraph1.setLayout(jXGraph1Layout);
+        jXGraph1Layout.setHorizontalGroup(
+            jXGraph1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jXGraph1Layout.setVerticalGroup(
+            jXGraph1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout Site_Meterial_allocation_panelLayout = new javax.swing.GroupLayout(Site_Meterial_allocation_panel);
         Site_Meterial_allocation_panel.setLayout(Site_Meterial_allocation_panelLayout);
         Site_Meterial_allocation_panelLayout.setHorizontalGroup(
             Site_Meterial_allocation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(user_panel_hedding1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(Site_Meterial_allocation_panelLayout.createSequentialGroup()
+                .addGroup(Site_Meterial_allocation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Site_Meterial_allocation_panelLayout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jXLoginPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jXErrorPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jXGraph1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Site_Meterial_allocation_panelLayout.setVerticalGroup(
             Site_Meterial_allocation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Site_Meterial_allocation_panelLayout.createSequentialGroup()
                 .addComponent(user_panel_hedding1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(593, Short.MAX_VALUE))
+                .addGroup(Site_Meterial_allocation_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Site_Meterial_allocation_panelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jXGraph1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Site_Meterial_allocation_panelLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jXLoginPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jXErrorPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(277, 277, 277))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -97,7 +136,7 @@ public class Site_Meterial_Allocation_Panel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Site_Meterial_allocation_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Site_Meterial_allocation_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -107,6 +146,11 @@ public class Site_Meterial_Allocation_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JSeparator jSeparator13;
+    private org.jdesktop.swingx.util.JVM jVM1;
+    private org.jdesktop.swingx.JXErrorPane jXErrorPane1;
+    private org.jdesktop.swingx.JXGraph jXGraph1;
+    private org.jdesktop.swingx.JXLoginPane jXLoginPane1;
+    private org.jdesktop.swingx.util.OS oS1;
     private javax.swing.JPanel user_panel_hedding1;
     // End of variables declaration//GEN-END:variables
 }
