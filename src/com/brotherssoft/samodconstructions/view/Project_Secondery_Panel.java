@@ -16,6 +16,7 @@ import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -52,8 +53,8 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
        jScrollPane12.getVerticalScrollBar().setUnitIncrement(16);
        jScrollPane11.getVerticalScrollBar().setUnitIncrement(16);
-        sdf = new SimpleDateFormat("dd/MM/yyyy");
-        date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date();
         
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
