@@ -841,6 +841,9 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable15.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable15.setText("Vehical Allocation");
         master_detail_home_lable15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable15MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable15MouseEntered(evt);
             }
@@ -912,6 +915,9 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable17.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable17.setText("Cash Allocation");
         master_detail_home_lable17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable17MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable17MouseEntered(evt);
             }
@@ -1771,7 +1777,7 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lable14MouseClicked
 
     private void master_detail_home_lable16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable16MouseClicked
-        Site_Meterial_Allocation_Panel smap = new Site_Meterial_Allocation_Panel();
+        Meterial_Allocation smap = new Meterial_Allocation();
         panelManager(smap);
                 
     }//GEN-LAST:event_master_detail_home_lable16MouseClicked
@@ -1844,6 +1850,16 @@ public class GUI_Home extends javax.swing.JFrame {
         Home_Panel home_Panel = new Home_Panel();
         panelManager(home_Panel);
     }//GEN-LAST:event_master_detail_home_lableMouseClicked
+
+    private void master_detail_home_lable15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable15MouseClicked
+        Vehical_Allocation allocation = new Vehical_Allocation();
+        panelManager(allocation);
+    }//GEN-LAST:event_master_detail_home_lable15MouseClicked
+
+    private void master_detail_home_lable17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable17MouseClicked
+        Cash_Allocated allocated = new Cash_Allocated();
+        panelManager(allocated);
+    }//GEN-LAST:event_master_detail_home_lable17MouseClicked
 
     /**
      * @param args the command line arguments
