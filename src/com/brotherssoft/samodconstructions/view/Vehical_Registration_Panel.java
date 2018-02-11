@@ -517,6 +517,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         }else{
             updateVehicle();
         }
+        clearFields();
     }//GEN-LAST:event_btn_save_vehicleActionPerformed
 
     private void tbl_vehicle_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_vehicle_infoMouseClicked
@@ -527,17 +528,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
 
     private void btn_vehicle_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vehicle_newActionPerformed
         
-        cmb_vehicle_type.setSelectedIndex(0);
-        txt_vehicle_regNo.setText("");
-        txt_engine_no.setText("");
-        txt_vehi_chasis_no.setText("");
-        cmb_vehicle_year.setSelectedIndex(0);
-        txt_vehicle_amount.setText("");
-        cmb_vehi_fuel_type.setSelectedIndex(0);
-        txt_vehicle_depriation_rate.setText("");
-        cmb_vehicle_status.setSelectedIndex(0);
-        
-        btn_save_vehicle.setText("Save");
+        clearFields();
         
     }//GEN-LAST:event_btn_vehicle_newActionPerformed
 
@@ -729,8 +720,14 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
             String engineNo = txt_engine_no.getText();
             String chasisNo = txt_vehi_chasis_no.getText();
             String year = cmb_vehicle_year.getSelectedItem().toString();
-            double amount = Double.parseDouble(txt_vehicle_amount.getText());
-            double depriationRate = Double.parseDouble(txt_vehicle_depriation_rate.getText());
+            double amount = 0;
+            double depriationRate = 0;
+            if(!"".equals(txt_vehicle_amount.getText())){
+             amount = Double.parseDouble(txt_vehicle_amount.getText());
+            }
+            if(!"".equals(txt_vehicle_depriation_rate.getText())){
+             depriationRate = Double.parseDouble(txt_vehicle_depriation_rate.getText());
+            }
             String status = null;
                 if(cmb_vehicle_status.getSelectedIndex() == 0){
                     status = "A";
@@ -809,8 +806,14 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
             String engineNo = txt_engine_no.getText();
             String chasisNo = txt_vehi_chasis_no.getText();
             String year = cmb_vehicle_year.getSelectedItem().toString();
-            double amount = Double.parseDouble(txt_vehicle_amount.getText());
-            double depriationRate = Double.parseDouble(txt_vehicle_depriation_rate.getText());
+            double amount = 0;
+            double depriationRate = 0;
+            if(!"".equals(txt_vehicle_amount.getText())){
+             amount = Double.parseDouble(txt_vehicle_amount.getText());
+            }
+            if(!"".equals(txt_vehicle_depriation_rate.getText())){
+             depriationRate = Double.parseDouble(txt_vehicle_depriation_rate.getText());
+            }
             String status = null;
             if(cmb_vehicle_status.getSelectedIndex() == 0){
                 status = "A";
@@ -835,5 +838,19 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please Check that Vehicle Type & Fuel Type are Selected");
         }
         loadVehicleTable();
+    }
+
+    private void clearFields() {
+        cmb_vehicle_type.setSelectedIndex(0);
+        txt_vehicle_regNo.setText("");
+        txt_engine_no.setText("");
+        txt_vehi_chasis_no.setText("");
+        cmb_vehicle_year.setSelectedIndex(0);
+        txt_vehicle_amount.setText("");
+        cmb_vehi_fuel_type.setSelectedIndex(0);
+        txt_vehicle_depriation_rate.setText("");
+        cmb_vehicle_status.setSelectedIndex(0);
+        
+        btn_save_vehicle.setText("Save");
     }
 }

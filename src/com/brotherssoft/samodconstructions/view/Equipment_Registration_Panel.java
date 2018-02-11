@@ -8,6 +8,7 @@ package com.brotherssoft.samodconstructions.view;
 import com.brotherssoft.samodconstructions.controller.M_EquipmentController;
 import com.brotherssoft.samodconstructions.controller.R_AssetCategoryController;
 import com.brotherssoft.samodconstructions.controller.R_AssetController;
+import com.brotherssoft.samodconstructions.custom.AmountFieldFormat;
 import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.model.M_Equipment;
 import com.brotherssoft.samodconstructions.model.R_Asset;
@@ -15,6 +16,7 @@ import com.brotherssoft.samodconstructions.model.R_AssetCategory;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -34,6 +36,9 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
     M_EquipmentController equipmentController;
     DefaultTableModel dtmEquipment;
     DefaultComboBoxModel cmbModel; 
+    
+    AmountFieldFormat fieldFormat = new AmountFieldFormat();
+    DecimalFormat decimalFormat = new DecimalFormat("0.00");
     
 
     /**
@@ -248,6 +253,16 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         jLabel150.setText("Depriciation Rate");
 
         txt_equip_depreRate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_equip_depreRate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_equip_depreRateMouseClicked(evt);
+            }
+        });
+        txt_equip_depreRate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_equip_depreRateActionPerformed(evt);
+            }
+        });
 
         jLabel151.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel151.setText("Equipment Status");
@@ -281,27 +296,21 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
                             .addComponent(jLabel143, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel149, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel147, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel151, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel150, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(bank_panel_input_area2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_equip_depreRate)
+                            .addComponent(cmb_equipment_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmb_assetType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmb_asset_category, 0, 307, Short.MAX_VALUE)
                             .addComponent(txt_equipment_name)
                             .addComponent(jScrollPane16)
                             .addComponent(txt_equipment_regNo)
                             .addComponent(txt_asset_capacity)
-                            .addComponent(datePicker_assetRegDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(bank_panel_input_area2Layout.createSequentialGroup()
-                        .addComponent(jLabel150, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_equip_depreRate))
-                    .addGroup(bank_panel_input_area2Layout.createSequentialGroup()
-                        .addComponent(jLabel151, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmb_equipment_status, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(bank_panel_input_area2Layout.createSequentialGroup()
-                        .addComponent(jLabel147, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmb_assetType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(datePicker_assetRegDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         bank_panel_input_area2Layout.setVerticalGroup(
@@ -514,6 +523,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
             updateEquipment();
         }
         loadEquipmentTable();
+        clearFields();
     }//GEN-LAST:event_btn_save_equipmentActionPerformed
 
     private void tbl_equipment_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_equipment_infoMouseClicked
@@ -523,17 +533,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_tbl_equipment_infoMouseClicked
 
     private void btn_new_equipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_equipmentActionPerformed
-        cmb_asset_category.setSelectedIndex(0);
-        cmb_assetType.setSelectedIndex(0);
-        txt_equipment_name.setText("");
-        txtArea_equipment_desc.setText("");
-        txt_equipment_regNo.setText("");
-        txt_asset_capacity.setText("");
-        datePicker_assetRegDate.setDate(new Date());
-        cmb_equipment_status.setSelectedIndex(0);
-        txt_equip_depreRate.setText("");
-        
-        btn_save_equipment.setText("Save");
+        clearFields();
     }//GEN-LAST:event_btn_new_equipmentActionPerformed
 
     private void txt_search_equipmentKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_equipmentKeyReleased
@@ -600,6 +600,14 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
             cmb_asset_category.requestFocus();
         }
     }//GEN-LAST:event_txt_equipment_nameKeyReleased
+
+    private void txt_equip_depreRateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_equip_depreRateActionPerformed
+        fieldFormat.formatDecimalAmount(txt_equip_depreRate);
+    }//GEN-LAST:event_txt_equip_depreRateActionPerformed
+
+    private void txt_equip_depreRateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_equip_depreRateMouseClicked
+        fieldFormat.clearAmountField(txt_equip_depreRate);
+    }//GEN-LAST:event_txt_equip_depreRateMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -687,7 +695,10 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
             String capacity = txt_asset_capacity.getText();
             Date regDate = datePicker_assetRegDate.getDate();
             int status = cmb_equipment_status.getSelectedIndex();
-            double depreRate = Double.parseDouble(txt_equip_depreRate.getText());
+            double depreRate = 0;
+            if(!"".equals(txt_equip_depreRate.getText())){
+             depreRate = Double.parseDouble(txt_equip_depreRate.getText());
+            }
             
             M_Equipment equipment = new M_Equipment(eqId, assetId, assetCatId, name, desc, regNo, capacity, regDate, status, depreRate);
             boolean addEquipment = equipmentController.addEquipment(equipment);
@@ -719,7 +730,10 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
             String capacity = txt_asset_capacity.getText();
             Date regDate = datePicker_assetRegDate.getDate();
             int status = cmb_equipment_status.getSelectedIndex();
-            double depreRate = Double.parseDouble(txt_equip_depreRate.getText());
+            double depreRate = 0;
+            if(!"".equals(txt_equip_depreRate.getText())){
+             depreRate = Double.parseDouble(txt_equip_depreRate.getText());
+            }
             
             M_Equipment equipment = new M_Equipment(eqId, assetId, assetCatId, name, desc, regNo, capacity, regDate, status, depreRate);
             boolean updateEquipment = equipmentController.updateEuipment(equipment);
@@ -768,5 +782,19 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
             Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return searEquipment;
+    }
+
+    private void clearFields() {
+        cmb_asset_category.setSelectedIndex(0);
+        cmb_assetType.setSelectedIndex(0);
+        txt_equipment_name.setText("");
+        txtArea_equipment_desc.setText("");
+        txt_equipment_regNo.setText("");
+        txt_asset_capacity.setText("");
+        datePicker_assetRegDate.setDate(new Date());
+        cmb_equipment_status.setSelectedIndex(0);
+        txt_equip_depreRate.setText("");
+        
+        btn_save_equipment.setText("Save");
     }
 }

@@ -1085,6 +1085,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private void btn_add_secondary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_secondary_projectActionPerformed
         updateSecondaryProject();
         loadSecondaryProjectTable();
+        clearFields();
     }//GEN-LAST:event_btn_add_secondary_projectActionPerformed
 
     private void tblSecondaryProjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSecondaryProjectMouseClicked
@@ -1665,6 +1666,35 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         }
         double tot = boq + vat;
         txt_total.setText(decimalFormat.format(tot));
+    }
+
+    private void clearFields() {
+        cmb_current_status.setSelectedIndex(0);
+        txt_boq.setText("");
+        txt_vat.setText("");
+        txt_total.setText("");
+        txt_project_duration.setText("");
+        dp_agreement_date.setDate(new Date());
+        txt_name.setText("");
+        txt_address.setText("");
+        txt_tel.setText("");
+        dp_Commencement_date.setDate(new Date());
+        dp_Completion_date.setDate(new Date());
+        txt_performance_organization.setText("");
+        txt_performance_amount.setText("");
+        dp_performance_Valid_Period_From.setDate(new Date());
+        dp_performance_Valid_Period_To.setDate(new Date());
+        txt_payment_organization.setText("");
+        txt_payment_amount.setText("");
+        dp_payment_Valid_Period_From.setDate(new Date());
+        dp_payment_Valid_Period_To.setDate(new Date());
+        cmb_Insuarance_Covers.setSelectedIndex(0);
+        txt_insuarance_covers.setText("");
+        txt_insuarance_covers_amount.setText("");
+        dp_insurance_Valid_Period_From.setDate(new Date());
+        dp_insurance_Valid_Period_To.setDate(new Date());
+        cmb_made_of_payment.setSelectedIndex(0);
+        btn_add_secondary_project.setText("Save");
     }
 
 }

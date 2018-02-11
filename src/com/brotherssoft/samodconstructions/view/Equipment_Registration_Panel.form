@@ -157,7 +157,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="btn_equipment" min="-2" pref="92" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -165,7 +165,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btn_new_equipment" min="-2" pref="92" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel145" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                                   <Component id="jLabel144" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -173,9 +173,15 @@
                                   <Component id="jLabel149" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                                   <Component id="jLabel114" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                                   <Component id="jLabel148" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                  <Component id="jLabel147" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                  <Component id="jLabel151" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                                  <Component id="jLabel150" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txt_equip_depreRate" max="32767" attributes="0"/>
+                                  <Component id="cmb_equipment_status" max="32767" attributes="0"/>
+                                  <Component id="cmb_assetType" max="32767" attributes="0"/>
                                   <Component id="cmb_asset_category" alignment="0" pref="307" max="32767" attributes="0"/>
                                   <Component id="txt_equipment_name" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jScrollPane16" alignment="0" max="32767" attributes="0"/>
@@ -183,21 +189,6 @@
                                   <Component id="txt_asset_capacity" alignment="0" max="32767" attributes="0"/>
                                   <Component id="datePicker_assetRegDate" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel150" min="-2" pref="146" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txt_equip_depreRate" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel151" min="-2" pref="146" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cmb_equipment_status" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel147" min="-2" pref="146" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cmb_assetType" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -457,6 +448,10 @@
                   <Font name="Segoe UI" size="14" style="1"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt_equip_depreRateMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_equip_depreRateActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel151">
               <Properties>

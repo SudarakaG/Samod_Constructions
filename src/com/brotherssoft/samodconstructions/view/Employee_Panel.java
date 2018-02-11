@@ -893,6 +893,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         } else {
             updateEmployee();
         }
+        refreshFields();
     }//GEN-LAST:event_btn_emp_saveActionPerformed
 
     private void btn_emp_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_newActionPerformed

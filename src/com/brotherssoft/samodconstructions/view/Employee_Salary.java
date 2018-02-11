@@ -212,6 +212,11 @@ public class Employee_Salary extends javax.swing.JPanel {
 
         btn_emp_salary_cancel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_emp_salary_cancel.setText("Cancel");
+        btn_emp_salary_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_emp_salary_cancelActionPerformed(evt);
+            }
+        });
 
         cmbBankEmp_Salary.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmbBankEmp_Salary.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Bank -" }));
@@ -661,6 +666,7 @@ public class Employee_Salary extends javax.swing.JPanel {
 
     private void btn_save_emp_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_emp_salaryActionPerformed
         updateEmployeeSalaryDetails();
+        clearFields();
     }//GEN-LAST:event_btn_save_emp_salaryActionPerformed
 
     private void txt_emp_sal_basicKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicKeyPressed
@@ -860,6 +866,10 @@ public class Employee_Salary extends javax.swing.JPanel {
         txt_emp_sal_basic.requestFocus();
     }//GEN-LAST:event_cmbEPFStatusActionPerformed
 
+    private void btn_emp_salary_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_salary_cancelActionPerformed
+        clearFields();
+    }//GEN-LAST:event_btn_emp_salary_cancelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Employee_Salary;
@@ -908,14 +918,15 @@ public class Employee_Salary extends javax.swing.JPanel {
 //            }
             txt_employee.setText(employee.getEmp_firstName() + " " + employee.getEmp_middleName() + " " + employee.getEmp_surName());
             txt_emp_acc_no.setText(employee.getEmp_accountNo());
-            if (employee.getEmp_bank_id() != 0 && employee.getEmp_branch_id() != 0) {
+            if (employee.getEmp_bank_id() != 0) {
                 cmbBankEmp_Salary.setSelectedItem(bankController.searchBank(employee.getEmp_bank_id()).getBank_name());
-                cmbBranchEmp_salary.setSelectedItem(branchController.searchBranch(employee.getEmp_branch_id()).getBranch_name());
-
             } else {
                 cmbBankEmp_Salary.setSelectedIndex(0);
+            }
+            if (employee.getEmp_branch_id() != 0) {
+                cmbBranchEmp_salary.setSelectedItem(branchController.searchBranch(employee.getEmp_branch_id()).getBranch_name());
+            } else {
                 cmbBranchEmp_salary.setSelectedIndex(0);
-
             }
             if (employee.getEmp_salaryType_id() != 0) {
                 cmbSalaryType.setSelectedItem(salaryTypeController.searchSalaryType(employee.getEmp_salaryType_id()).getSalaryType_name());
@@ -998,7 +1009,7 @@ public class Employee_Salary extends javax.swing.JPanel {
     }
 
     private void updateEmployeeSalaryDetails() {
-        if(cmbBankEmp_Salary.getSelectedIndex() != 0 && cmbBranchEmp_salary.getSelectedIndex() != 0 && cmbSalaryType.getSelectedIndex() != 0){
+        if(cmbSalaryType.getSelectedIndex() != 0){
         try {
             double salary = 0;
             double otherAllowance1 = 0;
@@ -1073,7 +1084,7 @@ public class Employee_Salary extends javax.swing.JPanel {
             Logger.getLogger(Employee_Salary.class.getName()).log(Level.SEVERE, null, ex);
         }
         }else{
-            JOptionPane.showMessageDialog(this, "Please Check that the Bank , Branch & Salary Type are Selected");
+            JOptionPane.showMessageDialog(this, "Please Check that the Salary Type is Selected");
         }
     }
 
@@ -1087,6 +1098,20 @@ public class Employee_Salary extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(Employee_Salary.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void clearFields() {
+        txt_employee.setText("");
+        txt_emp_acc_no.setText("");
+        cmbBankEmp_Salary.setSelectedIndex(0);
+        cmbBranchEmp_salary.setSelectedIndex(0);
+        cmbSalaryType.setSelectedIndex(0);
+        cmbEPFStatus.setSelectedIndex(0);
+        txt_emp_sal_basic.setText("");
+        txt_emp_sal_al_1.setText("");
+        txt_emp_al_2.setText("");
+        txt_emp_al_3.setText("");
+        txt_emp_al_4.setText("");
     }
 
 }

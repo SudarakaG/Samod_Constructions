@@ -12,6 +12,7 @@ import com.brotherssoft.samodconstructions.model.R_Bank;
 import com.brotherssoft.samodconstructions.model.R_Branch;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +40,8 @@ public class Bank_Panel extends javax.swing.JPanel {
         bankController = ServerConnector.getServerConnetor().getBankController();
         branchController = ServerConnector.getServerConnetor().getBranchController();
         showPanel(x);
+        btn_branch.setEnabled(false);
+        btn_back_to_bank.setEnabled(false);
     }
 
     /**
@@ -734,8 +737,20 @@ public class Bank_Panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_back_to_bankMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_back_to_bankMouseClicked
+
+        if (!txtBranchName.getText().equalsIgnoreCase("")) {
+            try {
+                R_Bank searchBankByName = bankController.searchBankByName(cmbBank.getSelectedItem().toString());
+                if (searchBankByName != null) {
+                    loadFromTableRow(searchBankByName);
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         Branch_panel.setVisible(false);
         Bank_panel.setVisible(true);
+        loadBankTable();
     }//GEN-LAST:event_btn_back_to_bankMouseClicked
 
     private void btn_bank_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bank_saveActionPerformed
@@ -744,32 +759,31 @@ public class Bank_Panel extends javax.swing.JPanel {
         } else {
             updateBankDetails();
         }
+        btn_branch.setEnabled(true);
         loadBankTable();
-
+        clearBankFields();
 
     }//GEN-LAST:event_btn_bank_saveActionPerformed
 
     private void tbl_bankMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_bankMouseClicked
-        loadFromTableRow();     
+        loadFromTableRow(searchBankByTableName());
+        btn_branch.setEnabled(true);
         txt_bankSearch.setText("Search Bank");
         txt_branch_search.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_bankMouseClicked
 
     private void btn_bank_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bank_newActionPerformed
-        txt_bank_name.setText("");
-        txt_bank_code.setText("");
-        cmb_bank_states.setSelectedIndex(0);
-        bank_desc.setText("");
-
-        btn_bank_save.setText("Save");
+        clearBankFields();
     }//GEN-LAST:event_btn_bank_newActionPerformed
 
     private void btn_save_branchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_branchActionPerformed
-        if(btn_save_branch.getText().equalsIgnoreCase("Save")){
+        if (btn_save_branch.getText().equalsIgnoreCase("Save")) {
             saveBranch();
-        }else{
+        } else {
             updateBranch();
         }
+        btn_back_to_bank.setEnabled(true);
+        clearFields();
     }//GEN-LAST:event_btn_save_branchActionPerformed
 
     private void tbl_branchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbl_branchKeyPressed
@@ -777,22 +791,17 @@ public class Bank_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_tbl_branchKeyPressed
 
     private void tbl_branchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_branchMouseClicked
-        loadFromBranchTable();
+        loadFromBranchTable(searchBranchBytableCode());
+        btn_back_to_bank.setEnabled(true);
         txt_branch_search.setText("Search Branch");
         txt_branch_search.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_branchMouseClicked
 
     private void btn_new_branchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_branchActionPerformed
+
+        clearFields();
         
-        txtBranchName.setText("");
-        txtBranchCode.setText("");
-        txtBranchAddress.setText("");
-        cmbBank.setSelectedIndex(0);
-        cmbBranchStates.setSelectedIndex(0);
-        taBranchDesc.setText("");
-        
-        btn_save_branch.setText("Save");
-        
+
     }//GEN-LAST:event_btn_new_branchActionPerformed
 
     private void btn_branchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_branchActionPerformed
@@ -800,8 +809,44 @@ public class Bank_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_branchActionPerformed
 
     private void btn_branchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_branchMouseClicked
-        Bank_panel.setVisible(false);
-        Branch_panel.setVisible(true);
+
+        try {
+            String bankName = txt_bank_name.getText();
+            if (!txt_bank_name.getText().equalsIgnoreCase("")) {
+                List<R_Branch> allBranches = branchController.getAllBranches();
+                int bank_id = bankController.searchBankByName(txt_bank_name.getText()).getBank_id();
+                dtmBranch.setRowCount(0);
+                for (R_Branch allBranche : allBranches) {
+                    if (allBranche.getBranch_bank_id() == bank_id) {
+
+                        String status = "";
+                        if (allBranche.getBranch_status() == 0) {
+                            status = "Active";
+                        } else {
+                            status = "Inactive";
+                        }
+                        String[] rowData = {txt_bank_name.getText(), allBranche.getBranch_code(), allBranche.getBranch_name(), status};
+                        dtmBranch.addRow(rowData);
+                    }
+                }
+            } else {
+                loadBranchTable();
+            }
+            Bank_panel.setVisible(false);
+            Branch_panel.setVisible(true);
+            loadToBankCombo();
+            
+            if (dtmBranch.getRowCount() != 0) {
+                R_Branch searchBranchByCode = branchController.searchBranchByCode((String) dtmBranch.getValueAt(0, 1));
+                loadFromBranchTable(searchBranchByCode);
+            }else{
+                clearFields();
+            }
+            cmbBank.setSelectedItem(bankName);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_branchMouseClicked
 
     private void txt_branch_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_branch_searchKeyReleased
@@ -852,7 +897,7 @@ public class Bank_Panel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_txt_bankSearchKeyReleased
 
     private void txt_branch_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_branch_searchMouseClicked
@@ -1015,12 +1060,8 @@ public class Bank_Panel extends javax.swing.JPanel {
         }
     }
 
-    private void loadFromTableRow() {
+    private void loadFromTableRow(R_Bank searchBank) {
         try {
-
-            int selectedRow = tbl_bank.getSelectedRow();
-
-            R_Bank searchBank = searchBankByTableName();
 
             txt_bank_name.setText(searchBank.getBank_name());
             txt_bank_code.setText(searchBank.getBank_code());
@@ -1104,31 +1145,31 @@ public class Bank_Panel extends javax.swing.JPanel {
     }
 
     private void saveBranch() {
-        if(cmbBank.getSelectedIndex() != 0){
-        try {
+        if (cmbBank.getSelectedIndex() != 0) {
+            try {
 
-            int branch_id = IDGenerator.getNewID("r_branch", "BRANCH_ID");
-            R_Bank searchBankByName = bankController.searchBankByName(cmbBank.getSelectedItem().toString());
-            int branch_bank_id = searchBankByName.getBank_id();
-            String branchName = txtBranchName.getText();
-            String branchCode = txtBranchCode.getText();
-            String branchDesc = taBranchDesc.getText();
-            String branchAddress = txtBranchAddress.getText();
-            int branchStatus = cmbBranchStates.getSelectedIndex();
+                int branch_id = IDGenerator.getNewID("r_branch", "BRANCH_ID");
+                R_Bank searchBankByName = bankController.searchBankByName(cmbBank.getSelectedItem().toString());
+                int branch_bank_id = searchBankByName.getBank_id();
+                String branchName = txtBranchName.getText();
+                String branchCode = txtBranchCode.getText();
+                String branchDesc = taBranchDesc.getText();
+                String branchAddress = txtBranchAddress.getText();
+                int branchStatus = cmbBranchStates.getSelectedIndex();
 
-            R_Branch branch = new R_Branch(branch_id, branch_bank_id, branchName, branchCode, branchDesc, branchAddress, branchStatus);
+                R_Branch branch = new R_Branch(branch_id, branch_bank_id, branchName, branchCode, branchDesc, branchAddress, branchStatus);
 
-            boolean addBranch = branchController.addBranch(branch);
-            if (addBranch) {
-                JOptionPane.showMessageDialog(this, "Branch Saved Successfully..");
-            } else {
-                JOptionPane.showMessageDialog(this, "Branch Saving went wrong..");
+                boolean addBranch = branchController.addBranch(branch);
+                if (addBranch) {
+                    JOptionPane.showMessageDialog(this, "Branch Saved Successfully..");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Branch Saving went wrong..");
+                }
+
+            } catch (Exception ex) {
+                Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-        } catch (Exception ex) {
-            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Please Select the Bank");
         }
         loadBranchTable();
@@ -1159,23 +1200,26 @@ public class Bank_Panel extends javax.swing.JPanel {
 
     }
 
-    private void loadFromBranchTable() {
-        try {
+    private void loadFromBranchTable(R_Branch branch) {
+        if (branch != null) {
+            try {
 
-            R_Branch branch = searchBranchBytableCode();
-            txtBranchName.setText(branch.getBranch_name());
-            txtBranchCode.setText(branch.getBranch_code());
-            txtBranchAddress.setText(branch.getBranch_address());
-            R_Bank searchBank = bankController.searchBank(branch.getBranch_bank_id());
-            cmbBank.setSelectedItem(searchBank.getBank_name());
-            cmbBranchStates.setSelectedIndex(branch.getBranch_status());
-            taBranchDesc.setText(branch.getBranch_description());
+                txtBranchName.setText(branch.getBranch_name());
+                txtBranchCode.setText(branch.getBranch_code());
+                txtBranchAddress.setText(branch.getBranch_address());
+                R_Bank searchBank = bankController.searchBank(branch.getBranch_bank_id());
+                cmbBank.setSelectedItem(searchBank.getBank_name());
+                cmbBranchStates.setSelectedIndex(branch.getBranch_status());
+                taBranchDesc.setText(branch.getBranch_description());
 
-        } catch (Exception ex) {
-            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            btn_save_branch.setText("Update");
+        } else {
+            cmbBank.setSelectedIndex(0);
         }
-
-        btn_save_branch.setText("Update");
 
     }
 
@@ -1191,35 +1235,58 @@ public class Bank_Panel extends javax.swing.JPanel {
     }
 
     private void updateBranch() {
-        if(cmbBank.getSelectedIndex() != 0){
-        try {
-            
-            int branch_id = searchBranchBytableCode().getBranch_id();
-            int bank_id = bankController.searchBankByName(cmbBank.getSelectedItem().toString()).getBank_id();
-            String branchName = txtBranchName.getText();
-            String branchCode = txtBranchCode.getText();
-            String branchDesc = taBranchDesc.getText();
-            String branchAddress = txtBranchAddress.getText();
-            int branchStatus = cmbBranchStates.getSelectedIndex();
-            
-            R_Branch branchU = new R_Branch(branch_id, bank_id, branchName, branchCode, branchDesc, branchAddress, branchStatus);
-            
-            boolean updateBranch = branchController.updateBranch(branchU);
-            if (updateBranch) {
-                JOptionPane.showMessageDialog(this, "Branch Updated Successfully..");
-            }else{
-                JOptionPane.showMessageDialog(this, "Branch Updating Failed..");
+        if (cmbBank.getSelectedIndex() != 0) {
+            try {
+
+                int branch_id = searchBranchBytableCode().getBranch_id();
+                int bank_id = bankController.searchBankByName(cmbBank.getSelectedItem().toString()).getBank_id();
+                String branchName = txtBranchName.getText();
+                String branchCode = txtBranchCode.getText();
+                String branchDesc = taBranchDesc.getText();
+                String branchAddress = txtBranchAddress.getText();
+                int branchStatus = cmbBranchStates.getSelectedIndex();
+
+                R_Branch branchU = new R_Branch(branch_id, bank_id, branchName, branchCode, branchDesc, branchAddress, branchStatus);
+
+                boolean updateBranch = branchController.updateBranch(branchU);
+                if (updateBranch) {
+                    JOptionPane.showMessageDialog(this, "Branch Updated Successfully..");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Branch Updating Failed..");
+                }
+
+            } catch (Exception ex) {
+                Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        } catch (Exception ex) {
-            Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Please Select the Bank");
         }
+
+        loadBranchTable();
+    }
+
+    private void clearFields() {
+        txtBranchName.setText("");
+        txtBranchCode.setText("");
+        txtBranchAddress.setText("");
+        cmbBank.setSelectedIndex(0);
+        cmbBranchStates.setSelectedIndex(0);
+        taBranchDesc.setText("");
+
+        btn_save_branch.setText("Save");
+        btn_back_to_bank.setEnabled(false);
         
         loadBranchTable();
     }
-    
+
+    private void clearBankFields() {
+        txt_bank_name.setText("");
+        txt_bank_code.setText("");
+        cmb_bank_states.setSelectedIndex(0);
+        bank_desc.setText("");
+
+        btn_bank_save.setText("Save");
+        btn_branch.setEnabled(false);
+    }
 
 }

@@ -1431,6 +1431,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     private void btn_save_third_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_third_projectActionPerformed
         updateThirdProject();
         loadProjectTable();
+        clearFields();
     }//GEN-LAST:event_btn_save_third_projectActionPerformed
 
     private void txt_liquidityDamage_periodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_liquidityDamage_periodActionPerformed
@@ -1899,5 +1900,33 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             lbl_liq_damageAmount.setVisible(true);
             txt_liquidityDamage_amount.setVisible(true);
         }
+    }
+
+    private void clearFields() {
+        cmb_current_status.setSelectedIndex(0);
+        txt_boq.setText("");
+        txt_exceed.setText("");
+        txt_extra_work.setText("");
+        txt_price_excallation.setText("");
+        txt_vat.setText("");
+        txt_total.setText("");
+        dp_take_over_date.setDate(new Date());
+        dp_completed_date.setDate(new Date());
+        dp_hand_over_date.setDate(new Date());
+        txt_req_period.setText("");
+        txt_approved_period.setText("");
+        cmb_Liquidity_Damage.setSelectedIndex(0);
+        txt_liquidityDamage_period.setText("");
+        txt_liquidityDamage_amount.setText("");
+        cmb_Completion_Certification.setSelectedIndex(0);        
+        cmb_Retention.setSelectedIndex(0);
+        cmb_Retain_mode.setSelectedIndex(0);
+        txt_retain_amount.setText("");
+        txt_retain_organization.setText("");
+        dp_retain_Valid_Period_From.setDate(new Date());
+        dp_retain_Valid_Period_To.setDate(new Date());
+        cmb_retention_release.setSelectedIndex(0);
+        txt_retain_releaseAmount.setText("");
+        dp_retain_releaseDate.setDate(new Date());
     }
 }

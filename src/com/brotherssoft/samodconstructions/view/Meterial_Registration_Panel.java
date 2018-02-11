@@ -399,6 +399,7 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
             updateMaterial();
         }
         loadMaterialTable();
+        clearFields();
     }//GEN-LAST:event_btn_save_materialActionPerformed
 
     private void tbl_material_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_material_infoMouseClicked
@@ -408,13 +409,7 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_tbl_material_infoMouseClicked
 
     private void btn_new_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_materialActionPerformed
-        txt_material_name1.setText("");
-        txtArea_material_desc.setText("");
-        cmb_material_unit.setSelectedIndex(0);
-        cmb_material_status.setSelectedIndex(0);
-        datePicker_material_reg_date.setDate(new Date());
-        
-        btn_save_material.setText("Save");
+        clearFields();
     }//GEN-LAST:event_btn_new_materialActionPerformed
 
     private void txt_search_materialKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_materialKeyReleased
@@ -616,5 +611,15 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
             Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return searchMaterial;
+    }
+
+    private void clearFields() {
+        txt_material_name1.setText("");
+        txtArea_material_desc.setText("");
+        cmb_material_unit.setSelectedIndex(0);
+        cmb_material_status.setSelectedIndex(0);
+        datePicker_material_reg_date.setDate(new Date());
+        
+        btn_save_material.setText("Save");
     }
 }

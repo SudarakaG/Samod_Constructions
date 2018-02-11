@@ -356,6 +356,7 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         }else{
             updateWork();
         }
+        clearFields();
     }//GEN-LAST:event_btn_save_workActionPerformed
 
     private void tbl_workInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_workInfoMouseClicked
@@ -365,11 +366,7 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_tbl_workInfoMouseClicked
 
     private void btn_work_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_work_newActionPerformed
-        txt_work_name1.setText("");
-        txtArea_work_desc1.setText("");
-        cmb_work_states1.setSelectedIndex(0);
-        
-        btn_save_work.setText("Save");
+        clearFields();
     }//GEN-LAST:event_btn_work_newActionPerformed
 
     private void txt_search_workKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_workKeyReleased
@@ -520,5 +517,13 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
             Logger.getLogger(Work_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return searchWork;
+    }
+
+    private void clearFields() {
+        txt_work_name1.setText("");
+        txtArea_work_desc1.setText("");
+        cmb_work_states1.setSelectedIndex(0);
+        
+        btn_save_work.setText("Save");
     }
 }

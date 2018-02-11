@@ -416,6 +416,7 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
         } else {
             updateCompanyAccount();
         }
+        clearFields();
     }//GEN-LAST:event_btn_acc_saveActionPerformed
 
     private void cmb_CAR_BankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_CAR_BankActionPerformed
@@ -706,6 +707,17 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
             Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return account;
+    }
+
+    private void clearFields() {
+        cmb_CAR_Bank.setSelectedIndex(0);
+        cmb_CAR_Branch.setSelectedIndex(0);
+        txt_acc_no.setText("");
+        txt_acc_name.setText("");
+        cmb_CAR_Acc_Type.setSelectedIndex(0);
+        cmb_acc_states.setSelectedIndex(0);
+
+        btn_acc_save.setText("Save");
     }
 
 }

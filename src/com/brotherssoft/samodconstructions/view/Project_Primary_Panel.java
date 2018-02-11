@@ -1110,6 +1110,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         } else {
             updatePrimaryProject();
         }
+        clearFields();
     }//GEN-LAST:event_btn_add_primary_projectActionPerformed
 
     private void tblPrimaryProjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPrimaryProjectMouseClicked
@@ -1120,39 +1121,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_tblPrimaryProjectMouseClicked
 
     private void btn_new_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_projectActionPerformed
-        txt_project_name_1.setText("");
-        txt_project_desc_1.setText("");
-        txt_project_address1.setText("");
-        txt_project_address2.setText("");
-        txt_project_address3.setText("");
-        txt_project_address4.setText("");
-        cmb_project_type_1.setSelectedIndex(0);
-        cmb_project_vatAdded.setSelectedIndex(0);
-        txt_project_contract_bid_1.setText("");
-        txt_project_client_1.setText("");
-        txt_project_client_address1.setText("");
-        txt_project_client_address2.setText("");
-        txt_project_client_address3.setText("");
-        txt_project_client_address4.setText("");
-        txt_project_client_contact_1.setText("");
-        txt_project_client_contact_1_2.setText("");
-        txt_project_intendedDuration_1.setText("");
-        cmb_project_Specialiti.setSelectedIndex(0);
-        cmb_project_grade_1.setSelectedIndex(0);
-        txt_project_engineer_estimate.setText("");
-        txt_project_tender_fee_1.setText("");
-        cmb_project_bid_payment_mode.setSelectedIndex(0);
-        txt_project_bid_amount_1.setText("");
-        txt_project_bid_organization.setText("");
-        txt_project_bid_duration_1.setText("");
-        txt_project_tender_open_date_1.setDate(date);
-        txt_project_tender_open_time_1.setValue(date);
-        cmb_project_made_of_states_1.setSelectedIndex(0);
-        txt_project_states_active_date_1.setDate(date);
-        txt_project_states_inactive_date_1.setDate(date);
-        txt_project_tender_result.setText("");
-
-        btn_add_primary_project.setText("Save");
+        clearFields();
     }//GEN-LAST:event_btn_new_primary_projectActionPerformed
 
     private void txt_project_name_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_name_1ActionPerformed
@@ -1720,5 +1689,41 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void clearFields() {
+        txt_project_name_1.setText("");
+        txt_project_desc_1.setText("");
+        txt_project_address1.setText("");
+        txt_project_address2.setText("");
+        txt_project_address3.setText("");
+        txt_project_address4.setText("");
+        cmb_project_type_1.setSelectedIndex(0);
+        cmb_project_vatAdded.setSelectedIndex(0);
+        txt_project_contract_bid_1.setText("");
+        txt_project_client_1.setText("");
+        txt_project_client_address1.setText("");
+        txt_project_client_address2.setText("");
+        txt_project_client_address3.setText("");
+        txt_project_client_address4.setText("");
+        txt_project_client_contact_1.setText("");
+        txt_project_client_contact_1_2.setText("");
+        txt_project_intendedDuration_1.setText("");
+        cmb_project_Specialiti.setSelectedIndex(0);
+        cmb_project_grade_1.setSelectedIndex(0);
+        txt_project_engineer_estimate.setText("");
+        txt_project_tender_fee_1.setText("");
+        cmb_project_bid_payment_mode.setSelectedIndex(0);
+        txt_project_bid_amount_1.setText("");
+        txt_project_bid_organization.setText("");
+        txt_project_bid_duration_1.setText("");
+        txt_project_tender_open_date_1.setDate(date);
+        txt_project_tender_open_time_1.setValue(date);
+        cmb_project_made_of_states_1.setSelectedIndex(0);
+        txt_project_states_active_date_1.setDate(date);
+        txt_project_states_inactive_date_1.setDate(date);
+        txt_project_tender_result.setText("");
+
+        btn_add_primary_project.setText("Save");
     }
 }
