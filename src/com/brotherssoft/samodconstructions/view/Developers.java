@@ -31,6 +31,19 @@ public class Developers extends javax.swing.JPanel {
      */
     public Developers() throws Exception {
         initComponents();
+        login.setVisible(true);
+        info.setVisible(false);
+        jLabel2.setText(oS1.getWindowsVisualStyle());
+        jLabel6.setText(jVM1.isOneDotFive()+"");
+        jLabel8.setText(jVM1.isOneDotFour()+"");
+        jLabel10.setText(jVM1.isOneDotThree()+"");
+        jLabel14.setText(jVM1.isOneDotTwo()+"");
+        jLabel16.setText(jVM1.isOneDotOne()+"");
+        jLabel18.setText(jVM1.isOneDotSixUpdateN()+"");
+        jLabel20.setText("can not detect");
+        jLabel4.setText(jVM1.current()+"");
+        jLabel22.setText(jVM1.isOneDotSix()+"");
+        jLabel24.setText(jVM1.toString());
         
     }
 
@@ -44,6 +57,10 @@ public class Developers extends javax.swing.JPanel {
     private void initComponents() {
 
         jVM1 = new org.jdesktop.swingx.util.JVM();
+        loginPaneAddon1 = new org.jdesktop.swingx.plaf.LoginPaneAddon();
+        oS1 = new org.jdesktop.swingx.util.OS();
+        jVM2 = new org.jdesktop.swingx.util.JVM();
+        neonBorderEffect1 = new org.jdesktop.swingx.painter.effects.NeonBorderEffect();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         Branch_panel = new javax.swing.JPanel();
         bank_panel_hedding1 = new javax.swing.JPanel();
@@ -51,8 +68,35 @@ public class Developers extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         jLayeredPane2 = new javax.swing.JLayeredPane();
-        jPanel1 = new javax.swing.JPanel();
+        login = new javax.swing.JPanel();
         jXLoginPane1 = new org.jdesktop.swingx.JXLoginPane();
+        jXButton1 = new org.jdesktop.swingx.JXButton();
+        info = new javax.swing.JPanel();
+        jXBusyLabel1 = new org.jdesktop.swingx.JXBusyLabel();
+        jXGlassBox1 = new org.jdesktop.swingx.JXGlassBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jXGlassBox2 = new org.jdesktop.swingx.JXGlassBox();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
 
         Branch_panel.setBackground(new java.awt.Color(255, 255, 255));
         Branch_panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -98,24 +142,236 @@ public class Developers extends javax.swing.JPanel {
 
         jXLoginPane1.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jXButton1.setText("Access");
+        jXButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
+        login.setLayout(loginLayout);
+        loginLayout.setHorizontalGroup(
+            loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(loginLayout.createSequentialGroup()
                 .addGap(314, 314, 314)
-                .addComponent(jXLoginPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jXButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jXLoginPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(378, Short.MAX_VALUE)
+        loginLayout.setVerticalGroup(
+            loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginLayout.createSequentialGroup()
+                .addContainerGap(347, Short.MAX_VALUE)
                 .addComponent(jXLoginPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jXButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
-        jLayeredPane2.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jXBusyLabel1.setText("System Running..");
+
+        jXGlassBox1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operating System Visual", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 14))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel1.setText("Windows");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        javax.swing.GroupLayout jXGlassBox1Layout = new javax.swing.GroupLayout(jXGlassBox1);
+        jXGlassBox1.setLayout(jXGlassBox1Layout);
+        jXGlassBox1Layout.setHorizontalGroup(
+            jXGlassBox1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jXGlassBox1Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jXGlassBox1Layout.setVerticalGroup(
+            jXGlassBox1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jXGlassBox1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jXGlassBox1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jXGlassBox2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Runtime Enviroment", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 3, 14))); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setText("Current");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setText("1.5");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setText("1.4");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel9.setText("1.3");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel13.setText("1.2");
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel15.setText("1.1");
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel17.setText("6 update N");
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel19.setText("Later");
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel21.setText("1.6");
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel23.setText("jvm");
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
+        javax.swing.GroupLayout jXGlassBox2Layout = new javax.swing.GroupLayout(jXGlassBox2);
+        jXGlassBox2.setLayout(jXGlassBox2Layout);
+        jXGlassBox2Layout.setHorizontalGroup(
+            jXGlassBox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jXGlassBox2Layout.createSequentialGroup()
+                .addGroup(jXGlassBox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jXGlassBox2Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jXGlassBox2Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jXGlassBox2Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jXGlassBox2Layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jXGlassBox2Layout.createSequentialGroup()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jXGlassBox2Layout.createSequentialGroup()
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jXGlassBox2Layout.createSequentialGroup()
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jXGlassBox2Layout.createSequentialGroup()
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jXGlassBox2Layout.createSequentialGroup()
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jXGlassBox2Layout.createSequentialGroup()
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jXGlassBox2Layout.setVerticalGroup(
+            jXGlassBox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXGlassBox2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jXGlassBox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jXGlassBox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jXGlassBox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jXGlassBox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jXGlassBox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jXGlassBox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jXGlassBox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jXGlassBox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jXGlassBox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jXGlassBox2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel19)))
+        );
+
+        javax.swing.GroupLayout infoLayout = new javax.swing.GroupLayout(info);
+        info.setLayout(infoLayout);
+        infoLayout.setHorizontalGroup(
+            infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jXBusyLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(infoLayout.createSequentialGroup()
+                        .addComponent(jXGlassBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jXGlassBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(146, Short.MAX_VALUE))
+        );
+        infoLayout.setVerticalGroup(
+            infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(infoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jXBusyLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(infoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jXGlassBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jXGlassBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(301, Short.MAX_VALUE))
+        );
+
+        jLayeredPane2.setLayer(login, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane2.setLayer(info, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane2Layout = new javax.swing.GroupLayout(jLayeredPane2);
         jLayeredPane2.setLayout(jLayeredPane2Layout);
@@ -123,15 +379,25 @@ public class Developers extends javax.swing.JPanel {
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jLayeredPane2Layout.setVerticalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane2Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(1, 1, 1)))
         );
 
         javax.swing.GroupLayout Branch_panelLayout = new javax.swing.GroupLayout(Branch_panel);
@@ -174,18 +440,60 @@ public class Developers extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jXButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXButton1ActionPerformed
+        
+        
+        if("root".equalsIgnoreCase(jXLoginPane1.getUserName())){
+        login.setVisible(false);
+        info.setVisible(true);
+        }else{System.out.println(jXLoginPane1.getPassword());}
+        
+        
+    }//GEN-LAST:event_jXButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Branch_panel;
     private javax.swing.JPanel bank_panel_hedding1;
+    private javax.swing.JPanel info;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator7;
     private org.jdesktop.swingx.util.JVM jVM1;
+    private org.jdesktop.swingx.util.JVM jVM2;
+    private org.jdesktop.swingx.JXBusyLabel jXBusyLabel1;
+    private org.jdesktop.swingx.JXButton jXButton1;
+    private org.jdesktop.swingx.JXGlassBox jXGlassBox1;
+    private org.jdesktop.swingx.JXGlassBox jXGlassBox2;
     private org.jdesktop.swingx.JXLoginPane jXLoginPane1;
+    private javax.swing.JPanel login;
+    private org.jdesktop.swingx.plaf.LoginPaneAddon loginPaneAddon1;
+    private org.jdesktop.swingx.painter.effects.NeonBorderEffect neonBorderEffect1;
+    private org.jdesktop.swingx.util.OS oS1;
     // End of variables declaration//GEN-END:variables
 
    

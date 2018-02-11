@@ -32,6 +32,7 @@ public class Home_Panel extends javax.swing.JPanel {
         jLabel96 = new javax.swing.JLabel();
         jLabel97 = new javax.swing.JLabel();
         jSeparator25 = new javax.swing.JSeparator();
+        jXTipOfTheDay1 = new org.jdesktop.swingx.JXTipOfTheDay();
 
         Home_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Home_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -84,16 +85,17 @@ public class Home_Panel extends javax.swing.JPanel {
         );
         Home_PanelLayout.setVerticalGroup(
             Home_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Home_PanelLayout.createSequentialGroup()
-                .addComponent(user_panel_hedding13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(571, Short.MAX_VALUE))
+            .addComponent(user_panel_hedding13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1050, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(344, Short.MAX_VALUE)
+                .addComponent(jXTipOfTheDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -102,12 +104,15 @@ public class Home_Panel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 710, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(jXTipOfTheDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(504, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(Home_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
-                    .addContainerGap()))
+                    .addComponent(Home_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(582, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -117,6 +122,7 @@ public class Home_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel96;
     private javax.swing.JLabel jLabel97;
     private javax.swing.JSeparator jSeparator25;
+    private org.jdesktop.swingx.JXTipOfTheDay jXTipOfTheDay1;
     private javax.swing.JPanel user_panel_hedding13;
     // End of variables declaration//GEN-END:variables
 }
