@@ -32,6 +32,7 @@ import com.brotherssoft.samodconstructions.controller.R_UnitController;
 import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
+import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
 
 /**
  *
@@ -65,5 +66,6 @@ public interface ControllerFactory extends Remote{
     public M_MaterialController getMaterialController()throws Exception;
     public M_Project_SecondaryController getSecondary_ProjectController()throws Exception;
     public M_Project_ThirdController getThird_ProjectController()throws Exception;
+    public T_CashAllocationController getCashAllocationController()throws Exception;
     
 }

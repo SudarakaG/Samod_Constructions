@@ -24,13 +24,13 @@ public class T_CashRequest implements Serializable{
     private int cashRequest_paymentTypeId;
     private String cashRequest_chequeNo;
     private Date cashRequest_chequeDate;
-    private String cashRequest_status;
+    private int cashRequest_status;
     private double cashRequest_requestedAmount;
 
     public T_CashRequest() {
     }
 
-    public T_CashRequest(int cashRequest_id, Date cashRequest_date, int cashRequest_employeeId, int cashRequest_responceId, int cashRequest_siteId, String cashRequest_purpose, double cashRequest_amount, int cashRequest_paymentTypeId, String cashRequest_chequeNo, Date cashRequest_chequeDate, String cashRequest_status, double cashRequest_requestedAmount) {
+    public T_CashRequest(int cashRequest_id, Date cashRequest_date, int cashRequest_employeeId, int cashRequest_responceId, int cashRequest_siteId, String cashRequest_purpose, double cashRequest_amount, int cashRequest_paymentTypeId, String cashRequest_chequeNo, Date cashRequest_chequeDate, int cashRequest_status, double cashRequest_requestedAmount) {
         this.cashRequest_id = cashRequest_id;
         this.cashRequest_date = cashRequest_date;
         this.cashRequest_employeeId = cashRequest_employeeId;
@@ -188,14 +188,14 @@ public class T_CashRequest implements Serializable{
     /**
      * @return the cashRequest_status
      */
-    public String getCashRequest_status() {
+    public int getCashRequest_status() {
         return cashRequest_status;
     }
 
     /**
      * @param cashRequest_status the cashRequest_status to set
      */
-    public void setCashRequest_status(String cashRequest_status) {
+    public void setCashRequest_status(int cashRequest_status) {
         this.cashRequest_status = cashRequest_status;
     }
 
@@ -212,5 +212,6 @@ public class T_CashRequest implements Serializable{
     public void setCashRequest_requestedAmount(double cashRequest_requestedAmount) {
         this.cashRequest_requestedAmount = cashRequest_requestedAmount;
     }
+
     
 }
