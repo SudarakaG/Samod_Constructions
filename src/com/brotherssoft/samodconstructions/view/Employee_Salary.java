@@ -58,7 +58,7 @@ public class Employee_Salary extends javax.swing.JPanel {
         jobTypeController = ServerConnector.getServerConnetor().getJobTypeController();
         dtmEmpSalary = (DefaultTableModel) tb_emp_sal.getModel();
 
-        decimalFormat = new DecimalFormat("0.00");
+        decimalFormat = new DecimalFormat("#,##0.00");
         decimalFormat.setGroupingSize(3);
 
         loadBankCombo();
@@ -80,7 +80,7 @@ public class Employee_Salary extends javax.swing.JPanel {
         dtmEmpSalary = (DefaultTableModel) tb_emp_sal.getModel();
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
-        decimalFormat = new DecimalFormat("0.00");
+        decimalFormat = new DecimalFormat("#,##0.00");
         decimalFormat.setGroupingSize(3);
 
         loadBankCombo();
@@ -644,7 +644,7 @@ public class Employee_Salary extends javax.swing.JPanel {
             String fName = (String) dtmEmpSalary.getValueAt(selectedRow, 1);
             String mName = (String) dtmEmpSalary.getValueAt(selectedRow, 2);
             String lNAme = (String) dtmEmpSalary.getValueAt(selectedRow, 3);
-            employee = employeeController.searchByFullName(initials, fName, mName, lNAme);
+            employee = employeeController.searchByFullName(fName, mName, lNAme);
             loadEmployeeData();
 
         } catch (Exception ex) {
@@ -661,7 +661,7 @@ public class Employee_Salary extends javax.swing.JPanel {
             loadBranchCombo();
             cmbBranchEmp_salary.requestFocus();
         }
-        
+
     }//GEN-LAST:event_cmbBankEmp_SalaryActionPerformed
 
     private void btn_save_emp_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_emp_salaryActionPerformed
@@ -669,49 +669,45 @@ public class Employee_Salary extends javax.swing.JPanel {
         clearFields();
     }//GEN-LAST:event_btn_save_emp_salaryActionPerformed
 
-    private void txt_emp_sal_basicKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicKeyPressed
-        Validation.priceText(txt_emp_sal_basic);
-    }//GEN-LAST:event_txt_emp_sal_basicKeyPressed
-
-    private void txt_emp_sal_basicKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicKeyReleased
-        Validation.priceText(txt_emp_sal_basic);                
-    }//GEN-LAST:event_txt_emp_sal_basicKeyReleased
-
     private void txt_emp_sal_al_1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_al_1KeyPressed
         Validation.priceText(txt_emp_sal_al_1);
+//        txt_emp_sal_al_1.setText(txt_emp_sal_al_1.getText().replaceAll(".0*$", ""));
     }//GEN-LAST:event_txt_emp_sal_al_1KeyPressed
 
     private void txt_emp_sal_al_1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_al_1KeyReleased
         Validation.priceText(txt_emp_sal_al_1);
+//        fieldFormat.formatDecimalAmount(txt_emp_sal_al_1);
     }//GEN-LAST:event_txt_emp_sal_al_1KeyReleased
 
     private void txt_emp_al_2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_al_2KeyPressed
         Validation.priceText(txt_emp_al_2);
+//        txt_emp_al_2.setText(txt_emp_al_2.getText().replaceAll(".0*$", ""));
     }//GEN-LAST:event_txt_emp_al_2KeyPressed
 
     private void txt_emp_al_2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_al_2KeyReleased
         Validation.priceText(txt_emp_al_2);
+//        fieldFormat.formatDecimalAmount(txt_emp_al_2);
     }//GEN-LAST:event_txt_emp_al_2KeyReleased
 
     private void txt_emp_al_3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_al_3KeyPressed
         Validation.priceText(txt_emp_al_3);
+//        txt_emp_al_3.setText(txt_emp_al_3.getText().replaceAll(".0*$", ""));
     }//GEN-LAST:event_txt_emp_al_3KeyPressed
 
     private void txt_emp_al_3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_al_3KeyReleased
         Validation.priceText(txt_emp_al_3);
+//        fieldFormat.formatDecimalAmount(txt_emp_al_3);
     }//GEN-LAST:event_txt_emp_al_3KeyReleased
 
     private void txt_emp_al_4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_al_4KeyPressed
         Validation.priceText(txt_emp_al_4);
+//        txt_emp_al_4.setText(txt_emp_al_4.getText().replaceAll(".0*$", ""));
     }//GEN-LAST:event_txt_emp_al_4KeyPressed
 
     private void txt_emp_al_4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_al_4KeyReleased
         Validation.priceText(txt_emp_al_4);
+//        fieldFormat.formatDecimalAmount(txt_emp_al_4);
     }//GEN-LAST:event_txt_emp_al_4KeyReleased
-
-    private void txt_emp_sal_basicKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicKeyTyped
-
-    }//GEN-LAST:event_txt_emp_sal_basicKeyTyped
 
     private void cmb_searchEmp_jobTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_searchEmp_jobTypeActionPerformed
         if (cmb_searchEmp_jobType.getSelectedIndex() != 0) {
@@ -789,10 +785,6 @@ public class Employee_Salary extends javax.swing.JPanel {
         txt_emp_sal_search.setForeground(Color.BLACK);
     }//GEN-LAST:event_txt_emp_sal_searchMouseClicked
 
-    private void txt_emp_sal_basicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicMouseClicked
-        fieldFormat.clearAmountField(txt_emp_sal_basic);
-    }//GEN-LAST:event_txt_emp_sal_basicMouseClicked
-
     private void txt_emp_sal_al_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_emp_sal_al_1MouseClicked
         fieldFormat.formatDecimalAmount(txt_emp_sal_basic);
         fieldFormat.clearAmountField(txt_emp_sal_al_1);
@@ -825,11 +817,6 @@ public class Employee_Salary extends javax.swing.JPanel {
             Logger.getLogger(Employee_Salary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_txt_emp_sal_searchKeyReleased
-
-    private void txt_emp_sal_basicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicActionPerformed
-        fieldFormat.formatDecimalAmount(txt_emp_sal_basic);
-        txt_emp_sal_al_1.requestFocus();
-    }//GEN-LAST:event_txt_emp_sal_basicActionPerformed
 
     private void txt_emp_sal_al_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emp_sal_al_1ActionPerformed
         fieldFormat.formatDecimalAmount(txt_emp_sal_al_1);
@@ -869,6 +856,29 @@ public class Employee_Salary extends javax.swing.JPanel {
     private void btn_emp_salary_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_salary_cancelActionPerformed
         clearFields();
     }//GEN-LAST:event_btn_emp_salary_cancelActionPerformed
+
+    private void txt_emp_sal_basicKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicKeyTyped
+
+    }//GEN-LAST:event_txt_emp_sal_basicKeyTyped
+
+    private void txt_emp_sal_basicKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicKeyReleased
+        Validation.priceText(txt_emp_sal_basic);
+        //        fieldFormat.formatDecimalAmount(txt_emp_sal_basic);
+    }//GEN-LAST:event_txt_emp_sal_basicKeyReleased
+
+    private void txt_emp_sal_basicKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicKeyPressed
+        Validation.priceText(txt_emp_sal_basic);
+        //        txt_emp_sal_basic.setText(txt_emp_sal_basic.getText().replaceAll("\\.?0+$", ""));
+    }//GEN-LAST:event_txt_emp_sal_basicKeyPressed
+
+    private void txt_emp_sal_basicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicActionPerformed
+        fieldFormat.formatDecimalAmount(txt_emp_sal_basic);
+        txt_emp_sal_al_1.requestFocus();
+    }//GEN-LAST:event_txt_emp_sal_basicActionPerformed
+
+    private void txt_emp_sal_basicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicMouseClicked
+        fieldFormat.clearAmountField(txt_emp_sal_basic);
+    }//GEN-LAST:event_txt_emp_sal_basicMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1009,81 +1019,81 @@ public class Employee_Salary extends javax.swing.JPanel {
     }
 
     private void updateEmployeeSalaryDetails() {
-        if(cmbSalaryType.getSelectedIndex() != 0){
-        try {
-            double salary = 0;
-            double otherAllowance1 = 0;
-            double otherAllowance2 = 0;
-            double otherAllowance3 = 0;
-            double otherAllowance4 = 0;
+        if (cmbSalaryType.getSelectedIndex() != 0) {
+            try {
+                double salary = 0;
+                double otherAllowance1 = 0;
+                double otherAllowance2 = 0;
+                double otherAllowance3 = 0;
+                double otherAllowance4 = 0;
 
-            int bankId = 0;
-            int branchId = 0;
+                int bankId = 0;
+                int branchId = 0;
 
-            int empId = employee.getEmp_id();
-            String title = employee.getEmp_title();
-            String initials = employee.getEmp_initials();
-            String firstName = employee.getEmp_firstName();
-            String midName = employee.getEmp_middleName();
-            String lastName = employee.getEmp_surName();
-            String address1 = employee.getEmp_address1();
-            String address2 = employee.getEmp_address2();
-            String address3 = employee.getEmp_address3();
-            String address4 = employee.getEmp_address4();
-            String nic = employee.getEmp_NIC();
-            Date dob = employee.getEmp_DOB();
-            String contact1 = employee.getEmp_contact1();
-            String contact2 = employee.getEmp_contact2();
-            String contact3 = employee.getEmp_contatct3();
+                int empId = employee.getEmp_id();
+                String title = employee.getEmp_title();
+                String initials = employee.getEmp_initials();
+                String firstName = employee.getEmp_firstName();
+                String midName = employee.getEmp_middleName();
+                String lastName = employee.getEmp_surName();
+                String address1 = employee.getEmp_address1();
+                String address2 = employee.getEmp_address2();
+                String address3 = employee.getEmp_address3();
+                String address4 = employee.getEmp_address4();
+                String nic = employee.getEmp_NIC();
+                Date dob = employee.getEmp_DOB();
+                String contact1 = employee.getEmp_contact1();
+                String contact2 = employee.getEmp_contact2();
+                String contact3 = employee.getEmp_contatct3();
 
-            String accountNo = txt_emp_acc_no.getText();
-            if (cmbBankEmp_Salary.getSelectedIndex() != 0) {
-                bankId = bankController.searchBankByName(cmbBankEmp_Salary.getSelectedItem().toString()).getBank_id();
+                String accountNo = txt_emp_acc_no.getText();
+                if (cmbBankEmp_Salary.getSelectedIndex() != 0) {
+                    bankId = bankController.searchBankByName(cmbBankEmp_Salary.getSelectedItem().toString()).getBank_id();
+                }
+                if (cmbBranchEmp_salary.getSelectedIndex() != 0) {
+                    branchId = branchController.searchBranch(cmbBranchEmp_salary.getSelectedItem().toString(), bankId).getBranch_id();
+                }
+                int designationId = employee.getEmp_designation_id();
+
+                int salaryTypeId = salaryTypeController.searchSalaryType(cmbSalaryType.getSelectedItem().toString()).getSalaryType_id();
+                if (!"".equals(txt_emp_sal_basic.getText())) {
+                    salary = Double.parseDouble(txt_emp_sal_basic.getText().replaceAll(",", ""));
+                }
+                if (!"".equals(txt_emp_sal_al_1.getText())) {
+                    otherAllowance1 = Double.parseDouble(txt_emp_sal_al_1.getText().replaceAll(",", ""));
+                }
+                if (!"".equals(txt_emp_al_2.getText())) {
+                    otherAllowance2 = Double.parseDouble(txt_emp_al_2.getText().replaceAll(",", ""));
+                }
+
+                int siteId = employee.getEmp_site_id();
+                String status = employee.getEmp_status();
+
+                String epfStatus = Integer.toString(cmbEPFStatus.getSelectedIndex());
+
+                int jobTypeId = employee.getEmp_jobType_id();
+                Date joinDate = employee.getEmp_joinDate();
+                int subContractorId = employee.getEmp_subContractor_id();
+                if (!"".equals(txt_emp_al_3.getText())) {
+                    otherAllowance3 = Double.parseDouble(txt_emp_al_3.getText().replaceAll(",", ""));
+                }
+                if (!"".equals(txt_emp_al_4.getText())) {
+                    otherAllowance4 = Double.parseDouble(txt_emp_al_4.getText().replaceAll(",", ""));
+                }
+
+                M_Employee employeeUpdate = new M_Employee(empId, title, initials, firstName, midName, lastName, address1, address2, address3, address4, nic, dob, contact1, contact2, contact3, accountNo, bankId, branchId, designationId, salaryTypeId, salary, otherAllowance1, otherAllowance2, siteId, status, epfStatus, jobTypeId, joinDate, subContractorId, otherAllowance3, otherAllowance4);
+                boolean updateEmployee = employeeController.updateEmployee(employeeUpdate);
+                if (updateEmployee) {
+                    JOptionPane.showMessageDialog(this, "Employee Salary Details Updated Successfully..");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Updating Employee Salary Details Occured a Error..");
+                }
+                loadEmpSalTable();
+
+            } catch (Exception ex) {
+                Logger.getLogger(Employee_Salary.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (cmbBranchEmp_salary.getSelectedIndex() != 0) {
-                branchId = branchController.searchBranch(cmbBranchEmp_salary.getSelectedItem().toString(), bankId).getBranch_id();
-            }
-            int designationId = employee.getEmp_designation_id();
-
-            int salaryTypeId = salaryTypeController.searchSalaryType(cmbSalaryType.getSelectedItem().toString()).getSalaryType_id();
-            if (!"".equals(txt_emp_sal_basic.getText())) {
-                salary = Double.parseDouble(txt_emp_sal_basic.getText());
-            }
-            if (!"".equals(txt_emp_sal_al_1.getText())) {
-                otherAllowance1 = Double.parseDouble(txt_emp_sal_al_1.getText());
-            }
-            if (!"".equals(txt_emp_al_2.getText())) {
-                otherAllowance2 = Double.parseDouble(txt_emp_al_2.getText());
-            }
-
-            int siteId = employee.getEmp_site_id();
-            String status = employee.getEmp_status();
-
-            String epfStatus = Integer.toString(cmbEPFStatus.getSelectedIndex());
-
-            int jobTypeId = employee.getEmp_jobType_id();
-            Date joinDate = employee.getEmp_joinDate();
-            int subContractorId = employee.getEmp_subContractor_id();
-            if (!"".equals(txt_emp_al_3.getText())) {
-                otherAllowance3 = Double.parseDouble(txt_emp_al_3.getText());
-            }
-            if (!"".equals(txt_emp_al_4.getText())) {
-                otherAllowance4 = Double.parseDouble(txt_emp_al_4.getText());
-            }
-
-            M_Employee employeeUpdate = new M_Employee(empId, title, initials, firstName, midName, lastName, address1, address2, address3, address4, nic, dob, contact1, contact2, contact3, accountNo, bankId, branchId, designationId, salaryTypeId, salary, otherAllowance1, otherAllowance2, siteId, status, epfStatus, jobTypeId, joinDate, subContractorId, otherAllowance3, otherAllowance4);
-            boolean updateEmployee = employeeController.updateEmployee(employeeUpdate);
-            if (updateEmployee) {
-                JOptionPane.showMessageDialog(this, "Employee Salary Details Updated Successfully..");
-            } else {
-                JOptionPane.showMessageDialog(this, "Updating Employee Salary Details Occured a Error..");
-            }
-            loadEmpSalTable();
-
-        } catch (Exception ex) {
-            Logger.getLogger(Employee_Salary.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Please Check that the Salary Type is Selected");
         }
     }
@@ -1112,6 +1122,7 @@ public class Employee_Salary extends javax.swing.JPanel {
         txt_emp_al_2.setText("");
         txt_emp_al_3.setText("");
         txt_emp_al_4.setText("");
+        txt_emp_acc_no.requestFocus();
     }
 
 }

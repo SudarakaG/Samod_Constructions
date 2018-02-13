@@ -58,7 +58,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
-        decimalFormat = new DecimalFormat("0.00");
+        decimalFormat = new DecimalFormat("#,##0.00");
         formatField = new AmountFieldFormat();
     }
 
@@ -73,7 +73,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
-        decimalFormat = new DecimalFormat("0.00");
+        decimalFormat = new DecimalFormat("#,##0.00");
         formatField = new AmountFieldFormat();
 
         secondary = secondaryController.searchSecondary(project_id);
@@ -1529,10 +1529,10 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
             int projectId = secondary.getProject_id();
             if (!"".equals(txt_boq.getText())) {
-                boq = Double.parseDouble(txt_boq.getText());
+                boq = Double.parseDouble(txt_boq.getText().replaceAll(",", ""));
             }
             if (!"".equals(txt_vat.getText())) {
-                vat = Double.parseDouble(txt_vat.getText());
+                vat = Double.parseDouble(txt_vat.getText().replaceAll(",", ""));
             }
             String duration = txt_project_duration.getText();
             Date agreementDate = dp_agreement_date.getDate();
@@ -1543,20 +1543,20 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             Date completeDate = dp_Completion_date.getDate();
             String performBondOrg = txt_performance_organization.getText();
             if (!"".equals(txt_performance_amount.getText())) {
-                performAmount = Double.parseDouble(txt_performance_amount.getText());
+                performAmount = Double.parseDouble(txt_performance_amount.getText().replaceAll(",", ""));
             }
             Date performFrom = dp_performance_Valid_Period_From.getDate();
             Date performTo = dp_performance_Valid_Period_To.getDate();
             String advanceOrg = txt_payment_organization.getText();
             if (!"".equals(txt_payment_amount.getText())) {
-                advanceAmount = Double.parseDouble(txt_payment_amount.getText());
+                advanceAmount = Double.parseDouble(txt_payment_amount.getText().replaceAll(",", ""));
             }
             Date advanceFrom = dp_payment_Valid_Period_From.getDate();
             Date advanceTo = dp_payment_Valid_Period_To.getDate();
             String insuranceCover = cmb_Insuarance_Covers.getSelectedItem().toString();
             String insuranceOrg = txt_insuarance_covers.getText();
             if (!"".equals(txt_insuarance_covers_amount.getText())) {
-                insuranceAmount = Double.parseDouble(txt_insuarance_covers_amount.getText());
+                insuranceAmount = Double.parseDouble(txt_insuarance_covers_amount.getText().replaceAll(",", ""));
             }
             Date insuranceFrom = dp_insurance_Valid_Period_From.getDate();
             Date insuranceTo = dp_insurance_Valid_Period_To.getDate();
@@ -1613,7 +1613,9 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             dp_insurance_Valid_Period_From.setDate(secondary.getProject_secondary_insuranceValidFrom());
             dp_insurance_Valid_Period_To.setDate(secondary.getProject_secondary_insuranceValidTo());
             dp_Completion_date.setDate(secondary.getProject_secondary_completionDate());
+            if(!"".equals(secondary.getProject_secondary_duration())){
             txt_project_duration.setText(decimalFormat.format(Double.parseDouble(secondary.getProject_secondary_duration())));
+            }
         } else {
             cmb_Insuarance_Covers.setSelectedIndex(0);
             cmb_made_of_payment.setSelectedIndex(0);
@@ -1695,6 +1697,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         dp_insurance_Valid_Period_To.setDate(new Date());
         cmb_made_of_payment.setSelectedIndex(0);
         btn_add_secondary_project.setText("Save");
+        txt_boq.requestFocus();
     }
 
 }

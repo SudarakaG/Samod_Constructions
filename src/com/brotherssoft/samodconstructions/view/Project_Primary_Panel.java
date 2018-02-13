@@ -79,7 +79,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         jScrollPane12.getVerticalScrollBar().setUnitIncrement(16);
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
-        decimalFormat = new DecimalFormat("0.00");
+        decimalFormat = new DecimalFormat("#,##0.00");
     }
 
     Project_Primary_Panel(int id) throws Exception {
@@ -105,7 +105,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
 
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
-        decimalFormat = new DecimalFormat("0.00");
+        decimalFormat = new DecimalFormat("#,##0.00");
 
         primary = primary_ProjectController.searchPrimaryProject(id);
         loadFromPrimaryProjectTable();
@@ -1529,10 +1529,19 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 String projectADuration = txt_project_intendedDuration_1.getText();
                 int specialityId = projectSpecialityController.searProjectSpecialityByName(projectASpeciality).getProjectSpeciality_id();
                 int gradeId = projectGradeController.searProjectGradeByNAme(projectAGrade).getProjectGrade_id();
-                double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText().trim());
-                double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText().trim());
+                double enginnerEstimate = 0;
+                if(!"".equals(txt_project_engineer_estimate.getText())){
+                 enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText().replaceAll(",", ""));
+                }
+                double tenderFee = 0;
+                if(!"".equals(txt_project_tender_fee_1.getText())){
+                 tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText().replaceAll(",", ""));
+                }
                 int bidPaymentModeId = paymentModeController.searPaymentMode(payMode).getPaymentMode_id();
-                double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText().trim());
+                double bidAmount = 0;
+                if(!"".equals(txt_project_bid_amount_1.getText())){
+                 bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText().replaceAll(",", ""));
+                }
                 String bidDuration = txt_project_bid_duration_1.getText();
                 String bidOrganization = txt_project_bid_organization.getText();
                 Date tenderOpenDate = txt_project_tender_open_date_1.getDate();
@@ -1598,7 +1607,9 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             txt_project_client_address4.setText(primary.getProject_primary_clientAddress4());
             txt_project_client_contact_1.setText(primary.getProject_primary_clientContact1());
             txt_project_client_contact_1_2.setText(primary.getProject_primary_clientContact2());
+            if(!"".equals(primary.getProject_primary_intendedDuration())){
             txt_project_intendedDuration_1.setText(decimalFormat.format(Double.parseDouble(primary.getProject_primary_intendedDuration())));
+            }
             cmb_project_Specialiti.setSelectedItem(projectSpecialityController.searchProjectSpeciality(primary.getProject_primary_ictadSpeciality_id()).getProjectSpeciality_name());
             cmb_project_grade_1.setSelectedItem(projectGradeController.searchProjectGrade(primary.getProject_primary_ictadGrade_id()).getProjectGrade_name());
             txt_project_engineer_estimate.setText(decimalFormat.format(primary.getProject_primary_engineerEstimate()));
@@ -1606,7 +1617,9 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             cmb_project_bid_payment_mode.setSelectedItem(paymentModeController.searchPaymentMode(primary.getProject_primary_bidPaymentMode()).getPaymentMode_name());
             txt_project_bid_amount_1.setText(decimalFormat.format(primary.getProject_primary_bidAmount()));
             txt_project_bid_organization.setText(primary.getProject_primary_bidOrganization());
+            if(!"".equals(primary.getProject_primary_bidDuration())){
             txt_project_bid_duration_1.setText(decimalFormat.format(Double.parseDouble(primary.getProject_primary_bidDuration())));
+            }
             txt_project_tender_open_date_1.setDate(primary.getProject_primary_tenderOpenDate());
             txt_project_tender_open_time_1.setValue(de.getFormat().parse(primary.getProject_primary_tenderOpenTime()));
             cmb_project_made_of_states_1.setSelectedIndex(Integer.parseInt(primary.getProject_current_status()));
@@ -1628,7 +1641,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 String projectAType = cmb_project_type_1.getSelectedItem().toString();
                 String projectASpeciality = cmb_project_Specialiti.getSelectedItem().toString();
                 String projectAGrade = cmb_project_grade_1.getSelectedItem().toString();
-                String pauMode = cmb_project_bid_payment_mode.getSelectedItem().toString();
+                String payMode = cmb_project_bid_payment_mode.getSelectedItem().toString();
                 int project_id = primary.getProject_id();
 
                 //int projectId = IDGenerator.getNewID("m_project", "PROJECT_ID");
@@ -1651,10 +1664,19 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 String projectADuration = txt_project_intendedDuration_1.getText();
                 int specialityId = projectSpecialityController.searProjectSpecialityByName(projectASpeciality).getProjectSpeciality_id();
                 int gradeId = projectGradeController.searProjectGradeByNAme(projectAGrade).getProjectGrade_id();
-                double enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText().trim());
-                double tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText().trim());
-                int bidPaymentModeId = paymentModeController.searPaymentMode(pauMode).getPaymentMode_id();
-                double bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText().trim());
+                double enginnerEstimate = 0;
+                if(!"".equals(txt_project_engineer_estimate.getText())){
+                 enginnerEstimate = Double.parseDouble(txt_project_engineer_estimate.getText().replaceAll(",", ""));
+                }
+                double tenderFee = 0;
+                if(!"".equals(txt_project_tender_fee_1.getText())){
+                 tenderFee = Double.parseDouble(txt_project_tender_fee_1.getText().replaceAll(",", ""));
+                }
+                int bidPaymentModeId = paymentModeController.searPaymentMode(payMode).getPaymentMode_id();
+                double bidAmount = 0;
+                if(!"".equals(txt_project_bid_amount_1.getText())){
+                 bidAmount = Double.parseDouble(txt_project_bid_amount_1.getText().replaceAll(",", ""));
+                }
                 String bidDuration = txt_project_bid_duration_1.getText();
                 String bidOrganization = txt_project_bid_organization.getText();
                 Date tenderOpenDate = txt_project_tender_open_date_1.getDate();
@@ -1725,5 +1747,6 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         txt_project_tender_result.setText("");
 
         btn_add_primary_project.setText("Save");
+        txt_project_name_1.requestFocus();
     }
 }

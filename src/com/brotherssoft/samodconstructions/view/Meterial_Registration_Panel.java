@@ -621,5 +621,6 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         datePicker_material_reg_date.setDate(new Date());
         
         btn_save_material.setText("Save");
+        txt_material_name1.requestFocus();
     }
 }

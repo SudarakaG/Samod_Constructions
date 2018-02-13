@@ -91,7 +91,7 @@ public class Validation {
     public static void priceText(JTextField textField) {
         String text = textField.getText();
         if (!text.isEmpty()) {
-            boolean res = text.matches("[0-9]+[.]?[0-9]{0,2}");
+            boolean res = text.matches("[0-9,0-9]+[.]?[0-9]{0,2}");
             if (!res) {
                 textField.setText(text.substring(0, text.length() - 1));
             }

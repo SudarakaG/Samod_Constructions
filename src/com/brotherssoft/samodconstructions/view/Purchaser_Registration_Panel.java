@@ -814,5 +814,6 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         cmb_purchaser_status.setSelectedIndex(0);
 
         btn_save_purchaser.setText("Save");
+        txt_purchaser_name.requestFocus();
     }
 }

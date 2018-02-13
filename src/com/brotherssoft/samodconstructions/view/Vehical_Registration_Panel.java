@@ -35,7 +35,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
     M_VehicleController vehicleController;
     
     DefaultTableModel dtmVehicle;
-    DecimalFormat decimalFormat = new DecimalFormat("0.00");
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
     AmountFieldFormat fieldFormat = new AmountFieldFormat();
     
     /**
@@ -303,13 +303,6 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
                         .addComponent(jLabel165, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmb_vehicle_year, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_area5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_vehicle_allocation)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_save_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_vehicle_new, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
                         .addComponent(jLabel167, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -337,7 +330,14 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
                     .addGroup(bank_panel_input_area5Layout.createSequentialGroup()
                         .addComponent(jLabel166, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_vehicle_regNo)))
+                        .addComponent(txt_vehicle_regNo))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_area5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_vehicle_allocation)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_save_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_vehicle_new, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         bank_panel_input_area5Layout.setVerticalGroup(
@@ -466,7 +466,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         bank_panel_tbl5Layout.setVerticalGroup(
             bank_panel_tbl5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addComponent(txt_search_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -488,7 +488,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
             Vehical_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Vehical_Registration_PanelLayout.createSequentialGroup()
                 .addComponent(user_panel_hedding8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(Vehical_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bank_panel_input_area5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bank_panel_tbl5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -723,7 +723,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
             double amount = 0;
             double depriationRate = 0;
             if(!"".equals(txt_vehicle_amount.getText())){
-             amount = Double.parseDouble(txt_vehicle_amount.getText());
+             amount = Double.parseDouble(txt_vehicle_amount.getText().replaceAll(",", ""));
             }
             if(!"".equals(txt_vehicle_depriation_rate.getText())){
              depriationRate = Double.parseDouble(txt_vehicle_depriation_rate.getText());
@@ -809,7 +809,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
             double amount = 0;
             double depriationRate = 0;
             if(!"".equals(txt_vehicle_amount.getText())){
-             amount = Double.parseDouble(txt_vehicle_amount.getText());
+             amount = Double.parseDouble(txt_vehicle_amount.getText().replaceAll(",", ""));
             }
             if(!"".equals(txt_vehicle_depriation_rate.getText())){
              depriationRate = Double.parseDouble(txt_vehicle_depriation_rate.getText());
@@ -852,5 +852,6 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         cmb_vehicle_status.setSelectedIndex(0);
         
         btn_save_vehicle.setText("Save");
+        cmb_vehicle_type.requestFocus();
     }
 }

@@ -33,6 +33,7 @@ import java.rmi.Naming;
 import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
+import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
 
 /**
  *
@@ -68,6 +69,7 @@ public class ServerConnector {
     private M_MaterialController materialController;
     private M_Project_SecondaryController secondaryController;
     private M_Project_ThirdController thirdController;
+    private T_CashAllocationController cashAllocationController;
     
     //private UserHistoryController uhc;
 
@@ -255,6 +257,13 @@ public class ServerConnector {
             thirdController = cf.getThird_ProjectController();
         }
         return thirdController;
+    }
+    
+    public T_CashAllocationController getCashAllocationController()throws Exception{
+        if(cashAllocationController == null){
+            cashAllocationController = cf.getCashAllocationController();
+        }
+        return cashAllocationController;
     }
 
 //    

@@ -718,6 +718,7 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
         cmb_acc_states.setSelectedIndex(0);
 
         btn_acc_save.setText("Save");
+        cmb_CAR_Bank.requestFocus();
     }
 
 }

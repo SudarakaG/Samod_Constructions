@@ -14,11 +14,11 @@ import javax.swing.JTextField;
  */
 public class AmountFieldFormat {
     
-    DecimalFormat decimalFormat = new DecimalFormat("0.00");
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
     
     public void clearAmountField(JTextField txt) {
         if (!"".equals(txt.getText())) {
-            if (Double.parseDouble(txt.getText()) == 0) {
+            if (Double.parseDouble(txt.getText().replaceAll(",", "")) == 0) {
                 txt.setText("");
             }
         }
@@ -26,7 +26,7 @@ public class AmountFieldFormat {
 
     public void formatDecimalAmount(JTextField txt) {
         if(!"".equals(txt.getText())){
-        txt.setText(decimalFormat.format(Double.parseDouble(txt.getText())));
+        txt.setText(decimalFormat.format(Double.parseDouble(txt.getText().replaceAll(",", ""))));
         }
     }
     

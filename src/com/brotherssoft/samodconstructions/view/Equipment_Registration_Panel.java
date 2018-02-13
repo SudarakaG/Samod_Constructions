@@ -796,5 +796,6 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         txt_equip_depreRate.setText("");
         
         btn_save_equipment.setText("Save");
+        cmb_asset_category.requestFocus();
     }
 }

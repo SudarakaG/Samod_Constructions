@@ -33,7 +33,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
 
     M_Project_Third third = null;
     AmountFieldFormat fieldFormat = new AmountFieldFormat();
-    DecimalFormat decimalFormat = new DecimalFormat("0.00");
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
 
     /**
      * Creates new form Project_Tertiary_Panel
@@ -1710,9 +1710,15 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             dp_retain_Valid_Period_From.setDate(third.getProject_final_retentionPeriodFrom());
             dp_retain_Valid_Period_To.setDate(third.getProject_final_retentionPeriodTo());
             dp_retain_releaseDate.setDate(third.getProject_final_retentionReleaseDate());
+            if(!"".equals(third.getProject_final_timeExtentionRequestPeriod())){
             txt_req_period.setText(decimalFormat.format(Double.parseDouble(third.getProject_final_timeExtentionRequestPeriod())));
+            }
+            if(!"".equals(third.getProject_final_timeExtentionApprovedPeriod())){
             txt_approved_period.setText(decimalFormat.format(Double.parseDouble(third.getProject_final_timeExtentionApprovedPeriod())));
+            }
+            if(!"".equals(third.getProject_final_liquidityDamagePeriod())){
             txt_liquidityDamage_period.setText(decimalFormat.format(Double.parseDouble(third.getProject_final_liquidityDamagePeriod())));
+            }
         } else {
             cmb_Liquidity_Damage.setSelectedIndex(0);
             cmb_Completion_Certification.setSelectedIndex(0);
@@ -1753,27 +1759,27 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
 
         int projectId = third.getProject_id();
         if (!"".equals(txt_boq.getText())) {
-            finalBOQ = Double.parseDouble(txt_boq.getText());
+            finalBOQ = Double.parseDouble(txt_boq.getText().replaceAll(",", ""));
         } else {
             finalBOQ = 0;
         }
         if (!"".equals(txt_exceed.getText())) {
-            exeed = Double.parseDouble(txt_exceed.getText());
+            exeed = Double.parseDouble(txt_exceed.getText().replaceAll(",", ""));
         } else {
             exeed = 0;
         }
         if (!"".equals(txt_extra_work.getText())) {
-            extraWork = Double.parseDouble(txt_extra_work.getText());
+            extraWork = Double.parseDouble(txt_extra_work.getText().replaceAll(",", ""));
         } else {
             extraWork = 0;
         }
         if (!"".equals(txt_price_excallation.getText())) {
-            escallation = Double.parseDouble(txt_price_excallation.getText());
+            escallation = Double.parseDouble(txt_price_excallation.getText().replaceAll(",", ""));
         } else {
             escallation = 0;
         }
         if (!"".equals(txt_vat.getText())) {
-            finalVat = Double.parseDouble(txt_vat.getText());
+            finalVat = Double.parseDouble(txt_vat.getText().replaceAll(",", ""));
         } else {
             finalVat = 0;
         }
@@ -1785,7 +1791,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         String liqDamage = Integer.toString(cmb_Liquidity_Damage.getSelectedIndex());
         String liqDamagePeriod = txt_liquidityDamage_period.getText();
         if (!"".equals(txt_liquidityDamage_amount.getText())) {
-            liqDamageAmount = Double.parseDouble(txt_liquidityDamage_amount.getText());
+            liqDamageAmount = Double.parseDouble(txt_liquidityDamage_amount.getText().replaceAll(",", ""));
         } else {
             liqDamageAmount = 0;
         }
@@ -1793,7 +1799,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         String retention = Integer.toString(cmb_Retention.getSelectedIndex());
         String retentionMode = Integer.toString(cmb_Retain_mode.getSelectedIndex());
         if (!"".equals(txt_retain_amount.getText())) {
-            retentionAmount = Double.parseDouble(txt_retain_amount.getText());
+            retentionAmount = Double.parseDouble(txt_retain_amount.getText().replaceAll(",", ""));
         } else {
             retentionAmount = 0;
         }
@@ -1802,7 +1808,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         Date retentionTo = dp_retain_Valid_Period_To.getDate();
         String retentionRelease = Integer.toString(cmb_retention_release.getSelectedIndex());
         if (!"".equals(txt_retain_releaseAmount.getText())) {
-            retentionReleaseAmount = Double.parseDouble(txt_retain_releaseAmount.getText());
+            retentionReleaseAmount = Double.parseDouble(txt_retain_releaseAmount.getText().replaceAll(",", ""));
         } else {
             retentionReleaseAmount = 0;
         }
@@ -1928,5 +1934,6 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         cmb_retention_release.setSelectedIndex(0);
         txt_retain_releaseAmount.setText("");
         dp_retain_releaseDate.setDate(new Date());
+        txt_boq.requestFocus();
     }
 }

@@ -525,5 +525,6 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         cmb_work_states1.setSelectedIndex(0);
         
         btn_save_work.setText("Save");
+        txt_work_name1.requestFocus();
     }
 }

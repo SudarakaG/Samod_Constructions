@@ -5,17 +5,75 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
+import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
+import com.brotherssoft.samodconstructions.controller.R_JobTypeController;
+import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
+import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
+import com.brotherssoft.samodconstructions.custom.AmountFieldFormat;
+import com.brotherssoft.samodconstructions.custom.IDGenerator;
+import com.brotherssoft.samodconstructions.custom.Validation;
+import com.brotherssoft.samodconstructions.model.M_Employee;
+import com.brotherssoft.samodconstructions.model.M_Project_Primary;
+import com.brotherssoft.samodconstructions.model.R_PaymentMode;
+import com.brotherssoft.samodconstructions.model.T_CashRequest;
+import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.Color;
+import java.awt.Event;
+import java.awt.event.KeyEvent;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Akvasoft
  */
 public class Cash_Allocated extends javax.swing.JPanel {
 
+    M_EmployeeController employeeController;
+    T_CashAllocationController cashAllocationController;
+    R_PaymentModeController paymentModeController;
+    M_Project_PrimaryController primaryController;
+    R_JobTypeController jobTypeController;
+    DefaultTableModel dtmCashRequest;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+    AmountFieldFormat fieldFormat = new AmountFieldFormat();
+
     /**
      * Creates new form Cash_Allocated
      */
-    public Cash_Allocated() {
+    public Cash_Allocated() throws Exception {
         initComponents();
+
+//        lblChequeNo.setEnabled(false);
+//        txt_allo_chequeNo.setEnabled(false);
+//        lblChequeDate.setEnabled(false);
+//        dp_chequeDate.setEnabled(false);
+        employeeController = ServerConnector.getServerConnetor().getEmployeeController();
+        cashAllocationController = ServerConnector.getServerConnetor().getCashAllocationController();
+        paymentModeController = ServerConnector.getServerConnetor().getPaymentModeController();
+        primaryController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
+        jobTypeController = ServerConnector.getServerConnetor().getJobTypeController();
+        dtmCashRequest = (DefaultTableModel) tbl_allocationTable.getModel();
+
+        tbl_allocationTable.setAutoResizeMode(tbl_allocationTable.AUTO_RESIZE_OFF);
+        tbl_allocationTable.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tbl_allocationTable.getColumnModel().getColumn(1).setPreferredWidth(80);
+        tbl_allocationTable.getColumnModel().getColumn(2).setPreferredWidth(245);
+        tbl_allocationTable.getColumnModel().getColumn(3).setPreferredWidth(120);
+
+        loadToAlloacateedEmployee();
+        loadToResponseEmployee();
+        loadToPaymentMode();
+        loadToProject();
+        loadCashRequestTable();
     }
 
     /**
@@ -34,27 +92,35 @@ public class Cash_Allocated extends javax.swing.JPanel {
         jSeparator14 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
-        tbl_equipment_table = new javax.swing.JTable();
+        tbl_allocationTable = new javax.swing.JTable();
         txt_search_name_ = new javax.swing.JTextField();
         txt_Input_Panel_Branch4 = new javax.swing.JPanel();
         btn_to_secondary_project = new javax.swing.JButton();
-        btn_add_primary_project = new javax.swing.JButton();
+        btn_add_cashRequest = new javax.swing.JButton();
         jLabel104 = new javax.swing.JLabel();
         txt_amount = new javax.swing.JTextField();
         jLabel133 = new javax.swing.JLabel();
-        txt_project_tender_open_date_1 = new org.jdesktop.swingx.JXDatePicker();
+        dp_requestDate = new org.jdesktop.swingx.JXDatePicker();
         btn_new_primary_project = new javax.swing.JButton();
         jLabel113 = new javax.swing.JLabel();
         cmb_allo_emp = new javax.swing.JComboBox<>();
         jLabel106 = new javax.swing.JLabel();
-        txt_reason = new javax.swing.JTextField();
         jLabel114 = new javax.swing.JLabel();
         cmb_res_emp = new javax.swing.JComboBox<>();
         jLabel105 = new javax.swing.JLabel();
         txt_allo_amount = new javax.swing.JTextField();
         jLabel115 = new javax.swing.JLabel();
         cmb_payment_method = new javax.swing.JComboBox<>();
-        btn_add_primary_project1 = new javax.swing.JButton();
+        lblChequeNo = new javax.swing.JLabel();
+        txt_allo_chequeNo = new javax.swing.JTextField();
+        jLabel116 = new javax.swing.JLabel();
+        cmb_status = new javax.swing.JComboBox<>();
+        lblChequeDate = new javax.swing.JLabel();
+        dp_chequeDate = new org.jdesktop.swingx.JXDatePicker();
+        lblSite = new javax.swing.JLabel();
+        cmb_site = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txt_reason = new javax.swing.JTextArea();
 
         Project_Primary_Info_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Project_Primary_Info_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -77,7 +143,7 @@ public class Cash_Allocated extends javax.swing.JPanel {
             .addGroup(user_panel_hedding2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(511, Short.MAX_VALUE))
             .addGroup(user_panel_hedding2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel69)
@@ -101,61 +167,72 @@ public class Cash_Allocated extends javax.swing.JPanel {
 
         jScrollPane12.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        tbl_equipment_table.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_allocationTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Date", "Allocated Employee", "Requested Amount"
+                "", "Date", "Allocated Employee", "Requested Amount"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tbl_equipment_table.setGridColor(new java.awt.Color(255, 255, 255));
-        tbl_equipment_table.setOpaque(false);
-        tbl_equipment_table.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbl_allocationTable.setGridColor(new java.awt.Color(255, 255, 255));
+        tbl_allocationTable.setOpaque(false);
+        tbl_allocationTable.getTableHeader().setReorderingAllowed(false);
+        tbl_allocationTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_equipment_tableMouseClicked(evt);
+                tbl_allocationTableMouseClicked(evt);
             }
         });
-        jScrollPane12.setViewportView(tbl_equipment_table);
+        jScrollPane12.setViewportView(tbl_allocationTable);
+        if (tbl_allocationTable.getColumnModel().getColumnCount() > 0) {
+            tbl_allocationTable.getColumnModel().getColumn(0).setMinWidth(2);
+            tbl_allocationTable.getColumnModel().getColumn(0).setPreferredWidth(2);
+            tbl_allocationTable.getColumnModel().getColumn(1).setMinWidth(5);
+            tbl_allocationTable.getColumnModel().getColumn(1).setPreferredWidth(5);
+            tbl_allocationTable.getColumnModel().getColumn(2).setMinWidth(83);
+            tbl_allocationTable.getColumnModel().getColumn(2).setPreferredWidth(83);
+            tbl_allocationTable.getColumnModel().getColumn(3).setMinWidth(10);
+            tbl_allocationTable.getColumnModel().getColumn(3).setPreferredWidth(10);
+        }
 
         txt_search_name_.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txt_search_name_.setForeground(new java.awt.Color(102, 102, 102));
@@ -175,22 +252,25 @@ public class Cash_Allocated extends javax.swing.JPanel {
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txt_search_name_, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
         );
 
         txt_Input_Panel_Branch4.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Input_Panel_Branch4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Equipment Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Allocation Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_to_secondary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_to_secondary_project.setText("Back To Main");
@@ -199,17 +279,20 @@ public class Cash_Allocated extends javax.swing.JPanel {
                 btn_to_secondary_projectActionPerformed(evt);
             }
         });
+        txt_Input_Panel_Branch4.add(btn_to_secondary_project, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 550, -1, -1));
 
-        btn_add_primary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_add_primary_project.setText("Save");
-        btn_add_primary_project.addActionListener(new java.awt.event.ActionListener() {
+        btn_add_cashRequest.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_add_cashRequest.setText("Save");
+        btn_add_cashRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_add_primary_projectActionPerformed(evt);
+                btn_add_cashRequestActionPerformed(evt);
             }
         });
+        txt_Input_Panel_Branch4.add(btn_add_cashRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 550, 76, -1));
 
         jLabel104.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel104.setText("Requested Amount");
+        txt_Input_Panel_Branch4.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 146, 150, 23));
 
         txt_amount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_amount.addActionListener(new java.awt.event.ActionListener() {
@@ -217,15 +300,26 @@ public class Cash_Allocated extends javax.swing.JPanel {
                 txt_amountActionPerformed(evt);
             }
         });
+        txt_amount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_amountKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_amountKeyReleased(evt);
+            }
+        });
+        txt_Input_Panel_Branch4.add(txt_amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 144, 340, -1));
 
         jLabel133.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel133.setText("Date");
+        txt_Input_Panel_Branch4.add(jLabel133, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 33, 57, 23));
 
-        txt_project_tender_open_date_1.addActionListener(new java.awt.event.ActionListener() {
+        dp_requestDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_project_tender_open_date_1ActionPerformed(evt);
+                dp_requestDateActionPerformed(evt);
             }
         });
+        txt_Input_Panel_Branch4.add(dp_requestDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 33, 340, 26));
 
         btn_new_primary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_new_primary_project.setText("New");
@@ -234,41 +328,41 @@ public class Cash_Allocated extends javax.swing.JPanel {
                 btn_new_primary_projectActionPerformed(evt);
             }
         });
+        txt_Input_Panel_Branch4.add(btn_new_primary_project, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 550, 76, -1));
 
         jLabel113.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel113.setText("Allocated Employee");
+        txt_Input_Panel_Branch4.add(jLabel113, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 70, -1, 26));
 
         cmb_allo_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_allo_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Allocated Employee -", " " }));
+        cmb_allo_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Allocated Employee -" }));
         cmb_allo_emp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_allo_empActionPerformed(evt);
             }
         });
+        txt_Input_Panel_Branch4.add(cmb_allo_emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 70, 340, -1));
 
         jLabel106.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel106.setText("Requirement");
-
-        txt_reason.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_reason.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_reasonActionPerformed(evt);
-            }
-        });
+        txt_Input_Panel_Branch4.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 181, 99, 23));
 
         jLabel114.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel114.setText("Responsible Employee");
+        txt_Input_Panel_Branch4.add(jLabel114, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 107, -1, 26));
 
         cmb_res_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_res_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Responsible Employee -", " " }));
+        cmb_res_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Responsible Employee -" }));
         cmb_res_emp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_res_empActionPerformed(evt);
             }
         });
+        txt_Input_Panel_Branch4.add(cmb_res_emp, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 107, 340, -1));
 
         jLabel105.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel105.setText("Allocated Amount");
+        txt_Input_Panel_Branch4.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 302, 150, 23));
 
         txt_allo_amount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_allo_amount.addActionListener(new java.awt.event.ActionListener() {
@@ -276,126 +370,98 @@ public class Cash_Allocated extends javax.swing.JPanel {
                 txt_allo_amountActionPerformed(evt);
             }
         });
+        txt_allo_amount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_allo_amountKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_allo_amountKeyReleased(evt);
+            }
+        });
+        txt_Input_Panel_Branch4.add(txt_allo_amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 300, 340, -1));
 
         jLabel115.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel115.setText("Payment Method");
+        txt_Input_Panel_Branch4.add(jLabel115, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 337, -1, 26));
 
         cmb_payment_method.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_payment_method.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Payment Method -", "CASH", "CHEQUE", "BANK DRAFT" }));
+        cmb_payment_method.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Payment Method  -" }));
+        cmb_payment_method.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmb_payment_methodMouseClicked(evt);
+            }
+        });
         cmb_payment_method.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_payment_methodActionPerformed(evt);
             }
         });
+        txt_Input_Panel_Branch4.add(cmb_payment_method, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 337, 340, -1));
 
-        btn_add_primary_project1.setBackground(new java.awt.Color(255, 0, 51));
-        btn_add_primary_project1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_add_primary_project1.setText("Delete");
-        btn_add_primary_project1.addActionListener(new java.awt.event.ActionListener() {
+        lblChequeNo.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblChequeNo.setText("Cheque Number");
+        txt_Input_Panel_Branch4.add(lblChequeNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 376, 141, 23));
+
+        txt_allo_chequeNo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_allo_chequeNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_add_primary_project1ActionPerformed(evt);
+                txt_allo_chequeNoActionPerformed(evt);
             }
         });
+        txt_Input_Panel_Branch4.add(txt_allo_chequeNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 374, 340, -1));
 
-        javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
-        txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
-        txt_Input_Panel_Branch4Layout.setHorizontalGroup(
-            txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jLabel115)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmb_payment_method, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(txt_project_tender_open_date_1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGap(161, 161, 161)
-                                .addComponent(btn_new_primary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_add_primary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_add_primary_project1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(btn_to_secondary_project))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel114)
-                                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel133, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel113))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmb_res_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmb_allo_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel104, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel105, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_allo_amount)
-                            .addComponent(txt_reason)
-                            .addComponent(txt_amount, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
+        jLabel116.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel116.setText("Status");
+        txt_Input_Panel_Branch4.add(jLabel116, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 483, 151, 26));
 
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cmb_allo_emp, cmb_res_emp, txt_amount, txt_project_tender_open_date_1});
+        cmb_status.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Allocated", "Disposed" }));
+        cmb_status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_statusActionPerformed(evt);
+            }
+        });
+        txt_Input_Panel_Branch4.add(cmb_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 483, 340, -1));
 
-        txt_Input_Panel_Branch4Layout.setVerticalGroup(
-            txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_project_tender_open_date_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel133, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel113, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmb_allo_emp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmb_res_emp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_reason, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel105, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_allo_amount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmb_payment_method, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_add_primary_project)
-                        .addComponent(btn_add_primary_project1))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_to_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_new_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+        lblChequeDate.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblChequeDate.setText("Cheque Date");
+        txt_Input_Panel_Branch4.add(lblChequeDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 411, 141, 23));
 
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txt_amount, txt_project_tender_open_date_1});
+        dp_chequeDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dp_chequeDateActionPerformed(evt);
+            }
+        });
+        txt_Input_Panel_Branch4.add(dp_chequeDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 413, 340, -1));
+
+        lblSite.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblSite.setText("Site");
+        txt_Input_Panel_Branch4.add(lblSite, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 446, -1, 26));
+
+        cmb_site.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_site.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Allocated Site -" }));
+        cmb_site.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_siteActionPerformed(evt);
+            }
+        });
+        txt_Input_Panel_Branch4.add(cmb_site, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 446, 340, -1));
+
+        txt_reason.setColumns(20);
+        txt_reason.setRows(5);
+        txt_reason.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_reasonMouseClicked(evt);
+            }
+        });
+        txt_reason.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_reasonKeyPressed(evt);
+            }
+        });
+        jScrollPane2.setViewportView(txt_reason);
+
+        txt_Input_Panel_Branch4.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 181, 340, 108));
 
         javax.swing.GroupLayout Project_Primary_Info_PanelLayout = new javax.swing.GroupLayout(Project_Primary_Info_Panel);
         Project_Primary_Info_Panel.setLayout(Project_Primary_Info_PanelLayout);
@@ -403,10 +469,10 @@ public class Cash_Allocated extends javax.swing.JPanel {
             Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Project_Primary_Info_PanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 39, Short.MAX_VALUE))
+                .addContainerGap())
             .addComponent(user_panel_hedding2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         Project_Primary_Info_PanelLayout.setVerticalGroup(
@@ -415,9 +481,9 @@ public class Cash_Allocated extends javax.swing.JPanel {
                 .addComponent(user_panel_hedding2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -434,91 +500,411 @@ public class Cash_Allocated extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tbl_equipment_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_equipment_tableMouseClicked
-
-    }//GEN-LAST:event_tbl_equipment_tableMouseClicked
+    private void tbl_allocationTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_allocationTableMouseClicked
+        loadFieldsFromTable(searchFromTable());
+    }//GEN-LAST:event_tbl_allocationTableMouseClicked
 
     private void txt_search_name_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_search_name_MouseClicked
-
+        txt_search_name_.setText("");
+        txt_search_name_.setForeground(Color.BLACK);
     }//GEN-LAST:event_txt_search_name_MouseClicked
 
     private void txt_search_name_KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_name_KeyReleased
-
+        dtmCashRequest.setRowCount(0);
+        try {
+            List<M_Employee> allEmployeesByLetter = employeeController.getAllEmployeesByLetter(txt_search_name_.getText());
+            for (M_Employee m_Employee : allEmployeesByLetter) {
+                List<T_CashRequest> allCashAllocationsByLetter = cashAllocationController.getAllCashAllocationsByLetter(m_Employee.getEmp_id());
+                for (T_CashRequest t_CashRequest : allCashAllocationsByLetter) {
+                    M_Employee searchEmployee = employeeController.searchEmployee(t_CashRequest.getCashRequest_employeeId());
+                    String empName = searchEmployee.getEmp_firstName() + " " + searchEmployee.getEmp_middleName() + " " + searchEmployee.getEmp_surName();
+                    String[] rowData = {Integer.toString(t_CashRequest.getCashRequest_id()), t_CashRequest.getCashRequest_date().toString(), empName, Double.toString(t_CashRequest.getCashRequest_requestedAmount())};
+                    dtmCashRequest.addRow(rowData);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Cash_Allocated.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_txt_search_name_KeyReleased
 
     private void btn_to_secondary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_to_secondary_projectActionPerformed
 
     }//GEN-LAST:event_btn_to_secondary_projectActionPerformed
 
-    private void btn_add_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_primary_projectActionPerformed
-
-    }//GEN-LAST:event_btn_add_primary_projectActionPerformed
+    private void btn_add_cashRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_cashRequestActionPerformed
+        if (btn_add_cashRequest.getText().equalsIgnoreCase("Save")) {
+            saveCashAllocation();
+        } else {
+            updateCashAllocation();
+        }
+        loadCashRequestTable();
+        clearFields();
+    }//GEN-LAST:event_btn_add_cashRequestActionPerformed
 
     private void txt_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_amountActionPerformed
-
+        fieldFormat.formatDecimalAmount(txt_amount);
+        txt_reason.requestFocus();
     }//GEN-LAST:event_txt_amountActionPerformed
 
-    private void txt_project_tender_open_date_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_tender_open_date_1ActionPerformed
-
-    }//GEN-LAST:event_txt_project_tender_open_date_1ActionPerformed
+    private void dp_requestDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_requestDateActionPerformed
+        cmb_allo_emp.requestFocus();
+    }//GEN-LAST:event_dp_requestDateActionPerformed
 
     private void btn_new_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_projectActionPerformed
-
+        clearFields();
     }//GEN-LAST:event_btn_new_primary_projectActionPerformed
 
     private void cmb_allo_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_allo_empActionPerformed
-        // TODO add your handling code here:
+        cmb_res_emp.requestFocus();
     }//GEN-LAST:event_cmb_allo_empActionPerformed
 
-    private void txt_reasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_reasonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_reasonActionPerformed
-
     private void cmb_res_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_res_empActionPerformed
-        // TODO add your handling code here:
+        fieldFormat.clearAmountField(txt_amount);
+        txt_amount.requestFocus();
     }//GEN-LAST:event_cmb_res_empActionPerformed
 
     private void txt_allo_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_allo_amountActionPerformed
-        // TODO add your handling code here:
+        fieldFormat.formatDecimalAmount(txt_allo_amount);
+        cmb_payment_method.requestFocus();
     }//GEN-LAST:event_txt_allo_amountActionPerformed
 
     private void cmb_payment_methodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_payment_methodActionPerformed
-        // TODO add your handling code here:
+//        if (cmb_payment_method.getSelectedIndex() != 0 && cmb_payment_method.getSelectedItem().toString().equalsIgnoreCase("CHEQUE")) {
+//            lblChequeNo.setEnabled(true);
+//            txt_allo_chequeNo.setEnabled(true);
+//            lblChequeDate.setEnabled(true);
+//            dp_chequeDate.setEnabled(true);
+//        } else {
+//            lblChequeNo.setEnabled(false);
+//            txt_allo_chequeNo.setEnabled(false);
+//            lblChequeDate.setEnabled(false);
+//            dp_chequeDate.setEnabled(false);
+//        }
+        fieldFormat.formatDecimalAmount(txt_allo_amount);
+        txt_allo_chequeNo.requestFocus();
     }//GEN-LAST:event_cmb_payment_methodActionPerformed
 
-    private void btn_add_primary_project1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_primary_project1ActionPerformed
+    private void txt_allo_chequeNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_allo_chequeNoActionPerformed
+        dp_chequeDate.requestFocus();
+
+    }//GEN-LAST:event_txt_allo_chequeNoActionPerformed
+
+    private void cmb_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_statusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_add_primary_project1ActionPerformed
+    }//GEN-LAST:event_cmb_statusActionPerformed
+
+    private void dp_chequeDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_chequeDateActionPerformed
+        cmb_site.requestFocus();
+    }//GEN-LAST:event_dp_chequeDateActionPerformed
+
+    private void cmb_siteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_siteActionPerformed
+        cmb_status.requestFocus();
+    }//GEN-LAST:event_cmb_siteActionPerformed
+
+    private void txt_amountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_amountKeyPressed
+        Validation.priceText(txt_amount);
+    }//GEN-LAST:event_txt_amountKeyPressed
+
+    private void txt_amountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_amountKeyReleased
+        Validation.priceText(txt_amount);
+    }//GEN-LAST:event_txt_amountKeyReleased
+
+    private void txt_allo_amountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_allo_amountKeyPressed
+        Validation.priceText(txt_allo_amount);
+//        if(!"".equals(txt_allo_amount.getText()) && evt.getKeyCode() != KeyEvent.VK_PERIOD || evt.getKeyCode() != KeyEvent.VK_DECIMAL){
+//            txt_allo_amount.setText(txt_allo_amount.getText().replaceAll("\\.0+$", ""));
+//        }
+    }//GEN-LAST:event_txt_allo_amountKeyPressed
+
+    private void txt_allo_amountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_allo_amountKeyReleased
+        //fieldFormat.formatDecimalAmount(txt_allo_amount);
+        Validation.priceText(txt_allo_amount);
+//        if(txt_allo_amount.getText().matches("$+[.]?[0-9]{0,2}")){
+//            fieldFormat.formatDecimalAmount(txt_allo_amount);
+//        }
+    }//GEN-LAST:event_txt_allo_amountKeyReleased
+
+    private void txt_reasonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_reasonKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            fieldFormat.clearAmountField(txt_allo_amount);
+            txt_allo_amount.requestFocus();
+        }
+    }//GEN-LAST:event_txt_reasonKeyPressed
+
+    private void txt_reasonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_reasonMouseClicked
+        fieldFormat.formatDecimalAmount(txt_amount);
+    }//GEN-LAST:event_txt_reasonMouseClicked
+
+    private void cmb_payment_methodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmb_payment_methodMouseClicked
+        fieldFormat.formatDecimalAmount(txt_allo_amount);
+    }//GEN-LAST:event_cmb_payment_methodMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Project_Primary_Info_Panel;
-    private javax.swing.JButton btn_add_primary_project;
-    private javax.swing.JButton btn_add_primary_project1;
+    private javax.swing.JButton btn_add_cashRequest;
     private javax.swing.JButton btn_new_primary_project;
     private javax.swing.JButton btn_to_secondary_project;
     private javax.swing.JComboBox<String> cmb_allo_emp;
     private javax.swing.JComboBox<String> cmb_payment_method;
     private javax.swing.JComboBox<String> cmb_res_emp;
+    private javax.swing.JComboBox<String> cmb_site;
+    private javax.swing.JComboBox<String> cmb_status;
+    private org.jdesktop.swingx.JXDatePicker dp_chequeDate;
+    private org.jdesktop.swingx.JXDatePicker dp_requestDate;
     private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel106;
     private javax.swing.JLabel jLabel113;
     private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel115;
+    private javax.swing.JLabel jLabel116;
     private javax.swing.JLabel jLabel133;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator14;
-    private javax.swing.JTable tbl_equipment_table;
+    private javax.swing.JLabel lblChequeDate;
+    private javax.swing.JLabel lblChequeNo;
+    private javax.swing.JLabel lblSite;
+    private javax.swing.JTable tbl_allocationTable;
     private javax.swing.JPanel txt_Input_Panel_Branch4;
     private javax.swing.JTextField txt_allo_amount;
+    private javax.swing.JTextField txt_allo_chequeNo;
     private javax.swing.JTextField txt_amount;
-    private org.jdesktop.swingx.JXDatePicker txt_project_tender_open_date_1;
-    private javax.swing.JTextField txt_reason;
+    private javax.swing.JTextArea txt_reason;
     private javax.swing.JTextField txt_search_name_;
     private javax.swing.JPanel user_panel_hedding2;
     // End of variables declaration//GEN-END:variables
+
+    private void loadToResponseEmployee() {
+        cmb_res_emp.removeAll();
+        try {
+            List<M_Employee> allEmployees = employeeController.getAllEmployees();
+            for (M_Employee allEmployee : allEmployees) {
+                if (allEmployee.getEmp_jobType_id() == 1) {
+                    cmb_res_emp.addItem(allEmployee.getEmp_id() + " : " + allEmployee.getEmp_firstName() + " " + allEmployee.getEmp_middleName() + " " + allEmployee.getEmp_surName() + " [Office Staff]");
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Cash_Allocated.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadToAlloacateedEmployee() {
+        cmb_allo_emp.removeAll();
+        try {
+            List<M_Employee> allEmployees = employeeController.getAllEmployees();
+            for (M_Employee allEmployee : allEmployees) {
+                String jobType = jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name();
+                cmb_allo_emp.addItem(allEmployee.getEmp_id() + " : " + allEmployee.getEmp_firstName() + " " + allEmployee.getEmp_middleName() + " " + allEmployee.getEmp_surName() + " [" + jobType + "]");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Cash_Allocated.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadCashRequestTable() {
+        dtmCashRequest.setRowCount(0);
+        try {
+            List<T_CashRequest> allCashAllocations = cashAllocationController.getAllCashAllocations();
+            for (T_CashRequest allCashAllocation : allCashAllocations) {
+                M_Employee searchEmployee = employeeController.searchEmployee(allCashAllocation.getCashRequest_employeeId());
+                String empName = searchEmployee.getEmp_firstName() + " " + searchEmployee.getEmp_middleName() + " " + searchEmployee.getEmp_surName();
+                String[] rowData = {Integer.toString(allCashAllocation.getCashRequest_id()), allCashAllocation.getCashRequest_date().toString(), empName, Double.toString(allCashAllocation.getCashRequest_requestedAmount())};
+                dtmCashRequest.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Cash_Allocated.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadToPaymentMode() {
+        cmb_payment_method.removeAll();
+        try {
+            List<R_PaymentMode> allPaymentModes = paymentModeController.getAllPaymentModes();
+            for (R_PaymentMode allPaymentMode : allPaymentModes) {
+                cmb_payment_method.addItem(allPaymentMode.getPaymentMode_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Cash_Allocated.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadToProject() {
+        cmb_site.removeAll();
+        try {
+            List<M_Project_Primary> allPrimaryProjects = primaryController.getAllPrimaryProjects();
+            for (M_Project_Primary allPrimaryProject : allPrimaryProjects) {
+                cmb_site.addItem(allPrimaryProject.getProject_primary_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Cash_Allocated.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void saveCashAllocation() {
+        try {
+            int cashAllocationId = IDGenerator.getNewID("t_cashreqq", "CASHREQ_ID");
+            Date reqDate = dp_requestDate.getDate();
+            String[] splitReqEmp = cmb_allo_emp.getSelectedItem().toString().split(" : ");
+            String reqEmp = splitReqEmp[0];
+            int reqEmpId = Integer.parseInt(reqEmp);
+            System.out.println("??????????" + reqEmpId);
+            String[] splitResEmp = cmb_res_emp.getSelectedItem().toString().split(" : ");
+            String resEmp = splitResEmp[0];
+            int resEmpId = Integer.parseInt(resEmp);
+            System.out.println("////////////" + resEmpId);
+            int siteId = 0;
+            if (cmb_site.getSelectedIndex() != 0) {
+                siteId = primaryController.searchPrimaryProjectByName(cmb_site.getSelectedItem().toString()).getProject_id();
+            }
+            String purpose = txt_reason.getText();
+            double allocatedAmount = 0;
+            if (!"".equals(txt_allo_amount.getText())) {
+                allocatedAmount = Double.parseDouble(txt_allo_amount.getText().replaceAll(",", ""));
+            }
+            int payTypeId = paymentModeController.searPaymentMode(cmb_payment_method.getSelectedItem().toString()).getPaymentMode_id();
+            String chequeNo = txt_allo_chequeNo.getText();
+            Date chequeDate = dp_chequeDate.getDate();
+            int status = cmb_status.getSelectedIndex();
+            double reqAmount = 0;
+            if (!"".equals(txt_amount.getText())) {
+                reqAmount = Double.parseDouble(txt_amount.getText().replaceAll(",", ""));
+            }
+
+            T_CashRequest cashRequest = new T_CashRequest(cashAllocationId, reqDate, reqEmpId, resEmpId, siteId, purpose, allocatedAmount, payTypeId, chequeNo, chequeDate, status, reqAmount);
+            boolean addCashAllocation = cashAllocationController.addCashAllocation(cashRequest);
+            if (addCashAllocation) {
+                JOptionPane.showMessageDialog(this, "Cash Allocation Details Saved Successfully..");
+            } else {
+                JOptionPane.showMessageDialog(this, "An Error Occured.. Please Check the Details Again..");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Cash_Allocated.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void updateCashAllocation() {
+        try {
+            int cashAllocationId = searchFromTable().getCashRequest_id();
+            Date reqDate = dp_requestDate.getDate();
+            String[] splitReqEmp = cmb_allo_emp.getSelectedItem().toString().split(" : ");
+            String reqEmp = splitReqEmp[0];
+            int reqEmpId = Integer.parseInt(reqEmp);
+            System.out.println("??????????" + reqEmpId);
+            String[] splitResEmp = cmb_res_emp.getSelectedItem().toString().split(" : ");
+            String resEmp = splitResEmp[0];
+            int resEmpId = Integer.parseInt(resEmp);
+            System.out.println("////////////" + resEmpId);
+            int siteId = 0;
+            if (cmb_site.getSelectedIndex() != 0) {
+                siteId = primaryController.searchPrimaryProjectByName(cmb_site.getSelectedItem().toString()).getProject_id();
+            }
+            String purpose = txt_reason.getText();
+            double allocatedAmount = 0;
+            if (!"".equals(txt_allo_amount.getText())) {
+                allocatedAmount = Double.parseDouble(txt_allo_amount.getText().replaceAll(",", ""));
+            }
+            int payTypeId = paymentModeController.searPaymentMode(cmb_payment_method.getSelectedItem().toString()).getPaymentMode_id();
+            String chequeNo = txt_allo_chequeNo.getText();
+            Date chequeDate = dp_chequeDate.getDate();
+            int status = cmb_status.getSelectedIndex();
+            double reqAmount = 0;
+            if (!"".equals(txt_amount.getText())) {
+                reqAmount = Double.parseDouble(txt_amount.getText().replaceAll(",", ""));
+            }
+
+            T_CashRequest cashRequest = new T_CashRequest(cashAllocationId, reqDate, reqEmpId, resEmpId, siteId, purpose, allocatedAmount, payTypeId, chequeNo, chequeDate, status, reqAmount);
+            boolean updateCashAllocation = cashAllocationController.updateCashAllocation(cashRequest);
+            if (updateCashAllocation) {
+                JOptionPane.showMessageDialog(this, "Cash Allocation Details Updated Successfully..");
+            } else {
+                JOptionPane.showMessageDialog(this, "An Error Occured.. Please Check the Details Again..");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Cash_Allocated.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void clearFields() {
+        dp_requestDate.setDate(null);
+        cmb_allo_emp.setSelectedIndex(0);
+        cmb_res_emp.setSelectedIndex(0);
+        txt_amount.setText("");
+        txt_reason.setText("");
+        txt_allo_amount.setText("");
+        cmb_payment_method.setSelectedIndex(0);
+        txt_allo_chequeNo.setText("");
+        dp_chequeDate.setDate(null);
+        cmb_site.setSelectedIndex(0);
+        cmb_status.setSelectedIndex(0);
+        btn_add_cashRequest.setText("Save");
+        dp_requestDate.requestFocus();
+    }
+
+    private void loadFieldsFromTable(T_CashRequest cashRequest) {
+        try {
+            dp_requestDate.setDate(cashRequest.getCashRequest_date());
+            for (int i = 1; i < cmb_allo_emp.getItemCount(); i++) {
+                if (cmb_allo_emp.getItemAt(i) != null) {
+                    String[] splitreq = cmb_allo_emp.getItemAt(i).toString().split(" : ");
+                    System.out.println("+++++++" + splitreq[0]);
+
+                    int reqId = Integer.parseInt(splitreq[0]);
+                    if (reqId == cashRequest.getCashRequest_employeeId()) {
+                        cmb_allo_emp.setSelectedIndex(i);
+                        break;
+                    } else {
+                        cmb_allo_emp.setSelectedIndex(0);
+                    }
+                }
+            }
+            for (int i = 1; i < cmb_res_emp.getItemCount(); i++) {
+                if (cmb_res_emp.getItemAt(i) != null) {
+                    String[] splitres = cmb_res_emp.getItemAt(i).toString().split(" : ");
+
+                    int resId = Integer.parseInt(splitres[0]);
+                    if (resId == cashRequest.getCashRequest_responceId()) {
+                        cmb_res_emp.setSelectedIndex(i);
+                        break;
+                    } else {
+                        cmb_res_emp.setSelectedIndex(0);
+                    }
+                }
+            }
+            txt_amount.setText(decimalFormat.format(cashRequest.getCashRequest_requestedAmount()));
+            txt_reason.setText(cashRequest.getCashRequest_purpose());
+            txt_allo_amount.setText(decimalFormat.format(cashRequest.getCashRequest_amount()));
+            cmb_payment_method.setSelectedItem(paymentModeController.searchPaymentMode(cashRequest.getCashRequest_paymentTypeId()).getPaymentMode_name());
+            txt_allo_chequeNo.setText(cashRequest.getCashRequest_chequeNo());
+            dp_chequeDate.setDate(cashRequest.getCashRequest_chequeDate());
+            if (cashRequest.getCashRequest_siteId() != 0) {
+                cmb_site.setSelectedItem(primaryController.searchPrimaryProject(cashRequest.getCashRequest_siteId()).getProject_primary_name());
+            } else {
+                cmb_site.setSelectedIndex(0);
+            }
+            cmb_status.setSelectedIndex(cashRequest.getCashRequest_status());
+
+            btn_add_cashRequest.setText("Update");
+        } catch (Exception ex) {
+            Logger.getLogger(Cash_Allocated.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private T_CashRequest searchFromTable() {
+        T_CashRequest cashRequest = null;
+        int selectedRow = tbl_allocationTable.getSelectedRow();
+        int id = Integer.parseInt(dtmCashRequest.getValueAt(selectedRow, 0).toString());
+        try {
+            cashRequest = cashAllocationController.searchCashAllocation(id);
+        } catch (Exception ex) {
+            Logger.getLogger(Cash_Allocated.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return cashRequest;
+    }
+
 }

@@ -1275,6 +1275,7 @@ public class Bank_Panel extends javax.swing.JPanel {
 
         btn_save_branch.setText("Save");
         btn_back_to_bank.setEnabled(false);
+        txtBranchName.requestFocus();
         
         loadBranchTable();
     }
@@ -1287,6 +1288,7 @@ public class Bank_Panel extends javax.swing.JPanel {
 
         btn_bank_save.setText("Save");
         btn_branch.setEnabled(false);
+        txt_bank_name.requestFocus();
     }
 
 }

@@ -1141,7 +1141,7 @@ public class Employee_Panel extends javax.swing.JPanel {
 
     private void txt_sur_NameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_sur_NameKeyReleased
         try {
-            M_Employee searchByFullName = employeeController.searchByFullName(txt_Initials.getText(), txt_firt_name.getText(), txt_Middle_Name.getText(), txt_sur_Name.getText());
+            M_Employee searchByFullName = employeeController.searchByFullName(txt_firt_name.getText(), txt_Middle_Name.getText(), txt_sur_Name.getText());
             if(searchByFullName != null){
                 JOptionPane.showMessageDialog(this, "An Employee Registered from this Name.. \n" +searchByFullName.getEmp_firstName()+"  "+searchByFullName.getEmp_middleName()+"  "+searchByFullName.getEmp_surName());
                 getDataFromTable(searchByFullName);
@@ -1455,5 +1455,6 @@ public class Employee_Panel extends javax.swing.JPanel {
         cmb_emp_designation.setSelectedIndex(0);
         cmb_emp_status.setSelectedIndex(0);
         btn_emp_save.setText("Save");
+        cmb_employee_title.requestFocus();
     }
 }
