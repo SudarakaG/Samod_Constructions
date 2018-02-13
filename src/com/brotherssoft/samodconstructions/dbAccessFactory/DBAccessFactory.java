@@ -31,6 +31,7 @@ import com.brotherssoft.samodconstructions.dbAccess.R_SalaryTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_UnitDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_WorkDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.T_CashAllocationDBAccess;
 
 /**
  *
@@ -64,5 +65,6 @@ public interface DBAccessFactory {
     public M_MaterialDBAccess getMaterialDBAccess();
     public M_Project_SecondaryDBAccess getSecondaryDBAccess();
     public M_Project_ThirdDBAccess getThirdDBAccess();
+    public T_CashAllocationDBAccess getCashAllocationDBAccess();
     
 }

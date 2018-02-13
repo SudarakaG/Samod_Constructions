@@ -31,6 +31,7 @@ import com.brotherssoft.samodconstructions.service.R_SalaryTypeService;
 import com.brotherssoft.samodconstructions.service.R_UnitService;
 import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
 import com.brotherssoft.samodconstructions.service.R_WorkService;
+import com.brotherssoft.samodconstructions.service.T_CashAllocationService;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 
 /**
@@ -170,6 +171,11 @@ public class ServiceFactoryImpl implements ServiceFactory{
     @Override
     public M_Project_ThirdService getThirdService() {
         return new M_Project_ThirdService();
+    }
+
+    @Override
+    public T_CashAllocationService getCashAllocationService() {
+        return new T_CashAllocationService();
     }
     
 }

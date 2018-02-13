@@ -57,8 +57,10 @@ import java.rmi.server.UnicastRemoteObject;
 import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
+import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
 import com.brotherssoft.samodconstructions.controllerimpl.M_Project_SecondaryControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_Project_ThirdControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.T_CashAllocationControllerImpl;
 
 /**
  *
@@ -198,6 +200,11 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     @Override
     public M_Project_ThirdController getThird_ProjectController() throws Exception {
         return new M_Project_ThirdControllerImpl();
+    }
+
+    @Override
+    public T_CashAllocationController getCashAllocationController() throws Exception {
+        return new T_CashAllocationControllerImpl();
     }
     
 }

@@ -31,6 +31,7 @@ import com.brotherssoft.samodconstructions.dbAccess.R_SalaryTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_UnitDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_WorkDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.T_CashAllocationDBAccess;
 import com.brotherssoft.samodconstructions.dbAccessFactory.DBAccessFactory;
 
 /**
@@ -172,6 +173,11 @@ public class DBAccessFactoryImpl implements DBAccessFactory{
     @Override
     public M_Project_ThirdDBAccess getThirdDBAccess() {
         return new M_Project_ThirdDBAccess();
+    }
+
+    @Override
+    public T_CashAllocationDBAccess getCashAllocationDBAccess() {
+        return new T_CashAllocationDBAccess();
     }
 
     

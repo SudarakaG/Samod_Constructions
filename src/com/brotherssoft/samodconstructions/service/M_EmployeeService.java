@@ -53,8 +53,8 @@ public class M_EmployeeService {
         return dbAccessFactory.getEmployeeAccess().searchBySubContractorId(subId);
     }
     
-    public M_Employee searchByFullName(String initials,String fName,String mName,String lName)throws Exception{
-        return dbAccessFactory.getEmployeeAccess().searchByFullName(initials, fName, mName, lName);
+    public M_Employee searchByFullName(String fName,String mName,String lName)throws Exception{
+        return dbAccessFactory.getEmployeeAccess().searchByFullName(fName, mName, lName);
     }
     
     public List<M_Employee> getAllEmployeesByLetter(String phrase)throws Exception{

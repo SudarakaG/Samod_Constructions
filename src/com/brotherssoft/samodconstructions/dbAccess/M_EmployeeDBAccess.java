@@ -193,15 +193,14 @@ public class M_EmployeeDBAccess {
         
     }
     
-    public M_Employee searchByFullName(String initials,String fName,String mName,String lName)throws Exception{
+    public M_Employee searchByFullName(String fName,String mName,String lName)throws Exception{
         
-        String sql = "SELECT * FROM m_emp WHERE EMP_INITIALS=? AND EMP_FIRSTNAME=? AND EMP_MIDLENAMES=? AND EMP_SURNAME=?";
+        String sql = "SELECT * FROM m_emp WHERE EMP_FIRSTNAME=? AND EMP_MIDLENAMES=? AND EMP_SURNAME=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = connection.prepareStatement(sql);
-        stm.setObject(1, initials);
-        stm.setObject(2, fName);
-        stm.setObject(3, mName);
-        stm.setObject(4, lName);
+        stm.setObject(1, fName);
+        stm.setObject(2, mName);
+        stm.setObject(3, lName);
         ResultSet rst = stm.executeQuery();
         
         M_Employee employee = null;
