@@ -34,18 +34,18 @@ public class M_VehicleControllerImpl extends UnicastRemoteObject implements M_Ve
     }
 
     @Override
-    public boolean deleteVehicle(int id) throws Exception {
+    public boolean deleteVehicle(String id) throws Exception {
         return sf.getVehicleService().deleteVehicle(id);
     }
 
     @Override
-    public M_Vehicle searchVehicle(int id) throws Exception {
+    public M_Vehicle searchVehicle(String id) throws Exception {
         return sf.getVehicleService().searchVehicle(id);
     }
 
     @Override
-    public M_Vehicle searchVehicle(String regNo) throws Exception {
-        return sf.getVehicleService().searchVehicle(regNo);
+    public M_Vehicle searchVehicleByNumber(String regNo) throws Exception {
+        return sf.getVehicleService().searchVehicleByNumber(regNo);
     }
 
     @Override

@@ -29,16 +29,16 @@ public class M_VehicleService {
         return dbaf.getVehicleDBAccess().updateVehicle(vehicle);
     }
     
-    public boolean deleteVehicle(int id)throws Exception{
+    public boolean deleteVehicle(String id)throws Exception{
         return dbaf.getVehicleDBAccess().deleteVehicle(id);
     }
     
-    public M_Vehicle searchVehicle(int id)throws Exception{
+    public M_Vehicle searchVehicle(String id)throws Exception{
         return dbaf.getVehicleDBAccess().searchVehicle(id);
     }
     
-    public M_Vehicle searchVehicle(String regNo)throws Exception{
-        return dbaf.getVehicleDBAccess().searchVehicle(regNo);
+    public M_Vehicle searchVehicleByNumber(String regNo)throws Exception{
+        return dbaf.getVehicleDBAccess().searchVehicleByNumber(regNo);
     }
     
     public List<M_Vehicle> getAllVehicles()throws Exception{

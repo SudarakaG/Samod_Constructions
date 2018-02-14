@@ -65,7 +65,7 @@ public class M_EmployeeDBAccess {
         String sql = "UPDATE m_emp SET EMP_TITLE=?, EMP_INITIALS=?, EMP_FIRSTNAME=?, EMP_MIDLENAMES=?, EMP_SURNAME=?, EMP_ADD1=?, EMP_ADD2=?, EMP_ADD3=?, EMP_ADD4=?, EMP_NIC=?, EMP_DOB=?, EMP_CONT1=?, EMP_CONT2=?, EMP_CONT3=?, EMP_ACCNO=?, EMP_BANKID=?, EMP_BRANCHID=?, EMP_DESGID=?, EMP_SALARYTYPE=?, EMP_SALARY=?, EMP_OTHALLOW1=?, EMP_OTHALLOW2=?, EMP_SITEID=?, EMP_STATUS=?, EMP_EPFSTATUS=?, EMP_JOBTYPEID=?, EMP_JOINDATE=?, EMP_SUBCONID=?, EMP_OTHALLOW3=?, EMP_OTHALLOW4=? WHERE EMP_ID=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = connection.prepareStatement(sql);
-        
+
         stm.setObject(1, employee.getEmp_title());
         stm.setObject(2, employee.getEmp_initials());
         stm.setObject(3, employee.getEmp_firstName());
@@ -97,104 +97,106 @@ public class M_EmployeeDBAccess {
         stm.setObject(29, employee.getEmp_otherAllowance3());
         stm.setObject(30, employee.getEmp_otherAllowance4());
         stm.setObject(31, employee.getEmp_id());
-        
+
         return stm.executeUpdate() > 0;
 
     }
-    
-    public boolean deleteEmployee(int id)throws Exception{
-        
+
+    public boolean deleteEmployee(int id) throws Exception {
+
         String sql = "DELETE FROM m_emp WHERE EMP_ID=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = connection.prepareStatement(sql);
         stm.setObject(1, id);
-        
+
         return stm.executeUpdate() > 0;
-        
+
     }
-    
-    public M_Employee searchEmployee(int id)throws Exception{
-        
+
+    public M_Employee searchEmployee(int id) throws Exception {
+
         String sql = "SELECT * FROM m_emp WHERE EMP_ID=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = connection.prepareStatement(sql);
         stm.setObject(1, id);
         ResultSet rst = stm.executeQuery();
-        
+
         M_Employee employee = null;
-        if(rst.next()){
+        if (rst.next()) {
             employee = new M_Employee(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getDate(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getInt(17), rst.getInt(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getDouble(23), rst.getInt(24), rst.getString(25), rst.getString(26), rst.getInt(27), rst.getDate(28), rst.getInt(29), rst.getDouble(30), rst.getDouble(31));
         }
         return employee;
-        
+
     }
-    
-    public M_Employee searchEmployee(String name)throws Exception{
-        
+
+    public M_Employee searchEmployee(String name) throws Exception {
+
         String sql = "SELECT * FROM m_emp WHERE EMP_FIRSTNAME=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = connection.prepareStatement(sql);
         stm.setObject(1, name);
         ResultSet rst = stm.executeQuery();
-        
+
         M_Employee employee = null;
-        if(rst.next()){
+        if (rst.next()) {
             employee = new M_Employee(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getDate(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getInt(17), rst.getInt(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getDouble(23), rst.getInt(24), rst.getString(25), rst.getString(26), rst.getInt(27), rst.getDate(28), rst.getInt(29), rst.getDouble(30), rst.getDouble(31));
         }
         return employee;
-        
+
     }
-    
-    public M_Employee searchEmployeeByNIC(String nic)throws Exception{
-        
+
+    public M_Employee searchEmployeeByNIC(String nic) throws Exception {
+
         String sql = "SELECT * FROM m_emp WHERE EMP_NIC=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = connection.prepareStatement(sql);
         stm.setObject(1, nic);
         ResultSet rst = stm.executeQuery();
-        
+
         M_Employee employee = null;
-        if(rst.next()){
+        if (rst.next()) {
             employee = new M_Employee(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getDate(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getInt(17), rst.getInt(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getDouble(23), rst.getInt(24), rst.getString(25), rst.getString(26), rst.getInt(27), rst.getDate(28), rst.getInt(29), rst.getDouble(30), rst.getDouble(31));
         }
         return employee;
-        
+
     }
-    
-    public List<M_Employee> getAllEmployees()throws Exception{
-        
+
+    public List<M_Employee> getAllEmployees() throws Exception {
+
         String sql = "SELECT * FROM m_emp";
         Connection connection = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = connection.prepareStatement(sql);
         ResultSet rst = stm.executeQuery();
-        
+
         List<M_Employee> employees = new ArrayList<>();
-        while (rst.next()) {            
+        while (rst.next()) {
             M_Employee employee = new M_Employee(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getDate(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getInt(17), rst.getInt(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getDouble(23), rst.getInt(24), rst.getString(25), rst.getString(26), rst.getInt(27), rst.getDate(28), rst.getInt(29), rst.getDouble(30), rst.getDouble(31));
-            employees.add(employee);
+            if (employee.getEmp_id() != 0) {
+                employees.add(employee);
+            }
         }
         return employees;
-        
+
     }
-    
-    public M_Employee searchBySubContractorId(int subId)throws Exception{
-        
+
+    public M_Employee searchBySubContractorId(int subId) throws Exception {
+
         String sql = "SELECT * FROM m_emp WHERE EMP_SUBCONID=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = connection.prepareStatement(sql);
         stm.setObject(1, subId);
         ResultSet rst = stm.executeQuery();
-        
+
         M_Employee employee = null;
-        if(rst.next()){
+        if (rst.next()) {
             employee = new M_Employee(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getDate(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getInt(17), rst.getInt(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getDouble(23), rst.getInt(24), rst.getString(25), rst.getString(26), rst.getInt(27), rst.getDate(28), rst.getInt(29), rst.getDouble(30), rst.getDouble(31));
         }
         return employee;
-        
+
     }
-    
-    public M_Employee searchByFullName(String fName,String mName,String lName)throws Exception{
-        
+
+    public M_Employee searchByFullName(String fName, String mName, String lName) throws Exception {
+
         String sql = "SELECT * FROM m_emp WHERE EMP_FIRSTNAME=? AND EMP_MIDLENAMES=? AND EMP_SURNAME=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = connection.prepareStatement(sql);
@@ -202,29 +204,29 @@ public class M_EmployeeDBAccess {
         stm.setObject(2, mName);
         stm.setObject(3, lName);
         ResultSet rst = stm.executeQuery();
-        
+
         M_Employee employee = null;
-        if(rst.next()){
+        if (rst.next()) {
             employee = new M_Employee(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getDate(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getInt(17), rst.getInt(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getDouble(23), rst.getInt(24), rst.getString(25), rst.getString(26), rst.getInt(27), rst.getDate(28), rst.getInt(29), rst.getDouble(30), rst.getDouble(31));
         }
         return employee;
-        
+
     }
-    
-    public List<M_Employee> getAllEmployeesByLetter(String phrase)throws Exception{
-        
-        String sql = "SELECT * FROM m_emp WHERE EMP_FIRSTNAME LIKE '"+phrase+"%'";
+
+    public List<M_Employee> getAllEmployeesByLetter(String phrase) throws Exception {
+
+        String sql = "SELECT * FROM m_emp WHERE EMP_FIRSTNAME LIKE '" + phrase + "%'";
         Connection connection = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = connection.prepareStatement(sql);
         ResultSet rst = stm.executeQuery();
-        
+
         List<M_Employee> employees = new ArrayList<>();
-        while (rst.next()) {            
+        while (rst.next()) {
             M_Employee employee = new M_Employee(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getDate(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getInt(17), rst.getInt(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getDouble(23), rst.getInt(24), rst.getString(25), rst.getString(26), rst.getInt(27), rst.getDate(28), rst.getInt(29), rst.getDouble(30), rst.getDouble(31));
             employees.add(employee);
         }
         return employees;
-        
+
     }
 
 }

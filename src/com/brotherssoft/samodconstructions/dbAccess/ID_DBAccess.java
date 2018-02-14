@@ -28,4 +28,16 @@ public class ID_DBAccess {
         return 0;  
     }
     
+    public String getLastIDWithPrefix(String tableName, String colName) throws Exception {
+        String sql = "select " + colName + " from " + tableName + " order by 1 desc limit 1";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+
+        Statement stm = conn.createStatement();
+        ResultSet rst=stm.executeQuery(sql);
+        if (rst.next()) {
+            return  rst.getString(1);
+        }
+        return null;  
+    }
+    
 }

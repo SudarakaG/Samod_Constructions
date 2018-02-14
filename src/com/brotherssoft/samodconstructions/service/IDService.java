@@ -23,4 +23,8 @@ public class IDService {
         return dbAccessFactory.getIDAccess().getLastID(tableName, colName);
     }
     
+    public String getLastIDWithPrefix(String tableName, String colName) throws Exception{
+        return dbAccessFactory.getIDAccess().getLastIDWithPrefix(tableName, colName);
+    }
+    
 }

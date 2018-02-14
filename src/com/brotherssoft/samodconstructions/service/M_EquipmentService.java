@@ -29,16 +29,16 @@ public class M_EquipmentService {
         return dbaf.getEquipmentDBAccess().updateEquipment(equipment);
     }
     
-    public boolean deleteEquipment(int id)throws Exception{
+    public boolean deleteEquipment(String id)throws Exception{
         return dbaf.getEquipmentDBAccess().deleteEquipment(id);
     }
     
-    public M_Equipment searchEquipment(int id)throws Exception{
+    public M_Equipment searchEquipment(String id)throws Exception{
         return dbaf.getEquipmentDBAccess().searchEquipment(id);
     }
     
-    public M_Equipment searchEquipment(String name)throws Exception{
-        return dbaf.getEquipmentDBAccess().searchEquipment(name);
+    public M_Equipment searchEquipmentByName(String name)throws Exception{
+        return dbaf.getEquipmentDBAccess().searchEquipmentByName(name);
     }
     
     public List<M_Equipment> getAllEquipments()throws Exception{

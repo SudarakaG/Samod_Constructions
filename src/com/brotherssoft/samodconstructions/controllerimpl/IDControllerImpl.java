@@ -25,6 +25,11 @@ public class IDControllerImpl extends UnicastRemoteObject implements IDControlle
     public int getLastID(String tableName, String colName) throws Exception {
         return sf.getIDService().getLastID(tableName, colName);
     }
+
+    @Override
+    public String getLastIDWithPrefix(String tableName, String colName) throws Exception {
+        return sf.getIDService().getLastIDWithPrefix(tableName, colName);
+    }
     
     
     

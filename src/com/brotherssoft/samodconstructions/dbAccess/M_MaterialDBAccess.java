@@ -53,7 +53,7 @@ public class M_MaterialDBAccess {
         
     }
     
-    public boolean deleteEquipment(int id)throws Exception{
+    public boolean deleteEquipment(String id)throws Exception{
         
         String sql = "DELETE FROM m_material WHERE MATERIAL_ID=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
@@ -65,7 +65,7 @@ public class M_MaterialDBAccess {
         
     }
     
-    public M_Material searchMaterial(int id)throws Exception{
+    public M_Material searchMaterial(String id)throws Exception{
         
         String sql = "SELECT * FROM m_material WHERE MATERIAL_ID=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
@@ -76,13 +76,13 @@ public class M_MaterialDBAccess {
         ResultSet rst = stm.executeQuery();
         M_Material material = null;
         if(rst.next()){
-            material = new M_Material(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getInt(5), rst.getDate(6));
+            material = new M_Material(rst.getString(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getInt(5), rst.getDate(6));
         }
         return material;
         
     }
     
-    public M_Material searchMaterial(String name)throws Exception{
+    public M_Material searchMaterialByName(String name)throws Exception{
         
         String sql = "SELECT * FROM m_material WHERE MATERIAL_NAME=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
@@ -93,7 +93,7 @@ public class M_MaterialDBAccess {
         ResultSet rst = stm.executeQuery();
         M_Material material = null;
         if(rst.next()){
-            material = new M_Material(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getInt(5), rst.getDate(6));
+            material = new M_Material(rst.getString(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getInt(5), rst.getDate(6));
         }
         return material;
         
@@ -108,7 +108,7 @@ public class M_MaterialDBAccess {
         
         List<M_Material> materials = new ArrayList<>();
         while (rst.next()) {            
-            M_Material material = new M_Material(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getInt(5), rst.getDate(6));
+            M_Material material = new M_Material(rst.getString(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getInt(5), rst.getDate(6));
             materials.add(material);
         }
         return materials;
@@ -124,7 +124,7 @@ public class M_MaterialDBAccess {
         
         List<M_Material> materials = new ArrayList<>();
         while (rst.next()) {            
-            M_Material material = new M_Material(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getInt(5), rst.getDate(6));
+            M_Material material = new M_Material(rst.getString(1), rst.getString(2), rst.getString(3), rst.getInt(4), rst.getInt(5), rst.getDate(6));
             materials.add(material);
         }
         return materials;

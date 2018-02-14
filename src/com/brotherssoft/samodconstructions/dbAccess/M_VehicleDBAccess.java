@@ -63,7 +63,7 @@ public class M_VehicleDBAccess {
         
     }
     
-    public boolean deleteVehicle(int id)throws Exception{
+    public boolean deleteVehicle(String id)throws Exception{
         
         String sql = "DELETE FROM M_Vehicle WHERE VEHICLE_ID=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
@@ -75,7 +75,7 @@ public class M_VehicleDBAccess {
         
     }
     
-    public M_Vehicle searchVehicle(int id)throws Exception{
+    public M_Vehicle searchVehicle(String id)throws Exception{
         
         String sql = "SELECT * FROM M_Vehicle WHERE VEHICLE_ID=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
@@ -86,13 +86,13 @@ public class M_VehicleDBAccess {
         ResultSet rst = stm.executeQuery();
         M_Vehicle vehicle = null;
         if(rst.next()){
-            vehicle = new M_Vehicle(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getString(9), rst.getInt(10), rst.getString(11));
+            vehicle = new M_Vehicle(rst.getString(1), rst.getString(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getString(9), rst.getInt(10), rst.getString(11));
         }
         return vehicle;
         
     }
     
-    public M_Vehicle searchVehicle(String regNo)throws Exception{
+    public M_Vehicle searchVehicleByNumber(String regNo)throws Exception{
         
         String sql = "SELECT * FROM M_Vehicle WHERE VEHICLE_REGNO=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
@@ -103,7 +103,7 @@ public class M_VehicleDBAccess {
         ResultSet rst = stm.executeQuery();
         M_Vehicle vehicle = null;
         if(rst.next()){
-            vehicle = new M_Vehicle(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getString(9), rst.getInt(10), rst.getString(11));
+            vehicle = new M_Vehicle(rst.getString(1), rst.getString(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getString(9), rst.getInt(10), rst.getString(11));
         }
         return vehicle;
         
@@ -117,7 +117,7 @@ public class M_VehicleDBAccess {
         ResultSet rst = stm.executeQuery();
         List<M_Vehicle> vehicles = new ArrayList<>();
         while(rst.next()){
-            M_Vehicle vehicle = new M_Vehicle(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getString(9), rst.getInt(10), rst.getString(11));
+            M_Vehicle vehicle = new M_Vehicle(rst.getString(1), rst.getString(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getString(9), rst.getInt(10), rst.getString(11));
             vehicles.add(vehicle);
         }
         return vehicles;
@@ -132,7 +132,7 @@ public class M_VehicleDBAccess {
         ResultSet rst = stm.executeQuery();
         List<M_Vehicle> vehicles = new ArrayList<>();
         while(rst.next()){
-            M_Vehicle vehicle = new M_Vehicle(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getString(9), rst.getInt(10), rst.getString(11));
+            M_Vehicle vehicle = new M_Vehicle(rst.getString(1), rst.getString(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getString(9), rst.getInt(10), rst.getString(11));
             vehicles.add(vehicle);
         }
         return vehicles;

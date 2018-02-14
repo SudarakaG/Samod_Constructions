@@ -34,12 +34,12 @@ public class M_MaterialControllerImpl extends UnicastRemoteObject implements M_M
     }
 
     @Override
-    public boolean deleteMaterial(int id) throws Exception {
+    public boolean deleteMaterial(String id) throws Exception {
         return sf.getMaterialService().deleteMaterial(id);
     }
 
     @Override
-    public M_Material searchMaterial(int id) throws Exception {
+    public M_Material searchMaterial(String id) throws Exception {
         return sf.getMaterialService().searchMaterial(id);
     }
 
@@ -49,8 +49,8 @@ public class M_MaterialControllerImpl extends UnicastRemoteObject implements M_M
     }
 
     @Override
-    public M_Material searchMaterial(String name) throws Exception {
-        return sf.getMaterialService().searchMaterial(name);
+    public M_Material searchMaterialByName(String name) throws Exception {
+        return sf.getMaterialService().searchMaterialByName(name);
     }
 
     @Override

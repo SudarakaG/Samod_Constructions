@@ -9,6 +9,7 @@ import com.brotherssoft.samodconstructions.service.IDService;
 import com.brotherssoft.samodconstructions.service.M_AccountService;
 import com.brotherssoft.samodconstructions.service.M_EmployeeService;
 import com.brotherssoft.samodconstructions.service.M_EquipmentService;
+import com.brotherssoft.samodconstructions.service.M_MainStockService;
 import com.brotherssoft.samodconstructions.service.M_MaterialService;
 import com.brotherssoft.samodconstructions.service.M_Project_PrimaryService;
 import com.brotherssoft.samodconstructions.service.M_Project_SecondaryService;
@@ -32,6 +33,7 @@ import com.brotherssoft.samodconstructions.service.R_UnitService;
 import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
 import com.brotherssoft.samodconstructions.service.R_WorkService;
 import com.brotherssoft.samodconstructions.service.T_CashAllocationService;
+import com.brotherssoft.samodconstructions.service.T_SiteAllocationService;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 
 /**
@@ -176,6 +178,16 @@ public class ServiceFactoryImpl implements ServiceFactory{
     @Override
     public T_CashAllocationService getCashAllocationService() {
         return new T_CashAllocationService();
+    }
+
+    @Override
+    public M_MainStockService getMainStockService() {
+        return new M_MainStockService();
+    }
+
+    @Override
+    public T_SiteAllocationService getSiteAllocationService() {
+        return new T_SiteAllocationService();
     }
     
 }

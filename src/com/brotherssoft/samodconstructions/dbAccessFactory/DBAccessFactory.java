@@ -9,6 +9,7 @@ import com.brotherssoft.samodconstructions.dbAccess.ID_DBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_AccountDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_EmployeeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_EquipmentDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.M_MainStockDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_MaterialDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_Project_PrimaryDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.M_Project_SecondaryDBAccess;
@@ -32,6 +33,7 @@ import com.brotherssoft.samodconstructions.dbAccess.R_UnitDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_WorkDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_CashAllocationDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.T_SiteAllocationDBAccess;
 
 /**
  *
@@ -66,5 +68,7 @@ public interface DBAccessFactory {
     public M_Project_SecondaryDBAccess getSecondaryDBAccess();
     public M_Project_ThirdDBAccess getThirdDBAccess();
     public T_CashAllocationDBAccess getCashAllocationDBAccess();
+    public M_MainStockDBAccess getMainStockDBAccess();
+    public T_SiteAllocationDBAccess getSiteAllocationDBAccess();
     
 }

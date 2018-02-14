@@ -61,7 +61,7 @@ public class M_EquipmentDBAccess {
         
     }
     
-    public boolean deleteEquipment(int id)throws Exception{
+    public boolean deleteEquipment(String id)throws Exception{
         
         String sql = "DELETE FROM m_equipment WHERE EQUIPMENT_ID=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
@@ -73,7 +73,7 @@ public class M_EquipmentDBAccess {
         
     }
     
-    public M_Equipment searchEquipment(int id)throws Exception{
+    public M_Equipment searchEquipment(String id)throws Exception{
         
         String sql = "SELECT * FROM m_equipment WHERE EQUIPMENT_ID=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
@@ -84,13 +84,13 @@ public class M_EquipmentDBAccess {
         ResultSet rst = stm.executeQuery();
         M_Equipment equipment = null;
         if(rst.next()){
-            equipment = new M_Equipment(rst.getInt(1), rst.getInt(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getDate(8), rst.getInt(9), rst.getDouble(10));
+            equipment = new M_Equipment(rst.getString(1), rst.getInt(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getDate(8), rst.getInt(9), rst.getDouble(10));
         }
         return equipment;
         
     }
     
-    public M_Equipment searchEquipment(String name)throws Exception{
+    public M_Equipment searchEquipmentByName(String name)throws Exception{
         
         String sql = "SELECT * FROM m_equipment WHERE EQUIPMENT_NAME=?";
         Connection connection = DBConnection.getDBConnection().getConnection();
@@ -101,7 +101,7 @@ public class M_EquipmentDBAccess {
         ResultSet rst = stm.executeQuery();
         M_Equipment equipment = null;
         if(rst.next()){
-            equipment = new M_Equipment(rst.getInt(1), rst.getInt(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getDate(8), rst.getInt(9), rst.getDouble(10));
+            equipment = new M_Equipment(rst.getString(1), rst.getInt(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getDate(8), rst.getInt(9), rst.getDouble(10));
         }
         return equipment;
         
@@ -116,7 +116,7 @@ public class M_EquipmentDBAccess {
         
         List<M_Equipment> equipments = new ArrayList<>();
         while (rst.next()) {            
-            M_Equipment equipment = new M_Equipment(rst.getInt(1), rst.getInt(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getDate(8), rst.getInt(9), rst.getDouble(10));
+            M_Equipment equipment = new M_Equipment(rst.getString(1), rst.getInt(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getDate(8), rst.getInt(9), rst.getDouble(10));
             equipments.add(equipment);
         }
         return equipments;
@@ -132,7 +132,7 @@ public class M_EquipmentDBAccess {
         
         List<M_Equipment> equipments = new ArrayList<>();
         while (rst.next()) {            
-            M_Equipment equipment = new M_Equipment(rst.getInt(1), rst.getInt(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getDate(8), rst.getInt(9), rst.getDouble(10));
+            M_Equipment equipment = new M_Equipment(rst.getString(1), rst.getInt(2), rst.getInt(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getDate(8), rst.getInt(9), rst.getDouble(10));
             equipments.add(equipment);
         }
         return equipments;

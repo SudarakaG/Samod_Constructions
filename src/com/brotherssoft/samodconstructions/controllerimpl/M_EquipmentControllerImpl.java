@@ -34,12 +34,12 @@ public class M_EquipmentControllerImpl extends UnicastRemoteObject implements M_
     }
 
     @Override
-    public boolean deleteEquipment(int id) throws Exception {
+    public boolean deleteEquipment(String id) throws Exception {
         return sf.getEquipmentService().deleteEquipment(id);
     }
 
     @Override
-    public M_Equipment searchEquipment(int id) throws Exception {
+    public M_Equipment searchEquipment(String id) throws Exception {
         return sf.getEquipmentService().searchEquipment(id);
     }
 
@@ -49,8 +49,8 @@ public class M_EquipmentControllerImpl extends UnicastRemoteObject implements M_
     }
 
     @Override
-    public M_Equipment searEquipment(String name) throws Exception {
-        return sf.getEquipmentService().searchEquipment(name);
+    public M_Equipment searchEquipmentByName(String name) throws Exception {
+        return sf.getEquipmentService().searchEquipmentByName(name);
     }
 
     @Override

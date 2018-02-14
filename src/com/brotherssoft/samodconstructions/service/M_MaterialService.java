@@ -29,16 +29,16 @@ public class M_MaterialService {
         return dbaf.getMaterialDBAccess().updateMaterial(material);
     }
     
-    public boolean deleteMaterial(int id)throws Exception{
+    public boolean deleteMaterial(String id)throws Exception{
         return dbaf.getMaterialDBAccess().deleteEquipment(id);
     }
     
-    public M_Material searchMaterial(int id)throws Exception{
+    public M_Material searchMaterial(String id)throws Exception{
         return dbaf.getMaterialDBAccess().searchMaterial(id);
     }
     
-    public M_Material searchMaterial(String name)throws Exception{
-        return dbaf.getMaterialDBAccess().searchMaterial(name);
+    public M_Material searchMaterialByName(String name)throws Exception{
+        return dbaf.getMaterialDBAccess().searchMaterialByName(name);
     }
     
     public List<M_Material> getAllMaterials()throws Exception{

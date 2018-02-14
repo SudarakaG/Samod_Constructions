@@ -9,6 +9,7 @@ import com.brotherssoft.samodconstructions.controller.IDController;
 import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
 import com.brotherssoft.samodconstructions.controller.M_EquipmentController;
+import com.brotherssoft.samodconstructions.controller.M_MainStockController;
 import com.brotherssoft.samodconstructions.controller.M_MaterialController;
 import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
@@ -58,9 +59,12 @@ import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryControlle
 import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
 import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
+import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
+import com.brotherssoft.samodconstructions.controllerimpl.M_MainStockControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_Project_SecondaryControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_Project_ThirdControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.T_CashAllocationControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.T_SiteAllocationControllerImpl;
 
 /**
  *
@@ -205,6 +209,16 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     @Override
     public T_CashAllocationController getCashAllocationController() throws Exception {
         return new T_CashAllocationControllerImpl();
+    }
+
+    @Override
+    public M_MainStockController getMainStockController() throws Exception {
+        return new M_MainStockControllerImpl();
+    }
+
+    @Override
+    public T_SiteAllocationController getSiteAllocationController() throws Exception {
+        return new T_SiteAllocationControllerImpl();
     }
     
 }
