@@ -18,7 +18,7 @@ public class T_SiteAllocation implements Serializable{
     private int siteAllocation_siteId;
     private Date siteAllocation_date;
     private String siteAllocation_type;
-    private int siteAllocation_itemId;
+    private String siteAllocation_itemId;
     private double siteAllocation_quantity;
     private String siteAllocation_comment;
     private String siteAllocation_TRType;
@@ -28,7 +28,7 @@ public class T_SiteAllocation implements Serializable{
     public T_SiteAllocation() {
     }
 
-    public T_SiteAllocation(int siteAllocation_id, int siteAllocation_siteId, Date siteAllocation_date, String siteAllocation_type, int siteAllocation_itemId, double siteAllocation_quantity, String siteAllocation_comment, String siteAllocation_TRType, int siteAllocation_addedUser, int siteAllocation_authorizedUser) {
+    public T_SiteAllocation(int siteAllocation_id, int siteAllocation_siteId, Date siteAllocation_date, String siteAllocation_type, String siteAllocation_itemId, double siteAllocation_quantity, String siteAllocation_comment, String siteAllocation_TRType, int siteAllocation_addedUser, int siteAllocation_authorizedUser) {
         this.siteAllocation_id = siteAllocation_id;
         this.siteAllocation_siteId = siteAllocation_siteId;
         this.siteAllocation_date = siteAllocation_date;
@@ -100,14 +100,14 @@ public class T_SiteAllocation implements Serializable{
     /**
      * @return the siteAllocation_itemId
      */
-    public int getSiteAllocation_itemId() {
+    public String getSiteAllocation_itemId() {
         return siteAllocation_itemId;
     }
 
     /**
      * @param siteAllocation_itemId the siteAllocation_itemId to set
      */
-    public void setSiteAllocation_itemId(int siteAllocation_itemId) {
+    public void setSiteAllocation_itemId(String siteAllocation_itemId) {
         this.siteAllocation_itemId = siteAllocation_itemId;
     }
 
@@ -180,6 +180,6 @@ public class T_SiteAllocation implements Serializable{
     public void setSiteAllocation_authorizedUser(int siteAllocation_authorizedUser) {
         this.siteAllocation_authorizedUser = siteAllocation_authorizedUser;
     }
-    
+
     
 }

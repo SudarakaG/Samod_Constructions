@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class M_Vehicle implements Serializable{
     
-    private int vehicle_id;
+    private String vehicle_id;
     private String vehicle_regNo;
     private int vehicle_type_id;
     private String vehicle_engineNo;
@@ -28,7 +28,7 @@ public class M_Vehicle implements Serializable{
     public M_Vehicle() {
     }
 
-    public M_Vehicle(int vehicle_id, String vehicle_regNo, int vehicle_type_id, String vehicle_engineNo, String vehicle_chasisNo, String vehicle_year, double vehicle_amount, double vehicle_depreciationRate, String vehicle_status, int vehicle_fuelType, String vehicle_allocatrionStatus) {
+    public M_Vehicle(String vehicle_id, String vehicle_regNo, int vehicle_type_id, String vehicle_engineNo, String vehicle_chasisNo, String vehicle_year, double vehicle_amount, double vehicle_depreciationRate, String vehicle_status, int vehicle_fuelType, String vehicle_allocatrionStatus) {
         this.vehicle_id = vehicle_id;
         this.vehicle_regNo = vehicle_regNo;
         this.vehicle_type_id = vehicle_type_id;
@@ -45,14 +45,14 @@ public class M_Vehicle implements Serializable{
     /**
      * @return the vehicle_id
      */
-    public int getVehicle_id() {
+    public String getVehicle_id() {
         return vehicle_id;
     }
 
     /**
      * @param vehicle_id the vehicle_id to set
      */
-    public void setVehicle_id(int vehicle_id) {
+    public void setVehicle_id(String vehicle_id) {
         this.vehicle_id = vehicle_id;
     }
 

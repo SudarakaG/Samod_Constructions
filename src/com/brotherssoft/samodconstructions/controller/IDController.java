@@ -13,6 +13,7 @@ import java.rmi.Remote;
  */
 public interface IDController extends Remote{
     
-    public int getLastID(String tableName, String colName) throws Exception;  
+    public int getLastID(String tableName, String colName) throws Exception;
+    public String getLastIDWithPrefix(String tableName, String colName) throws Exception;
     
 }

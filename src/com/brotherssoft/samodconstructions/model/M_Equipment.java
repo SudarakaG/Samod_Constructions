@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class M_Equipment implements Serializable{
     
-    private int equipment_id;
+    private String equipment_id;
     private int equipment_asset_id;
     private int equipment_asset_category_id;
     private String equipment_name;
@@ -28,7 +28,7 @@ public class M_Equipment implements Serializable{
     public M_Equipment() {
     }
 
-    public M_Equipment(int equipment_id, int equipment_asset_id, int equipment_asset_category_id, String equipment_name, String equipment_description, String equipment_regNo, String equipment_capacity, Date equipment_regDate, int equipment_status, double equipment_depreciationRate) {
+    public M_Equipment(String equipment_id, int equipment_asset_id, int equipment_asset_category_id, String equipment_name, String equipment_description, String equipment_regNo, String equipment_capacity, Date equipment_regDate, int equipment_status, double equipment_depreciationRate) {
         this.equipment_id = equipment_id;
         this.equipment_asset_id = equipment_asset_id;
         this.equipment_asset_category_id = equipment_asset_category_id;
@@ -44,14 +44,14 @@ public class M_Equipment implements Serializable{
     /**
      * @return the equipment_id
      */
-    public int getEquipment_id() {
+    public String getEquipment_id() {
         return equipment_id;
     }
 
     /**
      * @param equipment_id the equipment_id to set
      */
-    public void setEquipment_id(int equipment_id) {
+    public void setEquipment_id(String equipment_id) {
         this.equipment_id = equipment_id;
     }
 

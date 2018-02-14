@@ -17,9 +17,9 @@ public interface M_VehicleController extends Remote{
     
     public boolean addVehivle(M_Vehicle vehicle)throws Exception;
     public boolean updateVehicle(M_Vehicle vehicle)throws Exception;
-    public boolean deleteVehicle(int id)throws Exception;
-    public M_Vehicle searchVehicle(int id)throws Exception;
-    public M_Vehicle searchVehicle(String regNo)throws Exception;
+    public boolean deleteVehicle(String id)throws Exception;
+    public M_Vehicle searchVehicle(String id)throws Exception;
+    public M_Vehicle searchVehicleByNumber(String regNo)throws Exception;
     public List<M_Vehicle> getAllVehicles()throws Exception;
     public List<M_Vehicle> getAllVehiclesByLetter(String phrase)throws Exception;
     

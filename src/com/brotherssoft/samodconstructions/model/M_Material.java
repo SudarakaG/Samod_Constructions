@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class M_Material implements Serializable{
     
-    private int material_id;
+    private String material_id;
     private String material_name;
     private String material_description;
     private int material_unit_id;
@@ -24,7 +24,7 @@ public class M_Material implements Serializable{
     public M_Material() {
     }
 
-    public M_Material(int material_id, String material_name, String material_description, int material_unit_id, int material_status, Date material_regDate) {
+    public M_Material(String material_id, String material_name, String material_description, int material_unit_id, int material_status, Date material_regDate) {
         this.material_id = material_id;
         this.material_name = material_name;
         this.material_description = material_description;
@@ -36,14 +36,14 @@ public class M_Material implements Serializable{
     /**
      * @return the material_id
      */
-    public int getMaterial_id() {
+    public String getMaterial_id() {
         return material_id;
     }
 
     /**
      * @param material_id the material_id to set
      */
-    public void setMaterial_id(int material_id) {
+    public void setMaterial_id(String material_id) {
         this.material_id = material_id;
     }
 

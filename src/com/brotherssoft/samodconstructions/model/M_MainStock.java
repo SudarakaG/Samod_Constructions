@@ -16,23 +16,27 @@ public class M_MainStock implements Serializable{
     
     private int mainStock_id;
     private int mainStock_site_id;
-    private int mainStock_equipment_id;
-    private char mainStock_allocationType;
+    private String mainStock_equipment_id;
+    private String mainStock_allocationType;
     private Date mainStock_updateDate;
-    private int mainStock_user_id;
+    private int mainStock_addeduser_id;
     private double mainStock_quantity;
+    private int mainStock_approveduser_id;
+    private String mainStock_description;
 
     public M_MainStock() {
     }
 
-    public M_MainStock(int mainStock_id, int mainStock_site_id, int mainStock_equipment_id, char mainStock_allocationType, Date mainStock_updateDate, int mainStock_user_id, double mainStock_quantity) {
+    public M_MainStock(int mainStock_id, int mainStock_site_id, String mainStock_equipment_id, String mainStock_allocationType, Date mainStock_updateDate, int mainStock_addeduser_id, double mainStock_quantity, int mainStock_approveduser_id, String mainStock_description) {
         this.mainStock_id = mainStock_id;
         this.mainStock_site_id = mainStock_site_id;
         this.mainStock_equipment_id = mainStock_equipment_id;
         this.mainStock_allocationType = mainStock_allocationType;
         this.mainStock_updateDate = mainStock_updateDate;
-        this.mainStock_user_id = mainStock_user_id;
+        this.mainStock_addeduser_id = mainStock_addeduser_id;
         this.mainStock_quantity = mainStock_quantity;
+        this.mainStock_approveduser_id = mainStock_approveduser_id;
+        this.mainStock_description = mainStock_description;
     }
 
     /**
@@ -66,28 +70,28 @@ public class M_MainStock implements Serializable{
     /**
      * @return the mainStock_equipment_id
      */
-    public int getMainStock_equipment_id() {
+    public String getMainStock_equipment_id() {
         return mainStock_equipment_id;
     }
 
     /**
      * @param mainStock_equipment_id the mainStock_equipment_id to set
      */
-    public void setMainStock_equipment_id(int mainStock_equipment_id) {
+    public void setMainStock_equipment_id(String mainStock_equipment_id) {
         this.mainStock_equipment_id = mainStock_equipment_id;
     }
 
     /**
      * @return the mainStock_allocationType
      */
-    public char getMainStock_allocationType() {
+    public String getMainStock_allocationType() {
         return mainStock_allocationType;
     }
 
     /**
      * @param mainStock_allocationType the mainStock_allocationType to set
      */
-    public void setMainStock_allocationType(char mainStock_allocationType) {
+    public void setMainStock_allocationType(String mainStock_allocationType) {
         this.mainStock_allocationType = mainStock_allocationType;
     }
 
@@ -106,17 +110,17 @@ public class M_MainStock implements Serializable{
     }
 
     /**
-     * @return the mainStock_user_id
+     * @return the mainStock_addeduser_id
      */
-    public int getMainStock_user_id() {
-        return mainStock_user_id;
+    public int getMainStock_addeduser_id() {
+        return mainStock_addeduser_id;
     }
 
     /**
-     * @param mainStock_user_id the mainStock_user_id to set
+     * @param mainStock_addeduser_id the mainStock_addeduser_id to set
      */
-    public void setMainStock_user_id(int mainStock_user_id) {
-        this.mainStock_user_id = mainStock_user_id;
+    public void setMainStock_addeduser_id(int mainStock_addeduser_id) {
+        this.mainStock_addeduser_id = mainStock_addeduser_id;
     }
 
     /**
@@ -133,6 +137,33 @@ public class M_MainStock implements Serializable{
         this.mainStock_quantity = mainStock_quantity;
     }
 
-    
+    /**
+     * @return the mainStock_approveduser_id
+     */
+    public int getMainStock_approveduser_id() {
+        return mainStock_approveduser_id;
+    }
+
+    /**
+     * @param mainStock_approveduser_id the mainStock_approveduser_id to set
+     */
+    public void setMainStock_approveduser_id(int mainStock_approveduser_id) {
+        this.mainStock_approveduser_id = mainStock_approveduser_id;
+    }
+
+    /**
+     * @return the mainStock_description
+     */
+    public String getMainStock_description() {
+        return mainStock_description;
+    }
+
+    /**
+     * @param mainStock_description the mainStock_description to set
+     */
+    public void setMainStock_description(String mainStock_description) {
+        this.mainStock_description = mainStock_description;
+    }
+
     
 }

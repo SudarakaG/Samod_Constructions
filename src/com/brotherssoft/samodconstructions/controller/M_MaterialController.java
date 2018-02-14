@@ -17,11 +17,11 @@ public interface M_MaterialController extends Remote{
     
     public boolean addMaterial(M_Material material)throws Exception;
     public boolean updateMaterial(M_Material material)throws Exception;
-    public boolean deleteMaterial(int id)throws Exception;
-    public M_Material searchMaterial(int id)throws Exception;
+    public boolean deleteMaterial(String id)throws Exception;
+    public M_Material searchMaterial(String id)throws Exception;
     public List<M_Material> getAllMaterials()throws Exception;
     
-    public M_Material searchMaterial(String name)throws Exception;
+    public M_Material searchMaterialByName(String name)throws Exception;
     public List<M_Material> getAllMaterialsByLetter(String phrase)throws Exception;
     
 }

@@ -17,11 +17,11 @@ public interface M_EquipmentController extends Remote{
     
     public boolean addEquipment(M_Equipment equipment)throws Exception;
     public boolean updateEuipment(M_Equipment equipment)throws Exception;
-    public boolean deleteEquipment(int id)throws Exception;
-    public M_Equipment searchEquipment(int id)throws Exception;
+    public boolean deleteEquipment(String id)throws Exception;
+    public M_Equipment searchEquipment(String id)throws Exception;
     public List<M_Equipment> getAllEquipments()throws Exception;
     
-    public M_Equipment searEquipment(String name)throws Exception;
+    public M_Equipment searchEquipmentByName(String name)throws Exception;
     public List<M_Equipment> getAllEquipmentsByLetter(String phrase)throws Exception;
     
 }
