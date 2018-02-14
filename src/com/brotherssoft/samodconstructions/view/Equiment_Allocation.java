@@ -226,17 +226,23 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txt_search_name_, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jScrollPane12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 431, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         txt_Input_Panel_Branch4.setBackground(new java.awt.Color(255, 255, 255));
@@ -472,13 +478,13 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_approvedEmployee1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                .addGap(18, 18, 18)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_add_equipmentToMainStock)
                     .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_to_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_new_EquipmentStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(25, 25, 25))
+                .addGap(26, 26, 26))
         );
 
         txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {dp_updatedDate, txt_available_stock, txt_quantity});
@@ -503,9 +509,9 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 .addComponent(user_panel_hedding2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -523,7 +529,11 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmb_stock_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_stock_typeActionPerformed
-
+        if (cmb_equipment_type.getSelectedIndex() != 0) {
+            btn_add_equipmentToMainStock.setText("Save");
+        }else{
+            loadSiteAllocationsToTable();
+        }
     }//GEN-LAST:event_cmb_stock_typeActionPerformed
 
     private void btn_to_secondary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_to_secondary_projectActionPerformed
@@ -536,6 +546,8 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         } else {
             updateEquipmentAllocation();
         }
+        laodEquipmentAllocationTable();
+        clearFields();
     }//GEN-LAST:event_btn_add_equipmentToMainStockActionPerformed
 
     private void txt_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantityActionPerformed
@@ -567,7 +579,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_dp_updatedDateActionPerformed
 
     private void btn_new_EquipmentStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_EquipmentStockActionPerformed
-
+        clearFields();
     }//GEN-LAST:event_btn_new_EquipmentStockActionPerformed
 
     private void tbl_equipmentStock_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_equipmentStock_tableMouseClicked
@@ -681,18 +693,19 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     private void laodEquipmentAllocationTable() {
         dtmAllocatedEquipment.setRowCount(0);
         try {
-            List<M_MainStock> allMainStock = mainStockController.getAllMainStock();
+            List<M_MainStock> allMainStock = mainStockController.getAllLastAddedMainStock();
             List<M_Equipment> allEquipments = equipmentController.getAllEquipments();
-
             for (M_MainStock m_MainStock : allMainStock) {
+                
                 for (M_Equipment allEquipment : allEquipments) {
+
                     if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(allEquipment.getEquipment_id())) {
                         String[] rowData = {"Main Stock", allEquipment.getEquipment_name(), Double.toString(m_MainStock.getMainStock_quantity())};
                         dtmAllocatedEquipment.addRow(rowData);
                     }
                 }
-
             }
+
         } catch (Exception ex) {
             Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -808,6 +821,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 int addedempId = Integer.parseInt(cmb_addedEmployee.getItemAt(i).split(" : ")[0]);
                 if (addedempId == mainStock.getMainStock_addeduser_id()) {
                     cmb_addedEmployee.setSelectedIndex(i);
+                    break;
                 }
             }
         } else {
@@ -818,12 +832,14 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 int addedempId = Integer.parseInt(cmb_approvedEmployee1.getItemAt(i).split(" : ")[0]);
                 if (addedempId == mainStock.getMainStock_approveduser_id()) {
                     cmb_approvedEmployee1.setSelectedIndex(i);
+                    break;
                 }
             }
         } else {
             cmb_approvedEmployee1.setSelectedIndex(0);
         }
-        btn_add_equipmentToMainStock.setText("Update");
+            btn_add_equipmentToMainStock.setText("Update");
+        
     }
 
     private M_MainStock searchMainStockByTable() {
@@ -831,11 +847,33 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         String eqName = (String) dtmAllocatedEquipment.getValueAt(selectedRow, 1);
         M_MainStock mainStock = null;
         try {
-            M_Equipment searchEquipmentByName = equipmentController.searchEquipmentByName(eqName);
-            mainStock = mainStockController.searchMainStockByItem(searchEquipmentByName.getEquipment_id());
+            String equipmentId = equipmentController.searchEquipmentByName(eqName).getEquipment_id();
+            List<M_MainStock> allMainStock = mainStockController.getAllLastAddedMainStock();
+            for (M_MainStock m_MainStock : allMainStock) {
+                if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {
+                    mainStock = m_MainStock;
+                }
+            }
         } catch (Exception ex) {
             Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return mainStock;
+    }
+
+    private void loadSiteAllocationsToTable() {
+        //d
+    }
+
+    private void clearFields() {
+        cmb_stock_type.setSelectedIndex(0);
+        cmb_asset_type.setSelectedIndex(0);
+        cmb_equipment_type.setSelectedIndex(0);
+        cmb_transaction_type.setSelectedIndex(0);
+        txt_quantity.setText("");
+        txt_available_stock.setText("");
+        dp_updatedDate.setDate(null);
+        txt_sockDescription.setText("");
+        cmb_addedEmployee.setSelectedIndex(0);
+        cmb_approvedEmployee1.setSelectedIndex(0);
     }
 }
