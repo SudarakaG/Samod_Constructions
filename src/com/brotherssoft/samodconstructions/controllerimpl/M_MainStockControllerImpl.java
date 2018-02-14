@@ -57,6 +57,11 @@ public class M_MainStockControllerImpl extends UnicastRemoteObject implements M_
     public List<M_MainStock> getAllMainStockByItem(String ItemId) throws Exception {
         return sf.getMainStockService().getAllMainStockByItem(ItemId);
     }
+
+    @Override
+    public List<M_MainStock> getAllLastAddedMainStock() throws Exception {
+        return sf.getMainStockService().getAllLastAddedMainStock();
+    }
     
     
     

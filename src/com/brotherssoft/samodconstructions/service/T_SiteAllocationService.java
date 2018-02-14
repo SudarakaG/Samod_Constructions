@@ -44,4 +44,8 @@ public class T_SiteAllocationService {
         return dbaf.getSiteAllocationDBAccess().getAllSiteAllocationsByItem(itemId);
     }
     
+    public List<T_SiteAllocation> getAllLastAddedSiteAllocations() throws Exception {
+        return dbaf.getSiteAllocationDBAccess().getAllLastAddedSiteAllocations();
+    }
+    
 }

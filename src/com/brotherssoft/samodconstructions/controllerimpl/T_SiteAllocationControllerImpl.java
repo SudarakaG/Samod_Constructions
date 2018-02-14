@@ -57,6 +57,11 @@ public class T_SiteAllocationControllerImpl extends UnicastRemoteObject implemen
     public List<T_SiteAllocation> getSiteAllocationsByItem(String itemId) throws Exception {
         return sf.getSiteAllocationService().getSiteAllocationsByItem(itemId);
     }
+
+    @Override
+    public List<T_SiteAllocation> getLastAddedSiteAllocations() throws Exception {
+        return sf.getSiteAllocationService().getAllLastAddedSiteAllocations();
+    }
     
     
     

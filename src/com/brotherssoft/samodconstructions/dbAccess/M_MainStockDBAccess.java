@@ -84,7 +84,7 @@ public class M_MainStockDBAccess {
         
     }
 
-    public List<M_MainStock> getAllMainStock() throws Exception {
+    public List<M_MainStock> getAllLastAddedMainStock() throws Exception {
        
             Connection conn = DBConnection.getDBConnection().getConnection();
             Statement stm = conn.createStatement();
@@ -92,7 +92,18 @@ public class M_MainStockDBAccess {
             List<M_MainStock> mainStocks = new ArrayList<>();
             while (rst.next()) {
                 M_MainStock mainStock = new M_MainStock(rst.getInt(1), rst.getInt(2), rst.getString(3), rst.getString(4), rst.getDate(5), rst.getInt(6), rst.getDouble(7),rst.getInt(8),rst.getString(9));
-                mainStocks.add(mainStock);
+                if(mainStocks.size() != 0){
+                for (int i = 0; i < mainStocks.size(); i++) {                    
+                    if (mainStocks.get(i).getMainStock_equipment_id().equalsIgnoreCase(mainStock.getMainStock_equipment_id())) {
+                        mainStocks.remove(i);
+                        mainStocks.add(mainStock);
+                    }else{
+                        mainStocks.add(mainStock);
+                    }
+                }       
+                }else{
+                    mainStocks.add(mainStock);
+                }
             }
             return mainStocks;
         
@@ -119,6 +130,20 @@ public class M_MainStockDBAccess {
             Connection conn = DBConnection.getDBConnection().getConnection();
             Statement stm = conn.createStatement();
             ResultSet rst = stm.executeQuery("Select * From m_mstock WHERE MSTOCK_EQUIPMENTID='"+itemId+"'");
+            List<M_MainStock> mainStocks = new ArrayList<>();
+            while (rst.next()) {
+                M_MainStock mainStock = new M_MainStock(rst.getInt(1), rst.getInt(2), rst.getString(3), rst.getString(4), rst.getDate(5), rst.getInt(6), rst.getDouble(7),rst.getInt(8),rst.getString(9));
+                mainStocks.add(mainStock);
+            }
+            return mainStocks;
+        
+    }
+    
+    public List<M_MainStock> getAllMainStock() throws Exception {
+       
+            Connection conn = DBConnection.getDBConnection().getConnection();
+            Statement stm = conn.createStatement();
+            ResultSet rst = stm.executeQuery("Select * From m_mstock");
             List<M_MainStock> mainStocks = new ArrayList<>();
             while (rst.next()) {
                 M_MainStock mainStock = new M_MainStock(rst.getInt(1), rst.getInt(2), rst.getString(3), rst.getString(4), rst.getDate(5), rst.getInt(6), rst.getDouble(7),rst.getInt(8),rst.getString(9));

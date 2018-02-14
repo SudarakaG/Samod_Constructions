@@ -44,4 +44,8 @@ public class M_MainStockService {
         return dbaf.getMainStockDBAccess().getAllMainStockByItem(itemId);
     }
     
+    public List<M_MainStock> getAllLastAddedMainStock()throws Exception{
+        return dbaf.getMainStockDBAccess().getAllLastAddedMainStock();
+    }
+    
 }
