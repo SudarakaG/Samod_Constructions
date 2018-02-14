@@ -22,5 +22,6 @@ public interface M_MainStockController extends Remote{
     public M_MainStock searchMainStockByItem(String itemId)throws Exception;
     public List<M_MainStock> getAllMainStock()throws Exception;
     public List<M_MainStock> getAllMainStockByItem(String ItemId)throws Exception;
+    public List<M_MainStock> getAllLastAddedMainStock()throws Exception;
     
 }
