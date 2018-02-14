@@ -714,7 +714,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         if(cmb_vehicle_type.getSelectedIndex() != 0 && cmb_vehi_fuel_type.getSelectedIndex() != 0 ){
         try {
             
-            int vehicleId = IDGenerator.getNewID("m_vehicle", "VEHICLE_ID");
+            String vehicleId = IDGenerator.getNewIDWithPrefix("m_vehicle", "VEHICLE_ID","VEH");
             String regNo = txt_vehicle_regNo.getText();
             int vehicleTypeId = vehivleTypeController.searchVehicleType(cmb_vehicle_type.getSelectedItem().toString()).getVehicleType_id();
             String engineNo = txt_engine_no.getText();
@@ -800,7 +800,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         if(cmb_vehicle_type.getSelectedIndex() != 0 && cmb_vehi_fuel_type.getSelectedIndex() != 0 ){
         try {
             
-            int vehicleId = getSelectedVehicleNoFromTable().getVehicle_id();
+            String vehicleId = getSelectedVehicleNoFromTable().getVehicle_id();
             String regNo = txt_vehicle_regNo.getText();
             int vehicleTypeId = vehivleTypeController.searchVehicleType(cmb_vehicle_type.getSelectedItem().toString()).getVehicleType_id();
             String engineNo = txt_engine_no.getText();

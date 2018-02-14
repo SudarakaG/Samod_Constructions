@@ -587,7 +587,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
     private void txt_equipment_nameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_equipment_nameKeyReleased
         if(cmb_asset_category.getSelectedIndex() != 0 && cmb_assetType.getSelectedIndex() != 0){
         try {
-            M_Equipment searEquipment = equipmentController.searEquipment(txt_equipment_name.getText());
+            M_Equipment searEquipment = equipmentController.searchEquipmentByName(txt_equipment_name.getText());
             if (searEquipment != null && searEquipment.getEquipment_asset_category_id() == assetCategoryController.searchAssetCategory(cmb_asset_category.getSelectedItem().toString()).getAssetCategory_id() && searEquipment.getEquipment_asset_id() == assetController.searchAsset(cmb_assetType.getSelectedItem().toString()).getAsset_id()) {
                 JOptionPane.showMessageDialog(this, "An Equipment Already Saved from this Category & Type");
                 loadFieldsFromTable(searEquipment);
@@ -686,7 +686,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         if(cmb_asset_category.getSelectedIndex() != 0 && cmb_assetType.getSelectedIndex() != 0){
         try {
             
-            int eqId = IDGenerator.getNewID("m_equipment", "EQUIPMENT_ID");
+            String eqId = IDGenerator.getNewIDWithPrefix("m_equipment", "EQUIPMENT_ID","EQU");
             int assetId = assetController.searchAsset(cmb_assetType.getSelectedItem().toString()).getAsset_id();
             int assetCatId = assetCategoryController.searchAssetCategory(cmb_asset_category.getSelectedItem().toString()).getAssetCategory_id();
             String name = txt_equipment_name.getText();
@@ -721,7 +721,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         if(cmb_asset_category.getSelectedIndex() != 0 && cmb_assetType.getSelectedIndex() != 0){
         try {
             
-            int eqId = searchByTableName().getEquipment_id();
+            String eqId = searchByTableName().getEquipment_id();
             int assetId = assetController.searchAsset(cmb_assetType.getSelectedItem().toString()).getAsset_id();
             int assetCatId = assetCategoryController.searchAssetCategory(cmb_asset_category.getSelectedItem().toString()).getAssetCategory_id();
             String name = txt_equipment_name.getText();
@@ -777,7 +777,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         String name = (String) dtmEquipment.getValueAt(selectedRow, 0);
         M_Equipment searEquipment = null;
         try {
-            searEquipment = equipmentController.searEquipment(name);
+            searEquipment = equipmentController.searchEquipmentByName(name);
         } catch (Exception ex) {
             Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }

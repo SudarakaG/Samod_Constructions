@@ -6,6 +6,7 @@
 package com.brotherssoft.samodconstructions.custom;
 
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.text.NumberFormat;
 
 /**
  *
@@ -22,6 +23,22 @@ public class IDGenerator {
             return id;
         } else {
             return 1;
+
+        }
+    }
+    
+    public static String getNewIDWithPrefix(String tableName, String colName,String prefix) throws Exception {
+        String lastId = ServerConnector.getServerConnetor().getIDController().getLastIDWithPrefix(tableName, colName);
+        if (lastId != null) {
+            int id = Integer.parseInt(lastId.split(prefix)[1]);
+            id++;
+            NumberFormat numberFormat = NumberFormat.getIntegerInstance();
+            numberFormat.setMinimumIntegerDigits(1);
+            numberFormat.setGroupingUsed(false);
+            String newID = numberFormat.format(id);
+            return prefix + newID;
+        } else {
+            return prefix+"1";
 
         }
     }

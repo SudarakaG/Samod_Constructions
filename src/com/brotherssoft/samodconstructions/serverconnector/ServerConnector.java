@@ -9,6 +9,7 @@ import com.brotherssoft.samodconstructions.controller.IDController;
 import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
 import com.brotherssoft.samodconstructions.controller.M_EquipmentController;
+import com.brotherssoft.samodconstructions.controller.M_MainStockController;
 import com.brotherssoft.samodconstructions.controller.M_MaterialController;
 import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
@@ -34,6 +35,7 @@ import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryControlle
 import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
 import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
+import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
 
 /**
  *
@@ -70,6 +72,8 @@ public class ServerConnector {
     private M_Project_SecondaryController secondaryController;
     private M_Project_ThirdController thirdController;
     private T_CashAllocationController cashAllocationController;
+    private M_MainStockController mainStockController;
+    private T_SiteAllocationController siteAllocationController;
     
     //private UserHistoryController uhc;
 
@@ -264,6 +268,20 @@ public class ServerConnector {
             cashAllocationController = cf.getCashAllocationController();
         }
         return cashAllocationController;
+    }
+    
+    public M_MainStockController getMainStockController()throws Exception{
+        if(mainStockController == null){
+            mainStockController = cf.getMainStockController();
+        }
+        return mainStockController;
+    }
+    
+    public T_SiteAllocationController getSiteAllocationController()throws Exception{
+        if (siteAllocationController == null) {
+            siteAllocationController = cf.getSiteAllocationController();
+        }
+        return siteAllocationController;
     }
 
 //    

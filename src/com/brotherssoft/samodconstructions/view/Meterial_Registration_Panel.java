@@ -12,6 +12,7 @@ import com.brotherssoft.samodconstructions.model.M_Material;
 import com.brotherssoft.samodconstructions.model.R_Unit;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -444,7 +445,9 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_material_name1ActionPerformed
 
     private void txtArea_material_descKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtArea_material_descKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
         cmb_material_unit.requestFocus();
+        }
     }//GEN-LAST:event_txtArea_material_descKeyPressed
 
     private void cmb_material_unitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_material_unitActionPerformed
@@ -533,7 +536,7 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         if(cmb_material_unit.getSelectedIndex() != 0){
         try {
             
-            int materialId = IDGenerator.getNewID("m_material", "MATERIAL_ID");
+            String materialId = IDGenerator.getNewIDWithPrefix("m_material", "MATERIAL_ID","MAT");
             String materialName = txt_material_name1.getText();
             String materialDesc = txtArea_material_desc.getText();
             int unitId = unitController.searchUnit(cmb_material_unit.getSelectedItem().toString()).getUnit_id();
@@ -560,7 +563,7 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         if(cmb_material_unit.getSelectedIndex() != 0){
         try {
             
-            int materialId = searchByTableName().getMaterial_id();
+            String materialId = searchByTableName().getMaterial_id();
             String materialName = txt_material_name1.getText();
             String materialDesc = txtArea_material_desc.getText();
             int unitId = unitController.searchUnit(cmb_material_unit.getSelectedItem().toString()).getUnit_id();
