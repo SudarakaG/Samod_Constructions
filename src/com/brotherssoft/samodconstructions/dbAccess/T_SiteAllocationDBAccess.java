@@ -137,7 +137,7 @@ public class T_SiteAllocationDBAccess {
             T_SiteAllocation siteAllocation = new T_SiteAllocation(rst.getInt(1), rst.getInt(2), rst.getDate(3), rst.getString(4), rst.getString(5), rst.getDouble(6), rst.getString(7), rst.getString(8), rst.getInt(9), rst.getInt(10));
             if (siteAllocations.size() != 0) {
                 for (int i = 0; i < siteAllocations.size(); i++) {
-                    if (siteAllocations.get(i).getSiteAllocation_itemId().equalsIgnoreCase(siteAllocation.getSiteAllocation_itemId())) {
+                    if (siteAllocations.get(i).getSiteAllocation_siteId() == (siteAllocation.getSiteAllocation_siteId()) && siteAllocations.get(i).getSiteAllocation_itemId().equalsIgnoreCase(siteAllocation.getSiteAllocation_itemId())) {
                         siteAllocations.remove(i);
                         siteAllocations.add(siteAllocation);
                     }else{
