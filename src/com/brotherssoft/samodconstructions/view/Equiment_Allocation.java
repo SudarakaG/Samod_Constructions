@@ -12,6 +12,7 @@ import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryControlle
 import com.brotherssoft.samodconstructions.controller.R_AssetCategoryController;
 import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
 import com.brotherssoft.samodconstructions.custom.IDGenerator;
+import com.brotherssoft.samodconstructions.custom.Validation;
 import com.brotherssoft.samodconstructions.model.M_Employee;
 import com.brotherssoft.samodconstructions.model.M_Equipment;
 import com.brotherssoft.samodconstructions.model.M_MainStock;
@@ -175,45 +176,45 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
         tbl_equipmentStock_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Stock Type", "Equipment Name", "MStock Quantity"
+                "Stock Type", "Equipment Name", "MStock Quantity", "Updated Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -228,6 +229,10 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             }
         });
         jScrollPane12.setViewportView(tbl_equipmentStock_table);
+        if (tbl_equipmentStock_table.getColumnModel().getColumnCount() > 0) {
+            tbl_equipmentStock_table.getColumnModel().getColumn(0).setMinWidth(50);
+            tbl_equipmentStock_table.getColumnModel().getColumn(0).setPreferredWidth(50);
+        }
 
         txt_search_name_.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txt_search_name_.setForeground(new java.awt.Color(102, 102, 102));
@@ -305,10 +310,23 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 txt_quantityActionPerformed(evt);
             }
         });
+        txt_quantity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_quantityKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_quantityKeyReleased(evt);
+            }
+        });
 
         jLabel133.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel133.setText("Date");
 
+        dp_updatedDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dp_updatedDateMouseClicked(evt);
+            }
+        });
         dp_updatedDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dp_updatedDateActionPerformed(evt);
@@ -637,6 +655,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_to_secondary_projectActionPerformed
 
     private void btn_add_equipmentToMainStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_equipmentToMainStockActionPerformed
+        mangeStockAmounts();
         if (btn_add_equipmentToMainStock.getText().equalsIgnoreCase("Save")) {
             saveEquipmentAllocation();
         } else {
@@ -647,56 +666,11 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_add_equipmentToMainStockActionPerformed
 
     private void txt_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantityActionPerformed
-        if (!"".equals(txt_quantity.getText())) {
-            if (cmb_stock_type.getSelectedIndex() == 0) {
-                if (!"".equals(txt_available_stock.getText())) {
-                    double current = Double.parseDouble(txt_available_stock.getText().replaceAll(",", ""));
-                    double qty = Double.parseDouble(txt_quantity.getText().replaceAll(",", ""));
-                    if (cmb_transaction_type.getSelectedIndex() == 0) {
-                        txt_available_stock.setText(Double.toString(current + qty));
-                    } else {
-                        if (cmb_transaction_type.getSelectedIndex() == 1) {
-                            if (current > qty) {
-                                txt_available_stock.setText(Double.toString(current - qty));
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Not Such Amount to Deallocate..");
-                            }
-                        }
-                    }
-                } else {
-                    txt_available_stock.setText(decimalFormat.format(Double.parseDouble(txt_quantity.getText())));
-                }
-            } else {
-                if (!"".equals(txt_available_stockInSite.getText())) {
-                    double inMain = Double.parseDouble(txt_available_stock.getText().replaceAll(",", ""));
-                    double current = Double.parseDouble(txt_available_stockInSite.getText().replaceAll(",", ""));
-                    double qty = Double.parseDouble(txt_quantity.getText().replaceAll(",", ""));
-                    if (cmb_transaction_type.getSelectedIndex() == 0) {
-                        if (inMain > qty) {
-                            txt_available_stockInSite.setText(Double.toString(current + qty));
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Not Enough Quantity in Main Stock to Allocate to the Site..");
-                        }
-                    } else {
-                        if (cmb_transaction_type.getSelectedIndex() == 1) {
-                            if (current > qty) {
-                                txt_available_stockInSite.setText(Double.toString(current - qty));
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Not Such Amount to Deallocate..");
-                            }
-                        }
-                    }
-                } else {
-                    txt_available_stockInSite.setText(decimalFormat.format(Double.parseDouble(txt_quantity.getText())));
-                }
-            }
-        } else {
-            txt_available_stock.setText(decimalFormat.format(0));
-        }
+        mangeStockAmounts();
     }//GEN-LAST:event_txt_quantityActionPerformed
 
     private void dp_updatedDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_updatedDateActionPerformed
-
+        mangeStockAmounts();
     }//GEN-LAST:event_dp_updatedDateActionPerformed
 
     private void btn_new_EquipmentStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_EquipmentStockActionPerformed
@@ -756,6 +730,18 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     private void txt_available_stockInSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_available_stockInSiteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_available_stockInSiteActionPerformed
+
+    private void txt_quantityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_quantityKeyPressed
+        Validation.priceText(txt_quantity);
+    }//GEN-LAST:event_txt_quantityKeyPressed
+
+    private void txt_quantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_quantityKeyReleased
+        Validation.priceText(txt_quantity);
+    }//GEN-LAST:event_txt_quantityKeyReleased
+
+    private void dp_updatedDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dp_updatedDateMouseClicked
+        mangeStockAmounts();
+    }//GEN-LAST:event_dp_updatedDateMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -841,7 +827,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 for (M_Equipment allEquipment : allEquipments) {
 
                     if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(allEquipment.getEquipment_id())) {
-                        String[] rowData = {"Main Stock", allEquipment.getEquipment_name(), Double.toString(m_MainStock.getMainStock_quantity())};
+                        String[] rowData = {"Main Stock", allEquipment.getEquipment_name(), Double.toString(m_MainStock.getMainStock_quantity()), m_MainStock.getMainStock_updateDate().toString()};
                         dtmAllocatedEquipment.addRow(rowData);
                     }
                 }
@@ -854,7 +840,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
     private void saveEquipmentAllocation() {
         try {
-                        
+
             String equipmentId = equipmentController.searchEquipmentByName(cmb_equipment_type.getSelectedItem().toString()).getEquipment_id();
             String trType = cmb_transaction_type.getSelectedItem().toString();
             Date updatedDate = dp_updatedDate.getDate();
@@ -901,7 +887,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
     private void updateEquipmentAllocation() {
         try {
-            
+
             String equipmentId = equipmentController.searchEquipmentByName(cmb_equipment_type.getSelectedItem().toString()).getEquipment_id();
             String trType = cmb_transaction_type.getSelectedItem().toString();
             Date updatedDate = dp_updatedDate.getDate();
@@ -1042,10 +1028,14 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         try {
             List<M_Equipment> allEquipments = equipmentController.getAllEquipments();
             List<T_SiteAllocation> siteAllocations = siteAllocationController.getLastAddedSiteAllocations();
+            String siteAllocateDate = "";
             for (T_SiteAllocation siteAllocation : siteAllocations) {
                 for (M_Equipment allEquipment : allEquipments) {
                     if (siteAllocation.getSiteAllocation_itemId().equalsIgnoreCase(allEquipment.getEquipment_id())) {
-                        String[] rowData = {"Site Stock", allEquipment.getEquipment_name(), Double.toString(siteAllocation.getSiteAllocation_quantity())};
+                        if (siteAllocation.getSiteAllocation_date() != null) {
+                            siteAllocateDate = siteAllocation.getSiteAllocation_date().toString();
+                        }
+                        String[] rowData = {"Site Stock", allEquipment.getEquipment_name(), Double.toString(siteAllocation.getSiteAllocation_quantity()), siteAllocateDate};
                         dtmAllocatedEquipment.addRow(rowData);
                     }
                 }
@@ -1212,6 +1202,55 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             }
         } catch (Exception ex) {
             Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void mangeStockAmounts() {
+        if (!"".equals(txt_quantity.getText())) {
+            if (cmb_stock_type.getSelectedIndex() == 0) {
+                if (!"".equals(txt_available_stock.getText())) {
+                    double current = Double.parseDouble(txt_available_stock.getText().replaceAll(",", ""));
+                    double qty = Double.parseDouble(txt_quantity.getText().replaceAll(",", ""));
+                    if (cmb_transaction_type.getSelectedIndex() == 0) {
+                        txt_available_stock.setText(Double.toString(current + qty));
+                    } else {
+                        if (cmb_transaction_type.getSelectedIndex() == 1) {
+                            if (current > qty) {
+                                txt_available_stock.setText(Double.toString(current - qty));
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Not Such Amount to Deallocate..");
+                            }
+                        }
+                    }
+                } else {
+                    txt_available_stock.setText(decimalFormat.format(Double.parseDouble(txt_quantity.getText())));
+                }
+            } else {
+                if (!"".equals(txt_available_stockInSite.getText())) {
+                    double inMain = Double.parseDouble(txt_available_stock.getText().replaceAll(",", ""));
+                    double current = Double.parseDouble(txt_available_stockInSite.getText().replaceAll(",", ""));
+                    double qty = Double.parseDouble(txt_quantity.getText().replaceAll(",", ""));
+                    if (cmb_transaction_type.getSelectedIndex() == 0) {
+                        if (inMain > qty) {
+                            txt_available_stockInSite.setText(Double.toString(current + qty));
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Not Enough Quantity in Main Stock to Allocate to the Site..");
+                        }
+                    } else {
+                        if (cmb_transaction_type.getSelectedIndex() == 1) {
+                            if (current > qty) {
+                                txt_available_stockInSite.setText(Double.toString(current - qty));
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Not Such Amount to Deallocate..");
+                            }
+                        }
+                    }
+                } else {
+                    txt_available_stockInSite.setText(decimalFormat.format(Double.parseDouble(txt_quantity.getText())));
+                }
+            }
+        } else {
+            txt_available_stock.setText(decimalFormat.format(0));
         }
     }
 }
