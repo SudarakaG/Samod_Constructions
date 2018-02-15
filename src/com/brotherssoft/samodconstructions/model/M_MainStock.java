@@ -23,11 +23,12 @@ public class M_MainStock implements Serializable{
     private double mainStock_quantity;
     private int mainStock_approveduser_id;
     private String mainStock_description;
+    private String mainStock_TRType;
 
     public M_MainStock() {
     }
 
-    public M_MainStock(int mainStock_id, int mainStock_site_id, String mainStock_equipment_id, String mainStock_allocationType, Date mainStock_updateDate, int mainStock_addeduser_id, double mainStock_quantity, int mainStock_approveduser_id, String mainStock_description) {
+    public M_MainStock(int mainStock_id, int mainStock_site_id, String mainStock_equipment_id, String mainStock_allocationType, Date mainStock_updateDate, int mainStock_addeduser_id, double mainStock_quantity, int mainStock_approveduser_id, String mainStock_description, String mainStock_TRType) {
         this.mainStock_id = mainStock_id;
         this.mainStock_site_id = mainStock_site_id;
         this.mainStock_equipment_id = mainStock_equipment_id;
@@ -37,6 +38,7 @@ public class M_MainStock implements Serializable{
         this.mainStock_quantity = mainStock_quantity;
         this.mainStock_approveduser_id = mainStock_approveduser_id;
         this.mainStock_description = mainStock_description;
+        this.mainStock_TRType = mainStock_TRType;
     }
 
     /**
@@ -163,6 +165,20 @@ public class M_MainStock implements Serializable{
      */
     public void setMainStock_description(String mainStock_description) {
         this.mainStock_description = mainStock_description;
+    }
+
+    /**
+     * @return the mainStock_TRType
+     */
+    public String getMainStock_TRType() {
+        return mainStock_TRType;
+    }
+
+    /**
+     * @param mainStock_TRType the mainStock_TRType to set
+     */
+    public void setMainStock_TRType(String mainStock_TRType) {
+        this.mainStock_TRType = mainStock_TRType;
     }
 
     
