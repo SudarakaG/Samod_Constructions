@@ -47,7 +47,7 @@
                       <Component id="user_panel_hedding2" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txt_Input_Panel_Branch4" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_Input_Panel_Branch4" min="-2" pref="501" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -62,10 +62,10 @@
                   <Component id="user_panel_hedding2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jPanel1" max="32767" attributes="0"/>
                       <Component id="txt_Input_Panel_Branch4" max="32767" attributes="0"/>
-                      <Component id="jPanel1" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="84" max="32767" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -161,15 +161,13 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="txt_search_name_" min="-2" pref="231" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane12" min="-2" pref="431" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jScrollPane12" alignment="0" pref="498" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -180,8 +178,8 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="txt_search_name_" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jScrollPane12" min="-2" pref="487" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Component id="jScrollPane12" min="-2" pref="537" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -274,80 +272,98 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Component id="lblStockInSite" min="-2" pref="117" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel116" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                      <Component id="cmb_addedEmployee" min="-2" pref="401" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel112" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel113" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel114" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel115" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel104" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
+                                      <Component id="jLabel105" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                      <Component id="jLabel133" min="-2" pref="57" max="-2" attributes="0"/>
+                                      <Component id="jLabel106" min="-2" pref="75" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel112" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel113" min="-2" pref="80" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel114" min="-2" pref="80" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel115" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabel104" alignment="0" min="-2" pref="65" max="-2" attributes="0"/>
-                                                  <Component id="jLabel105" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
-                                                  <Component id="jLabel133" min="-2" pref="57" max="-2" attributes="0"/>
-                                                  <Component id="jLabel106" min="-2" pref="75" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                          </Group>
+                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lbl_allocated_site" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cmb_allocated_site" min="-2" pref="350" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="txt_available_stockInSite" min="-2" pref="310" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="cmb_stock_type" alignment="1" min="-2" pref="401" max="-2" attributes="0"/>
-                                                      <Component id="cmb_asset_type" alignment="1" min="-2" pref="401" max="-2" attributes="0"/>
-                                                      <Component id="txt_quantity" alignment="0" max="32767" attributes="0"/>
-                                                      <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                                          <Component id="cmb_equipment_type" alignment="1" min="-2" pref="401" max="-2" attributes="0"/>
-                                                          <Component id="cmb_transaction_type" alignment="1" min="-2" pref="401" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Component id="txt_available_stock" alignment="1" min="-2" pref="401" max="-2" attributes="0"/>
-                                                      <Component id="dp_updatedDate" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="btn_new_EquipmentStock" min="-2" pref="76" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="btn_add_equipmentToMainStock" min="-2" pref="76" max="-2" attributes="0"/>
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Component id="btn_to_secondary_project" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="txt_available_stock" max="32767" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lblStockInMain2" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                              <Component id="lblStockInSite2" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="cmb_transaction_type" alignment="1" min="-2" pref="350" max="-2" attributes="0"/>
+                                                  <Component id="txt_quantity" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabel117" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                              <Component id="cmb_approvedEmployee1" min="-2" pref="401" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="cmb_addedEmployee" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="cmb_stock_type" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="cmb_equipment_type" alignment="0" pref="350" max="32767" attributes="0"/>
+                                          <Component id="cmb_asset_type" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="dp_updatedDate" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="cmb_approvedEmployee1" alignment="1" min="-2" pref="350" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="btn_new_EquipmentStock" min="-2" pref="76" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btn_add_equipmentToMainStock" min="-2" pref="76" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btn_to_secondary_project" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel117" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="361" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="jLabel116" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="371" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -359,37 +375,49 @@
                           <Component id="jLabel112" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="cmb_stock_type" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lbl_allocated_site" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="cmb_allocated_site" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel113" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="cmb_asset_type" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel114" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="cmb_equipment_type" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel115" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="cmb_transaction_type" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel104" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="txt_quantity" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel104" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="txt_quantity" min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblStockInSite" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="txt_available_stockInSite" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblStockInSite2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel105" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="txt_available_stock" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblStockInMain2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel133" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="dp_updatedDate" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel106" min="-2" pref="23" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="108" max="-2" attributes="0"/>
@@ -399,12 +427,12 @@
                           <Component id="jLabel116" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="cmb_addedEmployee" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel117" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="cmb_approvedEmployee1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btn_add_equipmentToMainStock" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
@@ -412,7 +440,7 @@
                               <Component id="btn_new_EquipmentStock" alignment="3" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -432,10 +460,9 @@
                   <Font name="Segoe UI" size="14" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="- Select Stock Type -"/>
-                    <StringItem index="1" value="Main Stock"/>
-                    <StringItem index="2" value="Site Allocation"/>
+                  <StringArray count="2">
+                    <StringItem index="0" value="Main Stock"/>
+                    <StringItem index="1" value="Site Allocation"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -594,7 +621,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="14" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Available Stock is"/>
+                <Property name="text" type="java.lang.String" value="Available Stock"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txt_available_stock">
@@ -683,6 +710,67 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="lbl_allocated_site">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Allocated Site"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmb_allocated_site">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="1">
+                    <StringItem index="0" value="- Select Allocated Site -"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmb_allocated_siteActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblStockInSite">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Available Stock"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_available_stockInSite">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_available_stockInSiteActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblStockInSite2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="in Site"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblStockInMain2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="3"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="in Main Stock"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
