@@ -48,4 +48,8 @@ public class M_MainStockService {
         return dbaf.getMainStockDBAccess().getAllLastAddedMainStock();
     }
     
+    public boolean updateMainStockQuantity(String itemId, double quatity)throws Exception{
+        return dbaf.getMainStockDBAccess().updateMainStockQuantity(itemId, quatity);
+    }
+    
 }

@@ -131,23 +131,19 @@ public class T_SiteAllocationDBAccess {
 
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
-        ResultSet rst = stm.executeQuery("Select * From t_sitealloc");
+        ResultSet rst = stm.executeQuery("Select * From t_sitealloc WHERE SITEALLOC_TYPE='EQUIPMENT'");
         List<T_SiteAllocation> siteAllocations = new ArrayList<>();
         while (rst.next()) {
             T_SiteAllocation siteAllocation = new T_SiteAllocation(rst.getInt(1), rst.getInt(2), rst.getDate(3), rst.getString(4), rst.getString(5), rst.getDouble(6), rst.getString(7), rst.getString(8), rst.getInt(9), rst.getInt(10));
-            if (siteAllocations.size() != 0) {
-                for (int i = 0; i < siteAllocations.size(); i++) {
-                    if (siteAllocations.get(i).getSiteAllocation_siteId() == (siteAllocation.getSiteAllocation_siteId()) && siteAllocations.get(i).getSiteAllocation_itemId().equalsIgnoreCase(siteAllocation.getSiteAllocation_itemId())) {
-                        siteAllocations.remove(i);
-                        siteAllocations.add(siteAllocation);
-                    }else{
-                        siteAllocations.add(siteAllocation);
-                    }
-                }
-            } else {
-                siteAllocations.add(siteAllocation);
+            siteAllocations.add(siteAllocation);
+        }
+        
+        for (int i = 0; i < siteAllocations.size()-1; i++) {
+            if (siteAllocations.get(i).getSiteAllocation_siteId() == siteAllocations.get(i+1).getSiteAllocation_siteId() && siteAllocations.get(i).getSiteAllocation_itemId().equalsIgnoreCase(siteAllocations.get(i+1).getSiteAllocation_itemId())) {
+                siteAllocations.remove(i);
             }
         }
+        
         return siteAllocations;
 
     }
