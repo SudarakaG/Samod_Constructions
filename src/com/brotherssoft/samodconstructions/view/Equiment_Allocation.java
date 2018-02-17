@@ -52,6 +52,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     public Equiment_Allocation() throws Exception {
         initComponents();
 
+        lbl_warnig1.setSize(471, 14);
         txt_available_stock.setSize(401, 26);
         lbl_allocated_site.setVisible(false);
         cmb_allocated_site.setVisible(false);
@@ -126,6 +127,8 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         txt_available_stockInSite = new javax.swing.JTextField();
         lblStockInSite2 = new javax.swing.JLabel();
         lblStockInMain2 = new javax.swing.JLabel();
+        btn_check = new javax.swing.JButton();
+        lbl_warnig1 = new javax.swing.JLabel();
 
         Project_Primary_Info_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Project_Primary_Info_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -277,7 +280,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         jLabel112.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel112.setText("Stock Type");
 
-        cmb_stock_type.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_stock_type.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_stock_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Main Stock", "Site Allocation" }));
         cmb_stock_type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -322,6 +325,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         jLabel133.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel133.setText("Date");
 
+        dp_updatedDate.setEnabled(false);
         dp_updatedDate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 dp_updatedDateMouseClicked(evt);
@@ -366,8 +370,8 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         jLabel115.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel115.setText("Transaction Type");
 
-        cmb_transaction_type.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_transaction_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALLOCATE", "DISPOSE" }));
+        cmb_transaction_type.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_transaction_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALLOCATE", "DEALLOCATE", "DISPOSE" }));
         cmb_transaction_type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_transaction_typeActionPerformed(evt);
@@ -393,6 +397,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
         cmb_addedEmployee.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_addedEmployee.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Empolyee Name -" }));
+        cmb_addedEmployee.setEnabled(false);
         cmb_addedEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_addedEmployeeActionPerformed(evt);
@@ -404,6 +409,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
         cmb_approvedEmployee1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_approvedEmployee1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Empolyee Name -" }));
+        cmb_approvedEmployee1.setEnabled(false);
         cmb_approvedEmployee1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_approvedEmployee1ActionPerformed(evt);
@@ -412,6 +418,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
         txt_sockDescription.setColumns(20);
         txt_sockDescription.setRows(5);
+        txt_sockDescription.setEnabled(false);
         jScrollPane1.setViewportView(txt_sockDescription);
 
         lbl_allocated_site.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -442,11 +449,23 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         lblStockInMain2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lblStockInMain2.setText("in Main Stock");
 
+        btn_check.setBackground(new java.awt.Color(255, 255, 0));
+        btn_check.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_check.setText("Check");
+        btn_check.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_checkActionPerformed(evt);
+            }
+        });
+
+        lbl_warnig1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lbl_warnig1.setForeground(new java.awt.Color(255, 0, 0));
+        lbl_warnig1.setText(" * Please Check the Quantity Before Continue.. (By Pressing Enter or Click Check)");
+
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
         txt_Input_Panel_Branch4Layout.setHorizontalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblStockInSite, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,11 +505,12 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                                         .addComponent(txt_available_stock)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblStockInMain2))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblStockInSite2)
-                                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(cmb_transaction_type, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_quantity, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(lblStockInSite2)
+                                    .addComponent(cmb_transaction_type, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE)
+                                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                        .addComponent(txt_quantity)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btn_check)))))
                         .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                             .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(cmb_addedEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -514,6 +534,11 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                 .addComponent(jLabel116, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(371, 371, 371))
+            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStockInSite, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_warnig1))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         txt_Input_Panel_Branch4Layout.setVerticalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -526,7 +551,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_allocated_site, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_allocated_site, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel113, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_asset_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -538,10 +563,13 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_transaction_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_quantity)
+                    .addComponent(btn_check, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(1, 1, 1)
+                .addComponent(lbl_warnig1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStockInSite, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -560,7 +588,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel116, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_addedEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -568,7 +596,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_approvedEmployee1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_add_equipmentToMainStock)
                     .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -619,7 +647,9 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmb_stock_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_stock_typeActionPerformed
+        clearAllocationFields();
         if (cmb_stock_type.getSelectedIndex() == 1) {
+            lbl_warnig1.setSize(471, 14);
             lbl_allocated_site.setVisible(true);
             lblStockInSite.setVisible(true);
             lblStockInSite2.setVisible(true);
@@ -628,6 +658,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             cmb_allocated_site.setVisible(true);
             txt_available_stockInSite.setVisible(true);
         } else {
+            lbl_warnig1.setSize(471, 14);
             txt_available_stock.setSize(401, 26);
             lbl_allocated_site.setVisible(false);
             lblStockInSite.setVisible(false);
@@ -641,6 +672,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         } else {
             btn_add_equipmentToMainStock.setText("Update");
             if (cmb_stock_type.getSelectedIndex() == 1) {
+                clearFields();
                 loadSiteAllocationsToTable();
             } else {
                 clearFields();
@@ -648,6 +680,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             }
 
         }
+        disableAllocationFields();
     }//GEN-LAST:event_cmb_stock_typeActionPerformed
 
     private void btn_to_secondary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_to_secondary_projectActionPerformed
@@ -655,7 +688,6 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_to_secondary_projectActionPerformed
 
     private void btn_add_equipmentToMainStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_equipmentToMainStockActionPerformed
-        mangeStockAmounts();
         if (btn_add_equipmentToMainStock.getText().equalsIgnoreCase("Save")) {
             saveEquipmentAllocation();
         } else {
@@ -667,10 +699,11 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
     private void txt_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantityActionPerformed
         mangeStockAmounts();
+        enableAllocationFields();
     }//GEN-LAST:event_txt_quantityActionPerformed
 
     private void dp_updatedDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_updatedDateActionPerformed
-        mangeStockAmounts();
+
     }//GEN-LAST:event_dp_updatedDateActionPerformed
 
     private void btn_new_EquipmentStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_EquipmentStockActionPerformed
@@ -678,7 +711,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_new_EquipmentStockActionPerformed
 
     private void tbl_equipmentStock_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_equipmentStock_tableMouseClicked
-        if (cmb_stock_type.getSelectedIndex() == 0) {
+        if (dtmAllocatedEquipment.getValueAt(tbl_equipmentStock_table.getSelectedRow(), 0).toString().equalsIgnoreCase("Main Stock")) {
             loadFeildsFromMainStock(searchMainStockByTable());
         } else {
             loadFieldsFromSiteStock(searchSiteStockByTable());
@@ -694,15 +727,32 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_search_name_KeyReleased
 
     private void cmb_asset_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_asset_typeActionPerformed
+        clearAllocationFields();
+        for (int i = 1; i < cmb_equipment_type.getItemCount(); i++) {
+            cmb_equipment_type.removeItemAt(i);
+        }
         if (cmb_asset_type.getSelectedIndex() != 0) {
-            loadEquipmentCombo();
+            if (cmb_stock_type.getSelectedIndex() == 0) {
+                loadEquipmentCombo();
+            } else {
+                loadMainStockToEquipment();
+            }
+
         } else {
             cmb_equipment_type.setSelectedIndex(0);
         }
     }//GEN-LAST:event_cmb_asset_typeActionPerformed
 
     private void cmb_equipment_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_equipment_typeActionPerformed
-        // TODO add your handling code here:
+        clearAllocationFields();
+        txt_available_stockInSite.setText("");
+        txt_available_stock.setText("");
+        if (cmb_stock_type.getSelectedIndex() == 0) {
+            loadDetailsToMainStockAllocation();
+        } else {
+            loadDetailsToSiteAllocation();
+        }
+        disableAllocationFields();
     }//GEN-LAST:event_cmb_equipment_typeActionPerformed
 
     private void cmb_transaction_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_transaction_typeActionPerformed
@@ -722,9 +772,13 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_cmb_approvedEmployee1ActionPerformed
 
     private void cmb_allocated_siteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_allocated_siteActionPerformed
+        clearAllocationFields();
+//        cmb_asset_type.setSelectedIndex(0);
+//        cmb_equipment_type.setSelectedIndex(0);
         if (cmb_allocated_site.getSelectedIndex() != 0) {
             loadDetailsToSiteAllocation();
         }
+        disableAllocationFields();
     }//GEN-LAST:event_cmb_allocated_siteActionPerformed
 
     private void txt_available_stockInSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_available_stockInSiteActionPerformed
@@ -740,13 +794,19 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_quantityKeyReleased
 
     private void dp_updatedDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dp_updatedDateMouseClicked
-        mangeStockAmounts();
+
     }//GEN-LAST:event_dp_updatedDateMouseClicked
+
+    private void btn_checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_checkActionPerformed
+        mangeStockAmounts();
+        enableAllocationFields();
+    }//GEN-LAST:event_btn_checkActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Project_Primary_Info_Panel;
     private javax.swing.JButton btn_add_equipmentToMainStock;
+    private javax.swing.JButton btn_check;
     private javax.swing.JButton btn_new_EquipmentStock;
     private javax.swing.JButton btn_to_secondary_project;
     private javax.swing.JComboBox<String> cmb_addedEmployee;
@@ -777,6 +837,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     private javax.swing.JLabel lblStockInSite;
     private javax.swing.JLabel lblStockInSite2;
     private javax.swing.JLabel lbl_allocated_site;
+    private javax.swing.JLabel lbl_warnig1;
     private javax.swing.JTable tbl_equipmentStock_table;
     private javax.swing.JPanel txt_Input_Panel_Branch4;
     private javax.swing.JTextField txt_available_stock;
@@ -821,16 +882,11 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         dtmAllocatedEquipment.setRowCount(0);
         try {
             List<M_MainStock> allMainStock = mainStockController.getAllLastAddedMainStock();
-            List<M_Equipment> allEquipments = equipmentController.getAllEquipments();
             for (M_MainStock m_MainStock : allMainStock) {
 
-                for (M_Equipment allEquipment : allEquipments) {
-
-                    if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(allEquipment.getEquipment_id())) {
-                        String[] rowData = {"Main Stock", allEquipment.getEquipment_name(), Double.toString(m_MainStock.getMainStock_quantity()), m_MainStock.getMainStock_updateDate().toString()};
-                        dtmAllocatedEquipment.addRow(rowData);
-                    }
-                }
+                    String[] rowData = {"Main Stock", equipmentController.searchEquipment(m_MainStock.getMainStock_equipment_id()).getEquipment_name(), Double.toString(m_MainStock.getMainStock_quantity()), m_MainStock.getMainStock_updateDate().toString()};
+                    dtmAllocatedEquipment.addRow(rowData);
+            
             }
 
         } catch (Exception ex) {
@@ -869,11 +925,25 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 int siteAllocationId = IDGenerator.getNewID("t_sitealloc", "SITEALLOC_ID");
                 int siteId = projectController.searchPrimaryProjectByName(cmb_allocated_site.getSelectedItem().toString()).getProject_id();
                 double quantityInSite = Double.parseDouble(txt_available_stockInSite.getText().replaceAll(",", ""));
+
                 T_SiteAllocation siteAllocation = new T_SiteAllocation(siteAllocationId, siteId, updatedDate, "EQUIPMENT", equipmentId, quantityInSite, comment, trType, addeBy, approvedBy);
                 boolean addSiteAllocation = siteAllocationController.addSiteAllocation(siteAllocation);
                 if (addSiteAllocation) {
-                    JOptionPane.showMessageDialog(this, "Equipment Allocated to the Site Successfully..");
-                    loadSiteAllocationsToTable();
+                    List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
+                    for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                        if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {
+                            m_MainStock.setMainStock_quantity(quantity);
+                            boolean updateMainStockQuantity = mainStockController.updateMainStock(m_MainStock);
+                            if (updateMainStockQuantity) {
+                                JOptionPane.showMessageDialog(this, "Equipment Allocated to the Site Successfully..");
+                                loadSiteAllocationsToTable();
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Equipment Quatity Updating in Main Stock Failed.. Please Check Again..");
+                            }
+                        }
+                        break;
+                    }
+
                 } else {
                     JOptionPane.showMessageDialog(this, "Equipment Allocating Failed.. Please Check Again..");
                 }
@@ -920,8 +990,21 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 T_SiteAllocation siteAllocation = new T_SiteAllocation(siteAllocationId, siteId, updatedDate, "EQUIPMENT", equipmentId, quantityInSite, comment, trType, addeBy, approvedBy);
                 boolean updateSiteAllocation = siteAllocationController.updateSiteAllocation(siteAllocation);
                 if (updateSiteAllocation) {
-                    JOptionPane.showMessageDialog(this, "Equipment Details Updated in Site Stock Successfully..");
-                    loadSiteAllocationsToTable();
+                    List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
+                    for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                        if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {
+                            m_MainStock.setMainStock_quantity(quantity);
+                            boolean updateMainStockQuantity = mainStockController.updateMainStock(m_MainStock);
+                            if (updateMainStockQuantity) {
+                                JOptionPane.showMessageDialog(this, "Equipment Details Updated in Site Stock Successfully..");
+                                loadSiteAllocationsToTable();
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Equipment Quatity Updating in Main Stock Failed.. Please Check Again..");
+                            }
+                        }
+                        break;
+                    }
+
                 } else {
                     JOptionPane.showMessageDialog(this, "Equipment Allocation Details Updating Failed.. Please Check Again..");
                 }
@@ -1026,21 +1109,19 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     private void loadSiteAllocationsToTable() {
         dtmAllocatedEquipment.setRowCount(0);
         try {
-            List<M_Equipment> allEquipments = equipmentController.getAllEquipments();
             List<T_SiteAllocation> siteAllocations = siteAllocationController.getLastAddedSiteAllocations();
+            System.out.println(">>>>>>>>>>>>"+siteAllocations.size());
             String siteAllocateDate = "";
-            for (T_SiteAllocation siteAllocation : siteAllocations) {
-                for (M_Equipment allEquipment : allEquipments) {
-                    if (siteAllocation.getSiteAllocation_itemId().equalsIgnoreCase(allEquipment.getEquipment_id())) {
-                        if (siteAllocation.getSiteAllocation_date() != null) {
-                            siteAllocateDate = siteAllocation.getSiteAllocation_date().toString();
-                        }
-                        String[] rowData = {"Site Stock", allEquipment.getEquipment_name(), Double.toString(siteAllocation.getSiteAllocation_quantity()), siteAllocateDate};
-                        dtmAllocatedEquipment.addRow(rowData);
-                    }
-                }
 
+            for (T_SiteAllocation siteAllocation : siteAllocations) {
+
+                if (siteAllocation.getSiteAllocation_date() != null) {
+                    siteAllocateDate = siteAllocation.getSiteAllocation_date().toString();
+                }
+                String[] rowData = {"Site Stock", equipmentController.searchEquipment(siteAllocation.getSiteAllocation_itemId()).getEquipment_name(), Double.toString(siteAllocation.getSiteAllocation_quantity()), siteAllocateDate};
+                dtmAllocatedEquipment.addRow(rowData);
             }
+
         } catch (Exception ex) {
             Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1049,6 +1130,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     private void clearFields() {
         //cmb_stock_type.setSelectedIndex(0);
         cmb_asset_type.setSelectedIndex(0);
+        cmb_allocated_site.setSelectedIndex(0);
         cmb_equipment_type.setSelectedIndex(0);
         cmb_transaction_type.setSelectedIndex(0);
         txt_quantity.setText("");
@@ -1058,6 +1140,9 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         txt_sockDescription.setText("");
         cmb_addedEmployee.setSelectedIndex(0);
         cmb_approvedEmployee1.setSelectedIndex(0);
+        disableAllocationFields();
+        btn_add_equipmentToMainStock.setText("Save");
+        lbl_warnig1.setVisible(true);
     }
 
     private void loadFieldsFromSiteStock(T_SiteAllocation siteAllocation) {
@@ -1147,33 +1232,26 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                             for (M_MainStock m_MainStock : allLastAddedMainStock) {
                                 if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {
                                     txt_available_stock.setText(decimalFormat.format(m_MainStock.getMainStock_quantity()));
+                                    break;
+                                } else {
+                                    txt_available_stock.setText(decimalFormat.format(0));
                                 }
                             }
-                            dp_updatedDate.setDate(lastAddedSiteAllocation.getSiteAllocation_date());
-                            txt_sockDescription.setText(lastAddedSiteAllocation.getSiteAllocation_comment());
-                            if (lastAddedSiteAllocation.getSiteAllocation_addedUser() != 0) {
-                                for (int i = 1; i < cmb_addedEmployee.getItemCount(); i++) {
-                                    int addedempId = Integer.parseInt(cmb_addedEmployee.getItemAt(i).split(" : ")[0]);
-                                    if (addedempId == lastAddedSiteAllocation.getSiteAllocation_addedUser()) {
-                                        cmb_addedEmployee.setSelectedIndex(i);
-                                        break;
-                                    }
-                                }
-                            } else {
-                                cmb_addedEmployee.setSelectedIndex(0);
-                            }
-                            if (lastAddedSiteAllocation.getSiteAllocation_authorizedUser() != 0) {
-                                for (int i = 1; i < cmb_approvedEmployee1.getItemCount(); i++) {
-                                    int addedempId = Integer.parseInt(cmb_approvedEmployee1.getItemAt(i).split(" : ")[0]);
-                                    if (addedempId == lastAddedSiteAllocation.getSiteAllocation_authorizedUser()) {
-                                        cmb_approvedEmployee1.setSelectedIndex(i);
-                                        break;
-                                    }
-                                }
-                            } else {
-                                cmb_approvedEmployee1.setSelectedIndex(0);
-                            }
+                            dp_updatedDate.setDate(null);
+                            txt_sockDescription.setText("");
+                            cmb_addedEmployee.setSelectedIndex(0);
+                            cmb_approvedEmployee1.setSelectedIndex(0);
+                            break;
                         } else {
+                            for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                                if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {
+                                    txt_available_stock.setText(decimalFormat.format(m_MainStock.getMainStock_quantity()));
+                                    break;
+                                } else {
+                                    txt_available_stock.setText(decimalFormat.format(0));
+                                }
+                            }
+                            txt_available_stockInSite.setText(decimalFormat.format(0));
                             dp_updatedDate.setDate(null);
                             txt_sockDescription.setText("");
                             cmb_addedEmployee.setSelectedIndex(0);
@@ -1181,6 +1259,15 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                         }
                     }
                 } else {
+                    for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                        if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {
+                            txt_available_stock.setText(decimalFormat.format(m_MainStock.getMainStock_quantity()));
+                            break;
+                        } else {
+                            txt_available_stock.setText(decimalFormat.format(0));
+                        }
+                    }
+                    txt_available_stockInSite.setText(decimalFormat.format(0));
                     dp_updatedDate.setDate(null);
                     txt_sockDescription.setText("");
                     cmb_addedEmployee.setSelectedIndex(0);
@@ -1215,42 +1302,142 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                         txt_available_stock.setText(Double.toString(current + qty));
                     } else {
                         if (cmb_transaction_type.getSelectedIndex() == 1) {
-                            if (current > qty) {
+                            if (current >= qty) {
                                 txt_available_stock.setText(Double.toString(current - qty));
                             } else {
                                 JOptionPane.showMessageDialog(this, "Not Such Amount to Deallocate..");
                             }
+                        } else {
+                            txt_quantity.setEnabled(false);
+                            txt_available_stock.setText(decimalFormat.format(0));
+                            enableAllocationFields();
                         }
                     }
                 } else {
                     txt_available_stock.setText(decimalFormat.format(Double.parseDouble(txt_quantity.getText())));
                 }
             } else {
+                double inMain = 0;
+                double current = 0;
+                double qty = 0;
                 if (!"".equals(txt_available_stockInSite.getText())) {
-                    double inMain = Double.parseDouble(txt_available_stock.getText().replaceAll(",", ""));
-                    double current = Double.parseDouble(txt_available_stockInSite.getText().replaceAll(",", ""));
-                    double qty = Double.parseDouble(txt_quantity.getText().replaceAll(",", ""));
-                    if (cmb_transaction_type.getSelectedIndex() == 0) {
-                        if (inMain > qty) {
-                            txt_available_stockInSite.setText(Double.toString(current + qty));
-                        } else {
-                            JOptionPane.showMessageDialog(this, "Not Enough Quantity in Main Stock to Allocate to the Site..");
-                        }
+                    inMain = Double.parseDouble(txt_available_stock.getText().replaceAll(",", ""));
+                    current = Double.parseDouble(txt_available_stockInSite.getText().replaceAll(",", ""));
+                    qty = Double.parseDouble(txt_quantity.getText().replaceAll(",", ""));
+                }
+                if (cmb_transaction_type.getSelectedIndex() == 0) {
+                    if (inMain >= qty) {
+                        txt_available_stockInSite.setText(decimalFormat.format(current + qty));
+                        txt_available_stock.setText(decimalFormat.format(inMain - qty));
                     } else {
-                        if (cmb_transaction_type.getSelectedIndex() == 1) {
-                            if (current > qty) {
-                                txt_available_stockInSite.setText(Double.toString(current - qty));
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Not Such Amount to Deallocate..");
-                            }
-                        }
+                        JOptionPane.showMessageDialog(this, "Not Enough Quantity in Main Stock to Allocate to the Site..");
                     }
                 } else {
-                    txt_available_stockInSite.setText(decimalFormat.format(Double.parseDouble(txt_quantity.getText())));
+                    if (cmb_transaction_type.getSelectedIndex() == 1) {
+                        if (current >= qty) {
+                            txt_available_stockInSite.setText(Double.toString(current - qty));
+                            txt_available_stock.setText(decimalFormat.format(inMain + qty));
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Not Such Amount to Deallocate..");
+                        }
+                    } else {
+                        txt_quantity.setEnabled(false);
+                        txt_available_stock.setText(decimalFormat.format(0));
+                        enableAllocationFields();
+                    }
                 }
+
             }
         } else {
             txt_available_stock.setText(decimalFormat.format(0));
         }
+        lbl_warnig1.setVisible(false);
+    }
+
+    private void enableAllocationFields() {
+        dp_updatedDate.setEnabled(true);
+        txt_sockDescription.setEnabled(true);
+        cmb_addedEmployee.setEnabled(true);
+        cmb_approvedEmployee1.setEnabled(true);
+        btn_check.setEnabled(false);
+    }
+
+    private void disableAllocationFields() {
+        dp_updatedDate.setEnabled(false);
+        txt_sockDescription.setEnabled(false);
+        cmb_addedEmployee.setEnabled(false);
+        cmb_approvedEmployee1.setEnabled(false);
+        btn_check.setEnabled(true);        
+    }
+
+    private void loadDetailsToMainStockAllocation() {
+        txt_available_stock.setText("");
+        try {
+            if (cmb_equipment_type.getSelectedIndex() != 0) {
+                String equipmentId = equipmentController.searchEquipmentByName(cmb_equipment_type.getSelectedItem().toString()).getEquipment_id();
+                List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
+                if (allLastAddedMainStock.size() != 0) {
+                    for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                        if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {
+                            txt_available_stock.setText(decimalFormat.format(m_MainStock.getMainStock_quantity()));
+                            dp_updatedDate.setDate(null);
+                            txt_sockDescription.setText("");
+                            cmb_addedEmployee.setSelectedIndex(0);
+                            cmb_approvedEmployee1.setSelectedIndex(0);
+                            break;
+                        } else {
+                            txt_available_stock.setText(decimalFormat.format(0));
+                            dp_updatedDate.setDate(null);
+                            txt_sockDescription.setText("");
+                            cmb_addedEmployee.setSelectedIndex(0);
+                            cmb_approvedEmployee1.setSelectedIndex(0);
+                        }
+                    }
+                } else {
+                    txt_available_stock.setText(decimalFormat.format(0));
+                    dp_updatedDate.setDate(null);
+                    txt_sockDescription.setText("");
+                    cmb_addedEmployee.setSelectedIndex(0);
+                    cmb_approvedEmployee1.setSelectedIndex(0);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadMainStockToEquipment() {
+        cmb_equipment_type.removeAll();
+        for (int i = 1; i < cmb_equipment_type.getItemCount(); i++) {
+            cmb_equipment_type.removeItemAt(i);
+        }
+        if (cmb_asset_type.getSelectedIndex() != 0) {
+            try {
+                int assetCategoryId = assetCategoryController.searchAssetCategory(cmb_asset_type.getSelectedItem().toString()).getAssetCategory_id();
+                List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
+                List<M_Equipment> allEquipments = equipmentController.getAllEquipments();
+
+                for (M_Equipment allEquipment : allEquipments) {
+
+                    for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                        if (allEquipment.getEquipment_id().equalsIgnoreCase(m_MainStock.getMainStock_equipment_id()) && allEquipment.getEquipment_asset_category_id() == assetCategoryId) {
+                            cmb_equipment_type.addItem(allEquipment.getEquipment_name());
+                        }
+                    }
+
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            cmb_equipment_type.removeAll();
+        }
+    }
+
+    private void clearAllocationFields() {
+        dp_updatedDate.setDate(null);
+        txt_sockDescription.setText("");
+        cmb_addedEmployee.setSelectedIndex(0);
+        cmb_approvedEmployee1.setSelectedIndex(0);
     }
 }
