@@ -23,5 +23,6 @@ public interface M_MainStockController extends Remote{
     public List<M_MainStock> getAllMainStock()throws Exception;
     public List<M_MainStock> getAllMainStockByItem(String ItemId)throws Exception;
     public List<M_MainStock> getAllLastAddedMainStock()throws Exception;
+    public boolean updateMainStockQuantity(String itemId, double quatity)throws Exception;
     
 }
