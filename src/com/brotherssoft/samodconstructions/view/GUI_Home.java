@@ -992,6 +992,9 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable19.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable19.setText("Employee Attendance Approval");
         master_detail_home_lable19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable19MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable19MouseEntered(evt);
             }
@@ -1934,6 +1937,11 @@ public class GUI_Home extends javax.swing.JFrame {
         Employee_Attendence  attendence = new Employee_Attendence();
         panelManager(attendence);
     }//GEN-LAST:event_master_detail_home_lable18MouseClicked
+
+    private void master_detail_home_lable19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable19MouseClicked
+        Employee_Attendence_Approval approval = new Employee_Attendence_Approval();
+        panelManager(approval);
+    }//GEN-LAST:event_master_detail_home_lable19MouseClicked
 
     /**
      * @param args the command line arguments

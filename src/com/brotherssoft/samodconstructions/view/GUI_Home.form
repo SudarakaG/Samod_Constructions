@@ -1566,6 +1566,7 @@
                         <Property name="text" type="java.lang.String" value="Employee Attendance Approval"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable19MouseClicked"/>
                         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable19MouseEntered"/>
                         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable19MouseExited"/>
                       </Events>
