@@ -90,23 +90,18 @@ public class M_MainStockDBAccess {
 
         Connection conn = DBConnection.getDBConnection().getConnection();
         Statement stm = conn.createStatement();
-        ResultSet rst = stm.executeQuery("Select * From m_mstock WHERE MSTOCK_ALLOC_TYPE='EQUIPMENT'");
+        ResultSet rst = stm.executeQuery("Select * From m_mstock");// WHERE MSTOCK_ALLOC_TYPE='EQUIPMENT'
         List<M_MainStock> mainStocks = new ArrayList<>();
         while (rst.next()) {
             M_MainStock mainStock = new M_MainStock(rst.getInt(1), rst.getInt(2), rst.getString(3), rst.getString(4), rst.getDate(5), rst.getInt(6), rst.getDouble(7), rst.getInt(8), rst.getString(9), rst.getString(10));
-            if (!mainStocks.isEmpty()) {
-                for (int i = 0; i < mainStocks.size(); i++) {
-                    if (mainStocks.get(i).getMainStock_equipment_id().equalsIgnoreCase(mainStock.getMainStock_equipment_id())) {
-                        mainStocks.remove(i);
-                        mainStocks.add(mainStock);
-                    } else {
-                        mainStocks.add(mainStock);
-                    }
+            for (int i = 0; i < mainStocks.size(); i++) {
+                if (mainStocks.get(i).getMainStock_equipment_id().equalsIgnoreCase(mainStock.getMainStock_equipment_id())) {
+                    mainStocks.remove(i);
                 }
-            } else {
-                mainStocks.add(mainStock);
             }
+            mainStocks.add(mainStock);
         }
+        
         return mainStocks;
 
     }
