@@ -199,30 +199,30 @@
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="4" rowCount="32">
-                        <Column editable="false" title="Stock Type" type="java.lang.Object"/>
                         <Column editable="false" title="Equipment Name" type="java.lang.Object"/>
-                        <Column editable="false" title="MStock Quantity" type="java.lang.Object"/>
+                        <Column editable="false" title="Quantity" type="java.lang.Object"/>
                         <Column editable="true" title="Updated Date" type="java.lang.Object"/>
+                        <Column editable="true" title="Allocated Site" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="80" prefWidth="80" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="30" prefWidth="30" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="50" prefWidth="50" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                        <Column maxWidth="-1" minWidth="175" prefWidth="175" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -313,52 +313,48 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cmb_allocated_site" min="-2" pref="350" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="txt_available_stockInSite" min="-2" pref="310" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="txt_available_stockInSite" min="-2" pref="310" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="txt_available_stock" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="lblStockInMain2" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="txt_available_stock" max="32767" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="lblStockInMain2" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="lblStockInSite2" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cmb_transaction_type" alignment="0" pref="350" max="32767" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="txt_quantity" max="32767" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btn_check" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                      <Component id="lblStockInSite2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cmb_transaction_type" alignment="0" pref="350" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="txt_quantity" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btn_check" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="cmb_addedEmployee" min="-2" pref="350" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cmb_stock_type" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="cmb_equipment_type" alignment="0" pref="350" max="32767" attributes="0"/>
-                                          <Component id="cmb_asset_type" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="dp_updatedDate" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Component id="cmb_approvedEmployee1" alignment="1" min="-2" pref="350" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="btn_new_EquipmentStock" min="-2" pref="76" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btn_add_equipmentToMainStock" min="-2" pref="76" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btn_to_secondary_project" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="cmb_addedEmployee" alignment="0" pref="350" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cmb_equipment_type" alignment="0" pref="350" max="32767" attributes="0"/>
+                                  <Component id="cmb_asset_type" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="dp_updatedDate" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cmb_approvedEmployee1" alignment="0" pref="350" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="btn_new_EquipmentStock" min="-2" pref="76" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btn_add_equipmentToMainStock" min="-2" pref="76" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btn_to_secondary_project" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="cmb_stock_type" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cmb_allocated_site" alignment="0" max="32767" attributes="0"/>
                               </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -818,7 +814,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value=" * Please Check the Quantity Before Continue.. (By Pressing Enter or Click Check)"/>
+                <Property name="text" type="java.lang.String" value=" * Please Check the Quantity by &quot;Press Enter&quot; or &quot;Click Check&quot; to Continue."/>
               </Properties>
             </Component>
           </SubComponents>

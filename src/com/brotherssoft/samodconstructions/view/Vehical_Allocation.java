@@ -5,17 +5,57 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
+import com.brotherssoft.samodconstructions.controller.M_MainStockController;
+import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
+import com.brotherssoft.samodconstructions.controller.M_VehicleController;
+import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
+import com.brotherssoft.samodconstructions.model.M_Employee;
+import com.brotherssoft.samodconstructions.model.M_MainStock;
+import com.brotherssoft.samodconstructions.model.M_Project_Primary;
+import com.brotherssoft.samodconstructions.model.M_Vehicle;
+import com.brotherssoft.samodconstructions.model.T_SiteAllocation;
+import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Akvasoft
  */
 public class Vehical_Allocation extends javax.swing.JPanel {
 
+    M_MainStockController mainStockController;
+    T_SiteAllocationController siteAllocationController;
+    M_VehicleController vehicleController;
+    M_Project_PrimaryController projectController;
+    M_EmployeeController employeeController;
+    DefaultTableModel dtmVehiAllo;
+
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+    M_MainStock mainStockGlobal = null;
+    T_SiteAllocation siteAllocationGlobal = null;
+
     /**
      * Creates new form Vehical_Allocation
      */
-    public Vehical_Allocation() {
+    public Vehical_Allocation() throws Exception {
         initComponents();
+        lbl_site.setVisible(false);
+        cmb_allocated_site.setVisible(false);
+
+        mainStockController = ServerConnector.getServerConnetor().getMainStockController();
+        siteAllocationController = ServerConnector.getServerConnetor().getSiteAllocationController();
+        vehicleController = ServerConnector.getServerConnetor().getVehicleController();
+        projectController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
+        employeeController = ServerConnector.getServerConnetor().getEmployeeController();
+        dtmVehiAllo = (DefaultTableModel) tbl_vehical_table.getModel();
+
+        loadVehicleCombo();
+        loadEmpCombo();
     }
 
     /**
@@ -40,16 +80,23 @@ public class Vehical_Allocation extends javax.swing.JPanel {
         jLabel112 = new javax.swing.JLabel();
         cmb_vehical = new javax.swing.JComboBox<>();
         btn_to_secondary_project = new javax.swing.JButton();
-        btn_add_primary_project = new javax.swing.JButton();
+        btn_add_vehicle_allocation = new javax.swing.JButton();
         jLabel133 = new javax.swing.JLabel();
-        txt_project_tender_open_date_1 = new org.jdesktop.swingx.JXDatePicker();
+        dp_updated_date = new org.jdesktop.swingx.JXDatePicker();
         btn_new_primary_project = new javax.swing.JButton();
         jLabel113 = new javax.swing.JLabel();
-        cmb_asset_type = new javax.swing.JComboBox<>();
+        cmb_stock_type = new javax.swing.JComboBox<>();
         jLabel115 = new javax.swing.JLabel();
         cmb_transaction_type = new javax.swing.JComboBox<>();
         jLabel106 = new javax.swing.JLabel();
-        txt_project_tender_result1 = new javax.swing.JTextField();
+        lbl_site = new javax.swing.JLabel();
+        cmb_allocated_site = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txt_comment = new javax.swing.JTextArea();
+        jLabel116 = new javax.swing.JLabel();
+        cmb_added_emp = new javax.swing.JComboBox<>();
+        jLabel117 = new javax.swing.JLabel();
+        cmb_approved_emp = new javax.swing.JComboBox<>();
 
         Project_Primary_Info_Panel2.setBackground(new java.awt.Color(255, 255, 255));
         Project_Primary_Info_Panel2.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -72,7 +119,7 @@ public class Vehical_Allocation extends javax.swing.JPanel {
             .addGroup(user_panel_hedding4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(511, Short.MAX_VALUE))
             .addGroup(user_panel_hedding4Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel71)
@@ -92,7 +139,7 @@ public class Vehical_Allocation extends javax.swing.JPanel {
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vehical Infomations", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vehical Allocation Infomation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         jScrollPane14.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -171,8 +218,15 @@ public class Vehical_Allocation extends javax.swing.JPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txt_search_name_, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jScrollPane14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(txt_search_name_)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,18 +234,19 @@ public class Vehical_Allocation extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
         );
 
         txt_Input_Panel_Branch4.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Input_Panel_Branch4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vehical Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Vehical Allocation Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel112.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel112.setText("Vehical");
 
         cmb_vehical.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_vehical.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Vehical -" }));
+        cmb_vehical.setPreferredSize(new java.awt.Dimension(350, 26));
         cmb_vehical.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_vehicalActionPerformed(evt);
@@ -206,20 +261,21 @@ public class Vehical_Allocation extends javax.swing.JPanel {
             }
         });
 
-        btn_add_primary_project.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_add_primary_project.setText("Save");
-        btn_add_primary_project.addActionListener(new java.awt.event.ActionListener() {
+        btn_add_vehicle_allocation.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_add_vehicle_allocation.setText("Save");
+        btn_add_vehicle_allocation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_add_primary_projectActionPerformed(evt);
+                btn_add_vehicle_allocationActionPerformed(evt);
             }
         });
 
         jLabel133.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel133.setText("Date");
 
-        txt_project_tender_open_date_1.addActionListener(new java.awt.event.ActionListener() {
+        dp_updated_date.setPreferredSize(new java.awt.Dimension(350, 26));
+        dp_updated_date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_project_tender_open_date_1ActionPerformed(evt);
+                dp_updated_dateActionPerformed(evt);
             }
         });
 
@@ -234,19 +290,21 @@ public class Vehical_Allocation extends javax.swing.JPanel {
         jLabel113.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel113.setText("Stock Type");
 
-        cmb_asset_type.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_asset_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Stock Type -", " " }));
-        cmb_asset_type.addActionListener(new java.awt.event.ActionListener() {
+        cmb_stock_type.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_stock_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Main Stock", "Site Allocation" }));
+        cmb_stock_type.setPreferredSize(new java.awt.Dimension(350, 26));
+        cmb_stock_type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_asset_typeActionPerformed(evt);
+                cmb_stock_typeActionPerformed(evt);
             }
         });
 
         jLabel115.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel115.setText("Transaction Type");
 
-        cmb_transaction_type.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_transaction_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Transaction Type -", "ALLOCATE", "DISPOSE" }));
+        cmb_transaction_type.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmb_transaction_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALLOCATE", "DEALLOCATE", "DISPOSE" }));
+        cmb_transaction_type.setPreferredSize(new java.awt.Dimension(350, 26));
         cmb_transaction_type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_transaction_typeActionPerformed(evt);
@@ -256,10 +314,42 @@ public class Vehical_Allocation extends javax.swing.JPanel {
         jLabel106.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel106.setText("Comment");
 
-        txt_project_tender_result1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_project_tender_result1.addActionListener(new java.awt.event.ActionListener() {
+        lbl_site.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lbl_site.setText("Allocated Site");
+
+        cmb_allocated_site.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_allocated_site.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Allocated Site -" }));
+        cmb_allocated_site.setPreferredSize(new java.awt.Dimension(350, 26));
+        cmb_allocated_site.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_project_tender_result1ActionPerformed(evt);
+                cmb_allocated_siteActionPerformed(evt);
+            }
+        });
+
+        txt_comment.setRows(10);
+        jScrollPane1.setViewportView(txt_comment);
+
+        jLabel116.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel116.setText("Added By");
+
+        cmb_added_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_added_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Allocated Employee -" }));
+        cmb_added_emp.setPreferredSize(new java.awt.Dimension(350, 26));
+        cmb_added_emp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_added_empActionPerformed(evt);
+            }
+        });
+
+        jLabel117.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel117.setText("Approved By");
+
+        cmb_approved_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_approved_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Approved Employee -" }));
+        cmb_approved_emp.setPreferredSize(new java.awt.Dimension(350, 26));
+        cmb_approved_emp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_approved_empActionPerformed(evt);
             }
         });
 
@@ -268,72 +358,91 @@ public class Vehical_Allocation extends javax.swing.JPanel {
         txt_Input_Panel_Branch4Layout.setHorizontalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel113, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel112)
-                                .addGap(75, 75, 75)))
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmb_vehical, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmb_asset_type, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jLabel133, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(txt_project_tender_open_date_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
-                        .addComponent(txt_project_tender_result1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_new_primary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_add_vehicle_allocation, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_to_secondary_project))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addComponent(jLabel115)
+                        .addGap(11, 11, 11)
+                        .addComponent(cmb_transaction_type, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addComponent(jLabel113, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(cmb_stock_type, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addComponent(jLabel112)
+                        .addGap(75, 75, 75)
+                        .addComponent(cmb_vehical, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel115)
-                                .addGap(11, 11, 11)
-                                .addComponent(cmb_transaction_type, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(btn_new_primary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_add_primary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_to_secondary_project)))))
-                .addContainerGap())
+                            .addComponent(jLabel133, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel116))
+                        .addGap(46, 46, 46)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmb_added_emp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dp_updated_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(jLabel117)
+                                .addGap(38, 38, 38)
+                                .addComponent(cmb_approved_emp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(lbl_site)
+                                .addGap(33, 33, 33)
+                                .addComponent(cmb_allocated_site, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(71, 71, 71))
         );
         txt_Input_Panel_Branch4Layout.setVerticalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmb_vehical, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel113, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_stock_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel113, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmb_asset_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_site, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_allocated_site, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_vehical, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_transaction_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel133, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_tender_open_date_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel133, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dp_updated_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_project_tender_result1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel116, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_added_emp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_approved_emp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_add_primary_project)
+                    .addComponent(btn_add_vehicle_allocation)
                     .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_to_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_new_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(247, 247, 247))
+                .addGap(47, 47, 47))
         );
 
         javax.swing.GroupLayout Project_Primary_Info_Panel2Layout = new javax.swing.GroupLayout(Project_Primary_Info_Panel2);
@@ -342,10 +451,10 @@ public class Vehical_Allocation extends javax.swing.JPanel {
             Project_Primary_Info_Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Project_Primary_Info_Panel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 39, Short.MAX_VALUE))
+                .addContainerGap())
             .addComponent(user_panel_hedding4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         Project_Primary_Info_Panel2Layout.setVerticalGroup(
@@ -354,9 +463,9 @@ public class Vehical_Allocation extends javax.swing.JPanel {
                 .addComponent(user_panel_hedding4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Project_Primary_Info_Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -393,70 +502,130 @@ public class Vehical_Allocation extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btn_to_secondary_projectActionPerformed
 
-    private void btn_add_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_primary_projectActionPerformed
+    private void btn_add_vehicle_allocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_vehicle_allocationActionPerformed
 
-    }//GEN-LAST:event_btn_add_primary_projectActionPerformed
+    }//GEN-LAST:event_btn_add_vehicle_allocationActionPerformed
 
-    private void txt_project_tender_open_date_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_tender_open_date_1ActionPerformed
+    private void dp_updated_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_updated_dateActionPerformed
 
-    }//GEN-LAST:event_txt_project_tender_open_date_1ActionPerformed
+    }//GEN-LAST:event_dp_updated_dateActionPerformed
 
     private void btn_new_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_projectActionPerformed
 
     }//GEN-LAST:event_btn_new_primary_projectActionPerformed
 
-    private void cmb_asset_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_asset_typeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_asset_typeActionPerformed
+    private void cmb_stock_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_stock_typeActionPerformed
+        if (cmb_stock_type.getSelectedIndex() == 1) {
+            lbl_site.setVisible(true);
+            cmb_allocated_site.setVisible(true);
+            loadSiteCombo();
+        }else{
+            lbl_site.setVisible(false);
+            cmb_allocated_site.setVisible(false);
+        }
+    }//GEN-LAST:event_cmb_stock_typeActionPerformed
 
     private void cmb_transaction_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_transaction_typeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_transaction_typeActionPerformed
 
-    private void txt_project_tender_result1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_tender_result1ActionPerformed
+    private void cmb_allocated_siteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_allocated_siteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_project_tender_result1ActionPerformed
+    }//GEN-LAST:event_cmb_allocated_siteActionPerformed
+
+    private void cmb_added_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_added_empActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_added_empActionPerformed
+
+    private void cmb_approved_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_approved_empActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_approved_empActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Project_Primary_Info_Panel;
-    private javax.swing.JPanel Project_Primary_Info_Panel1;
     private javax.swing.JPanel Project_Primary_Info_Panel2;
-    private javax.swing.JButton btn_add_primary_project;
+    private javax.swing.JButton btn_add_vehicle_allocation;
     private javax.swing.JButton btn_new_primary_project;
     private javax.swing.JButton btn_to_secondary_project;
-    private javax.swing.JComboBox<String> cmb_asset_type;
+    private javax.swing.JComboBox<String> cmb_added_emp;
+    private javax.swing.JComboBox<String> cmb_allocated_site;
+    private javax.swing.JComboBox<String> cmb_approved_emp;
+    private javax.swing.JComboBox<String> cmb_stock_type;
     private javax.swing.JComboBox<String> cmb_transaction_type;
     private javax.swing.JComboBox<String> cmb_vehical;
+    private org.jdesktop.swingx.JXDatePicker dp_updated_date;
     private javax.swing.JLabel jLabel106;
     private javax.swing.JLabel jLabel112;
     private javax.swing.JLabel jLabel113;
     private javax.swing.JLabel jLabel115;
+    private javax.swing.JLabel jLabel116;
+    private javax.swing.JLabel jLabel117;
     private javax.swing.JLabel jLabel133;
-    private javax.swing.JLabel jLabel66;
-    private javax.swing.JLabel jLabel67;
     private javax.swing.JLabel jLabel68;
-    private javax.swing.JLabel jLabel69;
-    private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane12;
-    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane14;
-    private javax.swing.JSeparator jSeparator14;
-    private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator16;
-    private javax.swing.JTable tbl_equipment_table;
-    private javax.swing.JTable tbl_equipment_table1;
+    private javax.swing.JLabel lbl_site;
     private javax.swing.JTable tbl_vehical_table;
     private javax.swing.JPanel txt_Input_Panel_Branch4;
-    private org.jdesktop.swingx.JXDatePicker txt_project_tender_open_date_1;
-    private javax.swing.JTextField txt_project_tender_result1;
+    private javax.swing.JTextArea txt_comment;
     private javax.swing.JTextField txt_search_name_;
-    private javax.swing.JPanel user_panel_hedding2;
-    private javax.swing.JPanel user_panel_hedding3;
     private javax.swing.JPanel user_panel_hedding4;
     // End of variables declaration//GEN-END:variables
+
+    private void loadVehicleCombo() {
+        cmb_vehical.removeAll();
+        try {
+            List<M_Vehicle> allVehicles = vehicleController.getAllVehicles();
+            if (cmb_stock_type.getSelectedIndex() == 0) {
+                for (M_Vehicle allVehicle : allVehicles) {
+                    cmb_vehical.addItem(allVehicle.getVehicle_regNo());
+                }
+            } else {
+                List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
+                if (allLastAddedMainStock.size() != 0) {
+                    for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                        for (M_Vehicle allVehicle : allVehicles) {
+                            if (allVehicle.getVehicle_id().equalsIgnoreCase(m_MainStock.getMainStock_equipment_id())) {
+                                cmb_vehical.addItem(allVehicle.getVehicle_regNo());
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadEmpCombo() {
+        cmb_added_emp.removeAll();
+        cmb_approved_emp.removeAll();
+        try{
+            List<M_Employee> allEmployees = employeeController.getAllEmployees();
+            for (M_Employee allEmployee : allEmployees) {
+                if (allEmployee.getEmp_jobType_id() == 1) {
+                    cmb_added_emp.addItem(allEmployee.getEmp_id()+" : "+allEmployee.getEmp_firstName()+" "+allEmployee.getEmp_middleName()+" "+allEmployee.getEmp_surName());
+                    cmb_approved_emp.addItem(allEmployee.getEmp_id()+" : "+allEmployee.getEmp_firstName()+" "+allEmployee.getEmp_middleName()+" "+allEmployee.getEmp_surName());
+                }
+            }
+ 
+        }catch (Exception ex) {
+            Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadSiteCombo() {
+        cmb_allocated_site.removeAll();
+        try {
+            List<M_Project_Primary> allPrimaryProjects = projectController.getAllPrimaryProjects();
+            for (M_Project_Primary allPrimaryProject : allPrimaryProjects) {
+                cmb_allocated_site.addItem(allPrimaryProject.getProject_primary_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

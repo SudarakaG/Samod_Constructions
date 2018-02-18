@@ -1825,8 +1825,12 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lable14MouseClicked
 
     private void master_detail_home_lable16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable16MouseClicked
-        Meterial_Allocation smap = new Meterial_Allocation();
-        panelManager(smap);
+        try {
+            Meterial_Allocation smap = new Meterial_Allocation();
+            panelManager(smap);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
                 
     }//GEN-LAST:event_master_detail_home_lable16MouseClicked
 
@@ -1900,8 +1904,12 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lableMouseClicked
 
     private void master_detail_home_lable15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable15MouseClicked
-        Vehical_Allocation allocation = new Vehical_Allocation();
-        panelManager(allocation);
+        try {
+            Vehical_Allocation allocation = new Vehical_Allocation();
+            panelManager(allocation);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable15MouseClicked
 
     private void master_detail_home_lable17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable17MouseClicked

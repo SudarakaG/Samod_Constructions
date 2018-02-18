@@ -20,6 +20,7 @@ import com.brotherssoft.samodconstructions.model.M_Project_Primary;
 import com.brotherssoft.samodconstructions.model.R_AssetCategory;
 import com.brotherssoft.samodconstructions.model.T_SiteAllocation;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
@@ -60,6 +61,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         lblStockInSite2.setVisible(false);
         txt_available_stockInSite.setVisible(false);
         lblStockInMain2.setVisible(false);
+        btn_add_equipmentToMainStock.setEnabled(false);
 
         assetCategoryController = ServerConnector.getServerConnetor().getAssetCategoryController();
         equipmentController = ServerConnector.getServerConnetor().getEquipmentController();
@@ -213,11 +215,11 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Stock Type", "Equipment Name", "MStock Quantity", "Updated Date"
+                "Equipment Name", "Quantity", "Updated Date", "Allocated Site"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -233,8 +235,14 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         });
         jScrollPane12.setViewportView(tbl_equipmentStock_table);
         if (tbl_equipmentStock_table.getColumnModel().getColumnCount() > 0) {
-            tbl_equipmentStock_table.getColumnModel().getColumn(0).setMinWidth(50);
-            tbl_equipmentStock_table.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tbl_equipmentStock_table.getColumnModel().getColumn(0).setMinWidth(80);
+            tbl_equipmentStock_table.getColumnModel().getColumn(0).setPreferredWidth(80);
+            tbl_equipmentStock_table.getColumnModel().getColumn(1).setMinWidth(30);
+            tbl_equipmentStock_table.getColumnModel().getColumn(1).setPreferredWidth(30);
+            tbl_equipmentStock_table.getColumnModel().getColumn(2).setMinWidth(50);
+            tbl_equipmentStock_table.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tbl_equipmentStock_table.getColumnModel().getColumn(3).setMinWidth(175);
+            tbl_equipmentStock_table.getColumnModel().getColumn(3).setPreferredWidth(175);
         }
 
         txt_search_name_.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -460,7 +468,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
         lbl_warnig1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_warnig1.setForeground(new java.awt.Color(255, 0, 0));
-        lbl_warnig1.setText(" * Please Check the Quantity Before Continue.. (By Pressing Enter or Click Check)");
+        lbl_warnig1.setText(" * Please Check the Quantity by \"Press Enter\" or \"Click Check\" to Continue.");
 
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
@@ -492,42 +500,40 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                         .addComponent(lbl_allocated_site)
                         .addGap(33, 33, 33)))
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmb_allocated_site, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                    .addComponent(txt_available_stockInSite, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(91, 91, 91))
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                        .addComponent(txt_available_stock)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblStockInMain2))
-                                    .addComponent(lblStockInSite2)
-                                    .addComponent(cmb_transaction_type, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE)
-                                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                        .addComponent(txt_quantity)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btn_check)))))
-                        .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(cmb_addedEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmb_stock_type, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmb_equipment_type, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE)
-                                    .addComponent(cmb_asset_type, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(dp_updatedDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(cmb_approvedEmployee1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(txt_available_stockInSite, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(91, 91, 91))
+                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                    .addComponent(btn_new_EquipmentStock, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_available_stock)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btn_add_equipmentToMainStock, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblStockInMain2))
+                                .addComponent(lblStockInSite2)
+                                .addComponent(cmb_transaction_type, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE)
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(txt_quantity)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btn_to_secondary_project)))
-                            .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(btn_check)))))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmb_addedEmployee, 0, 350, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)
+                            .addComponent(cmb_equipment_type, 0, 350, Short.MAX_VALUE)
+                            .addComponent(cmb_asset_type, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dp_updatedDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmb_approvedEmployee1, 0, 350, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(btn_new_EquipmentStock, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_add_equipmentToMainStock, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_to_secondary_project))
+                            .addComponent(cmb_stock_type, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmb_allocated_site, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                 .addComponent(jLabel117, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(361, 361, 361))
@@ -667,19 +673,13 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             cmb_allocated_site.setVisible(false);
             txt_available_stockInSite.setVisible(false);
         }
-        if (cmb_equipment_type.getSelectedIndex() != 0 && cmb_stock_type.getSelectedIndex() == 1) {
-            btn_add_equipmentToMainStock.setText("Save");
-        } else {
-            btn_add_equipmentToMainStock.setText("Update");
-            if (cmb_stock_type.getSelectedIndex() == 1) {
-                clearFields();
-                loadSiteAllocationsToTable();
-            } else {
-                clearFields();
-                laodEquipmentAllocationTable();
-            }
 
+        laodEquipmentAllocationTable();
+        if (cmb_equipment_type.getSelectedIndex() != 0 && "".equals(txt_available_stockInSite.getText())) {
+            btn_add_equipmentToMainStock.setText("Save");
         }
+        cmb_allocated_site.setSelectedIndex(0);
+
         disableAllocationFields();
     }//GEN-LAST:event_cmb_stock_typeActionPerformed
 
@@ -693,8 +693,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         } else {
             updateEquipmentAllocation();
         }
-
-        clearFields();
+        laodEquipmentAllocationTable();
     }//GEN-LAST:event_btn_add_equipmentToMainStockActionPerformed
 
     private void txt_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantityActionPerformed
@@ -711,7 +710,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_new_EquipmentStockActionPerformed
 
     private void tbl_equipmentStock_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_equipmentStock_tableMouseClicked
-        if (dtmAllocatedEquipment.getValueAt(tbl_equipmentStock_table.getSelectedRow(), 0).toString().equalsIgnoreCase("Main Stock")) {
+        if (dtmAllocatedEquipment.getValueAt(tbl_equipmentStock_table.getSelectedRow(), 3) == null) {
             loadFeildsFromMainStock(searchMainStockByTable());
         } else {
             loadFieldsFromSiteStock(searchSiteStockByTable());
@@ -787,6 +786,13 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
     private void txt_quantityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_quantityKeyPressed
         Validation.priceText(txt_quantity);
+        if (evt.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+            if (cmb_stock_type.getSelectedIndex() == 0) {
+                loadDetailsToMainStockAllocation();
+            }else{
+                loadDetailsToSiteAllocation();
+            }
+        }
     }//GEN-LAST:event_txt_quantityKeyPressed
 
     private void txt_quantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_quantityKeyReleased
@@ -880,15 +886,47 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
     private void laodEquipmentAllocationTable() {
         dtmAllocatedEquipment.setRowCount(0);
+
         try {
-            List<M_MainStock> allMainStock = mainStockController.getAllLastAddedMainStock();
-            for (M_MainStock m_MainStock : allMainStock) {
+            if (cmb_stock_type.getSelectedIndex() == 0) {
+                clearFields();
+                List<M_MainStock> allMainStock = mainStockController.getAllLastAddedMainStock();
+                List<M_Equipment> allEquipments = equipmentController.getAllEquipments();
+                String date = "";
+                for (M_MainStock m_MainStock : allMainStock) {
+                    for (M_Equipment allEquipment : allEquipments) {
 
-                    String[] rowData = {"Main Stock", equipmentController.searchEquipment(m_MainStock.getMainStock_equipment_id()).getEquipment_name(), Double.toString(m_MainStock.getMainStock_quantity()), m_MainStock.getMainStock_updateDate().toString()};
-                    dtmAllocatedEquipment.addRow(rowData);
-            
+                        if (m_MainStock.getMainStock_updateDate() != null) {
+                            date = m_MainStock.getMainStock_updateDate().toString();
+                        }
+
+                        if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(allEquipment.getEquipment_id())) {
+                            String[] rowData = {allEquipment.getEquipment_name(), Double.toString(m_MainStock.getMainStock_quantity()), date};
+                            dtmAllocatedEquipment.addRow(rowData);
+                        }
+                    }
+
+                }
+            } else {
+                List<T_SiteAllocation> siteAllocations = siteAllocationController.getLastAddedSiteAllocations();
+                List<M_Equipment> allEquipments = equipmentController.getAllEquipments();
+
+                System.out.println(">>>>>>>>>>>>" + siteAllocations.size());
+                String siteAllocateDate = "";
+
+                for (T_SiteAllocation siteAllocation : siteAllocations) {
+
+                    if (siteAllocation.getSiteAllocation_date() != null) {
+                        siteAllocateDate = siteAllocation.getSiteAllocation_date().toString();
+                    }
+                    for (M_Equipment allEquipment : allEquipments) {
+                        if (siteAllocation.getSiteAllocation_itemId().equalsIgnoreCase(allEquipment.getEquipment_id())) {
+                            String[] rowData = {allEquipment.getEquipment_name(), Double.toString(siteAllocation.getSiteAllocation_quantity()), siteAllocateDate, projectController.searchPrimaryProject(siteAllocation.getSiteAllocation_siteId()).getProject_primary_name()};
+                            dtmAllocatedEquipment.addRow(rowData);
+                        }
+                    }
+                }
             }
-
         } catch (Exception ex) {
             Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -913,41 +951,56 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             if (cmb_stock_type.getSelectedIndex() == 0) {
                 int mainStockId = IDGenerator.getNewID("m_mstock", "MSTOCK_ID");
                 M_MainStock mainStock = new M_MainStock(mainStockId, 0, equipmentId, "EQUIPMENT", updatedDate, addeBy, quantity, approvedBy, comment, trType);
-                boolean addMainStock = mainStockController.addMainStock(mainStock);
-                if (addMainStock) {
-                    JOptionPane.showMessageDialog(this, "Equipment Allocated to Main Stock Successfully..");
-                    laodEquipmentAllocationTable();
+                if (cmb_asset_type.getSelectedIndex() != 0 && cmb_equipment_type.getSelectedIndex() != 0) {
+                    boolean addMainStock = mainStockController.addMainStock(mainStock);
+                    if (addMainStock) {
+                        JOptionPane.showMessageDialog(this, "Equipment Allocated to Main Stock Successfully..");
+                        clearFields();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Equipment Allocating Failed.. Please Check Again..");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Equipment Allocating Failed.. Please Check Again..");
+                    JOptionPane.showMessageDialog(this, "Please Check that Asset Type & Equipment Type are Selected");
                 }
 
             } else {
                 int siteAllocationId = IDGenerator.getNewID("t_sitealloc", "SITEALLOC_ID");
-                int siteId = projectController.searchPrimaryProjectByName(cmb_allocated_site.getSelectedItem().toString()).getProject_id();
-                double quantityInSite = Double.parseDouble(txt_available_stockInSite.getText().replaceAll(",", ""));
-
-                T_SiteAllocation siteAllocation = new T_SiteAllocation(siteAllocationId, siteId, updatedDate, "EQUIPMENT", equipmentId, quantityInSite, comment, trType, addeBy, approvedBy);
-                boolean addSiteAllocation = siteAllocationController.addSiteAllocation(siteAllocation);
-                if (addSiteAllocation) {
-                    List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
-                    for (M_MainStock m_MainStock : allLastAddedMainStock) {
-                        if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {
-                            m_MainStock.setMainStock_quantity(quantity);
-                            boolean updateMainStockQuantity = mainStockController.updateMainStock(m_MainStock);
-                            if (updateMainStockQuantity) {
-                                JOptionPane.showMessageDialog(this, "Equipment Allocated to the Site Successfully..");
-                                loadSiteAllocationsToTable();
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Equipment Quatity Updating in Main Stock Failed.. Please Check Again..");
-                            }
-                        }
-                        break;
-                    }
-
+                int siteId = 0;
+                double quantityInSite = 0;
+                if (cmb_allocated_site.getSelectedIndex() != 0) {
+                    siteId = projectController.searchPrimaryProjectByName(cmb_allocated_site.getSelectedItem().toString()).getProject_id();
+                    quantityInSite = Double.parseDouble(txt_available_stockInSite.getText().replaceAll(",", ""));
                 } else {
-                    JOptionPane.showMessageDialog(this, "Equipment Allocating Failed.. Please Check Again..");
+                    JOptionPane.showMessageDialog(this, "Please Select the Allocated Site");
+                    //return;
                 }
 
+                T_SiteAllocation siteAllocation = new T_SiteAllocation(siteAllocationId, siteId, updatedDate, "EQUIPMENT", equipmentId, quantityInSite, comment, trType, addeBy, approvedBy);
+                if (cmb_allocated_site.getSelectedIndex() != 0 && cmb_asset_type.getSelectedIndex() != 0 && cmb_equipment_type.getSelectedIndex() != 0) {
+                    boolean addSiteAllocation = siteAllocationController.addSiteAllocation(siteAllocation);
+                    if (addSiteAllocation) {
+                        List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
+                        for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                            if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {
+                                m_MainStock.setMainStock_quantity(quantity);
+                                boolean updateMainStockQuantity = mainStockController.updateMainStock(m_MainStock);
+                                if (updateMainStockQuantity) {
+                                    JOptionPane.showMessageDialog(this, "Equipment Allocated to the Site Successfully..");
+                                    clearFields();
+                                    break;
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "Equipment Quatity Updating in Main Stock Failed.. Please Check Again..");
+                                }
+                            }
+
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Equipment Allocating Failed.. Please Check Again..");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Please Check that Allocated Site, Asset Type & Equipment Type are Selected");
+                }
             }
 
         } catch (Exception ex) {
@@ -975,38 +1028,54 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             if (cmb_stock_type.getSelectedIndex() == 0) {
                 int mainStockId = publicMainStock.getMainStock_id();
                 M_MainStock mainStock = new M_MainStock(mainStockId, 0, equipmentId, "EQUIPMENT", updatedDate, addeBy, quantity, approvedBy, comment, trType);
-                boolean updateMainStock = mainStockController.updateMainStock(mainStock);
-                if (updateMainStock) {
-                    JOptionPane.showMessageDialog(this, "Equipment Details Updated in Main Stock Successfully..");
-                    laodEquipmentAllocationTable();
+                if (cmb_asset_type.getSelectedIndex() != 0 && cmb_equipment_type.getSelectedIndex() != 0) {
+                    boolean updateMainStock = mainStockController.updateMainStock(mainStock);
+                    if (updateMainStock) {
+                        JOptionPane.showMessageDialog(this, "Equipment Details Updated in Main Stock Successfully..");
+                        clearFields();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Equipment Allocation Details Updating Failed.. Please Check Again..");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Equipment Allocation Details Updating Failed.. Please Check Again..");
+                    JOptionPane.showMessageDialog(this, "Please Check that Asset Type & Equipment Type are Selected");
                 }
 
             } else {
                 int siteAllocationId = publicSiteStock.getSiteAllocation_id();
-                int siteId = projectController.searchPrimaryProjectByName(cmb_allocated_site.getSelectedItem().toString()).getProject_id();
-                double quantityInSite = Double.parseDouble(txt_available_stockInSite.getText().replaceAll(",", ""));
-                T_SiteAllocation siteAllocation = new T_SiteAllocation(siteAllocationId, siteId, updatedDate, "EQUIPMENT", equipmentId, quantityInSite, comment, trType, addeBy, approvedBy);
-                boolean updateSiteAllocation = siteAllocationController.updateSiteAllocation(siteAllocation);
-                if (updateSiteAllocation) {
-                    List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
-                    for (M_MainStock m_MainStock : allLastAddedMainStock) {
-                        if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {
-                            m_MainStock.setMainStock_quantity(quantity);
-                            boolean updateMainStockQuantity = mainStockController.updateMainStock(m_MainStock);
-                            if (updateMainStockQuantity) {
-                                JOptionPane.showMessageDialog(this, "Equipment Details Updated in Site Stock Successfully..");
-                                loadSiteAllocationsToTable();
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Equipment Quatity Updating in Main Stock Failed.. Please Check Again..");
-                            }
-                        }
-                        break;
-                    }
-
+                int siteId = 0;
+                double quantityInSite = 0;
+                if (cmb_allocated_site.getSelectedIndex() != 0) {
+                    siteId = projectController.searchPrimaryProjectByName(cmb_allocated_site.getSelectedItem().toString()).getProject_id();
+                    quantityInSite = Double.parseDouble(txt_available_stockInSite.getText().replaceAll(",", ""));
                 } else {
-                    JOptionPane.showMessageDialog(this, "Equipment Allocation Details Updating Failed.. Please Check Again..");
+                    JOptionPane.showMessageDialog(this, "Please Select the Allocated Site");
+                    //return;
+                }
+
+                if (cmb_allocated_site.getSelectedIndex() != 0 && cmb_asset_type.getSelectedIndex() != 0 && cmb_equipment_type.getSelectedIndex() != 0) {
+                    T_SiteAllocation siteAllocation = new T_SiteAllocation(siteAllocationId, siteId, updatedDate, "EQUIPMENT", equipmentId, quantityInSite, comment, trType, addeBy, approvedBy);
+                    boolean updateSiteAllocation = siteAllocationController.updateSiteAllocation(siteAllocation);
+                    if (updateSiteAllocation) {
+                        List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
+                        for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                            if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {
+                                m_MainStock.setMainStock_quantity(quantity);
+                                boolean updateMainStockQuantity = mainStockController.updateMainStock(m_MainStock);
+                                if (updateMainStockQuantity) {
+                                    JOptionPane.showMessageDialog(this, "Equipment Details Updated in Site Stock Successfully..");
+                                    clearFields();
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "Equipment Quatity Updating in Main Stock Failed.. Please Check Again..");
+                                }
+                            }
+                            break;
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Equipment Allocation Details Updating Failed.. Please Check Again..");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Please Check that Allocated Site, Asset Type & Equipment Type are Selected");
                 }
 
             }
@@ -1054,7 +1123,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        cmb_stock_type.setSelectedIndex(0);
+        //cmb_stock_type.setSelectedIndex(0);
         cmb_asset_type.setSelectedItem(assetCategory.getAssetCategory_description());
         cmb_equipment_type.setSelectedItem(equipment.getEquipment_name());
         cmb_transaction_type.setSelectedItem(mainStock.getMainStock_TRType());
@@ -1089,7 +1158,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
     private M_MainStock searchMainStockByTable() {
         int selectedRow = tbl_equipmentStock_table.getSelectedRow();
-        String eqName = (String) dtmAllocatedEquipment.getValueAt(selectedRow, 1);
+        String eqName = (String) dtmAllocatedEquipment.getValueAt(selectedRow, 0);
         M_MainStock mainStock = null;
         try {
             String equipmentId = equipmentController.searchEquipmentByName(eqName).getEquipment_id();
@@ -1104,27 +1173,6 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
         }
         return mainStock;
-    }
-
-    private void loadSiteAllocationsToTable() {
-        dtmAllocatedEquipment.setRowCount(0);
-        try {
-            List<T_SiteAllocation> siteAllocations = siteAllocationController.getLastAddedSiteAllocations();
-            System.out.println(">>>>>>>>>>>>"+siteAllocations.size());
-            String siteAllocateDate = "";
-
-            for (T_SiteAllocation siteAllocation : siteAllocations) {
-
-                if (siteAllocation.getSiteAllocation_date() != null) {
-                    siteAllocateDate = siteAllocation.getSiteAllocation_date().toString();
-                }
-                String[] rowData = {"Site Stock", equipmentController.searchEquipment(siteAllocation.getSiteAllocation_itemId()).getEquipment_name(), Double.toString(siteAllocation.getSiteAllocation_quantity()), siteAllocateDate};
-                dtmAllocatedEquipment.addRow(rowData);
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     private void clearFields() {
@@ -1152,7 +1200,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             equipment = equipmentController.searchEquipment(siteAllocation.getSiteAllocation_itemId());
             assetCategory = assetCategoryController.searchAssetCategory(equipment.getEquipment_asset_category_id());
 
-            cmb_stock_type.setSelectedIndex(1);
+            //cmb_stock_type.setSelectedIndex(1);
             cmb_allocated_site.setSelectedItem(projectController.searchPrimaryProject(siteAllocation.getSiteAllocation_siteId()).getProject_primary_name());
 
             cmb_asset_type.setSelectedItem(assetCategory.getAssetCategory_description());
@@ -1198,7 +1246,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
     private T_SiteAllocation searchSiteStockByTable() {
         int selectedRow = tbl_equipmentStock_table.getSelectedRow();
-        String eqName = (String) dtmAllocatedEquipment.getValueAt(selectedRow, 1);
+        String eqName = (String) dtmAllocatedEquipment.getValueAt(selectedRow, 0);
         T_SiteAllocation siteAllocation = null;
         try {
             String equipmentId = equipmentController.searchEquipmentByName(eqName).getEquipment_id();
@@ -1227,7 +1275,8 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
                 if (lastAddedSiteAllocations.size() != 0) {
                     for (T_SiteAllocation lastAddedSiteAllocation : lastAddedSiteAllocations) {
-                        if (lastAddedSiteAllocation.getSiteAllocation_siteId() == siteId && lastAddedSiteAllocation.getSiteAllocation_itemId().equalsIgnoreCase(equipmentId)) {
+                        
+                        if (lastAddedSiteAllocation.getSiteAllocation_siteId() != 0 && lastAddedSiteAllocation.getSiteAllocation_siteId() == siteId && lastAddedSiteAllocation.getSiteAllocation_itemId().equalsIgnoreCase(equipmentId)) {
                             txt_available_stockInSite.setText(decimalFormat.format(lastAddedSiteAllocation.getSiteAllocation_quantity()));
                             for (M_MainStock m_MainStock : allLastAddedMainStock) {
                                 if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {
@@ -1360,6 +1409,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         cmb_addedEmployee.setEnabled(true);
         cmb_approvedEmployee1.setEnabled(true);
         btn_check.setEnabled(false);
+        btn_add_equipmentToMainStock.setEnabled(true);
     }
 
     private void disableAllocationFields() {
@@ -1367,7 +1417,8 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         txt_sockDescription.setEnabled(false);
         cmb_addedEmployee.setEnabled(false);
         cmb_approvedEmployee1.setEnabled(false);
-        btn_check.setEnabled(true);        
+        btn_check.setEnabled(true);
+        btn_add_equipmentToMainStock.setEnabled(false);
     }
 
     private void loadDetailsToMainStockAllocation() {
