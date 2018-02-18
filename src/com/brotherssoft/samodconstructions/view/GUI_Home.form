@@ -1566,6 +1566,7 @@
                         <Property name="text" type="java.lang.String" value="Employee Attendance Approval"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable19MouseClicked"/>
                         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable19MouseEntered"/>
                         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable19MouseExited"/>
                       </Events>
@@ -1623,6 +1624,7 @@
                         <Property name="text" type="java.lang.String" value="Running Chart"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable20MouseClicked"/>
                         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable20MouseEntered"/>
                         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable20MouseExited"/>
                       </Events>
@@ -1680,6 +1682,7 @@
                         <Property name="text" type="java.lang.String" value="Office - Salary Payment"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable21MouseClicked"/>
                         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable21MouseEntered"/>
                         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable21MouseExited"/>
                       </Events>
@@ -1737,6 +1740,7 @@
                         <Property name="text" type="java.lang.String" value="Office - Salary Approval"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable22MouseClicked"/>
                         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable22MouseEntered"/>
                         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable22MouseExited"/>
                       </Events>
@@ -1794,6 +1798,7 @@
                         <Property name="text" type="java.lang.String" value="Project - Salary Payment"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable23MouseClicked"/>
                         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable23MouseEntered"/>
                         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable23MouseExited"/>
                       </Events>
@@ -1837,7 +1842,7 @@
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Operations"/>
+                        <Property name="text" type="java.lang.String" value="Accounting"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1895,6 +1900,7 @@
                         <Property name="text" type="java.lang.String" value="Income"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable24MouseClicked"/>
                         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable24MouseEntered"/>
                         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_home_lable24MouseExited"/>
                       </Events>

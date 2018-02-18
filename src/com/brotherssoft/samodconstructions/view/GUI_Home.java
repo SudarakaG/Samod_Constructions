@@ -992,6 +992,9 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable19.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable19.setText("Employee Attendance Approval");
         master_detail_home_lable19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable19MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable19MouseEntered(evt);
             }
@@ -1026,6 +1029,9 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable20.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable20.setText("Running Chart");
         master_detail_home_lable20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable20MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable20MouseEntered(evt);
             }
@@ -1060,6 +1066,9 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable21.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable21.setText("Office - Salary Payment");
         master_detail_home_lable21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable21MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable21MouseEntered(evt);
             }
@@ -1094,6 +1103,9 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable22.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable22.setText("Office - Salary Approval");
         master_detail_home_lable22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable22MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable22MouseEntered(evt);
             }
@@ -1128,6 +1140,9 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable23.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable23.setText("Project - Salary Payment");
         master_detail_home_lable23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable23MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable23MouseEntered(evt);
             }
@@ -1158,7 +1173,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         master_detail_label2.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label2.setText("Operations");
+        master_detail_label2.setText("Accounting");
 
         javax.swing.GroupLayout Master_Detail_Menu2Layout = new javax.swing.GroupLayout(Master_Detail_Menu2);
         Master_Detail_Menu2.setLayout(Master_Detail_Menu2Layout);
@@ -1183,6 +1198,9 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable24.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable24.setText("Income");
         master_detail_home_lable24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable24MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable24MouseEntered(evt);
             }
@@ -1942,6 +1960,36 @@ public class GUI_Home extends javax.swing.JFrame {
         Employee_Attendence  attendence = new Employee_Attendence();
         panelManager(attendence);
     }//GEN-LAST:event_master_detail_home_lable18MouseClicked
+
+    private void master_detail_home_lable19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable19MouseClicked
+        Employee_Attendence_Approval approval = new Employee_Attendence_Approval();
+        panelManager(approval);
+    }//GEN-LAST:event_master_detail_home_lable19MouseClicked
+
+    private void master_detail_home_lable20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable20MouseClicked
+        Running_Chart chart = new Running_Chart();
+        panelManager(chart);
+    }//GEN-LAST:event_master_detail_home_lable20MouseClicked
+
+    private void master_detail_home_lable21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable21MouseClicked
+        Office_Salary_Payment osp = new Office_Salary_Payment();
+        panelManager(osp);
+    }//GEN-LAST:event_master_detail_home_lable21MouseClicked
+
+    private void master_detail_home_lable22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable22MouseClicked
+       Office_Salary_Approval approval = new Office_Salary_Approval();
+        panelManager(approval);
+    }//GEN-LAST:event_master_detail_home_lable22MouseClicked
+
+    private void master_detail_home_lable23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable23MouseClicked
+        Project_Salary_Payment payment = new Project_Salary_Payment();
+        panelManager(payment);
+    }//GEN-LAST:event_master_detail_home_lable23MouseClicked
+
+    private void master_detail_home_lable24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable24MouseClicked
+        Income income = new Income();
+        panelManager(income);
+    }//GEN-LAST:event_master_detail_home_lable24MouseClicked
 
     /**
      * @param args the command line arguments
