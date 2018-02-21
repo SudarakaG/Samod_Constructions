@@ -15,22 +15,22 @@ import java.util.Date;
 public class T_Runchart implements Serializable{
     
     private int runchart_id;
-    private int runchart_vehicleId;
+    private String runchart_vehicleId;
     private Date runchart_date;
     private String runchart_description;
     private double runchart_odoStart;
     private double runchart_odoEnd;
-    private Date runchart_timeStart;
-    private Date runchart_timeEnd;
+    private String runchart_timeStart;
+    private String runchart_timeEnd;
     private double runchart_fuelOdoMeter;
     private double runchart_fuelQuantity;
     private double runchart_fuelPrice;
-    private String runchart_status;
+    private int runchart_status;
 
     public T_Runchart() {
     }
 
-    public T_Runchart(int runchart_id, int runchart_vehicleId, Date runchart_date, String runchart_description, double runchart_odoStart, double runchart_odoEnd, Date runchart_timeStart, Date runchart_timeEnd, double runchart_fuelOdoMeter, double runchart_fuelQuantity, double runchart_fuelPrice, String runchart_status) {
+    public T_Runchart(int runchart_id, String runchart_vehicleId, Date runchart_date, String runchart_description, double runchart_odoStart, double runchart_odoEnd, String runchart_timeStart, String runchart_timeEnd, double runchart_fuelOdoMeter, double runchart_fuelQuantity, double runchart_fuelPrice, int runchart_status) {
         this.runchart_id = runchart_id;
         this.runchart_vehicleId = runchart_vehicleId;
         this.runchart_date = runchart_date;
@@ -62,14 +62,14 @@ public class T_Runchart implements Serializable{
     /**
      * @return the runchart_vehicleId
      */
-    public int getRunchart_vehicleId() {
+    public String getRunchart_vehicleId() {
         return runchart_vehicleId;
     }
 
     /**
      * @param runchart_vehicleId the runchart_vehicleId to set
      */
-    public void setRunchart_vehicleId(int runchart_vehicleId) {
+    public void setRunchart_vehicleId(String runchart_vehicleId) {
         this.runchart_vehicleId = runchart_vehicleId;
     }
 
@@ -132,28 +132,28 @@ public class T_Runchart implements Serializable{
     /**
      * @return the runchart_timeStart
      */
-    public Date getRunchart_timeStart() {
+    public String getRunchart_timeStart() {
         return runchart_timeStart;
     }
 
     /**
      * @param runchart_timeStart the runchart_timeStart to set
      */
-    public void setRunchart_timeStart(Date runchart_timeStart) {
+    public void setRunchart_timeStart(String runchart_timeStart) {
         this.runchart_timeStart = runchart_timeStart;
     }
 
     /**
      * @return the runchart_timeEnd
      */
-    public Date getRunchart_timeEnd() {
+    public String getRunchart_timeEnd() {
         return runchart_timeEnd;
     }
 
     /**
      * @param runchart_timeEnd the runchart_timeEnd to set
      */
-    public void setRunchart_timeEnd(Date runchart_timeEnd) {
+    public void setRunchart_timeEnd(String runchart_timeEnd) {
         this.runchart_timeEnd = runchart_timeEnd;
     }
 
@@ -202,15 +202,16 @@ public class T_Runchart implements Serializable{
     /**
      * @return the runchart_status
      */
-    public String getRunchart_status() {
+    public int getRunchart_status() {
         return runchart_status;
     }
 
     /**
      * @param runchart_status the runchart_status to set
      */
-    public void setRunchart_status(String runchart_status) {
+    public void setRunchart_status(int runchart_status) {
         this.runchart_status = runchart_status;
     }
+
     
 }

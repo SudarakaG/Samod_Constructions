@@ -34,6 +34,7 @@ import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryControlle
 import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
 import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
+import com.brotherssoft.samodconstructions.controller.T_RunchartController;
 import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
 
 /**
@@ -71,5 +72,6 @@ public interface ControllerFactory extends Remote{
     public T_CashAllocationController getCashAllocationController()throws Exception;
     public M_MainStockController getMainStockController()throws Exception;
     public T_SiteAllocationController getSiteAllocationController()throws Exception;
+    public T_RunchartController getRunchartController()throws Exception;
     
 }
