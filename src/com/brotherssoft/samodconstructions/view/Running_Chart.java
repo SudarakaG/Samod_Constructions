@@ -6,17 +6,23 @@
 package com.brotherssoft.samodconstructions.view;
 
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
+import com.brotherssoft.samodconstructions.controller.R_FuelTypeController;
+import com.brotherssoft.samodconstructions.controller.R_VehivleTypeController;
 import com.brotherssoft.samodconstructions.controller.T_RunchartController;
 import com.brotherssoft.samodconstructions.custom.AmountFieldFormat;
+import com.brotherssoft.samodconstructions.custom.IDGenerator;
+import com.brotherssoft.samodconstructions.custom.Validation;
 import com.brotherssoft.samodconstructions.model.M_Vehicle;
 import com.brotherssoft.samodconstructions.model.T_Runchart;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
@@ -26,14 +32,23 @@ import javax.swing.table.DefaultTableModel;
  * @author Akvasoft
  */
 public class Running_Chart extends javax.swing.JPanel {
-    
+
     M_VehicleController vehicleController;
     T_RunchartController runchartController;
+    R_VehivleTypeController vehivleTypeController;
+    R_FuelTypeController fuelTypeController;
     DefaultTableModel dtmRunchart;
-    
+
     AmountFieldFormat fieldFormat = new AmountFieldFormat();
     DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
-    
+    JSpinner.DateEditor de1;
+    JSpinner.DateEditor de2;
+    Date date = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    SpinnerDateModel sm = new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
+
+    T_Runchart runchartGlobal = null;
+
     /**
      * Creates new form Running_Chart
      */
@@ -41,14 +56,18 @@ public class Running_Chart extends javax.swing.JPanel {
         initComponents();
         DisablePanels();
         Chart_View_Panel.setVisible(true);
-        
+        de1 = new JSpinner.DateEditor(spn_start_time, "HH:mm a");
+        de2 = new JSpinner.DateEditor(spn_end_time, "HH:mm a");
+
         vehicleController = ServerConnector.getServerConnetor().getVehicleController();
         runchartController = ServerConnector.getServerConnetor().getRunchartController();
+        vehivleTypeController = ServerConnector.getServerConnetor().getVehivleTypeController();
+        fuelTypeController = ServerConnector.getServerConnetor().getFuelTypeController();
         dtmRunchart = (DefaultTableModel) tbl_runchart.getModel();
-        
+
         loadVehicleCombo();
         loadRunchartTable();
-        
+
     }
 
     /**
@@ -83,12 +102,12 @@ public class Running_Chart extends javax.swing.JPanel {
         jLabel51 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
         jLabel54 = new javax.swing.JLabel();
-        txt_contact_2 = new javax.swing.JTextField();
+        txt_fuel_odometer = new javax.swing.JTextField();
         jLabel55 = new javax.swing.JLabel();
-        txt_contact_3 = new javax.swing.JTextField();
+        txt_fuel_quantity = new javax.swing.JTextField();
         date_picker_joinDate = new org.jdesktop.swingx.JXDatePicker();
         btn_emp_new = new javax.swing.JButton();
-        btn_emp_save = new javax.swing.JButton();
+        btn_save_runchart = new javax.swing.JButton();
         btn_emp_salary = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -97,16 +116,21 @@ public class Running_Chart extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         Date date = new Date();
         SpinnerDateModel sm = new SpinnerDateModel(date,null,null,Calendar.HOUR_OF_DAY);
-        jSpinner1 = new javax.swing.JSpinner(sm);
+        spn_start_time = new javax.swing.JSpinner(sm);
         Date date2 = new Date();
         SpinnerDateModel sm2 = new SpinnerDateModel(date,null,null,Calendar.HOUR_OF_DAY);
-        jSpinner2 = new javax.swing.JSpinner(sm2);
+        spn_end_time = new javax.swing.JSpinner(sm2);
         jLabel58 = new javax.swing.JLabel();
-        txt_contact_4 = new javax.swing.JTextField();
+        txt_fuel_price = new javax.swing.JTextField();
         cmb_status = new javax.swing.JComboBox<>();
         jLabel32 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cmb_vehicle = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         Chart_View_Panel = new javax.swing.JPanel();
         bank_panel_hedding5 = new javax.swing.JPanel();
@@ -117,9 +141,7 @@ public class Running_Chart extends javax.swing.JPanel {
         btn_branch1 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
         tbl_runchart = new javax.swing.JTable();
-        txt_emp_search1 = new javax.swing.JTextField();
-        cmb_search_vehiType = new javax.swing.JComboBox<>();
-        cmb_search_fuel = new javax.swing.JComboBox<>();
+        txt_search_run = new javax.swing.JTextField();
 
         Chart_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Chart_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -142,7 +164,7 @@ public class Running_Chart extends javax.swing.JPanel {
             .addGroup(bank_panel_hedding3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(509, Short.MAX_VALUE))
+                .addContainerGap(499, Short.MAX_VALUE))
             .addGroup(bank_panel_hedding3Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel28)
@@ -204,6 +226,14 @@ public class Running_Chart extends javax.swing.JPanel {
                 txt_startActionPerformed(evt);
             }
         });
+        txt_start.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_startKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_startKeyReleased(evt);
+            }
+        });
 
         jLabel49.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel49.setText("End");
@@ -212,6 +242,14 @@ public class Running_Chart extends javax.swing.JPanel {
         txt_end.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_endActionPerformed(evt);
+            }
+        });
+        txt_end.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_endKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_endKeyReleased(evt);
             }
         });
 
@@ -235,39 +273,40 @@ public class Running_Chart extends javax.swing.JPanel {
         jLabel54.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel54.setText("Odometer");
 
-        txt_contact_2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_contact_2.addActionListener(new java.awt.event.ActionListener() {
+        txt_fuel_odometer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_fuel_odometer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_contact_2ActionPerformed(evt);
+                txt_fuel_odometerActionPerformed(evt);
             }
         });
-        txt_contact_2.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_fuel_odometer.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_contact_2KeyPressed(evt);
+                txt_fuel_odometerKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_contact_2KeyReleased(evt);
+                txt_fuel_odometerKeyReleased(evt);
             }
         });
 
         jLabel55.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel55.setText("Quantity");
 
-        txt_contact_3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_contact_3.addActionListener(new java.awt.event.ActionListener() {
+        txt_fuel_quantity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_fuel_quantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_contact_3ActionPerformed(evt);
+                txt_fuel_quantityActionPerformed(evt);
             }
         });
-        txt_contact_3.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_fuel_quantity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_contact_3KeyPressed(evt);
+                txt_fuel_quantityKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_contact_3KeyReleased(evt);
+                txt_fuel_quantityKeyReleased(evt);
             }
         });
 
+        date_picker_joinDate.setDate(new Date());
         date_picker_joinDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 date_picker_joinDateActionPerformed(evt);
@@ -282,11 +321,11 @@ public class Running_Chart extends javax.swing.JPanel {
             }
         });
 
-        btn_emp_save.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_emp_save.setText("Save");
-        btn_emp_save.addActionListener(new java.awt.event.ActionListener() {
+        btn_save_runchart.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_save_runchart.setText("Save");
+        btn_save_runchart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_emp_saveActionPerformed(evt);
+                btn_save_runchartActionPerformed(evt);
             }
         });
 
@@ -316,27 +355,27 @@ public class Running_Chart extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(0, 153, 255));
         jLabel3.setText("Vehical");
 
-        JSpinner.DateEditor de = new JSpinner.DateEditor(jSpinner1,"HH:mm a");
-        jSpinner1.setEditor(de);
+        JSpinner.DateEditor de = new JSpinner.DateEditor(spn_start_time,"HH:mm a");
+        spn_start_time.setEditor(de);
 
-        JSpinner.DateEditor de2 = new JSpinner.DateEditor(jSpinner2,"HH:mm a");
-        jSpinner2.setEditor(de2);
+        JSpinner.DateEditor de2 = new JSpinner.DateEditor(spn_end_time,"HH:mm a");
+        spn_end_time.setEditor(de2);
 
         jLabel58.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel58.setText("Price");
 
-        txt_contact_4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_contact_4.addActionListener(new java.awt.event.ActionListener() {
+        txt_fuel_price.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_fuel_price.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_contact_4ActionPerformed(evt);
+                txt_fuel_priceActionPerformed(evt);
             }
         });
-        txt_contact_4.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_fuel_price.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_contact_4KeyPressed(evt);
+                txt_fuel_priceKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_contact_4KeyReleased(evt);
+                txt_fuel_priceKeyReleased(evt);
             }
         });
 
@@ -359,55 +398,80 @@ public class Running_Chart extends javax.swing.JPanel {
 
         cmb_vehicle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Vehicle -" }));
         cmb_vehicle.setPreferredSize(new java.awt.Dimension(56, 26));
+        cmb_vehicle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_vehicleActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("km");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setText("km");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setText("km");
+
+        jLabel56.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel56.setText("Liters");
+
+        jLabel62.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel62.setText("Rupees");
 
         javax.swing.GroupLayout txt_Input_Panel_Branch2Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch2);
         txt_Input_Panel_Branch2.setLayout(txt_Input_Panel_Branch2Layout);
         txt_Input_Panel_Branch2Layout.setHorizontalGroup(
             txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                                .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(txt_distance, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                                .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(txt_end, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(txt_start, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(date_picker_joinDate, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(txt_fuel_type, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_type_of_vehi, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
-                                    .addComponent(cmb_vehicle, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_type_of_vehi)
+                                    .addComponent(cmb_vehicle, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(date_picker_joinDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(txt_end, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_start, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_distance, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel7)))))
+                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(txt_fuel_type))))
+                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(317, 317, 317)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -416,14 +480,14 @@ public class Running_Chart extends javax.swing.JPanel {
                         .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(spn_end_time, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spn_start_time, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                             .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_contact_2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_fuel_odometer, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch2Layout.createSequentialGroup()
                             .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -431,13 +495,19 @@ public class Running_Chart extends javax.swing.JPanel {
                                 .addComponent(jLabel32))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cmb_status, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txt_contact_4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txt_contact_3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(cmb_status, javax.swing.GroupLayout.Alignment.TRAILING, 0, 356, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                    .addComponent(txt_fuel_quantity)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel56))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                    .addComponent(txt_fuel_price)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel62))))))
                 .addGap(27, 27, 27))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_emp_save, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_save_runchart, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(btn_emp_new, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
@@ -445,7 +515,7 @@ public class Running_Chart extends javax.swing.JPanel {
                 .addGap(37, 37, 37))
         );
 
-        txt_Input_Panel_Branch2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_emp_new, btn_emp_salary, btn_emp_save});
+        txt_Input_Panel_Branch2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_emp_new, btn_emp_salary, btn_save_runchart});
 
         txt_Input_Panel_Branch2Layout.setVerticalGroup(
             txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,65 +550,64 @@ public class Running_Chart extends javax.swing.JPanel {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txt_start, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_start, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6))
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                                 .addGap(32, 32, 32)
                                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(spn_start_time, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(4, 4, 4)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(spn_end_time, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(81, 81, 81)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_contact_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_fuel_odometer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_contact_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_fuel_quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel56, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_contact_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_fuel_price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmb_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel32))
-                        .addGap(3, 3, 3)))
+                        .addGap(9, 9, 9)))
+                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_end, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_distance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(txt_end, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(txt_distance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_emp_save)
+                    .addComponent(btn_save_runchart)
                     .addComponent(btn_emp_new)
                     .addComponent(btn_emp_salary))
                 .addGap(36, 36, 36))
         );
 
-        txt_Input_Panel_Branch2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_emp_new, btn_emp_salary, btn_emp_save});
+        txt_Input_Panel_Branch2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_emp_new, btn_emp_salary, btn_save_runchart});
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setText("List of Charts");
@@ -558,23 +627,25 @@ public class Running_Chart extends javax.swing.JPanel {
         Chart_Registration_PanelLayout.setHorizontalGroup(
             Chart_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(bank_panel_hedding3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(Chart_Registration_PanelLayout.createSequentialGroup()
-                .addGroup(Chart_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Chart_Registration_PanelLayout.createSequentialGroup()
+                .addGroup(Chart_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(Chart_Registration_PanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt_Input_Panel_Branch2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(txt_Input_Panel_Branch2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Chart_Registration_PanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         Chart_Registration_PanelLayout.setVerticalGroup(
             Chart_Registration_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Chart_Registration_PanelLayout.createSequentialGroup()
                 .addComponent(bank_panel_hedding3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_Input_Panel_Branch2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(txt_Input_Panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         Chart_View_Panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -686,39 +757,25 @@ public class Running_Chart extends javax.swing.JPanel {
         });
         jScrollPane8.setViewportView(tbl_runchart);
 
-        txt_emp_search1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txt_emp_search1.setForeground(new java.awt.Color(102, 102, 102));
-        txt_emp_search1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_emp_search1.setText("Search By Vehical");
-        txt_emp_search1.setToolTipText("Use Bank Nname To Search !");
-        txt_emp_search1.addMouseListener(new java.awt.event.MouseAdapter() {
+        txt_search_run.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txt_search_run.setForeground(new java.awt.Color(102, 102, 102));
+        txt_search_run.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_search_run.setText("Search By Vehical Number");
+        txt_search_run.setToolTipText("Use Bank Nname To Search !");
+        txt_search_run.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_emp_search1MouseClicked(evt);
+                txt_search_runMouseClicked(evt);
             }
         });
-        txt_emp_search1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_search_run.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_emp_search1KeyPressed(evt);
+                txt_search_runKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_emp_search1KeyReleased(evt);
+                txt_search_runKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_emp_search1KeyTyped(evt);
-            }
-        });
-
-        cmb_search_vehiType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Vehical Type -", "LOAD ALL" }));
-        cmb_search_vehiType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_search_vehiTypeActionPerformed(evt);
-            }
-        });
-
-        cmb_search_fuel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Fuel Type -" }));
-        cmb_search_fuel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_search_fuelActionPerformed(evt);
+                txt_search_runKeyTyped(evt);
             }
         });
 
@@ -729,32 +786,21 @@ public class Running_Chart extends javax.swing.JPanel {
             .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE)
             .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
                 .addComponent(btn_branch1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103)
-                .addComponent(cmb_search_vehiType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(cmb_search_fuel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txt_emp_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_search_run, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        tbl_panel_Branch2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_branch1, cmb_search_fuel, cmb_search_vehiType});
-
         tbl_panel_Branch2Layout.setVerticalGroup(
             tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbl_panel_Branch2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_branch1)
-                    .addComponent(cmb_search_vehiType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmb_search_fuel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_emp_search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                    .addComponent(txt_search_run, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-
-        tbl_panel_Branch2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_branch1, cmb_search_fuel, cmb_search_vehiType});
 
         javax.swing.GroupLayout Chart_View_PanelLayout = new javax.swing.GroupLayout(Chart_View_Panel);
         Chart_View_Panel.setLayout(Chart_View_PanelLayout);
@@ -764,7 +810,7 @@ public class Running_Chart extends javax.swing.JPanel {
             .addGroup(Chart_View_PanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         Chart_View_PanelLayout.setVerticalGroup(
             Chart_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -806,71 +852,75 @@ public class Running_Chart extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_type_of_vehiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_type_of_vehiActionPerformed
-        
+
     }//GEN-LAST:event_txt_type_of_vehiActionPerformed
 
     private void txt_fuel_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fuel_typeActionPerformed
-        
+
     }//GEN-LAST:event_txt_fuel_typeActionPerformed
 
     private void txt_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_startActionPerformed
-        
+
     }//GEN-LAST:event_txt_startActionPerformed
 
     private void txt_endActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_endActionPerformed
-        
+
     }//GEN-LAST:event_txt_endActionPerformed
 
     private void txt_distanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_distanceActionPerformed
-        
+
     }//GEN-LAST:event_txt_distanceActionPerformed
 
-    private void txt_contact_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contact_2ActionPerformed
-        
-    }//GEN-LAST:event_txt_contact_2ActionPerformed
+    private void txt_fuel_odometerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fuel_odometerActionPerformed
 
-    private void txt_contact_2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_contact_2KeyPressed
-        
-    }//GEN-LAST:event_txt_contact_2KeyPressed
+    }//GEN-LAST:event_txt_fuel_odometerActionPerformed
 
-    private void txt_contact_2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_contact_2KeyReleased
-        
-    }//GEN-LAST:event_txt_contact_2KeyReleased
+    private void txt_fuel_odometerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_fuel_odometerKeyPressed
+        Validation.priceText(txt_fuel_odometer);
+    }//GEN-LAST:event_txt_fuel_odometerKeyPressed
 
-    private void txt_contact_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contact_3ActionPerformed
-        
-    }//GEN-LAST:event_txt_contact_3ActionPerformed
+    private void txt_fuel_odometerKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_fuel_odometerKeyReleased
+        Validation.priceText(txt_fuel_odometer);
+    }//GEN-LAST:event_txt_fuel_odometerKeyReleased
 
-    private void txt_contact_3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_contact_3KeyPressed
-       
-    }//GEN-LAST:event_txt_contact_3KeyPressed
+    private void txt_fuel_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fuel_quantityActionPerformed
 
-    private void txt_contact_3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_contact_3KeyReleased
-      
-    }//GEN-LAST:event_txt_contact_3KeyReleased
+    }//GEN-LAST:event_txt_fuel_quantityActionPerformed
+
+    private void txt_fuel_quantityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_fuel_quantityKeyPressed
+        Validation.priceText(txt_fuel_quantity);
+    }//GEN-LAST:event_txt_fuel_quantityKeyPressed
+
+    private void txt_fuel_quantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_fuel_quantityKeyReleased
+        Validation.priceText(txt_fuel_quantity);
+    }//GEN-LAST:event_txt_fuel_quantityKeyReleased
 
     private void date_picker_joinDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_date_picker_joinDateActionPerformed
-        
+
     }//GEN-LAST:event_date_picker_joinDateActionPerformed
 
     private void btn_emp_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_newActionPerformed
-       
+        clearFields();
     }//GEN-LAST:event_btn_emp_newActionPerformed
 
-    private void btn_emp_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_saveActionPerformed
-       
-    }//GEN-LAST:event_btn_emp_saveActionPerformed
+    private void btn_save_runchartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_runchartActionPerformed
+        if (btn_save_runchart.getText().equalsIgnoreCase("Save")) {
+            saveRunchart();
+        } else {
+            updateRunchart();
+        }
+    }//GEN-LAST:event_btn_save_runchartActionPerformed
 
     private void btn_emp_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_salaryActionPerformed
-       
+
     }//GEN-LAST:event_btn_emp_salaryActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        
+
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void btn_branch1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_branch1MouseClicked
-       
+
     }//GEN-LAST:event_btn_branch1MouseClicked
 
     private void btn_branch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_branch1ActionPerformed
@@ -879,53 +929,92 @@ public class Running_Chart extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_branch1ActionPerformed
 
     private void tbl_runchartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_runchartMouseClicked
-       
+        searchFromTableValues();
+        DisablePanels();
+        Chart_Registration_Panel.setVisible(true);
+        loadFieldsFromTable();
+        btn_save_runchart.setText("Update");
     }//GEN-LAST:event_tbl_runchartMouseClicked
 
-    private void txt_emp_search1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_emp_search1MouseClicked
-       
-    }//GEN-LAST:event_txt_emp_search1MouseClicked
+    private void txt_search_runMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_search_runMouseClicked
+        txt_search_run.setText("");
+    }//GEN-LAST:event_txt_search_runMouseClicked
 
-    private void txt_emp_search1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyPressed
+    private void txt_search_runKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_runKeyPressed
 
-    }//GEN-LAST:event_txt_emp_search1KeyPressed
+    }//GEN-LAST:event_txt_search_runKeyPressed
 
-    private void txt_emp_search1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyReleased
-       
-    }//GEN-LAST:event_txt_emp_search1KeyReleased
+    private void txt_search_runKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_runKeyReleased
+        dtmRunchart.setRowCount(0);
+        try {
+            List<M_Vehicle> allVehiclesByLetter = vehicleController.getAllVehiclesByLetter(txt_search_run.getText());
+            List<T_Runchart> allRuncharts = runchartController.getAllRuncharts();
+            for (T_Runchart allRunchart : allRuncharts) {
+                for (M_Vehicle m_Vehicle : allVehiclesByLetter) {
+                    if (allRunchart.getRunchart_vehicleId().equalsIgnoreCase(m_Vehicle.getVehicle_id())) {
+                        String[] roeData = {m_Vehicle.getVehicle_regNo(),allRunchart.getRunchart_date().toString(),allRunchart.getRunchart_description(),allRunchart.getRunchart_timeStart(),allRunchart.getRunchart_timeEnd(),Double.toString(allRunchart.getRunchart_fuelQuantity())};
+                        dtmRunchart.addRow(roeData);
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txt_search_runKeyReleased
 
-    private void txt_emp_search1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyTyped
+    private void txt_search_runKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_runKeyTyped
 
-    }//GEN-LAST:event_txt_emp_search1KeyTyped
+    }//GEN-LAST:event_txt_search_runKeyTyped
 
-    private void cmb_search_vehiTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_search_vehiTypeActionPerformed
-        
-    }//GEN-LAST:event_cmb_search_vehiTypeActionPerformed
-
-    private void cmb_search_fuelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_search_fuelActionPerformed
-       
-    }//GEN-LAST:event_cmb_search_fuelActionPerformed
-
-    private void txt_contact_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_contact_4ActionPerformed
+    private void txt_fuel_priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fuel_priceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_contact_4ActionPerformed
+    }//GEN-LAST:event_txt_fuel_priceActionPerformed
 
-    private void txt_contact_4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_contact_4KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_contact_4KeyPressed
+    private void txt_fuel_priceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_fuel_priceKeyPressed
+        Validation.priceText(txt_fuel_price);
+    }//GEN-LAST:event_txt_fuel_priceKeyPressed
 
-    private void txt_contact_4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_contact_4KeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_contact_4KeyReleased
+    private void txt_fuel_priceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_fuel_priceKeyReleased
+        Validation.priceText(txt_fuel_price);
+    }//GEN-LAST:event_txt_fuel_priceKeyReleased
 
     private void cmb_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_statusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_statusActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       DisablePanels();
-       Chart_View_Panel.setVisible(true);
+        DisablePanels();
+        Chart_View_Panel.setVisible(true);
+        loadRunchartTable();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void cmb_vehicleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_vehicleActionPerformed
+        if (cmb_vehicle.getSelectedIndex() != 0) {
+            try {
+                M_Vehicle searchVehicleByNumber = vehicleController.searchVehicleByNumber(cmb_vehicle.getSelectedItem().toString());
+                txt_type_of_vehi.setText(vehivleTypeController.searchVehicleType(searchVehicleByNumber.getVehicle_type_id()).getVehicleType_name());
+                txt_fuel_type.setText(fuelTypeController.searchFuelType(searchVehicleByNumber.getVehicle_fuelType()).getFuel_name());
+            } catch (Exception ex) {
+                Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_cmb_vehicleActionPerformed
+
+    private void txt_startKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_startKeyPressed
+        Validation.priceText(txt_start);
+    }//GEN-LAST:event_txt_startKeyPressed
+
+    private void txt_startKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_startKeyReleased
+        Validation.priceText(txt_start);
+    }//GEN-LAST:event_txt_startKeyReleased
+
+    private void txt_endKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_endKeyPressed
+        Validation.priceText(txt_end);
+    }//GEN-LAST:event_txt_endKeyPressed
+
+    private void txt_endKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_endKeyReleased
+        Validation.priceText(txt_end);
+    }//GEN-LAST:event_txt_endKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -936,9 +1025,7 @@ public class Running_Chart extends javax.swing.JPanel {
     private javax.swing.JButton btn_branch1;
     private javax.swing.JButton btn_emp_new;
     private javax.swing.JButton btn_emp_salary;
-    private javax.swing.JButton btn_emp_save;
-    private javax.swing.JComboBox<String> cmb_search_fuel;
-    private javax.swing.JComboBox<String> cmb_search_vehiType;
+    private javax.swing.JButton btn_save_runchart;
     private javax.swing.JComboBox<String> cmb_status;
     private javax.swing.JComboBox<String> cmb_vehicle;
     private org.jdesktop.swingx.JXDatePicker date_picker_joinDate;
@@ -957,32 +1044,37 @@ public class Running_Chart extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JSpinner spn_end_time;
+    private javax.swing.JSpinner spn_start_time;
     private javax.swing.JPanel tbl_panel_Branch2;
     private javax.swing.JTable tbl_runchart;
     private javax.swing.JPanel txt_Input_Panel_Branch2;
-    private javax.swing.JTextField txt_contact_2;
-    private javax.swing.JTextField txt_contact_3;
-    private javax.swing.JTextField txt_contact_4;
     private javax.swing.JTextArea txt_desc;
     private javax.swing.JTextField txt_distance;
-    private javax.swing.JTextField txt_emp_search1;
     private javax.swing.JTextField txt_end;
+    private javax.swing.JTextField txt_fuel_odometer;
+    private javax.swing.JTextField txt_fuel_price;
+    private javax.swing.JTextField txt_fuel_quantity;
     private javax.swing.JTextField txt_fuel_type;
+    private javax.swing.JTextField txt_search_run;
     private javax.swing.JTextField txt_start;
     private javax.swing.JTextField txt_type_of_vehi;
     // End of variables declaration//GEN-END:variables
@@ -1005,13 +1097,161 @@ public class Running_Chart extends javax.swing.JPanel {
     }
 
     private void loadRunchartTable() {
+        clearFields();
         dtmRunchart.setRowCount(0);
         try {
             List<T_Runchart> allRuncharts = runchartController.getAllRuncharts();
             for (T_Runchart allRunchart : allRuncharts) {
-                String[] rowData = {vehicleController.searchVehicle(allRunchart.getRunchart_vehicleId()).getVehicle_regNo(),allRunchart.getRunchart_date().toString(),allRunchart.getRunchart_description(),allRunchart.getRunchart_timeStart(),allRunchart.getRunchart_timeEnd(),Double.toString(allRunchart.getRunchart_fuelQuantity())};
+                String[] rowData = {vehicleController.searchVehicle(allRunchart.getRunchart_vehicleId()).getVehicle_regNo(), allRunchart.getRunchart_date().toString(), allRunchart.getRunchart_description(), allRunchart.getRunchart_timeStart(), allRunchart.getRunchart_timeEnd(), Double.toString(allRunchart.getRunchart_fuelQuantity())};
                 dtmRunchart.addRow(rowData);
             }
+        } catch (Exception ex) {
+            Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void clearFields() {
+        cmb_vehicle.setSelectedIndex(0);
+        txt_type_of_vehi.setText("");
+        txt_fuel_type.setText("");
+        date_picker_joinDate.setDate(date);
+        txt_desc.setText("");
+        txt_start.setText("");
+        txt_end.setText("");
+        txt_distance.setText("");
+        spn_start_time.setEditor(de1);
+        spn_end_time.setEditor(de2);
+        txt_fuel_odometer.setText("");
+        txt_fuel_quantity.setText("");
+        txt_fuel_price.setText("");
+        cmb_status.setSelectedIndex(0);
+        btn_save_runchart.setText("Save");
+        cmb_vehicle.requestFocus();
+        cmb_vehicle.setEnabled(true);
+    }
+
+    private void saveRunchart() {
+        try {
+            int runchartId = IDGenerator.getNewID("t_runchart", "RUNCHART_ID");
+            String vehicleId = vehicleController.searchVehicleByNumber(cmb_vehicle.getSelectedItem().toString()).getVehicle_id();
+            Date runDate = date_picker_joinDate.getDate();
+            String desc = txt_desc.getText();
+            double odoStart = 0;
+            if (!"".equals(txt_start.getText())) {
+                odoStart = Double.parseDouble(txt_start.getText().replaceAll(",", ""));
+            }
+            double odoEnd = 0;
+            if (!"".equals(txt_end.getText())) {
+                odoEnd = Double.parseDouble(txt_end.getText().replaceAll(",", ""));
+            }
+            String timeStart = de1.getFormat().format(spn_start_time.getValue());
+            String timeEnd = de2.getFormat().format(spn_end_time.getValue());
+            double fueldoMeter = 0;
+            if (!"".equals(txt_fuel_odometer.getText())) {
+                fueldoMeter = Double.parseDouble(txt_fuel_odometer.getText().replaceAll(",", ""));
+            }
+            double fuelQty = 0;
+            if (!"".equals(txt_fuel_quantity.getText())) {
+                fuelQty = Double.parseDouble(txt_fuel_quantity.getText().replaceAll(",", ""));
+            }
+            double fuelPrice = 0;
+            if (!"".equals(txt_fuel_price.getText())) {
+                fuelPrice = Double.parseDouble(txt_fuel_price.getText().replaceAll(",", ""));
+            }
+            int status = cmb_status.getSelectedIndex();
+
+            T_Runchart runchart = new T_Runchart(runchartId, vehicleId, runDate, desc, odoStart, odoEnd, timeStart, timeEnd, fueldoMeter, fuelQty, fuelPrice, status);
+            boolean addRunchart = runchartController.addRunchart(runchart);
+            if (addRunchart) {
+                JOptionPane.showMessageDialog(this, "New Running Details Successfully Saved..");
+                clearFields();
+                loadRunchartTable();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error Occured.. Please Check Again..");
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void updateRunchart() {
+        try {
+            int runchartId = runchartGlobal.getRunchart_id();
+            String vehicleId = vehicleController.searchVehicleByNumber(cmb_vehicle.getSelectedItem().toString()).getVehicle_id();
+            Date runDate = date_picker_joinDate.getDate();
+            String desc = txt_desc.getText();
+            double odoStart = 0;
+            if (!"".equals(txt_start.getText())) {
+                odoStart = Double.parseDouble(txt_start.getText().replaceAll(",", ""));
+            }
+            double odoEnd = 0;
+            if (!"".equals(txt_end.getText())) {
+                odoEnd = Double.parseDouble(txt_end.getText().replaceAll(",", ""));
+            }
+            String timeStart = de1.getFormat().format(spn_start_time.getValue());
+            String timeEnd = de2.getFormat().format(spn_end_time.getValue());
+            double fueldoMeter = 0;
+            if (!"".equals(txt_fuel_odometer.getText())) {
+                fueldoMeter = Double.parseDouble(txt_fuel_odometer.getText().replaceAll(",", ""));
+            }
+            double fuelQty = 0;
+            if (!"".equals(txt_fuel_quantity.getText())) {
+                fuelQty = Double.parseDouble(txt_fuel_quantity.getText().replaceAll(",", ""));
+            }
+            double fuelPrice = 0;
+            if (!"".equals(txt_fuel_price.getText())) {
+                fuelPrice = Double.parseDouble(txt_fuel_price.getText().replaceAll(",", ""));
+            }
+            int status = cmb_status.getSelectedIndex();
+
+            T_Runchart runchart = new T_Runchart(runchartId, vehicleId, runDate, desc, odoStart, odoEnd, timeStart, timeEnd, fueldoMeter, fuelQty, fuelPrice, status);
+            boolean updateRunchart = runchartController.updateRunchart(runchart);
+            if (updateRunchart) {
+                JOptionPane.showMessageDialog(this, "Running Details Successfully Updated..");
+                clearFields();
+                loadRunchartTable();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error Occured.. Please Check Again..");
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadFieldsFromTable() {
+        try {
+            cmb_vehicle.setSelectedItem(vehicleController.searchVehicle(runchartGlobal.getRunchart_vehicleId()).getVehicle_regNo());
+            date_picker_joinDate.setDate(runchartGlobal.getRunchart_date());
+            txt_desc.setText(runchartGlobal.getRunchart_description());
+            txt_start.setText(decimalFormat.format(runchartGlobal.getRunchart_odoStart()));
+            txt_end.setText(decimalFormat.format(runchartGlobal.getRunchart_odoEnd()));
+            txt_distance.setText(decimalFormat.format(runchartGlobal.getRunchart_odoEnd() - runchartGlobal.getRunchart_odoStart()));
+            spn_start_time.setValue(de1.getFormat().parse(runchartGlobal.getRunchart_timeStart()));
+            spn_end_time.setValue(de2.getFormat().parse(runchartGlobal.getRunchart_timeEnd()));
+            txt_fuel_odometer.setText(decimalFormat.format(runchartGlobal.getRunchart_fuelOdoMeter()));
+            txt_fuel_quantity.setText(decimalFormat.format(runchartGlobal.getRunchart_fuelQuantity()));
+            txt_fuel_price.setText(decimalFormat.format(runchartGlobal.getRunchart_fuelPrice()));
+            cmb_status.setSelectedIndex(runchartGlobal.getRunchart_status());
+            cmb_vehicle.setEnabled(false);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void searchFromTableValues() {
+        try {
+
+            int selectedRow = tbl_runchart.getSelectedRow();
+            String vehicleId = vehicleController.searchVehicleByNumber(dtmRunchart.getValueAt(selectedRow, 0).toString()).getVehicle_id();
+            Date runDate = sdf.parse(dtmRunchart.getValueAt(selectedRow, 1).toString());
+            String startTime = dtmRunchart.getValueAt(selectedRow, 3).toString();
+            String endTime = dtmRunchart.getValueAt(selectedRow, 4).toString();
+
+            runchartGlobal = runchartController.searchRunchart(vehicleId, runDate, startTime, endTime);
+
         } catch (Exception ex) {
             Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);
         }
