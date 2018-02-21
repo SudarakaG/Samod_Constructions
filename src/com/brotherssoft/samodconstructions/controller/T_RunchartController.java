@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.controller;
 
 import com.brotherssoft.samodconstructions.model.T_Runchart;
 import java.rmi.Remote;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,5 +22,6 @@ public interface T_RunchartController extends Remote{
     public T_Runchart searchRunchart(int runchartId)throws Exception;
     public List<T_Runchart> getAllRuncharts()throws Exception;
     public List<T_Runchart> getAllLastAddedRuncharts()throws Exception;
+    public T_Runchart searchRunchart(String vNo,Date rDate,String sTime,String eTime)throws Exception;
     
 }
