@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class R_SalaryTypeService {
 
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
     
     public R_SalaryTypeService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }
     
     public R_SalaryType searchSalaryType(int id)throws Exception{

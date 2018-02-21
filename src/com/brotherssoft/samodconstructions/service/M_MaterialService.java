@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class M_MaterialService {
     
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
 
     public M_MaterialService(){
+        this.dbaf = new DBAccessFactoryImpl();
     }
     
     public boolean addMaterial(M_Material material)throws Exception{

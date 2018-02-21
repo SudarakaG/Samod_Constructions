@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class R_ProjectSpecialityService {
  
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
 
     public R_ProjectSpecialityService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }
 
     

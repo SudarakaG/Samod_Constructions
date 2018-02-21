@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class M_MainStockService {
     
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
 
     public M_MainStockService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }   
     
     public boolean addMainStock(M_MainStock mainStock)throws Exception{

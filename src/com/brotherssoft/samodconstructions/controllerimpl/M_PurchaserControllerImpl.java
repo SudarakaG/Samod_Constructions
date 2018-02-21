@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class M_PurchaserControllerImpl extends UnicastRemoteObject implements M_PurchaserController{
 
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public M_PurchaserControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

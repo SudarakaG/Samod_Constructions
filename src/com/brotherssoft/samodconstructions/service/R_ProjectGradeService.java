@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class R_ProjectGradeService {
     
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
 
     public R_ProjectGradeService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }
     
     public R_ProjectGrade searchProjectGrade(int pGradeId)throws Exception{

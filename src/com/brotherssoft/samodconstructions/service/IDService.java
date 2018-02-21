@@ -14,9 +14,10 @@ import com.brotherssoft.samodconstructions.dbAccessFactoryImpl.DBAccessFactoryIm
  */
 public class IDService {
     
-    private final DBAccessFactory dbAccessFactory = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbAccessFactory;
 
     public IDService() {
+        this.dbAccessFactory = new DBAccessFactoryImpl();
     }
    
     public int getLastID(String tableName, String colName) throws Exception{

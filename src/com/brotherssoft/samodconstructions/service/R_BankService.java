@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class R_BankService {
     
-    private final DBAccessFactory dbAccessFactory = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbAccessFactory;
 
     public R_BankService() {
+        this.dbAccessFactory = new DBAccessFactoryImpl();
     }
     
     public boolean addBank(R_Bank bank)throws Exception{

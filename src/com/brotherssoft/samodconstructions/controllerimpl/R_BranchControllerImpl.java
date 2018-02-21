@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class R_BranchControllerImpl extends UnicastRemoteObject implements R_BranchController{
     
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public R_BranchControllerImpl()throws Exception{
+        this.sf = new ServiceFactoryImpl();
         
     }
 

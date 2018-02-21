@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class T_SiteAllocationService {
     
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
 
     public T_SiteAllocationService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }
     
     public boolean addSiteAllocation(T_SiteAllocation siteAllocation)throws Exception{

@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class M_EquipmentService {
 
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
     
     public M_EquipmentService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }
     
     public boolean addEquipment(M_Equipment equipment)throws Exception{

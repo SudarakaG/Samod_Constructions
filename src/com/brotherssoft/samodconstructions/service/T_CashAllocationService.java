@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class T_CashAllocationService {
     
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
 
     public T_CashAllocationService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }
        
     public boolean addCashAllocation(T_CashRequest cashRequest)throws Exception{

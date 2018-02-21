@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class R_DesignationService {
     
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
 
     public R_DesignationService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }
     
     public R_Designation searchDesignation(int id)throws Exception{

@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class R_AssetControllerImpl extends UnicastRemoteObject implements R_AssetController{
 
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public R_AssetControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

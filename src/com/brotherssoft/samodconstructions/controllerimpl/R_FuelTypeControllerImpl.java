@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class R_FuelTypeControllerImpl extends UnicastRemoteObject implements R_FuelTypeController{
 
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public R_FuelTypeControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

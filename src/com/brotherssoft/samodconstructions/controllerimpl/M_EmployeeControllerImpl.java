@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class M_EmployeeControllerImpl extends UnicastRemoteObject implements M_EmployeeController {
 
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
 
-    public M_EmployeeControllerImpl()throws Exception{}
+    public M_EmployeeControllerImpl()throws Exception{this.sf = new ServiceFactoryImpl();
+}
     
     @Override
     public boolean addEmployee(M_Employee employee) throws Exception {

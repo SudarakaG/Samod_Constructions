@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class R_FuelTypeService {
 
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
     
     public R_FuelTypeService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }
  
     public R_FuelType searchFuelType(int id)throws Exception{

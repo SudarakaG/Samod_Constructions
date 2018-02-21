@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class M_AccountControllerImpl extends UnicastRemoteObject implements M_AccountController{
 
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public M_AccountControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

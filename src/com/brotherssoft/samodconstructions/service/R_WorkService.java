@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class R_WorkService {
     
-    private final DBAccessFactory dbAccessFactory = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbAccessFactory;
 
     public R_WorkService() {
+        this.dbAccessFactory = new DBAccessFactoryImpl();
     }
     
     public boolean addWork(R_Work work)throws Exception{

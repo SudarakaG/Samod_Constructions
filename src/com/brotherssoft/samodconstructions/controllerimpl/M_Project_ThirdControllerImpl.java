@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class M_Project_ThirdControllerImpl extends UnicastRemoteObject implements M_Project_ThirdController{
 
-    private final ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public M_Project_ThirdControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

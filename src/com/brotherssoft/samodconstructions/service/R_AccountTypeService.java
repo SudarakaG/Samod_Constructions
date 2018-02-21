@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class R_AccountTypeService {
 
-    private final DBAccessFactory dbAccessFactory = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbAccessFactory;
     
     public R_AccountTypeService() {
+        this.dbAccessFactory = new DBAccessFactoryImpl();
     }
     
     public R_AccountType searchAccountType(int id)throws Exception{

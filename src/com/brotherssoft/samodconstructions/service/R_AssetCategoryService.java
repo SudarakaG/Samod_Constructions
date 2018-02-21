@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class R_AssetCategoryService {
     
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
     
     public R_AssetCategoryService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }    
     
     public R_AssetCategory searchAssetCategory(int id)throws Exception{

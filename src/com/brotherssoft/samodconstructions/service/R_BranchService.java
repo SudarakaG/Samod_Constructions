@@ -17,9 +17,10 @@ import java.util.List;
  */
 public class R_BranchService {
     
-    private final DBAccessFactory dbAccessFactory = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbAccessFactory;
 
     public R_BranchService() {
+        this.dbAccessFactory = new DBAccessFactoryImpl();
     }
 
     

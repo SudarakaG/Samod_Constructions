@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class R_VehicleTypeService {
 
-    private final DBAccessFactory dbAccessFactory = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbAccessFactory;
     
     public R_VehicleTypeService() {
+        this.dbAccessFactory = new DBAccessFactoryImpl();
     }
     
     public R_VehicleType searchVehicleType(int id)throws Exception{

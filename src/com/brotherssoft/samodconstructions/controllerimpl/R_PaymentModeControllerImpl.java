@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class R_PaymentModeControllerImpl extends UnicastRemoteObject implements R_PaymentModeController{
     
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
 
     public R_PaymentModeControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class R_VehicleTypeControllerImpl extends UnicastRemoteObject implements R_VehivleTypeController{
 
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public R_VehicleTypeControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

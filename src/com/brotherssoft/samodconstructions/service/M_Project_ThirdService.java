@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class M_Project_ThirdService {
     
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
 
     public M_Project_ThirdService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }
     
     public boolean updateThird(M_Project_Third third)throws Exception{

@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class R_PaymentModeService {
     
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
 
     public R_PaymentModeService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }
    
     public R_PaymentMode searchPaymentMode(int id)throws Exception{

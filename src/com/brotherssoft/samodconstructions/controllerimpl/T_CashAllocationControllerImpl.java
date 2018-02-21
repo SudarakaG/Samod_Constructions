@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class T_CashAllocationControllerImpl extends UnicastRemoteObject implements T_CashAllocationController{
 
-    private final ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public T_CashAllocationControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

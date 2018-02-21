@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class M_AccountService {
     
-    private final DBAccessFactory dbAccessFactory = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbAccessFactory;
 
     public M_AccountService() {
+        this.dbAccessFactory = new DBAccessFactoryImpl();
     }
     
     public boolean addAccount(M_Account account)throws Exception{

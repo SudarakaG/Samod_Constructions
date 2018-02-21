@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class M_EmployeeService {
     
-    private final DBAccessFactory dbAccessFactory = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbAccessFactory;
 
     public M_EmployeeService() {
+        this.dbAccessFactory = new DBAccessFactoryImpl();
     }
     
     public boolean addEmployee(M_Employee employee) throws Exception{    

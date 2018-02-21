@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class R_JobTypeService {
 
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
     
     public R_JobTypeService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }
     
     public R_JobType searchJobType(int id)throws Exception{

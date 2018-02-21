@@ -16,9 +16,10 @@ import java.rmi.server.UnicastRemoteObject;
  */
 public class IDControllerImpl extends UnicastRemoteObject implements IDController{
 
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public IDControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

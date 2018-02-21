@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class M_PurchaserService {
     
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
 
     public M_PurchaserService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }
     
     public boolean addPurchaser(M_Purchaser purchaser)throws Exception{

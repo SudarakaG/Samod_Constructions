@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class T_SiteAllocationControllerImpl extends UnicastRemoteObject implements T_SiteAllocationController{
     
-    private final ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
 
     public T_SiteAllocationControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

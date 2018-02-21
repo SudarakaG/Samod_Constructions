@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class M_VehicleService {
 
-    private final DBAccessFactory dbaf = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbaf;
     
     public M_VehicleService() {
+        this.dbaf = new DBAccessFactoryImpl();
     }
  
     public boolean addVehicle(M_Vehicle vehicle)throws Exception{

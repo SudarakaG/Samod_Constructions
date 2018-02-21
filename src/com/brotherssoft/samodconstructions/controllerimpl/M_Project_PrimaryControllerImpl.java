@@ -18,9 +18,10 @@ import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryControlle
  */
 public class M_Project_PrimaryControllerImpl extends UnicastRemoteObject implements M_Project_PrimaryController{
 
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public M_Project_PrimaryControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
         
     }
     

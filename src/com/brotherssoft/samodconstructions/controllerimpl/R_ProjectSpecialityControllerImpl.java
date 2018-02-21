@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class R_ProjectSpecialityControllerImpl extends UnicastRemoteObject implements R_ProjectSpecialityController{
     
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
 
     public R_ProjectSpecialityControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

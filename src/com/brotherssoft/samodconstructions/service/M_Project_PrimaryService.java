@@ -16,9 +16,10 @@ import java.util.List;
  */
 public class M_Project_PrimaryService {
     
-    private final DBAccessFactory dbAccessFactory = new DBAccessFactoryImpl();
+    private final DBAccessFactory dbAccessFactory;
 
     public M_Project_PrimaryService(){
+        this.dbAccessFactory = new DBAccessFactoryImpl();
     }
         
     public boolean addPrimaryProject(M_Project_Primary primary)throws Exception{

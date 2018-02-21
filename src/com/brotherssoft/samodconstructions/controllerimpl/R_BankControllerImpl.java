@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class R_BankControllerImpl extends UnicastRemoteObject implements R_BankController{
 
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public R_BankControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

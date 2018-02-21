@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class R_AccountTypeControllerImpl extends UnicastRemoteObject implements R_AccountTypeController{
 
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public R_AccountTypeControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

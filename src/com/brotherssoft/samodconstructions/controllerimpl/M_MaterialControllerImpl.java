@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class M_MaterialControllerImpl extends UnicastRemoteObject implements M_MaterialController{
 
-    private final ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public M_MaterialControllerImpl() throws Exception{
+        this.sf = new ServiceFactoryImpl();
     }
 
     @Override

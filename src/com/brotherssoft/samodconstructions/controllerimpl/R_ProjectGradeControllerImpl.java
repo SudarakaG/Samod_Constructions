@@ -18,9 +18,10 @@ import java.util.List;
  */
 public class R_ProjectGradeControllerImpl extends UnicastRemoteObject implements R_ProjectGradeController{
     
-    private ServiceFactory sf = new ServiceFactoryImpl();
+    private final ServiceFactory sf;
     
     public R_ProjectGradeControllerImpl()throws Exception{
+        this.sf = new ServiceFactoryImpl();
         
     }
 
