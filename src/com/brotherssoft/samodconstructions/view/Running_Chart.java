@@ -164,7 +164,7 @@ public class Running_Chart extends javax.swing.JPanel {
             .addGroup(bank_panel_hedding3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(499, Short.MAX_VALUE))
+                .addContainerGap(509, Short.MAX_VALUE))
             .addGroup(bank_panel_hedding3Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel28)
@@ -221,6 +221,11 @@ public class Running_Chart extends javax.swing.JPanel {
         jLabel34.setText("Start");
 
         txt_start.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_start.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_startMouseClicked(evt);
+            }
+        });
         txt_start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_startActionPerformed(evt);
@@ -239,6 +244,11 @@ public class Running_Chart extends javax.swing.JPanel {
         jLabel49.setText("End");
 
         txt_end.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_end.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_endMouseClicked(evt);
+            }
+        });
         txt_end.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_endActionPerformed(evt);
@@ -258,6 +268,11 @@ public class Running_Chart extends javax.swing.JPanel {
 
         txt_distance.setEditable(false);
         txt_distance.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_distance.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_distanceMouseClicked(evt);
+            }
+        });
         txt_distance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_distanceActionPerformed(evt);
@@ -274,6 +289,11 @@ public class Running_Chart extends javax.swing.JPanel {
         jLabel54.setText("Odometer");
 
         txt_fuel_odometer.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_fuel_odometer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_fuel_odometerMouseClicked(evt);
+            }
+        });
         txt_fuel_odometer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_fuel_odometerActionPerformed(evt);
@@ -292,6 +312,11 @@ public class Running_Chart extends javax.swing.JPanel {
         jLabel55.setText("Quantity");
 
         txt_fuel_quantity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_fuel_quantity.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_fuel_quantityMouseClicked(evt);
+            }
+        });
         txt_fuel_quantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_fuel_quantityActionPerformed(evt);
@@ -357,6 +382,26 @@ public class Running_Chart extends javax.swing.JPanel {
 
         JSpinner.DateEditor de = new JSpinner.DateEditor(spn_start_time,"HH:mm a");
         spn_start_time.setEditor(de);
+        spn_start_time.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spn_start_timeStateChanged(evt);
+            }
+        });
+        spn_start_time.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                spn_start_timeMouseClicked(evt);
+            }
+        });
+        spn_start_time.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                spn_start_timePropertyChange(evt);
+            }
+        });
+        spn_start_time.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                spn_start_timeKeyPressed(evt);
+            }
+        });
 
         JSpinner.DateEditor de2 = new JSpinner.DateEditor(spn_end_time,"HH:mm a");
         spn_end_time.setEditor(de2);
@@ -365,6 +410,11 @@ public class Running_Chart extends javax.swing.JPanel {
         jLabel58.setText("Price");
 
         txt_fuel_price.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_fuel_price.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_fuel_priceMouseClicked(evt);
+            }
+        });
         txt_fuel_price.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_fuel_priceActionPerformed(evt);
@@ -383,6 +433,11 @@ public class Running_Chart extends javax.swing.JPanel {
         cmb_status.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACTIVE", "INACTIVE" }));
         cmb_status.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cmb_status.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmb_statusMouseClicked(evt);
+            }
+        });
         cmb_status.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_statusActionPerformed(evt);
@@ -645,7 +700,7 @@ public class Running_Chart extends javax.swing.JPanel {
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_Input_Panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         Chart_View_Panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -860,11 +915,15 @@ public class Running_Chart extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_fuel_typeActionPerformed
 
     private void txt_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_startActionPerformed
-
+        fieldFormat.formatDecimalAmount(txt_start);
+        fieldFormat.clearAmountField(txt_end);
+        txt_end.requestFocus();
     }//GEN-LAST:event_txt_startActionPerformed
 
     private void txt_endActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_endActionPerformed
-
+        calculateDistance();
+        fieldFormat.formatDecimalAmount(txt_end);
+        spn_start_time.requestFocus();
     }//GEN-LAST:event_txt_endActionPerformed
 
     private void txt_distanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_distanceActionPerformed
@@ -872,7 +931,9 @@ public class Running_Chart extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_distanceActionPerformed
 
     private void txt_fuel_odometerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fuel_odometerActionPerformed
-
+        fieldFormat.formatDecimalAmount(txt_fuel_odometer);
+        fieldFormat.clearAmountField(txt_fuel_quantity);
+        txt_fuel_quantity.requestFocus();
     }//GEN-LAST:event_txt_fuel_odometerActionPerformed
 
     private void txt_fuel_odometerKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_fuel_odometerKeyPressed
@@ -884,7 +945,9 @@ public class Running_Chart extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_fuel_odometerKeyReleased
 
     private void txt_fuel_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fuel_quantityActionPerformed
-
+        fieldFormat.formatDecimalAmount(txt_fuel_quantity);
+        fieldFormat.clearAmountField(txt_fuel_price);
+        txt_fuel_price.requestFocus();
     }//GEN-LAST:event_txt_fuel_quantityActionPerformed
 
     private void txt_fuel_quantityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_fuel_quantityKeyPressed
@@ -896,7 +959,7 @@ public class Running_Chart extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_fuel_quantityKeyReleased
 
     private void date_picker_joinDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_date_picker_joinDateActionPerformed
-
+        txt_desc.requestFocus();
     }//GEN-LAST:event_date_picker_joinDateActionPerformed
 
     private void btn_emp_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_newActionPerformed
@@ -967,7 +1030,8 @@ public class Running_Chart extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_search_runKeyTyped
 
     private void txt_fuel_priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fuel_priceActionPerformed
-        // TODO add your handling code here:
+        fieldFormat.formatDecimalAmount(txt_fuel_price);
+        cmb_status.requestFocus();
     }//GEN-LAST:event_txt_fuel_priceActionPerformed
 
     private void txt_fuel_priceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_fuel_priceKeyPressed
@@ -979,7 +1043,7 @@ public class Running_Chart extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_fuel_priceKeyReleased
 
     private void cmb_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_statusActionPerformed
-        // TODO add your handling code here:
+        fieldFormat.formatDecimalAmount(txt_fuel_price);
     }//GEN-LAST:event_cmb_statusActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -998,6 +1062,7 @@ public class Running_Chart extends javax.swing.JPanel {
                 Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        date_picker_joinDate.requestFocus();
     }//GEN-LAST:event_cmb_vehicleActionPerformed
 
     private void txt_startKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_startKeyPressed
@@ -1015,6 +1080,57 @@ public class Running_Chart extends javax.swing.JPanel {
     private void txt_endKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_endKeyReleased
         Validation.priceText(txt_end);
     }//GEN-LAST:event_txt_endKeyReleased
+
+    private void txt_startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_startMouseClicked
+        fieldFormat.clearAmountField(txt_start);
+    }//GEN-LAST:event_txt_startMouseClicked
+
+    private void txt_endMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_endMouseClicked
+        fieldFormat.formatDecimalAmount(txt_start);
+        fieldFormat.clearAmountField(txt_end);
+    }//GEN-LAST:event_txt_endMouseClicked
+
+    private void spn_start_timeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spn_start_timeMouseClicked
+        fieldFormat.formatDecimalAmount(txt_end);
+        calculateDistance();
+    }//GEN-LAST:event_spn_start_timeMouseClicked
+
+    private void txt_fuel_odometerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_fuel_odometerMouseClicked
+        fieldFormat.clearAmountField(txt_fuel_odometer);
+    }//GEN-LAST:event_txt_fuel_odometerMouseClicked
+
+    private void txt_fuel_quantityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_fuel_quantityMouseClicked
+        fieldFormat.formatDecimalAmount(txt_fuel_odometer);
+        fieldFormat.clearAmountField(txt_fuel_quantity);
+    }//GEN-LAST:event_txt_fuel_quantityMouseClicked
+
+    private void txt_fuel_priceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_fuel_priceMouseClicked
+        fieldFormat.formatDecimalAmount(txt_fuel_quantity);
+        fieldFormat.clearAmountField(txt_fuel_price);
+    }//GEN-LAST:event_txt_fuel_priceMouseClicked
+
+    private void cmb_statusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmb_statusMouseClicked
+        fieldFormat.formatDecimalAmount(txt_fuel_price);
+    }//GEN-LAST:event_cmb_statusMouseClicked
+
+    private void txt_distanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_distanceMouseClicked
+        calculateDistance();
+    }//GEN-LAST:event_txt_distanceMouseClicked
+
+    private void spn_start_timeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spn_start_timeKeyPressed
+        fieldFormat.formatDecimalAmount(txt_end);
+        calculateDistance();
+    }//GEN-LAST:event_spn_start_timeKeyPressed
+
+    private void spn_start_timeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spn_start_timeStateChanged
+        fieldFormat.formatDecimalAmount(txt_end);
+        calculateDistance();
+    }//GEN-LAST:event_spn_start_timeStateChanged
+
+    private void spn_start_timePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_spn_start_timePropertyChange
+        fieldFormat.formatDecimalAmount(txt_end);
+        calculateDistance();
+    }//GEN-LAST:event_spn_start_timePropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1228,8 +1344,8 @@ public class Running_Chart extends javax.swing.JPanel {
             txt_start.setText(decimalFormat.format(runchartGlobal.getRunchart_odoStart()));
             txt_end.setText(decimalFormat.format(runchartGlobal.getRunchart_odoEnd()));
             txt_distance.setText(decimalFormat.format(runchartGlobal.getRunchart_odoEnd() - runchartGlobal.getRunchart_odoStart()));
-            spn_start_time.setValue(de1.getFormat().parse(runchartGlobal.getRunchart_timeStart()));
-            spn_end_time.setValue(de2.getFormat().parse(runchartGlobal.getRunchart_timeEnd()));
+            spn_start_time.setValue(date);
+            spn_end_time.setValue(date);
             txt_fuel_odometer.setText(decimalFormat.format(runchartGlobal.getRunchart_fuelOdoMeter()));
             txt_fuel_quantity.setText(decimalFormat.format(runchartGlobal.getRunchart_fuelQuantity()));
             txt_fuel_price.setText(decimalFormat.format(runchartGlobal.getRunchart_fuelPrice()));
@@ -1255,5 +1371,17 @@ public class Running_Chart extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private void calculateDistance() {
+        double start = 0;
+        double end = 0;
+        double distance = 0;
+        if (!"".equals(txt_start.getText()) && !"".equals(txt_end.getText())) {
+            start = Double.parseDouble(txt_start.getText().replaceAll(",", ""));
+            end = Double.parseDouble(txt_end.getText().replaceAll(",", ""));
+        }
+        distance = end - start;
+        txt_distance.setText(decimalFormat.format(distance));
     }
 }
