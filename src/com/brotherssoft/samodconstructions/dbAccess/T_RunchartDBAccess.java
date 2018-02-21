@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -124,5 +125,24 @@ public class T_RunchartDBAccess {
             return runcharts;
         
     }   
+    
+    public T_Runchart searchRunchart(String vNo,Date rDate,String sTime,String eTime) throws Exception {
+        
+            String sql = "Select * From t_runchart where RUNCHART_VEHIID=? AND RUNCHART_DATE=? AND RUNCHART_TIMESTART=? AND RUNCHART_TIMEEND=?";
+            Connection conn = DBConnection.getDBConnection().getConnection();
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setObject(1, vNo);
+            stm.setObject(2, rDate);
+            stm.setObject(3, sTime);
+            stm.setObject(4, eTime);
+            ResultSet rst = stm.executeQuery();
+            T_Runchart runchart = null;
+            if (rst.next()) {
+                runchart = new T_Runchart(rst.getInt(1), rst.getString(2), rst.getDate(3), rst.getString(4), rst.getDouble(5), rst.getDouble(6), rst.getString(7), rst.getString(8), rst.getDouble(9), rst.getDouble(10), rst.getDouble(11), rst.getInt(12));
+
+            }
+            return runchart;
+        
+    }
     
 }

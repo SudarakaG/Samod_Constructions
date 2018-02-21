@@ -8,6 +8,7 @@ package com.brotherssoft.samodconstructions.service;
 import com.brotherssoft.samodconstructions.dbAccessFactory.DBAccessFactory;
 import com.brotherssoft.samodconstructions.dbAccessFactoryImpl.DBAccessFactoryImpl;
 import com.brotherssoft.samodconstructions.model.T_Runchart;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,6 +45,10 @@ public class T_RunchartService {
     
     public List<T_Runchart> getAllLastAddedRuncharts()throws Exception{
         return dbaf.getRunchartDBAccess().getAllLastAddedRuncharts();
+    }
+    
+    public T_Runchart searchRunchart(String vNo,Date rDate,String sTime,String eTime)throws Exception{
+        return dbaf.getRunchartDBAccess().searchRunchart(vNo, rDate, sTime, eTime);
     }
     
 }

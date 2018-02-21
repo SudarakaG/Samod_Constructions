@@ -10,6 +10,7 @@ import com.brotherssoft.samodconstructions.model.T_Runchart;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -52,6 +53,11 @@ public class T_RunchartControllerImpl extends UnicastRemoteObject implements T_R
     @Override
     public List<T_Runchart> getAllLastAddedRuncharts() throws Exception {
         return sf.getRunchartService().getAllLastAddedRuncharts();
+    }
+
+    @Override
+    public T_Runchart searchRunchart(String vNo, Date rDate, String sTime, String eTime) throws Exception {
+        return sf.getRunchartService().searchRunchart(vNo, rDate, sTime, eTime);
     }
     
 }
