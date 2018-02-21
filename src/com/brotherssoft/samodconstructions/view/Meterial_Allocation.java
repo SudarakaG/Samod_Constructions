@@ -10,6 +10,7 @@ import com.brotherssoft.samodconstructions.controller.M_MainStockController;
 import com.brotherssoft.samodconstructions.controller.M_MaterialController;
 import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
+import com.brotherssoft.samodconstructions.custom.AmountFieldFormat;
 import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.custom.Validation;
 import com.brotherssoft.samodconstructions.model.M_Employee;
@@ -41,6 +42,7 @@ public class Meterial_Allocation extends javax.swing.JPanel {
     DefaultTableModel dtmMaterialAllocation;
 
     DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+    AmountFieldFormat fieldFormat = new AmountFieldFormat();
     M_MainStock globalMainStock = null;
     T_SiteAllocation globalSiteAllocation = null;
 
@@ -345,6 +347,11 @@ public class Meterial_Allocation extends javax.swing.JPanel {
         jLabel104.setText("Quantity");
 
         txt_quantity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_quantity.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_quantityMouseClicked(evt);
+            }
+        });
         txt_quantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_quantityActionPerformed(evt);
@@ -596,7 +603,7 @@ public class Meterial_Allocation extends javax.swing.JPanel {
                 .addGroup(Meterial_Allocation_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -640,7 +647,7 @@ public class Meterial_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_add_materialAllocationActionPerformed
 
     private void dp_material_allocationDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_material_allocationDateActionPerformed
-
+        txt_allocationDesc.requestFocus();
     }//GEN-LAST:event_dp_material_allocationDateActionPerformed
 
     private void btn_new_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_projectActionPerformed
@@ -658,6 +665,7 @@ public class Meterial_Allocation extends javax.swing.JPanel {
             lbl_qtyInMain.setText("Current Quantity");
             txt_quantityInMain.setSize(350, 26);
             lbl_inMain.setVisible(false);
+            cmb_materialType.requestFocus();
         } else {
             lbl_allocatedSite.setVisible(true);
             cmb_allocated_site.setVisible(true);
@@ -667,6 +675,7 @@ public class Meterial_Allocation extends javax.swing.JPanel {
             lbl_inMain.setVisible(true);
             txt_quantityInMain.setSize(259, 26);
             lbl_qtyInMain.setText("Current");
+            cmb_allocated_site.requestFocus();
         }
         disableAllocationFields();
         for (int i = 1; i < cmb_materialType.getItemCount(); i++) {
@@ -690,20 +699,25 @@ public class Meterial_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_cmb_stockTypeActionPerformed
 
     private void cmb_transaction_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_transaction_typeActionPerformed
-        // TODO add your handling code here:
+        fieldFormat.clearAmountField(txt_quantity);
+        txt_quantity.requestFocus();
     }//GEN-LAST:event_cmb_transaction_typeActionPerformed
 
     private void cmb_materialTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_materialTypeActionPerformed
         loadAllocationFields();
+        cmb_transaction_type.requestFocus();
     }//GEN-LAST:event_cmb_materialTypeActionPerformed
 
     private void txt_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantityActionPerformed
         calculateStockQuantity();
         enableAllocationFields();
+        fieldFormat.formatDecimalAmount(txt_quantity);
+        dp_material_allocationDate.requestFocus();
     }//GEN-LAST:event_txt_quantityActionPerformed
 
     private void cmb_allocated_siteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_allocated_siteActionPerformed
         loadAllocationFields();
+        cmb_materialType.requestFocus();
     }//GEN-LAST:event_cmb_allocated_siteActionPerformed
 
     private void txt_quantityInSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantityInSiteActionPerformed
@@ -715,7 +729,7 @@ public class Meterial_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_quantityInMainActionPerformed
 
     private void cmb_addedEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_addedEmpActionPerformed
-        // TODO add your handling code here:
+        cmb_approvedEmp.requestFocus();
     }//GEN-LAST:event_cmb_addedEmpActionPerformed
 
     private void cmb_approvedEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_approvedEmpActionPerformed
@@ -737,6 +751,10 @@ public class Meterial_Allocation extends javax.swing.JPanel {
     private void txt_quantityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_quantityKeyReleased
         Validation.priceText(txt_quantity);
     }//GEN-LAST:event_txt_quantityKeyReleased
+
+    private void txt_quantityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_quantityMouseClicked
+        fieldFormat.clearAmountField(txt_quantity);
+    }//GEN-LAST:event_txt_quantityMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1271,6 +1289,7 @@ public class Meterial_Allocation extends javax.swing.JPanel {
         cmb_approvedEmp.setSelectedIndex(0);
         disableAllocationFields();
         btn_add_materialAllocation.setText("Save");
+        cmb_stockType.requestFocus();
     }
 
 }

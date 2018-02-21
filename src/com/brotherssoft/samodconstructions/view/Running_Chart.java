@@ -5,24 +5,50 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.M_VehicleController;
+import com.brotherssoft.samodconstructions.controller.T_RunchartController;
+import com.brotherssoft.samodconstructions.custom.AmountFieldFormat;
+import com.brotherssoft.samodconstructions.model.M_Vehicle;
+import com.brotherssoft.samodconstructions.model.T_Runchart;
+import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Akvasoft
  */
 public class Running_Chart extends javax.swing.JPanel {
-
+    
+    M_VehicleController vehicleController;
+    T_RunchartController runchartController;
+    DefaultTableModel dtmRunchart;
+    
+    AmountFieldFormat fieldFormat = new AmountFieldFormat();
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+    
     /**
      * Creates new form Running_Chart
      */
-    public Running_Chart() {
+    public Running_Chart() throws Exception {
         initComponents();
         DisablePanels();
         Chart_View_Panel.setVisible(true);
+        
+        vehicleController = ServerConnector.getServerConnetor().getVehicleController();
+        runchartController = ServerConnector.getServerConnetor().getRunchartController();
+        dtmRunchart = (DefaultTableModel) tbl_runchart.getModel();
+        
+        loadVehicleCombo();
+        loadRunchartTable();
+        
     }
 
     /**
@@ -42,7 +68,6 @@ public class Running_Chart extends javax.swing.JPanel {
         jSeparator9 = new javax.swing.JSeparator();
         txt_Input_Panel_Branch2 = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
-        cmb_vehi = new javax.swing.JComboBox<>();
         jLabel29 = new javax.swing.JLabel();
         txt_type_of_vehi = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
@@ -78,9 +103,10 @@ public class Running_Chart extends javax.swing.JPanel {
         jSpinner2 = new javax.swing.JSpinner(sm2);
         jLabel58 = new javax.swing.JLabel();
         txt_contact_4 = new javax.swing.JTextField();
-        cmb_vehi1 = new javax.swing.JComboBox<>();
+        cmb_status = new javax.swing.JComboBox<>();
         jLabel32 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        cmb_vehicle = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
         Chart_View_Panel = new javax.swing.JPanel();
         bank_panel_hedding5 = new javax.swing.JPanel();
@@ -90,7 +116,7 @@ public class Running_Chart extends javax.swing.JPanel {
         tbl_panel_Branch2 = new javax.swing.JPanel();
         btn_branch1 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
-        tbl_employeeInfo = new javax.swing.JTable();
+        tbl_runchart = new javax.swing.JTable();
         txt_emp_search1 = new javax.swing.JTextField();
         cmb_search_vehiType = new javax.swing.JComboBox<>();
         cmb_search_fuel = new javax.swing.JComboBox<>();
@@ -140,16 +166,6 @@ public class Running_Chart extends javax.swing.JPanel {
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel31.setText("Select Vehical");
-
-        cmb_vehi.setEditable(true);
-        cmb_vehi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_vehi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Vehical -" }));
-        cmb_vehi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cmb_vehi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_vehiActionPerformed(evt);
-            }
-        });
 
         jLabel29.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel29.setText("Type of Vehical");
@@ -300,10 +316,10 @@ public class Running_Chart extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(0, 153, 255));
         jLabel3.setText("Vehical");
 
-        JSpinner.DateEditor de = new JSpinner.DateEditor(jSpinner1,"HH:mm:ss:aa");
+        JSpinner.DateEditor de = new JSpinner.DateEditor(jSpinner1,"HH:mm a");
         jSpinner1.setEditor(de);
 
-        JSpinner.DateEditor de2 = new JSpinner.DateEditor(jSpinner2,"HH:mm:ss:aa");
+        JSpinner.DateEditor de2 = new JSpinner.DateEditor(jSpinner2,"HH:mm a");
         jSpinner2.setEditor(de2);
 
         jLabel58.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -324,13 +340,13 @@ public class Running_Chart extends javax.swing.JPanel {
             }
         });
 
-        cmb_vehi1.setEditable(true);
-        cmb_vehi1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_vehi1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Vehical -" }));
-        cmb_vehi1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cmb_vehi1.addActionListener(new java.awt.event.ActionListener() {
+        cmb_status.setEditable(true);
+        cmb_status.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACTIVE", "INACTIVE" }));
+        cmb_status.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cmb_status.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_vehi1ActionPerformed(evt);
+                cmb_statusActionPerformed(evt);
             }
         });
 
@@ -341,36 +357,36 @@ public class Running_Chart extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(0, 153, 255));
         jLabel4.setText("Fuel Received");
 
+        cmb_vehicle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Vehicle -" }));
+        cmb_vehicle.setPreferredSize(new java.awt.Dimension(56, 26));
+
         javax.swing.GroupLayout txt_Input_Panel_Branch2Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch2);
         txt_Input_Panel_Branch2.setLayout(txt_Input_Panel_Branch2Layout);
         txt_Input_Panel_Branch2Layout.setHorizontalGroup(
             txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(txt_distance, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(txt_end, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(txt_start, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(cmb_vehi, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(txt_distance, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(txt_end, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(txt_start, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addContainerGap()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                                 .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -385,33 +401,15 @@ public class Running_Chart extends javax.swing.JPanel {
                                 .addGap(41, 41, 41)
                                 .addComponent(txt_fuel_type, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_type_of_vehi, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                            .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txt_contact_2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                                .addComponent(btn_emp_save, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addComponent(btn_emp_new, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(14, 14, 14)
-                                .addComponent(btn_emp_salary, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel32))
+                                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmb_vehi1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txt_contact_4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txt_contact_3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txt_type_of_vehi, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                                    .addComponent(cmb_vehicle, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
@@ -420,8 +418,31 @@ public class Running_Chart extends javax.swing.JPanel {
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                            .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txt_contact_2, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                            .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel32))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cmb_status, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_contact_4, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txt_contact_3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(27, 27, 27))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_emp_save, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(btn_emp_new, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(btn_emp_salary, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
 
         txt_Input_Panel_Branch2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_emp_new, btn_emp_salary, btn_emp_save});
@@ -429,41 +450,72 @@ public class Running_Chart extends javax.swing.JPanel {
         txt_Input_Panel_Branch2Layout.setVerticalGroup(
             txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmb_vehi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(6, 6, 6)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_vehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_type_of_vehi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_fuel_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(date_picker_joinDate, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_start, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt_type_of_vehi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt_fuel_type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(date_picker_joinDate, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txt_start, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(4, 4, 4)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_contact_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_contact_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_contact_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmb_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel32))
+                        .addGap(3, 3, 3)))
                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
@@ -478,43 +530,12 @@ public class Running_Chart extends javax.swing.JPanel {
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(txt_distance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(160, 160, 160)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_contact_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_contact_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_contact_4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmb_vehi1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel32))
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_emp_save)
                     .addComponent(btn_emp_new)
                     .addComponent(btn_emp_salary))
-                .addContainerGap())
+                .addGap(36, 36, 36))
         );
 
         txt_Input_Panel_Branch2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_emp_new, btn_emp_salary, btn_emp_save});
@@ -612,8 +633,8 @@ public class Running_Chart extends javax.swing.JPanel {
             }
         });
 
-        tbl_employeeInfo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tbl_employeeInfo.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_runchart.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tbl_runchart.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -657,13 +678,13 @@ public class Running_Chart extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tbl_employeeInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tbl_employeeInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbl_runchart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_runchart.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_employeeInfoMouseClicked(evt);
+                tbl_runchartMouseClicked(evt);
             }
         });
-        jScrollPane8.setViewportView(tbl_employeeInfo);
+        jScrollPane8.setViewportView(tbl_runchart);
 
         txt_emp_search1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txt_emp_search1.setForeground(new java.awt.Color(102, 102, 102));
@@ -784,10 +805,6 @@ public class Running_Chart extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmb_vehiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_vehiActionPerformed
-      
-    }//GEN-LAST:event_cmb_vehiActionPerformed
-
     private void txt_type_of_vehiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_type_of_vehiActionPerformed
         
     }//GEN-LAST:event_txt_type_of_vehiActionPerformed
@@ -861,9 +878,9 @@ public class Running_Chart extends javax.swing.JPanel {
         Chart_Registration_Panel.setVisible(true);
     }//GEN-LAST:event_btn_branch1ActionPerformed
 
-    private void tbl_employeeInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_employeeInfoMouseClicked
+    private void tbl_runchartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_runchartMouseClicked
        
-    }//GEN-LAST:event_tbl_employeeInfoMouseClicked
+    }//GEN-LAST:event_tbl_runchartMouseClicked
 
     private void txt_emp_search1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_emp_search1MouseClicked
        
@@ -901,9 +918,9 @@ public class Running_Chart extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_contact_4KeyReleased
 
-    private void cmb_vehi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_vehi1ActionPerformed
+    private void cmb_statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_statusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_vehi1ActionPerformed
+    }//GEN-LAST:event_cmb_statusActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
        DisablePanels();
@@ -922,8 +939,8 @@ public class Running_Chart extends javax.swing.JPanel {
     private javax.swing.JButton btn_emp_save;
     private javax.swing.JComboBox<String> cmb_search_fuel;
     private javax.swing.JComboBox<String> cmb_search_vehiType;
-    private javax.swing.JComboBox<String> cmb_vehi;
-    private javax.swing.JComboBox<String> cmb_vehi1;
+    private javax.swing.JComboBox<String> cmb_status;
+    private javax.swing.JComboBox<String> cmb_vehicle;
     private org.jdesktop.swingx.JXDatePicker date_picker_joinDate;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -955,8 +972,8 @@ public class Running_Chart extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JTable tbl_employeeInfo;
     private javax.swing.JPanel tbl_panel_Branch2;
+    private javax.swing.JTable tbl_runchart;
     private javax.swing.JPanel txt_Input_Panel_Branch2;
     private javax.swing.JTextField txt_contact_2;
     private javax.swing.JTextField txt_contact_3;
@@ -973,5 +990,30 @@ public class Running_Chart extends javax.swing.JPanel {
     private void DisablePanels() {
         Chart_Registration_Panel.setVisible(false);
         Chart_View_Panel.setVisible(false);
+    }
+
+    private void loadVehicleCombo() {
+        cmb_vehicle.removeAll();
+        try {
+            List<M_Vehicle> allVehicles = vehicleController.getAllVehicles();
+            for (M_Vehicle allVehicle : allVehicles) {
+                cmb_vehicle.addItem(allVehicle.getVehicle_regNo());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadRunchartTable() {
+        dtmRunchart.setRowCount(0);
+        try {
+            List<T_Runchart> allRuncharts = runchartController.getAllRuncharts();
+            for (T_Runchart allRunchart : allRuncharts) {
+                String[] rowData = {vehicleController.searchVehicle(allRunchart.getRunchart_vehicleId()).getVehicle_regNo(),allRunchart.getRunchart_date().toString(),allRunchart.getRunchart_description(),allRunchart.getRunchart_timeStart(),allRunchart.getRunchart_timeEnd(),Double.toString(allRunchart.getRunchart_fuelQuantity())};
+                dtmRunchart.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

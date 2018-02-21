@@ -35,6 +35,7 @@ import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryControlle
 import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
 import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
+import com.brotherssoft.samodconstructions.controller.T_RunchartController;
 import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
 
 /**
@@ -74,6 +75,7 @@ public class ServerConnector {
     private T_CashAllocationController cashAllocationController;
     private M_MainStockController mainStockController;
     private T_SiteAllocationController siteAllocationController;
+    private T_RunchartController runchartController;
     
     //private UserHistoryController uhc;
 
@@ -282,6 +284,13 @@ public class ServerConnector {
             siteAllocationController = cf.getSiteAllocationController();
         }
         return siteAllocationController;
+    }
+    
+    public T_RunchartController getRunchartController()throws Exception{
+        if (runchartController == null) {
+            runchartController = cf.getRunchartController();
+        }
+        return runchartController;
     }
 
 //    

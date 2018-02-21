@@ -625,10 +625,10 @@ public class Cash_Allocated extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_allo_amountKeyReleased
 
     private void txt_reasonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_reasonKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            fieldFormat.clearAmountField(txt_allo_amount);
-            txt_allo_amount.requestFocus();
-        }
+//        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+//            fieldFormat.clearAmountField(txt_allo_amount);
+//            txt_allo_amount.requestFocus();
+//        }
     }//GEN-LAST:event_txt_reasonKeyPressed
 
     private void txt_reasonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_reasonMouseClicked

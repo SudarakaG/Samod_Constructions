@@ -1967,8 +1967,12 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lable19MouseClicked
 
     private void master_detail_home_lable20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable20MouseClicked
-        Running_Chart chart = new Running_Chart();
-        panelManager(chart);
+        try {
+            Running_Chart chart = new Running_Chart();
+            panelManager(chart);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable20MouseClicked
 
     private void master_detail_home_lable21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable21MouseClicked

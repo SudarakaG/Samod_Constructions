@@ -10,6 +10,7 @@ import com.brotherssoft.samodconstructions.controller.M_MainStockController;
 import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
+import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.model.M_Employee;
 import com.brotherssoft.samodconstructions.model.M_MainStock;
 import com.brotherssoft.samodconstructions.model.M_Project_Primary;
@@ -17,9 +18,11 @@ import com.brotherssoft.samodconstructions.model.M_Vehicle;
 import com.brotherssoft.samodconstructions.model.T_SiteAllocation;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -56,6 +59,7 @@ public class Vehical_Allocation extends javax.swing.JPanel {
 
         loadVehicleCombo();
         loadEmpCombo();
+        loadVehicleAllocationTable();
     }
 
     /**
@@ -145,45 +149,45 @@ public class Vehical_Allocation extends javax.swing.JPanel {
 
         tbl_vehical_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Stock Type", "Vehical Name", "Transaction"
+                "Vehicle", "Availability", "Updated Date", "Allocated Site"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -451,7 +455,7 @@ public class Vehical_Allocation extends javax.swing.JPanel {
             Project_Primary_Info_Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Project_Primary_Info_Panel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.PREFERRED_SIZE, 503, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -483,7 +487,11 @@ public class Vehical_Allocation extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tbl_vehical_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_vehical_tableMouseClicked
-
+        clearFields();
+        btn_add_vehicle_allocation.setEnabled(true);
+        btn_add_vehicle_allocation.setText("Update");
+        searchFromTableName();
+        loadFieldsFromTable();
     }//GEN-LAST:event_tbl_vehical_tableMouseClicked
 
     private void txt_search_name_MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_search_name_MouseClicked
@@ -495,7 +503,9 @@ public class Vehical_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_search_name_KeyReleased
 
     private void cmb_vehicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_vehicalActionPerformed
-
+        cmb_vehical.getUI().setPopupVisible(cmb_vehical, false);
+        checkAllocation();
+        cmb_transaction_type.requestFocus();
     }//GEN-LAST:event_cmb_vehicalActionPerformed
 
     private void btn_to_secondary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_to_secondary_projectActionPerformed
@@ -503,15 +513,20 @@ public class Vehical_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_to_secondary_projectActionPerformed
 
     private void btn_add_vehicle_allocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_vehicle_allocationActionPerformed
-
+        if (btn_add_vehicle_allocation.getText().equalsIgnoreCase("Save")) {
+            saveVehicleAllocation();
+        } else {
+            updateVehicleAllocation();
+        }
+        loadVehicleAllocationTable();
     }//GEN-LAST:event_btn_add_vehicle_allocationActionPerformed
 
     private void dp_updated_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_updated_dateActionPerformed
-
+        txt_comment.requestFocus();
     }//GEN-LAST:event_dp_updated_dateActionPerformed
 
     private void btn_new_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_projectActionPerformed
-
+        clearFields();
     }//GEN-LAST:event_btn_new_primary_projectActionPerformed
 
     private void cmb_stock_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_stock_typeActionPerformed
@@ -519,22 +534,31 @@ public class Vehical_Allocation extends javax.swing.JPanel {
             lbl_site.setVisible(true);
             cmb_allocated_site.setVisible(true);
             loadSiteCombo();
-        }else{
+            cmb_allocated_site.requestFocus();
+        } else {
             lbl_site.setVisible(false);
             cmb_allocated_site.setVisible(false);
+            cmb_vehical.requestFocus();
         }
+        for (int i = 1; i < cmb_vehical.getItemCount(); i++) {
+            cmb_vehical.removeItemAt(i);
+        }
+        loadVehicleCombo();
+        loadVehicleAllocationTable();
     }//GEN-LAST:event_cmb_stock_typeActionPerformed
 
     private void cmb_transaction_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_transaction_typeActionPerformed
-        // TODO add your handling code here:
+        dp_updated_date.requestFocus();
     }//GEN-LAST:event_cmb_transaction_typeActionPerformed
 
     private void cmb_allocated_siteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_allocated_siteActionPerformed
-        // TODO add your handling code here:
+        cmb_allocated_site.getUI().setPopupVisible(cmb_allocated_site, false);
+        checkAllocation();
+        cmb_vehical.requestFocus();
     }//GEN-LAST:event_cmb_allocated_siteActionPerformed
 
     private void cmb_added_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_added_empActionPerformed
-        // TODO add your handling code here:
+        cmb_approved_emp.requestFocus();
     }//GEN-LAST:event_cmb_added_empActionPerformed
 
     private void cmb_approved_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_approved_empActionPerformed
@@ -577,6 +601,9 @@ public class Vehical_Allocation extends javax.swing.JPanel {
 
     private void loadVehicleCombo() {
         cmb_vehical.removeAll();
+        for (int i = 1; i < cmb_vehical.getItemCount(); i++) {
+            cmb_vehical.removeItemAt(i);
+        }
         try {
             List<M_Vehicle> allVehicles = vehicleController.getAllVehicles();
             if (cmb_stock_type.getSelectedIndex() == 0) {
@@ -584,15 +611,20 @@ public class Vehical_Allocation extends javax.swing.JPanel {
                     cmb_vehical.addItem(allVehicle.getVehicle_regNo());
                 }
             } else {
+                for (int i = 1; i < cmb_vehical.getItemCount(); i++) {
+                    cmb_vehical.removeItemAt(i);
+                }
                 List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
-                if (allLastAddedMainStock.size() != 0) {
+                if (!allLastAddedMainStock.isEmpty()) {
                     for (M_MainStock m_MainStock : allLastAddedMainStock) {
                         for (M_Vehicle allVehicle : allVehicles) {
-                            if (allVehicle.getVehicle_id().equalsIgnoreCase(m_MainStock.getMainStock_equipment_id())) {
+                            if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(allVehicle.getVehicle_id())) {
                                 cmb_vehical.addItem(allVehicle.getVehicle_regNo());
                             }
                         }
                     }
+                } else {
+                    JOptionPane.showMessageDialog(this, "There isn't Any Item in Main Stock.");
                 }
             }
         } catch (Exception ex) {
@@ -603,16 +635,16 @@ public class Vehical_Allocation extends javax.swing.JPanel {
     private void loadEmpCombo() {
         cmb_added_emp.removeAll();
         cmb_approved_emp.removeAll();
-        try{
+        try {
             List<M_Employee> allEmployees = employeeController.getAllEmployees();
             for (M_Employee allEmployee : allEmployees) {
                 if (allEmployee.getEmp_jobType_id() == 1) {
-                    cmb_added_emp.addItem(allEmployee.getEmp_id()+" : "+allEmployee.getEmp_firstName()+" "+allEmployee.getEmp_middleName()+" "+allEmployee.getEmp_surName());
-                    cmb_approved_emp.addItem(allEmployee.getEmp_id()+" : "+allEmployee.getEmp_firstName()+" "+allEmployee.getEmp_middleName()+" "+allEmployee.getEmp_surName());
+                    cmb_added_emp.addItem(allEmployee.getEmp_id() + " : " + allEmployee.getEmp_firstName() + " " + allEmployee.getEmp_middleName() + " " + allEmployee.getEmp_surName());
+                    cmb_approved_emp.addItem(allEmployee.getEmp_id() + " : " + allEmployee.getEmp_firstName() + " " + allEmployee.getEmp_middleName() + " " + allEmployee.getEmp_surName());
                 }
             }
- 
-        }catch (Exception ex) {
+
+        } catch (Exception ex) {
             Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -623,6 +655,354 @@ public class Vehical_Allocation extends javax.swing.JPanel {
             List<M_Project_Primary> allPrimaryProjects = projectController.getAllPrimaryProjects();
             for (M_Project_Primary allPrimaryProject : allPrimaryProjects) {
                 cmb_allocated_site.addItem(allPrimaryProject.getProject_primary_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void saveVehicleAllocation() {
+        try {
+
+            String vehicleId = vehicleController.searchVehicleByNumber(cmb_vehical.getSelectedItem().toString()).getVehicle_id();
+            String trType = cmb_transaction_type.getSelectedItem().toString();
+            Date updatedDate = dp_updated_date.getDate();
+            String comment = txt_comment.getText();
+            int addeEmp = 0;
+            if (cmb_added_emp.getSelectedIndex() != 0) {
+                addeEmp = Integer.parseInt(cmb_added_emp.getSelectedItem().toString().split(" : ")[0]);
+            }
+            int approvedEmp = 0;
+            if (cmb_approved_emp.getSelectedIndex() != 0) {
+                approvedEmp = Integer.parseInt(cmb_approved_emp.getSelectedItem().toString().split(" : ")[0]);
+            }
+            int qty = 0;
+            if (cmb_transaction_type.getSelectedIndex() == 0) {
+                qty = 1;
+            }
+
+            if (cmb_stock_type.getSelectedIndex() == 0) {
+                int mainStockId = IDGenerator.getNewID("m_mstock", "MSTOCK_ID");
+                M_MainStock mainStock = new M_MainStock(mainStockId, 0, vehicleId, "VEHICLE", updatedDate, addeEmp, qty, approvedEmp, comment, trType);
+                boolean addMainStock = mainStockController.addMainStock(mainStock);
+                if (addMainStock) {
+                    JOptionPane.showMessageDialog(this, "Vehicle Added to Main Stock Successfully..");
+                    clearFields();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Adding Vehicle to Main Stock failed.. Please Check Again..");
+                }
+            } else {
+                int siteAllocationId = IDGenerator.getNewID("t_sitealloc", "SITEALLOC_ID");
+                int siteId = projectController.searchPrimaryProjectByName(cmb_allocated_site.getSelectedItem().toString()).getProject_id();
+                T_SiteAllocation siteAllocation = new T_SiteAllocation(siteAllocationId, siteId, updatedDate, "VEHICLE", vehicleId, qty, comment, trType, addeEmp, approvedEmp);
+                boolean addSiteAllocation = siteAllocationController.addSiteAllocation(siteAllocation);
+                if (addSiteAllocation) {
+                    List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
+                    for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                        if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(vehicleId)) {
+                            m_MainStock.setMainStock_quantity(0);
+                            boolean updateMainStock = mainStockController.updateMainStock(m_MainStock);
+                            if (updateMainStock) {
+                                JOptionPane.showMessageDialog(this, "Vehicle Allocated to Site Successfully..");
+                                clearFields();
+                                break;
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Allocating Vehicle Failed.. Plaease Check Again..");
+                            }
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private void updateVehicleAllocation() {
+        try {
+
+            String vehicleId = vehicleController.searchVehicleByNumber(cmb_vehical.getSelectedItem().toString()).getVehicle_id();
+            String trType = cmb_transaction_type.getSelectedItem().toString();
+            Date updatedDate = dp_updated_date.getDate();
+            String comment = txt_comment.getText();
+            int addeEmp = 0;
+            if (cmb_added_emp.getSelectedIndex() != 0) {
+                addeEmp = Integer.parseInt(cmb_added_emp.getSelectedItem().toString().split(" : ")[0]);
+            }
+            int approvedEmp = 0;
+            if (cmb_approved_emp.getSelectedIndex() != 0) {
+                approvedEmp = Integer.parseInt(cmb_approved_emp.getSelectedItem().toString().split(" : ")[0]);
+            }
+            int qty = 0;
+            if (cmb_transaction_type.getSelectedIndex() == 0) {
+                qty = 1;
+            }
+
+            if (cmb_stock_type.getSelectedIndex() == 0) {
+                int mainStockId = mainStockGlobal.getMainStock_id();
+                M_MainStock mainStock = new M_MainStock(mainStockId, 0, vehicleId, "VEHICLE", updatedDate, addeEmp, qty, approvedEmp, comment, trType);
+                boolean updateMainStock = mainStockController.updateMainStock(mainStock);
+                if (updateMainStock) {
+                    JOptionPane.showMessageDialog(this, "Vehicle Details Updated in Main Stock Successfully..");
+                    clearFields();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Updating Vehicle Details in Main Stock failed.. Please Check Again..");
+                }
+            } else {
+                int siteAllocationId = siteAllocationGlobal.getSiteAllocation_id();
+                int siteId = projectController.searchPrimaryProjectByName(cmb_allocated_site.getSelectedItem().toString()).getProject_id();
+                T_SiteAllocation siteAllocation = new T_SiteAllocation(siteAllocationId, siteId, updatedDate, "VEHICLE", vehicleId, qty, comment, trType, addeEmp, approvedEmp);
+                boolean updateSiteAllocation = siteAllocationController.updateSiteAllocation(siteAllocation);
+                if (updateSiteAllocation) {
+                    List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
+                    for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                        if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(vehicleId)) {
+                            m_MainStock.setMainStock_quantity(0);
+                            boolean updateMainStock = mainStockController.updateMainStock(m_MainStock);
+                            if (updateMainStock) {
+                                JOptionPane.showMessageDialog(this, "Vehicle Details Updated in Site Successfully..");
+                                clearFields();
+                                break;
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Updating Vehicle Details in Site Failed.. Plaease Check Again..");
+                            }
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void clearFields() {
+        cmb_allocated_site.setSelectedIndex(0);
+        cmb_vehical.setSelectedIndex(0);
+        cmb_transaction_type.setSelectedIndex(0);
+        dp_updated_date.setDate(null);
+        txt_comment.setText("");
+        cmb_added_emp.setSelectedIndex(0);
+        cmb_approved_emp.setSelectedIndex(0);
+        btn_add_vehicle_allocation.setText("Save");
+        cmb_stock_type.setEnabled(true);
+        cmb_allocated_site.setEnabled(true);
+        cmb_vehical.setEnabled(true);
+        cmb_stock_type.requestFocus();
+    }
+
+    private void loadVehicleAllocationTable() {
+        clearFields();
+        dtmVehiAllo.setRowCount(0);
+        String upDate = "";
+        String availability = "";
+        try {
+
+            List<M_Vehicle> allVehicles = vehicleController.getAllVehicles();
+            if (cmb_stock_type.getSelectedIndex() == 0) {
+                List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
+                for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                    if (m_MainStock.getMainStock_updateDate() != null) {
+                        upDate = m_MainStock.getMainStock_updateDate().toString();
+                    }
+                    if (m_MainStock.getMainStock_quantity() == 1) {
+                        availability = "Available";
+                    } else {
+                        availability = "Not Available";
+                    }
+                    for (M_Vehicle allVehicle : allVehicles) {
+                        if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(allVehicle.getVehicle_id())) {
+                            String[] rowData = {allVehicle.getVehicle_regNo(), availability, upDate};
+                            dtmVehiAllo.addRow(rowData);
+                        }
+                    }
+                }
+            } else {
+                List<T_SiteAllocation> lastAddedSiteAllocations = siteAllocationController.getLastAddedSiteAllocations();
+                for (T_SiteAllocation lastAddedSiteAllocation : lastAddedSiteAllocations) {
+                    if (lastAddedSiteAllocation.getSiteAllocation_date() != null) {
+                        upDate = lastAddedSiteAllocation.getSiteAllocation_date().toString();
+                    }
+                    if (lastAddedSiteAllocation.getSiteAllocation_quantity() == 1) {
+                        availability = "Available";
+                    } else {
+                        availability = "Not Available";
+                    }
+                    for (M_Vehicle allVehicle : allVehicles) {
+                        if (lastAddedSiteAllocation.getSiteAllocation_itemId().equalsIgnoreCase(allVehicle.getVehicle_id())) {
+                            String[] rowData = {allVehicle.getVehicle_regNo(), availability, upDate, projectController.searchPrimaryProject(lastAddedSiteAllocation.getSiteAllocation_siteId()).getProject_primary_name()};
+                            dtmVehiAllo.addRow(rowData);
+                        }
+                    }
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadFieldsFromTable() {
+        cmb_stock_type.setEnabled(false);
+        cmb_allocated_site.setEnabled(false);
+        cmb_vehical.setEnabled(false);
+        try {
+            if (cmb_stock_type.getSelectedIndex() == 0) {
+                //cmb_stock_type.setSelectedIndex(0);
+
+                cmb_transaction_type.setSelectedItem(mainStockGlobal.getMainStock_TRType());
+                dp_updated_date.setDate(mainStockGlobal.getMainStock_updateDate());
+                txt_comment.setText(mainStockGlobal.getMainStock_description());
+                for (int i = 1; i < cmb_added_emp.getItemCount(); i++) {
+                    if (Integer.parseInt(cmb_added_emp.getItemAt(i).toString().split(" : ")[0]) == mainStockGlobal.getMainStock_addeduser_id()) {
+                        cmb_added_emp.setSelectedIndex(i);
+                        break;
+                    }
+                }
+                for (int i = 1; i < cmb_approved_emp.getItemCount(); i++) {
+                    if (Integer.parseInt(cmb_approved_emp.getItemAt(i).toString().split(" : ")[0]) == mainStockGlobal.getMainStock_approveduser_id()) {
+                        cmb_approved_emp.setSelectedIndex(i);
+                        break;
+                    }
+                }
+                cmb_vehical.setSelectedItem(vehicleController.searchVehicle(mainStockGlobal.getMainStock_equipment_id()).getVehicle_regNo());
+
+            } else {
+                //cmb_stock_type.setSelectedIndex(1);
+
+                cmb_transaction_type.setSelectedItem(siteAllocationGlobal.getSiteAllocation_TRType());
+                dp_updated_date.setDate(siteAllocationGlobal.getSiteAllocation_date());
+                txt_comment.setText(siteAllocationGlobal.getSiteAllocation_comment());
+                for (int i = 1; i < cmb_added_emp.getItemCount(); i++) {
+                    if (Integer.parseInt(cmb_added_emp.getItemAt(i).toString().split(" : ")[0]) == siteAllocationGlobal.getSiteAllocation_addedUser()) {
+                        cmb_added_emp.setSelectedIndex(i);
+                        break;
+                    }
+                }
+                for (int i = 1; i < cmb_approved_emp.getItemCount(); i++) {
+                    if (Integer.parseInt(cmb_approved_emp.getItemAt(i).toString().split(" : ")[0]) == siteAllocationGlobal.getSiteAllocation_authorizedUser()) {
+                        cmb_approved_emp.setSelectedIndex(i);
+                        break;
+                    }
+                }
+                cmb_allocated_site.setSelectedItem(projectController.searchPrimaryProject(siteAllocationGlobal.getSiteAllocation_siteId()).getProject_primary_name());
+                cmb_vehical.setSelectedItem(vehicleController.searchVehicle(siteAllocationGlobal.getSiteAllocation_itemId()).getVehicle_regNo());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void searchFromTableName() {
+        int selectedRow = tbl_vehical_table.getSelectedRow();
+        try {
+
+            String vehicleId = vehicleController.searchVehicleByNumber(dtmVehiAllo.getValueAt(selectedRow, 0).toString()).getVehicle_id();
+            if (cmb_stock_type.getSelectedIndex() == 0) {
+                List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
+                for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                    if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(vehicleId)) {
+                        mainStockGlobal = m_MainStock;
+                        break;
+                    }
+                }
+            } else {
+                List<T_SiteAllocation> lastAddedSiteAllocations = siteAllocationController.getLastAddedSiteAllocations();
+                for (T_SiteAllocation lastAddedSiteAllocation : lastAddedSiteAllocations) {
+                    if (lastAddedSiteAllocation.getSiteAllocation_itemId().equalsIgnoreCase(vehicleId)) {
+                        siteAllocationGlobal = lastAddedSiteAllocation;
+                        break;
+                    }
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void checkAllocation() {
+        if (cmb_vehical.getSelectedIndex() != 0 && btn_add_vehicle_allocation.getText().equalsIgnoreCase("Save")) {
+            try {
+                String vehicleId = vehicleController.searchVehicleByNumber(cmb_vehical.getSelectedItem().toString()).getVehicle_id();
+                if (cmb_stock_type.getSelectedIndex() == 0) {
+                    List<M_MainStock> allLastAddedMainStock = mainStockController.getAllLastAddedMainStock();
+                    for (M_MainStock m_MainStock : allLastAddedMainStock) {
+                        if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(vehicleId)) {
+                            mainStockGlobal = m_MainStock;
+                            loadAllocationFields();
+                            JOptionPane.showMessageDialog(this, "Vehicle " + cmb_vehical.getSelectedItem().toString() + " Already in the Main Stock.");
+                            break;
+                        } else {
+                            dp_updated_date.setDate(null);
+                            txt_comment.setText("");
+                            cmb_added_emp.setSelectedIndex(0);
+                            cmb_approved_emp.setSelectedIndex(0);
+                            btn_add_vehicle_allocation.setText("Save");
+                            btn_add_vehicle_allocation.setEnabled(true);
+                        }
+                    }
+                } else {
+                    if (cmb_allocated_site.getSelectedIndex() != 0 && cmb_vehical.getSelectedIndex() != 0) {
+                        List<T_SiteAllocation> lastAddedSiteAllocations = siteAllocationController.getLastAddedSiteAllocations();
+                        for (T_SiteAllocation lastAddedSiteAllocation : lastAddedSiteAllocations) {
+                            if (lastAddedSiteAllocation.getSiteAllocation_itemId().equalsIgnoreCase(vehicleId)) {
+                                siteAllocationGlobal = lastAddedSiteAllocation;
+                                loadAllocationFields();
+                                JOptionPane.showMessageDialog(this, "Vehicle " + cmb_vehical.getSelectedItem().toString() + " Already allocated to Site " + projectController.searchPrimaryProject(lastAddedSiteAllocation.getSiteAllocation_siteId()).getProject_primary_name() + ".");
+                                break;
+                            } else {
+                                dp_updated_date.setDate(null);
+                                txt_comment.setText("");
+                                cmb_added_emp.setSelectedIndex(0);
+                                cmb_approved_emp.setSelectedIndex(0);
+                                btn_add_vehicle_allocation.setText("Save");
+                                btn_add_vehicle_allocation.setEnabled(true);
+                            }
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    private void loadAllocationFields() {
+        btn_add_vehicle_allocation.setEnabled(false);
+        try {
+            if (cmb_stock_type.getSelectedIndex() == 0) {
+                dp_updated_date.setDate(mainStockGlobal.getMainStock_updateDate());
+                txt_comment.setText(mainStockGlobal.getMainStock_description());
+                for (int i = 1; i < cmb_added_emp.getItemCount(); i++) {
+                    if (Integer.parseInt(cmb_added_emp.getItemAt(i).toString().split(" : ")[0]) == mainStockGlobal.getMainStock_addeduser_id()) {
+                        cmb_added_emp.setSelectedIndex(i);
+                        break;
+                    }
+                }
+                for (int i = 1; i < cmb_approved_emp.getItemCount(); i++) {
+                    if (Integer.parseInt(cmb_approved_emp.getItemAt(i).toString().split(" : ")[0]) == mainStockGlobal.getMainStock_approveduser_id()) {
+                        cmb_approved_emp.setSelectedIndex(i);
+                        break;
+                    }
+                }
+            } else {
+                dp_updated_date.setDate(siteAllocationGlobal.getSiteAllocation_date());
+                txt_comment.setText(siteAllocationGlobal.getSiteAllocation_comment());
+                for (int i = 1; i < cmb_added_emp.getItemCount(); i++) {
+                    if (Integer.parseInt(cmb_added_emp.getItemAt(i).toString().split(" : ")[0]) == siteAllocationGlobal.getSiteAllocation_addedUser()) {
+                        cmb_added_emp.setSelectedIndex(i);
+                        break;
+                    }
+                }
+                for (int i = 1; i < cmb_approved_emp.getItemCount(); i++) {
+                    if (Integer.parseInt(cmb_approved_emp.getItemAt(i).toString().split(" : ")[0]) == siteAllocationGlobal.getSiteAllocation_authorizedUser()) {
+                        cmb_approved_emp.setSelectedIndex(i);
+                        break;
+                    }
+                }
             }
         } catch (Exception ex) {
             Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);

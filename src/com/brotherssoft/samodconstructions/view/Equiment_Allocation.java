@@ -11,6 +11,7 @@ import com.brotherssoft.samodconstructions.controller.M_MainStockController;
 import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 import com.brotherssoft.samodconstructions.controller.R_AssetCategoryController;
 import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
+import com.brotherssoft.samodconstructions.custom.AmountFieldFormat;
 import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.custom.Validation;
 import com.brotherssoft.samodconstructions.model.M_Employee;
@@ -44,6 +45,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
     DefaultTableModel dtmAllocatedEquipment;
     DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+    AmountFieldFormat fieldFormat = new AmountFieldFormat();
     M_MainStock publicMainStock = null;
     T_SiteAllocation publicSiteStock = null;
 
@@ -316,6 +318,11 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         jLabel104.setText("Quantity");
 
         txt_quantity.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_quantity.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_quantityMouseClicked(evt);
+            }
+        });
         txt_quantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_quantityActionPerformed(evt);
@@ -663,6 +670,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             lblStockInMain2.setVisible(true);
             cmb_allocated_site.setVisible(true);
             txt_available_stockInSite.setVisible(true);
+            cmb_allocated_site.requestFocus();
         } else {
             lbl_warnig1.setSize(471, 14);
             txt_available_stock.setSize(401, 26);
@@ -672,6 +680,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             lblStockInMain2.setVisible(false);
             cmb_allocated_site.setVisible(false);
             txt_available_stockInSite.setVisible(false);
+            cmb_asset_type.requestFocus();
         }
 
         laodEquipmentAllocationTable();
@@ -699,10 +708,12 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     private void txt_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantityActionPerformed
         mangeStockAmounts();
         enableAllocationFields();
+        fieldFormat.formatDecimalAmount(txt_quantity);
+        dp_updatedDate.requestFocus();
     }//GEN-LAST:event_txt_quantityActionPerformed
 
     private void dp_updatedDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_updatedDateActionPerformed
-
+        txt_sockDescription.requestFocus();
     }//GEN-LAST:event_dp_updatedDateActionPerformed
 
     private void btn_new_EquipmentStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_EquipmentStockActionPerformed
@@ -740,6 +751,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         } else {
             cmb_equipment_type.setSelectedIndex(0);
         }
+        cmb_equipment_type.requestFocus();
     }//GEN-LAST:event_cmb_asset_typeActionPerformed
 
     private void cmb_equipment_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_equipment_typeActionPerformed
@@ -752,10 +764,12 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             loadDetailsToSiteAllocation();
         }
         disableAllocationFields();
+        cmb_transaction_type.requestFocus();
     }//GEN-LAST:event_cmb_equipment_typeActionPerformed
 
     private void cmb_transaction_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_transaction_typeActionPerformed
-        // TODO add your handling code here:
+        fieldFormat.clearAmountField(txt_quantity);
+        txt_quantity.requestFocus();
     }//GEN-LAST:event_cmb_transaction_typeActionPerformed
 
     private void txt_available_stockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_available_stockActionPerformed
@@ -763,7 +777,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_available_stockActionPerformed
 
     private void cmb_addedEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_addedEmployeeActionPerformed
-        // TODO add your handling code here:
+        cmb_approvedEmployee1.requestFocus();
     }//GEN-LAST:event_cmb_addedEmployeeActionPerformed
 
     private void cmb_approvedEmployee1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_approvedEmployee1ActionPerformed
@@ -778,6 +792,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             loadDetailsToSiteAllocation();
         }
         disableAllocationFields();
+        cmb_asset_type.requestFocus();
     }//GEN-LAST:event_cmb_allocated_siteActionPerformed
 
     private void txt_available_stockInSiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_available_stockInSiteActionPerformed
@@ -807,6 +822,10 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         mangeStockAmounts();
         enableAllocationFields();
     }//GEN-LAST:event_btn_checkActionPerformed
+
+    private void txt_quantityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_quantityMouseClicked
+        fieldFormat.clearAmountField(txt_quantity);
+    }//GEN-LAST:event_txt_quantityMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1191,6 +1210,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         disableAllocationFields();
         btn_add_equipmentToMainStock.setText("Save");
         lbl_warnig1.setVisible(true);
+        cmb_stock_type.requestFocus();
     }
 
     private void loadFieldsFromSiteStock(T_SiteAllocation siteAllocation) {
