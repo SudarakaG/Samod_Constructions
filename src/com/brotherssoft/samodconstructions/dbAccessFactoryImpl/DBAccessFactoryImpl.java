@@ -33,6 +33,7 @@ import com.brotherssoft.samodconstructions.dbAccess.R_UnitDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_WorkDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_CashAllocationDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.T_RunchartDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_SiteAllocationDBAccess;
 import com.brotherssoft.samodconstructions.dbAccessFactory.DBAccessFactory;
 
@@ -190,6 +191,11 @@ public class DBAccessFactoryImpl implements DBAccessFactory{
     @Override
     public T_SiteAllocationDBAccess getSiteAllocationDBAccess() {
         return new T_SiteAllocationDBAccess();
+    }
+
+    @Override
+    public T_RunchartDBAccess getRunchartDBAccess() {
+        return new T_RunchartDBAccess();
     }
 
     

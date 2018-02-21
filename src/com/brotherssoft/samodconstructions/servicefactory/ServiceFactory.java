@@ -33,6 +33,7 @@ import com.brotherssoft.samodconstructions.service.R_UnitService;
 import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
 import com.brotherssoft.samodconstructions.service.R_WorkService;
 import com.brotherssoft.samodconstructions.service.T_CashAllocationService;
+import com.brotherssoft.samodconstructions.service.T_RunchartService;
 import com.brotherssoft.samodconstructions.service.T_SiteAllocationService;
 
 /**
@@ -70,5 +71,6 @@ public interface ServiceFactory {
     public T_CashAllocationService getCashAllocationService();
     public M_MainStockService getMainStockService();
     public T_SiteAllocationService getSiteAllocationService();
+    public T_RunchartService getRunchartService();
     
 }

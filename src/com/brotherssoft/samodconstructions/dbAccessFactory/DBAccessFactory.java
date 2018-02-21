@@ -33,6 +33,7 @@ import com.brotherssoft.samodconstructions.dbAccess.R_UnitDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_WorkDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_CashAllocationDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.T_RunchartDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_SiteAllocationDBAccess;
 
 /**
@@ -70,5 +71,6 @@ public interface DBAccessFactory {
     public T_CashAllocationDBAccess getCashAllocationDBAccess();
     public M_MainStockDBAccess getMainStockDBAccess();
     public T_SiteAllocationDBAccess getSiteAllocationDBAccess();
+    public T_RunchartDBAccess getRunchartDBAccess();
     
 }

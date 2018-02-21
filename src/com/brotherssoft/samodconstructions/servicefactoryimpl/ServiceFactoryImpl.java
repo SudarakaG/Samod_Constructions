@@ -33,6 +33,7 @@ import com.brotherssoft.samodconstructions.service.R_UnitService;
 import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
 import com.brotherssoft.samodconstructions.service.R_WorkService;
 import com.brotherssoft.samodconstructions.service.T_CashAllocationService;
+import com.brotherssoft.samodconstructions.service.T_RunchartService;
 import com.brotherssoft.samodconstructions.service.T_SiteAllocationService;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 
@@ -188,6 +189,11 @@ public class ServiceFactoryImpl implements ServiceFactory{
     @Override
     public T_SiteAllocationService getSiteAllocationService() {
         return new T_SiteAllocationService();
+    }
+
+    @Override
+    public T_RunchartService getRunchartService() {
+        return new T_RunchartService();
     }
     
 }

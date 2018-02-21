@@ -59,11 +59,13 @@ import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryControlle
 import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
 import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
+import com.brotherssoft.samodconstructions.controller.T_RunchartController;
 import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
 import com.brotherssoft.samodconstructions.controllerimpl.M_MainStockControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_Project_SecondaryControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_Project_ThirdControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.T_CashAllocationControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.T_RunchartControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.T_SiteAllocationControllerImpl;
 
 /**
@@ -219,6 +221,11 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     @Override
     public T_SiteAllocationController getSiteAllocationController() throws Exception {
         return new T_SiteAllocationControllerImpl();
+    }
+
+    @Override
+    public T_RunchartController getRunchartController() throws Exception {
+        return new T_RunchartControllerImpl();
     }
     
 }
