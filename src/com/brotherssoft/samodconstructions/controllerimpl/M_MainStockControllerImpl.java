@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.controllerimpl;
 
 import com.brotherssoft.samodconstructions.controller.M_MainStockController;
 import com.brotherssoft.samodconstructions.model.M_MainStock;
+import com.brotherssoft.samodconstructions.reservation.M_MainStockReserver;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
@@ -19,6 +20,7 @@ import java.util.List;
 public class M_MainStockControllerImpl extends UnicastRemoteObject implements M_MainStockController{
     
     private final ServiceFactory sf;
+    private static final M_MainStockReserver MAIN_STOCK_RESERVER = new M_MainStockReserver();
 
     public M_MainStockControllerImpl() throws Exception{
         this.sf = new ServiceFactoryImpl();
@@ -67,6 +69,16 @@ public class M_MainStockControllerImpl extends UnicastRemoteObject implements M_
     @Override
     public boolean updateMainStockQuantity(String itemId, double quatity) throws Exception {
         return sf.getMainStockService().updateMainStockQuantity(itemId, quatity);
+    }
+
+    @Override
+    public boolean reserveMainStock(int id) throws Exception {
+        return MAIN_STOCK_RESERVER.reserveMainStock(id, this);
+    }
+
+    @Override
+    public boolean releaseMainStock(int id) throws Exception {
+        return MAIN_STOCK_RESERVER.releaseMainStock(id, this);
     }
     
     

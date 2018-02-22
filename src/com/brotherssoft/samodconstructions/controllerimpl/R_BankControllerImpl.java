@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.controllerimpl;
 
 import com.brotherssoft.samodconstructions.controller.R_BankController;
 import com.brotherssoft.samodconstructions.model.R_Bank;
+import com.brotherssoft.samodconstructions.reservation.R_BankReserver;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
@@ -19,6 +20,7 @@ import java.util.List;
 public class R_BankControllerImpl extends UnicastRemoteObject implements R_BankController{
 
     private final ServiceFactory sf;
+    private static final R_BankReserver BANK_RESERVER = new R_BankReserver();
     
     public R_BankControllerImpl() throws Exception{
         this.sf = new ServiceFactoryImpl();
@@ -58,6 +60,16 @@ public class R_BankControllerImpl extends UnicastRemoteObject implements R_BankC
     @Override
     public List<R_Bank> getAllBanksByLetter(String phrase) throws Exception {
         return sf.getBankService().getAllBanksByLetter(phrase);
+    }
+
+    @Override
+    public boolean reserveBank(int id) throws Exception {
+        return BANK_RESERVER.reserveBank(id, this);
+    }
+
+    @Override
+    public boolean releaseBank(int id) throws Exception {
+        return BANK_RESERVER.releaseBank(id, this);
     }
     
     

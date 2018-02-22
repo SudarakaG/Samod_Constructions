@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.controllerimpl;
 
 import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.model.M_Account;
+import com.brotherssoft.samodconstructions.reservation.M_AccountReserver;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
@@ -19,6 +20,7 @@ import java.util.List;
 public class M_AccountControllerImpl extends UnicastRemoteObject implements M_AccountController{
 
     private final ServiceFactory sf;
+    private static final M_AccountReserver ar = new M_AccountReserver();
     
     public M_AccountControllerImpl() throws Exception{
         this.sf = new ServiceFactoryImpl();
@@ -58,6 +60,15 @@ public class M_AccountControllerImpl extends UnicastRemoteObject implements M_Ac
     public List<M_Account> getAllAccountsByLetter(String phrase) throws Exception {
         return sf.getAccountService().getAllAccountsByLetter(phrase);
     }
-    
-    
+
+    @Override
+    public boolean reserveAccount(int id) throws Exception {
+        return ar.reserveAccount(id, this);
+    }
+
+    @Override
+    public boolean releaseAccount(int id) throws Exception {
+        return ar.releaseAccount(id, this);
+    }
+
 }

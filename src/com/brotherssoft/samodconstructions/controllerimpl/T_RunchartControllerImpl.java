@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.controllerimpl;
 
 import com.brotherssoft.samodconstructions.controller.T_RunchartController;
 import com.brotherssoft.samodconstructions.model.T_Runchart;
+import com.brotherssoft.samodconstructions.reservation.T_RunchartReserver;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
@@ -20,6 +21,7 @@ import java.util.List;
 public class T_RunchartControllerImpl extends UnicastRemoteObject implements T_RunchartController{
 
     private final ServiceFactory sf;
+    private static final T_RunchartReserver RUNCHART_RESERVER = new T_RunchartReserver();
     
     public T_RunchartControllerImpl() throws Exception{
         this.sf = new ServiceFactoryImpl();
@@ -58,6 +60,16 @@ public class T_RunchartControllerImpl extends UnicastRemoteObject implements T_R
     @Override
     public T_Runchart searchRunchart(String vNo, Date rDate, String sTime, String eTime) throws Exception {
         return sf.getRunchartService().searchRunchart(vNo, rDate, sTime, eTime);
+    }
+
+    @Override
+    public boolean reserveRunchart(int id) throws Exception {
+        return RUNCHART_RESERVER.reserveRunchart(id, this);
+    }
+
+    @Override
+    public boolean releaseRunchart(int id) throws Exception {
+        return RUNCHART_RESERVER.releaseRunchart(id, this);
     }
     
 }

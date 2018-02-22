@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.controllerimpl;
 
 import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
 import com.brotherssoft.samodconstructions.model.T_SiteAllocation;
+import com.brotherssoft.samodconstructions.reservation.T_SiteAllocationReserver;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
@@ -19,6 +20,7 @@ import java.util.List;
 public class T_SiteAllocationControllerImpl extends UnicastRemoteObject implements T_SiteAllocationController{
     
     private final ServiceFactory sf;
+    private static final T_SiteAllocationReserver SITE_ALLOCATION_RESERVER = new T_SiteAllocationReserver();
 
     public T_SiteAllocationControllerImpl() throws Exception{
         this.sf = new ServiceFactoryImpl();
@@ -62,6 +64,16 @@ public class T_SiteAllocationControllerImpl extends UnicastRemoteObject implemen
     @Override
     public List<T_SiteAllocation> getLastAddedSiteAllocations() throws Exception {
         return sf.getSiteAllocationService().getAllLastAddedSiteAllocations();
+    }
+
+    @Override
+    public boolean reserveSiteAllocation(int id) throws Exception {
+        return SITE_ALLOCATION_RESERVER.reserveSiteAllocation(id, this);
+    }
+
+    @Override
+    public boolean releaseSiteAllocation(int id) throws Exception {
+        return SITE_ALLOCATION_RESERVER.releaseSiteAllocation(id, this);
     }
     
     

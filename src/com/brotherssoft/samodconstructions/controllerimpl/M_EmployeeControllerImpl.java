@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.controllerimpl;
 
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
 import com.brotherssoft.samodconstructions.model.M_Employee;
+import com.brotherssoft.samodconstructions.reservation.M_EmployeeReserver;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
@@ -19,6 +20,7 @@ import java.util.List;
 public class M_EmployeeControllerImpl extends UnicastRemoteObject implements M_EmployeeController {
 
     private final ServiceFactory sf;
+    private static final M_EmployeeReserver er = new M_EmployeeReserver();
 
     public M_EmployeeControllerImpl()throws Exception{this.sf = new ServiceFactoryImpl();
 }
@@ -71,6 +73,16 @@ public class M_EmployeeControllerImpl extends UnicastRemoteObject implements M_E
     @Override
     public List<M_Employee> getAllEmployeesByLetter(String phrase) throws Exception {
         return sf.getEmployeeService().getAllEmployeesByLetter(phrase);
+    }
+
+    @Override
+    public boolean reserveEmployee(int id) throws Exception {
+        return er.reserveEmployee(id, this);
+    }
+
+    @Override
+    public boolean releaseEmployee(int id) throws Exception {
+        return er.releaseEmployee(id, this);
     }
 
     

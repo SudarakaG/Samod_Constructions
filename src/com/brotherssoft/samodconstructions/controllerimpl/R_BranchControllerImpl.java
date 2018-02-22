@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.controllerimpl;
 
 import com.brotherssoft.samodconstructions.controller.R_BranchController;
 import com.brotherssoft.samodconstructions.model.R_Branch;
+import com.brotherssoft.samodconstructions.reservation.R_BranchReserver;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
@@ -19,6 +20,7 @@ import java.util.List;
 public class R_BranchControllerImpl extends UnicastRemoteObject implements R_BranchController{
     
     private final ServiceFactory sf;
+    private static final R_BranchReserver BRANCH_RESERVER = new R_BranchReserver();
     
     public R_BranchControllerImpl()throws Exception{
         this.sf = new ServiceFactoryImpl();
@@ -63,6 +65,16 @@ public class R_BranchControllerImpl extends UnicastRemoteObject implements R_Bra
     @Override
     public List<R_Branch> getAllBranchesByLetter(String phrase) throws Exception {
         return sf.getBranchService().getAllBranchesByLetter(phrase);
+    }
+
+    @Override
+    public boolean reserveBranch(int id) throws Exception {
+        return BRANCH_RESERVER.reserveBranch(id, this);
+    }
+
+    @Override
+    public boolean releaseBranch(int id) throws Exception {
+        return BRANCH_RESERVER.releaseBranch(id, this);
     }
     
 }

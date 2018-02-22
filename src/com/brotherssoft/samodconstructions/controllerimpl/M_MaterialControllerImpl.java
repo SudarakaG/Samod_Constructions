@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.controllerimpl;
 
 import com.brotherssoft.samodconstructions.controller.M_MaterialController;
 import com.brotherssoft.samodconstructions.model.M_Material;
+import com.brotherssoft.samodconstructions.reservation.M_MaterialReserver;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
@@ -19,6 +20,7 @@ import java.util.List;
 public class M_MaterialControllerImpl extends UnicastRemoteObject implements M_MaterialController{
 
     private final ServiceFactory sf;
+    private static final M_MaterialReserver MATERIAL_RESERVER = new M_MaterialReserver();
     
     public M_MaterialControllerImpl() throws Exception{
         this.sf = new ServiceFactoryImpl();
@@ -57,6 +59,16 @@ public class M_MaterialControllerImpl extends UnicastRemoteObject implements M_M
     @Override
     public List<M_Material> getAllMaterialsByLetter(String phrase) throws Exception {
         return sf.getMaterialService().getAllMaterialsByLetter(phrase);
+    }
+
+    @Override
+    public boolean reserveMaterial(String id) throws Exception {
+        return MATERIAL_RESERVER.reserveMaterial(id, this);
+    }
+
+    @Override
+    public boolean releaseMaterial(String id) throws Exception {
+        return MATERIAL_RESERVER.releaseMaterial(id, this);
     }
     
     

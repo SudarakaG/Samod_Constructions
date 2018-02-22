@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.controllerimpl;
 
 import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
 import com.brotherssoft.samodconstructions.model.T_CashRequest;
+import com.brotherssoft.samodconstructions.reservation.T_CashAllocationReserver;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
@@ -19,6 +20,7 @@ import java.util.List;
 public class T_CashAllocationControllerImpl extends UnicastRemoteObject implements T_CashAllocationController{
 
     private final ServiceFactory sf;
+    private static final T_CashAllocationReserver CASH_ALLOCATION_RESERVER = new T_CashAllocationReserver();
     
     public T_CashAllocationControllerImpl() throws Exception{
         this.sf = new ServiceFactoryImpl();
@@ -57,6 +59,16 @@ public class T_CashAllocationControllerImpl extends UnicastRemoteObject implemen
     @Override
     public List<T_CashRequest> getAllCashAllocationsByLetter(int empId) throws Exception {
         return sf.getCashAllocationService().getAllCashAllocationsByLetter(empId);
+    }
+
+    @Override
+    public boolean reserveCashAllocation(int id) throws Exception {
+        return CASH_ALLOCATION_RESERVER.reserveCashAllocation(id, this);
+    }
+
+    @Override
+    public boolean releaseCashAllocation(int id) throws Exception {
+        return CASH_ALLOCATION_RESERVER.releaseCashAllocation(id, this);
     }
     
     

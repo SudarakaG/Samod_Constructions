@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.controllerimpl;
 
 import com.brotherssoft.samodconstructions.controller.M_EquipmentController;
 import com.brotherssoft.samodconstructions.model.M_Equipment;
+import com.brotherssoft.samodconstructions.reservation.M_EquipmentReserver;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
@@ -19,6 +20,7 @@ import java.util.List;
 public class M_EquipmentControllerImpl extends UnicastRemoteObject implements M_EquipmentController{
 
     private final ServiceFactory sf;
+    private static final M_EquipmentReserver EQUIPMENT_RESERVER = new M_EquipmentReserver();
     
     public M_EquipmentControllerImpl() throws Exception{
         this.sf = new ServiceFactoryImpl();
@@ -57,6 +59,16 @@ public class M_EquipmentControllerImpl extends UnicastRemoteObject implements M_
     @Override
     public List<M_Equipment> getAllEquipmentsByLetter(String phrase) throws Exception {
         return sf.getEquipmentService().getAllEquipmentsByLetter(phrase);
+    }
+
+    @Override
+    public boolean reserveEquipment(String id) throws Exception {
+        return EQUIPMENT_RESERVER.reserveEquipment(id, this);
+    }
+
+    @Override
+    public boolean releaseEquipment(String id) throws Exception {
+        return EQUIPMENT_RESERVER.releaseEquipment(id, this);
     }
     
     

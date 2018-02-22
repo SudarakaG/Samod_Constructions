@@ -11,6 +11,7 @@ import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
+import com.brotherssoft.samodconstructions.reservation.M_ProjectReserver;
 
 /**
  *
@@ -19,6 +20,7 @@ import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryControlle
 public class M_Project_PrimaryControllerImpl extends UnicastRemoteObject implements M_Project_PrimaryController{
 
     private final ServiceFactory sf;
+    private static final M_ProjectReserver PROJECT_RESERVER = new M_ProjectReserver();
     
     public M_Project_PrimaryControllerImpl() throws Exception{
         this.sf = new ServiceFactoryImpl();
@@ -58,6 +60,16 @@ public class M_Project_PrimaryControllerImpl extends UnicastRemoteObject impleme
     @Override
     public List<M_Project_Primary> getAllPrimaryProjectsByLetter(String phrase) throws Exception {
         return sf.getPrimary_ProjectService().getAllPrimaryProjectsByLetter(phrase);
+    }
+
+    @Override
+    public boolean reserveProject(int id) throws Exception {
+        return PROJECT_RESERVER.reserveProject(id, this);
+    }
+
+    @Override
+    public boolean releaseProject(int id) throws Exception {
+        return PROJECT_RESERVER.releaseProject(id, this);
     }
     
 }

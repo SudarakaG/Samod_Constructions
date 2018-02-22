@@ -7,6 +7,7 @@ package com.brotherssoft.samodconstructions.controllerimpl;
 
 import com.brotherssoft.samodconstructions.controller.M_VehicleController;
 import com.brotherssoft.samodconstructions.model.M_Vehicle;
+import com.brotherssoft.samodconstructions.reservation.M_VehicleReserver;
 import com.brotherssoft.samodconstructions.servicefactory.ServiceFactory;
 import com.brotherssoft.samodconstructions.servicefactoryimpl.ServiceFactoryImpl;
 import java.rmi.server.UnicastRemoteObject;
@@ -19,6 +20,7 @@ import java.util.List;
 public class M_VehicleControllerImpl extends UnicastRemoteObject implements M_VehicleController{
 
     private final ServiceFactory sf;
+    private static final M_VehicleReserver VEHICLE_RESERVER = new M_VehicleReserver();
     
     public M_VehicleControllerImpl() throws Exception{
         this.sf = new ServiceFactoryImpl();
@@ -57,6 +59,16 @@ public class M_VehicleControllerImpl extends UnicastRemoteObject implements M_Ve
     @Override
     public List<M_Vehicle> getAllVehiclesByLetter(String phrase) throws Exception {
         return sf.getVehicleService().getAllVehiclesByLetter(phrase);
+    }
+
+    @Override
+    public boolean reserveVehicle(String id) throws Exception {
+        return VEHICLE_RESERVER.reserveVehicle(id, this);
+    }
+
+    @Override
+    public boolean releaseVehicle(String id) throws Exception {
+        return VEHICLE_RESERVER.releaseVehicle(id, this);
     }
     
     
