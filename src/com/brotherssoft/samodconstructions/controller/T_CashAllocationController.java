@@ -23,4 +23,6 @@ public interface T_CashAllocationController extends Remote{
     public T_CashRequest searchCashAllocationByRequestedEmployee(int empId)throws Exception;
     public List<T_CashRequest> getAllCashAllocationsByLetter(int empId)throws Exception;
     
+    public boolean reserveCashAllocation(int id)throws Exception;
+    public boolean releaseCashAllocation(int id)throws Exception;
 }

@@ -24,4 +24,6 @@ public interface T_RunchartController extends Remote{
     public List<T_Runchart> getAllLastAddedRuncharts()throws Exception;
     public T_Runchart searchRunchart(String vNo,Date rDate,String sTime,String eTime)throws Exception;
     
+    public boolean reserveRunchart(int id)throws Exception;
+    public boolean releaseRunchart(int id)throws Exception;
 }

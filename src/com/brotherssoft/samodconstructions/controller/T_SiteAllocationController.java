@@ -22,4 +22,8 @@ public interface T_SiteAllocationController extends Remote{
     public List<T_SiteAllocation> getSiteAllocations()throws Exception;
     public List<T_SiteAllocation> getSiteAllocationsByItem(String itemId)throws Exception;
     public List<T_SiteAllocation> getLastAddedSiteAllocations()throws Exception;
+    
+    public boolean reserveSiteAllocation(int id)throws Exception;
+    public boolean releaseSiteAllocation(int id)throws Exception;
+    
 }

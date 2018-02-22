@@ -24,4 +24,7 @@ public interface M_MaterialController extends Remote{
     public M_Material searchMaterialByName(String name)throws Exception;
     public List<M_Material> getAllMaterialsByLetter(String phrase)throws Exception;
     
+    public boolean reserveMaterial(String id)throws Exception;
+    public boolean releaseMaterial(String id)throws Exception;
+    
 }

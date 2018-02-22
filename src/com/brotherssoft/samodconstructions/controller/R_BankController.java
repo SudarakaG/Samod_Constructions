@@ -23,4 +23,6 @@ public interface R_BankController extends Remote{
     public R_Bank searchBankByName(String name)throws Exception;
     public List<R_Bank> getAllBanksByLetter(String phrase)throws Exception;
     
+    public boolean reserveBank(int id)throws Exception;
+    public boolean releaseBank(int id)throws Exception;
 }

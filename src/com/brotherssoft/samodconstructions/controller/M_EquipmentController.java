@@ -24,4 +24,7 @@ public interface M_EquipmentController extends Remote{
     public M_Equipment searchEquipmentByName(String name)throws Exception;
     public List<M_Equipment> getAllEquipmentsByLetter(String phrase)throws Exception;
     
+    public boolean reserveEquipment(String id)throws Exception;
+    public boolean releaseEquipment(String id)throws Exception;
+    
 }

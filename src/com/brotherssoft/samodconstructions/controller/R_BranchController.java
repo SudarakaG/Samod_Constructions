@@ -25,4 +25,6 @@ public interface R_BranchController extends Remote{
     public R_Branch searchBranch(String branchName, int bankId)throws Exception;
     public List<R_Branch> getAllBranchesByLetter(String phrase)throws Exception;
     
+    public boolean reserveBranch(int id)throws Exception;
+    public boolean releaseBranch(int id)throws Exception;
 }

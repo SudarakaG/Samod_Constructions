@@ -23,4 +23,6 @@ public interface M_Project_PrimaryController extends Remote{
     public M_Project_Primary searchPrimaryProjectByName(String name)throws Exception;
     public List<M_Project_Primary> getAllPrimaryProjectsByLetter(String phrase)throws Exception;
     
+    public boolean reserveProject(int id)throws Exception;
+    public boolean releaseProject(int id)throws Exception;
 }

@@ -23,4 +23,6 @@ public interface M_VehicleController extends Remote{
     public List<M_Vehicle> getAllVehicles()throws Exception;
     public List<M_Vehicle> getAllVehiclesByLetter(String phrase)throws Exception;
     
+    public boolean reserveVehicle(String id)throws Exception;
+    public boolean releaseVehicle(String id)throws Exception;
 }
