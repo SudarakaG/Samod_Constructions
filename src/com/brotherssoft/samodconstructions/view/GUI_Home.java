@@ -5,6 +5,7 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.custom.ReleaseAllReservation;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -1235,6 +1236,9 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable25.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable25.setText("Expences");
         master_detail_home_lable25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable25MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable25MouseEntered(evt);
             }
@@ -1269,6 +1273,9 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable26.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable26.setText("Income - Expences Approval");
         master_detail_home_lable26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable26MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable26MouseEntered(evt);
             }
@@ -1324,6 +1331,9 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable27.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable27.setText("Report Module");
         master_detail_home_lable27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable27MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable27MouseEntered(evt);
             }
@@ -1781,6 +1791,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable4MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Bank_Panel bp = new Bank_Panel(2);
             panelManager(bp);
         } catch (Exception ex) {
@@ -1790,6 +1801,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable5MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Bank_Panel bp = new Bank_Panel(1);
             panelManager(bp);
         } catch (Exception ex) {
@@ -1799,6 +1811,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable10MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Company_Account_Registration_Panel carp = new Company_Account_Registration_Panel();
             panelManager(carp);
         } catch (Exception ex) {
@@ -1808,6 +1821,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable8MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Employee_Salary es = new Employee_Salary();
             panelManager(es);
         } catch (Exception ex) {
@@ -1817,6 +1831,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable6MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Employee_Panel employee_Panel = new Employee_Panel();
             panelManager(employee_Panel);
         } catch (Exception ex) {
@@ -1826,6 +1841,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable7MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Equipment_Registration_Panel panel = new Equipment_Registration_Panel();
             panelManager(panel);
         } catch (Exception ex) {
@@ -1835,6 +1851,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable14MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Equiment_Allocation allocation_Panel = new Equiment_Allocation();
             panelManager(allocation_Panel);
         } catch (Exception ex) {
@@ -1844,6 +1861,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable16MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Meterial_Allocation smap = new Meterial_Allocation();
             panelManager(smap);
         } catch (Exception ex) {
@@ -1854,6 +1872,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable1MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Project_Primary_Panel panel = new Project_Primary_Panel();
             panelManager(panel);
         } catch (Exception ex) {
@@ -1864,6 +1883,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable2MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Project_Secondery_Panel panel = new Project_Secondery_Panel();
             panelManager(panel);
         } catch (Exception ex) {
@@ -1873,6 +1893,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable3MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Project_Tertiary_Panel panel = new Project_Tertiary_Panel();
             panelManager(panel);
         } catch (Exception ex) {
@@ -1882,6 +1903,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable12MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Vehical_Registration_Panel panel = new Vehical_Registration_Panel();
             panelManager(panel);
         } catch (Exception ex) {
@@ -1891,6 +1913,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable13MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Meterial_Registration_Panel mrp = new Meterial_Registration_Panel();
             panelManager(mrp);
         } catch (Exception ex) {
@@ -1900,6 +1923,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable11MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Work_Registration_Panel panel = new Work_Registration_Panel();
             panelManager(panel);
         } catch (Exception ex) {
@@ -1909,6 +1933,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable9MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Purchaser_Registration_Panel panel = new Purchaser_Registration_Panel();
             panelManager(panel);
         } catch (Exception ex) {
@@ -1917,12 +1942,18 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lable9MouseClicked
 
     private void master_detail_home_lableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lableMouseClicked
-        Home_Panel home_Panel = new Home_Panel();
-        panelManager(home_Panel);
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+            Home_Panel home_Panel = new Home_Panel();
+            panelManager(home_Panel);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lableMouseClicked
 
     private void master_detail_home_lable15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable15MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Vehical_Allocation allocation = new Vehical_Allocation();
             panelManager(allocation);
         } catch (Exception ex) {
@@ -1932,6 +1963,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable17MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Cash_Allocated allocated = new Cash_Allocated();
             panelManager(allocated);
         } catch (Exception ex) {
@@ -1949,6 +1981,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_home_lable28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable28MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Developers d = new Developers();
             panelManager(d);
         } catch (Exception ex) {
@@ -1957,17 +1990,28 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lable28MouseClicked
 
     private void master_detail_home_lable18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable18MouseClicked
-        Employee_Attendence  attendence = new Employee_Attendence();
-        panelManager(attendence);
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+            Employee_Attendence  attendence = new Employee_Attendence();
+            panelManager(attendence);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable18MouseClicked
 
     private void master_detail_home_lable19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable19MouseClicked
-        Employee_Attendence_Approval approval = new Employee_Attendence_Approval();
-        panelManager(approval);
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+            Employee_Attendence_Approval approval = new Employee_Attendence_Approval();
+            panelManager(approval);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable19MouseClicked
 
     private void master_detail_home_lable20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable20MouseClicked
         try {
+            ReleaseAllReservation.releaseAllReservation();
             Running_Chart chart = new Running_Chart();
             panelManager(chart);
         } catch (Exception ex) {
@@ -1976,24 +2020,68 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lable20MouseClicked
 
     private void master_detail_home_lable21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable21MouseClicked
-        Office_Salary_Payment osp = new Office_Salary_Payment();
-        panelManager(osp);
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+            Office_Salary_Payment osp = new Office_Salary_Payment();
+            panelManager(osp);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable21MouseClicked
 
     private void master_detail_home_lable22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable22MouseClicked
-       Office_Salary_Approval approval = new Office_Salary_Approval();
-        panelManager(approval);
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+            Office_Salary_Approval approval = new Office_Salary_Approval();
+            panelManager(approval);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable22MouseClicked
 
     private void master_detail_home_lable23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable23MouseClicked
-        Project_Salary_Payment payment = new Project_Salary_Payment();
-        panelManager(payment);
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+            Project_Salary_Payment payment = new Project_Salary_Payment();
+            panelManager(payment);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable23MouseClicked
 
     private void master_detail_home_lable24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable24MouseClicked
-        Income income = new Income();
-        panelManager(income);
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+            Income income = new Income();
+            panelManager(income);
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_home_lable24MouseClicked
+
+    private void master_detail_home_lable25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable25MouseClicked
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_master_detail_home_lable25MouseClicked
+
+    private void master_detail_home_lable26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable26MouseClicked
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_master_detail_home_lable26MouseClicked
+
+    private void master_detail_home_lable27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable27MouseClicked
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_master_detail_home_lable27MouseClicked
 
     /**
      * @param args the command line arguments

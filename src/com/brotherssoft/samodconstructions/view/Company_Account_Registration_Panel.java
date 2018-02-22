@@ -35,6 +35,9 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
     R_BranchController branchController;
 
     DefaultTableModel dtmcomAccount;
+    
+    public static int accountIdPub;
+    
 
     /**
      * Creates new form Company_Account_Registration_Panel
@@ -51,6 +54,7 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
         loadToBankCombo();
         loadToAccountTypeCombo();
         loadCompanyAccountTable();
+        
     }
 
     /**
@@ -89,6 +93,11 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
 
         Company_Account_Registration.setBackground(new java.awt.Color(255, 255, 255));
         Company_Account_Registration.setPreferredSize(new java.awt.Dimension(1050, 710));
+        Company_Account_Registration.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                Company_Account_RegistrationComponentHidden(evt);
+            }
+        });
 
         bank_panel_hedding2.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -416,7 +425,6 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
         } else {
             updateCompanyAccount();
         }
-        clearFields();
     }//GEN-LAST:event_btn_acc_saveActionPerformed
 
     private void cmb_CAR_BankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_CAR_BankActionPerformed
@@ -431,20 +439,20 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_cmb_CAR_BankItemStateChanged
 
     private void tbl_accMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_accMouseClicked
+        clearFields();
         loadFromAccountTable(searchByTableAccountNo());
         txt_acc_search.setText("Search Account");
         txt_acc_search.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_accMouseClicked
 
     private void btn_acc_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_acc_newActionPerformed
-        cmb_CAR_Bank.setSelectedIndex(0);
-        cmb_CAR_Branch.setSelectedIndex(0);
-        txt_acc_no.setText("");
-        txt_acc_name.setText("");
-        cmb_CAR_Acc_Type.setSelectedIndex(0);
-        cmb_acc_states.setSelectedIndex(0);
-
-        btn_acc_save.setText("Save");
+        clearFields();
+        
+            try {
+                accountController.releaseAccount(accountIdPub);
+            } catch (Exception ex) {
+                Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_btn_acc_newActionPerformed
 
     private void txt_acc_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_acc_searchMouseClicked
@@ -492,17 +500,21 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
             try {
                 M_Account searchAccount = accountController.searchAccount(txt_acc_no.getText());
                 if (searchAccount != null && searchAccount.getAccount_branch_id() == branchController.searchBranch(cmb_CAR_Branch.getSelectedItem().toString(), bankController.searchBankByName(cmb_CAR_Bank.getSelectedItem().toString()).getBank_id()).getBranch_id()) {
-                    JOptionPane.showMessageDialog(this, "An Account Already Created in "+cmb_CAR_Bank.getSelectedItem().toString()+" @ "+cmb_CAR_Branch.getSelectedItem().toString()+" Branch");
+                    JOptionPane.showMessageDialog(this, "An Account Already Created in " + cmb_CAR_Bank.getSelectedItem().toString() + " @ " + cmb_CAR_Branch.getSelectedItem().toString() + " Branch");
                     loadFromAccountTable(searchAccount);
                 }
             } catch (Exception ex) {
                 Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Please Select the Bank & Branch");
             cmb_CAR_Bank.requestFocus();
         }
     }//GEN-LAST:event_txt_acc_noKeyReleased
+
+    private void Company_Account_RegistrationComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_Company_Account_RegistrationComponentHidden
+        
+    }//GEN-LAST:event_Company_Account_RegistrationComponentHidden
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -533,38 +545,38 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void saveCompanyAccount() {
-        if(cmb_CAR_Bank.getSelectedIndex() != 0 && cmb_CAR_Branch.getSelectedIndex() != 0 && cmb_CAR_Acc_Type.getSelectedIndex() != 0){
-        try {
-            
-            int accountId = IDGenerator.getNewID("m_account", "ACCOUNT_ID");
-            int bankId = bankController.searchBankByName(cmb_CAR_Bank.getSelectedItem().toString()).getBank_id();
-            int branchId = branchController.searchBranch(cmb_CAR_Branch.getSelectedItem().toString(), bankId).getBranch_id();
-            String accountNo = txt_acc_no.getText();
-            int accTypeId = accountTypeController.searchAccountType(cmb_CAR_Acc_Type.getSelectedItem().toString()).getAccountType_id();
-            String accountStatus = null;
-            if (cmb_acc_states.getSelectedIndex() == 0) {
-                accountStatus = "A";
-            } else {
-                accountStatus = "I";
-            }
-            String accountName = txt_acc_name.getText();
+        if (cmb_CAR_Bank.getSelectedIndex() != 0 && cmb_CAR_Branch.getSelectedIndex() != 0 && cmb_CAR_Acc_Type.getSelectedIndex() != 0) {
+            try {
 
-            M_Account account = new M_Account(accountId, bankId, branchId, accountNo, accTypeId, accountStatus, accountName);
-            boolean addAccount = accountController.addAccount(account);
-            if (addAccount) {
-                JOptionPane.showMessageDialog(this, "Company Account Details Saved Successfully..");
-            } else {
-                JOptionPane.showMessageDialog(this, "Account Details Cannot Save..");
-            }
+                int accountId = IDGenerator.getNewID("m_account", "ACCOUNT_ID");
+                int bankId = bankController.searchBankByName(cmb_CAR_Bank.getSelectedItem().toString()).getBank_id();
+                int branchId = branchController.searchBranch(cmb_CAR_Branch.getSelectedItem().toString(), bankId).getBranch_id();
+                String accountNo = txt_acc_no.getText();
+                int accTypeId = accountTypeController.searchAccountType(cmb_CAR_Acc_Type.getSelectedItem().toString()).getAccountType_id();
+                String accountStatus = null;
+                if (cmb_acc_states.getSelectedIndex() == 0) {
+                    accountStatus = "A";
+                } else {
+                    accountStatus = "I";
+                }
+                String accountName = txt_acc_name.getText();
 
-        } catch (Exception ex) {
-            Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }else{
+                M_Account account = new M_Account(accountId, bankId, branchId, accountNo, accTypeId, accountStatus, accountName);
+                boolean addAccount = accountController.addAccount(account);
+                if (addAccount) {
+                    JOptionPane.showMessageDialog(this, "Company Account Details Saved Successfully..");
+                    clearFields();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Account Details Cannot Save..");
+                }
+
+            } catch (Exception ex) {
+                Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
             JOptionPane.showMessageDialog(this, "Please Check that the Bank , Branch & Account Type are Selected");
             cmb_CAR_Bank.requestFocus();
         }
-        
 
         loadCompanyAccountTable();
 
@@ -641,56 +653,67 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
     }
 
     private void loadFromAccountTable(M_Account account) {
-        try {
+            try {
+                if(accountController.reserveAccount(account.getAccount_id())){
+                cmb_CAR_Bank.setSelectedItem(bankController.searchBank(account.getAccount_bank_id()).getBank_name());
+                cmb_CAR_Branch.setSelectedItem(branchController.searchBranch(account.getAccount_branch_id()).getBranch_name());
+                txt_acc_no.setText(account.getAccount_accountNo());
+                txt_acc_name.setText(account.getAccount_accountName());
+                cmb_CAR_Acc_Type.setSelectedItem(accountTypeController.searchAccountType(account.getAccount_accountType_id()).getAccountType_name());
 
-            cmb_CAR_Bank.setSelectedItem(bankController.searchBank(account.getAccount_bank_id()).getBank_name());
-            cmb_CAR_Branch.setSelectedItem(branchController.searchBranch(account.getAccount_branch_id()).getBranch_name());
-            txt_acc_no.setText(account.getAccount_accountNo());
-            txt_acc_name.setText(account.getAccount_accountName());
-            cmb_CAR_Acc_Type.setSelectedItem(accountTypeController.searchAccountType(account.getAccount_accountType_id()).getAccountType_name());
+                if (account.getAccount_status().equalsIgnoreCase("A")) {
+                    cmb_acc_states.setSelectedIndex(0);
+                } else {
+                    cmb_acc_states.setSelectedIndex(1);
+                }
+                }else{
+                    JOptionPane.showMessageDialog(this, "This Account is Already Using by Another Machine.. \n Please Try Again in a Moment.");
+                }
 
-            if (account.getAccount_status().equalsIgnoreCase("A")) {
-                cmb_acc_states.setSelectedIndex(0);
-            } else {
-                cmb_acc_states.setSelectedIndex(1);
+            } catch (Exception ex) {
+                Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        } catch (Exception ex) {
-            Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        btn_acc_save.setText("Update");
+            btn_acc_save.setText("Update");
+        
     }
 
     private void updateCompanyAccount() {
-        if(cmb_CAR_Bank.getSelectedIndex() != 0 && cmb_CAR_Branch.getSelectedIndex() != 0 && cmb_CAR_Acc_Type.getSelectedIndex() != 0){
-        try {
+        if (cmb_CAR_Bank.getSelectedIndex() != 0 && cmb_CAR_Branch.getSelectedIndex() != 0 && cmb_CAR_Acc_Type.getSelectedIndex() != 0) {
+            try {
 
-            int accountId = accountController.searchAccount(dtmcomAccount.getValueAt(tbl_acc.getSelectedRow(), 2).toString()).getAccount_id();
-            int bankId = bankController.searchBankByName(cmb_CAR_Bank.getSelectedItem().toString()).getBank_id();
-            int branchId = branchController.searchBranch(cmb_CAR_Branch.getSelectedItem().toString(), bankId).getBranch_id();
-            String accountNo = txt_acc_no.getText();
-            int accTypeId = accountTypeController.searchAccountType(cmb_CAR_Acc_Type.getSelectedItem().toString()).getAccountType_id();
-            String accountStatus = null;
-            if (cmb_acc_states.getSelectedIndex() == 0) {
-                accountStatus = "A";
-            } else {
-                accountStatus = "I";
+                int accountId = searchByTableAccountNo().getAccount_id();
+                int bankId = bankController.searchBankByName(cmb_CAR_Bank.getSelectedItem().toString()).getBank_id();
+                int branchId = branchController.searchBranch(cmb_CAR_Branch.getSelectedItem().toString(), bankId).getBranch_id();
+                String accountNo = txt_acc_no.getText();
+                int accTypeId = accountTypeController.searchAccountType(cmb_CAR_Acc_Type.getSelectedItem().toString()).getAccountType_id();
+                String accountStatus = null;
+                if (cmb_acc_states.getSelectedIndex() == 0) {
+                    accountStatus = "A";
+                } else {
+                    accountStatus = "I";
+                }
+                String accountName = txt_acc_name.getText();
+
+                M_Account account = new M_Account(accountId, bankId, branchId, accountNo, accTypeId, accountStatus, accountName);
+                boolean updateAccount = accountController.updateAccount(account);
+                if (updateAccount) {
+                    JOptionPane.showMessageDialog(this, "Account Details Updated Successfully..");
+                    clearFields();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Account Detail Updating Failed..");
+                }
+
+            } catch (Exception ex) {
+                Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    accountController.releaseAccount(searchByTableAccountNo().getAccount_id());
+                } catch (Exception ex) {
+                    Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            String accountName = txt_acc_name.getText();
-
-            M_Account account = new M_Account(accountId, bankId, branchId, accountNo, accTypeId, accountStatus, accountName);
-            boolean updateAccount = accountController.updateAccount(account);
-            if (updateAccount) {
-                JOptionPane.showMessageDialog(this, "Account Details Updated Successfully..");
-            } else {
-                JOptionPane.showMessageDialog(this, "Account Detail Updating Failed..");
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Please Check that the Bank , Branch & Account Type are Selected");
             cmb_CAR_Bank.requestFocus();
         }
@@ -702,7 +725,10 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
     private M_Account searchByTableAccountNo() {
         M_Account account = null;
         try {
+
             account = accountController.searchAccount(dtmcomAccount.getValueAt(tbl_acc.getSelectedRow(), 2).toString());
+            accountIdPub = account.getAccount_id();
+            
         } catch (Exception ex) {
             Logger.getLogger(Company_Account_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -719,6 +745,7 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
 
         btn_acc_save.setText("Save");
         cmb_CAR_Bank.requestFocus();
+
     }
 
 }

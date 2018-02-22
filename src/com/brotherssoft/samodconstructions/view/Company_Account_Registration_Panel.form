@@ -35,6 +35,9 @@
           <Dimension value="[1050, 710]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="componentHidden" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="Company_Account_RegistrationComponentHidden"/>
+      </Events>
 
       <Layout>
         <DimensionLayout dim="0">
