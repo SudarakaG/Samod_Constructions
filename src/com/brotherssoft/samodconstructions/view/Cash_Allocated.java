@@ -45,6 +45,7 @@ public class Cash_Allocated extends javax.swing.JPanel {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
     AmountFieldFormat fieldFormat = new AmountFieldFormat();
+    public static int cashAllocationIdPub;
 
     /**
      * Creates new form Cash_Allocated
@@ -537,8 +538,6 @@ public class Cash_Allocated extends javax.swing.JPanel {
         } else {
             updateCashAllocation();
         }
-        loadCashRequestTable();
-        clearFields();
     }//GEN-LAST:event_btn_add_cashRequestActionPerformed
 
     private void txt_amountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_amountActionPerformed
@@ -552,6 +551,11 @@ public class Cash_Allocated extends javax.swing.JPanel {
 
     private void btn_new_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_projectActionPerformed
         clearFields();
+        try {
+            cashAllocationController.releaseCashAllocation(cashAllocationIdPub);
+        } catch (Exception ex) {
+            Logger.getLogger(Cash_Allocated.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_new_primary_projectActionPerformed
 
     private void cmb_allo_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_allo_empActionPerformed
@@ -779,6 +783,8 @@ public class Cash_Allocated extends javax.swing.JPanel {
             boolean addCashAllocation = cashAllocationController.addCashAllocation(cashRequest);
             if (addCashAllocation) {
                 JOptionPane.showMessageDialog(this, "Cash Allocation Details Saved Successfully..");
+                clearFields();
+                loadCashRequestTable();
             } else {
                 JOptionPane.showMessageDialog(this, "An Error Occured.. Please Check the Details Again..");
             }
@@ -821,6 +827,9 @@ public class Cash_Allocated extends javax.swing.JPanel {
             boolean updateCashAllocation = cashAllocationController.updateCashAllocation(cashRequest);
             if (updateCashAllocation) {
                 JOptionPane.showMessageDialog(this, "Cash Allocation Details Updated Successfully..");
+                clearFields();
+                cashAllocationController.releaseCashAllocation(cashAllocationId);
+                loadCashRequestTable();
             } else {
                 JOptionPane.showMessageDialog(this, "An Error Occured.. Please Check the Details Again..");
             }
@@ -846,49 +855,55 @@ public class Cash_Allocated extends javax.swing.JPanel {
     }
 
     private void loadFieldsFromTable(T_CashRequest cashRequest) {
+        clearFields();
         try {
-            dp_requestDate.setDate(cashRequest.getCashRequest_date());
-            for (int i = 1; i < cmb_allo_emp.getItemCount(); i++) {
-                if (cmb_allo_emp.getItemAt(i) != null) {
-                    String[] splitreq = cmb_allo_emp.getItemAt(i).toString().split(" : ");
-                    System.out.println("+++++++" + splitreq[0]);
+            if (cashAllocationController.reserveCashAllocation(cashRequest.getCashRequest_id())) {
+                dp_requestDate.setDate(cashRequest.getCashRequest_date());
+                for (int i = 1; i < cmb_allo_emp.getItemCount(); i++) {
+                    if (cmb_allo_emp.getItemAt(i) != null) {
+                        String[] splitreq = cmb_allo_emp.getItemAt(i).toString().split(" : ");
+                        System.out.println("+++++++" + splitreq[0]);
 
-                    int reqId = Integer.parseInt(splitreq[0]);
-                    if (reqId == cashRequest.getCashRequest_employeeId()) {
-                        cmb_allo_emp.setSelectedIndex(i);
-                        break;
-                    } else {
-                        cmb_allo_emp.setSelectedIndex(0);
+                        int reqId = Integer.parseInt(splitreq[0]);
+                        if (reqId == cashRequest.getCashRequest_employeeId()) {
+                            cmb_allo_emp.setSelectedIndex(i);
+                            break;
+                        } else {
+                            cmb_allo_emp.setSelectedIndex(0);
+                        }
                     }
                 }
-            }
-            for (int i = 1; i < cmb_res_emp.getItemCount(); i++) {
-                if (cmb_res_emp.getItemAt(i) != null) {
-                    String[] splitres = cmb_res_emp.getItemAt(i).toString().split(" : ");
+                for (int i = 1; i < cmb_res_emp.getItemCount(); i++) {
+                    if (cmb_res_emp.getItemAt(i) != null) {
+                        String[] splitres = cmb_res_emp.getItemAt(i).toString().split(" : ");
 
-                    int resId = Integer.parseInt(splitres[0]);
-                    if (resId == cashRequest.getCashRequest_responceId()) {
-                        cmb_res_emp.setSelectedIndex(i);
-                        break;
-                    } else {
-                        cmb_res_emp.setSelectedIndex(0);
+                        int resId = Integer.parseInt(splitres[0]);
+                        if (resId == cashRequest.getCashRequest_responceId()) {
+                            cmb_res_emp.setSelectedIndex(i);
+                            break;
+                        } else {
+                            cmb_res_emp.setSelectedIndex(0);
+                        }
                     }
                 }
-            }
-            txt_amount.setText(decimalFormat.format(cashRequest.getCashRequest_requestedAmount()));
-            txt_reason.setText(cashRequest.getCashRequest_purpose());
-            txt_allo_amount.setText(decimalFormat.format(cashRequest.getCashRequest_amount()));
-            cmb_payment_method.setSelectedItem(paymentModeController.searchPaymentMode(cashRequest.getCashRequest_paymentTypeId()).getPaymentMode_name());
-            txt_allo_chequeNo.setText(cashRequest.getCashRequest_chequeNo());
-            dp_chequeDate.setDate(cashRequest.getCashRequest_chequeDate());
-            if (cashRequest.getCashRequest_siteId() != 0) {
-                cmb_site.setSelectedItem(primaryController.searchPrimaryProject(cashRequest.getCashRequest_siteId()).getProject_primary_name());
+                txt_amount.setText(decimalFormat.format(cashRequest.getCashRequest_requestedAmount()));
+                txt_reason.setText(cashRequest.getCashRequest_purpose());
+                txt_allo_amount.setText(decimalFormat.format(cashRequest.getCashRequest_amount()));
+                cmb_payment_method.setSelectedItem(paymentModeController.searchPaymentMode(cashRequest.getCashRequest_paymentTypeId()).getPaymentMode_name());
+                txt_allo_chequeNo.setText(cashRequest.getCashRequest_chequeNo());
+                dp_chequeDate.setDate(cashRequest.getCashRequest_chequeDate());
+                if (cashRequest.getCashRequest_siteId() != 0) {
+                    cmb_site.setSelectedItem(primaryController.searchPrimaryProject(cashRequest.getCashRequest_siteId()).getProject_primary_name());
+                } else {
+                    cmb_site.setSelectedIndex(0);
+                }
+                cmb_status.setSelectedIndex(cashRequest.getCashRequest_status());
+
+                btn_add_cashRequest.setText("Update");
             } else {
-                cmb_site.setSelectedIndex(0);
+                JOptionPane.showMessageDialog(this, "This Cash Allocation is Using by Another Machine Now.. \n Please Try Again in a Moment.");
+                return;
             }
-            cmb_status.setSelectedIndex(cashRequest.getCashRequest_status());
-
-            btn_add_cashRequest.setText("Update");
         } catch (Exception ex) {
             Logger.getLogger(Cash_Allocated.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -901,6 +916,10 @@ public class Cash_Allocated extends javax.swing.JPanel {
         int id = Integer.parseInt(dtmCashRequest.getValueAt(selectedRow, 0).toString());
         try {
             cashRequest = cashAllocationController.searchCashAllocation(id);
+            if (cashAllocationIdPub != cashRequest.getCashRequest_id()) {
+                cashAllocationController.releaseCashAllocation(cashAllocationIdPub);
+            }
+            cashAllocationIdPub = cashRequest.getCashRequest_id();
         } catch (Exception ex) {
             Logger.getLogger(Cash_Allocated.class.getName()).log(Level.SEVERE, null, ex);
         }

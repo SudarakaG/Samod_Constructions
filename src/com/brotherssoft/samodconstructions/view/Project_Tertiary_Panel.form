@@ -41,7 +41,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane11" min="-2" pref="601" max="-2" attributes="0"/>
+                  <Component id="jScrollPane11" min="-2" pref="569" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -321,11 +321,6 @@
                                   <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                                   <Component id="cmb_retention_release" min="-2" pref="359" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="btn_to_secondary_project" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="175" pref="175" max="-2" attributes="0"/>
-                                  <Component id="btn_save_third_project" min="-2" pref="129" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
@@ -333,7 +328,7 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="txt_liquidityDamage_period" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblDamagePeriodMonth" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="lbl_liq_damageAmount" min="-2" pref="146" max="-2" attributes="0"/>
@@ -353,16 +348,6 @@
                                           <Component id="dp_retain_releaseDate" min="-2" pref="359" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel170" min="-2" pref="146" max="-2" attributes="0"/>
-                                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                                      <Component id="cmb_current_status" min="-2" pref="359" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lbl_projectName" min="-2" pref="509" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
@@ -384,8 +369,26 @@
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="btn_to_secondary_project" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                  <Component id="btn_save_third_project" min="-2" pref="129" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btn_new_third_project1" min="-2" pref="129" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel170" min="-2" pref="146" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="cmb_current_status" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="lbl_projectName" min="-2" pref="509" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                          <EmptySpace pref="50" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -483,7 +486,7 @@
                               <Component id="lbl_liq_damagePeriod" alignment="0" min="-2" pref="26" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="txt_liquidityDamage_period" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="3" max="32767" attributes="0"/>
+                                  <Component id="lblDamagePeriodMonth" alignment="3" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
@@ -554,9 +557,10 @@
                               <Component id="dp_retain_releaseDate" alignment="0" min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btn_to_secondary_project" min="-2" max="-2" attributes="0"/>
-                              <Component id="btn_save_third_project" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btn_to_secondary_project" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_save_third_project" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btn_new_third_project1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -1246,13 +1250,24 @@
                     <Property name="text" type="java.lang.String" value="Months"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel3">
+                <Component class="javax.swing.JLabel" name="lblDamagePeriodMonth">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="3"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Months"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btn_new_third_project1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="12" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="New"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_new_third_project1ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -1275,14 +1290,15 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane12" min="-2" pref="394" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="txt_search_name_" min="-2" pref="250" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="txt_search_name_" min="-2" pref="250" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane12" alignment="0" pref="426" max="32767" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>

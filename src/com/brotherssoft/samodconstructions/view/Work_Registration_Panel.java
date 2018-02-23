@@ -25,6 +25,7 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
 
     R_WorkController workController;
     DefaultTableModel dtmWork;
+    public static int workIdPub;
     
     /**
      * Creates new form Work_Registration_Panel
@@ -356,7 +357,7 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         }else{
             updateWork();
         }
-        clearFields();
+        loadWorkTable();
     }//GEN-LAST:event_btn_save_workActionPerformed
 
     private void tbl_workInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_workInfoMouseClicked
@@ -367,6 +368,11 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
 
     private void btn_work_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_work_newActionPerformed
         clearFields();
+        try {
+            workController.releaseWork(workIdPub);
+        } catch (Exception ex) {
+            Logger.getLogger(Work_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_work_newActionPerformed
 
     private void txt_search_workKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_workKeyReleased
@@ -451,6 +457,7 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
             boolean addWork = workController.addWork(work);
             if (addWork) {
                 JOptionPane.showMessageDialog(this, "Work Details Added Successfully..");
+                clearFields();
             }else{
                 JOptionPane.showMessageDialog(this, "Adding Work Details Occured Some Error.. Please Check Again..");
             }
@@ -488,6 +495,8 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
             boolean updateWork = workController.updateWork(work);
             if (updateWork) {
                 JOptionPane.showMessageDialog(this, "Work Details Updated Successfully..");
+                clearFields();
+                workController.releaseWork(workId);
             }else{
                 JOptionPane.showMessageDialog(this, "Updating Work Details Occured Some Error.. Please Check Again..");
             }
@@ -499,12 +508,21 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
     }
 
     private void loadFieldsFromTable(R_Work work) {
-        
-        txt_work_name1.setText(work.getWork_name());
-        txtArea_work_desc1.setText(work.getWork_description());
-        cmb_work_states1.setSelectedIndex(Integer.parseInt(work.getWork_status()));
-        
-        btn_save_work.setText("Update");
+        try {
+            clearFields();
+            if(workController.reserveWork(work.getWork_id())){
+                txt_work_name1.setText(work.getWork_name());
+                txtArea_work_desc1.setText(work.getWork_description());
+                cmb_work_states1.setSelectedIndex(Integer.parseInt(work.getWork_status()));
+                
+                btn_save_work.setText("Update");
+            }else{
+                JOptionPane.showMessageDialog(this, "This Work is Using in Another Machine.. \n Please Try Again in a Moment..");
+                return;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Work_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private R_Work searchWorkFromTableName() {
@@ -513,6 +531,10 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         R_Work searchWork = null;
         try {
             searchWork = workController.searchWork(workName);
+            if (workIdPub != searchWork.getWork_id()) {
+                workController.releaseWork(workIdPub);
+            }
+            workIdPub = searchWork.getWork_id();
         } catch (Exception ex) {
             Logger.getLogger(Work_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }

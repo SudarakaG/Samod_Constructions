@@ -50,6 +50,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     DecimalFormat decimalFormat;
 
     M_Project_Primary primary = null;
+    public static int projectIdPub;
 
     /**
      * Creates new form Project_Primary_Panel
@@ -1052,11 +1053,11 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -1073,11 +1074,14 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         Project_Primary_Info_Panel.setLayout(Project_Primary_Info_PanelLayout);
         Project_Primary_Info_PanelLayout.setHorizontalGroup(
             Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(user_panel_hedding2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Project_Primary_Info_PanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(Project_Primary_Info_PanelLayout.createSequentialGroup()
+                .addGroup(Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Project_Primary_Info_PanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(user_panel_hedding2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Project_Primary_Info_PanelLayout.setVerticalGroup(
             Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1110,7 +1114,6 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         } else {
             updatePrimaryProject();
         }
-        clearFields();
     }//GEN-LAST:event_btn_add_primary_projectActionPerformed
 
     private void tblPrimaryProjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPrimaryProjectMouseClicked
@@ -1122,6 +1125,11 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
 
     private void btn_new_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_projectActionPerformed
         clearFields();
+        try {
+            primary_ProjectController.releaseProject(primary.getProject_id());
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_new_primary_projectActionPerformed
 
     private void txt_project_name_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_name_1ActionPerformed
@@ -1555,6 +1563,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 boolean addPrimaryProject = primary_ProjectController.addPrimaryProject(project_Primary);
                 if (addPrimaryProject) {
                     JOptionPane.showMessageDialog(this, "Primary Project Added Successfully..");
+                    primary = project_Primary;
                 } else {
                     JOptionPane.showMessageDialog(this, "Primary Priject Cannot Add..");
                 }
@@ -1588,9 +1597,9 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
     }
 
     private void loadFromPrimaryProjectTable() {
-
+        clearFields();
         try {
-
+            if(primary_ProjectController.reserveProject(primary.getProject_id())){
             txt_project_name_1.setText(primary.getProject_primary_name());
             txt_project_desc_1.setText(primary.getProject_primary_description());
             txt_project_address1.setText(primary.getProject_primary_address1());
@@ -1626,7 +1635,10 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
             txt_project_states_active_date_1.setDate(primary.getProject_primary_statusActiveDate());
             txt_project_states_inactive_date_1.setDate(primary.getProject_primary_statusInactiveDate());
             txt_project_tender_result.setText(primary.getProject_primary_tenderResult());
-
+            }else{
+                JOptionPane.showMessageDialog(this, "This Project is Using by Another Machine.. \n Try Again in a Moment..");
+                return;
+            }
         } catch (Exception ex) {
             Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1691,6 +1703,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 boolean updatePrimaryProject = primary_ProjectController.updatePrimaryProject(project_Primary);
                 if (updatePrimaryProject) {
                     JOptionPane.showMessageDialog(this, "Primary Project Details Updated Successfully..");
+                    primary_ProjectController.releaseProject(project_id);
                 } else {
                     JOptionPane.showMessageDialog(this, "Primary Project Detail Updating Cannot Process..");
                 }
@@ -1708,6 +1721,10 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         try {
             int selectedRow = tblPrimaryProject.getSelectedRow();
             primary = primary_ProjectController.searchPrimaryProjectByName((String) dtmPriProject.getValueAt(selectedRow, 0));
+            if (projectIdPub != primary.getProject_id()) {
+                primary_ProjectController.releaseProject(projectIdPub);
+            }
+            projectIdPub = primary.getProject_id();
         } catch (Exception ex) {
             Logger.getLogger(Project_Primary_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -727,6 +727,9 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
         try {
 
             account = accountController.searchAccount(dtmcomAccount.getValueAt(tbl_acc.getSelectedRow(), 2).toString());
+            if (accountIdPub != account.getAccount_id()) {
+                accountController.releaseAccount(accountIdPub);
+            }
             accountIdPub = account.getAccount_id();
             
         } catch (Exception ex) {

@@ -161,6 +161,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel162 = new javax.swing.JLabel();
         lbl_projectName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        btn_new_secondary_project1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
         tblSecondaryProject = new javax.swing.JTable();
@@ -694,6 +695,14 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel1.setText("Months");
 
+        btn_new_secondary_project1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_new_secondary_project1.setText("New");
+        btn_new_secondary_project1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_new_secondary_project1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
         txt_Input_Panel_Branch4Layout.setHorizontalGroup(
@@ -796,10 +805,12 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                                 .addComponent(dp_insurance_Valid_Period_To, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(btn_to_primary_project)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_add_secondary_project, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_to_final_project, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_new_secondary_project1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_to_final_project))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(jLabel162, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -807,9 +818,6 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                     .addComponent(lbl_projectName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
-
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_to_final_project, btn_to_primary_project});
-
         txt_Input_Panel_Branch4Layout.setVerticalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
@@ -943,7 +951,8 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_to_final_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_to_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_add_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_add_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_new_secondary_project1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -1028,21 +1037,19 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout Project_Primary_Info_PanelLayout = new javax.swing.GroupLayout(Project_Primary_Info_Panel);
@@ -1051,11 +1058,10 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Project_Primary_Info_PanelLayout.createSequentialGroup()
                 .addGroup(Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(Project_Primary_Info_PanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane11)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Project_Primary_Info_PanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(user_panel_hedding2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -1064,10 +1070,10 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             .addGroup(Project_Primary_Info_PanelLayout.createSequentialGroup()
                 .addComponent(user_panel_hedding2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 575, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -1085,7 +1091,6 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private void btn_add_secondary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_add_secondary_projectActionPerformed
         updateSecondaryProject();
         loadSecondaryProjectTable();
-        clearFields();
     }//GEN-LAST:event_btn_add_secondary_projectActionPerformed
 
     private void tblSecondaryProjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSecondaryProjectMouseClicked
@@ -1439,10 +1444,20 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         txt_search_name_.setForeground(Color.BLACK);
     }//GEN-LAST:event_txt_search_name_MouseClicked
 
+    private void btn_new_secondary_project1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_secondary_project1ActionPerformed
+        clearFields();
+        try {
+            primaryController.releaseProject(secondary.getProject_id());
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_new_secondary_project1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Project_Primary_Info_Panel;
     private javax.swing.JButton btn_add_secondary_project;
+    private javax.swing.JButton btn_new_secondary_project1;
     private javax.swing.JButton btn_to_final_project;
     private javax.swing.JButton btn_to_primary_project;
     private javax.swing.JComboBox<String> cmb_Insuarance_Covers;
@@ -1567,6 +1582,8 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             boolean updateSecondaryProject = secondaryController.updateSecondaryProject(secondUpdate);
             if (updateSecondaryProject) {
                 JOptionPane.showMessageDialog(this, "Secondary Project Information Updated Successfully..");
+                secondary = secondUpdate;
+                primaryController.releaseProject(projectId);
             } else {
                 JOptionPane.showMessageDialog(this, "Updating Secondary Project Information Failed..");
             }
@@ -1577,9 +1594,14 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }
 
     private void loadFromSecondaryProjectTable() {
-
+        clearFields();
         try {
+            if(primaryController.reserveProject(secondary.getProject_id())){
             lbl_projectName.setText(primaryController.searchPrimaryProject(secondary.getProject_id()).getProject_primary_name());
+            }else{
+                JOptionPane.showMessageDialog(this, "This Project is Using by Another Machine.. \n Try Again in a Moment..");
+                return;
+            }
         } catch (Exception ex) {
             Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1652,6 +1674,10 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         String name = (String) dtmSecProject.getValueAt(selRow, 0);
         try {
             secondary = secondaryController.searchSecondary(name);
+            if (Project_Primary_Panel.projectIdPub != secondary.getProject_id()) {
+                primaryController.releaseProject(Project_Primary_Panel.projectIdPub);
+            }
+            Project_Primary_Panel.projectIdPub = secondary.getProject_id();
         } catch (Exception ex) {
             Logger.getLogger(Project_Secondery_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }

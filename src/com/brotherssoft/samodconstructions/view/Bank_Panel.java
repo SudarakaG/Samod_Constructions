@@ -750,6 +750,7 @@ public class Bank_Panel extends javax.swing.JPanel {
 
         if (branchGlob != null) {
             try {
+                
                 if (bankController.reserveBank(branchGlob.getBranch_bank_id())) {
                     R_Bank searchBank = bankController.searchBank(branchGlob.getBranch_bank_id());
                     if (searchBank != null) {
@@ -1099,6 +1100,7 @@ public class Bank_Panel extends javax.swing.JPanel {
     }
 
     private void loadFromTableRow(R_Bank searchBank) {
+        clearBankFields();
         try {
             if (bankController.reserveBank(searchBank.getBank_id())) {
                 clearBankFields();
@@ -1150,6 +1152,9 @@ public class Bank_Panel extends javax.swing.JPanel {
         try {
             int selectedRow = tbl_bank.getSelectedRow();
             bankGlob = bankController.searchBankByName(dtmBank.getValueAt(selectedRow, 0).toString());
+            if (bankIdPub != bankGlob.getBank_id()) {
+                bankController.releaseBank(bankIdPub);
+            }
             bankIdPub = bankGlob.getBank_id();
         } catch (Exception ex) {
             Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);
@@ -1250,6 +1255,7 @@ public class Bank_Panel extends javax.swing.JPanel {
     }
 
     private void loadFromBranchTable(R_Branch branch) {
+        clearBranchFields();
         if (branch != null) {
             try {
                 if (branchController.reserveBranch(branch.getBranch_id())) {
@@ -1282,6 +1288,9 @@ public class Bank_Panel extends javax.swing.JPanel {
         try {
             int selectedRow = tbl_branch.getSelectedRow();
             branchGlob = branchController.searchBranchByCode(dtmBranch.getValueAt(selectedRow, 1).toString());
+            if (branchIdPub != branchGlob.getBranch_id()) {
+                branchController.releaseBranch(branchIdPub);
+            }
             branchIdPub = branchGlob.getBranch_id();
         } catch (Exception ex) {
             Logger.getLogger(Bank_Panel.class.getName()).log(Level.SEVERE, null, ex);

@@ -40,6 +40,8 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
     AmountFieldFormat fieldFormat = new AmountFieldFormat();
     DecimalFormat decimalFormat = new DecimalFormat("0.00");
     
+    public static String equipIdPub;
+    
 
     /**
      * Creates new form Equipment_Registration_Panel
@@ -523,7 +525,6 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
             updateEquipment();
         }
         loadEquipmentTable();
-        clearFields();
     }//GEN-LAST:event_btn_save_equipmentActionPerformed
 
     private void tbl_equipment_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_equipment_infoMouseClicked
@@ -534,6 +535,11 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
 
     private void btn_new_equipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_equipmentActionPerformed
         clearFields();
+        try {
+            equipmentController.releaseEquipment(equipIdPub);
+        } catch (Exception ex) {
+            Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_new_equipmentActionPerformed
 
     private void txt_search_equipmentKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_equipmentKeyReleased
@@ -704,6 +710,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
             boolean addEquipment = equipmentController.addEquipment(equipment);
             if (addEquipment) {
                 JOptionPane.showMessageDialog(this, "Equipment Successfully Added to the System..");
+                clearFields();
             }else{
                 JOptionPane.showMessageDialog(this, "Adding Equipment Failed.. Please Check Again..");
             }
@@ -739,6 +746,8 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
             boolean updateEquipment = equipmentController.updateEuipment(equipment);
             if (updateEquipment) {
                 JOptionPane.showMessageDialog(this, "Equipment Successfully Updated..");
+                clearFields();
+                equipmentController.releaseEquipment(eqId);
             }else{
                 JOptionPane.showMessageDialog(this, "Updating Equipment Failed.. Please Check Again..");
             }
@@ -753,8 +762,9 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
     }
 
     private void loadFieldsFromTable(M_Equipment equipment) {
+        clearFields();
         try {
-             
+             if(equipmentController.reserveEquipment(equipment.getEquipment_id())){
             cmb_asset_category.setSelectedItem(assetCategoryController.searchAssetCategory(equipment.getEquipment_asset_category_id()).getAssetCategory_description());
             cmb_assetType.setSelectedItem(assetController.searchAsset(equipment.getEquipment_asset_id()).getAsset_name());
             txt_equipment_name.setText(equipment.getEquipment_name());
@@ -766,7 +776,10 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
             txt_equip_depreRate.setText(Double.toString(equipment.getEquipment_depreciationRate()));
             
             btn_save_equipment.setText("Update");
-            
+             }else{
+                 JOptionPane.showMessageDialog(this, "This Equipment is Using by Another Machine. \n Try Again in a Moment.");
+                 return;
+             }
         } catch (Exception ex) {
             Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -778,6 +791,10 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         M_Equipment searEquipment = null;
         try {
             searEquipment = equipmentController.searchEquipmentByName(name);
+            if (equipIdPub != searEquipment.getEquipment_id()) {
+                equipmentController.releaseEquipment(equipIdPub);
+            }
+            equipIdPub = searEquipment.getEquipment_id();
         } catch (Exception ex) {
             Logger.getLogger(Equipment_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -48,6 +48,7 @@ public class Running_Chart extends javax.swing.JPanel {
     SpinnerDateModel sm = new SpinnerDateModel(date, null, null, Calendar.HOUR_OF_DAY);
 
     T_Runchart runchartGlobal = null;
+    public static int runChartIdPub;
 
     /**
      * Creates new form Running_Chart
@@ -964,6 +965,11 @@ public class Running_Chart extends javax.swing.JPanel {
 
     private void btn_emp_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_newActionPerformed
         clearFields();
+        try {
+            runchartController.releaseRunchart(runchartGlobal.getRunchart_id());
+        } catch (Exception ex) {
+            Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_emp_newActionPerformed
 
     private void btn_save_runchartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_runchartActionPerformed
@@ -1326,6 +1332,7 @@ public class Running_Chart extends javax.swing.JPanel {
             if (updateRunchart) {
                 JOptionPane.showMessageDialog(this, "Running Details Successfully Updated..");
                 clearFields();
+                runchartController.releaseRunchart(runchartId);
                 loadRunchartTable();
             } else {
                 JOptionPane.showMessageDialog(this, "Error Occured.. Please Check Again..");
@@ -1337,7 +1344,9 @@ public class Running_Chart extends javax.swing.JPanel {
     }
 
     private void loadFieldsFromTable() {
+        clearFields();
         try {
+            if(runchartController.reserveRunchart(runchartGlobal.getRunchart_id())){
             cmb_vehicle.setSelectedItem(vehicleController.searchVehicle(runchartGlobal.getRunchart_vehicleId()).getVehicle_regNo());
             date_picker_joinDate.setDate(runchartGlobal.getRunchart_date());
             txt_desc.setText(runchartGlobal.getRunchart_description());
@@ -1351,7 +1360,10 @@ public class Running_Chart extends javax.swing.JPanel {
             txt_fuel_price.setText(decimalFormat.format(runchartGlobal.getRunchart_fuelPrice()));
             cmb_status.setSelectedIndex(runchartGlobal.getRunchart_status());
             cmb_vehicle.setEnabled(false);
-
+            }else{
+                JOptionPane.showMessageDialog(this, "This Run Chart is Using in Another Machine Now.. \n Try Again in a Moment..");
+                return;
+            }
         } catch (Exception ex) {
             Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1367,6 +1379,10 @@ public class Running_Chart extends javax.swing.JPanel {
             String endTime = dtmRunchart.getValueAt(selectedRow, 4).toString();
 
             runchartGlobal = runchartController.searchRunchart(vehicleId, runDate, startTime, endTime);
+            if (runChartIdPub != runchartGlobal.getRunchart_id()) {
+                runchartController.releaseRunchart(runChartIdPub);
+            }
+            runChartIdPub = runchartGlobal.getRunchart_id();
 
         } catch (Exception ex) {
             Logger.getLogger(Running_Chart.class.getName()).log(Level.SEVERE, null, ex);

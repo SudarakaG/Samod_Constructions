@@ -652,6 +652,13 @@ public class Meterial_Allocation extends javax.swing.JPanel {
 
     private void btn_new_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_projectActionPerformed
         clearFields();
+        try {
+            siteAllocationController.releaseSiteAllocation(globalMainStock.getMainStock_id());
+            mainStockController.releaseMainStock(globalSiteAllocation.getSiteAllocation_id());
+        } catch (Exception ex) {
+            Logger.getLogger(Meterial_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btn_new_primary_projectActionPerformed
 
     private void cmb_stockTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_stockTypeActionPerformed
@@ -968,10 +975,11 @@ public class Meterial_Allocation extends javax.swing.JPanel {
     }
 
     private void loadFieldsFromTable() {
+        clearFields();
         searchByTableName();
         try {
             if (dtmMaterialAllocation.getValueAt(tbl_materialAllocation.getSelectedRow(), 3) == null) {
-
+                if(mainStockController.reserveMainStock(globalMainStock.getMainStock_id())){
                 cmb_stockType.setSelectedIndex(0);
                 cmb_materialType.setSelectedItem(materialController.searchMaterial(globalMainStock.getMainStock_equipment_id()).getMaterial_name());
                 cmb_transaction_type.setSelectedIndex(0);
@@ -996,9 +1004,13 @@ public class Meterial_Allocation extends javax.swing.JPanel {
                         }
                     }
                 }
+                }else{
+                    JOptionPane.showMessageDialog(this, "This Stock is Using By Another Machine Now. \n Try Again in a Moment.");
+                    return;
+                }
 
             } else {
-
+                if(siteAllocationController.reserveSiteAllocation(globalSiteAllocation.getSiteAllocation_id())){
                 cmb_stockType.setSelectedIndex(1);
                 cmb_allocated_site.setSelectedItem(projectController.searchPrimaryProject(globalSiteAllocation.getSiteAllocation_siteId()).getProject_primary_name());
                 cmb_materialType.setSelectedItem(materialController.searchMaterial(globalSiteAllocation.getSiteAllocation_itemId()).getMaterial_name());
@@ -1031,7 +1043,10 @@ public class Meterial_Allocation extends javax.swing.JPanel {
                         }
                     }
                 }
-
+                }else{
+                    JOptionPane.showMessageDialog(this, "This Stock is Using by Another Machine Now.. \n Try Again in a Moment..");
+                    return;
+                }
             }
         } catch (Exception ex) {
             Logger.getLogger(Meterial_Allocation.class.getName()).log(Level.SEVERE, null, ex);
@@ -1050,7 +1065,11 @@ public class Meterial_Allocation extends javax.swing.JPanel {
                 for (M_MainStock m_MainStock : allLastAddedMainStock) {
                     if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(materialId)) {
                         globalMainStock = m_MainStock;
-                        //break;
+                        if (Equiment_Allocation.mainStockIdPub != m_MainStock.getMainStock_id()) {
+                            mainStockController.releaseMainStock(Equiment_Allocation.mainStockIdPub);
+                        }
+                        Equiment_Allocation.mainStockIdPub = m_MainStock.getMainStock_id();
+                        break;
                     }
                 }
             } else {
@@ -1059,7 +1078,11 @@ public class Meterial_Allocation extends javax.swing.JPanel {
                 for (T_SiteAllocation lastAddedSiteAllocation : lastAddedSiteAllocations) {
                     if (lastAddedSiteAllocation.getSiteAllocation_siteId() == projectId && lastAddedSiteAllocation.getSiteAllocation_itemId().equalsIgnoreCase(materialId)) {
                         globalSiteAllocation = lastAddedSiteAllocation;
-                        //break;
+                        if (Equiment_Allocation.siteStockIdPub != lastAddedSiteAllocation.getSiteAllocation_id()) {
+                            siteAllocationController.releaseSiteAllocation(Equiment_Allocation.siteStockIdPub);
+                        }
+                        Equiment_Allocation.siteStockIdPub = lastAddedSiteAllocation.getSiteAllocation_id();
+                        break;
                     }
                 }
             }
@@ -1243,6 +1266,7 @@ public class Meterial_Allocation extends javax.swing.JPanel {
                 boolean updateMainStock = mainStockController.updateMainStock(mainStock);
                 if (updateMainStock) {
                     JOptionPane.showMessageDialog(this, "Material Details Successfully Updated in Main Stock..");
+                    mainStockController.releaseMainStock(stockId);
                     clearFields();
                 } else {
                     JOptionPane.showMessageDialog(this, "Updating Allocation Details Failed.. Please Check Again..");
@@ -1261,6 +1285,7 @@ public class Meterial_Allocation extends javax.swing.JPanel {
                             boolean updateMainStock = mainStockController.updateMainStock(m_MainStock);
                             if (updateMainStock) {
                                 JOptionPane.showMessageDialog(this, "Material Successfully Updated in Site..");
+                                siteAllocationController.releaseSiteAllocation(siteStockId);
                                 clearFields();
                                 break;
                             } else {

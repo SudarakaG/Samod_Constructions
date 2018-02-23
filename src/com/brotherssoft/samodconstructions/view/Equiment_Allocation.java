@@ -48,6 +48,8 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     AmountFieldFormat fieldFormat = new AmountFieldFormat();
     M_MainStock publicMainStock = null;
     T_SiteAllocation publicSiteStock = null;
+    public static int mainStockIdPub;
+    public static int siteStockIdPub;
 
     /**
      * Creates new form Equiment_Allocation
@@ -718,6 +720,12 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
     private void btn_new_EquipmentStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_EquipmentStockActionPerformed
         clearFields();
+        try {
+            mainStockController.releaseMainStock(mainStockIdPub);
+            siteAllocationController.releaseSiteAllocation(siteStockIdPub);
+        } catch (Exception ex) {
+            Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_new_EquipmentStockActionPerformed
 
     private void tbl_equipmentStock_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_equipmentStock_tableMouseClicked
@@ -1052,6 +1060,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                     if (updateMainStock) {
                         JOptionPane.showMessageDialog(this, "Equipment Details Updated in Main Stock Successfully..");
                         clearFields();
+                        mainStockController.releaseMainStock(mainStockId);
                     } else {
                         JOptionPane.showMessageDialog(this, "Equipment Allocation Details Updating Failed.. Please Check Again..");
                     }
@@ -1083,6 +1092,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                                 if (updateMainStockQuantity) {
                                     JOptionPane.showMessageDialog(this, "Equipment Details Updated in Site Stock Successfully..");
                                     clearFields();
+                                    siteAllocationController.releaseSiteAllocation(siteAllocationId);
                                 } else {
                                     JOptionPane.showMessageDialog(this, "Equipment Quatity Updating in Main Stock Failed.. Please Check Again..");
                                 }
@@ -1133,14 +1143,15 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }
 
     private void loadFeildsFromMainStock(M_MainStock mainStock) {
+        clearFields();
+        try {
+        if(mainStockController.reserveMainStock(mainStock.getMainStock_id())){
         M_Equipment equipment = null;
         R_AssetCategory assetCategory = null;
-        try {
+        
             equipment = equipmentController.searchEquipment(mainStock.getMainStock_equipment_id());
             assetCategory = assetCategoryController.searchAssetCategory(equipment.getEquipment_asset_category_id());
-        } catch (Exception ex) {
-            Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
 
         //cmb_stock_type.setSelectedIndex(0);
         cmb_asset_type.setSelectedItem(assetCategory.getAssetCategory_description());
@@ -1172,6 +1183,13 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             cmb_approvedEmployee1.setSelectedIndex(0);
         }
         btn_add_equipmentToMainStock.setText("Update");
+        }else{
+            JOptionPane.showMessageDialog(this, "This Stock is Using by Another Machine now.. Try Again ina a Moment.");
+            return;
+        }
+        } catch (Exception ex) {
+            Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -1186,6 +1204,11 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {
                     mainStock = m_MainStock;
                     publicMainStock = m_MainStock;
+                    if (mainStockIdPub != mainStock.getMainStock_id()) {
+                        mainStockController.releaseMainStock(mainStockIdPub);
+                    }
+                    mainStockIdPub = mainStock.getMainStock_id();
+                    break;
                 }
             }
         } catch (Exception ex) {
@@ -1214,9 +1237,11 @@ public class Equiment_Allocation extends javax.swing.JPanel {
     }
 
     private void loadFieldsFromSiteStock(T_SiteAllocation siteAllocation) {
+        clearFields();
         M_Equipment equipment = null;
         R_AssetCategory assetCategory = null;
         try {
+            if(siteAllocationController.reserveSiteAllocation(siteAllocation.getSiteAllocation_id())){
             equipment = equipmentController.searchEquipment(siteAllocation.getSiteAllocation_itemId());
             assetCategory = assetCategoryController.searchAssetCategory(equipment.getEquipment_asset_category_id());
 
@@ -1257,6 +1282,10 @@ public class Equiment_Allocation extends javax.swing.JPanel {
             } else {
                 cmb_approvedEmployee1.setSelectedIndex(0);
             }
+            }else{
+                JOptionPane.showMessageDialog(this, "This Stock is Using by Another Machine Now.. Try Again in a Moment.");
+                return;
+            }
         } catch (Exception ex) {
             Logger.getLogger(Equiment_Allocation.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1275,6 +1304,11 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 if (t_SiteAllocation.getSiteAllocation_itemId().equalsIgnoreCase(equipmentId)) {
                     siteAllocation = t_SiteAllocation;
                     publicSiteStock = t_SiteAllocation;
+                    if (siteStockIdPub != siteAllocation.getSiteAllocation_id()) {
+                        siteAllocationController.releaseSiteAllocation(siteStockIdPub);
+                    }
+                    siteStockIdPub = siteAllocation.getSiteAllocation_id();
+                    break;
                 }
             }
         } catch (Exception ex) {
@@ -1297,6 +1331,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                     for (T_SiteAllocation lastAddedSiteAllocation : lastAddedSiteAllocations) {
                         
                         if (lastAddedSiteAllocation.getSiteAllocation_siteId() != 0 && lastAddedSiteAllocation.getSiteAllocation_siteId() == siteId && lastAddedSiteAllocation.getSiteAllocation_itemId().equalsIgnoreCase(equipmentId)) {
+                            
                             txt_available_stockInSite.setText(decimalFormat.format(lastAddedSiteAllocation.getSiteAllocation_quantity()));
                             for (M_MainStock m_MainStock : allLastAddedMainStock) {
                                 if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(equipmentId)) {

@@ -43,6 +43,7 @@ public class Employee_Salary extends javax.swing.JPanel {
     R_JobTypeController jobTypeController;
 
     AmountFieldFormat fieldFormat = new AmountFieldFormat();
+    
 
     /**
      * Creates new form Employee_Salary
@@ -638,6 +639,7 @@ public class Employee_Salary extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tb_emp_salMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_emp_salMouseClicked
+        clearFields();
         try {
             int selectedRow = tb_emp_sal.getSelectedRow();
             String initials = (String) dtmEmpSalary.getValueAt(selectedRow, 0);
@@ -645,6 +647,10 @@ public class Employee_Salary extends javax.swing.JPanel {
             String mName = (String) dtmEmpSalary.getValueAt(selectedRow, 2);
             String lNAme = (String) dtmEmpSalary.getValueAt(selectedRow, 3);
             employee = employeeController.searchByFullName(fName, mName, lNAme);
+            if (Employee_Panel.empIdPub != employee.getEmp_id()) {
+                employeeController.releaseEmployee(Employee_Panel.empIdPub);
+            }
+            Employee_Panel.empIdPub = employee.getEmp_id();
             loadEmployeeData();
 
         } catch (Exception ex) {
@@ -666,7 +672,6 @@ public class Employee_Salary extends javax.swing.JPanel {
 
     private void btn_save_emp_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_emp_salaryActionPerformed
         updateEmployeeSalaryDetails();
-        clearFields();
     }//GEN-LAST:event_btn_save_emp_salaryActionPerformed
 
     private void txt_emp_sal_al_1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_al_1KeyPressed
@@ -855,6 +860,11 @@ public class Employee_Salary extends javax.swing.JPanel {
 
     private void btn_emp_salary_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_salary_cancelActionPerformed
         clearFields();
+        try {
+            employeeController.releaseEmployee(employee.getEmp_id());
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Salary.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_emp_salary_cancelActionPerformed
 
     private void txt_emp_sal_basicKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_sal_basicKeyTyped
@@ -922,7 +932,7 @@ public class Employee_Salary extends javax.swing.JPanel {
 
     private void loadEmployeeData() {
         try {
-
+            if(employeeController.reserveEmployee(employee.getEmp_id())){
 //            if (employee.getEmp_accountNo() == null) {
 //                JOptionPane.showMessageDialog(this, "Salary Details not Added to this Employee Yet..");
 //            }
@@ -951,7 +961,10 @@ public class Employee_Salary extends javax.swing.JPanel {
             txt_emp_al_2.setText(decimalFormat.format(employee.getEmp_otherAllowance2()));
             txt_emp_al_3.setText(decimalFormat.format(employee.getEmp_otherAllowance3()));
             txt_emp_al_4.setText(decimalFormat.format(employee.getEmp_otherAllowance4()));
-
+            }else{
+                JOptionPane.showMessageDialog(this, "This Employee is Using by Another Machine Now. Try Again in a Moment.");
+                return;
+            }
         } catch (Exception ex) {
             Logger.getLogger(Employee_Salary.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1085,6 +1098,8 @@ public class Employee_Salary extends javax.swing.JPanel {
                 boolean updateEmployee = employeeController.updateEmployee(employeeUpdate);
                 if (updateEmployee) {
                     JOptionPane.showMessageDialog(this, "Employee Salary Details Updated Successfully..");
+                    clearFields();
+                    employeeController.releaseEmployee(empId);
                 } else {
                     JOptionPane.showMessageDialog(this, "Updating Employee Salary Details Occured a Error..");
                 }

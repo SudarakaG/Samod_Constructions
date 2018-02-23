@@ -30,6 +30,7 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
     R_UnitController unitController;
     M_MaterialController materialController;
     DefaultTableModel dtmMaterial;
+    public static String materialIdPub;
     
     /**
      * Creates new form Meterial_Registration_Panel
@@ -400,7 +401,6 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
             updateMaterial();
         }
         loadMaterialTable();
-        clearFields();
     }//GEN-LAST:event_btn_save_materialActionPerformed
 
     private void tbl_material_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_material_infoMouseClicked
@@ -411,6 +411,11 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
 
     private void btn_new_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_materialActionPerformed
         clearFields();
+        try {
+            materialController.releaseMaterial(materialIdPub);
+        } catch (Exception ex) {
+            Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_new_materialActionPerformed
 
     private void txt_search_materialKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_search_materialKeyReleased
@@ -547,6 +552,7 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
             boolean addMaterial = materialController.addMaterial(material);
             if (addMaterial) {
                 JOptionPane.showMessageDialog(this, "Material Successfulley Added..");
+                clearFields();
             }else{
                 JOptionPane.showMessageDialog(this, "Adding Material Failed.. Please Check Again..");
             }
@@ -574,6 +580,8 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
             boolean updateMaterial = materialController.updateMaterial(material);
             if (updateMaterial) {
                 JOptionPane.showMessageDialog(this, "Material Successfulley Updated..");
+                clearFields();
+                materialController.releaseMaterial(materialId);
             }else{
                 JOptionPane.showMessageDialog(this, "Updating Material Failed.. Please Check Again..");
             }
@@ -587,9 +595,9 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
     }
 
     private void loadFieldsFromTable(M_Material material) {
+        clearFields();
         try {
-            
-            
+            if(materialController.reserveMaterial(material.getMaterial_id())){            
             txt_material_name1.setText(material.getMaterial_name());
             txtArea_material_desc.setText(material.getMaterial_description());
             cmb_material_unit.setSelectedItem(unitController.searchUnit(material.getMaterial_unit_id()).getUnit_name());
@@ -597,7 +605,10 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
             datePicker_material_reg_date.setDate(material.getMaterial_regDate());
             
             btn_save_material.setText("Update");
-            
+            }else{
+                JOptionPane.showMessageDialog(this, "This Material is Using by Another Machine Now.. \n Try Again in a Moment..");
+                return;
+            }
         } catch (Exception ex) {
             Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -610,6 +621,10 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         M_Material searchMaterial = null;
         try {
             searchMaterial = materialController.searchMaterial(name);
+            if (materialIdPub != searchMaterial.getMaterial_id()) {
+                materialController.releaseMaterial(materialIdPub);
+            }
+            materialIdPub = searchMaterial.getMaterial_id();
         } catch (Exception ex) {
             Logger.getLogger(Meterial_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -38,6 +38,8 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
     DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
     AmountFieldFormat fieldFormat = new AmountFieldFormat();
     
+    public static String vehicleIdPub;
+    
     /**
      * Creates new form Vehical_Registration_Panel
      */
@@ -517,7 +519,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         }else{
             updateVehicle();
         }
-        clearFields();
+        loadVehicleTable();
     }//GEN-LAST:event_btn_save_vehicleActionPerformed
 
     private void tbl_vehicle_infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_vehicle_infoMouseClicked
@@ -529,6 +531,11 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
     private void btn_vehicle_newActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_vehicle_newActionPerformed
         
         clearFields();
+        try {
+            vehicleController.releaseVehicle(vehicleIdPub);
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_btn_vehicle_newActionPerformed
 
@@ -741,6 +748,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
             boolean addVehivle = vehicleController.addVehivle(vehicle);
             if (addVehivle) {
                 JOptionPane.showMessageDialog(this, "Vehicle Added Succesfully..");
+                clearFields();
             }else{
                 JOptionPane.showMessageDialog(this, "Vehicle Adding Failed");
             }
@@ -752,12 +760,12 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please Check that Vehicle Type & Fuel Type are Selected");
         }
         
-        loadVehicleTable();
     }
 
     private void loadFromVehicleTable(M_Vehicle vehicle) {            
+        clearFields();
         try {
-            
+            if(vehicleController.reserveVehicle(vehicle.getVehicle_id())){
              
             cmb_vehicle_type.setSelectedItem(vehivleTypeController.searchVehicleType(vehicle.getVehicle_type_id()).getVehicleType_name());
             txt_vehicle_regNo.setText(vehicle.getVehicle_regNo());
@@ -772,7 +780,10 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
             }else{
                 cmb_vehicle_status.setSelectedIndex(1);
             }
-            
+            }else{
+                JOptionPane.showMessageDialog(this, "This Vehicle is Using in Another Machine.. \n Try Again in a Moment..");
+                return;
+            }
         } catch (Exception ex) {
             Logger.getLogger(Vehical_Registration_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -788,6 +799,11 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
             int selectedRow = tbl_vehicle_info.getSelectedRow();
             String vehicleNo = dtmVehicle.getValueAt(selectedRow, 0).toString();
             searchVehicle = vehicleController.searchVehicle(vehicleNo);
+            
+            if (vehicleIdPub != searchVehicle.getVehicle_id()) {
+                vehicleController.releaseVehicle(vehicleIdPub);
+            }
+            vehicleIdPub = searchVehicle.getVehicle_id();
             
             
         } catch (Exception ex) {
@@ -827,6 +843,8 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
             boolean updateVehicle = vehicleController.updateVehicle(vehicle);
             if (updateVehicle) {
                 JOptionPane.showMessageDialog(this, "Vehicle Details Updated Successfully..");
+                clearFields();
+                vehicleController.releaseVehicle(vehicleId);
             }else{
                 JOptionPane.showMessageDialog(this, "Vehicle Detail Updating Failed..");
             }
@@ -837,7 +855,6 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         }else{
             JOptionPane.showMessageDialog(this, "Please Check that Vehicle Type & Fuel Type are Selected");
         }
-        loadVehicleTable();
     }
 
     private void clearFields() {

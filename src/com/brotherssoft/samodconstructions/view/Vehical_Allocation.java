@@ -526,7 +526,13 @@ public class Vehical_Allocation extends javax.swing.JPanel {
     }//GEN-LAST:event_dp_updated_dateActionPerformed
 
     private void btn_new_primary_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_projectActionPerformed
-        clearFields();
+        try {
+            clearFields();
+            mainStockController.releaseMainStock(mainStockGlobal.getMainStock_id());
+            siteAllocationController.releaseSiteAllocation(siteAllocationGlobal.getSiteAllocation_id());
+        } catch (Exception ex) {
+            Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_new_primary_projectActionPerformed
 
     private void cmb_stock_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_stock_typeActionPerformed
@@ -747,6 +753,7 @@ public class Vehical_Allocation extends javax.swing.JPanel {
                 if (updateMainStock) {
                     JOptionPane.showMessageDialog(this, "Vehicle Details Updated in Main Stock Successfully..");
                     clearFields();
+                    mainStockController.releaseMainStock(mainStockId);
                 } else {
                     JOptionPane.showMessageDialog(this, "Updating Vehicle Details in Main Stock failed.. Please Check Again..");
                 }
@@ -764,6 +771,7 @@ public class Vehical_Allocation extends javax.swing.JPanel {
                             if (updateMainStock) {
                                 JOptionPane.showMessageDialog(this, "Vehicle Details Updated in Site Successfully..");
                                 clearFields();
+                                siteAllocationController.releaseSiteAllocation(siteAllocationId);
                                 break;
                             } else {
                                 JOptionPane.showMessageDialog(this, "Updating Vehicle Details in Site Failed.. Plaease Check Again..");
@@ -851,44 +859,51 @@ public class Vehical_Allocation extends javax.swing.JPanel {
         try {
             if (cmb_stock_type.getSelectedIndex() == 0) {
                 //cmb_stock_type.setSelectedIndex(0);
-
-                cmb_transaction_type.setSelectedItem(mainStockGlobal.getMainStock_TRType());
-                dp_updated_date.setDate(mainStockGlobal.getMainStock_updateDate());
-                txt_comment.setText(mainStockGlobal.getMainStock_description());
-                for (int i = 1; i < cmb_added_emp.getItemCount(); i++) {
-                    if (Integer.parseInt(cmb_added_emp.getItemAt(i).toString().split(" : ")[0]) == mainStockGlobal.getMainStock_addeduser_id()) {
-                        cmb_added_emp.setSelectedIndex(i);
-                        break;
+                if (mainStockController.reserveMainStock(mainStockGlobal.getMainStock_id())) {
+                    cmb_transaction_type.setSelectedItem(mainStockGlobal.getMainStock_TRType());
+                    dp_updated_date.setDate(mainStockGlobal.getMainStock_updateDate());
+                    txt_comment.setText(mainStockGlobal.getMainStock_description());
+                    for (int i = 1; i < cmb_added_emp.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_added_emp.getItemAt(i).toString().split(" : ")[0]) == mainStockGlobal.getMainStock_addeduser_id()) {
+                            cmb_added_emp.setSelectedIndex(i);
+                            break;
+                        }
                     }
-                }
-                for (int i = 1; i < cmb_approved_emp.getItemCount(); i++) {
-                    if (Integer.parseInt(cmb_approved_emp.getItemAt(i).toString().split(" : ")[0]) == mainStockGlobal.getMainStock_approveduser_id()) {
-                        cmb_approved_emp.setSelectedIndex(i);
-                        break;
+                    for (int i = 1; i < cmb_approved_emp.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_approved_emp.getItemAt(i).toString().split(" : ")[0]) == mainStockGlobal.getMainStock_approveduser_id()) {
+                            cmb_approved_emp.setSelectedIndex(i);
+                            break;
+                        }
                     }
+                    cmb_vehical.setSelectedItem(vehicleController.searchVehicle(mainStockGlobal.getMainStock_equipment_id()).getVehicle_regNo());
+                } else {
+                    JOptionPane.showMessageDialog(this, "This Stock is Using in Another MAchine.. \n Try Again in a Moment..");
+                    return;
                 }
-                cmb_vehical.setSelectedItem(vehicleController.searchVehicle(mainStockGlobal.getMainStock_equipment_id()).getVehicle_regNo());
-
             } else {
                 //cmb_stock_type.setSelectedIndex(1);
-
-                cmb_transaction_type.setSelectedItem(siteAllocationGlobal.getSiteAllocation_TRType());
-                dp_updated_date.setDate(siteAllocationGlobal.getSiteAllocation_date());
-                txt_comment.setText(siteAllocationGlobal.getSiteAllocation_comment());
-                for (int i = 1; i < cmb_added_emp.getItemCount(); i++) {
-                    if (Integer.parseInt(cmb_added_emp.getItemAt(i).toString().split(" : ")[0]) == siteAllocationGlobal.getSiteAllocation_addedUser()) {
-                        cmb_added_emp.setSelectedIndex(i);
-                        break;
+                if (siteAllocationController.reserveSiteAllocation(siteAllocationGlobal.getSiteAllocation_id())) {
+                    cmb_transaction_type.setSelectedItem(siteAllocationGlobal.getSiteAllocation_TRType());
+                    dp_updated_date.setDate(siteAllocationGlobal.getSiteAllocation_date());
+                    txt_comment.setText(siteAllocationGlobal.getSiteAllocation_comment());
+                    for (int i = 1; i < cmb_added_emp.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_added_emp.getItemAt(i).toString().split(" : ")[0]) == siteAllocationGlobal.getSiteAllocation_addedUser()) {
+                            cmb_added_emp.setSelectedIndex(i);
+                            break;
+                        }
                     }
-                }
-                for (int i = 1; i < cmb_approved_emp.getItemCount(); i++) {
-                    if (Integer.parseInt(cmb_approved_emp.getItemAt(i).toString().split(" : ")[0]) == siteAllocationGlobal.getSiteAllocation_authorizedUser()) {
-                        cmb_approved_emp.setSelectedIndex(i);
-                        break;
+                    for (int i = 1; i < cmb_approved_emp.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_approved_emp.getItemAt(i).toString().split(" : ")[0]) == siteAllocationGlobal.getSiteAllocation_authorizedUser()) {
+                            cmb_approved_emp.setSelectedIndex(i);
+                            break;
+                        }
                     }
+                    cmb_allocated_site.setSelectedItem(projectController.searchPrimaryProject(siteAllocationGlobal.getSiteAllocation_siteId()).getProject_primary_name());
+                    cmb_vehical.setSelectedItem(vehicleController.searchVehicle(siteAllocationGlobal.getSiteAllocation_itemId()).getVehicle_regNo());
+                } else {
+                    JOptionPane.showMessageDialog(this, "This Stock is Using in Another MAchine.. \n Try Again in a Moment..");
+                    return;
                 }
-                cmb_allocated_site.setSelectedItem(projectController.searchPrimaryProject(siteAllocationGlobal.getSiteAllocation_siteId()).getProject_primary_name());
-                cmb_vehical.setSelectedItem(vehicleController.searchVehicle(siteAllocationGlobal.getSiteAllocation_itemId()).getVehicle_regNo());
             }
         } catch (Exception ex) {
             Logger.getLogger(Vehical_Allocation.class.getName()).log(Level.SEVERE, null, ex);
@@ -905,6 +920,10 @@ public class Vehical_Allocation extends javax.swing.JPanel {
                 for (M_MainStock m_MainStock : allLastAddedMainStock) {
                     if (m_MainStock.getMainStock_equipment_id().equalsIgnoreCase(vehicleId)) {
                         mainStockGlobal = m_MainStock;
+                        if (Equiment_Allocation.mainStockIdPub != mainStockGlobal.getMainStock_id()) {
+                            mainStockController.releaseMainStock(Equiment_Allocation.mainStockIdPub);
+                        }
+                        Equiment_Allocation.mainStockIdPub = mainStockGlobal.getMainStock_id();
                         break;
                     }
                 }
@@ -913,6 +932,10 @@ public class Vehical_Allocation extends javax.swing.JPanel {
                 for (T_SiteAllocation lastAddedSiteAllocation : lastAddedSiteAllocations) {
                     if (lastAddedSiteAllocation.getSiteAllocation_itemId().equalsIgnoreCase(vehicleId)) {
                         siteAllocationGlobal = lastAddedSiteAllocation;
+                        if (Equiment_Allocation.siteStockIdPub != siteAllocationGlobal.getSiteAllocation_id()) {
+                            siteAllocationController.releaseSiteAllocation(Equiment_Allocation.siteStockIdPub);
+                        }
+                        Equiment_Allocation.siteStockIdPub = siteAllocationGlobal.getSiteAllocation_id();
                         break;
                     }
                 }
@@ -974,34 +997,44 @@ public class Vehical_Allocation extends javax.swing.JPanel {
         btn_add_vehicle_allocation.setEnabled(false);
         try {
             if (cmb_stock_type.getSelectedIndex() == 0) {
-                dp_updated_date.setDate(mainStockGlobal.getMainStock_updateDate());
-                txt_comment.setText(mainStockGlobal.getMainStock_description());
-                for (int i = 1; i < cmb_added_emp.getItemCount(); i++) {
-                    if (Integer.parseInt(cmb_added_emp.getItemAt(i).toString().split(" : ")[0]) == mainStockGlobal.getMainStock_addeduser_id()) {
-                        cmb_added_emp.setSelectedIndex(i);
-                        break;
+                if (mainStockController.reserveMainStock(mainStockGlobal.getMainStock_id())) {
+                    dp_updated_date.setDate(mainStockGlobal.getMainStock_updateDate());
+                    txt_comment.setText(mainStockGlobal.getMainStock_description());
+                    for (int i = 1; i < cmb_added_emp.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_added_emp.getItemAt(i).toString().split(" : ")[0]) == mainStockGlobal.getMainStock_addeduser_id()) {
+                            cmb_added_emp.setSelectedIndex(i);
+                            break;
+                        }
                     }
-                }
-                for (int i = 1; i < cmb_approved_emp.getItemCount(); i++) {
-                    if (Integer.parseInt(cmb_approved_emp.getItemAt(i).toString().split(" : ")[0]) == mainStockGlobal.getMainStock_approveduser_id()) {
-                        cmb_approved_emp.setSelectedIndex(i);
-                        break;
+                    for (int i = 1; i < cmb_approved_emp.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_approved_emp.getItemAt(i).toString().split(" : ")[0]) == mainStockGlobal.getMainStock_approveduser_id()) {
+                            cmb_approved_emp.setSelectedIndex(i);
+                            break;
+                        }
                     }
+                } else {
+                    JOptionPane.showMessageDialog(this, "This Stock is Using in Another Machine.. \n Try Again in a Moment..");
+                    return;
                 }
             } else {
-                dp_updated_date.setDate(siteAllocationGlobal.getSiteAllocation_date());
-                txt_comment.setText(siteAllocationGlobal.getSiteAllocation_comment());
-                for (int i = 1; i < cmb_added_emp.getItemCount(); i++) {
-                    if (Integer.parseInt(cmb_added_emp.getItemAt(i).toString().split(" : ")[0]) == siteAllocationGlobal.getSiteAllocation_addedUser()) {
-                        cmb_added_emp.setSelectedIndex(i);
-                        break;
+                if (siteAllocationController.reserveSiteAllocation(siteAllocationGlobal.getSiteAllocation_id())) {
+                    dp_updated_date.setDate(siteAllocationGlobal.getSiteAllocation_date());
+                    txt_comment.setText(siteAllocationGlobal.getSiteAllocation_comment());
+                    for (int i = 1; i < cmb_added_emp.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_added_emp.getItemAt(i).toString().split(" : ")[0]) == siteAllocationGlobal.getSiteAllocation_addedUser()) {
+                            cmb_added_emp.setSelectedIndex(i);
+                            break;
+                        }
                     }
-                }
-                for (int i = 1; i < cmb_approved_emp.getItemCount(); i++) {
-                    if (Integer.parseInt(cmb_approved_emp.getItemAt(i).toString().split(" : ")[0]) == siteAllocationGlobal.getSiteAllocation_authorizedUser()) {
-                        cmb_approved_emp.setSelectedIndex(i);
-                        break;
+                    for (int i = 1; i < cmb_approved_emp.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_approved_emp.getItemAt(i).toString().split(" : ")[0]) == siteAllocationGlobal.getSiteAllocation_authorizedUser()) {
+                            cmb_approved_emp.setSelectedIndex(i);
+                            break;
+                        }
                     }
+                } else {
+                    JOptionPane.showMessageDialog(this, "This Stock is Using in Another Machine.. \n Try Again in a Moment..");
+                    return;
                 }
             }
         } catch (Exception ex) {
