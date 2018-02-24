@@ -27,102 +27,83 @@ public class Home_Panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Home_Panel = new javax.swing.JPanel();
-        user_panel_hedding13 = new javax.swing.JPanel();
-        jLabel96 = new javax.swing.JLabel();
-        jLabel97 = new javax.swing.JLabel();
-        jSeparator25 = new javax.swing.JSeparator();
-        jXTipOfTheDay1 = new org.jdesktop.swingx.JXTipOfTheDay();
+        Company_Account_Registration = new javax.swing.JPanel();
+        bank_panel_hedding2 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
 
-        Home_Panel.setBackground(new java.awt.Color(255, 255, 255));
-        Home_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
+        Company_Account_Registration.setBackground(new java.awt.Color(255, 255, 255));
+        Company_Account_Registration.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        user_panel_hedding13.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding2.setBackground(new java.awt.Color(122, 72, 222));
 
-        jLabel96.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel96.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel96.setText("Administrations / System Management / Master Details /");
+        jLabel19.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel19.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel19.setText("Administrations / System Management / Master/");
 
-        jLabel97.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel97.setText("Dashbord");
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel20.setText("Dashboard");
 
-        javax.swing.GroupLayout user_panel_hedding13Layout = new javax.swing.GroupLayout(user_panel_hedding13);
-        user_panel_hedding13.setLayout(user_panel_hedding13Layout);
-        user_panel_hedding13Layout.setHorizontalGroup(
-            user_panel_hedding13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(user_panel_hedding13Layout.createSequentialGroup()
-                .addGroup(user_panel_hedding13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(user_panel_hedding13Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 479, Short.MAX_VALUE))
-                    .addGroup(user_panel_hedding13Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel97)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator25)))
-                .addContainerGap())
-        );
-        user_panel_hedding13Layout.setVerticalGroup(
-            user_panel_hedding13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(user_panel_hedding13Layout.createSequentialGroup()
+        javax.swing.GroupLayout bank_panel_hedding2Layout = new javax.swing.GroupLayout(bank_panel_hedding2);
+        bank_panel_hedding2.setLayout(bank_panel_hedding2Layout);
+        bank_panel_hedding2Layout.setHorizontalGroup(
+            bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_hedding2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(509, Short.MAX_VALUE))
+            .addGroup(bank_panel_hedding2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(user_panel_hedding13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel97)
-                    .addComponent(jSeparator25, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSeparator8))
+        );
+        bank_panel_hedding2Layout.setVerticalGroup(
+            bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_hedding2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel20)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout Home_PanelLayout = new javax.swing.GroupLayout(Home_Panel);
-        Home_Panel.setLayout(Home_PanelLayout);
-        Home_PanelLayout.setHorizontalGroup(
-            Home_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(user_panel_hedding13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout Company_Account_RegistrationLayout = new javax.swing.GroupLayout(Company_Account_Registration);
+        Company_Account_Registration.setLayout(Company_Account_RegistrationLayout);
+        Company_Account_RegistrationLayout.setHorizontalGroup(
+            Company_Account_RegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bank_panel_hedding2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        Home_PanelLayout.setVerticalGroup(
-            Home_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(user_panel_hedding13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        Company_Account_RegistrationLayout.setVerticalGroup(
+            Company_Account_RegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Company_Account_RegistrationLayout.createSequentialGroup()
+                .addComponent(bank_panel_hedding2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(582, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(344, Short.MAX_VALUE)
-                .addComponent(jXTipOfTheDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Home_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1030, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(jXTipOfTheDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(504, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Home_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(582, Short.MAX_VALUE)))
+            .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Home_Panel;
-    private javax.swing.JLabel jLabel96;
-    private javax.swing.JLabel jLabel97;
-    private javax.swing.JSeparator jSeparator25;
-    private org.jdesktop.swingx.JXTipOfTheDay jXTipOfTheDay1;
-    private javax.swing.JPanel user_panel_hedding13;
+    private javax.swing.JPanel Company_Account_Registration;
+    private javax.swing.JPanel bank_panel_hedding2;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JSeparator jSeparator8;
     // End of variables declaration//GEN-END:variables
 }
