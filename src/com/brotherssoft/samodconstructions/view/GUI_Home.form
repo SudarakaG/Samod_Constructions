@@ -109,11 +109,11 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jButton1" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="date_lable" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="time_lable" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="jLabel2" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
-                          <Component id="jButton1" linkSize="2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton3" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jButton2" linkSize="2" min="-2" pref="31" max="-2" attributes="0"/>
@@ -2222,6 +2222,9 @@
               <Image iconType="3" name="/com/brotherssoft/samodconstructions/images/browser.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

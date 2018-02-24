@@ -7,8 +7,12 @@ package com.brotherssoft.samodconstructions.view;
 
 import com.brotherssoft.samodconstructions.custom.ReleaseAllReservation;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -38,6 +42,8 @@ public class GUI_Home extends javax.swing.JFrame {
         this.setVisible(true);
         showDate();
         showTime();
+        Home_Panel home_Panel = new Home_Panel();
+        panelManager(home_Panel);
     }
 
     void showDate() {
@@ -1556,6 +1562,11 @@ public class GUI_Home extends javax.swing.JFrame {
         });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/browser.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout background_panelLayout = new javax.swing.GroupLayout(background_panel);
         background_panel.setLayout(background_panelLayout);
@@ -1586,11 +1597,11 @@ public class GUI_Home extends javax.swing.JFrame {
             .addGroup(background_panelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(background_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
                     .addGroup(background_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(date_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(time_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1)
                         .addComponent(jButton3))
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 717, Short.MAX_VALUE))
@@ -2138,6 +2149,21 @@ public class GUI_Home extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String url = "http://google.com";
+
+        if (Desktop.isDesktopSupported()) {
+            try {
+                // Windows
+                Desktop.getDesktop().browse(new URI(url));
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
