@@ -22,7 +22,11 @@ import com.brotherssoft.samodconstructions.service.R_AssetService;
 import com.brotherssoft.samodconstructions.service.R_BankService;
 import com.brotherssoft.samodconstructions.service.R_BranchService;
 import com.brotherssoft.samodconstructions.service.R_DesignationService;
+import com.brotherssoft.samodconstructions.service.R_ExpenceSubTypeService;
+import com.brotherssoft.samodconstructions.service.R_ExpenceTypeService;
 import com.brotherssoft.samodconstructions.service.R_FuelTypeService;
+import com.brotherssoft.samodconstructions.service.R_IncomeSubTypeService;
+import com.brotherssoft.samodconstructions.service.R_IncomeTypeService;
 import com.brotherssoft.samodconstructions.service.R_JobTypeService;
 import com.brotherssoft.samodconstructions.service.R_PaymentModeService;
 import com.brotherssoft.samodconstructions.service.R_ProjectGradeService;
@@ -33,6 +37,7 @@ import com.brotherssoft.samodconstructions.service.R_UnitService;
 import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
 import com.brotherssoft.samodconstructions.service.R_WorkService;
 import com.brotherssoft.samodconstructions.service.T_CashAllocationService;
+import com.brotherssoft.samodconstructions.service.T_ExpenceService;
 import com.brotherssoft.samodconstructions.service.T_RunchartService;
 import com.brotherssoft.samodconstructions.service.T_SiteAllocationService;
 
@@ -72,5 +77,10 @@ public interface ServiceFactory {
     public M_MainStockService getMainStockService();
     public T_SiteAllocationService getSiteAllocationService();
     public T_RunchartService getRunchartService();
+    public T_ExpenceService getExpenceService();
+    public R_ExpenceSubTypeService getExpenceSubTypeService();
+    public R_ExpenceTypeService getExpenceTypeService();
+    public R_IncomeSubTypeService getIncomeSubTypeService();
+    public R_IncomeTypeService getIncomeTypeService();
     
 }

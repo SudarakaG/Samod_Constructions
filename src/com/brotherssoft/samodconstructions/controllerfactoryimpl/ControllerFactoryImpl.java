@@ -58,13 +58,23 @@ import java.rmi.server.UnicastRemoteObject;
 import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
+import com.brotherssoft.samodconstructions.controller.R_ExpenceSubTypeController;
+import com.brotherssoft.samodconstructions.controller.R_ExpenceTypeController;
+import com.brotherssoft.samodconstructions.controller.R_IncomeSubTypeController;
+import com.brotherssoft.samodconstructions.controller.R_IncomeTypeControler;
 import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
+import com.brotherssoft.samodconstructions.controller.T_ExpencesController;
 import com.brotherssoft.samodconstructions.controller.T_RunchartController;
 import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
 import com.brotherssoft.samodconstructions.controllerimpl.M_MainStockControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_Project_SecondaryControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_Project_ThirdControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_ExpenceSubTypeControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_ExpenceTypeControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_IncomeSubTypeControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.R_IncomeTypeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.T_CashAllocationControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.T_ExpenceControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.T_RunchartControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.T_SiteAllocationControllerImpl;
 
@@ -226,6 +236,31 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     @Override
     public T_RunchartController getRunchartController() throws Exception {
         return new T_RunchartControllerImpl();
+    }
+
+    @Override
+    public T_ExpencesController getExpencesController() throws Exception {
+        return new T_ExpenceControllerImpl();
+    }
+
+    @Override
+    public R_ExpenceSubTypeController getExpenceSubTypeController() throws Exception {
+        return new R_ExpenceSubTypeControllerImpl();
+    }
+
+    @Override
+    public R_ExpenceTypeController getExpenceTypeController() throws Exception {
+        return new R_ExpenceTypeControllerImpl();
+    }
+
+    @Override
+    public R_IncomeSubTypeController getIncomeSubTypeController() throws Exception {
+        return new R_IncomeSubTypeControllerImpl();
+    }
+
+    @Override
+    public R_IncomeTypeControler getIncomeTypeControler() throws Exception {
+        return new R_IncomeTypeControllerImpl();
     }
     
 }

@@ -22,7 +22,11 @@ import com.brotherssoft.samodconstructions.dbAccess.R_AssetDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BankDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BranchDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_DesignationDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_ExpenceSubTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_ExpenceTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_FuelTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_IncomeSubTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_IncomeTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_JobTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_PaymentModeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectGradeDBAccess;
@@ -33,6 +37,7 @@ import com.brotherssoft.samodconstructions.dbAccess.R_UnitDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_WorkDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_CashAllocationDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.T_ExpencesDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_RunchartDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_SiteAllocationDBAccess;
 import com.brotherssoft.samodconstructions.dbAccessFactory.DBAccessFactory;
@@ -196,6 +201,31 @@ public class DBAccessFactoryImpl implements DBAccessFactory{
     @Override
     public T_RunchartDBAccess getRunchartDBAccess() {
         return new T_RunchartDBAccess();
+    }
+
+    @Override
+    public T_ExpencesDBAccess getExpencesDBAccess() {
+        return new T_ExpencesDBAccess();
+    }
+
+    @Override
+    public R_ExpenceSubTypeDBAccess getExpenceSubTypeDBAccess() {
+        return new R_ExpenceSubTypeDBAccess();
+    }
+
+    @Override
+    public R_ExpenceTypeDBAccess getExpenceTypeDBAccess() {
+        return new R_ExpenceTypeDBAccess();
+    }
+
+    @Override
+    public R_IncomeSubTypeDBAccess getIncomeSubTypeDBAccess() {
+        return new R_IncomeSubTypeDBAccess();
+    }
+
+    @Override
+    public R_IncomeTypeDBAccess getIncomeTypeDBAccess() {
+        return new R_IncomeTypeDBAccess();
     }
 
     

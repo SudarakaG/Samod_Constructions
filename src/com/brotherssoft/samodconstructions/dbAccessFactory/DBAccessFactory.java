@@ -22,7 +22,11 @@ import com.brotherssoft.samodconstructions.dbAccess.R_AssetDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BankDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_BranchDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_DesignationDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_ExpenceSubTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_ExpenceTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_FuelTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_IncomeSubTypeDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.R_IncomeTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_JobTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_PaymentModeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_ProjectGradeDBAccess;
@@ -33,6 +37,7 @@ import com.brotherssoft.samodconstructions.dbAccess.R_UnitDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_WorkDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_CashAllocationDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.T_ExpencesDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_RunchartDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_SiteAllocationDBAccess;
 
@@ -72,5 +77,10 @@ public interface DBAccessFactory {
     public M_MainStockDBAccess getMainStockDBAccess();
     public T_SiteAllocationDBAccess getSiteAllocationDBAccess();
     public T_RunchartDBAccess getRunchartDBAccess();
+    public T_ExpencesDBAccess getExpencesDBAccess();
+    public R_ExpenceSubTypeDBAccess getExpenceSubTypeDBAccess();
+    public R_ExpenceTypeDBAccess getExpenceTypeDBAccess();
+    public R_IncomeSubTypeDBAccess getIncomeSubTypeDBAccess();
+    public R_IncomeTypeDBAccess getIncomeTypeDBAccess();
     
 }
