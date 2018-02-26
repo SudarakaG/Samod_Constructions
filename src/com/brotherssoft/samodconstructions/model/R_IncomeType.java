@@ -16,14 +16,14 @@ public class R_IncomeType implements Serializable{
     private int incomeType_id;
     private String incomeType_name;
     private String incomeType_description;
-    private char incomeType_status;
-    private char incomeType_transactionCategory;
-    private char incomeType_transactionMode;
+    private String incomeType_status;
+    private String incomeType_transactionCategory;
+    private String incomeType_transactionMode;
 
     public R_IncomeType() {
     }
 
-    public R_IncomeType(int incomeType_id, String incomeType_name, String incomeType_description, char incomeType_status, char incomeType_transactionCategory, char incomeType_transactionMode) {
+    public R_IncomeType(int incomeType_id, String incomeType_name, String incomeType_description, String incomeType_status, String incomeType_transactionCategory, String incomeType_transactionMode) {
         this.incomeType_id = incomeType_id;
         this.incomeType_name = incomeType_name;
         this.incomeType_description = incomeType_description;
@@ -77,44 +77,43 @@ public class R_IncomeType implements Serializable{
     /**
      * @return the incomeType_status
      */
-    public char getIncomeType_status() {
+    public String getIncomeType_status() {
         return incomeType_status;
     }
 
     /**
      * @param incomeType_status the incomeType_status to set
      */
-    public void setIncomeType_status(char incomeType_status) {
+    public void setIncomeType_status(String incomeType_status) {
         this.incomeType_status = incomeType_status;
     }
 
     /**
      * @return the incomeType_transactionCategory
      */
-    public char getIncomeType_transactionCategory() {
+    public String getIncomeType_transactionCategory() {
         return incomeType_transactionCategory;
     }
 
     /**
      * @param incomeType_transactionCategory the incomeType_transactionCategory to set
      */
-    public void setIncomeType_transactionCategory(char incomeType_transactionCategory) {
+    public void setIncomeType_transactionCategory(String incomeType_transactionCategory) {
         this.incomeType_transactionCategory = incomeType_transactionCategory;
     }
 
     /**
      * @return the incomeType_transactionMode
      */
-    public char getIncomeType_transactionMode() {
+    public String getIncomeType_transactionMode() {
         return incomeType_transactionMode;
     }
 
     /**
      * @param incomeType_transactionMode the incomeType_transactionMode to set
      */
-    public void setIncomeType_transactionMode(char incomeType_transactionMode) {
+    public void setIncomeType_transactionMode(String incomeType_transactionMode) {
         this.incomeType_transactionMode = incomeType_transactionMode;
     }
-    
-    
+
 }

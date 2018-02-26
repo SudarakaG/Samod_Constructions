@@ -17,12 +17,12 @@ public class R_IncomeSubType implements Serializable{
     private int incomeSubType_incomeType_id;
     private String incomeSubType_name;
     private String incomeSubType_description;
-    private char incomeSubType_status;
+    private String incomeSubType_status;
 
     public R_IncomeSubType() {
     }
 
-    public R_IncomeSubType(int incomeSubType_id, int incomeSubType_incomeType_id, String incomeSubType_name, String incomeSubType_description, char incomeSubType_status) {
+    public R_IncomeSubType(int incomeSubType_id, int incomeSubType_incomeType_id, String incomeSubType_name, String incomeSubType_description, String incomeSubType_status) {
         this.incomeSubType_id = incomeSubType_id;
         this.incomeSubType_incomeType_id = incomeSubType_incomeType_id;
         this.incomeSubType_name = incomeSubType_name;
@@ -89,16 +89,15 @@ public class R_IncomeSubType implements Serializable{
     /**
      * @return the incomeSubType_status
      */
-    public char getIncomeSubType_status() {
+    public String getIncomeSubType_status() {
         return incomeSubType_status;
     }
 
     /**
      * @param incomeSubType_status the incomeSubType_status to set
      */
-    public void setIncomeSubType_status(char incomeSubType_status) {
+    public void setIncomeSubType_status(String incomeSubType_status) {
         this.incomeSubType_status = incomeSubType_status;
     }
-    
-    
+
 }

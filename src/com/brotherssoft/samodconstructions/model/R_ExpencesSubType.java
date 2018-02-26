@@ -17,12 +17,12 @@ public class R_ExpencesSubType implements Serializable{
     private int expencesSubTytpe_expencesType_id;
     private String expencesSubTytpe_name;
     private String expencesSubTytpe_description;
-    private char expencesSubTytpe_status;
+    private String expencesSubTytpe_status;
 
     public R_ExpencesSubType() {
     }
 
-    public R_ExpencesSubType(int expencesSubTytpe_id, int expencesSubTytpe_expencesType_id, String expencesSubTytpe_name, String expencesSubTytpe_description, char expencesSubTytpe_status) {
+    public R_ExpencesSubType(int expencesSubTytpe_id, int expencesSubTytpe_expencesType_id, String expencesSubTytpe_name, String expencesSubTytpe_description, String expencesSubTytpe_status) {
         this.expencesSubTytpe_id = expencesSubTytpe_id;
         this.expencesSubTytpe_expencesType_id = expencesSubTytpe_expencesType_id;
         this.expencesSubTytpe_name = expencesSubTytpe_name;
@@ -89,17 +89,15 @@ public class R_ExpencesSubType implements Serializable{
     /**
      * @return the expencesSubTytpe_status
      */
-    public char getExpencesSubTytpe_status() {
+    public String getExpencesSubTytpe_status() {
         return expencesSubTytpe_status;
     }
 
     /**
      * @param expencesSubTytpe_status the expencesSubTytpe_status to set
      */
-    public void setExpencesSubTytpe_status(char expencesSubTytpe_status) {
+    public void setExpencesSubTytpe_status(String expencesSubTytpe_status) {
         this.expencesSubTytpe_status = expencesSubTytpe_status;
     }
-    
-    
-    
+
 }
