@@ -1547,6 +1547,7 @@ public class GUI_Home extends javax.swing.JFrame {
         jScrollPane2.setViewportView(menu_panel);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/diminish.png"))); // NOI18N
+        jButton1.setToolTipText("Minimize");
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1555,6 +1556,7 @@ public class GUI_Home extends javax.swing.JFrame {
         });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/error(2).png"))); // NOI18N
+        jButton2.setToolTipText("Exit");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -1562,6 +1564,7 @@ public class GUI_Home extends javax.swing.JFrame {
         });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/browser.png"))); // NOI18N
+        jButton3.setToolTipText("Check Mails");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -1575,18 +1578,18 @@ public class GUI_Home extends javax.swing.JFrame {
             .addGroup(background_panelLayout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+                .addComponent(date_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(time_lable)
+                .addGap(70, 70, 70)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(date_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(time_lable)
-                .addGap(18, 18, 18))
+                .addContainerGap())
         );
 
         background_panelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
@@ -2145,13 +2148,19 @@ public class GUI_Home extends javax.swing.JFrame {
         int option = JOptionPane.YES_NO_OPTION;
         option = JOptionPane.showConfirmDialog(rootPane, "Do You Really Want To Exit?", "Warning", option);
         if (option == 0) {
+            try {
+                ReleaseAllReservation.releaseAllReservation();
+            } catch (Exception ex) {
+                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
             JOptionPane.showMessageDialog(rootPane, "Have a nice day!");
-            this.dispose();
+            //this.dispose();
+            System.exit(0);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String url = "http://google.com";
+        String url = "http://gmail.com";
 
         if (Desktop.isDesktopSupported()) {
             try {

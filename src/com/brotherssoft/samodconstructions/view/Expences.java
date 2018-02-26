@@ -62,38 +62,48 @@ public class Expences extends javax.swing.JPanel {
         jSeparator9 = new javax.swing.JSeparator();
         jButton4 = new javax.swing.JButton();
         txt_Input_Panel_Branch4 = new javax.swing.JPanel();
-        txt_project_tender_result1 = new javax.swing.JTextField();
         jLabel107 = new javax.swing.JLabel();
-        from_date = new org.jdesktop.swingx.JXDatePicker();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        dp_expenceDate = new org.jdesktop.swingx.JXDatePicker();
+        cmb_expence_type = new javax.swing.JComboBox<>();
         jLabel109 = new javax.swing.JLabel();
-        btn_new_primary_project2 = new javax.swing.JButton();
+        btn_save_expence = new javax.swing.JButton();
         jLabel113 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        cmb_expence_subType = new javax.swing.JComboBox<>();
         jLabel114 = new javax.swing.JLabel();
         jLabel115 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        cmb_purchaser = new javax.swing.JComboBox<>();
+        txt_invoiceNo = new javax.swing.JTextField();
         jLabel116 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txt_bilAmount = new javax.swing.JTextField();
         jLabel117 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        btn_new_primary_project4 = new javax.swing.JButton();
-        btn_new_primary_project5 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        txt_vatAmount = new javax.swing.JTextField();
+        txt_tot = new javax.swing.JTextField();
+        btn_new_expence = new javax.swing.JButton();
         jLabel119 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
+        cmb_authority = new javax.swing.JComboBox<>();
         jLabel120 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
+        cmb_site = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel118 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jComboBox8 = new javax.swing.JComboBox<>();
+        radio_cash = new javax.swing.JRadioButton();
+        radio_cheque = new javax.swing.JRadioButton();
+        radio_draft = new javax.swing.JRadioButton();
+        cmb_companyAccount = new javax.swing.JComboBox<>();
         jLabel121 = new javax.swing.JLabel();
+        jLabel122 = new javax.swing.JLabel();
+        cmb_expence_entered_emp = new javax.swing.JComboBox<>();
+        jLabel108 = new javax.swing.JLabel();
+        dp_entered_date = new org.jdesktop.swingx.JXDatePicker();
+        jLabel123 = new javax.swing.JLabel();
+        cmb_expence_approved_emp = new javax.swing.JComboBox<>();
+        jLabel110 = new javax.swing.JLabel();
+        dp_approved_date = new org.jdesktop.swingx.JXDatePicker();
+        jLabel124 = new javax.swing.JLabel();
+        dp_issue_date = new org.jdesktop.swingx.JXDatePicker();
+        jLabel125 = new javax.swing.JLabel();
+        dp_receive_date = new org.jdesktop.swingx.JXDatePicker();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txt_expence_description = new javax.swing.JTextArea();
         Expences_View_Panel = new javax.swing.JPanel();
         bank_panel_hedding5 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
@@ -161,50 +171,43 @@ public class Expences extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-        New_Expences_Panel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 130, 150, -1));
+        New_Expences_Panel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 130, 150, -1));
 
         txt_Input_Panel_Branch4.setBackground(new java.awt.Color(255, 255, 255));
         txt_Input_Panel_Branch4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "New Expence Detail", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
-        txt_project_tender_result1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_project_tender_result1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_project_tender_result1ActionPerformed(evt);
-            }
-        });
-
         jLabel107.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel107.setText("Account Date");
 
-        from_date.addActionListener(new java.awt.event.ActionListener() {
+        dp_expenceDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                from_dateActionPerformed(evt);
+                dp_expenceDateActionPerformed(evt);
             }
         });
 
-        jComboBox2.setEditable(true);
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Expences Type -" }));
+        cmb_expence_type.setEditable(true);
+        cmb_expence_type.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_expence_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Expences Type -" }));
 
         jLabel109.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel109.setText("Type of Expence");
 
-        btn_new_primary_project2.setBackground(new java.awt.Color(51, 51, 255));
-        btn_new_primary_project2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_new_primary_project2.setForeground(new java.awt.Color(255, 255, 255));
-        btn_new_primary_project2.setText("Save");
-        btn_new_primary_project2.addActionListener(new java.awt.event.ActionListener() {
+        btn_save_expence.setBackground(new java.awt.Color(51, 51, 255));
+        btn_save_expence.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_save_expence.setForeground(new java.awt.Color(255, 255, 255));
+        btn_save_expence.setText("Save");
+        btn_save_expence.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_new_primary_project2ActionPerformed(evt);
+                btn_save_expenceActionPerformed(evt);
             }
         });
 
         jLabel113.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel113.setText("Sub Type of Expence");
 
-        jComboBox4.setEditable(true);
-        jComboBox4.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Expence Sub Type -" }));
+        cmb_expence_subType.setEditable(true);
+        cmb_expence_subType.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_expence_subType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Expence Sub Type -" }));
 
         jLabel114.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel114.setText("Description");
@@ -212,282 +215,353 @@ public class Expences extends javax.swing.JPanel {
         jLabel115.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel115.setText("Purchaser");
 
-        jComboBox5.setEditable(true);
-        jComboBox5.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Purchaser -" }));
+        cmb_purchaser.setEditable(true);
+        cmb_purchaser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_purchaser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Purchaser -" }));
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jTextField1.setText("enter invoice no / payment certificate no");
+        txt_invoiceNo.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        txt_invoiceNo.setText("enter invoice no / payment certificate no");
 
         jLabel116.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel116.setText("Invoice/Payment no");
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jTextField2.setText("Bill Amount");
+        txt_bilAmount.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        txt_bilAmount.setText("Bill Amount");
 
         jLabel117.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel117.setText("Value");
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jTextField3.setText("Vat Amount");
+        txt_vatAmount.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        txt_vatAmount.setText("Vat Amount");
 
-        jTextField4.setEditable(false);
-        jTextField4.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jTextField4.setText("Total");
+        txt_tot.setEditable(false);
+        txt_tot.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        txt_tot.setText("Total");
 
-        btn_new_primary_project4.setBackground(new java.awt.Color(51, 51, 255));
-        btn_new_primary_project4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_new_primary_project4.setForeground(new java.awt.Color(255, 255, 255));
-        btn_new_primary_project4.setText("New");
-        btn_new_primary_project4.addActionListener(new java.awt.event.ActionListener() {
+        btn_new_expence.setBackground(new java.awt.Color(51, 51, 255));
+        btn_new_expence.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_new_expence.setForeground(new java.awt.Color(255, 255, 255));
+        btn_new_expence.setText("New");
+        btn_new_expence.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_new_primary_project4ActionPerformed(evt);
+                btn_new_expenceActionPerformed(evt);
             }
         });
-
-        btn_new_primary_project5.setBackground(new java.awt.Color(255, 0, 51));
-        btn_new_primary_project5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_new_primary_project5.setForeground(new java.awt.Color(255, 255, 255));
-        btn_new_primary_project5.setText("Delete");
-        btn_new_primary_project5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_new_primary_project5ActionPerformed(evt);
-            }
-        });
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Date", "Project", "Amount"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
 
         jLabel119.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel119.setText("Authority");
 
-        jComboBox6.setEditable(true);
-        jComboBox6.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Authority -" }));
+        cmb_authority.setEditable(true);
+        cmb_authority.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_authority.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Authority -" }));
 
         jLabel120.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel120.setText("Allocated Site");
 
-        jComboBox7.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Site -" }));
+        cmb_site.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_site.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Site -" }));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jLabel118.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel118.setText("Payment Mode");
 
-        jRadioButton1.setBackground(new java.awt.Color(153, 153, 153));
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Cash");
+        radio_cash.setBackground(new java.awt.Color(153, 153, 153));
+        buttonGroup1.add(radio_cash);
+        radio_cash.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        radio_cash.setSelected(true);
+        radio_cash.setText("Cash");
 
-        jRadioButton2.setBackground(new java.awt.Color(153, 153, 153));
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jRadioButton2.setText("Cheque");
+        radio_cheque.setBackground(new java.awt.Color(153, 153, 153));
+        buttonGroup1.add(radio_cheque);
+        radio_cheque.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        radio_cheque.setText("Cheque");
 
-        jRadioButton3.setBackground(new java.awt.Color(153, 153, 153));
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jRadioButton3.setText("Bank Draft");
+        radio_draft.setBackground(new java.awt.Color(153, 153, 153));
+        buttonGroup1.add(radio_draft);
+        radio_draft.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        radio_draft.setText("Bank Draft");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel118)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(radio_cash, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(radio_cheque, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(radio_draft, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(radio_cash)
+                        .addComponent(radio_cheque)
+                        .addComponent(radio_draft))
+                    .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jComboBox8.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select -" }));
+        cmb_companyAccount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_companyAccount.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select -" }));
 
         jLabel121.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel121.setText("Company Account");
+
+        jLabel122.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel122.setText("Entered By");
+
+        cmb_expence_entered_emp.setEditable(true);
+        cmb_expence_entered_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_expence_entered_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Entered Employee -" }));
+        cmb_expence_entered_emp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_expence_entered_empActionPerformed(evt);
+            }
+        });
+
+        jLabel108.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel108.setText("Entered Date");
+
+        dp_entered_date.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dp_entered_dateActionPerformed(evt);
+            }
+        });
+
+        jLabel123.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel123.setText("Approved By");
+
+        cmb_expence_approved_emp.setEditable(true);
+        cmb_expence_approved_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_expence_approved_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Approved Employee -" }));
+
+        jLabel110.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel110.setText("Aproved Date");
+
+        dp_approved_date.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dp_approved_dateActionPerformed(evt);
+            }
+        });
+
+        jLabel124.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel124.setText("Issue Date");
+
+        dp_issue_date.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dp_issue_dateActionPerformed(evt);
+            }
+        });
+
+        jLabel125.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel125.setText("Receive Date");
+
+        dp_receive_date.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dp_receive_dateActionPerformed(evt);
+            }
+        });
+
+        txt_expence_description.setColumns(20);
+        txt_expence_description.setRows(5);
+        jScrollPane1.setViewportView(txt_expence_description);
 
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
         txt_Input_Panel_Branch4Layout.setHorizontalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel107)
-                        .addGap(60, 60, 60)
-                        .addComponent(from_date, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel124)
+                            .addComponent(jLabel125))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(dp_receive_date, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(dp_issue_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel110)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel109)
                                     .addComponent(jLabel113)
-                                    .addComponent(jLabel114))
-                                .addGap(15, 15, 15)
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_project_tender_result1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(4, 4, 4)
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel116)
-                                    .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                        .addGap(4, 4, 4)
-                                        .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(4, 4, 4)
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox7, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextField1)))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel114)
+                                    .addComponent(jLabel107))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                                .addGap(90, 90, 90)
-                                                .addComponent(btn_new_primary_project2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btn_new_primary_project4)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btn_new_primary_project5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                        .addComponent(jLabel121)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cmb_expence_subType, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE)
+                                    .addComponent(cmb_expence_type, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(dp_expenceDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cmb_expence_approved_emp, 0, 350, Short.MAX_VALUE)
+                                .addComponent(dp_approved_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(cmb_expence_entered_emp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel108)
+                        .addGap(49, 49, 49)
+                        .addComponent(dp_entered_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                            .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmb_authority, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                            .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(42, 42, 42)
+                            .addComponent(cmb_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel116)
+                                .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txt_bilAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addGap(4, 4, 4)
+                                    .addComponent(txt_invoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txt_tot, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_vatAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                            .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmb_site, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                            .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(cmb_companyAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addComponent(btn_save_expence, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_new_expence)))
                 .addContainerGap())
         );
 
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_new_primary_project2, btn_new_primary_project4, btn_new_primary_project5});
+        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_new_expence, btn_save_expence});
 
         txt_Input_Panel_Branch4Layout.setVerticalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel107, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(from_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
+                .addContainerGap()
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel109, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel113, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(txt_project_tender_result1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jLabel116, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(7, 7, 7)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(39, 39, 39)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmb_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(jLabel116, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(txt_invoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_bilAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_vatAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_tot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_site, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_new_primary_project5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_new_primary_project4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_new_primary_project2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                            .addComponent(cmb_authority, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(jLabel107, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel109, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmb_expence_type, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel113, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cmb_expence_subType, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(dp_expenceDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmb_expence_entered_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(dp_entered_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmb_expence_approved_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dp_approved_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dp_issue_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dp_receive_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmb_companyAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_new_expence, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_save_expence, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        New_Expences_Panel.add(txt_Input_Panel_Branch4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 154, -1, 550));
+        New_Expences_Panel.add(txt_Input_Panel_Branch4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 154, 1050, 560));
 
         Expences_View_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Expences_View_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -648,8 +722,9 @@ public class Expences extends javax.swing.JPanel {
                     .addComponent(btn_branch1)
                     .addComponent(cmb_searchEmp_jobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_emp_search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout Expences_View_PanelLayout = new javax.swing.GroupLayout(Expences_View_Panel);
@@ -666,9 +741,9 @@ public class Expences extends javax.swing.JPanel {
             Expences_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Expences_View_PanelLayout.createSequentialGroup()
                 .addComponent(bank_panel_hedding5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(New_Expences_Panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -684,9 +759,9 @@ public class Expences extends javax.swing.JPanel {
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Expences_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
+            .addComponent(Expences_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(New_Expences_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE))
+                .addComponent(New_Expences_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 713, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -743,25 +818,37 @@ public class Expences extends javax.swing.JPanel {
        Expences_View_Panel.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void txt_project_tender_result1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_tender_result1ActionPerformed
+    private void dp_expenceDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_expenceDateActionPerformed
+
+    }//GEN-LAST:event_dp_expenceDateActionPerformed
+
+    private void btn_save_expenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_expenceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_project_tender_result1ActionPerformed
+    }//GEN-LAST:event_btn_save_expenceActionPerformed
 
-    private void from_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_from_dateActionPerformed
-
-    }//GEN-LAST:event_from_dateActionPerformed
-
-    private void btn_new_primary_project2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_project2ActionPerformed
+    private void btn_new_expenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_expenceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_new_primary_project2ActionPerformed
+    }//GEN-LAST:event_btn_new_expenceActionPerformed
 
-    private void btn_new_primary_project4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_project4ActionPerformed
+    private void dp_entered_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_entered_dateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_new_primary_project4ActionPerformed
+    }//GEN-LAST:event_dp_entered_dateActionPerformed
 
-    private void btn_new_primary_project5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_project5ActionPerformed
+    private void dp_approved_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_approved_dateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_new_primary_project5ActionPerformed
+    }//GEN-LAST:event_dp_approved_dateActionPerformed
+
+    private void cmb_expence_entered_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_expence_entered_empActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_expence_entered_empActionPerformed
+
+    private void dp_issue_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_issue_dateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dp_issue_dateActionPerformed
+
+    private void dp_receive_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_receive_dateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dp_receive_dateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -770,21 +857,28 @@ public class Expences extends javax.swing.JPanel {
     private javax.swing.JPanel bank_panel_hedding3;
     private javax.swing.JPanel bank_panel_hedding5;
     private javax.swing.JButton btn_branch1;
-    private javax.swing.JButton btn_new_primary_project2;
-    private javax.swing.JButton btn_new_primary_project4;
-    private javax.swing.JButton btn_new_primary_project5;
+    private javax.swing.JButton btn_new_expence;
+    private javax.swing.JButton btn_save_expence;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cmb_authority;
+    private javax.swing.JComboBox<String> cmb_companyAccount;
+    private javax.swing.JComboBox<String> cmb_expence_approved_emp;
+    private javax.swing.JComboBox<String> cmb_expence_entered_emp;
+    private javax.swing.JComboBox<String> cmb_expence_subType;
+    private javax.swing.JComboBox<String> cmb_expence_type;
+    private javax.swing.JComboBox<String> cmb_purchaser;
     private javax.swing.JComboBox<String> cmb_searchEmp_jobType;
-    private org.jdesktop.swingx.JXDatePicker from_date;
+    private javax.swing.JComboBox<String> cmb_site;
+    private org.jdesktop.swingx.JXDatePicker dp_approved_date;
+    private org.jdesktop.swingx.JXDatePicker dp_entered_date;
+    private org.jdesktop.swingx.JXDatePicker dp_expenceDate;
+    private org.jdesktop.swingx.JXDatePicker dp_issue_date;
+    private org.jdesktop.swingx.JXDatePicker dp_receive_date;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
+    private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel113;
     private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel115;
@@ -794,29 +888,32 @@ public class Expences extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel119;
     private javax.swing.JLabel jLabel120;
     private javax.swing.JLabel jLabel121;
+    private javax.swing.JLabel jLabel122;
+    private javax.swing.JLabel jLabel123;
+    private javax.swing.JLabel jLabel124;
+    private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JRadioButton radio_cash;
+    private javax.swing.JRadioButton radio_cheque;
+    private javax.swing.JRadioButton radio_draft;
     private javax.swing.JTable tbl_employeeInfo;
     private javax.swing.JPanel tbl_panel_Branch2;
     private javax.swing.JPanel txt_Input_Panel_Branch4;
+    private javax.swing.JTextField txt_bilAmount;
     private javax.swing.JTextField txt_emp_search1;
-    private javax.swing.JTextField txt_project_tender_result1;
+    private javax.swing.JTextArea txt_expence_description;
+    private javax.swing.JTextField txt_invoiceNo;
+    private javax.swing.JTextField txt_tot;
+    private javax.swing.JTextField txt_vatAmount;
     // End of variables declaration//GEN-END:variables
 
    
