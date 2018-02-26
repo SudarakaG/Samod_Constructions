@@ -34,7 +34,12 @@ import java.rmi.Naming;
 import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_SecondaryController;
 import com.brotherssoft.samodconstructions.controller.M_Project_ThirdController;
+import com.brotherssoft.samodconstructions.controller.R_ExpenceSubTypeController;
+import com.brotherssoft.samodconstructions.controller.R_ExpenceTypeController;
+import com.brotherssoft.samodconstructions.controller.R_IncomeSubTypeController;
+import com.brotherssoft.samodconstructions.controller.R_IncomeTypeControler;
 import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
+import com.brotherssoft.samodconstructions.controller.T_ExpencesController;
 import com.brotherssoft.samodconstructions.controller.T_RunchartController;
 import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
 
@@ -76,6 +81,11 @@ public class ServerConnector {
     private M_MainStockController mainStockController;
     private T_SiteAllocationController siteAllocationController;
     private T_RunchartController runchartController;
+    private T_ExpencesController expencesController;
+    private R_ExpenceSubTypeController expenceSubTypeController;
+    private R_ExpenceTypeController expenceTypeController;
+    private R_IncomeSubTypeController incomeSubTypeController;
+    private R_IncomeTypeControler incomeTypeControler;
     
     //private UserHistoryController uhc;
 
@@ -291,6 +301,41 @@ public class ServerConnector {
             runchartController = cf.getRunchartController();
         }
         return runchartController;
+    }
+    
+    public T_ExpencesController getExpencesController()throws Exception{
+        if (expencesController == null) {
+            expencesController = cf.getExpencesController();
+        }
+        return expencesController;
+    }
+    
+    public R_ExpenceSubTypeController getExpenceSubTypeController()throws Exception{
+        if (expenceSubTypeController == null) {
+            expenceSubTypeController = cf.getExpenceSubTypeController();
+        }
+        return expenceSubTypeController;
+    }
+    
+    public R_ExpenceTypeController getExpenceTypeController()throws Exception{
+        if (expenceTypeController == null) {
+            expenceTypeController = cf.getExpenceTypeController();
+        }
+        return expenceTypeController;
+    }
+    
+    public R_IncomeSubTypeController getIncomeSubTypeController()throws Exception{
+        if (incomeSubTypeController == null) {
+            incomeSubTypeController = cf.getIncomeSubTypeController();
+        }
+        return incomeSubTypeController;
+    }
+    
+    public R_IncomeTypeControler getIncomeTypeControler()throws Exception{
+        if (incomeTypeControler == null) {
+            incomeTypeControler = cf.getIncomeTypeControler();
+        }
+        return incomeTypeControler;
     }
 
 //    
