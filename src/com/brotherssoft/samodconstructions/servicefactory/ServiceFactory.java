@@ -38,6 +38,7 @@ import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
 import com.brotherssoft.samodconstructions.service.R_WorkService;
 import com.brotherssoft.samodconstructions.service.T_CashAllocationService;
 import com.brotherssoft.samodconstructions.service.T_ExpenceService;
+import com.brotherssoft.samodconstructions.service.T_IncomeService;
 import com.brotherssoft.samodconstructions.service.T_RunchartService;
 import com.brotherssoft.samodconstructions.service.T_SiteAllocationService;
 
@@ -82,5 +83,6 @@ public interface ServiceFactory {
     public R_ExpenceTypeService getExpenceTypeService();
     public R_IncomeSubTypeService getIncomeSubTypeService();
     public R_IncomeTypeService getIncomeTypeService();
+    public T_IncomeService getIncomeService();
     
 }

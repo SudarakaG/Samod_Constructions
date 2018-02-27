@@ -38,6 +38,7 @@ import com.brotherssoft.samodconstructions.dbAccess.R_VehicleTypeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.R_WorkDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_CashAllocationDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_ExpencesDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.T_IncomeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_RunchartDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_SiteAllocationDBAccess;
 
@@ -82,5 +83,6 @@ public interface DBAccessFactory {
     public R_ExpenceTypeDBAccess getExpenceTypeDBAccess();
     public R_IncomeSubTypeDBAccess getIncomeSubTypeDBAccess();
     public R_IncomeTypeDBAccess getIncomeTypeDBAccess();
+    public T_IncomeDBAccess getIncomeDBAccess();
     
 }
