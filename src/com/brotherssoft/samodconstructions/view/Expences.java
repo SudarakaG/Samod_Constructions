@@ -5,22 +5,13 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
-import com.brotherssoft.samodconstructions.controller.R_DesignationController;
-import com.brotherssoft.samodconstructions.controller.R_JobTypeController;
-import com.brotherssoft.samodconstructions.custom.IDGenerator;
-import com.brotherssoft.samodconstructions.custom.Validation;
-import com.brotherssoft.samodconstructions.model.M_Employee;
-import com.brotherssoft.samodconstructions.model.R_Designation;
-import com.brotherssoft.samodconstructions.model.R_JobType;
+import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
+import com.brotherssoft.samodconstructions.controller.R_ExpenceSubTypeController;
+import com.brotherssoft.samodconstructions.controller.R_ExpenceTypeController;
+import com.brotherssoft.samodconstructions.controller.T_ExpencesController;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
-import java.awt.Color;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,11 +19,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Expences extends javax.swing.JPanel {
 
-    R_JobTypeController jobTypeController;
-    R_DesignationController designationController;
+    R_ExpenceSubTypeController expenceSubTypeController;
+    R_ExpenceTypeController expenceTypeController;
     M_EmployeeController employeeController;
-    DefaultTableModel dtmEmployee;
-    public static int empIdPub;
+    M_PurchaserController purchaserController;
+    M_AccountController accountController;
+    T_ExpencesController expencesController;
 
     /**
      * Creates new form Employee_Panel
@@ -41,6 +33,13 @@ public class Expences extends javax.swing.JPanel {
         initComponents();
        New_Expences_Panel.setVisible(false);
        Expences_View_Panel.setVisible(true);
+       
+       expenceSubTypeController = ServerConnector.getServerConnetor().getExpenceSubTypeController();
+       expenceTypeController = ServerConnector.getServerConnetor().getExpenceTypeController();
+       employeeController = ServerConnector.getServerConnetor().getEmployeeController();
+       purchaserController = ServerConnector.getServerConnetor().getPurchaserController();
+       accountController = ServerConnector.getServerConnetor().getAccountController();
+       expencesController = ServerConnector.getServerConnetor().getExpencesController();
 
     }
 

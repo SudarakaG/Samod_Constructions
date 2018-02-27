@@ -40,6 +40,7 @@ import com.brotherssoft.samodconstructions.controller.R_IncomeSubTypeController;
 import com.brotherssoft.samodconstructions.controller.R_IncomeTypeControler;
 import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
 import com.brotherssoft.samodconstructions.controller.T_ExpencesController;
+import com.brotherssoft.samodconstructions.controller.T_IncomeController;
 import com.brotherssoft.samodconstructions.controller.T_RunchartController;
 import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
 
@@ -86,6 +87,7 @@ public class ServerConnector {
     private R_ExpenceTypeController expenceTypeController;
     private R_IncomeSubTypeController incomeSubTypeController;
     private R_IncomeTypeControler incomeTypeControler;
+    private T_IncomeController incomeController;
     
     //private UserHistoryController uhc;
 
@@ -336,6 +338,13 @@ public class ServerConnector {
             incomeTypeControler = cf.getIncomeTypeControler();
         }
         return incomeTypeControler;
+    }
+    
+    public T_IncomeController getIncomeController()throws Exception{
+        if (incomeController == null) {
+            incomeController = cf.getIncomeController();
+        }
+        return incomeController;
     }
 
 //    
