@@ -27,19 +27,19 @@ public class T_Expences implements Serializable{
     private String expence_RefNo;
     private Date expence_dateIssued;
     private Date expence_dateReceived;
-    private String expence_refId;
-    private String expence_refSiteId;
+    private int expence_refId;
+    private int expence_refSiteId;
     private int expence_enteredUser;
     private int expence_approvedUser;
     private Date expence_enteredDate;
     private Date expence_approvedDate;
     private String expence_status;
-    private String expence_account;
+    private int expence_account;
 
     public T_Expences() {
     }
 
-    public T_Expences(int expence_id, String expence_description, int expence_typeId, int expence_subTypeId, Date expence_date, int expence_purchaserId, String expence_invoiceNo, double expence_invoiceAmount, double expence_vatAmount, int expence_paymentModeId, String expence_RefNo, Date expence_dateIssued, Date expence_dateReceived, String expence_refId, String expence_refSiteId, int expence_enteredUser, int expence_approvedUser, Date expence_enteredDate, Date expence_approvedDate, String expence_status, String expence_account) {
+    public T_Expences(int expence_id, String expence_description, int expence_typeId, int expence_subTypeId, Date expence_date, int expence_purchaserId, String expence_invoiceNo, double expence_invoiceAmount, double expence_vatAmount, int expence_paymentModeId, String expence_RefNo, Date expence_dateIssued, Date expence_dateReceived, int expence_refId, int expence_refSiteId, int expence_enteredUser, int expence_approvedUser, Date expence_enteredDate, Date expence_approvedDate, String expence_status, int expence_account) {
         this.expence_id = expence_id;
         this.expence_description = expence_description;
         this.expence_typeId = expence_typeId;
@@ -248,28 +248,28 @@ public class T_Expences implements Serializable{
     /**
      * @return the expence_refId
      */
-    public String getExpence_refId() {
+    public int getExpence_refId() {
         return expence_refId;
     }
 
     /**
      * @param expence_refId the expence_refId to set
      */
-    public void setExpence_refId(String expence_refId) {
+    public void setExpence_refId(int expence_refId) {
         this.expence_refId = expence_refId;
     }
 
     /**
      * @return the expence_refSiteId
      */
-    public String getExpence_refSiteId() {
+    public int getExpence_refSiteId() {
         return expence_refSiteId;
     }
 
     /**
      * @param expence_refSiteId the expence_refSiteId to set
      */
-    public void setExpence_refSiteId(String expence_refSiteId) {
+    public void setExpence_refSiteId(int expence_refSiteId) {
         this.expence_refSiteId = expence_refSiteId;
     }
 
@@ -346,15 +346,16 @@ public class T_Expences implements Serializable{
     /**
      * @return the expence_account
      */
-    public String getExpence_account() {
+    public int getExpence_account() {
         return expence_account;
     }
 
     /**
      * @param expence_account the expence_account to set
      */
-    public void setExpence_account(String expence_account) {
+    public void setExpence_account(int expence_account) {
         this.expence_account = expence_account;
     }
+
     
 }
