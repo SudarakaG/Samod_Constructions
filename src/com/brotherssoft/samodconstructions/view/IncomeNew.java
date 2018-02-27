@@ -7,71 +7,39 @@ package com.brotherssoft.samodconstructions.view;
 
 import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
-import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
 import com.brotherssoft.samodconstructions.controller.R_ExpenceSubTypeController;
 import com.brotherssoft.samodconstructions.controller.R_ExpenceTypeController;
-import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
 import com.brotherssoft.samodconstructions.controller.T_ExpencesController;
-import com.brotherssoft.samodconstructions.custom.IDGenerator;
-import com.brotherssoft.samodconstructions.model.M_Account;
-import com.brotherssoft.samodconstructions.model.M_Employee;
-import com.brotherssoft.samodconstructions.model.M_Project_Primary;
-import com.brotherssoft.samodconstructions.model.M_Purchaser;
-import com.brotherssoft.samodconstructions.model.R_ExpencesType;
-import com.brotherssoft.samodconstructions.model.T_Expences;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
-import java.util.Date;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Akvasoft
  */
-public class Expences extends javax.swing.JPanel {
+public class IncomeNew extends javax.swing.JPanel {
 
     R_ExpenceSubTypeController expenceSubTypeController;
     R_ExpenceTypeController expenceTypeController;
     M_EmployeeController employeeController;
     M_PurchaserController purchaserController;
-    M_Project_PrimaryController projectController;
-    R_PaymentModeController paymentModeController;
     M_AccountController accountController;
     T_ExpencesController expencesController;
-
-    DefaultTableModel dtmExpenceTable;
 
     /**
      * Creates new form Employee_Panel
      */
-    public Expences() throws Exception {
+    public IncomeNew() throws Exception {
         initComponents();
-        New_Expences_Panel.setVisible(false);
-        Expences_View_Panel.setVisible(true);
-
-        expenceSubTypeController = ServerConnector.getServerConnetor().getExpenceSubTypeController();
-        expenceTypeController = ServerConnector.getServerConnetor().getExpenceTypeController();
-        employeeController = ServerConnector.getServerConnetor().getEmployeeController();
-        purchaserController = ServerConnector.getServerConnetor().getPurchaserController();
-        projectController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
-        paymentModeController = ServerConnector.getServerConnetor().getPaymentModeController();
-        accountController = ServerConnector.getServerConnetor().getAccountController();
-        expencesController = ServerConnector.getServerConnetor().getExpencesController();
-
-        dtmExpenceTable = (DefaultTableModel) tbl_expencesInfo.getModel();
-
-        loadExpenceTypeCombo();
-        loadEmployeeCombo();
-        laodAuthorityCombo();
-        loadPurchaserCombo();
-        loadSiteCombo();
-        loadAccountCombo();
-
-        loadExpencesTable();
+       New_Expences_Panel.setVisible(false);
+       Expences_View_Panel.setVisible(true);
+       
+       expenceSubTypeController = ServerConnector.getServerConnetor().getExpenceSubTypeController();
+       expenceTypeController = ServerConnector.getServerConnetor().getExpenceTypeController();
+       employeeController = ServerConnector.getServerConnetor().getEmployeeController();
+       purchaserController = ServerConnector.getServerConnetor().getPurchaserController();
+       accountController = ServerConnector.getServerConnetor().getAccountController();
+       expencesController = ServerConnector.getServerConnetor().getExpencesController();
 
     }
 
@@ -143,7 +111,7 @@ public class Expences extends javax.swing.JPanel {
         tbl_panel_Branch2 = new javax.swing.JPanel();
         btn_branch1 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
-        tbl_expencesInfo = new javax.swing.JTable();
+        tbl_employeeInfo = new javax.swing.JTable();
         txt_emp_search1 = new javax.swing.JTextField();
         cmb_searchEmp_jobType = new javax.swing.JComboBox<>();
 
@@ -216,6 +184,7 @@ public class Expences extends javax.swing.JPanel {
             }
         });
 
+        cmb_expence_type.setEditable(true);
         cmb_expence_type.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_expence_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Expences Type -" }));
 
@@ -235,6 +204,7 @@ public class Expences extends javax.swing.JPanel {
         jLabel113.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel113.setText("Sub Type of Expence");
 
+        cmb_expence_subType.setEditable(true);
         cmb_expence_subType.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_expence_subType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Expence Sub Type -" }));
 
@@ -244,6 +214,7 @@ public class Expences extends javax.swing.JPanel {
         jLabel115.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel115.setText("Purchaser");
 
+        cmb_purchaser.setEditable(true);
         cmb_purchaser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_purchaser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Purchaser -" }));
 
@@ -261,11 +232,6 @@ public class Expences extends javax.swing.JPanel {
 
         txt_vatAmount.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         txt_vatAmount.setText("Vat Amount");
-        txt_vatAmount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_vatAmountActionPerformed(evt);
-            }
-        });
 
         txt_tot.setEditable(false);
         txt_tot.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
@@ -284,6 +250,7 @@ public class Expences extends javax.swing.JPanel {
         jLabel119.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel119.setText("Authority");
 
+        cmb_authority.setEditable(true);
         cmb_authority.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_authority.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Authority -" }));
 
@@ -350,6 +317,7 @@ public class Expences extends javax.swing.JPanel {
         jLabel122.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel122.setText("Entered By");
 
+        cmb_expence_entered_emp.setEditable(true);
         cmb_expence_entered_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_expence_entered_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Entered Employee -" }));
         cmb_expence_entered_emp.addActionListener(new java.awt.event.ActionListener() {
@@ -370,6 +338,7 @@ public class Expences extends javax.swing.JPanel {
         jLabel123.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel123.setText("Approved By");
 
+        cmb_expence_approved_emp.setEditable(true);
         cmb_expence_approved_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_expence_approved_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Approved Employee -" }));
 
@@ -649,8 +618,8 @@ public class Expences extends javax.swing.JPanel {
             }
         });
 
-        tbl_expencesInfo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tbl_expencesInfo.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_employeeInfo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tbl_employeeInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -694,13 +663,13 @@ public class Expences extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tbl_expencesInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tbl_expencesInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbl_employeeInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_employeeInfo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_expencesInfoMouseClicked(evt);
+                tbl_employeeInfoMouseClicked(evt);
             }
         });
-        jScrollPane8.setViewportView(tbl_expencesInfo);
+        jScrollPane8.setViewportView(tbl_employeeInfo);
 
         txt_emp_search1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txt_emp_search1.setForeground(new java.awt.Color(102, 102, 102));
@@ -807,45 +776,45 @@ public class Expences extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_branch1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_branch1MouseClicked
-
+        
     }//GEN-LAST:event_btn_branch1MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-
+        
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void btn_branch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_branch1ActionPerformed
-        New_Expences_Panel.setVisible(true);
-        Expences_View_Panel.setVisible(false);
+       New_Expences_Panel.setVisible(true);
+       Expences_View_Panel.setVisible(false);
     }//GEN-LAST:event_btn_branch1ActionPerformed
 
-    private void tbl_expencesInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_expencesInfoMouseClicked
-
-    }//GEN-LAST:event_tbl_expencesInfoMouseClicked
+    private void tbl_employeeInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_employeeInfoMouseClicked
+       
+    }//GEN-LAST:event_tbl_employeeInfoMouseClicked
 
     private void cmb_searchEmp_jobTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_searchEmp_jobTypeActionPerformed
-
+       
     }//GEN-LAST:event_cmb_searchEmp_jobTypeActionPerformed
 
     private void txt_emp_search1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyTyped
-
+        
     }//GEN-LAST:event_txt_emp_search1KeyTyped
 
     private void txt_emp_search1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyPressed
-
+        
     }//GEN-LAST:event_txt_emp_search1KeyPressed
 
     private void txt_emp_search1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_emp_search1MouseClicked
-
+      
     }//GEN-LAST:event_txt_emp_search1MouseClicked
 
     private void txt_emp_search1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyReleased
-
+       
     }//GEN-LAST:event_txt_emp_search1KeyReleased
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        New_Expences_Panel.setVisible(false);
-        Expences_View_Panel.setVisible(true);
+       New_Expences_Panel.setVisible(false);
+       Expences_View_Panel.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void dp_expenceDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_expenceDateActionPerformed
@@ -853,7 +822,7 @@ public class Expences extends javax.swing.JPanel {
     }//GEN-LAST:event_dp_expenceDateActionPerformed
 
     private void btn_save_expenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_expenceActionPerformed
-        sendToDB();
+        // TODO add your handling code here:
     }//GEN-LAST:event_btn_save_expenceActionPerformed
 
     private void btn_new_expenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_expenceActionPerformed
@@ -879,10 +848,6 @@ public class Expences extends javax.swing.JPanel {
     private void dp_receive_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_receive_dateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dp_receive_dateActionPerformed
-
-    private void txt_vatAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vatAmountActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_vatAmountActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -939,7 +904,7 @@ public class Expences extends javax.swing.JPanel {
     private javax.swing.JRadioButton radio_cash;
     private javax.swing.JRadioButton radio_cheque;
     private javax.swing.JRadioButton radio_draft;
-    private javax.swing.JTable tbl_expencesInfo;
+    private javax.swing.JTable tbl_employeeInfo;
     private javax.swing.JPanel tbl_panel_Branch2;
     private javax.swing.JPanel txt_Input_Panel_Branch4;
     private javax.swing.JTextField txt_bilAmount;
@@ -950,213 +915,6 @@ public class Expences extends javax.swing.JPanel {
     private javax.swing.JTextField txt_vatAmount;
     // End of variables declaration//GEN-END:variables
 
-    private void loadExpenceTypeCombo() {
-        cmb_expence_type.removeAll();
-        try {
-            List<R_ExpencesType> allExpencesTypes = expenceTypeController.getAllExpencesTypes();
-            for (R_ExpencesType allExpencesType : allExpencesTypes) {
-                cmb_expence_type.addItem(allExpencesType.getExpencesType_name());
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void loadEmployeeCombo() {
-        cmb_expence_approved_emp.removeAll();
-        cmb_expence_entered_emp.removeAll();
-        try {
-            List<M_Employee> allEmployees = employeeController.getAllEmployees();
-            for (M_Employee allEmployee : allEmployees) {
-                if (allEmployee.getEmp_jobType_id() == 1) {
-                    cmb_expence_approved_emp.addItem(allEmployee.getEmp_id() + " : " + allEmployee.getEmp_firstName() + " " + allEmployee.getEmp_middleName() + " " + allEmployee.getEmp_surName() + " [Office]");
-                    cmb_expence_entered_emp.addItem(allEmployee.getEmp_id() + " : " + allEmployee.getEmp_firstName() + " " + allEmployee.getEmp_middleName() + " " + allEmployee.getEmp_surName() + " [Office]");
-                }
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void laodAuthorityCombo() {
-        cmb_authority.removeAll();
-        try {
-            List<M_Employee> allEmployees = employeeController.getAllEmployees();
-            for (M_Employee allEmployee : allEmployees) {
-                if (allEmployee.getEmp_jobType_id() == 5) {
-                    cmb_authority.addItem(allEmployee.getEmp_id() + " : " + allEmployee.getEmp_firstName() + " " + allEmployee.getEmp_middleName() + " " + allEmployee.getEmp_surName() + " [Sub Contractor]");
-                }
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void loadPurchaserCombo() {
-        cmb_purchaser.removeAll();
-        try {
-            List<M_Purchaser> allPurchasers = purchaserController.getAllPurchasers();
-            for (M_Purchaser allPurchaser : allPurchasers) {
-                cmb_purchaser.addItem(allPurchaser.getPurchaser_name());
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void loadSiteCombo() {
-        cmb_site.removeAll();
-        try {
-            List<M_Project_Primary> allPrimaryProjects = projectController.getAllPrimaryProjects();
-            for (M_Project_Primary allPrimaryProject : allPrimaryProjects) {
-                cmb_site.addItem(allPrimaryProject.getProject_primary_name());
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void loadAccountCombo() {
-        cmb_companyAccount.removeAll();
-        try {
-            List<M_Account> allAccounts = accountController.getAllAccounts();
-            for (M_Account allAccount : allAccounts) {
-                cmb_companyAccount.addItem(allAccount.getAccount_accountName() + " : " + allAccount.getAccount_accountNo());
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void loadExpencesTable() {
-        dtmExpenceTable.setRowCount(0);
-        try {
-            List<T_Expences> allExpences = expencesController.getAllExpences();
-            for (T_Expences allExpence : allExpences) {
-                String exDate = "";
-                if (allExpence.getExpence_date() != null) {
-                    exDate = allExpence.getExpence_date().toString();
-                }
-                String[] rowData = {exDate, allExpence.getExpence_invoiceNo(), projectController.searchPrimaryProject(allExpence.getExpence_refSiteId()).getProject_primary_name(), Double.toString(allExpence.getExpence_invoiceAmount()), allExpence.getExpence_description()};
-                dtmExpenceTable.addRow(rowData);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void sendToDB() {
-        try {
-            String desc = txt_expence_description.getText();
-            int expenceTypeId = 0;
-            if (cmb_expence_type.getSelectedIndex() != 0) {
-                expenceTypeId = expenceTypeController.searchExpencesType(cmb_expence_type.getSelectedItem().toString()).getExpencesType_id();
-            }
-            int exSubType = 0;
-            if (cmb_expence_subType.getSelectedIndex() != 0) {
-                exSubType = expenceSubTypeController.searchExpencesSubType(cmb_expence_subType.getSelectedItem().toString()).getExpencesSubTytpe_id();
-            }
-            Date exDate = dp_expenceDate.getDate();
-            int purchaserId = 0;
-            if (cmb_purchaser.getSelectedIndex() != 0) {
-                purchaserId = purchaserController.searchPurchaser(cmb_purchaser.getSelectedItem().toString()).getPurchaser_id();
-            }
-            String invoiceNo = "";
-            if (!txt_invoiceNo.getText().equalsIgnoreCase("enter invoice no / payment certificate no")) {
-                invoiceNo = txt_invoiceNo.getText();
-            }
-            double invoiceAmount = 0;
-            if (!"".equals(txt_bilAmount.getText()) && !txt_bilAmount.getText().equalsIgnoreCase("Bill Amount")) {
-                invoiceAmount = Double.parseDouble(txt_bilAmount.getText().replaceAll(",", ""));
-            }
-            double vatAmount = 0;
-            if (!"".equals(txt_vatAmount.getText()) && !txt_vatAmount.getText().equalsIgnoreCase("Vat Amount")) {
-                vatAmount = Double.parseDouble(txt_vatAmount.getText().replaceAll(",", ""));
-            }
-            int payMode = 0;
-            if (buttonGroup1.getSelection() != null) {
-                String payModeName = "";
-                if (radio_cash.isSelected()) {
-                    payModeName = radio_cash.getText();
-                } else {
-                    if (radio_cheque.isSelected()) {
-                        payModeName = radio_cheque.getText();
-                    } else {
-                        if (radio_draft.isSelected()) {
-                            payModeName = radio_draft.getText();
-                        }
-                    }
-                }
-                payMode = paymentModeController.searPaymentMode(payModeName).getPaymentMode_id();
-            } else {
-                JOptionPane.showMessageDialog(this, "Please Select the Payment Mode.");
-            }
-            String refNo = purchaserController.searchPurchaser(purchaserId).getPurchaser_repName();
-            Date doi = dp_issue_date.getDate();
-            Date dor = dp_receive_date.getDate();
-            int authorityId = 0;
-            if (cmb_authority.getSelectedIndex() != 0) {
-                authorityId = Integer.parseInt(cmb_authority.getSelectedItem().toString().split(" : ")[0]);
-            }
-            int siteId = 0;
-            if (cmb_site.getSelectedIndex() != 0) {
-                siteId = projectController.searchPrimaryProjectByName(cmb_site.getSelectedItem().toString()).getProject_id();
-            }
-            int enteredEmp = 0;
-            if (cmb_expence_entered_emp.getSelectedIndex() != 0) {
-                enteredEmp = Integer.parseInt(cmb_expence_entered_emp.getSelectedItem().toString().split(" : ")[0]);
-            }
-            int approvedEmp = 0;
-            if (cmb_expence_approved_emp.getSelectedIndex() != 0) {
-                approvedEmp = Integer.parseInt(cmb_expence_approved_emp.getSelectedItem().toString().split(" : ")[0]);
-            }
-            Date enteredDate = dp_entered_date.getDate();
-            Date approvedDate = dp_approved_date.getDate();
-            int accountId = 0;
-            if (cmb_companyAccount.getSelectedIndex() != 0) {
-                accountId = Integer.parseInt(cmb_companyAccount.getSelectedItem().toString().split(" : ")[1]);
-            }
-
-            if (btn_save_expence.getText().equalsIgnoreCase("Save")) {
-                int expenceId = IDGenerator.getNewID("t_expences", "EXPENCES_ID");
-                T_Expences expences = new T_Expences(expenceId, desc, expenceTypeId, exSubType, exDate, purchaserId, invoiceNo, invoiceAmount, vatAmount, payMode, refNo, doi, dor, authorityId, siteId, enteredEmp, approvedEmp, enteredDate, approvedDate, null, accountId);
-                boolean addExpence = expencesController.addExpence(expences);
-                if (addExpence) {
-                    JOptionPane.showMessageDialog(this, "Expence Details Saved Successfully..");
-                    clearFields();
-                    loadExpencesTable();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Adding Expence Failed.. Please Check Again.");
-                }
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    private void clearFields() {
-        dp_expenceDate.setDate(null);
-        cmb_expence_type.setSelectedIndex(0);
-        cmb_expence_subType.setSelectedIndex(0);
-        txt_expence_description.setText("");
-        cmb_expence_entered_emp.setSelectedIndex(0);
-        dp_entered_date.setDate(null);
-        cmb_expence_approved_emp.setSelectedIndex(0);
-        dp_approved_date.setDate(null);        
-        dp_issue_date.setDate(null);
-        dp_receive_date.setDate(null);
-        cmb_purchaser.setSelectedIndex(0);
-        txt_invoiceNo.setText("");
-        txt_bilAmount.setText("");
-        txt_vatAmount.setText("");
-        txt_tot.setText("");
-        cmb_site.setSelectedIndex(0);
-        cmb_authority.setSelectedIndex(0);
-        buttonGroup1.clearSelection();
-        cmb_companyAccount.setSelectedIndex(0);
-        
-        btn_save_expence.setText("Save");
-        dp_expenceDate.requestFocus();
-    }
-
+   
+    
 }
