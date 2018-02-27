@@ -19,6 +19,7 @@ import java.util.List;
  * @author gksde
  */
 public class R_IncomeSubTypeDBAccess {
+
     public R_IncomeSubType searchIncomeSubType(int id) throws Exception {
 
         String sql = "Select * From r_incomesubtype where INCOMESUBTYPE_ID=?";
@@ -42,7 +43,9 @@ public class R_IncomeSubTypeDBAccess {
         List<R_IncomeSubType> incomeSubTypes = new ArrayList<>();
         while (rst.next()) {
             R_IncomeSubType incomeSubType = new R_IncomeSubType(rst.getInt(1), rst.getInt(2), rst.getString(3), rst.getString(4), rst.getString(5));
-            incomeSubTypes.add(incomeSubType);
+            if (incomeSubType.getIncomeSubType_id() != 0) {
+                incomeSubTypes.add(incomeSubType);
+            }
         }
         return incomeSubTypes;
 

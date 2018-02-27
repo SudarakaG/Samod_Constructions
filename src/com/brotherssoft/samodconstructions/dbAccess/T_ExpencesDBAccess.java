@@ -103,7 +103,7 @@ public class T_ExpencesDBAccess {
             ResultSet rst = stm.executeQuery();
             T_Expences expences = null;
             if (rst.next()) {
-                expences = new T_Expences(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getString(11), rst.getDate(12), rst.getDate(13), rst.getString(14), rst.getString(15), rst.getInt(16), rst.getInt(17), rst.getDate(18), rst.getDate(19), rst.getString(20), rst.getString(21));
+                expences = new T_Expences(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getString(11), rst.getDate(12), rst.getDate(13), rst.getInt(14), rst.getInt(15), rst.getInt(16), rst.getInt(17), rst.getDate(18), rst.getDate(19), rst.getString(20), rst.getInt(21));
 
             }
             return expences;
@@ -117,7 +117,7 @@ public class T_ExpencesDBAccess {
             ResultSet rst = stm.executeQuery("Select * From t_expences");
             List<T_Expences> expenceses = new ArrayList<>();
             while (rst.next()) {
-                T_Expences expences = new T_Expences(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getString(11), rst.getDate(12), rst.getDate(13), rst.getString(14), rst.getString(15), rst.getInt(16), rst.getInt(17), rst.getDate(18), rst.getDate(19), rst.getString(20), rst.getString(21));
+                T_Expences expences = new T_Expences(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getString(11), rst.getDate(12), rst.getDate(13), rst.getInt(14), rst.getInt(15), rst.getInt(16), rst.getInt(17), rst.getDate(18), rst.getDate(19), rst.getString(20), rst.getInt(21));
                 expenceses.add(expences);
             }
             return expenceses;
@@ -135,7 +135,7 @@ public class T_ExpencesDBAccess {
             ResultSet rst = stm.executeQuery();
             T_Expences expences = null;
             if (rst.next()) {
-                expences = new T_Expences(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getString(11), rst.getDate(12), rst.getDate(13), rst.getString(14), rst.getString(15), rst.getInt(16), rst.getInt(17), rst.getDate(18), rst.getDate(19), rst.getString(20), rst.getString(21));
+                expences = new T_Expences(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getString(11), rst.getDate(12), rst.getDate(13), rst.getInt(14), rst.getInt(15), rst.getInt(16), rst.getInt(17), rst.getDate(18), rst.getDate(19), rst.getString(20), rst.getInt(21));
 
             }
             return expences;
@@ -149,7 +149,7 @@ public class T_ExpencesDBAccess {
             ResultSet rst = stm.executeQuery("Select * From t_expences WHERE TEXPENCES_DESC LIKE '"+phrase+"%'");
             List<T_Expences> expenceses = new ArrayList<>();
             while (rst.next()) {
-                T_Expences expences = new T_Expences(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getString(11), rst.getDate(12), rst.getDate(13), rst.getString(14), rst.getString(15), rst.getInt(16), rst.getInt(17), rst.getDate(18), rst.getDate(19), rst.getString(20), rst.getString(21));
+                T_Expences expences = new T_Expences(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getString(11), rst.getDate(12), rst.getDate(13), rst.getInt(14), rst.getInt(15), rst.getInt(16), rst.getInt(17), rst.getDate(18), rst.getDate(19), rst.getString(20), rst.getInt(21));
                 expenceses.add(expences);
             }
             return expenceses;        

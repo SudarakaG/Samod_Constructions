@@ -19,6 +19,7 @@ import java.util.List;
  * @author gksde
  */
 public class R_ExpenceSubTypeDBAccess {
+
     public R_ExpencesSubType searchExpenceSubType(int id) throws Exception {
 
         String sql = "Select * From r_expencessubtype where EXPENCESSUBTYPE_ID=?";
@@ -42,7 +43,9 @@ public class R_ExpenceSubTypeDBAccess {
         List<R_ExpencesSubType> expencesSubTypes = new ArrayList<>();
         while (rst.next()) {
             R_ExpencesSubType expencesSubType = new R_ExpencesSubType(rst.getInt(1), rst.getInt(2), rst.getString(3), rst.getString(4), rst.getString(5));
-            expencesSubTypes.add(expencesSubType);
+            if (expencesSubType.getExpencesSubTytpe_id() != 0) {
+                expencesSubTypes.add(expencesSubType);
+            }
         }
         return expencesSubTypes;
 
