@@ -26,18 +26,18 @@ public class T_Income implements Serializable{
     private int income_paymentModeId;
     private Date income_dateOfIssue;
     private Date income_dateOfReceived;
-    private String income_RefNo;
+    private int income_RefNo;
     private int income_enteredUser;
     private int income_approvedUser;
     private Date income_enteredDate;
     private Date income_approvedDate;
     private String income_status;
-    private String income_account;
+    private int income_account;
 
     public T_Income() {
     }
 
-    public T_Income(int income_id, String income_description, int income_typeId, int income_subTypeId, Date income_date, int income_siteId, String income_paymentVoucherNo, double income_billAmount, double income_vatAmount, int income_paymentModeId, Date income_dateOfIssue, Date income_dateOfReceived, String income_RefNo, int income_enteredUser, int income_approvedUser, Date income_enteredDate, Date income_approvedDate, String income_status, String income_account) {
+    public T_Income(int income_id, String income_description, int income_typeId, int income_subTypeId, Date income_date, int income_siteId, String income_paymentVoucherNo, double income_billAmount, double income_vatAmount, int income_paymentModeId, Date income_dateOfIssue, Date income_dateOfReceived, int income_RefNo, int income_enteredUser, int income_approvedUser, Date income_enteredDate, Date income_approvedDate, String income_status, int income_account) {
         this.income_id = income_id;
         this.income_description = income_description;
         this.income_typeId = income_typeId;
@@ -230,14 +230,14 @@ public class T_Income implements Serializable{
     /**
      * @return the income_RefNo
      */
-    public String getIncome_RefNo() {
+    public int getIncome_RefNo() {
         return income_RefNo;
     }
 
     /**
      * @param income_RefNo the income_RefNo to set
      */
-    public void setIncome_RefNo(String income_RefNo) {
+    public void setIncome_RefNo(int income_RefNo) {
         this.income_RefNo = income_RefNo;
     }
 
@@ -314,15 +314,16 @@ public class T_Income implements Serializable{
     /**
      * @return the income_account
      */
-    public String getIncome_account() {
+    public int getIncome_account() {
         return income_account;
     }
 
     /**
      * @param income_account the income_account to set
      */
-    public void setIncome_account(String income_account) {
+    public void setIncome_account(int income_account) {
         this.income_account = income_account;
     }
+
     
 }
