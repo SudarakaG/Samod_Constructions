@@ -36,6 +36,7 @@ import com.brotherssoft.samodconstructions.service.R_SalaryTypeService;
 import com.brotherssoft.samodconstructions.service.R_UnitService;
 import com.brotherssoft.samodconstructions.service.R_VehicleTypeService;
 import com.brotherssoft.samodconstructions.service.R_WorkService;
+import com.brotherssoft.samodconstructions.service.T_AttendanceService;
 import com.brotherssoft.samodconstructions.service.T_CashAllocationService;
 import com.brotherssoft.samodconstructions.service.T_ExpenceService;
 import com.brotherssoft.samodconstructions.service.T_IncomeService;
@@ -230,6 +231,11 @@ public class ServiceFactoryImpl implements ServiceFactory{
     @Override
     public T_IncomeService getIncomeService() {
         return new T_IncomeService();
+    }
+
+    @Override
+    public T_AttendanceService getAttendanceService() {
+        return new T_AttendanceService();
     }
     
 }

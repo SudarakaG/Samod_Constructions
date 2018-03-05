@@ -62,6 +62,7 @@ import com.brotherssoft.samodconstructions.controller.R_ExpenceSubTypeController
 import com.brotherssoft.samodconstructions.controller.R_ExpenceTypeController;
 import com.brotherssoft.samodconstructions.controller.R_IncomeSubTypeController;
 import com.brotherssoft.samodconstructions.controller.R_IncomeTypeControler;
+import com.brotherssoft.samodconstructions.controller.T_AttendanceController;
 import com.brotherssoft.samodconstructions.controller.T_CashAllocationController;
 import com.brotherssoft.samodconstructions.controller.T_ExpencesController;
 import com.brotherssoft.samodconstructions.controller.T_IncomeController;
@@ -74,6 +75,7 @@ import com.brotherssoft.samodconstructions.controllerimpl.R_ExpenceSubTypeContro
 import com.brotherssoft.samodconstructions.controllerimpl.R_ExpenceTypeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_IncomeSubTypeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.R_IncomeTypeControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.T_AttendanceControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.T_CashAllocationControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.T_ExpenceControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.T_IncomeControllerImpl;
@@ -268,6 +270,11 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     @Override
     public T_IncomeController getIncomeController() throws Exception {
         return new T_IncomeControllerImpl();
+    }
+
+    @Override
+    public T_AttendanceController getAttendanceController() throws Exception {
+        return new T_AttendanceControllerImpl();
     }
     
 }
