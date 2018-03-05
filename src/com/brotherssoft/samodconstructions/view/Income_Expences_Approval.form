@@ -93,7 +93,7 @@
                           <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txt_Input_Panel_Branch1" pref="536" max="32767" attributes="0"/>
+                      <Component id="txt_Input_Panel_Branch1" pref="539" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>

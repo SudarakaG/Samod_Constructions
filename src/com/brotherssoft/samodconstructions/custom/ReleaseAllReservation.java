@@ -12,6 +12,8 @@ import com.brotherssoft.samodconstructions.view.Company_Account_Registration_Pan
 import com.brotherssoft.samodconstructions.view.Employee_Panel;
 import com.brotherssoft.samodconstructions.view.Equiment_Allocation;
 import com.brotherssoft.samodconstructions.view.Equipment_Registration_Panel;
+import com.brotherssoft.samodconstructions.view.Expences;
+import com.brotherssoft.samodconstructions.view.IncomeNew;
 import com.brotherssoft.samodconstructions.view.Meterial_Registration_Panel;
 import com.brotherssoft.samodconstructions.view.Project_Primary_Panel;
 import com.brotherssoft.samodconstructions.view.Purchaser_Registration_Panel;
@@ -40,5 +42,7 @@ public class ReleaseAllReservation {
             ServerConnector.getServerConnetor().getRunchartController().releaseRunchart(Running_Chart.runChartIdPub);
             ServerConnector.getServerConnetor().getVehicleController().releaseVehicle(Vehical_Registration_Panel.vehicleIdPub);
             ServerConnector.getServerConnetor().getWorkController().releaseWork(Work_Registration_Panel.workIdPub);
+            ServerConnector.getServerConnetor().getExpencesController().releaseExpence(Expences.expenceIdPub);
+            ServerConnector.getServerConnetor().getIncomeController().releaseIncome(IncomeNew.incomeIdPub);
     }
 }

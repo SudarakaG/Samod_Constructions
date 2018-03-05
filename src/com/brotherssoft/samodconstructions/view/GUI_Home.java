@@ -227,14 +227,15 @@ public class GUI_Home extends javax.swing.JFrame {
 
         background_panel.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        jLabel2.setText("The leading Construction Company in Sri Lanka..");
+        jLabel2.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel2.setText("The leading Construction Company in Sri Lanka");
 
-        date_lable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        date_lable.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         date_lable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         date_lable.setText("2018-march-30");
 
-        time_lable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        time_lable.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         time_lable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         time_lable.setText("08:25:02:Am");
 
@@ -1578,8 +1579,8 @@ public class GUI_Home extends javax.swing.JFrame {
             .addGroup(background_panelLayout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addComponent(date_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(time_lable)
@@ -1607,7 +1608,7 @@ public class GUI_Home extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton3))
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 717, Short.MAX_VALUE))
+                .addGap(0, 716, Short.MAX_VALUE))
         );
 
         background_panelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton3});

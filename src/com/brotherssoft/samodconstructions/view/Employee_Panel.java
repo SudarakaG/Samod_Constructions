@@ -6,11 +6,13 @@
 package com.brotherssoft.samodconstructions.view;
 
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
+import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
 import com.brotherssoft.samodconstructions.controller.R_DesignationController;
 import com.brotherssoft.samodconstructions.controller.R_JobTypeController;
 import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.custom.Validation;
 import com.brotherssoft.samodconstructions.model.M_Employee;
+import com.brotherssoft.samodconstructions.model.M_Project_Primary;
 import com.brotherssoft.samodconstructions.model.R_Designation;
 import com.brotherssoft.samodconstructions.model.R_JobType;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
@@ -31,8 +33,10 @@ public class Employee_Panel extends javax.swing.JPanel {
     R_JobTypeController jobTypeController;
     R_DesignationController designationController;
     M_EmployeeController employeeController;
+    M_Project_PrimaryController projectController;
     DefaultTableModel dtmEmployee;
     public static int empIdPub;
+    M_Employee employeeGlobal = null;
 
     /**
      * Creates new form Employee_Panel
@@ -49,10 +53,12 @@ public class Employee_Panel extends javax.swing.JPanel {
         jobTypeController = ServerConnector.getServerConnetor().getJobTypeController();
         designationController = ServerConnector.getServerConnetor().getDesignationController();
         employeeController = ServerConnector.getServerConnetor().getEmployeeController();
+        projectController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
         dtmEmployee = (DefaultTableModel) tbl_employeeInfo.getModel();
 
         loadJobTypeCombo();
         loadDesignationCombo();
+        loadSiteCombo();
         loadEmployeeTable();
 
     }
@@ -114,6 +120,8 @@ public class Employee_Panel extends javax.swing.JPanel {
         btn_emp_salary = new javax.swing.JButton();
         lblSubContractor = new javax.swing.JLabel();
         cmb_emp_subContractor = new javax.swing.JComboBox<>();
+        jLabel58 = new javax.swing.JLabel();
+        cmb_emp_site = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
         Employee_View_Panel = new javax.swing.JPanel();
         bank_panel_hedding5 = new javax.swing.JPanel();
@@ -430,6 +438,17 @@ public class Employee_Panel extends javax.swing.JPanel {
             }
         });
 
+        jLabel58.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel58.setText("Site");
+
+        cmb_emp_site.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_emp_site.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Allocated Site -" }));
+        cmb_emp_site.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_emp_siteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout txt_Input_Panel_Branch2Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch2);
         txt_Input_Panel_Branch2.setLayout(txt_Input_Panel_Branch2Layout);
         txt_Input_Panel_Branch2Layout.setHorizontalGroup(
@@ -516,18 +535,22 @@ public class Employee_Panel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(date_picker_joinDate, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_emp_site, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch2Layout.createSequentialGroup()
+                        .addGap(0, 742, Short.MAX_VALUE)
                         .addComponent(btn_emp_save, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_emp_new, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_emp_salary, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)))
+                        .addComponent(btn_emp_salary, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         txt_Input_Panel_Branch2Layout.setVerticalGroup(
             txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addContainerGap()
                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
                         .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -606,16 +629,18 @@ public class Employee_Panel extends javax.swing.JPanel {
                         .addGap(5, 5, 5)))
                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_emp_new, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_emp_save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_emp_salary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(txt_Input_Panel_Branch2Layout.createSequentialGroup()
-                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(date_picker_joinDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(6, 6, 6)
+                        .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_emp_site, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(date_picker_joinDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel59, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50)
+                .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_emp_new, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_emp_save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_emp_salary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -654,7 +679,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                 .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_Input_Panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
+                .addGap(146, 146, 146))
         );
 
         Employee_View_Panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -847,7 +872,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                 .addComponent(bank_panel_hedding5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(Employee_Registration_Panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -863,9 +888,9 @@ public class Employee_Panel extends javax.swing.JPanel {
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
+            .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Employee_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE))
+                .addComponent(Employee_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -983,7 +1008,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         Validation.textNIC(txt_nic);
         try {
             M_Employee searchEmployeeByNIC = employeeController.searchEmployeeByNIC(txt_nic.getText());
-            if(searchEmployeeByNIC != null){
+            if (searchEmployeeByNIC != null) {
                 JOptionPane.showMessageDialog(this, "An Employee Already Registered on this NIC..");
                 getDataFromTable(searchEmployeeByNIC);
             }
@@ -1039,7 +1064,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                         cmb_searchEmp_subContractor.setVisible(false);
                         dtmEmployee.setRowCount(0);
                         for (M_Employee allEmployee : allEmployees) {
-                            String[] rowData = {allEmployee.getEmp_initials() +"  "+ allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name(), designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name()};
+                            String[] rowData = {allEmployee.getEmp_initials() + "  " + allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name(), designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name()};
                             dtmEmployee.addRow(rowData);
                         }
                     } else {
@@ -1048,7 +1073,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                         for (M_Employee allEmployee : allEmployees) {
                             if (jobTypeController.searchJobType(cmb_searchEmp_jobType.getSelectedItem().toString()).getJobType_id() == allEmployee.getEmp_jobType_id()) {
 
-                                String[] rowData = {allEmployee.getEmp_initials() +"  "+ allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name(), designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name()};
+                                String[] rowData = {allEmployee.getEmp_initials() + "  " + allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name(), designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name()};
                                 dtmEmployee.addRow(rowData);
 
                             }
@@ -1068,7 +1093,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                 List<M_Employee> allEmployees = employeeController.getAllEmployees();
                 for (M_Employee allEmployee : allEmployees) {
                     if (allEmployee.getEmp_subContractor_id() == employeeController.searchEmployee(cmb_searchEmp_subContractor.getSelectedItem().toString()).getEmp_id()) {
-                        String[] rowData = {allEmployee.getEmp_initials() +"  "+ allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name(), designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name()};
+                        String[] rowData = {allEmployee.getEmp_initials() + "  " + allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name(), designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name()};
                         dtmEmployee.addRow(rowData);
                     }
                 }
@@ -1080,11 +1105,11 @@ public class Employee_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_cmb_searchEmp_subContractorActionPerformed
 
     private void txt_emp_search1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyTyped
-        
+
     }//GEN-LAST:event_txt_emp_search1KeyTyped
 
     private void txt_emp_search1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyPressed
-        
+
     }//GEN-LAST:event_txt_emp_search1KeyPressed
 
     private void txt_emp_search1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_emp_search1MouseClicked
@@ -1097,7 +1122,7 @@ public class Employee_Panel extends javax.swing.JPanel {
             dtmEmployee.setRowCount(0);
             List<M_Employee> allEmployeesByLetter = employeeController.getAllEmployeesByLetter(txt_emp_search1.getText());
             for (M_Employee m_Employee : allEmployeesByLetter) {
-                String[] rowData = {m_Employee.getEmp_initials() +"  "+ m_Employee.getEmp_firstName(), m_Employee.getEmp_NIC(), jobTypeController.searchJobType(m_Employee.getEmp_jobType_id()).getJobType_name(), designationController.searchDesignation(m_Employee.getEmp_designation_id()).getDesignation_name()};
+                String[] rowData = {m_Employee.getEmp_initials() + "  " + m_Employee.getEmp_firstName(), m_Employee.getEmp_NIC(), jobTypeController.searchJobType(m_Employee.getEmp_jobType_id()).getJobType_name(), designationController.searchDesignation(m_Employee.getEmp_designation_id()).getDesignation_name()};
                 dtmEmployee.addRow(rowData);
             }
         } catch (Exception ex) {
@@ -1152,8 +1177,8 @@ public class Employee_Panel extends javax.swing.JPanel {
     private void txt_sur_NameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_sur_NameKeyReleased
         try {
             M_Employee searchByFullName = employeeController.searchByFullName(txt_firt_name.getText(), txt_Middle_Name.getText(), txt_sur_Name.getText());
-            if(searchByFullName != null){
-                JOptionPane.showMessageDialog(this, "An Employee Registered from this Name.. \n" +searchByFullName.getEmp_firstName()+"  "+searchByFullName.getEmp_middleName()+"  "+searchByFullName.getEmp_surName());
+            if (searchByFullName != null) {
+                JOptionPane.showMessageDialog(this, "An Employee Registered from this Name.. \n" + searchByFullName.getEmp_firstName() + "  " + searchByFullName.getEmp_middleName() + "  " + searchByFullName.getEmp_surName());
                 getDataFromTable(searchByFullName);
             }
         } catch (Exception ex) {
@@ -1201,6 +1226,23 @@ public class Employee_Panel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void cmb_emp_siteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_emp_siteActionPerformed
+        if (cmb_emp_site.getSelectedIndex() != 0 && employeeGlobal != null) {
+            try {
+                int projectId = projectController.searchPrimaryProjectByName(cmb_emp_site.getSelectedItem().toString()).getProject_id();
+                int empSiteId = employeeGlobal.getEmp_site_id();
+                if (empSiteId != projectId) {
+                    btn_emp_save.setText("Save");
+                }else{
+                    btn_emp_save.setText("Update");
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_cmb_emp_siteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Employee_Registration_Panel;
@@ -1213,6 +1255,7 @@ public class Employee_Panel extends javax.swing.JPanel {
     private javax.swing.JButton btn_emp_save;
     private javax.swing.JComboBox<String> cmb_emp_designation;
     private javax.swing.JComboBox<String> cmb_emp_jobType;
+    private javax.swing.JComboBox<String> cmb_emp_site;
     private javax.swing.JComboBox<String> cmb_emp_status;
     private javax.swing.JComboBox<String> cmb_emp_subContractor;
     private javax.swing.JComboBox<String> cmb_employee_title;
@@ -1240,6 +1283,7 @@ public class Employee_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
@@ -1267,47 +1311,57 @@ public class Employee_Panel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void addEmployee() {
-        if(cmb_emp_jobType.getSelectedIndex() != 0 && cmb_emp_designation.getSelectedIndex() != 0){
-        try {
+        if (cmb_emp_jobType.getSelectedIndex() != 0 && cmb_emp_designation.getSelectedIndex() != 0) {
+            try {
 
-            int empId = IDGenerator.getNewID("m_emp", "EMP_ID");
-            String empTitle = Integer.toString(cmb_employee_title.getSelectedIndex());
-            String empInitials = txt_Initials.getText();
-            String firstName = txt_firt_name.getText();
-            String middleName = txt_Middle_Name.getText();
-            String lastNAme = txt_sur_Name.getText();
-            String address1 = txt_address_no.getText();
-            String address2 = txt_address_street.getText();
-            String address3 = txt_Address_city.getText();
-            String address4 = txt_address_country.getText();
-            Date joinDate = date_picker_joinDate.getDate();
-            String nic = txt_nic.getText();
-            Date birthDay = date_picker_birth.getDate();
-            String contact1 = txt_contact_1.getText();
-            String contact2 = txt_contact_2.getText();
-            String contact3 = txt_contact_3.getText();
-            int jobTypeId = jobTypeController.searchJobType(cmb_emp_jobType.getSelectedItem().toString()).getJobType_id();
-            int destinationId = designationController.searchDesignation(cmb_emp_designation.getSelectedItem().toString()).getDesignation_id();
-            String status = Integer.toString(cmb_emp_status.getSelectedIndex());
-            int subContractorId = 0;
-            if (cmb_emp_subContractor.getSelectedIndex() != 0) {
-                subContractorId = employeeController.searchEmployee(cmb_emp_subContractor.getSelectedItem().toString()).getEmp_id();
-            } else {
-                subContractorId = 0;
+                int empId = IDGenerator.getNewID("m_emp", "EMP_ID");
+                String empTitle = Integer.toString(cmb_employee_title.getSelectedIndex());
+                String empInitials = txt_Initials.getText();
+                String firstName = txt_firt_name.getText();
+                String middleName = txt_Middle_Name.getText();
+                String lastNAme = txt_sur_Name.getText();
+                String address1 = txt_address_no.getText();
+                String address2 = txt_address_street.getText();
+                String address3 = txt_Address_city.getText();
+                String address4 = txt_address_country.getText();
+                Date joinDate = date_picker_joinDate.getDate();
+                String nic = txt_nic.getText();
+                Date birthDay = date_picker_birth.getDate();
+                String contact1 = txt_contact_1.getText();
+                String contact2 = txt_contact_2.getText();
+                String contact3 = txt_contact_3.getText();
+                int jobTypeId = jobTypeController.searchJobType(cmb_emp_jobType.getSelectedItem().toString()).getJobType_id();
+                int destinationId = designationController.searchDesignation(cmb_emp_designation.getSelectedItem().toString()).getDesignation_id();
+                String status = Integer.toString(cmb_emp_status.getSelectedIndex());
+                int subContractorId = 0;
+                if (cmb_emp_subContractor.getSelectedIndex() != 0) {
+                    subContractorId = employeeController.searchEmployee(cmb_emp_subContractor.getSelectedItem().toString()).getEmp_id();
+                } else {
+                    subContractorId = 0;
+                }
+                int siteId = 0;
+                if (cmb_emp_site.getSelectedIndex() != 0) {
+                    siteId = projectController.searchPrimaryProjectByName(cmb_emp_site.getSelectedItem().toString()).getProject_id();
+                }
+                
+                M_Employee employee = null;
+                if (employeeGlobal != null && siteId != employeeGlobal.getEmp_site_id()) {
+                    employee = new M_Employee(empId, empTitle, empInitials, firstName, middleName, lastNAme, address1, address2, address3, address4, nic, birthDay, contact1, contact2, contact3, employeeGlobal.getEmp_accountNo(), employeeGlobal.getEmp_bank_id(), employeeGlobal.getEmp_branch_id(), destinationId, employeeGlobal.getEmp_salaryType_id(), employeeGlobal.getEmp_salary(), employeeGlobal.getEmp_otherAllowance1(), employeeGlobal.getEmp_otherAllowance2(), siteId, status, employeeGlobal.getEmp_epf_status(), jobTypeId, joinDate, subContractorId, employeeGlobal.getEmp_otherAllowance3(), employeeGlobal.getEmp_otherAllowance4());                    
+                }else{
+                    employee = new M_Employee(empId, empTitle, empInitials, firstName, middleName, lastNAme, address1, address2, address3, address4, nic, birthDay, contact1, contact2, contact3, null, 0, 0, destinationId, 0, 0, 0, 0, siteId, status, null, jobTypeId, joinDate, subContractorId, 0, 0);
+                }                
+                
+                boolean addEmployee = employeeController.addEmployee(employee);
+                if (addEmployee) {
+                    JOptionPane.showMessageDialog(this, "Employee Details Added Successfully..");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Adding Employee Details Failed..");
+                }
+
+            } catch (Exception ex) {
+                Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            M_Employee employee = new M_Employee(empId, empTitle, empInitials, firstName, middleName, lastNAme, address1, address2, address3, address4, nic, birthDay, contact1, contact2, contact3, null, 0, 0, destinationId, 0, 0, 0, 0, 0, status, null, jobTypeId, joinDate, subContractorId, 0, 0);
-            boolean addEmployee = employeeController.addEmployee(employee);
-            if (addEmployee) {
-                JOptionPane.showMessageDialog(this, "Employee Details Added Successfully..");
-                refreshFields();
-            } else {
-                JOptionPane.showMessageDialog(this, "Adding Employee Details Failed..");
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }}else{
+        } else {
             JOptionPane.showMessageDialog(this, "Please Select the Job Type & Designation");
         }
 
@@ -1346,13 +1400,13 @@ public class Employee_Panel extends javax.swing.JPanel {
         try {
 
             dtmEmployee.setRowCount(0);
-            List<M_Employee> allEmployees = employeeController.getAllEmployees();
+            List<M_Employee> allEmployees = employeeController.getAllLastAddedEmployees();
             for (M_Employee allEmployee : allEmployees) {
 
                 String jobType = jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name();
                 String designation = designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name();
 
-                String[] rowData = {allEmployee.getEmp_initials() +"  "+ allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobType, designation};
+                String[] rowData = {allEmployee.getEmp_initials() + "  " + allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobType, designation};
                 dtmEmployee.addRow(rowData);
             }
 
@@ -1364,32 +1418,35 @@ public class Employee_Panel extends javax.swing.JPanel {
     private void getDataFromTable(M_Employee employee) {
         refreshFields();
         try {
-             if(employeeController.reserveEmployee(employee.getEmp_id())){
-            cmb_employee_title.setSelectedIndex(Integer.parseInt(employee.getEmp_title()));
-            txt_Initials.setText(employee.getEmp_initials());
-            txt_firt_name.setText(employee.getEmp_firstName());
-            txt_Middle_Name.setText(employee.getEmp_middleName());
-            txt_sur_Name.setText(employee.getEmp_surName());
-            txt_address_no.setText(employee.getEmp_address1());
-            txt_address_street.setText(employee.getEmp_address2());
-            txt_Address_city.setText(employee.getEmp_address3());
-            txt_address_country.setText(employee.getEmp_address4());
-            date_picker_joinDate.setDate(employee.getEmp_joinDate());
-            txt_nic.setText(employee.getEmp_NIC());
-            date_picker_birth.setDate(employee.getEmp_DOB());
-            txt_contact_1.setText(employee.getEmp_contact1());
-            txt_contact_2.setText(employee.getEmp_contact2());
-            txt_contact_3.setText(employee.getEmp_contatct3());
-            cmb_emp_jobType.setSelectedItem(jobTypeController.searchJobType(employee.getEmp_jobType_id()).getJobType_name());
-            cmb_emp_designation.setSelectedItem(designationController.searchDesignation(employee.getEmp_designation_id()).getDesignation_name());
-            cmb_emp_status.setSelectedIndex(Integer.parseInt(employee.getEmp_status()));
-            if (cmb_emp_jobType.getSelectedItem().toString().equalsIgnoreCase("Sub contractor staff")) {
-                cmb_emp_subContractor.setSelectedItem(employeeController.searchEmployee(employee.getEmp_subContractor_id()).getEmp_firstName());
+            if (employeeController.reserveEmployee(employee.getEmp_id())) {
+                cmb_employee_title.setSelectedIndex(Integer.parseInt(employee.getEmp_title()));
+                txt_Initials.setText(employee.getEmp_initials());
+                txt_firt_name.setText(employee.getEmp_firstName());
+                txt_Middle_Name.setText(employee.getEmp_middleName());
+                txt_sur_Name.setText(employee.getEmp_surName());
+                txt_address_no.setText(employee.getEmp_address1());
+                txt_address_street.setText(employee.getEmp_address2());
+                txt_Address_city.setText(employee.getEmp_address3());
+                txt_address_country.setText(employee.getEmp_address4());
+                date_picker_joinDate.setDate(employee.getEmp_joinDate());
+                txt_nic.setText(employee.getEmp_NIC());
+                date_picker_birth.setDate(employee.getEmp_DOB());
+                txt_contact_1.setText(employee.getEmp_contact1());
+                txt_contact_2.setText(employee.getEmp_contact2());
+                txt_contact_3.setText(employee.getEmp_contatct3());
+                cmb_emp_jobType.setSelectedItem(jobTypeController.searchJobType(employee.getEmp_jobType_id()).getJobType_name());
+                cmb_emp_designation.setSelectedItem(designationController.searchDesignation(employee.getEmp_designation_id()).getDesignation_name());
+                if (employee.getEmp_site_id() != 0) {
+                    cmb_emp_site.setSelectedItem(projectController.searchPrimaryProject(employee.getEmp_site_id()).getProject_primary_name());
+                }
+                cmb_emp_status.setSelectedIndex(Integer.parseInt(employee.getEmp_status()));
+                if (cmb_emp_jobType.getSelectedItem().toString().equalsIgnoreCase("Sub contractor staff")) {
+                    cmb_emp_subContractor.setSelectedItem(employeeController.searchEmployee(employee.getEmp_subContractor_id()).getEmp_firstName());
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "This Employee is Already Using by Another Machine.. Try Again in a Moment.");
+                return;
             }
-             }else{
-                 JOptionPane.showMessageDialog(this, "This Employee is Already Using by Another Machine.. Try Again in a Moment.");
-                 return;
-             }
         } catch (Exception ex) {
             Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1405,7 +1462,14 @@ public class Employee_Panel extends javax.swing.JPanel {
 
         M_Employee employee = null;
         try {
-            employee = employeeController.searchEmployeeByNIC(nic);
+            List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
+            for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+                if (allLastAddedEmployee.getEmp_NIC().equalsIgnoreCase(nic)) {
+                    employee = allLastAddedEmployee;
+                    employeeGlobal = allLastAddedEmployee;
+                    break;
+                }
+            }
             if (empIdPub != employee.getEmp_id()) {
                 employeeController.releaseEmployee(empIdPub);
             }
@@ -1417,49 +1481,51 @@ public class Employee_Panel extends javax.swing.JPanel {
     }
 
     private void updateEmployee() {
-        if(cmb_emp_jobType.getSelectedIndex() != 0 && cmb_emp_designation.getSelectedIndex() != 0){
-        try {
+        if (cmb_emp_jobType.getSelectedIndex() != 0 && cmb_emp_designation.getSelectedIndex() != 0) {
+            try {
 
-            int empId = searchFromTableNIC().getEmp_id();
-            String empTitle = Integer.toString(cmb_employee_title.getSelectedIndex());
-            String empInitials = txt_Initials.getText();
-            String firstName = txt_firt_name.getText();
-            String middleName = txt_Middle_Name.getText();
-            String lastNAme = txt_sur_Name.getText();
-            String address1 = txt_address_no.getText();
-            String address2 = txt_address_street.getText();
-            String address3 = txt_Address_city.getText();
-            String address4 = txt_address_country.getText();
-            Date joinDate = date_picker_joinDate.getDate();
-            String nic = txt_nic.getText();
-            Date birthDay = date_picker_birth.getDate();
-            String contact1 = txt_contact_1.getText();
-            String contact2 = txt_contact_2.getText();
-            String contact3 = txt_contact_3.getText();
-            int jobTypeId = jobTypeController.searchJobType(cmb_emp_jobType.getSelectedItem().toString()).getJobType_id();
-            int destinationId = designationController.searchDesignation(cmb_emp_designation.getSelectedItem().toString()).getDesignation_id();
-            String status = Integer.toString(cmb_emp_status.getSelectedIndex());
-            int subContractorId = 0;
-            if (cmb_emp_subContractor.getSelectedIndex() != 0) {
-                subContractorId = employeeController.searchEmployee(cmb_emp_subContractor.getSelectedItem().toString()).getEmp_id();
-            } else {
-                subContractorId = 0;
+                int empId = searchFromTableNIC().getEmp_id();
+                String empTitle = Integer.toString(cmb_employee_title.getSelectedIndex());
+                String empInitials = txt_Initials.getText();
+                String firstName = txt_firt_name.getText();
+                String middleName = txt_Middle_Name.getText();
+                String lastNAme = txt_sur_Name.getText();
+                String address1 = txt_address_no.getText();
+                String address2 = txt_address_street.getText();
+                String address3 = txt_Address_city.getText();
+                String address4 = txt_address_country.getText();
+                Date joinDate = date_picker_joinDate.getDate();
+                String nic = txt_nic.getText();
+                Date birthDay = date_picker_birth.getDate();
+                String contact1 = txt_contact_1.getText();
+                String contact2 = txt_contact_2.getText();
+                String contact3 = txt_contact_3.getText();
+                int jobTypeId = jobTypeController.searchJobType(cmb_emp_jobType.getSelectedItem().toString()).getJobType_id();
+                int destinationId = designationController.searchDesignation(cmb_emp_designation.getSelectedItem().toString()).getDesignation_id();
+                String status = Integer.toString(cmb_emp_status.getSelectedIndex());
+                int subContractorId = 0;
+                if (cmb_emp_subContractor.getSelectedIndex() != 0) {
+                    subContractorId = employeeController.searchEmployee(cmb_emp_subContractor.getSelectedItem().toString()).getEmp_id();
+                } else {
+                    subContractorId = 0;
+                }
+                int siteId = 0;
+                if (cmb_emp_site.getSelectedIndex() != 0) {
+                    siteId = projectController.searchPrimaryProjectByName(cmb_emp_site.getSelectedItem().toString()).getProject_id();
+                }
+
+                M_Employee employee = new M_Employee(empId, empTitle, empInitials, firstName, middleName, lastNAme, address1, address2, address3, address4, nic, birthDay, contact1, contact2, contact3, null, 0, 0, destinationId, 0, 0, 0, 0, siteId, status, null, jobTypeId, joinDate, subContractorId, 0, 0);
+                boolean updateEmployee = employeeController.updateEmployee(employee);
+                if (updateEmployee) {
+                    JOptionPane.showMessageDialog(this, "Employee Details Updated Successfully..");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Updating Employee Details Failed..");
+                }
+
+            } catch (Exception ex) {
+                Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            M_Employee employee = new M_Employee(empId, empTitle, empInitials, firstName, middleName, lastNAme, address1, address2, address3, address4, nic, birthDay, contact1, contact2, contact3, null, 0, 0, destinationId, 0, 0, 0, 0, 0, status, null, jobTypeId, joinDate, subContractorId, 0, 0);
-            boolean updateEmployee = employeeController.updateEmployee(employee);
-            if (updateEmployee) {
-                JOptionPane.showMessageDialog(this, "Employee Details Updated Successfully..");
-                refreshFields();
-                employeeController.releaseEmployee(empId);
-            } else {
-                JOptionPane.showMessageDialog(this, "Updating Employee Details Failed..");
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Please Select the Job Type & Designation");
         }
     }
@@ -1486,5 +1552,18 @@ public class Employee_Panel extends javax.swing.JPanel {
         cmb_emp_status.setSelectedIndex(0);
         btn_emp_save.setText("Save");
         cmb_employee_title.requestFocus();
+        cmb_emp_site.setSelectedIndex(0);
+    }
+
+    private void loadSiteCombo() {
+        cmb_emp_site.removeAll();
+        try {
+            List<M_Project_Primary> allPrimaryProjects = projectController.getAllPrimaryProjects();
+            for (M_Project_Primary allPrimaryProject : allPrimaryProjects) {
+                cmb_emp_site.addItem(allPrimaryProject.getProject_primary_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

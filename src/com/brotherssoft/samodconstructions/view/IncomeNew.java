@@ -7,11 +7,29 @@ package com.brotherssoft.samodconstructions.view;
 
 import com.brotherssoft.samodconstructions.controller.M_AccountController;
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
-import com.brotherssoft.samodconstructions.controller.M_PurchaserController;
-import com.brotherssoft.samodconstructions.controller.R_ExpenceSubTypeController;
-import com.brotherssoft.samodconstructions.controller.R_ExpenceTypeController;
-import com.brotherssoft.samodconstructions.controller.T_ExpencesController;
+import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
+import com.brotherssoft.samodconstructions.controller.R_IncomeSubTypeController;
+import com.brotherssoft.samodconstructions.controller.R_IncomeTypeControler;
+import com.brotherssoft.samodconstructions.controller.T_IncomeController;
+import com.brotherssoft.samodconstructions.custom.IDGenerator;
+import com.brotherssoft.samodconstructions.custom.Validation;
+import com.brotherssoft.samodconstructions.model.M_Account;
+import com.brotherssoft.samodconstructions.model.M_Employee;
+import com.brotherssoft.samodconstructions.model.M_Project_Primary;
+import com.brotherssoft.samodconstructions.model.R_IncomeSubType;
+import com.brotherssoft.samodconstructions.model.R_IncomeType;
+import com.brotherssoft.samodconstructions.model.T_Income;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.Color;
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,27 +37,43 @@ import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
  */
 public class IncomeNew extends javax.swing.JPanel {
 
-    R_ExpenceSubTypeController expenceSubTypeController;
-    R_ExpenceTypeController expenceTypeController;
+    R_IncomeTypeControler incomeTypeControler;
+    R_IncomeSubTypeController incomeSubTypeController;
     M_EmployeeController employeeController;
-    M_PurchaserController purchaserController;
+    M_Project_PrimaryController siteController;
     M_AccountController accountController;
-    T_ExpencesController expencesController;
+    T_IncomeController incomeController;
+
+    DefaultTableModel dtmIncome;
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+    T_Income incomeGlobal = null;
+    public static int incomeIdPub;
 
     /**
      * Creates new form Employee_Panel
      */
     public IncomeNew() throws Exception {
         initComponents();
-       New_Expences_Panel.setVisible(false);
-       Expences_View_Panel.setVisible(true);
-       
-       expenceSubTypeController = ServerConnector.getServerConnetor().getExpenceSubTypeController();
-       expenceTypeController = ServerConnector.getServerConnetor().getExpenceTypeController();
-       employeeController = ServerConnector.getServerConnetor().getEmployeeController();
-       purchaserController = ServerConnector.getServerConnetor().getPurchaserController();
-       accountController = ServerConnector.getServerConnetor().getAccountController();
-       expencesController = ServerConnector.getServerConnetor().getExpencesController();
+        New_Expences_Panel.setVisible(false);
+        Expences_View_Panel.setVisible(true);
+
+        incomeTypeControler = ServerConnector.getServerConnetor().getIncomeTypeControler();
+        incomeSubTypeController = ServerConnector.getServerConnetor().getIncomeSubTypeController();
+        employeeController = ServerConnector.getServerConnetor().getEmployeeController();
+        siteController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
+        accountController = ServerConnector.getServerConnetor().getAccountController();
+        incomeController = ServerConnector.getServerConnetor().getIncomeController();
+
+        dtmIncome = (DefaultTableModel) tbl_incomeInfo.getModel();
+
+        loadIncomeTypeCombo();
+        loadEmployeeCombo();
+        loadSiteCombo();
+        loadAuthorityCombo();
+        loadAccountCombo();
+        loadSearchProjectCombo();
+
+        loadIncomeTable();
 
     }
 
@@ -62,16 +96,14 @@ public class IncomeNew extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         txt_Input_Panel_Branch4 = new javax.swing.JPanel();
         jLabel107 = new javax.swing.JLabel();
-        dp_expenceDate = new org.jdesktop.swingx.JXDatePicker();
-        cmb_expence_type = new javax.swing.JComboBox<>();
+        dp_incomeDate = new org.jdesktop.swingx.JXDatePicker();
+        cmb_income_type = new javax.swing.JComboBox<>();
         jLabel109 = new javax.swing.JLabel();
-        btn_save_expence = new javax.swing.JButton();
+        btn_save_Income = new javax.swing.JButton();
         jLabel113 = new javax.swing.JLabel();
-        cmb_expence_subType = new javax.swing.JComboBox<>();
+        cmb_income_subType = new javax.swing.JComboBox<>();
         jLabel114 = new javax.swing.JLabel();
-        jLabel115 = new javax.swing.JLabel();
-        cmb_purchaser = new javax.swing.JComboBox<>();
-        txt_invoiceNo = new javax.swing.JTextField();
+        txt_voucherNo = new javax.swing.JTextField();
         jLabel116 = new javax.swing.JLabel();
         txt_bilAmount = new javax.swing.JTextField();
         jLabel117 = new javax.swing.JLabel();
@@ -90,11 +122,11 @@ public class IncomeNew extends javax.swing.JPanel {
         cmb_companyAccount = new javax.swing.JComboBox<>();
         jLabel121 = new javax.swing.JLabel();
         jLabel122 = new javax.swing.JLabel();
-        cmb_expence_entered_emp = new javax.swing.JComboBox<>();
+        cmb_income_entered_emp = new javax.swing.JComboBox<>();
         jLabel108 = new javax.swing.JLabel();
-        dp_entered_date = new org.jdesktop.swingx.JXDatePicker();
+        dp_enterd_date = new org.jdesktop.swingx.JXDatePicker();
         jLabel123 = new javax.swing.JLabel();
-        cmb_expence_approved_emp = new javax.swing.JComboBox<>();
+        cmb_income_approved_emp = new javax.swing.JComboBox<>();
         jLabel110 = new javax.swing.JLabel();
         dp_approved_date = new org.jdesktop.swingx.JXDatePicker();
         jLabel124 = new javax.swing.JLabel();
@@ -102,7 +134,7 @@ public class IncomeNew extends javax.swing.JPanel {
         jLabel125 = new javax.swing.JLabel();
         dp_receive_date = new org.jdesktop.swingx.JXDatePicker();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txt_expence_description = new javax.swing.JTextArea();
+        txt_income_description = new javax.swing.JTextArea();
         Expences_View_Panel = new javax.swing.JPanel();
         bank_panel_hedding5 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
@@ -111,9 +143,10 @@ public class IncomeNew extends javax.swing.JPanel {
         tbl_panel_Branch2 = new javax.swing.JPanel();
         btn_branch1 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
-        tbl_employeeInfo = new javax.swing.JTable();
+        tbl_incomeInfo = new javax.swing.JTable();
         txt_emp_search1 = new javax.swing.JTextField();
-        cmb_searchEmp_jobType = new javax.swing.JComboBox<>();
+        cmb_searchIncome_project = new javax.swing.JComboBox<>();
+        cmb_searchIncome_approval = new javax.swing.JComboBox<>();
 
         New_Expences_Panel.setBackground(new java.awt.Color(255, 255, 255));
         New_Expences_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -124,25 +157,25 @@ public class IncomeNew extends javax.swing.JPanel {
         jLabel24.setBackground(new java.awt.Color(255, 255, 255));
         jLabel24.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel24.setText("Administrations / System Management / Operations /");
+        jLabel24.setText("Administrations / System Management / Accounting / Income Manager");
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel28.setText("Expences Manager");
+        jLabel28.setText("Income Manager");
 
         javax.swing.GroupLayout bank_panel_hedding3Layout = new javax.swing.GroupLayout(bank_panel_hedding3);
         bank_panel_hedding3.setLayout(bank_panel_hedding3Layout);
         bank_panel_hedding3Layout.setHorizontalGroup(
             bank_panel_hedding3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bank_panel_hedding3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(509, Short.MAX_VALUE))
-            .addGroup(bank_panel_hedding3Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator9))
+                .addComponent(jSeparator9, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE))
+            .addGroup(bank_panel_hedding3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel24)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         bank_panel_hedding3Layout.setVerticalGroup(
             bank_panel_hedding3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +192,7 @@ public class IncomeNew extends javax.swing.JPanel {
         New_Expences_Panel.add(bank_panel_hedding3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, -1));
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton4.setText("List of Expences");
+        jButton4.setText("Income List");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
@@ -173,69 +206,112 @@ public class IncomeNew extends javax.swing.JPanel {
         New_Expences_Panel.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 130, 150, -1));
 
         txt_Input_Panel_Branch4.setBackground(new java.awt.Color(255, 255, 255));
-        txt_Input_Panel_Branch4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "New Expence Detail", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        txt_Input_Panel_Branch4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "New Income Detail", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel107.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel107.setText("Account Date");
 
-        dp_expenceDate.addActionListener(new java.awt.event.ActionListener() {
+        dp_incomeDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dp_expenceDateActionPerformed(evt);
+                dp_incomeDateActionPerformed(evt);
             }
         });
 
-        cmb_expence_type.setEditable(true);
-        cmb_expence_type.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_expence_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Expences Type -" }));
+        cmb_income_type.setEditable(true);
+        cmb_income_type.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_income_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Income Type -" }));
+        cmb_income_type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_income_typeActionPerformed(evt);
+            }
+        });
 
         jLabel109.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel109.setText("Type of Expence");
+        jLabel109.setText("Type of Income");
 
-        btn_save_expence.setBackground(new java.awt.Color(51, 51, 255));
-        btn_save_expence.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_save_expence.setForeground(new java.awt.Color(255, 255, 255));
-        btn_save_expence.setText("Save");
-        btn_save_expence.addActionListener(new java.awt.event.ActionListener() {
+        btn_save_Income.setBackground(new java.awt.Color(51, 51, 255));
+        btn_save_Income.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_save_Income.setForeground(new java.awt.Color(255, 255, 255));
+        btn_save_Income.setText("Save");
+        btn_save_Income.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_save_expenceActionPerformed(evt);
+                btn_save_IncomeActionPerformed(evt);
             }
         });
 
         jLabel113.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel113.setText("Sub Type of Expence");
+        jLabel113.setText("Sub Type of Income");
 
-        cmb_expence_subType.setEditable(true);
-        cmb_expence_subType.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_expence_subType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Expence Sub Type -" }));
+        cmb_income_subType.setEditable(true);
+        cmb_income_subType.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_income_subType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Income Sub Type -" }));
 
         jLabel114.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel114.setText("Description");
 
-        jLabel115.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel115.setText("Purchaser");
-
-        cmb_purchaser.setEditable(true);
-        cmb_purchaser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_purchaser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Purchaser -" }));
-
-        txt_invoiceNo.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        txt_invoiceNo.setText("enter invoice no / payment certificate no");
+        txt_voucherNo.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        txt_voucherNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_voucherNoActionPerformed(evt);
+            }
+        });
 
         jLabel116.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel116.setText("Invoice/Payment no");
+        jLabel116.setText("Voucher/Payment no");
 
         txt_bilAmount.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         txt_bilAmount.setText("Bill Amount");
+        txt_bilAmount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_bilAmountMouseClicked(evt);
+            }
+        });
+        txt_bilAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_bilAmountActionPerformed(evt);
+            }
+        });
+        txt_bilAmount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_bilAmountKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_bilAmountKeyReleased(evt);
+            }
+        });
 
         jLabel117.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel117.setText("Value");
 
         txt_vatAmount.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         txt_vatAmount.setText("Vat Amount");
+        txt_vatAmount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_vatAmountMouseClicked(evt);
+            }
+        });
+        txt_vatAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_vatAmountActionPerformed(evt);
+            }
+        });
+        txt_vatAmount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_vatAmountKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_vatAmountKeyReleased(evt);
+            }
+        });
 
         txt_tot.setEditable(false);
         txt_tot.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         txt_tot.setText("Total");
+        txt_tot.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_totMouseClicked(evt);
+            }
+        });
 
         btn_new_expence.setBackground(new java.awt.Color(51, 51, 255));
         btn_new_expence.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -259,6 +335,16 @@ public class IncomeNew extends javax.swing.JPanel {
 
         cmb_site.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_site.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Site -" }));
+        cmb_site.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmb_siteMouseClicked(evt);
+            }
+        });
+        cmb_site.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_siteActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -317,30 +403,30 @@ public class IncomeNew extends javax.swing.JPanel {
         jLabel122.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel122.setText("Entered By");
 
-        cmb_expence_entered_emp.setEditable(true);
-        cmb_expence_entered_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_expence_entered_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Entered Employee -" }));
-        cmb_expence_entered_emp.addActionListener(new java.awt.event.ActionListener() {
+        cmb_income_entered_emp.setEditable(true);
+        cmb_income_entered_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_income_entered_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Entered Employee -" }));
+        cmb_income_entered_emp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_expence_entered_empActionPerformed(evt);
+                cmb_income_entered_empActionPerformed(evt);
             }
         });
 
         jLabel108.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel108.setText("Entered Date");
 
-        dp_entered_date.addActionListener(new java.awt.event.ActionListener() {
+        dp_enterd_date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dp_entered_dateActionPerformed(evt);
+                dp_enterd_dateActionPerformed(evt);
             }
         });
 
         jLabel123.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel123.setText("Approved By");
 
-        cmb_expence_approved_emp.setEditable(true);
-        cmb_expence_approved_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_expence_approved_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Approved Employee -" }));
+        cmb_income_approved_emp.setEditable(true);
+        cmb_income_approved_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_income_approved_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Approved Employee -" }));
 
         jLabel110.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel110.setText("Aproved Date");
@@ -369,9 +455,9 @@ public class IncomeNew extends javax.swing.JPanel {
             }
         });
 
-        txt_expence_description.setColumns(20);
-        txt_expence_description.setRows(5);
-        jScrollPane1.setViewportView(txt_expence_description);
+        txt_income_description.setColumns(20);
+        txt_income_description.setRows(5);
+        jScrollPane1.setViewportView(txt_income_description);
 
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
@@ -404,34 +490,30 @@ public class IncomeNew extends javax.swing.JPanel {
                                     .addComponent(jLabel107))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(cmb_expence_subType, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE)
-                                    .addComponent(cmb_expence_type, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(dp_expenceDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmb_income_subType, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE)
+                                    .addComponent(cmb_income_type, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(dp_incomeDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
                             .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cmb_expence_approved_emp, 0, 350, Short.MAX_VALUE)
+                                .addComponent(cmb_income_approved_emp, 0, 350, Short.MAX_VALUE)
                                 .addComponent(dp_approved_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
-                        .addComponent(cmb_expence_entered_emp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cmb_income_entered_emp, 0, 348, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel108)
                         .addGap(49, 49, 49)
-                        .addComponent(dp_entered_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addComponent(dp_enterd_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                             .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmb_authority, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                            .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(42, 42, 42)
-                            .addComponent(cmb_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                             .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel116)
@@ -442,7 +524,7 @@ public class IncomeNew extends javax.swing.JPanel {
                                     .addComponent(txt_bilAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                     .addGap(4, 4, 4)
-                                    .addComponent(txt_invoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txt_voucherNo, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addComponent(txt_tot, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txt_vatAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
@@ -455,13 +537,13 @@ public class IncomeNew extends javax.swing.JPanel {
                             .addComponent(cmb_companyAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(btn_save_expence, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_save_Income, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_new_expence)))
                 .addContainerGap())
         );
 
-        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_new_expence, btn_save_expence});
+        txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_new_expence, btn_save_Income});
 
         txt_Input_Panel_Branch4Layout.setVerticalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,45 +553,16 @@ public class IncomeNew extends javax.swing.JPanel {
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cmb_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel116, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(txt_invoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_bilAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_vatAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_tot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmb_site, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmb_authority, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addComponent(jLabel107, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(14, 14, 14)
                                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel109, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmb_expence_type, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cmb_income_type, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel113, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cmb_expence_subType, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(dp_expenceDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cmb_income_subType, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(dp_incomeDate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -519,21 +572,19 @@ public class IncomeNew extends javax.swing.JPanel {
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cmb_expence_entered_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                            .addComponent(cmb_income_entered_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
-                                .addComponent(dp_entered_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(dp_enterd_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cmb_expence_approved_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmb_income_approved_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -547,17 +598,39 @@ public class IncomeNew extends javax.swing.JPanel {
                             .addComponent(dp_receive_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(jLabel116, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(txt_voucherNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_bilAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_vatAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_tot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_site, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmb_authority, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmb_companyAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49)
+                        .addGap(91, 91, 91)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_new_expence, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_save_expence, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                            .addComponent(btn_save_Income, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         New_Expences_Panel.add(txt_Input_Panel_Branch4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 154, 1050, 560));
@@ -570,11 +643,11 @@ public class IncomeNew extends javax.swing.JPanel {
         jLabel60.setBackground(new java.awt.Color(255, 255, 255));
         jLabel60.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jLabel60.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel60.setText("Administrations / System Management / Master Detail / Employee Manager");
+        jLabel60.setText("Administrations / System Management / Accounting / Income");
 
         jLabel61.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel61.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel61.setText("Show All Expences");
+        jLabel61.setText("Show All Incomes");
 
         javax.swing.GroupLayout bank_panel_hedding5Layout = new javax.swing.GroupLayout(bank_panel_hedding5);
         bank_panel_hedding5.setLayout(bank_panel_hedding5Layout);
@@ -603,10 +676,10 @@ public class IncomeNew extends javax.swing.JPanel {
         );
 
         tbl_panel_Branch2.setBackground(new java.awt.Color(255, 255, 255));
-        tbl_panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Currunt Expences", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        tbl_panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Currunt Incomes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         btn_branch1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_branch1.setText("New Expence");
+        btn_branch1.setText("New Income");
         btn_branch1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_branch1MouseClicked(evt);
@@ -618,8 +691,8 @@ public class IncomeNew extends javax.swing.JPanel {
             }
         });
 
-        tbl_employeeInfo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tbl_employeeInfo.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_incomeInfo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tbl_incomeInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -652,7 +725,7 @@ public class IncomeNew extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Date", "Invoice Number", "Project", "Amount", "Description"
+                "Date", "Voucher Number", "Project", "Amount", "Description"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -663,18 +736,18 @@ public class IncomeNew extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tbl_employeeInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tbl_employeeInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbl_incomeInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_incomeInfo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_employeeInfoMouseClicked(evt);
+                tbl_incomeInfoMouseClicked(evt);
             }
         });
-        jScrollPane8.setViewportView(tbl_employeeInfo);
+        jScrollPane8.setViewportView(tbl_incomeInfo);
 
         txt_emp_search1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txt_emp_search1.setForeground(new java.awt.Color(102, 102, 102));
         txt_emp_search1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_emp_search1.setText("Search By Invoice");
+        txt_emp_search1.setText("Search By Voucher");
         txt_emp_search1.setToolTipText("Use Invoice Number To Search !");
         txt_emp_search1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -693,10 +766,17 @@ public class IncomeNew extends javax.swing.JPanel {
             }
         });
 
-        cmb_searchEmp_jobType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Project -", "all project" }));
-        cmb_searchEmp_jobType.addActionListener(new java.awt.event.ActionListener() {
+        cmb_searchIncome_project.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Project -", "all project" }));
+        cmb_searchIncome_project.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_searchEmp_jobTypeActionPerformed(evt);
+                cmb_searchIncome_projectActionPerformed(evt);
+            }
+        });
+
+        cmb_searchIncome_approval.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALL", "APPROVED", "PENDING" }));
+        cmb_searchIncome_approval.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_searchIncome_approvalActionPerformed(evt);
             }
         });
 
@@ -708,7 +788,9 @@ public class IncomeNew extends javax.swing.JPanel {
             .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
                 .addComponent(btn_branch1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(103, 103, 103)
-                .addComponent(cmb_searchEmp_jobType, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmb_searchIncome_project, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(cmb_searchIncome_approval, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txt_emp_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -719,8 +801,9 @@ public class IncomeNew extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_branch1)
-                    .addComponent(cmb_searchEmp_jobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_emp_search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_searchIncome_project, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_emp_search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_searchIncome_approval, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -734,7 +817,7 @@ public class IncomeNew extends javax.swing.JPanel {
             .addGroup(Expences_View_PanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         Expences_View_PanelLayout.setVerticalGroup(
             Expences_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -776,70 +859,97 @@ public class IncomeNew extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_branch1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_branch1MouseClicked
-        
+
     }//GEN-LAST:event_btn_branch1MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        
+
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void btn_branch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_branch1ActionPerformed
-       New_Expences_Panel.setVisible(true);
-       Expences_View_Panel.setVisible(false);
+        New_Expences_Panel.setVisible(true);
+        Expences_View_Panel.setVisible(false);
     }//GEN-LAST:event_btn_branch1ActionPerformed
 
-    private void tbl_employeeInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_employeeInfoMouseClicked
-       
-    }//GEN-LAST:event_tbl_employeeInfoMouseClicked
+    private void tbl_incomeInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_incomeInfoMouseClicked
+        loadFromIncomeTable();
+    }//GEN-LAST:event_tbl_incomeInfoMouseClicked
 
-    private void cmb_searchEmp_jobTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_searchEmp_jobTypeActionPerformed
-       
-    }//GEN-LAST:event_cmb_searchEmp_jobTypeActionPerformed
+    private void cmb_searchIncome_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_searchIncome_projectActionPerformed
+        dtmIncome.setRowCount(0);
+        try {
+            if (cmb_searchIncome_project.getSelectedIndex() != 1) {
+
+                List<T_Income> allIncomes = incomeController.getAllIncomes();
+                int projectID = siteController.searchPrimaryProjectByName(cmb_searchIncome_project.getSelectedItem().toString()).getProject_id();
+                String date = "";
+                for (T_Income allIncome : allIncomes) {
+                    if (allIncome.getIncome_siteId() == projectID) {
+                        if (allIncome.getIncome_date() != null) {
+                            date = allIncome.getIncome_date().toString();
+                        }
+                        String[] rowData = {date, allIncome.getIncome_paymentVoucherNo(), siteController.searchPrimaryProject(allIncome.getIncome_siteId()).getProject_primary_name(), Double.toString(allIncome.getIncome_billAmount()), allIncome.getIncome_description()};
+                        dtmIncome.addRow(rowData);
+                    }
+                }
+            } else {
+                loadIncomeTable();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cmb_searchIncome_projectActionPerformed
 
     private void txt_emp_search1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyTyped
-        
+
     }//GEN-LAST:event_txt_emp_search1KeyTyped
 
     private void txt_emp_search1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyPressed
-        
+
     }//GEN-LAST:event_txt_emp_search1KeyPressed
 
     private void txt_emp_search1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_emp_search1MouseClicked
-      
+
     }//GEN-LAST:event_txt_emp_search1MouseClicked
 
     private void txt_emp_search1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyReleased
-       
+
     }//GEN-LAST:event_txt_emp_search1KeyReleased
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       New_Expences_Panel.setVisible(false);
-       Expences_View_Panel.setVisible(true);
+        New_Expences_Panel.setVisible(false);
+        Expences_View_Panel.setVisible(true);
+        loadIncomeTable();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void dp_expenceDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_expenceDateActionPerformed
+    private void dp_incomeDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_incomeDateActionPerformed
 
-    }//GEN-LAST:event_dp_expenceDateActionPerformed
+    }//GEN-LAST:event_dp_incomeDateActionPerformed
 
-    private void btn_save_expenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_expenceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_save_expenceActionPerformed
+    private void btn_save_IncomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_IncomeActionPerformed
+        transferData();
+    }//GEN-LAST:event_btn_save_IncomeActionPerformed
 
     private void btn_new_expenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_expenceActionPerformed
-        // TODO add your handling code here:
+        try {
+            incomeController.releaseIncome(incomeIdPub);
+        } catch (Exception ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        clearFields();
     }//GEN-LAST:event_btn_new_expenceActionPerformed
 
-    private void dp_entered_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_entered_dateActionPerformed
+    private void dp_enterd_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_enterd_dateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_dp_entered_dateActionPerformed
+    }//GEN-LAST:event_dp_enterd_dateActionPerformed
 
     private void dp_approved_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_approved_dateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dp_approved_dateActionPerformed
 
-    private void cmb_expence_entered_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_expence_entered_empActionPerformed
+    private void cmb_income_entered_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_income_entered_empActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_expence_entered_empActionPerformed
+    }//GEN-LAST:event_cmb_income_entered_empActionPerformed
 
     private void dp_issue_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_issue_dateActionPerformed
         // TODO add your handling code here:
@@ -849,6 +959,99 @@ public class IncomeNew extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_dp_receive_dateActionPerformed
 
+    private void txt_voucherNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_voucherNoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_voucherNoActionPerformed
+
+    private void cmb_income_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_income_typeActionPerformed
+        if (cmb_income_type.getSelectedIndex() != 0) {
+            loadIncomeSubTypeCombo();
+        }
+    }//GEN-LAST:event_cmb_income_typeActionPerformed
+
+    private void txt_bilAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_bilAmountActionPerformed
+        //claculateTotal();
+    }//GEN-LAST:event_txt_bilAmountActionPerformed
+
+    private void txt_bilAmountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_bilAmountMouseClicked
+        txt_bilAmount.setText("");
+        txt_bilAmount.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_bilAmountMouseClicked
+
+    private void txt_vatAmountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_vatAmountMouseClicked
+        txt_bilAmount.setText("");
+        txt_bilAmount.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_vatAmountMouseClicked
+
+    private void txt_vatAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vatAmountActionPerformed
+        calculateTotal();
+    }//GEN-LAST:event_txt_vatAmountActionPerformed
+
+    private void txt_totMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_totMouseClicked
+        calculateTotal();
+    }//GEN-LAST:event_txt_totMouseClicked
+
+    private void cmb_siteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmb_siteMouseClicked
+        calculateTotal();
+    }//GEN-LAST:event_cmb_siteMouseClicked
+
+    private void cmb_siteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_siteActionPerformed
+        calculateTotal();
+    }//GEN-LAST:event_cmb_siteActionPerformed
+
+    private void txt_bilAmountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_bilAmountKeyPressed
+        Validation.priceText(txt_bilAmount);
+    }//GEN-LAST:event_txt_bilAmountKeyPressed
+
+    private void txt_bilAmountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_bilAmountKeyReleased
+        Validation.priceText(txt_bilAmount);
+    }//GEN-LAST:event_txt_bilAmountKeyReleased
+
+    private void txt_vatAmountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatAmountKeyPressed
+        Validation.priceText(txt_vatAmount);
+    }//GEN-LAST:event_txt_vatAmountKeyPressed
+
+    private void txt_vatAmountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatAmountKeyReleased
+        Validation.priceText(txt_vatAmount);
+    }//GEN-LAST:event_txt_vatAmountKeyReleased
+
+    private void cmb_searchIncome_approvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_searchIncome_approvalActionPerformed
+        dtmIncome.setRowCount(0);
+        if (cmb_searchIncome_approval.getSelectedIndex() != 0) {
+            try {
+                List<T_Income> allIncomes = incomeController.getAllIncomes();
+                String date = "";
+                if (cmb_searchIncome_approval.getSelectedIndex() == 1) {
+                    for (T_Income allIncome : allIncomes) {
+                        if (allIncome.getIncome_status().equalsIgnoreCase("A")) {
+                            if (allIncome.getIncome_date() != null) {
+                                date = allIncome.getIncome_date().toString();
+                            }
+                            String[] rowData = {date, allIncome.getIncome_paymentVoucherNo(), siteController.searchPrimaryProject(allIncome.getIncome_siteId()).getProject_primary_name(), Double.toString(allIncome.getIncome_billAmount()), allIncome.getIncome_description()};
+                            dtmIncome.addRow(rowData);
+                        }
+                    }
+                } else {
+                    if (cmb_searchIncome_approval.getSelectedIndex() == 2) {
+                        for (T_Income allIncome : allIncomes) {
+                            if (allIncome.getIncome_status().equalsIgnoreCase("P")) {
+                                if (allIncome.getIncome_date() != null) {
+                                    date = allIncome.getIncome_date().toString();
+                                }
+                                String[] rowData = {date, allIncome.getIncome_paymentVoucherNo(), siteController.searchPrimaryProject(allIncome.getIncome_siteId()).getProject_primary_name(), Double.toString(allIncome.getIncome_billAmount()), allIncome.getIncome_description()};
+                                dtmIncome.addRow(rowData);
+                            }
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            loadIncomeTable();
+        }
+    }//GEN-LAST:event_cmb_searchIncome_approvalActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Expences_View_Panel;
@@ -857,20 +1060,20 @@ public class IncomeNew extends javax.swing.JPanel {
     private javax.swing.JPanel bank_panel_hedding5;
     private javax.swing.JButton btn_branch1;
     private javax.swing.JButton btn_new_expence;
-    private javax.swing.JButton btn_save_expence;
+    private javax.swing.JButton btn_save_Income;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmb_authority;
     private javax.swing.JComboBox<String> cmb_companyAccount;
-    private javax.swing.JComboBox<String> cmb_expence_approved_emp;
-    private javax.swing.JComboBox<String> cmb_expence_entered_emp;
-    private javax.swing.JComboBox<String> cmb_expence_subType;
-    private javax.swing.JComboBox<String> cmb_expence_type;
-    private javax.swing.JComboBox<String> cmb_purchaser;
-    private javax.swing.JComboBox<String> cmb_searchEmp_jobType;
+    private javax.swing.JComboBox<String> cmb_income_approved_emp;
+    private javax.swing.JComboBox<String> cmb_income_entered_emp;
+    private javax.swing.JComboBox<String> cmb_income_subType;
+    private javax.swing.JComboBox<String> cmb_income_type;
+    private javax.swing.JComboBox<String> cmb_searchIncome_approval;
+    private javax.swing.JComboBox<String> cmb_searchIncome_project;
     private javax.swing.JComboBox<String> cmb_site;
     private org.jdesktop.swingx.JXDatePicker dp_approved_date;
-    private org.jdesktop.swingx.JXDatePicker dp_entered_date;
-    private org.jdesktop.swingx.JXDatePicker dp_expenceDate;
+    private org.jdesktop.swingx.JXDatePicker dp_enterd_date;
+    private org.jdesktop.swingx.JXDatePicker dp_incomeDate;
     private org.jdesktop.swingx.JXDatePicker dp_issue_date;
     private org.jdesktop.swingx.JXDatePicker dp_receive_date;
     private javax.swing.JButton jButton4;
@@ -880,7 +1083,6 @@ public class IncomeNew extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel113;
     private javax.swing.JLabel jLabel114;
-    private javax.swing.JLabel jLabel115;
     private javax.swing.JLabel jLabel116;
     private javax.swing.JLabel jLabel117;
     private javax.swing.JLabel jLabel118;
@@ -904,17 +1106,340 @@ public class IncomeNew extends javax.swing.JPanel {
     private javax.swing.JRadioButton radio_cash;
     private javax.swing.JRadioButton radio_cheque;
     private javax.swing.JRadioButton radio_draft;
-    private javax.swing.JTable tbl_employeeInfo;
+    private javax.swing.JTable tbl_incomeInfo;
     private javax.swing.JPanel tbl_panel_Branch2;
     private javax.swing.JPanel txt_Input_Panel_Branch4;
     private javax.swing.JTextField txt_bilAmount;
     private javax.swing.JTextField txt_emp_search1;
-    private javax.swing.JTextArea txt_expence_description;
-    private javax.swing.JTextField txt_invoiceNo;
+    private javax.swing.JTextArea txt_income_description;
     private javax.swing.JTextField txt_tot;
     private javax.swing.JTextField txt_vatAmount;
+    private javax.swing.JTextField txt_voucherNo;
     // End of variables declaration//GEN-END:variables
 
-   
-    
+    private void loadIncomeTypeCombo() {
+        cmb_income_type.removeAll();
+        try {
+            List<R_IncomeType> allIncomeTypes = incomeTypeControler.getAllIncomeTypes();
+            for (R_IncomeType allIncomeType : allIncomeTypes) {
+                cmb_income_type.addItem(allIncomeType.getIncomeType_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadEmployeeCombo() {
+        cmb_income_entered_emp.removeAll();
+        cmb_income_approved_emp.removeAll();
+        try {
+            List<M_Employee> allEmployees = employeeController.getAllEmployees();
+            for (M_Employee allEmployee : allEmployees) {
+                if (allEmployee.getEmp_jobType_id() == 1) {
+                    cmb_income_entered_emp.addItem(allEmployee.getEmp_id() + " : " + allEmployee.getEmp_firstName() + " " + allEmployee.getEmp_middleName() + " " + allEmployee.getEmp_surName());
+                    cmb_income_approved_emp.addItem(allEmployee.getEmp_id() + " : " + allEmployee.getEmp_firstName() + " " + allEmployee.getEmp_middleName() + " " + allEmployee.getEmp_surName());
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadSiteCombo() {
+        cmb_site.removeAll();
+        try {
+            List<M_Project_Primary> allPrimaryProjects = siteController.getAllPrimaryProjects();
+            for (M_Project_Primary allPrimaryProject : allPrimaryProjects) {
+                cmb_site.addItem(allPrimaryProject.getProject_primary_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadAuthorityCombo() {
+        cmb_authority.removeAll();
+        try {
+            List<M_Employee> allEmployees = employeeController.getAllEmployees();
+            for (M_Employee allEmployee : allEmployees) {
+                if (allEmployee.getEmp_jobType_id() == 5) {
+                    cmb_authority.addItem(allEmployee.getEmp_id() + " : " + allEmployee.getEmp_firstName() + " " + allEmployee.getEmp_middleName() + " " + allEmployee.getEmp_surName());
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private void loadIncomeTable() {
+        dtmIncome.setRowCount(0);
+        try {
+            List<T_Income> allIncomes = incomeController.getAllIncomes();
+            String date = "";
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            for (T_Income allIncome : allIncomes) {
+                if (allIncome.getIncome_date() != null) {
+                    date = sdf.format(allIncome.getIncome_date());
+                }
+                String[] rowData = {date, allIncome.getIncome_paymentVoucherNo(), siteController.searchPrimaryProject(allIncome.getIncome_siteId()).getProject_primary_name(), Double.toString(allIncome.getIncome_billAmount()), allIncome.getIncome_description()};
+                dtmIncome.addRow(rowData);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private void loadIncomeSubTypeCombo() {
+        cmb_income_subType.removeAll();
+        try {
+            List<R_IncomeSubType> allIncomeSubTypes = incomeSubTypeController.getAllIncomeSubTypes();
+            for (R_IncomeSubType allIncomeSubType : allIncomeSubTypes) {
+                cmb_income_subType.addItem(allIncomeSubType.getIncomeSubType_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadAccountCombo() {
+        cmb_companyAccount.removeAll();
+        try {
+            List<M_Account> allAccounts = accountController.getAllAccounts();
+            for (M_Account allAccount : allAccounts) {
+                cmb_companyAccount.addItem(allAccount.getAccount_accountName() + " : " + allAccount.getAccount_accountNo());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void transferData() {
+        try {
+
+            String incomeDesc = txt_income_description.getText();
+            int incomeTypeId = incomeTypeControler.searchIncomeType(cmb_income_type.getSelectedItem().toString()).getIncomeType_id();
+            int incomeSubType = incomeSubTypeController.searchIncomeSubType(cmb_income_subType.getSelectedItem().toString()).getIncomeSubType_id();
+            Date incomeDate = dp_incomeDate.getDate();
+            int siteId = 0;
+            if (cmb_site.getSelectedIndex() != 0) {
+                siteId = siteController.searchPrimaryProjectByName(cmb_site.getSelectedItem().toString()).getProject_id();
+            }
+            String voucherNo = txt_voucherNo.getText();
+            double billAmount = 0;
+            if (!"".equals(txt_bilAmount.getText()) && !txt_bilAmount.getText().equalsIgnoreCase("Bill Amount")) {
+                billAmount = Double.parseDouble(txt_bilAmount.getText().replaceAll(",", ""));
+            }
+            double vatAmount = 0;
+            if (!"".equals(txt_vatAmount.getText()) && !txt_vatAmount.getText().equalsIgnoreCase("Vat Amount")) {
+                vatAmount = Double.parseDouble(txt_vatAmount.getText().replaceAll(",", ""));
+            }
+            int payModeID = 0;
+            if (radio_cash.isSelected()) {
+                payModeID = 1;
+            } else {
+                if (radio_cheque.isSelected()) {
+                    payModeID = 2;
+                } else {
+                    payModeID = 3;
+                }
+            }
+            Date doi = dp_issue_date.getDate();
+            Date dor = dp_receive_date.getDate();
+            int ref = 0;
+            if (cmb_authority.getSelectedIndex() != 0) {
+                ref = Integer.parseInt(cmb_authority.getSelectedItem().toString().split(" : ")[0]);
+            }
+            int enteredEmp = 0;
+            if (cmb_income_entered_emp.getSelectedIndex() != 0) {
+                ref = Integer.parseInt(cmb_income_entered_emp.getSelectedItem().toString().split(" : ")[0]);
+            }
+            int approvedEmp = 0;
+            if (cmb_income_approved_emp.getSelectedIndex() != 0) {
+                ref = Integer.parseInt(cmb_income_approved_emp.getSelectedItem().toString().split(" : ")[0]);
+            }
+            Date enteredDate = dp_enterd_date.getDate();
+            Date approvedDate = dp_approved_date.getDate();
+            String status = "P";
+            if (cmb_income_approved_emp.getSelectedIndex() != 0) {
+                status = "A";
+            }
+            int account = 0;
+            if (cmb_companyAccount.getSelectedIndex() != 0) {
+                account = accountController.searchAccount(cmb_companyAccount.getSelectedItem().toString().split(" : ")[1]).getAccount_id();
+            }
+
+            if (btn_save_Income.getText().equalsIgnoreCase("Save")) {
+                int incomeId = IDGenerator.getNewID("t_income", "INCOME_ID");
+                T_Income t_Income = new T_Income(incomeId, incomeDesc, incomeTypeId, incomeSubType, incomeDate, siteId, voucherNo, billAmount, vatAmount, payModeID, doi, dor, ref, enteredEmp, approvedEmp, enteredDate, approvedDate, status, account);
+                boolean addIncome = incomeController.addIncome(t_Income);
+                if (addIncome) {
+                    JOptionPane.showMessageDialog(this, "Income Details Saved Successfully..");
+                    clearFields();
+                    loadIncomeTable();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Saving Income Details Failed.. Please Check Again.");
+                }
+            } else {
+                int incomeId = incomeIdPub;
+                T_Income t_Income = new T_Income(incomeId, incomeDesc, incomeTypeId, incomeSubType, incomeDate, siteId, voucherNo, billAmount, vatAmount, payModeID, doi, dor, ref, enteredEmp, approvedEmp, enteredDate, approvedDate, status, account);
+                boolean updateIncome = incomeController.updateIncome(t_Income);
+                if (updateIncome) {
+                    incomeController.releaseIncome(incomeId);
+                    JOptionPane.showMessageDialog(this, "Income Details Updated Successfully..");
+                    clearFields();
+                    loadIncomeTable();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Updating iNCOME Details Failed.. Check Again..");
+                }
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void clearFields() {
+        dp_incomeDate.setDate(null);
+        cmb_income_type.setSelectedIndex(0);
+        cmb_income_subType.setSelectedIndex(0);
+        txt_income_description.setText("");
+        cmb_income_entered_emp.setSelectedIndex(0);
+        dp_enterd_date.setDate(null);
+        cmb_income_approved_emp.setSelectedIndex(0);
+        dp_approved_date.setDate(null);
+        dp_issue_date.setDate(null);
+        dp_receive_date.setDate(null);
+        txt_voucherNo.setText("");
+        txt_bilAmount.setText("");
+        txt_vatAmount.setText("");
+        txt_tot.setText("");
+        cmb_site.setSelectedIndex(0);
+        cmb_authority.setSelectedIndex(0);
+        buttonGroup1.clearSelection();
+        cmb_companyAccount.setSelectedIndex(0);
+
+        btn_save_Income.setText("Save");
+        dp_incomeDate.requestFocus();
+    }
+
+    private void loadFromIncomeTable() {
+        searchFromTableName();
+        New_Expences_Panel.setVisible(true);
+        Expences_View_Panel.setVisible(false);
+        clearFields();
+        try {
+            if (incomeController.reserveIncome(incomeIdPub)) {
+                dp_incomeDate.setDate(incomeGlobal.getIncome_date());
+                cmb_income_type.setSelectedItem(incomeTypeControler.searchIncomeType(incomeGlobal.getIncome_typeId()).getIncomeType_name());
+                cmb_income_subType.setSelectedItem(incomeSubTypeController.searchIncomeSubType(incomeGlobal.getIncome_subTypeId()).getIncomeSubType_name());
+                txt_income_description.setText(incomeGlobal.getIncome_description());
+                if (incomeGlobal.getIncome_enteredUser() != 0) {
+                    for (int i = 1; i < cmb_income_entered_emp.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_income_entered_emp.getItemAt(i).toString().split(" : ")[0]) == incomeGlobal.getIncome_enteredUser()) {
+                            cmb_income_entered_emp.setSelectedIndex(i);
+                        }
+                    }
+                }
+                if (null != incomeGlobal.getIncome_enteredDate()) {
+                    dp_enterd_date.setDate(incomeGlobal.getIncome_enteredDate());
+                }
+                if (incomeGlobal.getIncome_approvedUser() != 0) {
+                    for (int i = 1; i < cmb_income_approved_emp.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_income_approved_emp.getItemAt(i).toString().split(" : ")[0]) == incomeGlobal.getIncome_approvedUser()) {
+                            cmb_income_approved_emp.setSelectedIndex(i);
+                        }
+                    }
+                }
+                if (null != incomeGlobal.getIncome_approvedDate()) {
+                    dp_approved_date.setDate(incomeGlobal.getIncome_approvedDate());
+                }
+                if (null != incomeGlobal.getIncome_dateOfIssue()) {
+                    dp_issue_date.setDate(incomeGlobal.getIncome_dateOfIssue());
+                }
+                if (null != incomeGlobal.getIncome_dateOfReceived()) {
+                    dp_receive_date.setDate(incomeGlobal.getIncome_dateOfReceived());
+                }
+                txt_voucherNo.setText(incomeGlobal.getIncome_paymentVoucherNo());
+                txt_bilAmount.setText(decimalFormat.format(incomeGlobal.getIncome_billAmount()));
+                txt_vatAmount.setText(decimalFormat.format(incomeGlobal.getIncome_vatAmount()));
+                txt_tot.setText(decimalFormat.format(incomeGlobal.getIncome_billAmount() + incomeGlobal.getIncome_vatAmount()));
+                if (incomeGlobal.getIncome_siteId() != 0) {
+                    cmb_site.setSelectedItem(siteController.searchPrimaryProject(incomeGlobal.getIncome_siteId()).getProject_primary_name());
+                }
+                if (incomeGlobal.getIncome_RefNo() != 0) {
+                    for (int i = 1; i < cmb_authority.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_authority.getItemAt(i).toString().split(" : ")[0]) == incomeGlobal.getIncome_RefNo()) {
+                            cmb_authority.setSelectedIndex(i);
+                        }
+                    }
+                }
+                if (incomeGlobal.getIncome_paymentModeId() == 1) {
+                    radio_cash.setSelected(true);
+                } else {
+                    if (incomeGlobal.getIncome_paymentModeId() == 2) {
+                        radio_cheque.setSelected(true);
+                    } else {
+                        radio_draft.setSelected(true);
+                    }
+                }
+                if (incomeGlobal.getIncome_account() != 0) {
+                    for (int i = 1; i < cmb_companyAccount.getItemCount(); i++) {
+                        if (accountController.searchAccount(cmb_companyAccount.getItemAt(i).toString().split(" : ")[1]).getAccount_id() == incomeGlobal.getIncome_account()) {
+                            System.out.println(">>>>>>>" + cmb_companyAccount.getItemAt(i).toString().split(" : ")[1]);
+                            cmb_companyAccount.setSelectedIndex(i);
+                        }
+                    }
+                }
+
+                btn_save_Income.setText("Update");
+            } else {
+                JOptionPane.showMessageDialog(this, "Sorry.. This Income Account is Using by Another Machine in this Moment.. \n Please Try Again in a Moment.");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void searchFromTableName() {
+        try {
+            int selectedRow = tbl_incomeInfo.getSelectedRow();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date incomeDate = sdf.parse(dtmIncome.getValueAt(selectedRow, 0).toString());
+            int project = siteController.searchPrimaryProjectByName(dtmIncome.getValueAt(selectedRow, 2).toString()).getProject_id();
+            double value = Double.parseDouble(dtmIncome.getValueAt(selectedRow, 3).toString());
+
+            incomeGlobal = incomeController.searchIncome(incomeDate, project, value);
+            if (incomeIdPub != incomeGlobal.getIncome_id()) {
+                incomeController.releaseIncome(incomeIdPub);
+            }
+            incomeIdPub = incomeGlobal.getIncome_id();
+        } catch (ParseException ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void calculateTotal() {
+        if (!"".equals(txt_bilAmount.getText()) && !txt_bilAmount.getText().equalsIgnoreCase("Bill Amount")) {
+            double billAmount = Double.parseDouble(txt_bilAmount.getText().replaceAll(",", ""));
+            double vatAmount = Double.parseDouble(txt_vatAmount.getText().replaceAll(",", ""));
+            txt_tot.setText(decimalFormat.format(billAmount + vatAmount));
+        }
+    }
+
+    private void loadSearchProjectCombo() {
+        cmb_searchIncome_project.removeAll();
+        try {
+            List<M_Project_Primary> allPrimaryProjects = siteController.getAllPrimaryProjects();
+            for (M_Project_Primary allPrimaryProject : allPrimaryProjects) {
+                cmb_searchIncome_project.addItem(allPrimaryProject.getProject_primary_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

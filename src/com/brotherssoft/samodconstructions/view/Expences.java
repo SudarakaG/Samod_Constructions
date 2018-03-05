@@ -14,6 +14,7 @@ import com.brotherssoft.samodconstructions.controller.R_ExpenceTypeController;
 import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
 import com.brotherssoft.samodconstructions.controller.T_ExpencesController;
 import com.brotherssoft.samodconstructions.custom.IDGenerator;
+import com.brotherssoft.samodconstructions.custom.Validation;
 import com.brotherssoft.samodconstructions.model.M_Account;
 import com.brotherssoft.samodconstructions.model.M_Employee;
 import com.brotherssoft.samodconstructions.model.M_Project_Primary;
@@ -21,6 +22,9 @@ import com.brotherssoft.samodconstructions.model.M_Purchaser;
 import com.brotherssoft.samodconstructions.model.R_ExpencesType;
 import com.brotherssoft.samodconstructions.model.T_Expences;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.awt.Color;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -44,6 +48,11 @@ public class Expences extends javax.swing.JPanel {
     T_ExpencesController expencesController;
 
     DefaultTableModel dtmExpenceTable;
+    DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+    T_Expences expencesGlobal = null;
+    public static int expenceIdPub;
 
     /**
      * Creates new form Employee_Panel
@@ -70,6 +79,7 @@ public class Expences extends javax.swing.JPanel {
         loadPurchaserCombo();
         loadSiteCombo();
         loadAccountCombo();
+        loadSearchProjectCombo();
 
         loadExpencesTable();
 
@@ -135,6 +145,8 @@ public class Expences extends javax.swing.JPanel {
         dp_receive_date = new org.jdesktop.swingx.JXDatePicker();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_expence_description = new javax.swing.JTextArea();
+        jLabel126 = new javax.swing.JLabel();
+        txt_refNo = new javax.swing.JTextField();
         Expences_View_Panel = new javax.swing.JPanel();
         bank_panel_hedding5 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
@@ -145,7 +157,8 @@ public class Expences extends javax.swing.JPanel {
         jScrollPane8 = new javax.swing.JScrollPane();
         tbl_expencesInfo = new javax.swing.JTable();
         txt_emp_search1 = new javax.swing.JTextField();
-        cmb_searchEmp_jobType = new javax.swing.JComboBox<>();
+        cmb_searchExpences_project = new javax.swing.JComboBox<>();
+        cmb_searchExpences_approval = new javax.swing.JComboBox<>();
 
         New_Expences_Panel.setBackground(new java.awt.Color(255, 255, 255));
         New_Expences_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -248,28 +261,66 @@ public class Expences extends javax.swing.JPanel {
         cmb_purchaser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Purchaser -" }));
 
         txt_invoiceNo.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        txt_invoiceNo.setText("enter invoice no / payment certificate no");
 
         jLabel116.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel116.setText("Invoice/Payment no");
 
         txt_bilAmount.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        txt_bilAmount.setForeground(new java.awt.Color(102, 102, 102));
         txt_bilAmount.setText("Bill Amount");
+        txt_bilAmount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_bilAmountMouseClicked(evt);
+            }
+        });
+        txt_bilAmount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_bilAmountActionPerformed(evt);
+            }
+        });
+        txt_bilAmount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_bilAmountKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_bilAmountKeyReleased(evt);
+            }
+        });
 
         jLabel117.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel117.setText("Value");
 
         txt_vatAmount.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        txt_vatAmount.setForeground(new java.awt.Color(102, 102, 102));
         txt_vatAmount.setText("Vat Amount");
+        txt_vatAmount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_vatAmountMouseClicked(evt);
+            }
+        });
         txt_vatAmount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_vatAmountActionPerformed(evt);
             }
         });
+        txt_vatAmount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_vatAmountKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_vatAmountKeyReleased(evt);
+            }
+        });
 
         txt_tot.setEditable(false);
         txt_tot.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        txt_tot.setForeground(new java.awt.Color(102, 102, 102));
         txt_tot.setText("Total");
+        txt_tot.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_totMouseClicked(evt);
+            }
+        });
 
         btn_new_expence.setBackground(new java.awt.Color(51, 51, 255));
         btn_new_expence.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -292,6 +343,16 @@ public class Expences extends javax.swing.JPanel {
 
         cmb_site.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_site.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Site -" }));
+        cmb_site.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmb_siteMouseClicked(evt);
+            }
+        });
+        cmb_site.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_siteActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -404,6 +465,11 @@ public class Expences extends javax.swing.JPanel {
         txt_expence_description.setRows(5);
         jScrollPane1.setViewportView(txt_expence_description);
 
+        jLabel126.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel126.setText("Ref Number");
+
+        txt_refNo.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
         txt_Input_Panel_Branch4Layout.setHorizontalGroup(
@@ -427,31 +493,32 @@ public class Expences extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel109)
-                                    .addComponent(jLabel113)
-                                    .addComponent(jLabel114)
-                                    .addComponent(jLabel107))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(cmb_expence_subType, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE)
-                                    .addComponent(cmb_expence_type, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(dp_expenceDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
                             .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(cmb_expence_approved_emp, 0, 350, Short.MAX_VALUE)
-                                .addComponent(dp_approved_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(cmb_expence_entered_emp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel108)
-                        .addGap(49, 49, 49)
-                        .addComponent(dp_entered_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(dp_approved_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel109)
+                                                .addComponent(jLabel113)
+                                                .addComponent(jLabel114)
+                                                .addComponent(jLabel107))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                        .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                            .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(45, 45, 45)))
+                                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                        .addComponent(jLabel108)
+                                        .addGap(52, 52, 52)))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmb_expence_entered_emp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmb_expence_subType, 0, 350, Short.MAX_VALUE)
+                                    .addComponent(cmb_expence_type, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(dp_expenceDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane1)
+                                    .addComponent(dp_entered_date, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -486,6 +553,10 @@ public class Expences extends javax.swing.JPanel {
                             .addComponent(cmb_companyAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(txt_refNo, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addComponent(btn_save_expence, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_new_expence)))
@@ -499,35 +570,6 @@ public class Expences extends javax.swing.JPanel {
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cmb_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(jLabel116, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(txt_invoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_bilAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_vatAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_tot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmb_site, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmb_authority, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
@@ -550,9 +592,7 @@ public class Expences extends javax.swing.JPanel {
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cmb_expence_entered_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                            .addComponent(cmb_expence_entered_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -572,23 +612,61 @@ public class Expences extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dp_issue_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dp_receive_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(dp_issue_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmb_purchaser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(txt_refNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(jLabel116, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(txt_invoiceNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_bilAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_vatAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_tot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_site, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmb_authority, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmb_companyAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49)
+                            .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dp_receive_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(43, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_new_expence, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_save_expence, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(32, Short.MAX_VALUE))
+                            .addComponent(btn_save_expence, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
 
         New_Expences_Panel.add(txt_Input_Panel_Branch4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 154, 1050, 560));
@@ -724,10 +802,17 @@ public class Expences extends javax.swing.JPanel {
             }
         });
 
-        cmb_searchEmp_jobType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Project -", "all project" }));
-        cmb_searchEmp_jobType.addActionListener(new java.awt.event.ActionListener() {
+        cmb_searchExpences_project.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Project -", "all project" }));
+        cmb_searchExpences_project.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_searchEmp_jobTypeActionPerformed(evt);
+                cmb_searchExpences_projectActionPerformed(evt);
+            }
+        });
+
+        cmb_searchExpences_approval.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALL", "APPROVED", "PENDING" }));
+        cmb_searchExpences_approval.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_searchExpences_approvalActionPerformed(evt);
             }
         });
 
@@ -739,7 +824,9 @@ public class Expences extends javax.swing.JPanel {
             .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
                 .addComponent(btn_branch1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(103, 103, 103)
-                .addComponent(cmb_searchEmp_jobType, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cmb_searchExpences_project, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
+                .addComponent(cmb_searchExpences_approval, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txt_emp_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -750,8 +837,9 @@ public class Expences extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_branch1)
-                    .addComponent(cmb_searchEmp_jobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_emp_search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_searchExpences_project, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_emp_search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_searchExpences_approval, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -765,7 +853,7 @@ public class Expences extends javax.swing.JPanel {
             .addGroup(Expences_View_PanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         Expences_View_PanelLayout.setVerticalGroup(
             Expences_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -820,12 +908,35 @@ public class Expences extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_branch1ActionPerformed
 
     private void tbl_expencesInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_expencesInfoMouseClicked
-
+        clearFields();
+        searchByTableName();
+        loadFromExpenceTable();
+        New_Expences_Panel.setVisible(true);
+        Expences_View_Panel.setVisible(false);
     }//GEN-LAST:event_tbl_expencesInfoMouseClicked
 
-    private void cmb_searchEmp_jobTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_searchEmp_jobTypeActionPerformed
+    private void cmb_searchExpences_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_searchExpences_projectActionPerformed
+        dtmExpenceTable.setRowCount(0);
+        try {
+            if (cmb_searchExpences_project.getSelectedIndex() != 1) {
 
-    }//GEN-LAST:event_cmb_searchEmp_jobTypeActionPerformed
+                List<T_Expences> allExpences = expencesController.getAllExpences();
+                int projectId = projectController.searchPrimaryProjectByName(cmb_searchExpences_project.getSelectedItem().toString()).getProject_id();
+                String exDate = "";
+                for (T_Expences allExpence : allExpences) {
+                    if (allExpence.getExpence_refSiteId() == projectId) {
+                        exDate = sdf.format(allExpence.getExpence_date());
+                        String rowData[] = {exDate, allExpence.getExpence_invoiceNo(), projectController.searchPrimaryProject(allExpence.getExpence_refSiteId()).getProject_primary_name(), Double.toString(allExpence.getExpence_invoiceAmount()), allExpence.getExpence_description()};
+                        dtmExpenceTable.addRow(rowData);
+                    }
+                }
+            } else {
+                loadExpencesTable();
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_cmb_searchExpences_projectActionPerformed
 
     private void txt_emp_search1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyTyped
 
@@ -857,7 +968,12 @@ public class Expences extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_save_expenceActionPerformed
 
     private void btn_new_expenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_expenceActionPerformed
-        // TODO add your handling code here:
+        try {
+            expencesController.releaseExpence(expenceIdPub);
+        } catch (Exception ex) {
+            Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        clearFields();
     }//GEN-LAST:event_btn_new_expenceActionPerformed
 
     private void dp_entered_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_entered_dateActionPerformed
@@ -881,8 +997,87 @@ public class Expences extends javax.swing.JPanel {
     }//GEN-LAST:event_dp_receive_dateActionPerformed
 
     private void txt_vatAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vatAmountActionPerformed
-        // TODO add your handling code here:
+        getTotalAmount();
     }//GEN-LAST:event_txt_vatAmountActionPerformed
+
+    private void txt_bilAmountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_bilAmountMouseClicked
+        txt_bilAmount.setText("");
+        txt_bilAmount.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_bilAmountMouseClicked
+
+    private void txt_vatAmountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_vatAmountMouseClicked
+        txt_vatAmount.setText("");
+        txt_vatAmount.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txt_vatAmountMouseClicked
+
+    private void txt_totMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_totMouseClicked
+        getTotalAmount();
+    }//GEN-LAST:event_txt_totMouseClicked
+
+    private void cmb_siteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmb_siteMouseClicked
+        getTotalAmount();
+    }//GEN-LAST:event_cmb_siteMouseClicked
+
+    private void cmb_siteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_siteActionPerformed
+        getTotalAmount();
+    }//GEN-LAST:event_cmb_siteActionPerformed
+
+    private void txt_bilAmountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_bilAmountKeyPressed
+        Validation.priceText(txt_bilAmount);
+    }//GEN-LAST:event_txt_bilAmountKeyPressed
+
+    private void txt_bilAmountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_bilAmountKeyReleased
+        Validation.priceText(txt_bilAmount);
+    }//GEN-LAST:event_txt_bilAmountKeyReleased
+
+    private void txt_vatAmountKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatAmountKeyPressed
+        Validation.priceText(txt_vatAmount);
+    }//GEN-LAST:event_txt_vatAmountKeyPressed
+
+    private void txt_vatAmountKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatAmountKeyReleased
+        Validation.priceText(txt_vatAmount);
+    }//GEN-LAST:event_txt_vatAmountKeyReleased
+
+    private void txt_bilAmountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_bilAmountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_bilAmountActionPerformed
+
+    private void cmb_searchExpences_approvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_searchExpences_approvalActionPerformed
+        dtmExpenceTable.setRowCount(0);
+        if (cmb_searchExpences_approval.getSelectedIndex() != 0) {
+            try {
+                List<T_Expences> allExpenceses = expencesController.getAllExpences();
+                String date = "";
+                if (cmb_searchExpences_approval.getSelectedIndex() == 1) {
+                    for (T_Expences allExpence : allExpenceses) {
+                        if (allExpence.getExpence_status().equalsIgnoreCase("A")) {
+                            if (allExpence.getExpence_date() != null) {
+                                date = allExpence.getExpence_date().toString();
+                            }
+                            String[] rowData = {date, allExpence.getExpence_invoiceNo(), projectController.searchPrimaryProject(allExpence.getExpence_refSiteId()).getProject_primary_name(), Double.toString(allExpence.getExpence_invoiceAmount()), allExpence.getExpence_description()};
+                            dtmExpenceTable.addRow(rowData);
+                        }
+                    }
+                } else {
+                    if (cmb_searchExpences_approval.getSelectedIndex() == 2) {
+                        for (T_Expences allExpence : allExpenceses) {
+                            if (allExpence.getExpence_status().equalsIgnoreCase("P")) {
+                                if (allExpence.getExpence_date() != null) {
+                                    date = allExpence.getExpence_date().toString();
+                                }
+                                String[] rowData = {date, allExpence.getExpence_invoiceNo(), projectController.searchPrimaryProject(allExpence.getExpence_refSiteId()).getProject_primary_name(), Double.toString(allExpence.getExpence_invoiceAmount()), allExpence.getExpence_description()};
+                                dtmExpenceTable.addRow(rowData);
+                            }
+                        }
+                    }
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            loadExpencesTable();
+        }
+    }//GEN-LAST:event_cmb_searchExpences_approvalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -901,7 +1096,8 @@ public class Expences extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmb_expence_subType;
     private javax.swing.JComboBox<String> cmb_expence_type;
     private javax.swing.JComboBox<String> cmb_purchaser;
-    private javax.swing.JComboBox<String> cmb_searchEmp_jobType;
+    private javax.swing.JComboBox<String> cmb_searchExpences_approval;
+    private javax.swing.JComboBox<String> cmb_searchExpences_project;
     private javax.swing.JComboBox<String> cmb_site;
     private org.jdesktop.swingx.JXDatePicker dp_approved_date;
     private org.jdesktop.swingx.JXDatePicker dp_entered_date;
@@ -926,6 +1122,7 @@ public class Expences extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel124;
     private javax.swing.JLabel jLabel125;
+    private javax.swing.JLabel jLabel126;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel60;
@@ -946,6 +1143,7 @@ public class Expences extends javax.swing.JPanel {
     private javax.swing.JTextField txt_emp_search1;
     private javax.swing.JTextArea txt_expence_description;
     private javax.swing.JTextField txt_invoiceNo;
+    private javax.swing.JTextField txt_refNo;
     private javax.swing.JTextField txt_tot;
     private javax.swing.JTextField txt_vatAmount;
     // End of variables declaration//GEN-END:variables
@@ -1091,7 +1289,7 @@ public class Expences extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(this, "Please Select the Payment Mode.");
             }
-            String refNo = purchaserController.searchPurchaser(purchaserId).getPurchaser_repName();
+            String refNo = txt_refNo.getText();
             Date doi = dp_issue_date.getDate();
             Date dor = dp_receive_date.getDate();
             int authorityId = 0;
@@ -1114,12 +1312,16 @@ public class Expences extends javax.swing.JPanel {
             Date approvedDate = dp_approved_date.getDate();
             int accountId = 0;
             if (cmb_companyAccount.getSelectedIndex() != 0) {
-                accountId = Integer.parseInt(cmb_companyAccount.getSelectedItem().toString().split(" : ")[1]);
+                accountId = accountController.searchAccount(cmb_companyAccount.getSelectedItem().toString().split(" : ")[1]).getAccount_id();
+            }
+            String status = "P";
+            if (cmb_expence_approved_emp.getSelectedIndex() != 0) {
+                status = "A";
             }
 
             if (btn_save_expence.getText().equalsIgnoreCase("Save")) {
                 int expenceId = IDGenerator.getNewID("t_expences", "EXPENCES_ID");
-                T_Expences expences = new T_Expences(expenceId, desc, expenceTypeId, exSubType, exDate, purchaserId, invoiceNo, invoiceAmount, vatAmount, payMode, refNo, doi, dor, authorityId, siteId, enteredEmp, approvedEmp, enteredDate, approvedDate, null, accountId);
+                T_Expences expences = new T_Expences(expenceId, desc, expenceTypeId, exSubType, exDate, purchaserId, invoiceNo, invoiceAmount, vatAmount, payMode, refNo, doi, dor, authorityId, siteId, enteredEmp, approvedEmp, enteredDate, approvedDate, status, accountId);
                 boolean addExpence = expencesController.addExpence(expences);
                 if (addExpence) {
                     JOptionPane.showMessageDialog(this, "Expence Details Saved Successfully..");
@@ -1127,6 +1329,18 @@ public class Expences extends javax.swing.JPanel {
                     loadExpencesTable();
                 } else {
                     JOptionPane.showMessageDialog(this, "Adding Expence Failed.. Please Check Again.");
+                }
+            } else {
+                int expenceId = expencesGlobal.getExpence_id();
+                T_Expences expences = new T_Expences(expenceId, desc, expenceTypeId, exSubType, exDate, purchaserId, invoiceNo, invoiceAmount, vatAmount, payMode, refNo, doi, dor, authorityId, siteId, enteredEmp, approvedEmp, enteredDate, approvedDate, status, accountId);
+                boolean updateExpence = expencesController.updateExpence(expences);
+                if (updateExpence) {
+                    expencesController.releaseExpence(expenceId);
+                    JOptionPane.showMessageDialog(this, "Expence Details Updated Successfully..");
+                    clearFields();
+                    loadExpencesTable();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Updating Expence Details Failed.. Check Again Later.");
                 }
             }
         } catch (Exception ex) {
@@ -1142,21 +1356,161 @@ public class Expences extends javax.swing.JPanel {
         cmb_expence_entered_emp.setSelectedIndex(0);
         dp_entered_date.setDate(null);
         cmb_expence_approved_emp.setSelectedIndex(0);
-        dp_approved_date.setDate(null);        
+        dp_approved_date.setDate(null);
         dp_issue_date.setDate(null);
         dp_receive_date.setDate(null);
         cmb_purchaser.setSelectedIndex(0);
         txt_invoiceNo.setText("");
-        txt_bilAmount.setText("");
-        txt_vatAmount.setText("");
-        txt_tot.setText("");
+        txt_bilAmount.setText("Bill Amount");
+        txt_bilAmount.setForeground(Color.GRAY);
+        txt_vatAmount.setText("Vat Amount");
+        txt_vatAmount.setForeground(Color.GRAY);
+        txt_tot.setText("Total");
+        txt_tot.setForeground(Color.GRAY);
         cmb_site.setSelectedIndex(0);
         cmb_authority.setSelectedIndex(0);
         buttonGroup1.clearSelection();
         cmb_companyAccount.setSelectedIndex(0);
-        
+
         btn_save_expence.setText("Save");
         dp_expenceDate.requestFocus();
+    }
+
+    private void loadFromExpenceTable() {
+        try {
+            if (expencesController.reserveExpence(expenceIdPub)) {
+                dp_expenceDate.setDate(expencesGlobal.getExpence_date());
+                if (expencesGlobal.getExpence_typeId() != 0) {
+                    cmb_expence_type.setSelectedItem(expenceTypeController.searchExpencesType(expencesGlobal.getExpence_typeId()).getExpencesType_name());
+                } else {
+                    cmb_expence_type.setSelectedIndex(0);
+                }
+                if (expencesGlobal.getExpence_subTypeId() != 0) {
+                    cmb_expence_subType.setSelectedItem(expenceSubTypeController.searchExpencesSubType(expencesGlobal.getExpence_subTypeId()).getExpencesSubTytpe_name());
+                } else {
+                    cmb_expence_subType.setSelectedIndex(0);
+                }
+                txt_expence_description.setText(expencesGlobal.getExpence_description());
+                if (expencesGlobal.getExpence_enteredUser() != 0) {
+                    for (int i = 1; i < cmb_expence_entered_emp.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_expence_entered_emp.getItemAt(i).toString().split(" : ")[0]) == expencesGlobal.getExpence_enteredUser()) {
+                            cmb_expence_entered_emp.setSelectedIndex(i);
+                        }
+                    }
+                } else {
+                    cmb_expence_entered_emp.setSelectedIndex(0);
+                }
+                dp_entered_date.setDate(expencesGlobal.getExpence_enteredDate());
+                if (expencesGlobal.getExpence_approvedUser() != 0) {
+                    for (int i = 1; i < cmb_expence_approved_emp.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_expence_approved_emp.getItemAt(i).toString().split(" : ")[0]) == expencesGlobal.getExpence_approvedUser()) {
+                            cmb_expence_approved_emp.setSelectedIndex(i);
+                        }
+                    }
+                } else {
+                    cmb_expence_approved_emp.setSelectedIndex(0);
+                }
+                dp_approved_date.setDate(expencesGlobal.getExpence_approvedDate());
+                dp_issue_date.setDate(expencesGlobal.getExpence_dateIssued());
+                dp_receive_date.setDate(expencesGlobal.getExpence_dateReceived());
+                if (expencesGlobal.getExpence_purchaserId() != 0) {
+                    cmb_purchaser.setSelectedItem(purchaserController.searchPurchaser(expencesGlobal.getExpence_purchaserId()).getPurchaser_name());
+                } else {
+                    cmb_purchaser.setSelectedIndex(0);
+                }
+                txt_invoiceNo.setText(expencesGlobal.getExpence_invoiceNo());
+                txt_bilAmount.setText(decimalFormat.format(expencesGlobal.getExpence_invoiceAmount()));
+                txt_vatAmount.setText(decimalFormat.format(expencesGlobal.getExpence_vatAmount()));
+                txt_tot.setText(decimalFormat.format(expencesGlobal.getExpence_invoiceAmount() + expencesGlobal.getExpence_vatAmount()));
+                if (expencesGlobal.getExpence_refSiteId() != 0) {
+                    cmb_site.setSelectedItem(projectController.searchPrimaryProject(expencesGlobal.getExpence_refSiteId()).getProject_primary_name());
+                } else {
+                    cmb_site.setSelectedIndex(0);
+                }
+                if (expencesGlobal.getExpence_refId() != 0) {
+                    for (int i = 1; i < cmb_authority.getItemCount(); i++) {
+                        if (Integer.parseInt(cmb_authority.getItemAt(i).toString().split(" : ")[0]) == expencesGlobal.getExpence_refId()) {
+                            cmb_authority.setSelectedIndex(i);
+                        }
+                    }
+                } else {
+                    cmb_authority.setSelectedIndex(0);
+                }
+                if (expencesGlobal.getExpence_paymentModeId() == 1) {
+                    radio_cash.setSelected(true);
+                } else {
+                    if (expencesGlobal.getExpence_paymentModeId() == 2) {
+                        radio_cheque.setSelected(true);
+                    } else {
+                        radio_draft.setSelected(true);
+                    }
+                }
+                if (expencesGlobal.getExpence_account() != 0) {
+                    for (int i = 1; i < cmb_companyAccount.getItemCount(); i++) {
+                        if (accountController.searchAccount(cmb_companyAccount.getItemAt(i).toString().split(" : ")[1]).getAccount_id() == expencesGlobal.getExpence_account()) {
+                            cmb_companyAccount.setSelectedIndex(i);
+                        }
+                    }
+                } else {
+                    cmb_companyAccount.setSelectedIndex(0);
+                }
+
+                btn_save_expence.setText("Update");
+
+            } else {
+                JOptionPane.showMessageDialog(this, "This Expence Details are Using by Another Machine at this Moment.. \n Please Try Again in a Moment.");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void searchByTableName() {
+        try {
+            int selectedRow = tbl_expencesInfo.getSelectedRow();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date expenceDate = null;
+            int project = 0;
+            double amount = 0;
+            if (!"".equals(dtmExpenceTable.getValueAt(selectedRow, 0).toString())) {
+                expenceDate = sdf.parse(dtmExpenceTable.getValueAt(selectedRow, 0).toString());
+            }
+            if (!"".equals(dtmExpenceTable.getValueAt(selectedRow, 2).toString())) {
+                project = projectController.searchPrimaryProjectByName(dtmExpenceTable.getValueAt(selectedRow, 2).toString()).getProject_id();
+            }
+            if (!"".equals(dtmExpenceTable.getValueAt(selectedRow, 3).toString())) {
+                amount = Double.parseDouble(dtmExpenceTable.getValueAt(selectedRow, 3).toString());
+            }
+
+            expencesGlobal = expencesController.searchExpence(expenceDate, project, amount);
+            if (expenceIdPub != expencesGlobal.getExpence_id()) {
+                expencesController.releaseExpence(expenceIdPub);
+            }
+            expenceIdPub = expencesGlobal.getExpence_id();
+        } catch (Exception ex) {
+            Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void getTotalAmount() {
+        if (!"".equals(txt_bilAmount.getText()) && !txt_bilAmount.getText().equalsIgnoreCase("Bill Amount")) {
+            double billAmount = Double.parseDouble(txt_bilAmount.getText().replaceAll(",", ""));
+            double vatAmount = Double.parseDouble(txt_vatAmount.getText().replaceAll(",", ""));
+            double tot = billAmount + vatAmount;
+            txt_tot.setText(decimalFormat.format(tot));
+        }
+    }
+
+    private void loadSearchProjectCombo() {
+        cmb_searchExpences_project.removeAll();
+        try {
+            List<M_Project_Primary> allPrimaryProjects = projectController.getAllPrimaryProjects();
+            for (M_Project_Primary allPrimaryProject : allPrimaryProjects) {
+                cmb_searchExpences_project.addItem(allPrimaryProject.getProject_primary_name());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

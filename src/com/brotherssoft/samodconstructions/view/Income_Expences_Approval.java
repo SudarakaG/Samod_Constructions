@@ -299,7 +299,7 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
                     .addComponent(txt_emp_search2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_Input_Panel_Branch1, javax.swing.GroupLayout.PREFERRED_SIZE, 536, Short.MAX_VALUE)
+                .addComponent(txt_Input_Panel_Branch1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

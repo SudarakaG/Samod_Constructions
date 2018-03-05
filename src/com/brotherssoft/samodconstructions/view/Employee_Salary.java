@@ -88,7 +88,13 @@ public class Employee_Salary extends javax.swing.JPanel {
         loadSalTypeCombo();
         loadEmpSalTable();
 
-        employee = employeeController.searchEmployeeByNIC(text);
+        List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
+        for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+            if (text.equalsIgnoreCase(allLastAddedEmployee.getEmp_NIC())) {
+                employee = allLastAddedEmployee;
+                break;
+            }
+        }
         loadEmployeeData();
 
     }
@@ -646,7 +652,13 @@ public class Employee_Salary extends javax.swing.JPanel {
             String fName = (String) dtmEmpSalary.getValueAt(selectedRow, 1);
             String mName = (String) dtmEmpSalary.getValueAt(selectedRow, 2);
             String lNAme = (String) dtmEmpSalary.getValueAt(selectedRow, 3);
-            employee = employeeController.searchByFullName(fName, mName, lNAme);
+            List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
+            for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+                if (allLastAddedEmployee.getEmp_initials().equalsIgnoreCase(initials) && allLastAddedEmployee.getEmp_firstName().equalsIgnoreCase(fName) && allLastAddedEmployee.getEmp_middleName().equalsIgnoreCase(mName) && allLastAddedEmployee.getEmp_surName().equalsIgnoreCase(lNAme)) {
+                    employee = allLastAddedEmployee;
+                    break;
+                }
+            }
             if (Employee_Panel.empIdPub != employee.getEmp_id()) {
                 employeeController.releaseEmployee(Employee_Panel.empIdPub);
             }
@@ -998,7 +1010,7 @@ public class Employee_Salary extends javax.swing.JPanel {
     private void loadEmpSalTable() {
         try {
             dtmEmpSalary.setRowCount(0);
-            List<M_Employee> allEmployees = employeeController.getAllEmployees();
+            List<M_Employee> allEmployees = employeeController.getAllLastAddedEmployees();
             for (M_Employee allEmployee : allEmployees) {
                 String[] rowData = {allEmployee.getEmp_initials(), allEmployee.getEmp_firstName(), allEmployee.getEmp_middleName(), allEmployee.getEmp_surName()};
                 dtmEmpSalary.addRow(rowData);
