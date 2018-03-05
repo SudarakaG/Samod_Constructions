@@ -2046,7 +2046,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private void master_detail_home_lable18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable18MouseClicked
         try {
             ReleaseAllReservation.releaseAllReservation();
-            Employee_Attendence attendence = new Employee_Attendence();
+            Employee_Attendence_2 attendence = new Employee_Attendence_2();
             panelManager(attendence);
         } catch (Exception ex) {
             Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
