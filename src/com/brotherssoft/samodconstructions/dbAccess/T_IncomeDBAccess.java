@@ -51,7 +51,7 @@ public class T_IncomeDBAccess {
     }
     
     public boolean updateIncome(T_Income income) throws Exception {
-        String sql = "Update t_income set INCOME_DESC=?,TINCOMETYPE_ID=?,TINCOMESUBTYPE_ID=?, INCOME_DATE=?, INCOME_SITEID=?, INCOME_PAY_VOU_NO=?, INCOME_BILL_AMOUNT=?, INCOME_VAT_AMOUNT=?, INCOME_PAYMODE_ID=?, INCOME_DOI=?, INCOME_DOR=?, INCOME_REFNO=?, INCOME_ENT_USER=?, INCOME_APP_USER=?, INCOME_INT_DATE=?, INCOME_APP_DATE=?, INCOME_STATUS=?, INCOME_ACCOUNT=? where INCOME_ID=?";
+        String sql = "Update t_income set INCOME_DESC=?,TINCOMETYPE_ID=?,TINCOMESUBTYPE_ID=?, INCOME_DATE=?, INCOME_SITEID=?, INCOME_PAY_VOU_NO=?, INCOME_BILL_AMOUNT=?, INCOME_VAT_AMOUNT=?, INCOME_PAYMODE_ID=?, INCOME_DOI=?, INCOME_DOR=?, INCOME_REF=?, INCOME_ENT_USER=?, INCOME_APP_USER=?, INCOME_INT_DATE=?, INCOME_APP_DATE=?, INCOME_STATUS=?, INCOME_ACCOUNT=? where INCOME_ID=?";
             Connection conn = DBConnection.getDBConnection().getConnection();
             PreparedStatement stm = conn.prepareStatement(sql);
             
@@ -98,7 +98,7 @@ public class T_IncomeDBAccess {
             ResultSet rst = stm.executeQuery();
             T_Income income = null;
             if (rst.next()) {
-                income = new T_Income(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getDate(11), rst.getDate(12), rst.getString(13), rst.getInt(14), rst.getInt(15), rst.getDate(16), rst.getDate(17), rst.getString(18), rst.getString(19));
+                income = new T_Income(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getDate(11), rst.getDate(12), rst.getInt(13), rst.getInt(14), rst.getInt(15), rst.getDate(16), rst.getDate(17), rst.getString(18), rst.getInt(19));
 
             }
             return income;
@@ -112,7 +112,7 @@ public class T_IncomeDBAccess {
             ResultSet rst = stm.executeQuery("Select * From t_income");
             List<T_Income> incomes = new ArrayList<>();
             while (rst.next()) {
-                T_Income income = new T_Income(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getDate(11), rst.getDate(12), rst.getString(13), rst.getInt(14), rst.getInt(15), rst.getDate(16), rst.getDate(17), rst.getString(18), rst.getString(19));
+                T_Income income = new T_Income(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getDate(11), rst.getDate(12), rst.getInt(13), rst.getInt(14), rst.getInt(15), rst.getDate(16), rst.getDate(17), rst.getString(18), rst.getInt(19));
                 incomes.add(income);
             }
             return incomes;
@@ -130,7 +130,7 @@ public class T_IncomeDBAccess {
             ResultSet rst = stm.executeQuery();
             T_Income income = null;
             if (rst.next()) {
-                income = new T_Income(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getDate(11), rst.getDate(12), rst.getString(13), rst.getInt(14), rst.getInt(15), rst.getDate(16), rst.getDate(17), rst.getString(18), rst.getString(19));
+                income = new T_Income(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getDate(11), rst.getDate(12), rst.getInt(13), rst.getInt(14), rst.getInt(15), rst.getDate(16), rst.getDate(17), rst.getString(18), rst.getInt(19));
 
             }
             return income;
@@ -144,7 +144,7 @@ public class T_IncomeDBAccess {
             ResultSet rst = stm.executeQuery("Select * From t_income WHERE TEXPENCES_DESC LIKE '"+phrase+"%'");
             List<T_Income> incomes = new ArrayList<>();
             while (rst.next()) {
-                T_Income income = new T_Income(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getDate(11), rst.getDate(12), rst.getString(13), rst.getInt(14), rst.getInt(15), rst.getDate(16), rst.getDate(17), rst.getString(18), rst.getString(19));
+                T_Income income = new T_Income(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getDate(11), rst.getDate(12), rst.getInt(13), rst.getInt(14), rst.getInt(15), rst.getDate(16), rst.getDate(17), rst.getString(18), rst.getInt(19));
                 incomes.add(income);
             }
             return incomes;      

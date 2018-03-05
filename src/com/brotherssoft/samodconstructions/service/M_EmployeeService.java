@@ -61,4 +61,8 @@ public class M_EmployeeService {
     public List<M_Employee> getAllEmployeesByLetter(String phrase)throws Exception{
         return dbAccessFactory.getEmployeeAccess().getAllEmployeesByLetter(phrase);
     }
+    
+    public List<M_Employee> getAllLastAddedEmployees()throws Exception{
+        return dbAccessFactory.getEmployeeAccess().getAllLastAddedEmployees();
+    } 
 }

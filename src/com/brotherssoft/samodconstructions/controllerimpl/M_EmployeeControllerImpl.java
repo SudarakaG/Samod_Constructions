@@ -85,5 +85,10 @@ public class M_EmployeeControllerImpl extends UnicastRemoteObject implements M_E
         return er.releaseEmployee(id, this);
     }
 
+    @Override
+    public List<M_Employee> getAllLastAddedEmployees() throws Exception {
+        return sf.getEmployeeService().getAllLastAddedEmployees();
+    }
+
     
 }

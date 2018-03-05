@@ -229,4 +229,31 @@ public class M_EmployeeDBAccess {
 
     }
 
+    public List<M_Employee> getAllLastAddedEmployees() throws Exception {
+
+        String sql = "SELECT * FROM m_emp";
+        Connection connection = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = connection.prepareStatement(sql);
+        ResultSet rst = stm.executeQuery();
+
+        List<M_Employee> employees = new ArrayList<>();
+        while (rst.next()) {
+            M_Employee employee = new M_Employee(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getDate(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getInt(17), rst.getInt(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getDouble(23), rst.getInt(24), rst.getString(25), rst.getString(26), rst.getInt(27), rst.getDate(28), rst.getInt(29), rst.getDouble(30), rst.getDouble(31));
+            if (employee.getEmp_id() != 0) {
+                if (employees.size() != 0) {
+                    for (int i = 0; i < employees.size(); i++) {
+                        if (employees.get(i).getEmp_NIC().equalsIgnoreCase(employee.getEmp_NIC())) {
+                            employees.remove(i);
+                        }
+                    }
+                    employees.add(employee);
+                } else {
+                    employees.add(employee);
+                }
+            }
+        }
+        return employees;
+
+    }
+
 }
