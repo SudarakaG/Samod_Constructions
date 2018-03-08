@@ -79,7 +79,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="bank_panel_hedding3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton4" pref="36" max="32767" attributes="0"/>
+                      <Component id="jButton4" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txt_Input_Panel_Branch2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>

@@ -40,6 +40,10 @@ public class Employee_Attendence_Approval extends javax.swing.JPanel {
         jLabel133 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jXTable1 = new org.jdesktop.swingx.JXTable();
+        jLabel27 = new javax.swing.JLabel();
+        cmb_emp_approved = new javax.swing.JComboBox<>();
+        jLabel134 = new javax.swing.JLabel();
+        dp_approved_date = new org.jdesktop.swingx.JXDatePicker();
         bank_panel_tbl1 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         tbl_acc = new javax.swing.JTable();
@@ -101,6 +105,7 @@ public class Employee_Attendence_Approval extends javax.swing.JPanel {
 
         cmb_emp_cate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cmb_emp_cate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Employee Category -" }));
+        cmb_emp_cate.setPreferredSize(new java.awt.Dimension(227, 25));
         cmb_emp_cate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_emp_cateActionPerformed(evt);
@@ -162,14 +167,14 @@ public class Employee_Attendence_Approval extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Name", "Project", "Nic", "Approved"
+                "Name", "Project", "Nic", "Attendance"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -181,6 +186,26 @@ public class Employee_Attendence_Approval extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(jXTable1);
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel27.setText("Approved By");
+
+        cmb_emp_approved.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_emp_approved.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Approved Employee -" }));
+        cmb_emp_approved.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_emp_approvedActionPerformed(evt);
+            }
+        });
+
+        jLabel134.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel134.setText("Approved Date");
+
+        dp_approved_date.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dp_approved_dateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout bank_panel_input_area1Layout = new javax.swing.GroupLayout(bank_panel_input_area1);
         bank_panel_input_area1.setLayout(bank_panel_input_area1Layout);
@@ -200,13 +225,21 @@ public class Employee_Attendence_Approval extends javax.swing.JPanel {
                             .addComponent(txt_date, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_area1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_acc_save, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_acc_save, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bank_panel_input_area1Layout.createSequentialGroup()
+                        .addGroup(bank_panel_input_area1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel27)
+                            .addComponent(jLabel134))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(bank_panel_input_area1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmb_emp_approved, 0, 350, Short.MAX_VALUE)
+                            .addComponent(dp_approved_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         bank_panel_input_area1Layout.setVerticalGroup(
             bank_panel_input_area1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_input_area1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addGroup(bank_panel_input_area1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel133, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -215,8 +248,16 @@ public class Employee_Attendence_Approval extends javax.swing.JPanel {
                     .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmb_emp_cate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(bank_panel_input_area1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmb_emp_approved, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bank_panel_input_area1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel134, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dp_approved_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_acc_save, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -310,7 +351,7 @@ public class Employee_Attendence_Approval extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bank_panel_tbl1Layout.createSequentialGroup()
                 .addComponent(txt_acc_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -330,11 +371,11 @@ public class Employee_Attendence_Approval extends javax.swing.JPanel {
             Company_Account_RegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Company_Account_RegistrationLayout.createSequentialGroup()
                 .addComponent(bank_panel_hedding2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addGroup(Company_Account_RegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bank_panel_tbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Company_Account_RegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bank_panel_tbl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -377,6 +418,14 @@ public class Employee_Attendence_Approval extends javax.swing.JPanel {
 
     }//GEN-LAST:event_txt_acc_searchKeyReleased
 
+    private void cmb_emp_approvedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_emp_approvedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_emp_approvedActionPerformed
+
+    private void dp_approved_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_approved_dateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dp_approved_dateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Company_Account_Registration;
@@ -384,11 +433,15 @@ public class Employee_Attendence_Approval extends javax.swing.JPanel {
     private javax.swing.JPanel bank_panel_input_area1;
     private javax.swing.JPanel bank_panel_tbl1;
     private javax.swing.JButton btn_acc_save;
+    private javax.swing.JComboBox<String> cmb_emp_approved;
     private javax.swing.JComboBox<String> cmb_emp_cate;
+    private org.jdesktop.swingx.JXDatePicker dp_approved_date;
     private javax.swing.JLabel jLabel133;
+    private javax.swing.JLabel jLabel134;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator8;

@@ -980,7 +980,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                     cmb_emp_subContractor.removeItemAt(i);
                 }
 
-                List<M_Employee> allEmployees = employeeController.getAllEmployees();
+                List<M_Employee> allEmployees = employeeController.getAllLastAddedEmployees();
                 for (M_Employee allEmployee : allEmployees) {
                     if (allEmployee.getEmp_jobType_id() == 5) {
                         cmb_emp_subContractor.addItem(allEmployee.getEmp_firstName());
@@ -1044,7 +1044,7 @@ public class Employee_Panel extends javax.swing.JPanel {
     private void cmb_searchEmp_jobTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_searchEmp_jobTypeActionPerformed
         if (cmb_searchEmp_jobType.getSelectedIndex() != 0) {
             try {
-                List<M_Employee> allEmployees = employeeController.getAllEmployees();
+                List<M_Employee> allEmployees = employeeController.getAllLastAddedEmployees();
                 if (cmb_searchEmp_jobType.getSelectedItem().toString().equalsIgnoreCase("Sub contractor staff")) {
 
                     cmb_searchEmp_subContractor.setVisible(true);
@@ -1090,7 +1090,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         try {
             if (cmb_searchEmp_subContractor.getSelectedIndex() != 0) {
                 dtmEmployee.setRowCount(0);
-                List<M_Employee> allEmployees = employeeController.getAllEmployees();
+                List<M_Employee> allEmployees = employeeController.getAllLastAddedEmployees();
                 for (M_Employee allEmployee : allEmployees) {
                     if (allEmployee.getEmp_subContractor_id() == employeeController.searchEmployee(cmb_searchEmp_subContractor.getSelectedItem().toString()).getEmp_id()) {
                         String[] rowData = {allEmployee.getEmp_initials() + "  " + allEmployee.getEmp_firstName(), allEmployee.getEmp_NIC(), jobTypeController.searchJobType(allEmployee.getEmp_jobType_id()).getJobType_name(), designationController.searchDesignation(allEmployee.getEmp_designation_id()).getDesignation_name()};

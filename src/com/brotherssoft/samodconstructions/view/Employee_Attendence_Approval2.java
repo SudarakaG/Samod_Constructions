@@ -13,7 +13,6 @@ import com.brotherssoft.samodconstructions.controller.T_AttendanceController;
 import com.brotherssoft.samodconstructions.custom.IDGenerator;
 import com.brotherssoft.samodconstructions.custom.Validation;
 import com.brotherssoft.samodconstructions.model.M_Employee;
-import com.brotherssoft.samodconstructions.model.M_Project_Primary;
 import com.brotherssoft.samodconstructions.model.R_JobType;
 import com.brotherssoft.samodconstructions.model.R_Work;
 import com.brotherssoft.samodconstructions.model.T_Attendance;
@@ -35,7 +34,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Akvasoft
  */
-public class Employee_Attendence_2 extends javax.swing.JPanel {
+public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
 
     R_JobTypeController jobTypeController;
     R_WorkController workController;
@@ -46,7 +45,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
     DefaultTableModel dtmAttendance;
 
     DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
-    T_Attendance attendanceGlobal = new T_Attendance();
+    T_Attendance attendanceGlobal = null;
     public static int attendanceIdPub;
     List<T_Attendance> attendanceListGlobal = new ArrayList();
     JSpinner.DateEditor de1;
@@ -56,7 +55,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
     /**
      * Creates new form Employee_Attendence
      */
-    public Employee_Attendence_2() throws Exception {
+    public Employee_Attendence_Approval2() throws Exception {
         initComponents();
         lbl_sub_contractor.setVisible(false);
         cmb_sub_contractor.setVisible(false);
@@ -125,11 +124,11 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
         spinner_out = new javax.swing.JSpinner(sdmout);
         btn_att_detail_submit = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        cmb_added_emp = new javax.swing.JComboBox<>();
+        cmb_approveded_emp = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        dp_attendance_added_date = new org.jdesktop.swingx.JXDatePicker();
+        dp_attendance_approved_date = new org.jdesktop.swingx.JXDatePicker();
         jLabel10 = new javax.swing.JLabel();
-        btn_att_save = new javax.swing.JButton();
+        btn_acc_save = new javax.swing.JButton();
 
         Company_Account_Registration.setBackground(new java.awt.Color(255, 255, 255));
         Company_Account_Registration.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -143,7 +142,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel20.setText("Employee Attendence");
+        jLabel20.setText("Employee Attendence Approval");
 
         javax.swing.GroupLayout bank_panel_hedding2Layout = new javax.swing.GroupLayout(bank_panel_hedding2);
         bank_panel_hedding2.setLayout(bank_panel_hedding2Layout);
@@ -172,7 +171,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
         );
 
         bank_panel_input_area1.setBackground(new java.awt.Color(255, 255, 255));
-        bank_panel_input_area1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mark Attendence", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        bank_panel_input_area1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Marked Attendence", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
         bank_panel_input_area1.setPreferredSize(new java.awt.Dimension(528, 569));
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -248,7 +247,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                 java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -538,30 +537,30 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Authority", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
-        cmb_added_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_added_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Added Employee -" }));
-        cmb_added_emp.setPreferredSize(new java.awt.Dimension(56, 25));
+        cmb_approveded_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_approveded_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Added Employee -" }));
+        cmb_approveded_emp.setPreferredSize(new java.awt.Dimension(56, 25));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel8.setText("Added By");
+        jLabel8.setText("Approved By");
         jLabel8.setPreferredSize(new java.awt.Dimension(34, 25));
 
-        dp_attendance_added_date.setPreferredSize(new java.awt.Dimension(112, 25));
-        dp_attendance_added_date.addActionListener(new java.awt.event.ActionListener() {
+        dp_attendance_approved_date.setPreferredSize(new java.awt.Dimension(112, 25));
+        dp_attendance_approved_date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dp_attendance_added_dateActionPerformed(evt);
+                dp_attendance_approved_dateActionPerformed(evt);
             }
         });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel10.setText("Added Date");
+        jLabel10.setText("Approved Date");
         jLabel10.setPreferredSize(new java.awt.Dimension(34, 25));
 
-        btn_att_save.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_att_save.setText("Transfer");
-        btn_att_save.addActionListener(new java.awt.event.ActionListener() {
+        btn_acc_save.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_acc_save.setText("Approve");
+        btn_acc_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_att_saveActionPerformed(evt);
+                btn_acc_saveActionPerformed(evt);
             }
         });
 
@@ -572,15 +571,15 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_att_save, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_acc_save, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(dp_attendance_added_date, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(cmb_added_emp, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(dp_attendance_approved_date, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(cmb_approveded_emp, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -589,13 +588,13 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmb_added_emp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_approveded_emp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dp_attendance_added_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dp_attendance_approved_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(btn_att_save, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_acc_save, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -639,9 +638,9 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_att_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_att_saveActionPerformed
+    private void btn_acc_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_acc_saveActionPerformed
         transferAttendance();
-    }//GEN-LAST:event_btn_att_saveActionPerformed
+    }//GEN-LAST:event_btn_acc_saveActionPerformed
 
     private void cmb_emp_cateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_emp_cateActionPerformed
         loadStaffToAttendance();
@@ -651,12 +650,11 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
         loadAttendanceByDate();
     }//GEN-LAST:event_dp_attendance_dateActionPerformed
 
-    private void dp_attendance_added_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_attendance_added_dateActionPerformed
-    }//GEN-LAST:event_dp_attendance_added_dateActionPerformed
+    private void dp_attendance_approved_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_attendance_approved_dateActionPerformed
+    }//GEN-LAST:event_dp_attendance_approved_dateActionPerformed
 
     private void btn_att_detail_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_att_detail_submitActionPerformed
         submitAttendanceDetails();
-        clearSubmitDetails();
     }//GEN-LAST:event_btn_att_detail_submitActionPerformed
 
     private void cmb_sub_contractorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_sub_contractorActionPerformed
@@ -664,7 +662,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
     }//GEN-LAST:event_cmb_sub_contractorActionPerformed
 
     private void table_attendanceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_attendanceMouseClicked
-        markAttendance();
+        viewAttendanceDetails();
     }//GEN-LAST:event_table_attendanceMouseClicked
 
     private void txt_daily_rateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_daily_rateKeyPressed
@@ -736,13 +734,13 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
     private javax.swing.JPanel Company_Account_Registration;
     private javax.swing.JPanel bank_panel_hedding2;
     private javax.swing.JPanel bank_panel_input_area1;
+    private javax.swing.JButton btn_acc_save;
     private javax.swing.JButton btn_att_detail_submit;
-    private javax.swing.JButton btn_att_save;
-    private javax.swing.JComboBox<String> cmb_added_emp;
+    private javax.swing.JComboBox<String> cmb_approveded_emp;
     private javax.swing.JComboBox<String> cmb_emp_cate;
     private javax.swing.JComboBox<String> cmb_sub_contractor;
     private javax.swing.JComboBox<String> cmb_work;
-    private org.jdesktop.swingx.JXDatePicker dp_attendance_added_date;
+    private org.jdesktop.swingx.JXDatePicker dp_attendance_approved_date;
     private org.jdesktop.swingx.JXDatePicker dp_attendance_date;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -790,7 +788,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                 cmb_emp_cate.addItem(allJobType.getJobType_name());
             }
         } catch (Exception ex) {
-            Logger.getLogger(Employee_Attendence_2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Employee_Attendence_Approval2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -802,115 +800,119 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                 cmb_work.addItem(allWork.getWork_name());
             }
         } catch (Exception ex) {
-            Logger.getLogger(Employee_Attendence_2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Employee_Attendence_Approval2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private void loadEmployeeCombo() {
-        cmb_added_emp.removeAll();
+        cmb_approveded_emp.removeAll();
         try {
             List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
             for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
                 if (allLastAddedEmployee.getEmp_jobType_id() == 1) {
-                    cmb_added_emp.addItem(allLastAddedEmployee.getEmp_id() + " : " + allLastAddedEmployee.getEmp_firstName() + " " + allLastAddedEmployee.getEmp_middleName() + " " + allLastAddedEmployee.getEmp_surName());
+                    cmb_approveded_emp.addItem(allLastAddedEmployee.getEmp_id() + " : " + allLastAddedEmployee.getEmp_firstName() + " " + allLastAddedEmployee.getEmp_middleName() + " " + allLastAddedEmployee.getEmp_surName());
                 }
             }
         } catch (Exception ex) {
-            Logger.getLogger(Employee_Attendence_2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Employee_Attendence_Approval2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private void loadSubContractorStaffToAttendanceTable() {
+        cmb_approveded_emp.setSelectedIndex(0);
+        dp_attendance_approved_date.setDate(null);
         attendanceListGlobal = new ArrayList<>();
         if (cmb_sub_contractor.getSelectedIndex() != 0) {
             dtmAttendance.setRowCount(0);
             try {
                 List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
-                // List<T_Attendance> allAttendances = attendanceController.getAllAttendances();
-                int sunContractorId = Integer.parseInt(cmb_sub_contractor.getSelectedItem().toString().split(" : ")[0]);
-                for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
-                    if (allLastAddedEmployee.getEmp_jobType_id() == 2 && allLastAddedEmployee.getEmp_subContractor_id() == sunContractorId) {
-                        M_Project_Primary searchPrimaryProject = projectController.searchPrimaryProject(allLastAddedEmployee.getEmp_site_id());
-                        Object[] rowData = {false, allLastAddedEmployee.getEmp_initials() + " " + allLastAddedEmployee.getEmp_firstName(), searchPrimaryProject.getProject_primary_name(), allLastAddedEmployee.getEmp_NIC()};
-                        dtmAttendance.addRow(rowData);
+                List<T_Attendance> allAttendances = attendanceController.getAllAttendances(dp_attendance_date.getDate(), 2);
+                int subContractorId = Integer.parseInt(cmb_sub_contractor.getSelectedItem().toString().split(" : ")[0]);
+                boolean status = false;
 
-                        attendanceGlobal = new T_Attendance();
-                        attendanceGlobal.setAttendance_id(0);
-                        attendanceGlobal.setAttendance_date(dp_attendance_date.getDate());
-                        attendanceGlobal.setAttendance_siteId(searchPrimaryProject.getProject_id());
-                        attendanceGlobal.setAttendance_employeeId(allLastAddedEmployee.getEmp_id());
-                        attendanceGlobal.setAttendance_in("");
-                        attendanceGlobal.setAttendance_out("");
-                        attendanceGlobal.setAttendance_ot(0);
-                        attendanceGlobal.setAttendance_advance(0);
-                        attendanceGlobal.setAttendance_enteredBy(0);
-                        attendanceGlobal.setAttendance_approvedBy(0);
-                        attendanceGlobal.setAttendance_workId(0);
-                        attendanceGlobal.setAttendance_comment("");
-                        attendanceGlobal.setAttendance_status("0");
-                        attendanceGlobal.setAttendance_enteredDate(null);
-                        attendanceGlobal.setAttendance_approvedDate(null);
-                        attendanceGlobal.setAttendance_days(0);
-                        attendanceGlobal.setAttendance_dailyRate(0);
-                        attendanceGlobal.setAttendance_otRate(0);
-                        attendanceGlobal.setAttendance_processed(0);
-                        attendanceGlobal.setAttendance_salaryBatch(0);
-                        attendanceGlobal.setEmployeeCategory(2);
+                M_Employee attEmp = null;
 
-                        attendanceListGlobal.add(attendanceGlobal);
+                for (T_Attendance allAttendance : allAttendances) {
+                    if (allAttendance.getAttendance_status().equalsIgnoreCase("1")) {
+                        status = true;
+                    } else {
+                        status = false;
+                    }
+
+                    for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+                        if (allAttendance.getAttendance_employeeId() == allLastAddedEmployee.getEmp_id() && allLastAddedEmployee.getEmp_subContractor_id() == subContractorId) {
+                            attEmp = allLastAddedEmployee;
+                            attendanceListGlobal.add(allAttendance);
+                            break;
+                        }
+                    }
+                    Object[] rowData = {status, attEmp.getEmp_initials() + " " + attEmp.getEmp_firstName(), projectController.searchPrimaryProject(attEmp.getEmp_site_id()).getProject_primary_name(), attEmp.getEmp_NIC()};
+                    dtmAttendance.addRow(rowData);
+                    if (allAttendance.getAttendance_approvedBy() != 0) {
+                        for (int i = 1; i < cmb_approveded_emp.getItemCount(); i++) {
+                            if (allAttendance.getAttendance_approvedBy() == Integer.parseInt(cmb_approveded_emp.getItemAt(i).toString().split(" : ")[0])) {
+                                cmb_approveded_emp.setSelectedIndex(i);
+                                dp_attendance_approved_date.setDate(allAttendance.getAttendance_approvedDate());
+//                                break;
+                            }
+                        }
+                    } else {
+                        cmb_approveded_emp.setSelectedIndex(0);
+//                        break;
                     }
                 }
-
             } catch (Exception ex) {
-                Logger.getLogger(Employee_Attendence_2.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Employee_Attendence_Approval2.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
 
     private void loadStaffToAttendance() {
+        cmb_approveded_emp.setSelectedIndex(0);
+        dp_attendance_approved_date.setDate(null);
         attendanceListGlobal = new ArrayList<>();
+        dtmAttendance.setRowCount(0);
         try {
+            List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
+//            for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+//                
+//            }
             if (cmb_emp_cate.getSelectedIndex() != 0) {
-                List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
-                int jobTypeId = 0;
+                int jobTypeId = jobTypeController.searchJobType(cmb_emp_cate.getSelectedItem().toString()).getJobType_id();
+                Date attDate = dp_attendance_date.getDate();
+                boolean status = false;
+                M_Employee attEmp = null;
 
-                jobTypeId = jobTypeController.searchJobType(cmb_emp_cate.getSelectedItem().toString()).getJobType_id();
-                dtmAttendance.setRowCount(0);
-                cmb_sub_contractor.removeAll();
                 if (jobTypeId != 2) {
-                    for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
-                        if (allLastAddedEmployee.getEmp_jobType_id() == jobTypeId) {
-                            M_Project_Primary searchPrimaryProject = projectController.searchPrimaryProject(allLastAddedEmployee.getEmp_site_id());
-                            Object[] rowData = {false, allLastAddedEmployee.getEmp_initials() + " " + allLastAddedEmployee.getEmp_firstName(), searchPrimaryProject.getProject_primary_name(), allLastAddedEmployee.getEmp_NIC()};
-                            dtmAttendance.addRow(rowData);
-
-                            attendanceGlobal = new T_Attendance();
-                            attendanceGlobal.setAttendance_id(0);
-                            attendanceGlobal.setAttendance_date(dp_attendance_date.getDate());
-                            attendanceGlobal.setAttendance_siteId(searchPrimaryProject.getProject_id());
-                            attendanceGlobal.setAttendance_employeeId(allLastAddedEmployee.getEmp_id());
-                            attendanceGlobal.setAttendance_in("");
-                            attendanceGlobal.setAttendance_out("");
-                            attendanceGlobal.setAttendance_ot(0);
-                            attendanceGlobal.setAttendance_advance(0);
-                            attendanceGlobal.setAttendance_enteredBy(0);
-                            attendanceGlobal.setAttendance_approvedBy(0);
-                            attendanceGlobal.setAttendance_workId(0);
-                            attendanceGlobal.setAttendance_comment("");
-                            attendanceGlobal.setAttendance_status("0");
-                            attendanceGlobal.setAttendance_enteredDate(null);
-                            attendanceGlobal.setAttendance_approvedDate(null);
-                            attendanceGlobal.setAttendance_days(0);
-                            attendanceGlobal.setAttendance_dailyRate(0);
-                            attendanceGlobal.setAttendance_otRate(0);
-                            attendanceGlobal.setAttendance_processed(0);
-                            attendanceGlobal.setAttendance_salaryBatch(0);
-                            attendanceGlobal.setEmployeeCategory(jobTypeId);
-
-                            attendanceListGlobal.add(attendanceGlobal);
+                    List<T_Attendance> allAttendances1 = attendanceController.getAllAttendances(attDate, jobTypeId);
+                    for (T_Attendance t_Attendance : allAttendances1) {
+                        if (t_Attendance.getAttendance_status().equalsIgnoreCase("1")) {
+                            status = true;
+                        } else {
+                            status = false;
+                        }
+                        for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+                            if (t_Attendance.getAttendance_employeeId() == allLastAddedEmployee.getEmp_id()) {
+                                attEmp = allLastAddedEmployee;
+                                attendanceListGlobal.add(t_Attendance);
+                                break;
+                            }
+                        }
+                        Object[] rowData = {status, attEmp.getEmp_initials() + " " + attEmp.getEmp_firstName(), projectController.searchPrimaryProject(attEmp.getEmp_site_id()).getProject_primary_name(), attEmp.getEmp_NIC()};
+                        dtmAttendance.addRow(rowData);
+                        if (t_Attendance.getAttendance_approvedBy() != 0) {
+                            for (int i = 1; i < cmb_approveded_emp.getItemCount(); i++) {
+                                if (t_Attendance.getAttendance_approvedBy() == Integer.parseInt(cmb_approveded_emp.getItemAt(i).toString().split(" : ")[0])) {
+                                    cmb_approveded_emp.setSelectedIndex(i);
+                                    dp_attendance_approved_date.setDate(t_Attendance.getAttendance_approvedDate());
+//                                    break;
+                                }
+                            }
+                        } else {
+                            cmb_approveded_emp.setSelectedIndex(0);
+//                            break;
                         }
                     }
-
                 } else {
                     lbl_sub_contractor.setVisible(true);
                     cmb_sub_contractor.setVisible(true);
@@ -919,66 +921,95 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                             cmb_sub_contractor.addItem(allLastAddedEmployee.getEmp_id() + " : " + allLastAddedEmployee.getEmp_firstName() + " " + allLastAddedEmployee.getEmp_middleName() + " " + allLastAddedEmployee.getEmp_surName());
                         }
                     }
-
                 }
-                System.out.println("{{{{{{{{" + attendanceListGlobal.size());
+            }
+            System.out.println("))))))))" + attendanceListGlobal.size());
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Attendence_Approval2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadAttendanceByDate() {
+        cmb_approveded_emp.setSelectedIndex(0);
+        dp_attendance_approved_date.setDate(null);
+        attendanceListGlobal = new ArrayList<>();
+        cmb_emp_cate.setSelectedIndex(0);
+        dtmAttendance.setRowCount(0);
+        //System.out.println("DDDDDDDD" + sdf.format(dp_attendance_date.getDate()));
+        boolean status = false;
+        Date attDate = dp_attendance_date.getDate();
+        M_Employee attEmp = null;
+        try {
+            List<T_Attendance> allAttendancesByDate = attendanceController.getAllAttendancesByDate(attDate);
+            List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
+            for (T_Attendance t_Attendance : allAttendancesByDate) {
+                if (t_Attendance.getAttendance_status().equalsIgnoreCase("1")) {
+                    status = true;
+                } else {
+                    status = false;
+                }
+                for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+                    if (t_Attendance.getAttendance_employeeId() == allLastAddedEmployee.getEmp_id()) {
+                        attEmp = allLastAddedEmployee;
+                        attendanceListGlobal.add(t_Attendance);
+                        break;
+                    }
+                }
+                Object[] rowData = {status, attEmp.getEmp_initials() + " " + attEmp.getEmp_firstName(), projectController.searchPrimaryProject(attEmp.getEmp_site_id()).getProject_primary_name(), attEmp.getEmp_NIC()};
+                dtmAttendance.addRow(rowData);
+                if (t_Attendance.getAttendance_approvedBy() != 0) {
+                    for (int i = 1; i < cmb_approveded_emp.getItemCount(); i++) {
+                        if (t_Attendance.getAttendance_approvedBy() == Integer.parseInt(cmb_approveded_emp.getItemAt(i).toString().split(" : ")[0])) {
+                            cmb_approveded_emp.setSelectedIndex(i);
+                            dp_attendance_approved_date.setDate(t_Attendance.getAttendance_approvedDate());
+//                            break;
+                        }
+                    }
+                } else {
+                    cmb_approveded_emp.setSelectedIndex(0);
+//                    break;
+                }
             }
         } catch (Exception ex) {
             Logger.getLogger(Employee_Attendence_2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private void loadAttendanceByDate() {
-//        dtmAttendance.setRowCount(0);
-//        System.out.println("DDDDDDDD" + sdf.format(dp_attendance_date.getDate()));
-//        try {
-//            List<T_Attendance> allAttendances = attendanceController.getAllAttendances();
-//            for (T_Attendance allAttendance : allAttendances) {
-//                System.out.println("\\\\\\\\" + allAttendance.getAttendance_date().toString());
-//                if (allAttendance.getAttendance_date().toString().equalsIgnoreCase(sdf.format(dp_attendance_date.getDate()))) {
-//                    System.out.println("?????" + allAttendance.getAttendance_date());
-//                    M_Employee searchEmployee = employeeController.searchEmployee(allAttendance.getAttendance_employeeId());
-//                    String[] rowData = {null, searchEmployee.getEmp_initials() + " " + searchEmployee.getEmp_firstName(), projectController.searchPrimaryProject(searchEmployee.getEmp_site_id()).getProject_primary_name(), searchEmployee.getEmp_NIC()};
-//                    dtmAttendance.addRow(rowData);
-//                }
-//            }
-//        } catch (Exception ex) {
-//            Logger.getLogger(Employee_Attendence_2.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-    }
-
-    private void markAttendance() {
+    private void viewAttendanceDetails() {
         try {
             int selectedRow = table_attendance.getSelectedRow();
-
-            int siteId = projectController.searchPrimaryProjectByName(dtmAttendance.getValueAt(selectedRow, 2).toString()).getProject_id();
-            int empId = 0;
             String nic = dtmAttendance.getValueAt(selectedRow, 3).toString();
+            int empId = 0;
             List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
             for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
                 if (allLastAddedEmployee.getEmp_NIC().equalsIgnoreCase(nic)) {
                     empId = allLastAddedEmployee.getEmp_id();
-                    System.out.println(">>>>>>>" + empId + nic);
                     break;
                 }
             }
-            boolean status = (boolean) dtmAttendance.getValueAt(selectedRow, 0);
-            String attStatus = "";
-            if (status) {
-                attStatus = "1";
+            T_Attendance searchAttendance = attendanceController.searchAttendance(dp_attendance_date.getDate(), empId);
+            attendanceGlobal = searchAttendance;
+            txt_daily_rate.setText(decimalFormat.format(searchAttendance.getAttendance_dailyRate()));
+            txt_ot_rate.setText(decimalFormat.format(searchAttendance.getAttendance_otRate()));
+            if (searchAttendance.getAttendance_in() != null) {
+                spinner_in.setValue(de1.getFormat().parse(searchAttendance.getAttendance_in()));
+            }
+            if (searchAttendance.getAttendance_out() != null) {
+                spinner_out.setValue(de2.getFormat().parse(searchAttendance.getAttendance_out()));
+            }
+            txt_advance.setText(decimalFormat.format(searchAttendance.getAttendance_advance()));
+            txt_ot.setText(decimalFormat.format(searchAttendance.getAttendance_ot()));
+            if (searchAttendance.getAttendance_workId() != 0) {
+                cmb_work.setSelectedItem(workController.searchWork(searchAttendance.getAttendance_workId()).getWork_name());
             } else {
-                attStatus = "0";
+                cmb_work.setSelectedIndex(0);
             }
-            for (int i = 0; i < attendanceListGlobal.size(); i++) {
-                if (attendanceListGlobal.get(i).getAttendance_employeeId() == empId) {
-                    attendanceListGlobal.get(i).setAttendance_status(attStatus);
-                    attendanceGlobal = attendanceListGlobal.get(i);
-                    break;
-                }
-            }
+            txt_comment.setText(searchAttendance.getAttendance_comment());
+
+            btn_att_detail_submit.setText("Update");
 
         } catch (Exception ex) {
-            Logger.getLogger(Employee_Attendence_2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Employee_Attendence_Approval2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -1021,47 +1052,52 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                     break;
                 }
             }
+            boolean updateAttendance = attendanceController.updateAttendance(attendanceGlobal);
+            if (updateAttendance) {
+                JOptionPane.showMessageDialog(this, "Attendance Details for this Employee Updated Successfully..");
+                clearSubmitDetails();
+            } else {
+                JOptionPane.showMessageDialog(this, "Updating Attendance Details Failed.. Please Check Again.");
+            }
 
         } catch (Exception ex) {
-            Logger.getLogger(Employee_Attendence_2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Employee_Attendence_Approval2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private void transferAttendance() {
         try {
 
-            int addedEmp = 0;
-            if (cmb_added_emp.getSelectedIndex() != 0) {
-                addedEmp = Integer.parseInt(cmb_added_emp.getSelectedItem().toString().split(" : ")[0]);
+            int approvedEmp = 0;
+            if (cmb_approveded_emp.getSelectedIndex() != 0) {
+                approvedEmp = Integer.parseInt(cmb_approveded_emp.getSelectedItem().toString().split(" : ")[0]);
             }
-            Date addedDate = dp_attendance_added_date.getDate();
+            Date approvedDate = dp_attendance_approved_date.getDate();
 
             List<T_Attendance> attendanceListGlobal1 = attendanceListGlobal;
             System.out.println(attendanceListGlobal.size());
-            boolean added = true;
+            boolean updated = true;
             for (T_Attendance t_Attendance : attendanceListGlobal1) {
-                t_Attendance.setAttendance_id(IDGenerator.getNewID("t_att", "ATT_ID"));
-                t_Attendance.setAttendance_enteredBy(addedEmp);
-                t_Attendance.setAttendance_enteredDate(addedDate);
-
-                if (added) {
-                    boolean addAttendance = attendanceController.addAttendance(t_Attendance);
-                    if (addAttendance) {
-                        added = true;
+                t_Attendance.setAttendance_approvedBy(approvedEmp);
+                t_Attendance.setAttendance_approvedDate(approvedDate);
+                if (updated) {
+                    boolean updateAttendance = attendanceController.updateAttendance(t_Attendance);
+                    if (updateAttendance) {
+                        updated = true;
                     } else {
-                        added = false;
+                        updated = false;
                     }
                 }
             }
-            if (added) {
-                JOptionPane.showMessageDialog(this, "Attendance Marked Successfully..");
+            if (updated) {
+                JOptionPane.showMessageDialog(this, "Attendance Approved Successfully..");
                 clearFields();
             } else {
                 JOptionPane.showMessageDialog(this, "Error Occured.. Please Check Again.");
             }
 
         } catch (Exception ex) {
-            Logger.getLogger(Employee_Attendence_2.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Employee_Attendence_Approval2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -1077,17 +1113,14 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
     }
 
     private void clearFields() {
-        cmb_added_emp.setSelectedIndex(0);
-        dp_attendance_added_date.setDate(null);
+        cmb_approveded_emp.setSelectedIndex(0);
+        dp_attendance_approved_date.setDate(null);
         dp_attendance_date.setDate(null);
         cmb_emp_cate.setSelectedIndex(0);
         cmb_sub_contractor.setSelectedIndex(0);
         dtmAttendance.setRowCount(0);
 
         dp_attendance_date.requestFocus();
-
-        attendanceGlobal = new T_Attendance();
-        attendanceListGlobal = new ArrayList<>();
     }
 
 }
