@@ -34,11 +34,12 @@ public class T_Attendance implements Serializable{
     private double attendance_otRate;
     private int attendance_processed;
     private int attendance_salaryBatch;
+    private int employeeCategory;
 
     public T_Attendance() {
     }
 
-    public T_Attendance(int attendance_id, Date attendance_date, int attendance_siteId, int attendance_employeeId, String attendance_in, String attendance_out, double attendance_ot, double attendance_advance, int attendance_enteredBy, int attendance_approvedBy, int attendance_workId, String attendance_comment, String attendance_status, Date attendance_enteredDate, Date attendance_approvedDate, double attendance_days, double attendance_dailyRate, double attendance_otRate, int attendance_processed, int attendance_salaryBatch) {
+    public T_Attendance(int attendance_id, Date attendance_date, int attendance_siteId, int attendance_employeeId, String attendance_in, String attendance_out, double attendance_ot, double attendance_advance, int attendance_enteredBy, int attendance_approvedBy, int attendance_workId, String attendance_comment, String attendance_status, Date attendance_enteredDate, Date attendance_approvedDate, double attendance_days, double attendance_dailyRate, double attendance_otRate, int attendance_processed, int attendance_salaryBatch, int employeeCategory) {
         this.attendance_id = attendance_id;
         this.attendance_date = attendance_date;
         this.attendance_siteId = attendance_siteId;
@@ -59,6 +60,7 @@ public class T_Attendance implements Serializable{
         this.attendance_otRate = attendance_otRate;
         this.attendance_processed = attendance_processed;
         this.attendance_salaryBatch = attendance_salaryBatch;
+        this.employeeCategory = employeeCategory;
     }
 
     /**
@@ -340,5 +342,20 @@ public class T_Attendance implements Serializable{
     public void setAttendance_salaryBatch(int attendance_salaryBatch) {
         this.attendance_salaryBatch = attendance_salaryBatch;
     }
+
+    /**
+     * @return the employeeCategory
+     */
+    public int getEmployeeCategory() {
+        return employeeCategory;
+    }
+
+    /**
+     * @param employeeCategory the employeeCategory to set
+     */
+    public void setEmployeeCategory(int employeeCategory) {
+        this.employeeCategory = employeeCategory;
+    }
+
     
 }

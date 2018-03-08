@@ -21,8 +21,10 @@ public interface T_AttendanceController extends Remote{
     public boolean deleteAttendance(int id)throws Exception;
     public T_Attendance searchAttendance(int id)throws Exception;
     public List<T_Attendance> getAllAttendances()throws Exception;
-    public T_Attendance searchAttendance(Date date,int empId,int site)throws Exception;
+    public T_Attendance searchAttendance(Date date,int empId)throws Exception;
     public List<T_Attendance> getAllAttendancesByLetter(String phrase)throws Exception;
+    public List<T_Attendance> getAllAttendancesByDate(Date date)throws Exception;
+    public List<T_Attendance> getAllAttendances(Date date,int jobTypeId)throws Exception;
     
     public boolean reserveAttendance(int id)throws Exception;
     public boolean releaseAttendance(int id)throws Exception;
