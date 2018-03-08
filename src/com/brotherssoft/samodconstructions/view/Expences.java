@@ -61,6 +61,12 @@ public class Expences extends javax.swing.JPanel {
         initComponents();
         New_Expences_Panel.setVisible(false);
         Expences_View_Panel.setVisible(true);
+        
+        dp_expenceDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_entered_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_approved_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_issue_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_receive_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
 
         expenceSubTypeController = ServerConnector.getServerConnetor().getExpenceSubTypeController();
         expenceTypeController = ServerConnector.getServerConnetor().getExpenceTypeController();

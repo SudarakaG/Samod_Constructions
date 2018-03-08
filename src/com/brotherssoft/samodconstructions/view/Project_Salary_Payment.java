@@ -16,6 +16,9 @@ public class Project_Salary_Payment extends javax.swing.JPanel {
      */
     public Project_Salary_Payment() {
         initComponents();
+        from_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        from_date1.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        
     }
 
     /**

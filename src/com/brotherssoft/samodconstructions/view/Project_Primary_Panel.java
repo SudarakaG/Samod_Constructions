@@ -57,6 +57,9 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
      */
     public Project_Primary_Panel() throws Exception {
         initComponents();
+        txt_project_tender_open_date_1.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        txt_project_states_active_date_1.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        txt_project_states_inactive_date_1.setFormats("yyyy-MM-dd","yyyy/MM/dd");
 
         dtmPriProject = (DefaultTableModel) tblPrimaryProject.getModel();
         projectTypeController = ServerConnector.getServerConnetor().getProjectTypeController();
@@ -85,6 +88,9 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
 
     Project_Primary_Panel(int id) throws Exception {
         initComponents();
+        txt_project_tender_open_date_1.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        txt_project_states_active_date_1.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        txt_project_states_inactive_date_1.setFormats("yyyy-MM-dd","yyyy/MM/dd");
 
         dtmPriProject = (DefaultTableModel) tblPrimaryProject.getModel();
         projectTypeController = ServerConnector.getServerConnetor().getProjectTypeController();

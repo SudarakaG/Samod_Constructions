@@ -48,7 +48,8 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
      */
     public Equipment_Registration_Panel() throws Exception {
         initComponents();
-
+        datePicker_assetRegDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        
         assetController = ServerConnector.getServerConnetor().getAssetController();
         assetCategoryController = ServerConnector.getServerConnetor().getAssetCategoryController();
         equipmentController = ServerConnector.getServerConnetor().getEquipmentController();

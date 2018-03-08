@@ -56,7 +56,8 @@ public class Equiment_Allocation extends javax.swing.JPanel {
      */
     public Equiment_Allocation() throws Exception {
         initComponents();
-
+        dp_updatedDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        
         lbl_warnig1.setSize(471, 14);
         txt_available_stock.setSize(401, 26);
         lbl_allocated_site.setVisible(false);
@@ -709,7 +710,6 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
     private void txt_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantityActionPerformed
         mangeStockAmounts();
-        enableAllocationFields();
         fieldFormat.formatDecimalAmount(txt_quantity);
         dp_updatedDate.requestFocus();
     }//GEN-LAST:event_txt_quantityActionPerformed
@@ -828,7 +828,6 @@ public class Equiment_Allocation extends javax.swing.JPanel {
 
     private void btn_checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_checkActionPerformed
         mangeStockAmounts();
-        enableAllocationFields();
     }//GEN-LAST:event_btn_checkActionPerformed
 
     private void txt_quantityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_quantityMouseClicked
@@ -1407,9 +1406,13 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                     } else {
                         if (cmb_transaction_type.getSelectedIndex() == 1) {
                             if (current >= qty) {
+                                //btn_add_equipmentToMainStock.setEnabled(true);
                                 txt_available_stock.setText(Double.toString(current - qty));
+                                enableAllocationFields();
+                                lbl_warnig1.setVisible(false);
                             } else {
                                 JOptionPane.showMessageDialog(this, "Not Such Amount to Deallocate..");
+                                //btn_add_equipmentToMainStock.setEnabled(false);
                             }
                         } else {
                             txt_quantity.setEnabled(false);
@@ -1431,18 +1434,26 @@ public class Equiment_Allocation extends javax.swing.JPanel {
                 }
                 if (cmb_transaction_type.getSelectedIndex() == 0) {
                     if (inMain >= qty) {
+                        //btn_add_equipmentToMainStock.setEnabled(true);
                         txt_available_stockInSite.setText(decimalFormat.format(current + qty));
                         txt_available_stock.setText(decimalFormat.format(inMain - qty));
+                        enableAllocationFields();
+                        lbl_warnig1.setVisible(false);
                     } else {
                         JOptionPane.showMessageDialog(this, "Not Enough Quantity in Main Stock to Allocate to the Site..");
+                        //btn_add_equipmentToMainStock.setEnabled(false);
                     }
                 } else {
                     if (cmb_transaction_type.getSelectedIndex() == 1) {
                         if (current >= qty) {
+                            //btn_add_equipmentToMainStock.setEnabled(true);
                             txt_available_stockInSite.setText(Double.toString(current - qty));
                             txt_available_stock.setText(decimalFormat.format(inMain + qty));
+                            enableAllocationFields();
+                            lbl_warnig1.setVisible(false);
                         } else {
                             JOptionPane.showMessageDialog(this, "Not Such Amount to Deallocate..");
+                            //btn_add_equipmentToMainStock.setEnabled(false);
                         }
                     } else {
                         txt_quantity.setEnabled(false);
@@ -1455,7 +1466,7 @@ public class Equiment_Allocation extends javax.swing.JPanel {
         } else {
             txt_available_stock.setText(decimalFormat.format(0));
         }
-        lbl_warnig1.setVisible(false);
+        
     }
 
     private void enableAllocationFields() {

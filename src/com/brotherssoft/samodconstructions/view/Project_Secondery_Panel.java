@@ -38,12 +38,21 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     DecimalFormat decimalFormat;
     M_Project_Secondary secondary = null;
     AmountFieldFormat formatField = null;
-
+    
     /**
      * Creates new form Project_Primary_Panel
      */
     public Project_Secondery_Panel() throws Exception {
         initComponents();
+        dp_agreement_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_Commencement_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_Completion_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_performance_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_performance_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_payment_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_payment_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_insurance_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_insurance_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
 
         dtmSecProject = (DefaultTableModel) tblSecondaryProject.getModel();
         secondaryController = ServerConnector.getServerConnetor().getSecondaryController();
@@ -64,6 +73,15 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
     Project_Secondery_Panel(int project_id) throws Exception {
         initComponents();
+        dp_agreement_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_Commencement_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_Completion_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_performance_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_performance_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_payment_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_payment_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_insurance_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_insurance_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
 
         dtmSecProject = (DefaultTableModel) tblSecondaryProject.getModel();
         secondaryController = ServerConnector.getServerConnetor().getSecondaryController();

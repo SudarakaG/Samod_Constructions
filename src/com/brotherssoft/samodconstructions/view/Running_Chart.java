@@ -57,6 +57,7 @@ public class Running_Chart extends javax.swing.JPanel {
         initComponents();
         DisablePanels();
         Chart_View_Panel.setVisible(true);
+        date_picker_joinDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
         de1 = new JSpinner.DateEditor(spn_start_time, "HH:mm a");
         de2 = new JSpinner.DateEditor(spn_end_time, "HH:mm a");
 

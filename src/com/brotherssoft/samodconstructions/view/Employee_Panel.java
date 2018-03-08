@@ -43,6 +43,9 @@ public class Employee_Panel extends javax.swing.JPanel {
      */
     public Employee_Panel() throws Exception {
         initComponents();
+        date_picker_joinDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        date_picker_birth.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        
         lblSubContractor.setVisible(false);
         cmb_emp_subContractor.setVisible(false);
         cmb_searchEmp_subContractor.setVisible(false);

@@ -40,6 +40,12 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
      */
     public Project_Tertiary_Panel() throws Exception {
         initComponents();
+        dp_take_over_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_completed_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_hand_over_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_retain_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_retain_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_retain_releaseDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
 
         thirdController = ServerConnector.getServerConnetor().getThirdController();
         primaryController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
@@ -54,6 +60,12 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
 
     Project_Tertiary_Panel(int projectId) throws Exception {
         initComponents();
+        dp_take_over_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_completed_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_hand_over_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_retain_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_retain_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_retain_releaseDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
 
         thirdController = ServerConnector.getServerConnetor().getThirdController();
         primaryController = ServerConnector.getServerConnetor().getPrimary_ProjectController();

@@ -51,6 +51,7 @@ public class Meterial_Allocation extends javax.swing.JPanel {
      */
     public Meterial_Allocation() throws Exception {
         initComponents();
+        dp_material_allocationDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
         cmb_stockType.setSize(350, 26);
         lbl_allocatedSite.setVisible(false);
         cmb_allocated_site.setVisible(false);
@@ -717,7 +718,6 @@ public class Meterial_Allocation extends javax.swing.JPanel {
 
     private void txt_quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_quantityActionPerformed
         calculateStockQuantity();
-        enableAllocationFields();
         fieldFormat.formatDecimalAmount(txt_quantity);
         dp_material_allocationDate.requestFocus();
     }//GEN-LAST:event_txt_quantityActionPerformed
@@ -745,7 +745,6 @@ public class Meterial_Allocation extends javax.swing.JPanel {
 
     private void btn_checkQtyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_checkQtyActionPerformed
         calculateStockQuantity();
-        enableAllocationFields();
     }//GEN-LAST:event_btn_checkQtyActionPerformed
 
     private void txt_quantityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_quantityKeyPressed
@@ -848,9 +847,12 @@ public class Meterial_Allocation extends javax.swing.JPanel {
             } else {
                 if (cmb_transaction_type.getSelectedIndex() == 1) {
                     if (qtyInMain >= qty) {
+                        //btn_add_materialAllocation.setEnabled(true);
                         txt_quantityInMain.setText(decimalFormat.format(qtyInMain - qty));
+                        enableAllocationFields();
                     } else {
                         JOptionPane.showMessageDialog(this, "Not Much Stock to Deallocate..");
+                        //btn_add_materialAllocation.setEnabled(false);
                     }
                 } else {
                     txt_quantityInMain.setText(decimalFormat.format(0));
@@ -859,18 +861,24 @@ public class Meterial_Allocation extends javax.swing.JPanel {
         } else {
             if (cmb_transaction_type.getSelectedIndex() == 0) {
                 if (qtyInMain >= qty) {
+                    //btn_add_materialAllocation.setEnabled(true);
                     txt_quantityInSite.setText(decimalFormat.format(qty + qtyInSite));
                     txt_quantityInMain.setText(decimalFormat.format(qtyInMain - qty));
+                    enableAllocationFields();
                 } else {
                     JOptionPane.showMessageDialog(this, "Not Enough Stock in Main Stock..");
+                    //btn_add_materialAllocation.setEnabled(false);
                 }
             } else {
                 if (cmb_transaction_type.getSelectedIndex() == 1) {
                     if (qtyInSite >= qty) {
+                        //btn_add_materialAllocation.setEnabled(true);
                         txt_quantityInSite.setText(decimalFormat.format(qtyInSite - qty));
                         txt_quantityInMain.setText(decimalFormat.format(qty + qtyInMain));
+                        enableAllocationFields();
                     } else {
                         JOptionPane.showMessageDialog(this, "Not Much Stock to Deallocate..");
+                        //btn_add_materialAllocation.setEnabled(false);
                     }
                 } else {
                     txt_quantityInSite.setText(decimalFormat.format(0));

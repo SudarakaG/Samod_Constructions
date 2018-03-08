@@ -50,7 +50,7 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
     List<T_Attendance> attendanceListGlobal = new ArrayList();
     JSpinner.DateEditor de1;
     JSpinner.DateEditor de2;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     /**
      * Creates new form Employee_Attendence
@@ -60,6 +60,8 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
         lbl_sub_contractor.setVisible(false);
         cmb_sub_contractor.setVisible(false);
         //panel_attendance_details.setVisible(false);
+        dp_attendance_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_attendance_approved_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
 
         jobTypeController = ServerConnector.getServerConnetor().getJobTypeController();
         workController = ServerConnector.getServerConnetor().getWorkController();
@@ -858,6 +860,7 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
                         }
                     } else {
                         cmb_approveded_emp.setSelectedIndex(0);
+                        dp_attendance_approved_date.setDate(null);
 //                        break;
                     }
                 }
@@ -910,6 +913,7 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
                             }
                         } else {
                             cmb_approveded_emp.setSelectedIndex(0);
+                            dp_attendance_approved_date.setDate(null);
 //                            break;
                         }
                     }
@@ -967,6 +971,7 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
                     }
                 } else {
                     cmb_approveded_emp.setSelectedIndex(0);
+                    dp_attendance_approved_date.setDate(null);
 //                    break;
                 }
             }
@@ -991,10 +996,10 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
             attendanceGlobal = searchAttendance;
             txt_daily_rate.setText(decimalFormat.format(searchAttendance.getAttendance_dailyRate()));
             txt_ot_rate.setText(decimalFormat.format(searchAttendance.getAttendance_otRate()));
-            if (searchAttendance.getAttendance_in() != null) {
+            if (searchAttendance.getAttendance_in() != null && !"".equals(searchAttendance.getAttendance_in())) {
                 spinner_in.setValue(de1.getFormat().parse(searchAttendance.getAttendance_in()));
             }
-            if (searchAttendance.getAttendance_out() != null) {
+            if (searchAttendance.getAttendance_out() != null && !"".equals(searchAttendance.getAttendance_out())) {
                 spinner_out.setValue(de2.getFormat().parse(searchAttendance.getAttendance_out()));
             }
             txt_advance.setText(decimalFormat.format(searchAttendance.getAttendance_advance()));
@@ -1056,6 +1061,7 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
             if (updateAttendance) {
                 JOptionPane.showMessageDialog(this, "Attendance Details for this Employee Updated Successfully..");
                 clearSubmitDetails();
+                btn_att_detail_submit.setText("Submit");
             } else {
                 JOptionPane.showMessageDialog(this, "Updating Attendance Details Failed.. Please Check Again.");
             }

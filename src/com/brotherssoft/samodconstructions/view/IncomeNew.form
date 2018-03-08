@@ -422,6 +422,7 @@
                         <StringItem index="0" value="- Select Income Type -"/>
                       </StringArray>
                     </Property>
+                    <Property name="requestFocusEnabled" type="boolean" value="true"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmb_income_typeActionPerformed"/>

@@ -49,7 +49,8 @@ public class Vehical_Allocation extends javax.swing.JPanel {
         initComponents();
         lbl_site.setVisible(false);
         cmb_allocated_site.setVisible(false);
-
+        dp_updated_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        
         mainStockController = ServerConnector.getServerConnetor().getMainStockController();
         siteAllocationController = ServerConnector.getServerConnetor().getSiteAllocationController();
         vehicleController = ServerConnector.getServerConnetor().getVehicleController();

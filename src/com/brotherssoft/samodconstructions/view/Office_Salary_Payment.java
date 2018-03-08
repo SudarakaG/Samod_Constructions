@@ -16,6 +16,9 @@ public class Office_Salary_Payment extends javax.swing.JPanel {
      */
     public Office_Salary_Payment() {
         initComponents();
+        from_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        to_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        
     }
 
     /**

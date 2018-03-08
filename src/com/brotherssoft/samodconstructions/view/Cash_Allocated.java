@@ -52,7 +52,9 @@ public class Cash_Allocated extends javax.swing.JPanel {
      */
     public Cash_Allocated() throws Exception {
         initComponents();
-
+        dp_requestDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_chequeDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        
 //        lblChequeNo.setEnabled(false);
 //        txt_allo_chequeNo.setEnabled(false);
 //        lblChequeDate.setEnabled(false);

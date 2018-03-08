@@ -37,6 +37,7 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
      */
     public Meterial_Registration_Panel() throws Exception {
         initComponents();
+        datePicker_material_reg_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
         
         unitController = ServerConnector.getServerConnetor().getUnitController();
         materialController = ServerConnector.getServerConnetor().getMaterialController();

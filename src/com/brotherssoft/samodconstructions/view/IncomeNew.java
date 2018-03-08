@@ -56,6 +56,11 @@ public class IncomeNew extends javax.swing.JPanel {
         initComponents();
         New_Expences_Panel.setVisible(false);
         Expences_View_Panel.setVisible(true);
+        dp_incomeDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_enterd_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_approved_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_issue_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_receive_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
 
         incomeTypeControler = ServerConnector.getServerConnetor().getIncomeTypeControler();
         incomeSubTypeController = ServerConnector.getServerConnetor().getIncomeSubTypeController();
@@ -220,6 +225,7 @@ public class IncomeNew extends javax.swing.JPanel {
         cmb_income_type.setEditable(true);
         cmb_income_type.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_income_type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Income Type -" }));
+        cmb_income_type.setRequestFocusEnabled(true);
         cmb_income_type.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmb_income_typeActionPerformed(evt);

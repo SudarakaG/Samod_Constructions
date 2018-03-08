@@ -6,8 +6,16 @@
 package com.brotherssoft.samodconstructions.custom;
 
 import java.awt.event.KeyEvent;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXDatePicker;
 
 /**
  *
@@ -87,7 +95,7 @@ public class Validation {
             }
         }
     }
-    
+
     public static void priceText(JTextField textField) {
         String text = textField.getText();
         if (!text.isEmpty()) {
@@ -97,9 +105,22 @@ public class Validation {
             }
         }
     }
-    
+
     public static String formatDouble(double d) {
         return new DecimalFormat("#,###.00").format(d);
     }
-    
+
+//    public static void date(JXDatePicker datePicker) {
+//        String date = datePicker.getDate().toString();
+//        DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+//        if (date != null) {
+//            try {
+//                df.setLenient(false);                
+//                datePicker.setDate(df.parse(date));
+//            } catch (ParseException ex) {
+//                Logger.getLogger(Validation.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//    }
+
 }
