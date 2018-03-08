@@ -23,7 +23,7 @@ public class T_AttendanceDBAccess {
     public boolean addAttendance(T_Attendance attendance) throws Exception {
 
         Connection connection = DBConnection.getDBConnection().getConnection();
-        String sql = "Insert into t_att values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "Insert into t_att values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement stm = connection.prepareStatement(sql);
         stm.setObject(1, attendance.getAttendance_id());
         stm.setObject(2, attendance.getAttendance_date());
@@ -45,12 +45,13 @@ public class T_AttendanceDBAccess {
         stm.setObject(18, attendance.getAttendance_otRate());
         stm.setObject(19, attendance.getAttendance_processed());
         stm.setObject(20, attendance.getAttendance_salaryBatch());
+        stm.setObject(21, attendance.getEmployeeCategory());
         return stm.executeUpdate() > 0;
 
     }
 
     public boolean updateAttendance(T_Attendance attendance) throws Exception {
-        String sql = "Update t_att set ATT_DATE=?, ATT_SITEID=?, ATT_EMP_ID=?, ATT_IN=?, ATT_OUT=?, ATT_OT=?, ATT_ADVANCE=?, ATT_ENTERBY=?, ATT_APPROVEDBY=?, ATT_WORKID=?, ATT_COMMENT=?, ATT_STATUS=?, ATT_ENTERDATE=?, ATT_APPROVEDDATE=?, ATT_DAYS=?, ATT_DAILYRATE=?, ATT_OTRATE=?, ATT_PROCESSED=?, ATT_SALBATCH=? where ATT_ID=?";
+        String sql = "Update t_att set ATT_DATE=?, ATT_SITEID=?, ATT_EMP_ID=?, ATT_IN=?, ATT_OUT=?, ATT_OT=?, ATT_ADVANCE=?, ATT_ENTERBY=?, ATT_APPROVEDBY=?, ATT_WORKID=?, ATT_COMMENT=?, ATT_STATUS=?, ATT_ENTERDATE=?, ATT_APPROVEDDATE=?, ATT_DAYS=?, ATT_DAILYRATE=?, ATT_OTRATE=?, ATT_PROCESSED=?, ATT_SALBATCH=?, ATT_EMP_CAT=? where ATT_ID=?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
 
@@ -73,7 +74,8 @@ public class T_AttendanceDBAccess {
         stm.setObject(17, attendance.getAttendance_otRate());
         stm.setObject(18, attendance.getAttendance_processed());
         stm.setObject(19, attendance.getAttendance_salaryBatch());
-        stm.setObject(20, attendance.getAttendance_id());
+        stm.setObject(20, attendance.getEmployeeCategory());
+        stm.setObject(21, attendance.getAttendance_id());
         return stm.executeUpdate() > 0;
 
     }
@@ -97,7 +99,7 @@ public class T_AttendanceDBAccess {
         ResultSet rst = stm.executeQuery();
         T_Attendance attendance = null;
         if (rst.next()) {
-            attendance = new T_Attendance(rst.getInt(1), rst.getDate(2), rst.getInt(3), rst.getInt(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getInt(9), rst.getInt(10), rst.getInt(11), rst.getString(12), rst.getString(13), rst.getDate(14), rst.getDate(15), rst.getDouble(16), rst.getDouble(17), rst.getDouble(18), rst.getInt(19), rst.getInt(20));
+            attendance = new T_Attendance(rst.getInt(1), rst.getDate(2), rst.getInt(3), rst.getInt(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getInt(9), rst.getInt(10), rst.getInt(11), rst.getString(12), rst.getString(13), rst.getDate(14), rst.getDate(15), rst.getDouble(16), rst.getDouble(17), rst.getDouble(18), rst.getInt(19), rst.getInt(20),rst.getInt(21));
 
         }
         return attendance;
@@ -111,7 +113,7 @@ public class T_AttendanceDBAccess {
         ResultSet rst = stm.executeQuery("Select * From t_att");
         List<T_Attendance> attendances = new ArrayList<>();
         while (rst.next()) {
-            T_Attendance attendance = new T_Attendance(rst.getInt(1), rst.getDate(2), rst.getInt(3), rst.getInt(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getInt(9), rst.getInt(10), rst.getInt(11), rst.getString(12), rst.getString(13), rst.getDate(14), rst.getDate(15), rst.getDouble(16), rst.getDouble(17), rst.getDouble(18), rst.getInt(19), rst.getInt(20));
+            T_Attendance attendance = new T_Attendance(rst.getInt(1), rst.getDate(2), rst.getInt(3), rst.getInt(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getInt(9), rst.getInt(10), rst.getInt(11), rst.getString(12), rst.getString(13), rst.getDate(14), rst.getDate(15), rst.getDouble(16), rst.getDouble(17), rst.getDouble(18), rst.getInt(19), rst.getInt(20),rst.getInt(21));
             if (attendance.getAttendance_id() != 0) {
                 attendances.add(attendance);
             }
@@ -120,18 +122,17 @@ public class T_AttendanceDBAccess {
 
     }
 
-    public T_Attendance searchAttendance(Date date,int empId, int siteId) throws Exception {
+    public T_Attendance searchAttendance(Date date,int empId) throws Exception {
 
-        String sql = "Select * From t_att where ATT_DATE=? AND ATT_EMP_ID=? AND ATT_SITEID=?";
+        String sql = "Select * From t_att where ATT_DATE=? AND ATT_EMP_ID=?";
         Connection conn = DBConnection.getDBConnection().getConnection();
         PreparedStatement stm = conn.prepareStatement(sql);
         stm.setObject(1, date);
         stm.setObject(2, empId);
-        stm.setObject(3, siteId);
         ResultSet rst = stm.executeQuery();
         T_Attendance attendance = null;
         if (rst.next()) {
-            attendance = new T_Attendance(rst.getInt(1), rst.getDate(2), rst.getInt(3), rst.getInt(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getInt(9), rst.getInt(10), rst.getInt(11), rst.getString(12), rst.getString(13), rst.getDate(14), rst.getDate(15), rst.getDouble(16), rst.getDouble(17), rst.getDouble(18), rst.getInt(19), rst.getInt(20));
+            attendance = new T_Attendance(rst.getInt(1), rst.getDate(2), rst.getInt(3), rst.getInt(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getInt(9), rst.getInt(10), rst.getInt(11), rst.getString(12), rst.getString(13), rst.getDate(14), rst.getDate(15), rst.getDouble(16), rst.getDouble(17), rst.getDouble(18), rst.getInt(19), rst.getInt(20),rst.getInt(21));
 
         }
         return attendance;
@@ -145,7 +146,46 @@ public class T_AttendanceDBAccess {
         ResultSet rst = stm.executeQuery("Select * From t_att WHERE ATT_DATE LIKE '" + phrase + "%'");
         List<T_Attendance> attendances = new ArrayList<>();
         while (rst.next()) {
-            T_Attendance attendance = new T_Attendance(rst.getInt(1), rst.getDate(2), rst.getInt(3), rst.getInt(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getInt(9), rst.getInt(10), rst.getInt(11), rst.getString(12), rst.getString(13), rst.getDate(14), rst.getDate(15), rst.getDouble(16), rst.getDouble(17), rst.getDouble(18), rst.getInt(19), rst.getInt(20));
+            T_Attendance attendance = new T_Attendance(rst.getInt(1), rst.getDate(2), rst.getInt(3), rst.getInt(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getInt(9), rst.getInt(10), rst.getInt(11), rst.getString(12), rst.getString(13), rst.getDate(14), rst.getDate(15), rst.getDouble(16), rst.getDouble(17), rst.getDouble(18), rst.getInt(19), rst.getInt(20),rst.getInt(21));
+            if (attendance.getAttendance_id() != 0) {
+                attendances.add(attendance);
+            }
+        }
+        return attendances;
+
+    }
+    
+    public List<T_Attendance> getAllAttendanceByDate(Date date) throws Exception {
+
+        String sql = "Select * From t_att WHERE ATT_DATE =?";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setObject(1, date);
+        ResultSet rst = stm.executeQuery();
+        List<T_Attendance> attendances = new ArrayList<>();
+        while (rst.next()) {
+            T_Attendance attendance = new T_Attendance(rst.getInt(1), rst.getDate(2), rst.getInt(3), rst.getInt(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getInt(9), rst.getInt(10), rst.getInt(11), rst.getString(12), rst.getString(13), rst.getDate(14), rst.getDate(15), rst.getDouble(16), rst.getDouble(17), rst.getDouble(18), rst.getInt(19), rst.getInt(20),rst.getInt(21));
+            System.out.println("(((((((((("+attendance.getAttendance_date());
+            if (attendance.getAttendance_id() != 0) {
+                attendances.add(attendance);
+            }
+        }
+        return attendances;
+
+    }
+    
+    public List<T_Attendance> getAllAttendance(Date date,int jobTypeId) throws Exception {
+
+        String sql = "Select * From t_att WHERE ATT_DATE=? AND ATT_EMP_CAT=?";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setObject(1, date);
+        stm.setObject(2, jobTypeId);
+        ResultSet rst = stm.executeQuery();
+        List<T_Attendance> attendances = new ArrayList<>();
+        while (rst.next()) {
+            T_Attendance attendance = new T_Attendance(rst.getInt(1), rst.getDate(2), rst.getInt(3), rst.getInt(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getInt(9), rst.getInt(10), rst.getInt(11), rst.getString(12), rst.getString(13), rst.getDate(14), rst.getDate(15), rst.getDouble(16), rst.getDouble(17), rst.getDouble(18), rst.getInt(19), rst.getInt(20),rst.getInt(21));
+            System.out.println("(((((((((("+attendance.getAttendance_date());
             if (attendance.getAttendance_id() != 0) {
                 attendances.add(attendance);
             }

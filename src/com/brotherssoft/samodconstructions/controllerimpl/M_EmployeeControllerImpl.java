@@ -90,5 +90,10 @@ public class M_EmployeeControllerImpl extends UnicastRemoteObject implements M_E
         return sf.getEmployeeService().getAllLastAddedEmployees();
     }
 
+    @Override
+    public List<M_Employee> getAllEmployeesByJobTYpe(int jobTypeId) throws Exception{
+        return sf.getEmployeeService().getAllEmployeesByJobType(jobTypeId);
+    }
+
     
 }

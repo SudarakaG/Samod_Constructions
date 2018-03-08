@@ -43,12 +43,20 @@ public class T_AttendanceService {
         return dbaf.getAttendanceDBAccess().getAllAttendance();
     }
     
-    public T_Attendance searchAttendance(Date date,int empId,int site)throws Exception{
-        return dbaf.getAttendanceDBAccess().searchAttendance(date, empId, site);
+    public T_Attendance searchAttendance(Date date,int empId)throws Exception{
+        return dbaf.getAttendanceDBAccess().searchAttendance(date, empId);
     }
     
     public List<T_Attendance> getAllAttendancesByLetter(String phrase)throws Exception{
         return dbaf.getAttendanceDBAccess().getAllAttendanceByLetter(phrase);
+    }
+    
+    public List<T_Attendance> getAllAttendancesByDate(Date date)throws Exception{
+        return dbaf.getAttendanceDBAccess().getAllAttendanceByDate(date);
+    }
+    
+    public List<T_Attendance> getAllAttendances(Date date,int jobTypeId)throws Exception{
+        return dbaf.getAttendanceDBAccess().getAllAttendance(date,jobTypeId);
     }
     
 }

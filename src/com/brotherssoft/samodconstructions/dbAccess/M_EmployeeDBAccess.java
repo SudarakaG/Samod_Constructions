@@ -223,7 +223,16 @@ public class M_EmployeeDBAccess {
         List<M_Employee> employees = new ArrayList<>();
         while (rst.next()) {
             M_Employee employee = new M_Employee(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getDate(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getInt(17), rst.getInt(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getDouble(23), rst.getInt(24), rst.getString(25), rst.getString(26), rst.getInt(27), rst.getDate(28), rst.getInt(29), rst.getDouble(30), rst.getDouble(31));
-            employees.add(employee);
+            if (employees.size() != 0) {
+                for (int i = 0; i < employees.size(); i++) {
+                    if (employees.get(i).getEmp_firstName().equalsIgnoreCase(employee.getEmp_firstName()) && employees.get(i).getEmp_middleName().equalsIgnoreCase(employee.getEmp_middleName()) && employees.get(i).getEmp_surName().equalsIgnoreCase(employee.getEmp_surName()) && employees.get(i).getEmp_initials().equalsIgnoreCase(employee.getEmp_initials()) && employees.get(i).getEmp_NIC().equalsIgnoreCase(employee.getEmp_NIC())) {
+                        employees.remove(i);
+                    }
+                }
+                employees.add(employee);
+            } else {
+                employees.add(employee);
+            }
         }
         return employees;
 
@@ -242,7 +251,7 @@ public class M_EmployeeDBAccess {
             if (employee.getEmp_id() != 0) {
                 if (employees.size() != 0) {
                     for (int i = 0; i < employees.size(); i++) {
-                        if (employees.get(i).getEmp_NIC().equalsIgnoreCase(employee.getEmp_NIC())) {
+                        if (employees.get(i).getEmp_firstName().equalsIgnoreCase(employee.getEmp_firstName()) && employees.get(i).getEmp_middleName().equalsIgnoreCase(employee.getEmp_middleName()) && employees.get(i).getEmp_surName().equalsIgnoreCase(employee.getEmp_surName()) && employees.get(i).getEmp_initials().equalsIgnoreCase(employee.getEmp_initials()) && employees.get(i).getEmp_NIC().equalsIgnoreCase(employee.getEmp_NIC())) {
                             employees.remove(i);
                         }
                     }
@@ -250,6 +259,31 @@ public class M_EmployeeDBAccess {
                 } else {
                     employees.add(employee);
                 }
+            }
+        }
+        return employees;
+
+    }
+    
+    public List<M_Employee> getAllEmployeesByJobType(int jobTypeId) throws Exception {
+
+        String sql = "SELECT * FROM m_emp WHERE EMP_JOBTYPEID = '" + jobTypeId + "'";
+        Connection connection = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = connection.prepareStatement(sql);
+        ResultSet rst = stm.executeQuery();
+
+        List<M_Employee> employees = new ArrayList<>();
+        while (rst.next()) {
+            M_Employee employee = new M_Employee(rst.getInt(1), rst.getString(2), rst.getString(3), rst.getString(4), rst.getString(5), rst.getString(6), rst.getString(7), rst.getString(8), rst.getString(9), rst.getString(10), rst.getString(11), rst.getDate(12), rst.getString(13), rst.getString(14), rst.getString(15), rst.getString(16), rst.getInt(17), rst.getInt(18), rst.getInt(19), rst.getInt(20), rst.getDouble(21), rst.getDouble(22), rst.getDouble(23), rst.getInt(24), rst.getString(25), rst.getString(26), rst.getInt(27), rst.getDate(28), rst.getInt(29), rst.getDouble(30), rst.getDouble(31));
+            if (employees.size() != 0) {
+                for (int i = 0; i < employees.size(); i++) {
+                    if (employees.get(i).getEmp_firstName().equalsIgnoreCase(employee.getEmp_firstName()) && employees.get(i).getEmp_middleName().equalsIgnoreCase(employee.getEmp_middleName()) && employees.get(i).getEmp_surName().equalsIgnoreCase(employee.getEmp_surName()) && employees.get(i).getEmp_initials().equalsIgnoreCase(employee.getEmp_initials()) && employees.get(i).getEmp_NIC().equalsIgnoreCase(employee.getEmp_NIC())) {
+                        employees.remove(i);
+                    }
+                }
+                employees.add(employee);
+            } else {
+                employees.add(employee);
             }
         }
         return employees;

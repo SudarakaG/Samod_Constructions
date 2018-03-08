@@ -53,8 +53,8 @@ public class T_AttendanceControllerImpl extends UnicastRemoteObject implements T
     }
 
     @Override
-    public T_Attendance searchAttendance(Date date, int empId, int site) throws Exception {
-        return sf.getAttendanceService().searchAttendance(date, empId, site);
+    public T_Attendance searchAttendance(Date date, int empId) throws Exception {
+        return sf.getAttendanceService().searchAttendance(date, empId);
     }
 
     @Override
@@ -70,6 +70,16 @@ public class T_AttendanceControllerImpl extends UnicastRemoteObject implements T
     @Override
     public boolean releaseAttendance(int id) throws Exception {
         return ATTENDANCE_RESERVER.releaseAccount(id, this);
+    }
+
+    @Override
+    public List<T_Attendance> getAllAttendancesByDate(Date date) throws Exception {
+        return sf.getAttendanceService().getAllAttendancesByDate(date);
+    }
+
+    @Override
+    public List<T_Attendance> getAllAttendances(Date date, int jobTypeId) throws Exception {
+        return sf.getAttendanceService().getAllAttendances(date, jobTypeId);
     }
     
     

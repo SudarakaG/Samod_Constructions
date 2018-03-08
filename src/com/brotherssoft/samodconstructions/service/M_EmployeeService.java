@@ -65,4 +65,8 @@ public class M_EmployeeService {
     public List<M_Employee> getAllLastAddedEmployees()throws Exception{
         return dbAccessFactory.getEmployeeAccess().getAllLastAddedEmployees();
     } 
+    
+    public List<M_Employee> getAllEmployeesByJobType(int jobTypeId)throws Exception{
+        return dbAccessFactory.getEmployeeAccess().getAllEmployeesByJobType(jobTypeId);
+    }
 }
