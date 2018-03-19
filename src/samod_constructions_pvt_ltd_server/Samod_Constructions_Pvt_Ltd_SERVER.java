@@ -11,6 +11,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,7 +29,8 @@ public class Samod_Constructions_Pvt_Ltd_SERVER {
         try {
             Registry rr = LocateRegistry.createRegistry(4040);
             System.out.println("Server Statrted Successfully..");
-            rr.rebind("Server", new ControllerFactoryImpl());
+            rr.rebind("SCServer", new ControllerFactoryImpl());
+            JOptionPane.showMessageDialog(null, "Servere Started Successfully..");
             
             //int count = 1;
         } catch (Exception ex) {
