@@ -94,7 +94,7 @@ public class ServerConnector {
     //private UserHistoryController uhc;
 
     private ServerConnector() throws Exception {
-        cf = (ControllerFactory) Naming.lookup("rmi://localhost:4040/Server");
+        cf = (ControllerFactory) Naming.lookup("rmi://localhost:4040/SCServer");
     }
 
     public R_BankController getBankController() throws Exception {
