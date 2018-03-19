@@ -30,7 +30,7 @@ public class Samod_Constructions_Pvt_Ltd_SERVER {
             System.out.println("Server Statrted Successfully..");
             rr.rebind("Server", new ControllerFactoryImpl());
             
-            int count = 1;
+            //int count = 1;
         } catch (Exception ex) {
             Logger.getLogger(Samod_Constructions_Pvt_Ltd_SERVER.class.getName()).log(Level.SEVERE, null, ex);
         }
