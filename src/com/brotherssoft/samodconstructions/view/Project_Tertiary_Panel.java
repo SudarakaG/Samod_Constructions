@@ -40,6 +40,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
      */
     public Project_Tertiary_Panel() throws Exception {
         initComponents();
+        btn_save_third_project.setEnabled(false);
         dp_take_over_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
         dp_completed_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
         dp_hand_over_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
@@ -1773,6 +1774,8 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             txt_approved_period.setText("");
             txt_liquidityDamage_period.setText("");
         }
+        
+        btn_save_third_project.setEnabled(true);
     }
 
     private void searchByTableName() {
@@ -1981,5 +1984,6 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         txt_retain_releaseAmount.setText("");
         dp_retain_releaseDate.setDate(new Date());
         txt_boq.requestFocus();
+        btn_save_third_project.setEnabled(false);
     }
 }

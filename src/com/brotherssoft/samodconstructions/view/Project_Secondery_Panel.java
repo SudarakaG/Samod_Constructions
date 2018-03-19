@@ -44,6 +44,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
      */
     public Project_Secondery_Panel() throws Exception {
         initComponents();
+        btn_add_secondary_project.setEnabled(false);
         dp_agreement_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
         dp_Commencement_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
         dp_Completion_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
@@ -1671,6 +1672,8 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             txt_project_duration.setText("");
         }
         cmb_current_status.setSelectedIndex(Integer.parseInt(secondary.getProject_currentStatus()));
+        
+        btn_add_secondary_project.setEnabled(true);
 
     }
 
@@ -1742,6 +1745,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         cmb_made_of_payment.setSelectedIndex(0);
         btn_add_secondary_project.setText("Save");
         txt_boq.requestFocus();
+        btn_add_secondary_project.setEnabled(false);
     }
 
 }
