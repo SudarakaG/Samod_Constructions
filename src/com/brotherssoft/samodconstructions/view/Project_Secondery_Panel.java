@@ -38,22 +38,22 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     DecimalFormat decimalFormat;
     M_Project_Secondary secondary = null;
     AmountFieldFormat formatField = null;
-    
+
     /**
      * Creates new form Project_Primary_Panel
      */
     public Project_Secondery_Panel() throws Exception {
         initComponents();
         btn_add_secondary_project.setEnabled(false);
-        dp_agreement_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_Commencement_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_Completion_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_performance_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_performance_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_payment_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_payment_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_insurance_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_insurance_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_agreement_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_Commencement_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_Completion_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_performance_Valid_Period_From.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_performance_Valid_Period_To.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_payment_Valid_Period_From.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_payment_Valid_Period_To.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_insurance_Valid_Period_From.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_insurance_Valid_Period_To.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
 
         dtmSecProject = (DefaultTableModel) tblSecondaryProject.getModel();
         secondaryController = ServerConnector.getServerConnetor().getSecondaryController();
@@ -61,11 +61,11 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
         loadSecondaryProjectTable();
 
-       jScrollPane12.getVerticalScrollBar().setUnitIncrement(16);
-       jScrollPane11.getVerticalScrollBar().setUnitIncrement(16);
+        jScrollPane12.getVerticalScrollBar().setUnitIncrement(16);
+        jScrollPane11.getVerticalScrollBar().setUnitIncrement(16);
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
-        
+
 //        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
 //        symbols.setGroupingSeparator(' ');
         decimalFormat = new DecimalFormat("#,##0.00");
@@ -74,15 +74,15 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
     Project_Secondery_Panel(int project_id) throws Exception {
         initComponents();
-        dp_agreement_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_Commencement_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_Completion_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_performance_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_performance_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_payment_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_payment_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_insurance_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_insurance_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_agreement_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_Commencement_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_Completion_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_performance_Valid_Period_From.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_performance_Valid_Period_To.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_payment_Valid_Period_From.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_payment_Valid_Period_To.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_insurance_Valid_Period_From.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_insurance_Valid_Period_To.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
 
         dtmSecProject = (DefaultTableModel) tblSecondaryProject.getModel();
         secondaryController = ServerConnector.getServerConnetor().getSecondaryController();
@@ -128,7 +128,6 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         dp_Commencement_date = new org.jdesktop.swingx.JXDatePicker();
         btn_to_primary_project = new javax.swing.JButton();
         txt_boq = new javax.swing.JTextField();
-        txt_vat = new javax.swing.JTextField();
         jLabel138 = new javax.swing.JLabel();
         jLabel139 = new javax.swing.JLabel();
         jLabel140 = new javax.swing.JLabel();
@@ -181,6 +180,13 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         lbl_projectName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btn_new_secondary_project1 = new javax.swing.JButton();
+        jLabel127 = new javax.swing.JLabel();
+        txt_nbtPercentage = new javax.swing.JTextField();
+        txt_nbt = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txt_vatPercentage = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txt_vat = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
         tblSecondaryProject = new javax.swing.JTable();
@@ -348,26 +354,6 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_boqKeyTyped(evt);
-            }
-        });
-
-        txt_vat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_vat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_vatMouseClicked(evt);
-            }
-        });
-        txt_vat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_vatActionPerformed(evt);
-            }
-        });
-        txt_vat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_vatKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_vatKeyReleased(evt);
             }
         });
 
@@ -722,6 +708,111 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             }
         });
 
+        jLabel127.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel127.setText("NBT");
+
+        txt_nbtPercentage.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_nbtPercentage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_nbtPercentageMouseClicked(evt);
+            }
+        });
+        txt_nbtPercentage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nbtPercentageActionPerformed(evt);
+            }
+        });
+        txt_nbtPercentage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_nbtPercentageKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_nbtPercentageKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nbtPercentageKeyTyped(evt);
+            }
+        });
+
+        txt_nbt.setEditable(false);
+        txt_nbt.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_nbt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_nbt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_nbtMouseClicked(evt);
+            }
+        });
+        txt_nbt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nbtActionPerformed(evt);
+            }
+        });
+        txt_nbt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_nbtKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_nbtKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nbtKeyTyped(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("%");
+
+        txt_vatPercentage.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_vatPercentage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_vatPercentageMouseClicked(evt);
+            }
+        });
+        txt_vatPercentage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_vatPercentageActionPerformed(evt);
+            }
+        });
+        txt_vatPercentage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_vatPercentageKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_vatPercentageKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_vatPercentageKeyTyped(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("%");
+
+        txt_vat.setEditable(false);
+        txt_vat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_vat.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt_vat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_vatMouseClicked(evt);
+            }
+        });
+        txt_vat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_vatActionPerformed(evt);
+            }
+        });
+        txt_vat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_vatKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_vatKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_vatKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout txt_Input_Panel_Branch4Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch4);
         txt_Input_Panel_Branch4.setLayout(txt_Input_Panel_Branch4Layout);
         txt_Input_Panel_Branch4Layout.setHorizontalGroup(
@@ -763,14 +854,6 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(dp_Completion_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txt_boq, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_vat, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addComponent(jSeparator30, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jSeparator31, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel140, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -804,7 +887,28 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                                         .addComponent(dp_Commencement_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txt_tel)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
-                                        .addComponent(txt_name)))))
+                                        .addComponent(txt_name)))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addComponent(jLabel127, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txt_nbtPercentage, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txt_nbt, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txt_boq, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                            .addComponent(txt_vatPercentage, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(txt_vat, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                             .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel160, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -849,22 +953,29 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addComponent(txt_boq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_vat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_boq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_nbtPercentage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel127, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_nbt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_vatPercentage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_vat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                     .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txt_project_duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1178,9 +1289,10 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_totalKeyTyped
 
     private void txt_boqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_boqActionPerformed
-        formatField.formatDecimalAmount(txt_boq);
+        
         getTotal();
-        txt_vat.requestFocus();
+        formatField.formatDecimalAmount(txt_boq);
+        txt_nbtPercentage.requestFocus();
     }//GEN-LAST:event_txt_boqActionPerformed
 
     private void txt_boqKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_boqKeyPressed
@@ -1194,20 +1306,6 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private void txt_boqKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_boqKeyTyped
 
     }//GEN-LAST:event_txt_boqKeyTyped
-
-    private void txt_vatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vatActionPerformed
-        formatField.formatDecimalAmount(txt_vat);
-        getTotal();
-        txt_project_duration.requestFocus();
-    }//GEN-LAST:event_txt_vatActionPerformed
-
-    private void txt_vatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatKeyPressed
-        Validation.priceText(txt_vat);
-    }//GEN-LAST:event_txt_vatKeyPressed
-
-    private void txt_vatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatKeyReleased
-        Validation.priceText(txt_vat);
-    }//GEN-LAST:event_txt_vatKeyReleased
 
     private void txt_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nameActionPerformed
         txt_address.requestFocus();
@@ -1395,12 +1493,6 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         formatField.clearAmountField(txt_boq);
     }//GEN-LAST:event_txt_boqMouseClicked
 
-    private void txt_vatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_vatMouseClicked
-        formatField.formatDecimalAmount(txt_boq);
-        getTotal();
-        formatField.clearAmountField(txt_vat);
-    }//GEN-LAST:event_txt_vatMouseClicked
-
     private void txt_totalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_totalMouseClicked
         formatField.formatDecimalAmount(txt_vat);
         getTotal();
@@ -1472,6 +1564,93 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btn_new_secondary_project1ActionPerformed
 
+    private void txt_nbtPercentageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_nbtPercentageMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nbtPercentageMouseClicked
+
+    private void txt_nbtPercentageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nbtPercentageActionPerformed
+        
+        getTotal();
+        formatField.formatDecimalAmount(txt_nbtPercentage);
+        txt_vatPercentage.requestFocus();
+
+    }//GEN-LAST:event_txt_nbtPercentageActionPerformed
+
+    private void txt_nbtPercentageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nbtPercentageKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nbtPercentageKeyPressed
+
+    private void txt_nbtPercentageKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nbtPercentageKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nbtPercentageKeyReleased
+
+    private void txt_nbtPercentageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nbtPercentageKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nbtPercentageKeyTyped
+
+    private void txt_nbtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_nbtMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nbtMouseClicked
+
+    private void txt_nbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nbtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nbtActionPerformed
+
+    private void txt_nbtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nbtKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nbtKeyPressed
+
+    private void txt_nbtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nbtKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nbtKeyReleased
+
+    private void txt_nbtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nbtKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nbtKeyTyped
+
+    private void txt_vatPercentageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_vatPercentageMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_vatPercentageMouseClicked
+
+    private void txt_vatPercentageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vatPercentageActionPerformed
+        
+        getTotal();
+        formatField.formatDecimalAmount(txt_vatPercentage);
+        txt_project_duration.requestFocus();
+    }//GEN-LAST:event_txt_vatPercentageActionPerformed
+
+    private void txt_vatPercentageKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatPercentageKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_vatPercentageKeyPressed
+
+    private void txt_vatPercentageKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatPercentageKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_vatPercentageKeyReleased
+
+    private void txt_vatPercentageKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatPercentageKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_vatPercentageKeyTyped
+
+    private void txt_vatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_vatMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_vatMouseClicked
+
+    private void txt_vatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_vatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_vatActionPerformed
+
+    private void txt_vatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_vatKeyPressed
+
+    private void txt_vatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_vatKeyReleased
+
+    private void txt_vatKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_vatKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_vatKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Project_Primary_Info_Panel;
@@ -1497,6 +1676,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel124;
     private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel126;
+    private javax.swing.JLabel jLabel127;
     private javax.swing.JLabel jLabel138;
     private javax.swing.JLabel jLabel139;
     private javax.swing.JLabel jLabel140;
@@ -1522,6 +1702,8 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel160;
     private javax.swing.JLabel jLabel161;
     private javax.swing.JLabel jLabel162;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel69;
     private javax.swing.JPanel jPanel1;
@@ -1541,6 +1723,8 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_insuarance_covers;
     private javax.swing.JTextField txt_insuarance_covers_amount;
     private javax.swing.JTextField txt_name;
+    private javax.swing.JTextField txt_nbt;
+    private javax.swing.JTextField txt_nbtPercentage;
     private javax.swing.JTextField txt_payment_amount;
     private javax.swing.JTextField txt_payment_organization;
     private javax.swing.JTextField txt_performance_amount;
@@ -1550,6 +1734,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private javax.swing.JTextField txt_tel;
     private javax.swing.JTextField txt_total;
     private javax.swing.JTextField txt_vat;
+    private javax.swing.JTextField txt_vatPercentage;
     private javax.swing.JPanel user_panel_hedding2;
     // End of variables declaration//GEN-END:variables
 
@@ -1615,9 +1800,9 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
     private void loadFromSecondaryProjectTable() {
         clearFields();
         try {
-            if(primaryController.reserveProject(secondary.getProject_id())){
-            lbl_projectName.setText(primaryController.searchPrimaryProject(secondary.getProject_id()).getProject_primary_name());
-            }else{
+            if (primaryController.reserveProject(secondary.getProject_id())) {
+                lbl_projectName.setText(primaryController.searchPrimaryProject(secondary.getProject_id()).getProject_primary_name());
+            } else {
                 JOptionPane.showMessageDialog(this, "This Project is Using by Another Machine.. \n Try Again in a Moment..");
                 return;
             }
@@ -1654,8 +1839,8 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             dp_insurance_Valid_Period_From.setDate(secondary.getProject_secondary_insuranceValidFrom());
             dp_insurance_Valid_Period_To.setDate(secondary.getProject_secondary_insuranceValidTo());
             dp_Completion_date.setDate(secondary.getProject_secondary_completionDate());
-            if(!"".equals(secondary.getProject_secondary_duration())){
-            txt_project_duration.setText(decimalFormat.format(Double.parseDouble(secondary.getProject_secondary_duration())));
+            if (!"".equals(secondary.getProject_secondary_duration())) {
+                txt_project_duration.setText(decimalFormat.format(Double.parseDouble(secondary.getProject_secondary_duration())));
             }
         } else {
             cmb_Insuarance_Covers.setSelectedIndex(0);
@@ -1672,7 +1857,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             txt_project_duration.setText("");
         }
         cmb_current_status.setSelectedIndex(Integer.parseInt(secondary.getProject_currentStatus()));
-        
+
         btn_add_secondary_project.setEnabled(true);
 
     }
@@ -1706,14 +1891,24 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
 
     private void getTotal() {
         double boq = 0;
+        double nbtPerc = 0;
+        double nbt = 0;
+        double vatPerc = 0;
         double vat = 0;
         if (!"".equals(txt_boq.getText())) {
-            boq = Double.parseDouble(txt_boq.getText());
+            boq = Double.parseDouble(txt_boq.getText().replaceAll(",", ""));
         }
-        if (!"".equals(txt_vat.getText())) {
-            vat = Double.parseDouble(txt_vat.getText());
+        if (!"".equals(txt_nbtPercentage.getText())) {
+            nbtPerc = Double.parseDouble(txt_nbtPercentage.getText().replaceAll(",", ""));
         }
-        double tot = boq + vat;
+        nbt = (boq * nbtPerc) / 100;
+        txt_nbt.setText(decimalFormat.format(nbt));
+        if (!"".equals(txt_vatPercentage.getText())) {
+            vatPerc = Double.parseDouble(txt_vatPercentage.getText().replaceAll(",", ""));
+        }
+        vat = ((boq + nbt) * vatPerc) / 100;
+        txt_vat.setText(decimalFormat.format(vat));
+        double tot = boq + nbt + vat;
         txt_total.setText(decimalFormat.format(tot));
     }
 
