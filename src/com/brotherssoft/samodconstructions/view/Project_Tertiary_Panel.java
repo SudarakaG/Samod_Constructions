@@ -41,12 +41,12 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     public Project_Tertiary_Panel() throws Exception {
         initComponents();
         btn_save_third_project.setEnabled(false);
-        dp_take_over_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_completed_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_hand_over_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_retain_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_retain_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_retain_releaseDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_take_over_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_completed_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_hand_over_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_retain_Valid_Period_From.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_retain_Valid_Period_To.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_retain_releaseDate.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
 
         thirdController = ServerConnector.getServerConnetor().getThirdController();
         primaryController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
@@ -61,12 +61,12 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
 
     Project_Tertiary_Panel(int projectId) throws Exception {
         initComponents();
-        dp_take_over_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_completed_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_hand_over_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_retain_Valid_Period_From.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_retain_Valid_Period_To.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_retain_releaseDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_take_over_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_completed_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_hand_over_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_retain_Valid_Period_From.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_retain_Valid_Period_To.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_retain_releaseDate.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
 
         thirdController = ServerConnector.getServerConnetor().getThirdController();
         primaryController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
@@ -949,27 +949,6 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                         .addComponent(jLabel161, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(cmb_retention_release, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(lbl_liq_damagePeriod, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_liquidityDamage_period)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblDamagePeriodMonth))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(lbl_liq_damageAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(txt_liquidityDamage_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(lbl_retention_releaseAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)
-                                .addComponent(txt_retain_releaseAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addComponent(lbl_retention_releaseDate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(dp_retain_releaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -1022,7 +1001,31 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                                 .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                     .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(105, 105, 105)
-                                    .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(lbl_retention_releaseAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(txt_retain_releaseAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(lbl_retention_releaseDate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dp_retain_releaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(lbl_liq_damagePeriod, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_liquidityDamage_period)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblDamagePeriodMonth))
+                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                                .addComponent(lbl_liq_damageAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(4, 4, 4)
+                                .addComponent(txt_liquidityDamage_amount, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         txt_Input_Panel_Branch4Layout.setVerticalGroup(
@@ -1162,7 +1165,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel161, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmb_retention_release, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_retention_releaseAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_retain_releaseAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1170,7 +1173,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_retention_releaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dp_retain_releaseDate, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_to_secondary_project)
                     .addComponent(btn_save_third_project)
@@ -1553,7 +1556,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         btn_save_third_project.setText("Update");
         txt_search_name_.setText("Search Project");
         txt_search_name_.setForeground(Color.GRAY);
-        
+
     }//GEN-LAST:event_tblFinalProjectMouseClicked
 
     private void btn_save_third_projectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_save_third_projectActionPerformed
@@ -1870,9 +1873,9 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
     private void loadFeilsFromSearch() {
         clearFields();
         try {
-            if(primaryController.reserveProject(third.getProject_id())){
-            lbl_projectName.setText(primaryController.searchPrimaryProject(third.getProject_id()).getProject_primary_name());
-            }else{
+            if (primaryController.reserveProject(third.getProject_id())) {
+                lbl_projectName.setText(primaryController.searchPrimaryProject(third.getProject_id()).getProject_primary_name());
+            } else {
                 JOptionPane.showMessageDialog(this, "This Project is Using by Another Machine.. \n Try Again in a Moment.");
                 return;
             }
@@ -1884,9 +1887,10 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         txt_exceed.setText(decimalFormat.format(third.getProject_final_exceed()));
         txt_extra_work.setText(decimalFormat.format(third.getProject_final_extraWork()));
         txt_price_excallation.setText(decimalFormat.format(third.getProject_final_priceEscallation()));
+        txt_nbtPercentage.setText(decimalFormat.format(third.getProject_final_nbt()));
         txt_vatPercentage.setText(decimalFormat.format(third.getProject_final_vat()));
-        txt_total.setText(decimalFormat.format(third.getProject_final_boq() + third.getProject_final_exceed() + third.getProject_final_extraWork() + third.getProject_final_priceEscallation() + third.getProject_final_vat()));
-
+        //txt_total.setText(decimalFormat.format(third.getProject_final_boq() + third.getProject_final_exceed() + third.getProject_final_extraWork() + third.getProject_final_priceEscallation() + third.getProject_final_vat()));
+        getTotal();
         txt_liquidityDamage_amount.setText(decimalFormat.format(third.getProject_final_liquidityDamageAmount()));
 
         txt_retain_amount.setText(decimalFormat.format(third.getProject_final_retentionAmount()));
@@ -1908,14 +1912,14 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             dp_retain_Valid_Period_From.setDate(third.getProject_final_retentionPeriodFrom());
             dp_retain_Valid_Period_To.setDate(third.getProject_final_retentionPeriodTo());
             dp_retain_releaseDate.setDate(third.getProject_final_retentionReleaseDate());
-            if(!"".equals(third.getProject_final_timeExtentionRequestPeriod())){
-            txt_req_period.setText(decimalFormat.format(Double.parseDouble(third.getProject_final_timeExtentionRequestPeriod())));
+            if (!"".equals(third.getProject_final_timeExtentionRequestPeriod())) {
+                txt_req_period.setText(decimalFormat.format(Double.parseDouble(third.getProject_final_timeExtentionRequestPeriod())));
             }
-            if(!"".equals(third.getProject_final_timeExtentionApprovedPeriod())){
-            txt_approved_period.setText(decimalFormat.format(Double.parseDouble(third.getProject_final_timeExtentionApprovedPeriod())));
+            if (!"".equals(third.getProject_final_timeExtentionApprovedPeriod())) {
+                txt_approved_period.setText(decimalFormat.format(Double.parseDouble(third.getProject_final_timeExtentionApprovedPeriod())));
             }
-            if(!"".equals(third.getProject_final_liquidityDamagePeriod())){
-            txt_liquidityDamage_period.setText(decimalFormat.format(Double.parseDouble(third.getProject_final_liquidityDamagePeriod())));
+            if (!"".equals(third.getProject_final_liquidityDamagePeriod())) {
+                txt_liquidityDamage_period.setText(decimalFormat.format(Double.parseDouble(third.getProject_final_liquidityDamagePeriod())));
             }
         } else {
             cmb_Liquidity_Damage.setSelectedIndex(0);
@@ -1933,7 +1937,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             txt_approved_period.setText("");
             txt_liquidityDamage_period.setText("");
         }
-        
+
         btn_save_third_project.setEnabled(true);
     }
 
@@ -1950,7 +1954,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
             Logger.getLogger(Project_Tertiary_Panel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void updateThirdProject() {
         double finalBOQ = 0;
         double exeed = 0;
@@ -2019,8 +2023,12 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         Date retentonReleaseDate = dp_retain_releaseDate.getDate();
         String finalStatus = Integer.toString(cmb_current_status.getSelectedIndex());
         String currentStatus = Integer.toString(cmb_current_status.getSelectedIndex());
+        double nbtFinal = 0;
+        if (!"".equals(txt_nbtPercentage.getText())) {
+            nbtFinal = Double.parseDouble(txt_nbtPercentage.getText().replaceAll(",", ""));
+        }
 
-        M_Project_Third thirdUpdate = new M_Project_Third(projectId, finalBOQ, exeed, extraWork, escallation, finalVat, takeOverDate, completeDate, handOverDate, reqExtention, approvedPeriod, liqDamage, liqDamagePeriod, liqDamageAmount, certification, retention, retentionMode, retentionAmount, retentionOrg, retentionFrom, retentionTo, retentionRelease, retentionReleaseAmount, retentonReleaseDate, finalStatus, currentStatus);
+        M_Project_Third thirdUpdate = new M_Project_Third(projectId, finalBOQ, exeed, extraWork, escallation, finalVat, takeOverDate, completeDate, handOverDate, reqExtention, approvedPeriod, liqDamage, liqDamagePeriod, liqDamageAmount, certification, retention, retentionMode, retentionAmount, retentionOrg, retentionFrom, retentionTo, retentionRelease, retentionReleaseAmount, retentonReleaseDate, finalStatus, currentStatus,nbtFinal);
         try {
             boolean updateThirdProject = thirdController.updateThirdProject(thirdUpdate);
             if (updateThirdProject) {
@@ -2061,15 +2069,15 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         if (!"".equals(txt_nbtPercentage.getText())) {
             nbtPerc = Double.parseDouble(txt_nbtPercentage.getText().replaceAll(",", ""));
         }
-        nbt = (preTot * nbtPerc)/100;
+        nbt = (preTot * nbtPerc) / 100;
         txt_nbt.setText(decimalFormat.format(nbt));
-        
+
         if (!"".equals(txt_vatPercentage.getText())) {
             vatPerc = Double.parseDouble(txt_vatPercentage.getText().replaceAll(",", ""));
         }
-        vat = ((preTot + nbt)*vatPerc)/100;
+        vat = ((preTot + nbt) * vatPerc) / 100;
         txt_vat.setText(decimalFormat.format(vat));
-        
+
         txt_total.setText(decimalFormat.format(preTot + nbt + vat));
     }
 
@@ -2145,7 +2153,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         cmb_Liquidity_Damage.setSelectedIndex(0);
         txt_liquidityDamage_period.setText("");
         txt_liquidityDamage_amount.setText("");
-        cmb_Completion_Certification.setSelectedIndex(0);        
+        cmb_Completion_Certification.setSelectedIndex(0);
         cmb_Retention.setSelectedIndex(0);
         cmb_Retain_mode.setSelectedIndex(0);
         txt_retain_amount.setText("");

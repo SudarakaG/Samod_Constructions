@@ -19,6 +19,7 @@ import com.brotherssoft.samodconstructions.model.R_Work;
 import com.brotherssoft.samodconstructions.model.T_Attendance;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,6 +45,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
     M_Project_PrimaryController projectController;
 
     DefaultTableModel dtmAttendance;
+    DefaultTableModel dtmApproval;
 
     DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
     T_Attendance attendanceGlobal = new T_Attendance();
@@ -58,11 +60,14 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
      */
     public Employee_Attendence_2() throws Exception {
         initComponents();
+        Employee_View_Panel.setVisible(true);
+        Company_Account_Registration.setVisible(false);
         lbl_sub_contractor.setVisible(false);
         cmb_sub_contractor.setVisible(false);
         //panel_attendance_details.setVisible(false);
-        dp_attendance_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_attendance_added_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_attendance_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_attendance_added_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        btn_att_save.setEnabled(false);
 
         jobTypeController = ServerConnector.getServerConnetor().getJobTypeController();
         workController = ServerConnector.getServerConnetor().getWorkController();
@@ -71,12 +76,14 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
         projectController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
 
         dtmAttendance = (DefaultTableModel) table_attendance.getModel();
+        dtmApproval = (DefaultTableModel) tbl_attApproval.getModel();
         de1 = new JSpinner.DateEditor(spinner_in, "HH:mm a");
         de2 = new JSpinner.DateEditor(spinner_out, "HH:mm a");
 
         loadJobTypeCombo();
         loadWorkCombo();
         loadEmployeeCombo();
+        loadAttApproveTable();
 
     }
 
@@ -89,6 +96,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLayeredPane1 = new javax.swing.JLayeredPane();
         Company_Account_Registration = new javax.swing.JPanel();
         bank_panel_hedding2 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -132,6 +140,16 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
         dp_attendance_added_date = new org.jdesktop.swingx.JXDatePicker();
         jLabel10 = new javax.swing.JLabel();
         btn_att_save = new javax.swing.JButton();
+        btn_back_list = new javax.swing.JButton();
+        Employee_View_Panel = new javax.swing.JPanel();
+        bank_panel_hedding5 = new javax.swing.JPanel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jSeparator11 = new javax.swing.JSeparator();
+        tbl_panel_Branch2 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tbl_attApproval = new javax.swing.JTable();
+        btn_branch1 = new javax.swing.JButton();
 
         Company_Account_Registration.setBackground(new java.awt.Color(255, 255, 255));
         Company_Account_Registration.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -154,7 +172,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
             .addGroup(bank_panel_hedding2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(498, Short.MAX_VALUE))
+                .addContainerGap(509, Short.MAX_VALUE))
             .addGroup(bank_panel_hedding2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel20)
@@ -325,7 +343,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                     .addComponent(lbl_sub_contractor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmb_sub_contractor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -542,7 +560,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_att_detail_submit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -551,6 +569,11 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
         cmb_added_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_added_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Added Employee -" }));
         cmb_added_emp.setPreferredSize(new java.awt.Dimension(56, 25));
+        cmb_added_emp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_added_empActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel8.setText("Added By");
@@ -604,10 +627,17 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dp_attendance_added_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(btn_att_save, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_att_save, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        btn_back_list.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_back_list.setText("Back to Pending List");
+        btn_back_list.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_back_listActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Company_Account_RegistrationLayout = new javax.swing.GroupLayout(Company_Account_Registration);
         Company_Account_Registration.setLayout(Company_Account_RegistrationLayout);
@@ -615,12 +645,14 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
             Company_Account_RegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Company_Account_RegistrationLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(Company_Account_RegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_back_list))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Company_Account_RegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panel_attendance_details, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(bank_panel_hedding2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         Company_Account_RegistrationLayout.setVerticalGroup(
@@ -630,22 +662,219 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Company_Account_RegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Company_Account_RegistrationLayout.createSequentialGroup()
-                        .addComponent(panel_attendance_details, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_back_list)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE))
+                        .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE))
+                    .addGroup(Company_Account_RegistrationLayout.createSequentialGroup()
+                        .addComponent(panel_attendance_details, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(96, 96, 96))
+        );
+
+        Employee_View_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Employee_View_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
+
+        bank_panel_hedding5.setBackground(new java.awt.Color(122, 72, 222));
+
+        jLabel60.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel60.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel60.setText("Administrations / System Management / Master Detail / Employee Manager");
+
+        jLabel61.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel61.setText("Show All Employees");
+
+        javax.swing.GroupLayout bank_panel_hedding5Layout = new javax.swing.GroupLayout(bank_panel_hedding5);
+        bank_panel_hedding5.setLayout(bank_panel_hedding5Layout);
+        bank_panel_hedding5Layout.setHorizontalGroup(
+            bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
+                .addGroup(bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel61)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        bank_panel_hedding5Layout.setVerticalGroup(
+            bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel61)
+                    .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
+        tbl_panel_Branch2.setBackground(new java.awt.Color(255, 255, 255));
+        tbl_panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Approval Pending Attendance", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+
+        tbl_attApproval.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tbl_attApproval.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Attendance Date", "Employee Category"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbl_attApproval.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_attApproval.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_attApprovalMouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(tbl_attApproval);
+
+        javax.swing.GroupLayout tbl_panel_Branch2Layout = new javax.swing.GroupLayout(tbl_panel_Branch2);
+        tbl_panel_Branch2.setLayout(tbl_panel_Branch2Layout);
+        tbl_panel_Branch2Layout.setHorizontalGroup(
+            tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 989, Short.MAX_VALUE)
                 .addContainerGap())
+        );
+        tbl_panel_Branch2Layout.setVerticalGroup(
+            tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        btn_branch1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_branch1.setText("New Attendance");
+        btn_branch1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_branch1MouseClicked(evt);
+            }
+        });
+        btn_branch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_branch1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Employee_View_PanelLayout = new javax.swing.GroupLayout(Employee_View_Panel);
+        Employee_View_Panel.setLayout(Employee_View_PanelLayout);
+        Employee_View_PanelLayout.setHorizontalGroup(
+            Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Employee_View_PanelLayout.createSequentialGroup()
+                .addGroup(Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bank_panel_hedding5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(Employee_View_PanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_branch1)
+                            .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 9, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        Employee_View_PanelLayout.setVerticalGroup(
+            Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Employee_View_PanelLayout.createSequentialGroup()
+                .addComponent(bank_panel_hedding5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_branch1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        jLayeredPane1.setLayer(Company_Account_Registration, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(Employee_View_Panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1522, Short.MAX_VALUE)
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 1502, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1511, Short.MAX_VALUE)
+                    .addGap(1, 1, 1)))
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 810, Short.MAX_VALUE)
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 1039, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -747,13 +976,50 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
     private void dp_attendance_dateKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dp_attendance_dateKeyReleased
     }//GEN-LAST:event_dp_attendance_dateKeyReleased
 
+    private void cmb_added_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_added_empActionPerformed
+        if (cmb_added_emp.getSelectedIndex() != 0) {
+            btn_att_save.setEnabled(true);
+        }
+    }//GEN-LAST:event_cmb_added_empActionPerformed
+
+    private void btn_branch1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_branch1MouseClicked
+        Employee_View_Panel.setVisible(false);
+        Company_Account_Registration.setVisible(true);
+        clearFields();
+        clearSubmitDetails();
+    }//GEN-LAST:event_btn_branch1MouseClicked
+
+    private void btn_branch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_branch1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_branch1ActionPerformed
+
+    private void tbl_attApprovalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_attApprovalMouseClicked
+        clearSubmitDetails();
+        clearFields();
+        loadAttFromTable();
+        Employee_View_Panel.setVisible(false);
+        Company_Account_Registration.setVisible(true);
+    }//GEN-LAST:event_tbl_attApprovalMouseClicked
+
+    private void btn_back_listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_back_listActionPerformed
+        Employee_View_Panel.setVisible(true);
+        Company_Account_Registration.setVisible(false);
+        clearSubmitDetails();
+        clearFields();
+
+    }//GEN-LAST:event_btn_back_listActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Company_Account_Registration;
+    private javax.swing.JPanel Employee_View_Panel;
     private javax.swing.JPanel bank_panel_hedding2;
+    private javax.swing.JPanel bank_panel_hedding5;
     private javax.swing.JPanel bank_panel_input_area1;
     private javax.swing.JButton btn_att_detail_submit;
     private javax.swing.JButton btn_att_save;
+    private javax.swing.JButton btn_back_list;
+    private javax.swing.JButton btn_branch1;
     private javax.swing.JComboBox<String> cmb_added_emp;
     private javax.swing.JComboBox<String> cmb_emp_cate;
     private javax.swing.JComboBox<String> cmb_sub_contractor;
@@ -772,17 +1038,24 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JLabel lbl_sub_contractor;
     private javax.swing.JPanel panel_attendance_details;
     private javax.swing.JSpinner spinner_in;
     private javax.swing.JSpinner spinner_out;
     private org.jdesktop.swingx.JXTable table_attendance;
+    private javax.swing.JTable tbl_attApproval;
+    private javax.swing.JPanel tbl_panel_Branch2;
     private javax.swing.JTextField txt_advance;
     private javax.swing.JTextArea txt_comment;
     private javax.swing.JTextField txt_daily_rate;
@@ -850,7 +1123,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                 List<T_Attendance> allAttendances = attendanceController.getAllAttendances(dp_attendance_date.getDate(), 2);
                 if (allAttendances.size() != 0) {
                     cmb_emp_cate.getUI().setPopupVisible(cmb_emp_cate, false);
-                    JOptionPane.showMessageDialog(this, "Attendance Already Marked for this Category");
+                    //JOptionPane.showMessageDialog(this, "Attendance Already Marked for this Category");
                     boolean status = false;
                     M_Employee attEmp = null;
                     for (T_Attendance allAttendance : allAttendances) {
@@ -911,7 +1184,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                             attendanceGlobal.setAttendance_days(0);
                             attendanceGlobal.setAttendance_dailyRate(0);
                             attendanceGlobal.setAttendance_otRate(0);
-                            attendanceGlobal.setAttendance_processed(0);
+                            attendanceGlobal.setAttendance_processed("");
                             attendanceGlobal.setAttendance_salaryBatch(0);
                             attendanceGlobal.setEmployeeCategory(2);
 
@@ -942,7 +1215,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                     List<T_Attendance> allAttendances = attendanceController.getAllAttendances(dp_attendance_date.getDate(), jobTypeId);
                     if (allAttendances.size() != 0) {
                         cmb_emp_cate.getUI().setPopupVisible(cmb_emp_cate, false);
-                        JOptionPane.showMessageDialog(this, "Attendance Already Marked for this Category");
+                        //JOptionPane.showMessageDialog(this, "Attendance Already Marked for this Category");
                         boolean status = false;
                         M_Employee attEmp = null;
                         for (T_Attendance allAttendance : allAttendances) {
@@ -1002,7 +1275,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                                 attendanceGlobal.setAttendance_days(0);
                                 attendanceGlobal.setAttendance_dailyRate(0);
                                 attendanceGlobal.setAttendance_otRate(0);
-                                attendanceGlobal.setAttendance_processed(0);
+                                attendanceGlobal.setAttendance_processed("");
                                 attendanceGlobal.setAttendance_salaryBatch(0);
                                 attendanceGlobal.setEmployeeCategory(jobTypeId);
 
@@ -1154,6 +1427,9 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
             int addedEmp = 0;
             if (cmb_added_emp.getSelectedIndex() != 0) {
                 addedEmp = Integer.parseInt(cmb_added_emp.getSelectedItem().toString().split(" : ")[0]);
+            } else {
+                JOptionPane.showMessageDialog(this, "Please Select the Adding Employee & Date.");
+                btn_att_save.setEnabled(false);
             }
             Date addedDate = dp_attendance_added_date.getDate();
 
@@ -1166,6 +1442,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                     t_Attendance.setAttendance_id(IDGenerator.getNewID("t_att", "ATT_ID"));
                     t_Attendance.setAttendance_enteredBy(addedEmp);
                     t_Attendance.setAttendance_enteredDate(addedDate);
+                    t_Attendance.setAttendance_processed("REQUESTED");
 
                     if (added) {
                         boolean addAttendance = attendanceController.addAttendance(t_Attendance);
@@ -1188,6 +1465,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                     t_Attendance.setAttendance_id(t_Attendance.getAttendance_id());
                     t_Attendance.setAttendance_enteredBy(addedEmp);
                     t_Attendance.setAttendance_enteredDate(addedDate);
+                    t_Attendance.setAttendance_processed("REQUESTED");
 
                     if (updated) {
                         boolean updateAttendance = attendanceController.updateAttendance(t_Attendance);
@@ -1235,6 +1513,89 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
 
         attendanceGlobal = new T_Attendance();
         attendanceListGlobal = new ArrayList<>();
+        
+        btn_att_save.setText("Transefer");
+        btn_att_save.setEnabled(false);
+    }
+
+    private void loadAttFromTable() {
+        try {
+            attendanceListGlobal = new ArrayList<>();
+            dtmAttendance.setRowCount(0);
+            cmb_sub_contractor.removeAll();
+            cmb_added_emp.setSelectedIndex(0);
+            dp_attendance_added_date.setDate(null);
+            cmb_added_emp.setSelectedIndex(0);
+            dp_attendance_added_date.setDate(null);
+
+            int selectedRow = tbl_attApproval.getSelectedRow();
+            Date attDate = new SimpleDateFormat("yyyy-MM-dd").parse(dtmApproval.getValueAt(selectedRow, 0).toString());
+            int jobTypeid = jobTypeController.searchJobType(dtmApproval.getValueAt(selectedRow, 1).toString().split(" : ")[0]).getJobType_id();
+            List<T_Attendance> allAttendances = attendanceController.getAllAttendances(attDate, jobTypeid);
+
+            dp_attendance_date.setDate(new SimpleDateFormat("yyyy-MM-dd").parse(dtmApproval.getValueAt(selectedRow, 0).toString()));
+            if (jobTypeid != 2) {
+                dp_attendance_added_date.setDate(attDate);
+                cmb_emp_cate.setSelectedItem(dtmApproval.getValueAt(selectedRow, 1).toString());
+                loadStaffToAttendance();
+            } else {
+                List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
+                lbl_sub_contractor.setVisible(true);
+                cmb_sub_contractor.setVisible(true);
+                for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+                    if (allLastAddedEmployee.getEmp_jobType_id() == 5) {
+                        cmb_sub_contractor.addItem(allLastAddedEmployee.getEmp_id() + " : " + allLastAddedEmployee.getEmp_firstName() + " " + allLastAddedEmployee.getEmp_middleName() + " " + allLastAddedEmployee.getEmp_surName());
+                    }
+                }
+                
+                int subConId = Integer.parseInt(dtmApproval.getValueAt(selectedRow, 1).toString().split(" : ")[1]);
+                
+                for (int i = 1; i < cmb_sub_contractor.getItemCount(); i++) {
+                    if (Integer.parseInt(cmb_sub_contractor.getItemAt(i).toString().split(" : ")[0]) == subConId) {
+                        cmb_sub_contractor.setSelectedIndex(i);
+                        break;
+                    }
+                }
+                loadSubContractorStaffToAttendanceTable();
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Attendence_2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private void loadAttApproveTable() {
+        dtmApproval.setRowCount(0);
+        try {
+            List<T_Attendance> allAttendances = attendanceController.getAllAttendances();
+            Date attDate = null;
+            int jobTypeID = 0;
+            String empCat = "";
+
+            for (T_Attendance allAttendance : allAttendances) {
+                if (allAttendance.getAttendance_processed().equalsIgnoreCase("PENDING") && allAttendance.getAttendance_date() != attDate && allAttendance.getEmployeeCategory() != jobTypeID) {
+                    if (allAttendance.getEmployeeCategory() != 2) {
+                        empCat = jobTypeController.searchJobType(allAttendance.getEmployeeCategory()).getJobType_name();
+                    } else {
+                        List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
+                        for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+                            if (allAttendance.getAttendance_employeeId() == allLastAddedEmployee.getEmp_id()) {
+                                empCat = jobTypeController.searchJobType(allLastAddedEmployee.getEmp_jobType_id()).getJobType_name() + " : " + allLastAddedEmployee.getEmp_subContractor_id();
+                                break;
+                            }
+                        }
+                    }
+                    Object[] rowData = {allAttendance.getAttendance_date(), empCat};
+                    dtmApproval.addRow(rowData);
+                    attDate = allAttendance.getAttendance_date();
+                    jobTypeID = allAttendance.getEmployeeCategory();
+                }
+
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Employee_Attendence_2.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

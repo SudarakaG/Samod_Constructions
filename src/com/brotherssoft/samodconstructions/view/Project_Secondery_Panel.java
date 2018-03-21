@@ -957,18 +957,19 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                     .addComponent(txt_boq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_nbtPercentage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel127, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_nbt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_nbtPercentage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel127, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_nbt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_vatPercentage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_vat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(txt_vat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel126, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1781,8 +1782,12 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
             Date insuranceTo = dp_insurance_Valid_Period_To.getDate();
             String paymentMode = cmb_made_of_payment.getSelectedItem().toString();
             String currentStatus = Integer.toString(cmb_current_status.getSelectedIndex());
+            double nbt = 0;
+            if (!"".equals(txt_nbtPercentage.getText())) {
+                nbt = Double.parseDouble(txt_nbtPercentage.getText().replaceAll(",", ""));
+            }
 
-            M_Project_Secondary secondUpdate = new M_Project_Secondary(projectId, boq, vat, duration, agreementDate, coultatnt, consultAddress, consultTp, commenceDate, completeDate, performBondOrg, performAmount, performFrom, performTo, advanceOrg, advanceAmount, advanceFrom, advanceTo, insuranceCover, insuranceOrg, insuranceAmount, insuranceFrom, insuranceTo, paymentMode, currentStatus);
+            M_Project_Secondary secondUpdate = new M_Project_Secondary(projectId, boq, vat, duration, agreementDate, coultatnt, consultAddress, consultTp, commenceDate, completeDate, performBondOrg, performAmount, performFrom, performTo, advanceOrg, advanceAmount, advanceFrom, advanceTo, insuranceCover, insuranceOrg, insuranceAmount, insuranceFrom, insuranceTo, paymentMode, currentStatus,nbt);
             boolean updateSecondaryProject = secondaryController.updateSecondaryProject(secondUpdate);
             if (updateSecondaryProject) {
                 JOptionPane.showMessageDialog(this, "Secondary Project Information Updated Successfully..");
@@ -1811,9 +1816,10 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         }
 
         txt_boq.setText(decimalFormat.format(secondary.getProject_secondary_boq()));
-        txt_vat.setText(decimalFormat.format(secondary.getProject_secondary_vat()));
-        txt_total.setText(decimalFormat.format(secondary.getProject_secondary_boq() + secondary.getProject_secondary_vat()));
-
+        txt_nbtPercentage.setText(decimalFormat.format(secondary.getProject_secondary_nbt()));
+        txt_vatPercentage.setText(decimalFormat.format(secondary.getProject_secondary_vat()));
+        //txt_total.setText(decimalFormat.format(secondary.getProject_secondary_boq() + secondary.getProject_secondary_vat()));
+        getTotal();
         txt_name.setText(secondary.getProject_secondary_consultant());
         txt_address.setText(secondary.getProject_secondary_consultantAddress());
         txt_tel.setText(secondary.getProject_secondary_consultantContact());
