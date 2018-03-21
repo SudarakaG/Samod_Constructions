@@ -242,7 +242,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
+        master_detail_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/click-cursor.png"))); // NOI18N
         master_detail_label.setText(" - Master Details");
         master_detail_label.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1363,14 +1363,6 @@ public class GUI_Home extends javax.swing.JFrame {
         menu_panelLayout.setHorizontalGroup(
             menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menu_panelLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(111, Short.MAX_VALUE))
-            .addGroup(menu_panelLayout.createSequentialGroup()
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menu_panelLayout.createSequentialGroup()
                         .addContainerGap()
@@ -1383,6 +1375,13 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(menu_panelLayout.createSequentialGroup()
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(menu_panelLayout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(Master_Detail_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(menu_panelLayout.createSequentialGroup()
                         .addContainerGap()
