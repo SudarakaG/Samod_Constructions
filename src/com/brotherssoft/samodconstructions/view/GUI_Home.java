@@ -244,6 +244,7 @@ public class GUI_Home extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/AA.png"))); // NOI18N
 
         Master_Detail_Menu.setBackground(new java.awt.Color(85, 65, 118));
+        Master_Detail_Menu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         master_detail_label.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label.setForeground(new java.awt.Color(255, 255, 255));
@@ -260,14 +261,17 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu.setLayout(Master_Detail_MenuLayout);
         Master_Detail_MenuLayout.setHorizontalGroup(
             Master_Detail_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+            .addGroup(Master_Detail_MenuLayout.createSequentialGroup()
+                .addComponent(master_detail_label, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 56, Short.MAX_VALUE))
         );
         Master_Detail_MenuLayout.setVerticalGroup(
             Master_Detail_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+            .addComponent(master_detail_label, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
         Master_Detail_Menu1.setBackground(new java.awt.Color(85, 65, 118));
+        Master_Detail_Menu1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         master_detail_label1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label1.setForeground(new java.awt.Color(255, 255, 255));
@@ -284,14 +288,17 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu1.setLayout(Master_Detail_Menu1Layout);
         Master_Detail_Menu1Layout.setHorizontalGroup(
             Master_Detail_Menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+            .addGroup(Master_Detail_Menu1Layout.createSequentialGroup()
+                .addComponent(master_detail_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         Master_Detail_Menu1Layout.setVerticalGroup(
             Master_Detail_Menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+            .addComponent(master_detail_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
         Master_Detail_Menu2.setBackground(new java.awt.Color(85, 65, 118));
+        Master_Detail_Menu2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         master_detail_label2.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label2.setForeground(new java.awt.Color(255, 255, 255));
@@ -308,14 +315,17 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu2.setLayout(Master_Detail_Menu2Layout);
         Master_Detail_Menu2Layout.setHorizontalGroup(
             Master_Detail_Menu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label2, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+            .addGroup(Master_Detail_Menu2Layout.createSequentialGroup()
+                .addComponent(master_detail_label2, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                .addContainerGap())
         );
         Master_Detail_Menu2Layout.setVerticalGroup(
             Master_Detail_Menu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+            .addComponent(master_detail_label2, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
         Master_Detail_Menu3.setBackground(new java.awt.Color(85, 65, 118));
+        Master_Detail_Menu3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         master_detail_label3.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label3.setForeground(new java.awt.Color(255, 255, 255));
@@ -327,11 +337,13 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu3.setLayout(Master_Detail_Menu3Layout);
         Master_Detail_Menu3Layout.setHorizontalGroup(
             Master_Detail_Menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label3, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+            .addGroup(Master_Detail_Menu3Layout.createSequentialGroup()
+                .addComponent(master_detail_label3, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 19, Short.MAX_VALUE))
         );
         Master_Detail_Menu3Layout.setVerticalGroup(
             Master_Detail_Menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label3, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+            .addComponent(master_detail_label3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
         MasterPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
@@ -762,6 +774,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Master_Detail_Menu4.setBackground(new java.awt.Color(85, 65, 118));
+        Master_Detail_Menu4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         master_detail_label4.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label4.setForeground(new java.awt.Color(255, 255, 255));
@@ -778,11 +791,13 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu4.setLayout(Master_Detail_Menu4Layout);
         Master_Detail_Menu4Layout.setHorizontalGroup(
             Master_Detail_Menu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label4, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+            .addGroup(Master_Detail_Menu4Layout.createSequentialGroup()
+                .addComponent(master_detail_label4, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                .addContainerGap())
         );
         Master_Detail_Menu4Layout.setVerticalGroup(
             Master_Detail_Menu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label4, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+            .addComponent(master_detail_label4, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
         AllocationPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
@@ -1108,6 +1123,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Master_Detail_Menu5.setBackground(new java.awt.Color(85, 65, 118));
+        Master_Detail_Menu5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         master_detail_label5.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label5.setForeground(new java.awt.Color(255, 255, 255));
@@ -1124,11 +1140,13 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu5.setLayout(Master_Detail_Menu5Layout);
         Master_Detail_Menu5Layout.setHorizontalGroup(
             Master_Detail_Menu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label5, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+            .addGroup(Master_Detail_Menu5Layout.createSequentialGroup()
+                .addComponent(master_detail_label5, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 24, Short.MAX_VALUE))
         );
         Master_Detail_Menu5Layout.setVerticalGroup(
             Master_Detail_Menu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label5, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+            .addComponent(master_detail_label5, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
         ApprovalPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
@@ -1254,6 +1272,7 @@ public class GUI_Home extends javax.swing.JFrame {
         );
 
         Master_Detail_Menu6.setBackground(new java.awt.Color(85, 65, 118));
+        Master_Detail_Menu6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         master_detail_label6.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label6.setForeground(new java.awt.Color(255, 255, 255));
@@ -1270,11 +1289,13 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu6.setLayout(Master_Detail_Menu6Layout);
         Master_Detail_Menu6Layout.setHorizontalGroup(
             Master_Detail_Menu6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label6, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+            .addGroup(Master_Detail_Menu6Layout.createSequentialGroup()
+                .addComponent(master_detail_label6, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                .addContainerGap())
         );
         Master_Detail_Menu6Layout.setVerticalGroup(
             Master_Detail_Menu6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_label6, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+            .addComponent(master_detail_label6, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
         );
 
         AccountingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
