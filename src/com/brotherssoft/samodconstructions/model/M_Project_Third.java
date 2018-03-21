@@ -40,11 +40,13 @@ public class M_Project_Third implements Serializable{
     private Date project_final_retentionReleaseDate;
     private String project_final_status;
     private String project_final_currentStatus;
+    
+    private double project_final_nbt;
 
     public M_Project_Third() {
     }
 
-    public M_Project_Third(int project_id, double project_final_boq, double project_final_exceed, double project_final_extraWork, double project_final_priceEscallation, double project_final_vat, Date project_final_takeOverDate, Date project_final_completeDate, Date project_final_handOverDate, String project_final_timeExtentionRequestPeriod, String project_final_timeExtentionApprovedPeriod, String project_final_liquidityDamage, String project_final_liquidityDamagePeriod, double project_final_liquidityDamageAmount, String project_final_completionCertification, String project_final_retention, String project_final_retentionMode, double project_final_retentionAmount, String project_final_retentionOrganization, Date project_final_retentionPeriodFrom, Date project_final_retentionPeriodTo, String project_final_retentionRelease, double project_final_retentionReleaseAmount, Date project_final_retentionReleaseDate, String project_final_status, String project_final_currentStatus) {
+    public M_Project_Third(int project_id, double project_final_boq, double project_final_exceed, double project_final_extraWork, double project_final_priceEscallation, double project_final_vat, Date project_final_takeOverDate, Date project_final_completeDate, Date project_final_handOverDate, String project_final_timeExtentionRequestPeriod, String project_final_timeExtentionApprovedPeriod, String project_final_liquidityDamage, String project_final_liquidityDamagePeriod, double project_final_liquidityDamageAmount, String project_final_completionCertification, String project_final_retention, String project_final_retentionMode, double project_final_retentionAmount, String project_final_retentionOrganization, Date project_final_retentionPeriodFrom, Date project_final_retentionPeriodTo, String project_final_retentionRelease, double project_final_retentionReleaseAmount, Date project_final_retentionReleaseDate, String project_final_status, String project_final_currentStatus, double project_final_nbt) {
         this.project_id = project_id;
         this.project_final_boq = project_final_boq;
         this.project_final_exceed = project_final_exceed;
@@ -71,6 +73,7 @@ public class M_Project_Third implements Serializable{
         this.project_final_retentionReleaseDate = project_final_retentionReleaseDate;
         this.project_final_status = project_final_status;
         this.project_final_currentStatus = project_final_currentStatus;
+        this.project_final_nbt = project_final_nbt;
     }
 
     /**
@@ -436,5 +439,20 @@ public class M_Project_Third implements Serializable{
     public void setProject_final_currentStatus(String project_final_currentStatus) {
         this.project_final_currentStatus = project_final_currentStatus;
     }
-    
+
+    /**
+     * @return the project_final_nbt
+     */
+    public double getProject_final_nbt() {
+        return project_final_nbt;
+    }
+
+    /**
+     * @param project_final_nbt the project_final_nbt to set
+     */
+    public void setProject_final_nbt(double project_final_nbt) {
+        this.project_final_nbt = project_final_nbt;
+    }
+
+   
 }

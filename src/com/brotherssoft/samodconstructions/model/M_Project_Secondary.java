@@ -39,11 +39,12 @@ public class M_Project_Secondary implements Serializable{
     private Date project_secondary_insuranceValidTo;
     private String project_secondary_paymentMode;
     private String project_currentStatus;
+    private double project_secondary_nbt;
 
     public M_Project_Secondary() {
     }
 
-    public M_Project_Secondary(int project_id, double project_secondary_boq, double project_secondary_vat, String project_secondary_duration, Date project_secondary_agreementDate, String project_secondary_consultant, String project_secondary_consultantAddress, String project_secondary_consultantContact, Date project_secondary_commencementDate, Date project_secondary_completionDate, String project_secondary_performanceBondOrganization, double project_secondary_performanceBondAmount, Date project_secondary_performanceBondValidFrom, Date project_secondary_performanceBondValidTo, String project_secondary_advancePaymentBondOrganization, double project_secondary_advancePaymentBondAmount, Date project_secondary_advancePaymentBondValidFrom, Date project_secondary_advancePaymentBondValidTo, String project_secondary_insuranceCover, String project_secondary_insuranceCoverOrganization, double project_secondary_insuranceCoverAmount, Date project_secondary_insuranceValidFrom, Date project_secondary_insuranceValidTo, String project_secondary_paymentMode, String project_currentStatus) {
+    public M_Project_Secondary(int project_id, double project_secondary_boq, double project_secondary_vat, String project_secondary_duration, Date project_secondary_agreementDate, String project_secondary_consultant, String project_secondary_consultantAddress, String project_secondary_consultantContact, Date project_secondary_commencementDate, Date project_secondary_completionDate, String project_secondary_performanceBondOrganization, double project_secondary_performanceBondAmount, Date project_secondary_performanceBondValidFrom, Date project_secondary_performanceBondValidTo, String project_secondary_advancePaymentBondOrganization, double project_secondary_advancePaymentBondAmount, Date project_secondary_advancePaymentBondValidFrom, Date project_secondary_advancePaymentBondValidTo, String project_secondary_insuranceCover, String project_secondary_insuranceCoverOrganization, double project_secondary_insuranceCoverAmount, Date project_secondary_insuranceValidFrom, Date project_secondary_insuranceValidTo, String project_secondary_paymentMode, String project_currentStatus, double project_secondary_nbt) {
         this.project_id = project_id;
         this.project_secondary_boq = project_secondary_boq;
         this.project_secondary_vat = project_secondary_vat;
@@ -69,6 +70,7 @@ public class M_Project_Secondary implements Serializable{
         this.project_secondary_insuranceValidTo = project_secondary_insuranceValidTo;
         this.project_secondary_paymentMode = project_secondary_paymentMode;
         this.project_currentStatus = project_currentStatus;
+        this.project_secondary_nbt = project_secondary_nbt;
     }
 
     /**
@@ -419,6 +421,20 @@ public class M_Project_Secondary implements Serializable{
      */
     public void setProject_currentStatus(String project_currentStatus) {
         this.project_currentStatus = project_currentStatus;
+    }
+
+    /**
+     * @return the project_secondary_nbt
+     */
+    public double getProject_secondary_nbt() {
+        return project_secondary_nbt;
+    }
+
+    /**
+     * @param project_secondary_nbt the project_secondary_nbt to set
+     */
+    public void setProject_secondary_nbt(double project_secondary_nbt) {
+        this.project_secondary_nbt = project_secondary_nbt;
     }
 
     

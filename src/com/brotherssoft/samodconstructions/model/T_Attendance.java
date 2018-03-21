@@ -32,14 +32,14 @@ public class T_Attendance implements Serializable{
     private double attendance_days;
     private double attendance_dailyRate;
     private double attendance_otRate;
-    private int attendance_processed;
+    private String attendance_processed;
     private int attendance_salaryBatch;
     private int employeeCategory;
 
     public T_Attendance() {
     }
 
-    public T_Attendance(int attendance_id, Date attendance_date, int attendance_siteId, int attendance_employeeId, String attendance_in, String attendance_out, double attendance_ot, double attendance_advance, int attendance_enteredBy, int attendance_approvedBy, int attendance_workId, String attendance_comment, String attendance_status, Date attendance_enteredDate, Date attendance_approvedDate, double attendance_days, double attendance_dailyRate, double attendance_otRate, int attendance_processed, int attendance_salaryBatch, int employeeCategory) {
+    public T_Attendance(int attendance_id, Date attendance_date, int attendance_siteId, int attendance_employeeId, String attendance_in, String attendance_out, double attendance_ot, double attendance_advance, int attendance_enteredBy, int attendance_approvedBy, int attendance_workId, String attendance_comment, String attendance_status, Date attendance_enteredDate, Date attendance_approvedDate, double attendance_days, double attendance_dailyRate, double attendance_otRate, String attendance_processed, int attendance_salaryBatch, int employeeCategory) {
         this.attendance_id = attendance_id;
         this.attendance_date = attendance_date;
         this.attendance_siteId = attendance_siteId;
@@ -318,14 +318,14 @@ public class T_Attendance implements Serializable{
     /**
      * @return the attendance_processed
      */
-    public int getAttendance_processed() {
+    public String getAttendance_processed() {
         return attendance_processed;
     }
 
     /**
      * @param attendance_processed the attendance_processed to set
      */
-    public void setAttendance_processed(int attendance_processed) {
+    public void setAttendance_processed(String attendance_processed) {
         this.attendance_processed = attendance_processed;
     }
 
