@@ -53,7 +53,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Akvasoft\Desktop\samod\Samod_Constructions_client\src\icons\background.png"/>
+              <Image iconType="3" name="/com/brotherssoft/samodconstructions/images/background.png"/>
             </Property>
           </Properties>
           <Constraints>

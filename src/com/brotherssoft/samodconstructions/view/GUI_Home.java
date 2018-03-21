@@ -266,7 +266,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label1.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
+        master_detail_label1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/click-cursor.png"))); // NOI18N
         master_detail_label1.setText(" - Allocations");
         master_detail_label1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -290,7 +290,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label2.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label2.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
+        master_detail_label2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/click-cursor.png"))); // NOI18N
         master_detail_label2.setText(" - Accounting");
         master_detail_label2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -760,7 +760,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label4.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label4.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
+        master_detail_label4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/click-cursor.png"))); // NOI18N
         master_detail_label4.setText(" - Registrations");
         master_detail_label4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1106,7 +1106,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label5.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label5.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
+        master_detail_label5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/click-cursor.png"))); // NOI18N
         master_detail_label5.setText(" - Salary - Payment");
         master_detail_label5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1252,7 +1252,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label6.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label6.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
+        master_detail_label6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/click-cursor.png"))); // NOI18N
         master_detail_label6.setText(" - Approvals");
         master_detail_label6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label6.addMouseListener(new java.awt.event.MouseAdapter() {
