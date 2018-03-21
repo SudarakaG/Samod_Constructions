@@ -36,6 +36,13 @@ public class GUI_Home extends javax.swing.JFrame {
     /**
      * Creates new form GUI_Home
      */
+    private int regiPanelStates = 0;
+    private int masterPanelStates = 0;
+    private int allocationStates = 0;
+    private int salaryStates = 0;
+    private int approvalStates = 0;
+    private int accountingStates = 0;
+
     public GUI_Home() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -44,6 +51,12 @@ public class GUI_Home extends javax.swing.JFrame {
         showTime();
         Home_Panel home_Panel = new Home_Panel();
         panelManager(home_Panel);
+        RegistrationPanel.setVisible(false);
+        MasterPanel.setVisible(false);
+        AllocationPanel.setVisible(false);
+        SalaryPanel.setVisible(false);
+        ApprovalPanel.setVisible(false);
+        AccountingPanel.setVisible(false);
     }
 
     void showDate() {
@@ -85,6 +98,7 @@ public class GUI_Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        basicTaskPaneUI1 = new org.jdesktop.swingx.plaf.basic.BasicTaskPaneUI();
         load_panel = new javax.swing.JPanel();
         background_panel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -97,105 +111,87 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu = new javax.swing.JPanel();
         master_detail_menu_icon_label = new javax.swing.JLabel();
         master_detail_label = new javax.swing.JLabel();
-        master_detail_sub_home_lable3 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable3 = new javax.swing.JLabel();
-        master_detail_home_lable3 = new javax.swing.JLabel();
-        master_detail_sub_home_lable2 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable2 = new javax.swing.JLabel();
-        master_detail_home_lable2 = new javax.swing.JLabel();
-        master_detail_sub_home_lable1 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable1 = new javax.swing.JLabel();
-        master_detail_home_lable1 = new javax.swing.JLabel();
-        master_detail_sub_home_lable = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable = new javax.swing.JLabel();
-        master_detail_home_lable = new javax.swing.JLabel();
-        master_detail_sub_home_lable4 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable4 = new javax.swing.JLabel();
-        master_detail_home_lable4 = new javax.swing.JLabel();
-        master_detail_sub_home_lable5 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable5 = new javax.swing.JLabel();
-        master_detail_home_lable5 = new javax.swing.JLabel();
-        master_detail_sub_home_lable6 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable6 = new javax.swing.JLabel();
-        master_detail_home_lable6 = new javax.swing.JLabel();
-        master_detail_sub_home_lable7 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable7 = new javax.swing.JLabel();
-        master_detail_home_lable7 = new javax.swing.JLabel();
-        master_detail_sub_home_lable8 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable8 = new javax.swing.JLabel();
-        master_detail_home_lable8 = new javax.swing.JLabel();
-        master_detail_sub_home_lable9 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable9 = new javax.swing.JLabel();
-        master_detail_home_lable9 = new javax.swing.JLabel();
-        master_detail_sub_home_lable10 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable10 = new javax.swing.JLabel();
-        master_detail_home_lable10 = new javax.swing.JLabel();
-        master_detail_sub_home_lable12 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable12 = new javax.swing.JLabel();
-        master_detail_home_lable12 = new javax.swing.JLabel();
-        master_detail_sub_home_lable11 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable11 = new javax.swing.JLabel();
-        master_detail_home_lable11 = new javax.swing.JLabel();
-        master_detail_sub_home_lable13 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable13 = new javax.swing.JLabel();
-        master_detail_home_lable13 = new javax.swing.JLabel();
         Master_Detail_Menu1 = new javax.swing.JPanel();
         master_detail_menu_icon_label1 = new javax.swing.JLabel();
         master_detail_label1 = new javax.swing.JLabel();
-        master_detail_sub_home_lable14 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable14 = new javax.swing.JLabel();
-        master_detail_home_lable14 = new javax.swing.JLabel();
-        master_detail_sub_home_lable15 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable15 = new javax.swing.JLabel();
-        master_detail_home_lable15 = new javax.swing.JLabel();
-        master_detail_sub_home_lable16 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable16 = new javax.swing.JLabel();
-        master_detail_home_lable16 = new javax.swing.JLabel();
-        master_detail_sub_home_lable17 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable17 = new javax.swing.JLabel();
-        master_detail_home_lable17 = new javax.swing.JLabel();
-        master_detail_sub_home_lable18 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable18 = new javax.swing.JLabel();
-        master_detail_home_lable18 = new javax.swing.JLabel();
-        master_detail_sub_home_lable19 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable19 = new javax.swing.JLabel();
-        master_detail_home_lable19 = new javax.swing.JLabel();
-        master_detail_sub_home_lable20 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable20 = new javax.swing.JLabel();
-        master_detail_home_lable20 = new javax.swing.JLabel();
-        master_detail_sub_home_lable21 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable21 = new javax.swing.JLabel();
-        master_detail_home_lable21 = new javax.swing.JLabel();
-        master_detail_sub_home_lable22 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable22 = new javax.swing.JLabel();
-        master_detail_home_lable22 = new javax.swing.JLabel();
-        master_detail_sub_home_lable23 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable23 = new javax.swing.JLabel();
-        master_detail_home_lable23 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
         Master_Detail_Menu2 = new javax.swing.JPanel();
         master_detail_menu_icon_label2 = new javax.swing.JLabel();
         master_detail_label2 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
-        master_detail_sub_home_lable24 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable24 = new javax.swing.JLabel();
-        master_detail_home_lable24 = new javax.swing.JLabel();
-        master_detail_sub_home_lable25 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable25 = new javax.swing.JLabel();
-        master_detail_home_lable25 = new javax.swing.JLabel();
-        master_detail_sub_home_lable26 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable26 = new javax.swing.JLabel();
-        master_detail_home_lable26 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
         Master_Detail_Menu3 = new javax.swing.JPanel();
         master_detail_menu_icon_label3 = new javax.swing.JLabel();
         master_detail_label3 = new javax.swing.JLabel();
         master_detail_sub_home_lable27 = new javax.swing.JPanel();
         master_detail_sub_home_icon_lable27 = new javax.swing.JLabel();
         master_detail_home_lable27 = new javax.swing.JLabel();
-        master_detail_sub_home_lable28 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable28 = new javax.swing.JLabel();
-        master_detail_home_lable28 = new javax.swing.JLabel();
+        MasterPanel = new javax.swing.JPanel();
+        master_detail_sub_home_lable = new javax.swing.JPanel();
+        master_detail_home_lable = new javax.swing.JLabel();
+        master_detail_sub_home_lable1 = new javax.swing.JPanel();
+        master_detail_home_lable1 = new javax.swing.JLabel();
+        master_detail_sub_home_lable18 = new javax.swing.JPanel();
+        master_detail_home_lable18 = new javax.swing.JLabel();
+        RegistrationPanel = new javax.swing.JPanel();
+        master_detail_sub_home_lable4 = new javax.swing.JPanel();
+        master_detail_home_lable4 = new javax.swing.JLabel();
+        master_detail_sub_home_lable6 = new javax.swing.JPanel();
+        master_detail_home_lable6 = new javax.swing.JLabel();
+        master_detail_sub_home_lable7 = new javax.swing.JPanel();
+        master_detail_home_lable7 = new javax.swing.JLabel();
+        master_detail_sub_home_lable9 = new javax.swing.JPanel();
+        master_detail_home_lable9 = new javax.swing.JLabel();
+        master_detail_sub_home_lable10 = new javax.swing.JPanel();
+        master_detail_home_lable10 = new javax.swing.JLabel();
+        master_detail_sub_home_lable11 = new javax.swing.JPanel();
+        master_detail_home_lable11 = new javax.swing.JLabel();
+        master_detail_sub_home_lable12 = new javax.swing.JPanel();
+        master_detail_home_lable12 = new javax.swing.JLabel();
+        master_detail_sub_home_lable13 = new javax.swing.JPanel();
+        master_detail_home_lable13 = new javax.swing.JLabel();
+        Master_Detail_Menu4 = new javax.swing.JPanel();
+        master_detail_menu_icon_label4 = new javax.swing.JLabel();
+        master_detail_label4 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        AllocationPanel = new javax.swing.JPanel();
+        master_detail_sub_home_lable15 = new javax.swing.JPanel();
+        master_detail_home_lable15 = new javax.swing.JLabel();
+        master_detail_sub_home_lable14 = new javax.swing.JPanel();
+        master_detail_home_lable14 = new javax.swing.JLabel();
+        master_detail_sub_home_lable16 = new javax.swing.JPanel();
+        master_detail_home_lable16 = new javax.swing.JLabel();
+        master_detail_sub_home_lable17 = new javax.swing.JPanel();
+        master_detail_home_lable17 = new javax.swing.JLabel();
+        master_detail_sub_home_lable20 = new javax.swing.JPanel();
+        master_detail_home_lable20 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        SalaryPanel = new javax.swing.JPanel();
+        master_detail_sub_home_lable23 = new javax.swing.JPanel();
+        master_detail_home_lable23 = new javax.swing.JLabel();
+        master_detail_sub_home_lable21 = new javax.swing.JPanel();
+        master_detail_home_lable21 = new javax.swing.JLabel();
+        master_detail_sub_home_lable8 = new javax.swing.JPanel();
+        master_detail_home_lable8 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        Master_Detail_Menu5 = new javax.swing.JPanel();
+        master_detail_menu_icon_label5 = new javax.swing.JLabel();
+        master_detail_label5 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        ApprovalPanel = new javax.swing.JPanel();
+        master_detail_sub_home_lable22 = new javax.swing.JPanel();
+        master_detail_home_lable22 = new javax.swing.JLabel();
+        master_detail_sub_home_lable19 = new javax.swing.JPanel();
+        master_detail_home_lable19 = new javax.swing.JLabel();
+        master_detail_sub_home_lable26 = new javax.swing.JPanel();
+        master_detail_home_lable26 = new javax.swing.JLabel();
+        Master_Detail_Menu6 = new javax.swing.JPanel();
+        master_detail_menu_icon_label6 = new javax.swing.JLabel();
+        master_detail_label6 = new javax.swing.JLabel();
+        AccountingPanel = new javax.swing.JPanel();
+        master_detail_sub_home_lable25 = new javax.swing.JPanel();
+        master_detail_home_lable25 = new javax.swing.JLabel();
+        master_detail_sub_home_lable24 = new javax.swing.JPanel();
+        master_detail_home_lable24 = new javax.swing.JLabel();
+        jSeparator9 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -254,549 +250,44 @@ public class GUI_Home extends javax.swing.JFrame {
 
         Master_Detail_Menu.setBackground(new java.awt.Color(85, 65, 118));
 
+        master_detail_menu_icon_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/receptionist.png"))); // NOI18N
+
         master_detail_label.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         master_detail_label.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_label.setText("Master Details");
         master_detail_label.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        master_detail_label.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_labelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout Master_Detail_MenuLayout = new javax.swing.GroupLayout(Master_Detail_Menu);
         Master_Detail_Menu.setLayout(Master_Detail_MenuLayout);
         Master_Detail_MenuLayout.setHorizontalGroup(
             Master_Detail_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Master_Detail_MenuLayout.createSequentialGroup()
-                .addComponent(master_detail_menu_icon_label, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(master_detail_menu_icon_label, javax.swing.GroupLayout.PREFERRED_SIZE, 56, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(master_detail_label, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         Master_Detail_MenuLayout.setVerticalGroup(
             Master_Detail_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(master_detail_menu_icon_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(master_detail_label, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-
-        master_detail_sub_home_lable3.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable3.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable3.setText("Project Third  Infomation");
-        master_detail_home_lable3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable3MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable3MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable3Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable3);
-        master_detail_sub_home_lable3.setLayout(master_detail_sub_home_lable3Layout);
-        master_detail_sub_home_lable3Layout.setHorizontalGroup(
-            master_detail_sub_home_lable3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable3Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable3Layout.setVerticalGroup(
-            master_detail_sub_home_lable3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable3Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable2.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable2.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable2.setText("Project Secondary Infomation");
-        master_detail_home_lable2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable2MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable2Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable2);
-        master_detail_sub_home_lable2.setLayout(master_detail_sub_home_lable2Layout);
-        master_detail_sub_home_lable2Layout.setHorizontalGroup(
-            master_detail_sub_home_lable2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable2Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable2Layout.setVerticalGroup(
-            master_detail_sub_home_lable2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable2Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable1.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable1.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable1.setText("Project Primary  Infomation");
-        master_detail_home_lable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable1MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable1MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable1Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable1);
-        master_detail_sub_home_lable1.setLayout(master_detail_sub_home_lable1Layout);
-        master_detail_sub_home_lable1Layout.setHorizontalGroup(
-            master_detail_sub_home_lable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable1Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable1Layout.setVerticalGroup(
-            master_detail_sub_home_lable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable1Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable.setText("Home");
-        master_detail_home_lable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lableMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lableMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lableMouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lableLayout = new javax.swing.GroupLayout(master_detail_sub_home_lable);
-        master_detail_sub_home_lable.setLayout(master_detail_sub_home_lableLayout);
-        master_detail_sub_home_lableLayout.setHorizontalGroup(
-            master_detail_sub_home_lableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lableLayout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lableLayout.setVerticalGroup(
-            master_detail_sub_home_lableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lableLayout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable4.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable4.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable4.setText("Bank Registration");
-        master_detail_home_lable4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable4MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable4MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable4Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable4);
-        master_detail_sub_home_lable4.setLayout(master_detail_sub_home_lable4Layout);
-        master_detail_sub_home_lable4Layout.setHorizontalGroup(
-            master_detail_sub_home_lable4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable4Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable4Layout.setVerticalGroup(
-            master_detail_sub_home_lable4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable4Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable5.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable5.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable5.setText("Branch Registration");
-        master_detail_home_lable5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable5MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable5MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable5MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable5Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable5);
-        master_detail_sub_home_lable5.setLayout(master_detail_sub_home_lable5Layout);
-        master_detail_sub_home_lable5Layout.setHorizontalGroup(
-            master_detail_sub_home_lable5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable5Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable5Layout.setVerticalGroup(
-            master_detail_sub_home_lable5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable5Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable6.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable6.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable6.setText("Employee Registration");
-        master_detail_home_lable6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable6MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable6MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable6MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable6Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable6);
-        master_detail_sub_home_lable6.setLayout(master_detail_sub_home_lable6Layout);
-        master_detail_sub_home_lable6Layout.setHorizontalGroup(
-            master_detail_sub_home_lable6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable6Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable6Layout.setVerticalGroup(
-            master_detail_sub_home_lable6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable6Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable7.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable7.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable7.setText("Equipment Registration");
-        master_detail_home_lable7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable7MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable7MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable7MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable7Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable7);
-        master_detail_sub_home_lable7.setLayout(master_detail_sub_home_lable7Layout);
-        master_detail_sub_home_lable7Layout.setHorizontalGroup(
-            master_detail_sub_home_lable7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable7Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable7Layout.setVerticalGroup(
-            master_detail_sub_home_lable7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable7Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable8.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable8.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable8.setText("Employee Salary");
-        master_detail_home_lable8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable8MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable8MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable8MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable8Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable8);
-        master_detail_sub_home_lable8.setLayout(master_detail_sub_home_lable8Layout);
-        master_detail_sub_home_lable8Layout.setHorizontalGroup(
-            master_detail_sub_home_lable8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable8Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable8, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable8Layout.setVerticalGroup(
-            master_detail_sub_home_lable8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable8Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable9.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable9.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable9.setText("Purchaser Registration");
-        master_detail_home_lable9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable9MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable9MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable9MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable9Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable9);
-        master_detail_sub_home_lable9.setLayout(master_detail_sub_home_lable9Layout);
-        master_detail_sub_home_lable9Layout.setHorizontalGroup(
-            master_detail_sub_home_lable9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable9Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable9, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable9Layout.setVerticalGroup(
-            master_detail_sub_home_lable9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable9Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable10.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable10.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable10.setText("Company Account Registration");
-        master_detail_home_lable10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable10MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable10MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable10MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable10Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable10);
-        master_detail_sub_home_lable10.setLayout(master_detail_sub_home_lable10Layout);
-        master_detail_sub_home_lable10Layout.setHorizontalGroup(
-            master_detail_sub_home_lable10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable10Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable10, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable10Layout.setVerticalGroup(
-            master_detail_sub_home_lable10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable10Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable12.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable12.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable12.setText("Vehical Registration");
-        master_detail_home_lable12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable12MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable12MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable12MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable12Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable12);
-        master_detail_sub_home_lable12.setLayout(master_detail_sub_home_lable12Layout);
-        master_detail_sub_home_lable12Layout.setHorizontalGroup(
-            master_detail_sub_home_lable12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable12Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable12, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable12Layout.setVerticalGroup(
-            master_detail_sub_home_lable12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable12Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable11.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable11.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable11.setText("Work Registration");
-        master_detail_home_lable11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable11MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable11MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable11MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable11Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable11);
-        master_detail_sub_home_lable11.setLayout(master_detail_sub_home_lable11Layout);
-        master_detail_sub_home_lable11Layout.setHorizontalGroup(
-            master_detail_sub_home_lable11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable11Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable11, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable11Layout.setVerticalGroup(
-            master_detail_sub_home_lable11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable11Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable13.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable13.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable13.setText("Meterial Registration");
-        master_detail_home_lable13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable13MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable13MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable13MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable13Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable13);
-        master_detail_sub_home_lable13.setLayout(master_detail_sub_home_lable13Layout);
-        master_detail_sub_home_lable13Layout.setHorizontalGroup(
-            master_detail_sub_home_lable13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable13Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable13, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable13Layout.setVerticalGroup(
-            master_detail_sub_home_lable13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable13Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
+            .addComponent(master_detail_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Master_Detail_Menu1.setBackground(new java.awt.Color(85, 65, 118));
 
         master_detail_label1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         master_detail_label1.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label1.setText("Operations");
+        master_detail_label1.setText("Allocations");
+        master_detail_label1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_label1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout Master_Detail_Menu1Layout = new javax.swing.GroupLayout(Master_Detail_Menu1);
         Master_Detail_Menu1.setLayout(Master_Detail_Menu1Layout);
@@ -805,382 +296,13 @@ public class GUI_Home extends javax.swing.JFrame {
             .addGroup(Master_Detail_Menu1Layout.createSequentialGroup()
                 .addComponent(master_detail_menu_icon_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(master_detail_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Master_Detail_Menu1Layout.setVerticalGroup(
             Master_Detail_Menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(master_detail_menu_icon_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(master_detail_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-        );
-
-        master_detail_sub_home_lable14.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable14.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable14.setText("Equiment Allocation");
-        master_detail_home_lable14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable14MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable14MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable14MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable14Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable14);
-        master_detail_sub_home_lable14.setLayout(master_detail_sub_home_lable14Layout);
-        master_detail_sub_home_lable14Layout.setHorizontalGroup(
-            master_detail_sub_home_lable14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable14Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable14, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable14Layout.setVerticalGroup(
-            master_detail_sub_home_lable14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable14Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable15.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable15.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable15.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable15.setText("Vehical Allocation");
-        master_detail_home_lable15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable15MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable15MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable15MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable15Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable15);
-        master_detail_sub_home_lable15.setLayout(master_detail_sub_home_lable15Layout);
-        master_detail_sub_home_lable15Layout.setHorizontalGroup(
-            master_detail_sub_home_lable15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable15Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable15, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable15Layout.setVerticalGroup(
-            master_detail_sub_home_lable15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable15Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable16.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable16.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable16.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable16.setText("Material Allocation");
-        master_detail_home_lable16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable16MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable16MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable16MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable16Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable16);
-        master_detail_sub_home_lable16.setLayout(master_detail_sub_home_lable16Layout);
-        master_detail_sub_home_lable16Layout.setHorizontalGroup(
-            master_detail_sub_home_lable16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable16Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable16, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable16Layout.setVerticalGroup(
-            master_detail_sub_home_lable16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable16Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable17.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable17.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable17.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable17.setText("Cash Allocation");
-        master_detail_home_lable17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable17MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable17MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable17MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable17Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable17);
-        master_detail_sub_home_lable17.setLayout(master_detail_sub_home_lable17Layout);
-        master_detail_sub_home_lable17Layout.setHorizontalGroup(
-            master_detail_sub_home_lable17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable17Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable17, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable17Layout.setVerticalGroup(
-            master_detail_sub_home_lable17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable17Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable18.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable18.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable18.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable18.setText("Employee Attendance");
-        master_detail_home_lable18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable18MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable18MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable18MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable18Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable18);
-        master_detail_sub_home_lable18.setLayout(master_detail_sub_home_lable18Layout);
-        master_detail_sub_home_lable18Layout.setHorizontalGroup(
-            master_detail_sub_home_lable18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable18Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable18, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable18Layout.setVerticalGroup(
-            master_detail_sub_home_lable18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable18Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable19.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable19.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable19.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable19.setText("Employee Attendance Approval");
-        master_detail_home_lable19.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable19MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable19MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable19MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable19Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable19);
-        master_detail_sub_home_lable19.setLayout(master_detail_sub_home_lable19Layout);
-        master_detail_sub_home_lable19Layout.setHorizontalGroup(
-            master_detail_sub_home_lable19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable19Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable19, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable19, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable19Layout.setVerticalGroup(
-            master_detail_sub_home_lable19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable19Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable20.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable20.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable20.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable20.setText("Running Chart");
-        master_detail_home_lable20.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable20MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable20MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable20MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable20Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable20);
-        master_detail_sub_home_lable20.setLayout(master_detail_sub_home_lable20Layout);
-        master_detail_sub_home_lable20Layout.setHorizontalGroup(
-            master_detail_sub_home_lable20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable20Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable20, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable20Layout.setVerticalGroup(
-            master_detail_sub_home_lable20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable20Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable21.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable21.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable21.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable21.setText("Office - Salary Payment");
-        master_detail_home_lable21.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable21MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable21MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable21MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable21Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable21);
-        master_detail_sub_home_lable21.setLayout(master_detail_sub_home_lable21Layout);
-        master_detail_sub_home_lable21Layout.setHorizontalGroup(
-            master_detail_sub_home_lable21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable21Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable21, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable21Layout.setVerticalGroup(
-            master_detail_sub_home_lable21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable21Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable22.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable22.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable22.setText("Office - Salary Approval");
-        master_detail_home_lable22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable22MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable22MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable22MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable22Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable22);
-        master_detail_sub_home_lable22.setLayout(master_detail_sub_home_lable22Layout);
-        master_detail_sub_home_lable22Layout.setHorizontalGroup(
-            master_detail_sub_home_lable22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable22Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable22, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable22Layout.setVerticalGroup(
-            master_detail_sub_home_lable22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable22Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable22, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable22, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable23.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable23.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable23.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable23.setText("Project - Salary Payment");
-        master_detail_home_lable23.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable23MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable23MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable23MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable23Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable23);
-        master_detail_sub_home_lable23.setLayout(master_detail_sub_home_lable23Layout);
-        master_detail_sub_home_lable23Layout.setHorizontalGroup(
-            master_detail_sub_home_lable23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable23Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable23, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable23Layout.setVerticalGroup(
-            master_detail_sub_home_lable23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable23Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
+            .addComponent(master_detail_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
         );
 
         Master_Detail_Menu2.setBackground(new java.awt.Color(85, 65, 118));
@@ -1188,6 +310,11 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_label2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         master_detail_label2.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_label2.setText("Accounting");
+        master_detail_label2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_label2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout Master_Detail_Menu2Layout = new javax.swing.GroupLayout(Master_Detail_Menu2);
         Master_Detail_Menu2.setLayout(Master_Detail_Menu2Layout);
@@ -1196,123 +323,13 @@ public class GUI_Home extends javax.swing.JFrame {
             .addGroup(Master_Detail_Menu2Layout.createSequentialGroup()
                 .addComponent(master_detail_menu_icon_label2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(master_detail_label2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Master_Detail_Menu2Layout.setVerticalGroup(
             Master_Detail_Menu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(master_detail_menu_icon_label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(master_detail_label2, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-        );
-
-        master_detail_sub_home_lable24.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable24.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable24.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable24.setText("Income");
-        master_detail_home_lable24.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable24MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable24MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable24MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable24Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable24);
-        master_detail_sub_home_lable24.setLayout(master_detail_sub_home_lable24Layout);
-        master_detail_sub_home_lable24Layout.setHorizontalGroup(
-            master_detail_sub_home_lable24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable24Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable24, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable24Layout.setVerticalGroup(
-            master_detail_sub_home_lable24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable24Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable25.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable25.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable25.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable25.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable25.setText("Expences");
-        master_detail_home_lable25.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable25MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable25MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable25MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable25Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable25);
-        master_detail_sub_home_lable25.setLayout(master_detail_sub_home_lable25Layout);
-        master_detail_sub_home_lable25Layout.setHorizontalGroup(
-            master_detail_sub_home_lable25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable25Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable25, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable25Layout.setVerticalGroup(
-            master_detail_sub_home_lable25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable25Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable25, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable25, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
-
-        master_detail_sub_home_lable26.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable26.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable26.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable26.setText("Income - Expences Approval");
-        master_detail_home_lable26.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable26MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable26MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable26MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable26Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable26);
-        master_detail_sub_home_lable26.setLayout(master_detail_sub_home_lable26Layout);
-        master_detail_sub_home_lable26Layout.setHorizontalGroup(
-            master_detail_sub_home_lable26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable26Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable26, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable26Layout.setVerticalGroup(
-            master_detail_sub_home_lable26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable26Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable26, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable26, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         Master_Detail_Menu3.setBackground(new java.awt.Color(85, 65, 118));
@@ -1328,7 +345,8 @@ public class GUI_Home extends javax.swing.JFrame {
             .addGroup(Master_Detail_Menu3Layout.createSequentialGroup()
                 .addComponent(master_detail_menu_icon_label3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(master_detail_label3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Master_Detail_Menu3Layout.setVerticalGroup(
             Master_Detail_Menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1362,7 +380,7 @@ public class GUI_Home extends javax.swing.JFrame {
             .addGroup(master_detail_sub_home_lable27Layout.createSequentialGroup()
                 .addComponent(master_detail_sub_home_icon_lable27, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable27, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(master_detail_home_lable27, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         master_detail_sub_home_lable27Layout.setVerticalGroup(
@@ -1371,41 +389,1047 @@ public class GUI_Home extends javax.swing.JFrame {
             .addComponent(master_detail_home_lable27, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
         );
 
-        master_detail_sub_home_lable28.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable28.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable28.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        MasterPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
+        MasterPanel.setOpaque(false);
 
-        master_detail_home_lable28.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable28.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable28.setText("Developers");
-        master_detail_home_lable28.addMouseListener(new java.awt.event.MouseAdapter() {
+        master_detail_sub_home_lable.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable.setText("Home");
+        master_detail_home_lable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable28MouseClicked(evt);
+                master_detail_home_lableMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable28MouseEntered(evt);
+                master_detail_home_lableMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable28MouseExited(evt);
+                master_detail_home_lableMouseExited(evt);
             }
         });
 
-        javax.swing.GroupLayout master_detail_sub_home_lable28Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable28);
-        master_detail_sub_home_lable28.setLayout(master_detail_sub_home_lable28Layout);
-        master_detail_sub_home_lable28Layout.setHorizontalGroup(
-            master_detail_sub_home_lable28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable28Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable28, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout master_detail_sub_home_lableLayout = new javax.swing.GroupLayout(master_detail_sub_home_lable);
+        master_detail_sub_home_lable.setLayout(master_detail_sub_home_lableLayout);
+        master_detail_sub_home_lableLayout.setHorizontalGroup(
+            master_detail_sub_home_lableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lableLayout.createSequentialGroup()
+                .addComponent(master_detail_home_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 23, Short.MAX_VALUE))
         );
-        master_detail_sub_home_lable28Layout.setVerticalGroup(
-            master_detail_sub_home_lable28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable28Layout.createSequentialGroup()
-                .addGroup(master_detail_sub_home_lable28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(master_detail_sub_home_icon_lable28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(master_detail_home_lable28, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+        master_detail_sub_home_lableLayout.setVerticalGroup(
+            master_detail_sub_home_lableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lableLayout.createSequentialGroup()
+                .addComponent(master_detail_home_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable1.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable1.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable1.setText("Project Infomation");
+        master_detail_home_lable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable1MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable1Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable1);
+        master_detail_sub_home_lable1.setLayout(master_detail_sub_home_lable1Layout);
+        master_detail_sub_home_lable1Layout.setHorizontalGroup(
+            master_detail_sub_home_lable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable1Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 20, Short.MAX_VALUE))
+        );
+        master_detail_sub_home_lable1Layout.setVerticalGroup(
+            master_detail_sub_home_lable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable1Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable18.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable18.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable18.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable18.setText("Employee Attendance");
+        master_detail_home_lable18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable18MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable18MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable18MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable18Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable18);
+        master_detail_sub_home_lable18.setLayout(master_detail_sub_home_lable18Layout);
+        master_detail_sub_home_lable18Layout.setHorizontalGroup(
+            master_detail_sub_home_lable18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable18Layout.setVerticalGroup(
+            master_detail_sub_home_lable18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable18Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable18, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout MasterPanelLayout = new javax.swing.GroupLayout(MasterPanel);
+        MasterPanel.setLayout(MasterPanelLayout);
+        MasterPanelLayout.setHorizontalGroup(
+            MasterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_sub_home_lable18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MasterPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(MasterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(master_detail_sub_home_lable1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(master_detail_sub_home_lable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        MasterPanelLayout.setVerticalGroup(
+            MasterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MasterPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(master_detail_sub_home_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        RegistrationPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
+        RegistrationPanel.setOpaque(false);
+
+        master_detail_sub_home_lable4.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable4.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable4.setText("Bank ");
+        master_detail_home_lable4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable4MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable4Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable4);
+        master_detail_sub_home_lable4.setLayout(master_detail_sub_home_lable4Layout);
+        master_detail_sub_home_lable4Layout.setHorizontalGroup(
+            master_detail_sub_home_lable4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable4Layout.setVerticalGroup(
+            master_detail_sub_home_lable4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable4Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable6.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable6.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable6.setText("Employee ");
+        master_detail_home_lable6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable6MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable6MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable6Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable6);
+        master_detail_sub_home_lable6.setLayout(master_detail_sub_home_lable6Layout);
+        master_detail_sub_home_lable6Layout.setHorizontalGroup(
+            master_detail_sub_home_lable6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable6Layout.setVerticalGroup(
+            master_detail_sub_home_lable6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable6Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable7.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable7.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable7.setText("Equipment");
+        master_detail_home_lable7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable7MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable7MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable7Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable7);
+        master_detail_sub_home_lable7.setLayout(master_detail_sub_home_lable7Layout);
+        master_detail_sub_home_lable7Layout.setHorizontalGroup(
+            master_detail_sub_home_lable7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable7Layout.setVerticalGroup(
+            master_detail_sub_home_lable7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable7Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable9.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable9.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable9.setText("Purchaser");
+        master_detail_home_lable9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable9MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable9MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable9Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable9);
+        master_detail_sub_home_lable9.setLayout(master_detail_sub_home_lable9Layout);
+        master_detail_sub_home_lable9Layout.setHorizontalGroup(
+            master_detail_sub_home_lable9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable9Layout.setVerticalGroup(
+            master_detail_sub_home_lable9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable9Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable10.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable10.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable10.setText("Company Account");
+        master_detail_home_lable10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable10MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable10MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable10Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable10);
+        master_detail_sub_home_lable10.setLayout(master_detail_sub_home_lable10Layout);
+        master_detail_sub_home_lable10Layout.setHorizontalGroup(
+            master_detail_sub_home_lable10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable10Layout.setVerticalGroup(
+            master_detail_sub_home_lable10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable10Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable11.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable11.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable11.setText("Work");
+        master_detail_home_lable11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable11MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable11MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable11MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable11Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable11);
+        master_detail_sub_home_lable11.setLayout(master_detail_sub_home_lable11Layout);
+        master_detail_sub_home_lable11Layout.setHorizontalGroup(
+            master_detail_sub_home_lable11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable11Layout.setVerticalGroup(
+            master_detail_sub_home_lable11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable11Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable12.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable12.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable12.setText("Vehical");
+        master_detail_home_lable12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable12MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable12MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable12MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable12Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable12);
+        master_detail_sub_home_lable12.setLayout(master_detail_sub_home_lable12Layout);
+        master_detail_sub_home_lable12Layout.setHorizontalGroup(
+            master_detail_sub_home_lable12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable12Layout.setVerticalGroup(
+            master_detail_sub_home_lable12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable12Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable13.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable13.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable13.setText("Meterial");
+        master_detail_home_lable13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable13MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable13MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable13MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable13Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable13);
+        master_detail_sub_home_lable13.setLayout(master_detail_sub_home_lable13Layout);
+        master_detail_sub_home_lable13Layout.setHorizontalGroup(
+            master_detail_sub_home_lable13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable13, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable13Layout.setVerticalGroup(
+            master_detail_sub_home_lable13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable13Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable13, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout RegistrationPanelLayout = new javax.swing.GroupLayout(RegistrationPanel);
+        RegistrationPanel.setLayout(RegistrationPanelLayout);
+        RegistrationPanelLayout.setHorizontalGroup(
+            RegistrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_sub_home_lable7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        RegistrationPanelLayout.setVerticalGroup(
+            RegistrationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RegistrationPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(master_detail_sub_home_lable6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Master_Detail_Menu4.setBackground(new java.awt.Color(85, 65, 118));
+
+        master_detail_label4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        master_detail_label4.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_label4.setText("Registrations");
+        master_detail_label4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        master_detail_label4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_label4MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Master_Detail_Menu4Layout = new javax.swing.GroupLayout(Master_Detail_Menu4);
+        Master_Detail_Menu4.setLayout(Master_Detail_Menu4Layout);
+        Master_Detail_Menu4Layout.setHorizontalGroup(
+            Master_Detail_Menu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Master_Detail_Menu4Layout.createSequentialGroup()
+                .addComponent(master_detail_menu_icon_label4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_label4, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        Master_Detail_Menu4Layout.setVerticalGroup(
+            Master_Detail_Menu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_menu_icon_label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_label4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        AllocationPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
+        AllocationPanel.setOpaque(false);
+
+        master_detail_sub_home_lable15.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable15.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable15.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable15.setText("Vehical");
+        master_detail_home_lable15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable15MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable15MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable15MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable15Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable15);
+        master_detail_sub_home_lable15.setLayout(master_detail_sub_home_lable15Layout);
+        master_detail_sub_home_lable15Layout.setHorizontalGroup(
+            master_detail_sub_home_lable15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable15Layout.setVerticalGroup(
+            master_detail_sub_home_lable15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable15Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable15, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable14.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable14.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable14.setText("Equiment");
+        master_detail_home_lable14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable14MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable14MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable14MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable14Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable14);
+        master_detail_sub_home_lable14.setLayout(master_detail_sub_home_lable14Layout);
+        master_detail_sub_home_lable14Layout.setHorizontalGroup(
+            master_detail_sub_home_lable14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable14Layout.setVerticalGroup(
+            master_detail_sub_home_lable14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable14Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable14, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable16.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable16.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable16.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable16.setText("Material");
+        master_detail_home_lable16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable16MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable16MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable16MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable16Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable16);
+        master_detail_sub_home_lable16.setLayout(master_detail_sub_home_lable16Layout);
+        master_detail_sub_home_lable16Layout.setHorizontalGroup(
+            master_detail_sub_home_lable16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable16Layout.setVerticalGroup(
+            master_detail_sub_home_lable16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable16Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable16, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable17.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable17.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable17.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable17.setText("Cash");
+        master_detail_home_lable17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable17MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable17MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable17MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable17Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable17);
+        master_detail_sub_home_lable17.setLayout(master_detail_sub_home_lable17Layout);
+        master_detail_sub_home_lable17Layout.setHorizontalGroup(
+            master_detail_sub_home_lable17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable17Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable17, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        master_detail_sub_home_lable17Layout.setVerticalGroup(
+            master_detail_sub_home_lable17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable17Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable17, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable20.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable20.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable20.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable20.setText("Running Chart");
+        master_detail_home_lable20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable20MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable20MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable20MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable20Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable20);
+        master_detail_sub_home_lable20.setLayout(master_detail_sub_home_lable20Layout);
+        master_detail_sub_home_lable20Layout.setHorizontalGroup(
+            master_detail_sub_home_lable20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable20Layout.setVerticalGroup(
+            master_detail_sub_home_lable20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable20Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable20, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout AllocationPanelLayout = new javax.swing.GroupLayout(AllocationPanel);
+        AllocationPanel.setLayout(AllocationPanelLayout);
+        AllocationPanelLayout.setHorizontalGroup(
+            AllocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_sub_home_lable14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        AllocationPanelLayout.setVerticalGroup(
+            AllocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AllocationPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(master_detail_sub_home_lable14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        SalaryPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
+        SalaryPanel.setOpaque(false);
+
+        master_detail_sub_home_lable23.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable23.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable23.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable23.setText("Project - Salary Payment");
+        master_detail_home_lable23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable23MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable23MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable23MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable23Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable23);
+        master_detail_sub_home_lable23.setLayout(master_detail_sub_home_lable23Layout);
+        master_detail_sub_home_lable23Layout.setHorizontalGroup(
+            master_detail_sub_home_lable23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable23Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable23, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        master_detail_sub_home_lable23Layout.setVerticalGroup(
+            master_detail_sub_home_lable23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable23Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable23, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable21.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable21.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable21.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable21.setText("Office - Salary Payment");
+        master_detail_home_lable21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable21MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable21MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable21MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable21Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable21);
+        master_detail_sub_home_lable21.setLayout(master_detail_sub_home_lable21Layout);
+        master_detail_sub_home_lable21Layout.setHorizontalGroup(
+            master_detail_sub_home_lable21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable21Layout.setVerticalGroup(
+            master_detail_sub_home_lable21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable21Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable21, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable8.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable8.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable8.setText("Employee Salary");
+        master_detail_home_lable8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable8MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable8MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable8Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable8);
+        master_detail_sub_home_lable8.setLayout(master_detail_sub_home_lable8Layout);
+        master_detail_sub_home_lable8Layout.setHorizontalGroup(
+            master_detail_sub_home_lable8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable8Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable8, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        master_detail_sub_home_lable8Layout.setVerticalGroup(
+            master_detail_sub_home_lable8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable8Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout SalaryPanelLayout = new javax.swing.GroupLayout(SalaryPanel);
+        SalaryPanel.setLayout(SalaryPanelLayout);
+        SalaryPanelLayout.setHorizontalGroup(
+            SalaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_sub_home_lable21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        SalaryPanelLayout.setVerticalGroup(
+            SalaryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SalaryPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(master_detail_sub_home_lable21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Master_Detail_Menu5.setBackground(new java.awt.Color(85, 65, 118));
+
+        master_detail_label5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        master_detail_label5.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_label5.setText("Salary - Payment");
+        master_detail_label5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_label5MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Master_Detail_Menu5Layout = new javax.swing.GroupLayout(Master_Detail_Menu5);
+        Master_Detail_Menu5.setLayout(Master_Detail_Menu5Layout);
+        Master_Detail_Menu5Layout.setHorizontalGroup(
+            Master_Detail_Menu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Master_Detail_Menu5Layout.createSequentialGroup()
+                .addComponent(master_detail_menu_icon_label5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_label5, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Master_Detail_Menu5Layout.setVerticalGroup(
+            Master_Detail_Menu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_menu_icon_label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_label5, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+        );
+
+        ApprovalPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
+        ApprovalPanel.setOpaque(false);
+
+        master_detail_sub_home_lable22.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable22.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable22.setText("Office - Salary Approval");
+        master_detail_home_lable22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable22MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable22MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable22MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable22Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable22);
+        master_detail_sub_home_lable22.setLayout(master_detail_sub_home_lable22Layout);
+        master_detail_sub_home_lable22Layout.setHorizontalGroup(
+            master_detail_sub_home_lable22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable22Layout.setVerticalGroup(
+            master_detail_sub_home_lable22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable22Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable22, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable19.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable19.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable19.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable19.setText("Employee Attendance Approval");
+        master_detail_home_lable19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable19MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable19MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable19MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable19Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable19);
+        master_detail_sub_home_lable19.setLayout(master_detail_sub_home_lable19Layout);
+        master_detail_sub_home_lable19Layout.setHorizontalGroup(
+            master_detail_sub_home_lable19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable19, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable19Layout.setVerticalGroup(
+            master_detail_sub_home_lable19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable19Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable19, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable26.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable26.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable26.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable26.setText("Income - Expences Approval");
+        master_detail_home_lable26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable26MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable26MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable26MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable26Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable26);
+        master_detail_sub_home_lable26.setLayout(master_detail_sub_home_lable26Layout);
+        master_detail_sub_home_lable26Layout.setHorizontalGroup(
+            master_detail_sub_home_lable26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable26Layout.setVerticalGroup(
+            master_detail_sub_home_lable26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable26Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable26, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout ApprovalPanelLayout = new javax.swing.GroupLayout(ApprovalPanel);
+        ApprovalPanel.setLayout(ApprovalPanelLayout);
+        ApprovalPanelLayout.setHorizontalGroup(
+            ApprovalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_sub_home_lable22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        ApprovalPanelLayout.setVerticalGroup(
+            ApprovalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ApprovalPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(master_detail_sub_home_lable19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Master_Detail_Menu6.setBackground(new java.awt.Color(85, 65, 118));
+
+        master_detail_label6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        master_detail_label6.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_label6.setText("Approvals");
+        master_detail_label6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_label6MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Master_Detail_Menu6Layout = new javax.swing.GroupLayout(Master_Detail_Menu6);
+        Master_Detail_Menu6.setLayout(Master_Detail_Menu6Layout);
+        Master_Detail_Menu6Layout.setHorizontalGroup(
+            Master_Detail_Menu6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Master_Detail_Menu6Layout.createSequentialGroup()
+                .addComponent(master_detail_menu_icon_label6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_label6, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Master_Detail_Menu6Layout.setVerticalGroup(
+            Master_Detail_Menu6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_menu_icon_label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_label6, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+        );
+
+        AccountingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
+        AccountingPanel.setOpaque(false);
+
+        master_detail_sub_home_lable25.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable25.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable25.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable25.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable25.setText("Expences");
+        master_detail_home_lable25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable25MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable25MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable25MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable25Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable25);
+        master_detail_sub_home_lable25.setLayout(master_detail_sub_home_lable25Layout);
+        master_detail_sub_home_lable25Layout.setHorizontalGroup(
+            master_detail_sub_home_lable25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable25, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable25Layout.setVerticalGroup(
+            master_detail_sub_home_lable25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable25Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable25, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        master_detail_sub_home_lable24.setBackground(new java.awt.Color(85, 65, 118));
+        master_detail_sub_home_lable24.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        master_detail_sub_home_lable24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        master_detail_home_lable24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        master_detail_home_lable24.setForeground(new java.awt.Color(255, 255, 255));
+        master_detail_home_lable24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        master_detail_home_lable24.setText("Income");
+        master_detail_home_lable24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable24MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable24MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                master_detail_home_lable24MouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout master_detail_sub_home_lable24Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable24);
+        master_detail_sub_home_lable24.setLayout(master_detail_sub_home_lable24Layout);
+        master_detail_sub_home_lable24Layout.setHorizontalGroup(
+            master_detail_sub_home_lable24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_home_lable24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        master_detail_sub_home_lable24Layout.setVerticalGroup(
+            master_detail_sub_home_lable24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(master_detail_sub_home_lable24Layout.createSequentialGroup()
+                .addComponent(master_detail_home_lable24, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout AccountingPanelLayout = new javax.swing.GroupLayout(AccountingPanel);
+        AccountingPanel.setLayout(AccountingPanelLayout);
+        AccountingPanelLayout.setHorizontalGroup(
+            AccountingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(master_detail_sub_home_lable24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_sub_home_lable25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        AccountingPanelLayout.setVerticalGroup(
+            AccountingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AccountingPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(master_detail_sub_home_lable24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(master_detail_sub_home_lable25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout menu_panelLayout = new javax.swing.GroupLayout(menu_panel);
@@ -1415,53 +1439,65 @@ public class GUI_Home extends javax.swing.JFrame {
             .addGroup(menu_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
-                    .addGroup(menu_panelLayout.createSequentialGroup()
-                        .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addComponent(master_detail_sub_home_lable28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_panelLayout.createSequentialGroup()
+                        .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(master_detail_sub_home_lable27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menu_panelLayout.createSequentialGroup()
+                                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(menu_panelLayout.createSequentialGroup()
+                                        .addGap(43, 43, 43)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_panelLayout.createSequentialGroup()
+                        .addComponent(Master_Detail_Menu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
             .addGroup(menu_panelLayout.createSequentialGroup()
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(Master_Detail_Menu3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Master_Detail_Menu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Master_Detail_Menu1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable20, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable22, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable26, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable25, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable24, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Master_Detail_Menu2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable23, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(master_detail_sub_home_lable27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Master_Detail_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(menu_panelLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addComponent(MasterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Master_Detail_Menu4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(RegistrationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(SalaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(5, 34, Short.MAX_VALUE))
+            .addGroup(menu_panelLayout.createSequentialGroup()
+                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(Master_Detail_Menu2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menu_panelLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(AllocationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menu_panelLayout.createSequentialGroup()
+                            .addGap(61, 61, 61)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menu_panelLayout.createSequentialGroup()
+                            .addGap(59, 59, 59)
+                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Master_Detail_Menu5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Master_Detail_Menu6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menu_panelLayout.createSequentialGroup()
+                            .addGap(57, 57, 57)
+                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ApprovalPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AccountingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(Master_Detail_Menu3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menu_panelLayout.setVerticalGroup(
             menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1470,79 +1506,47 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Master_Detail_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(master_detail_sub_home_lable1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MasterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(master_detail_sub_home_lable4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(master_detail_sub_home_lable5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Master_Detail_Menu4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(master_detail_sub_home_lable7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(master_detail_sub_home_lable11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(master_detail_sub_home_lable8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegistrationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Master_Detail_Menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AllocationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Master_Detail_Menu5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(master_detail_sub_home_lable18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SalaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(master_detail_sub_home_lable20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(master_detail_sub_home_lable21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Master_Detail_Menu6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ApprovalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Master_Detail_Menu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AccountingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(Master_Detail_Menu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(master_detail_sub_home_lable27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(master_detail_sub_home_lable28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(menu_panel);
@@ -1599,16 +1603,16 @@ public class GUI_Home extends javax.swing.JFrame {
             background_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(background_panelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(background_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
                     .addGroup(background_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(date_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(time_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1)
+                    .addComponent(jButton3)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 716, Short.MAX_VALUE))
+                .addGap(0, 717, Short.MAX_VALUE))
         );
 
         background_panelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton3});
@@ -1635,22 +1639,6 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable1.setForeground(Color.WHITE);
     }//GEN-LAST:event_master_detail_home_lable1MouseExited
 
-    private void master_detail_home_lable2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable2MouseEntered
-        master_detail_home_lable2.setForeground(Color.GREEN);
-    }//GEN-LAST:event_master_detail_home_lable2MouseEntered
-
-    private void master_detail_home_lable2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable2MouseExited
-        master_detail_home_lable2.setForeground(Color.WHITE);
-    }//GEN-LAST:event_master_detail_home_lable2MouseExited
-
-    private void master_detail_home_lable3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable3MouseEntered
-        master_detail_home_lable3.setForeground(Color.GREEN);
-    }//GEN-LAST:event_master_detail_home_lable3MouseEntered
-
-    private void master_detail_home_lable3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable3MouseExited
-        master_detail_home_lable3.setForeground(Color.WHITE);
-    }//GEN-LAST:event_master_detail_home_lable3MouseExited
-
     private void master_detail_home_lable4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable4MouseEntered
         master_detail_home_lable4.setForeground(Color.GREEN);
     }//GEN-LAST:event_master_detail_home_lable4MouseEntered
@@ -1658,14 +1646,6 @@ public class GUI_Home extends javax.swing.JFrame {
     private void master_detail_home_lable4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable4MouseExited
         master_detail_home_lable4.setForeground(Color.WHITE);
     }//GEN-LAST:event_master_detail_home_lable4MouseExited
-
-    private void master_detail_home_lable5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable5MouseEntered
-        master_detail_home_lable5.setForeground(Color.GREEN);
-    }//GEN-LAST:event_master_detail_home_lable5MouseEntered
-
-    private void master_detail_home_lable5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable5MouseExited
-        master_detail_home_lable5.setForeground(Color.WHITE);
-    }//GEN-LAST:event_master_detail_home_lable5MouseExited
 
     private void master_detail_home_lable6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable6MouseEntered
         master_detail_home_lable6.setForeground(Color.GREEN);
@@ -1853,16 +1833,6 @@ public class GUI_Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_master_detail_home_lable4MouseClicked
 
-    private void master_detail_home_lable5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable5MouseClicked
-        try {
-            ReleaseAllReservation.releaseAllReservation();
-            Bank_Panel bp = new Bank_Panel(1);
-            panelManager(bp);
-        } catch (Exception ex) {
-            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_master_detail_home_lable5MouseClicked
-
     private void master_detail_home_lable10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable10MouseClicked
         try {
             ReleaseAllReservation.releaseAllReservation();
@@ -1935,26 +1905,6 @@ public class GUI_Home extends javax.swing.JFrame {
 
     }//GEN-LAST:event_master_detail_home_lable1MouseClicked
 
-    private void master_detail_home_lable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable2MouseClicked
-        try {
-            ReleaseAllReservation.releaseAllReservation();
-            Project_Secondery_Panel panel = new Project_Secondery_Panel();
-            panelManager(panel);
-        } catch (Exception ex) {
-            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_master_detail_home_lable2MouseClicked
-
-    private void master_detail_home_lable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable3MouseClicked
-        try {
-            ReleaseAllReservation.releaseAllReservation();
-            Project_Tertiary_Panel panel = new Project_Tertiary_Panel();
-            panelManager(panel);
-        } catch (Exception ex) {
-            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_master_detail_home_lable3MouseClicked
-
     private void master_detail_home_lable12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable12MouseClicked
         try {
             ReleaseAllReservation.releaseAllReservation();
@@ -2024,24 +1974,6 @@ public class GUI_Home extends javax.swing.JFrame {
             Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_master_detail_home_lable17MouseClicked
-
-    private void master_detail_home_lable28MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable28MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_master_detail_home_lable28MouseEntered
-
-    private void master_detail_home_lable28MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable28MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_master_detail_home_lable28MouseExited
-
-    private void master_detail_home_lable28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable28MouseClicked
-        try {
-            ReleaseAllReservation.releaseAllReservation();
-            Developers d = new Developers();
-            panelManager(d);
-        } catch (Exception ex) {
-            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_master_detail_home_lable28MouseClicked
 
     private void master_detail_home_lable18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable18MouseClicked
         try {
@@ -2175,6 +2107,68 @@ public class GUI_Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void master_detail_label4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label4MouseClicked
+        if (regiPanelStates == 0) {
+            RegistrationPanel.setVisible(true);
+            regiPanelStates = 1;
+        } else if (regiPanelStates == 1) {
+            RegistrationPanel.setVisible(false);
+            regiPanelStates = 0;
+        }
+    }//GEN-LAST:event_master_detail_label4MouseClicked
+
+    private void master_detail_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_labelMouseClicked
+        if (masterPanelStates == 0) {
+            MasterPanel.setVisible(true);
+            masterPanelStates = 1;
+        } else if (masterPanelStates == 1) {
+            MasterPanel.setVisible(false);
+            masterPanelStates = 0;
+        }
+    }//GEN-LAST:event_master_detail_labelMouseClicked
+
+    private void master_detail_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label1MouseClicked
+        if (allocationStates == 0) {
+            AllocationPanel.setVisible(true);
+            allocationStates = 1;
+        } else if (allocationStates == 1) {
+            AllocationPanel.setVisible(false);
+            allocationStates = 0;
+        }
+    }//GEN-LAST:event_master_detail_label1MouseClicked
+
+    private void master_detail_label5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label5MouseClicked
+        if (salaryStates == 0) {
+
+            SalaryPanel.setVisible(true);
+            salaryStates = 1;
+        } else if (salaryStates == 1) {
+
+            SalaryPanel.setVisible(false);
+            salaryStates = 0;
+        }
+    }//GEN-LAST:event_master_detail_label5MouseClicked
+
+    private void master_detail_label6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label6MouseClicked
+        if (approvalStates == 0) {
+            ApprovalPanel.setVisible(true);
+            approvalStates = 1;
+        } else if (approvalStates == 1) {
+            ApprovalPanel.setVisible(false);
+            approvalStates = 0;
+        }
+    }//GEN-LAST:event_master_detail_label6MouseClicked
+
+    private void master_detail_label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label2MouseClicked
+        if (accountingStates == 0) {
+            AccountingPanel.setVisible(true);
+            accountingStates = 1;
+        } else if (accountingStates == 1) {
+            AccountingPanel.setVisible(false);
+            accountingStates = 0;
+        }
+    }//GEN-LAST:event_master_detail_label2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2213,11 +2207,21 @@ public class GUI_Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel AccountingPanel;
+    private javax.swing.JPanel AllocationPanel;
+    private javax.swing.JPanel ApprovalPanel;
+    private javax.swing.JPanel MasterPanel;
     private javax.swing.JPanel Master_Detail_Menu;
     private javax.swing.JPanel Master_Detail_Menu1;
     private javax.swing.JPanel Master_Detail_Menu2;
     private javax.swing.JPanel Master_Detail_Menu3;
+    private javax.swing.JPanel Master_Detail_Menu4;
+    private javax.swing.JPanel Master_Detail_Menu5;
+    private javax.swing.JPanel Master_Detail_Menu6;
+    private javax.swing.JPanel RegistrationPanel;
+    private javax.swing.JPanel SalaryPanel;
     private javax.swing.JPanel background_panel;
+    private org.jdesktop.swingx.plaf.basic.BasicTaskPaneUI basicTaskPaneUI1;
     private javax.swing.JLabel date_lable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -2226,9 +2230,12 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     public static javax.swing.JPanel load_panel;
     private javax.swing.JLabel master_detail_home_lable;
     private javax.swing.JLabel master_detail_home_lable1;
@@ -2242,7 +2249,6 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JLabel master_detail_home_lable17;
     private javax.swing.JLabel master_detail_home_lable18;
     private javax.swing.JLabel master_detail_home_lable19;
-    private javax.swing.JLabel master_detail_home_lable2;
     private javax.swing.JLabel master_detail_home_lable20;
     private javax.swing.JLabel master_detail_home_lable21;
     private javax.swing.JLabel master_detail_home_lable22;
@@ -2251,10 +2257,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JLabel master_detail_home_lable25;
     private javax.swing.JLabel master_detail_home_lable26;
     private javax.swing.JLabel master_detail_home_lable27;
-    private javax.swing.JLabel master_detail_home_lable28;
-    private javax.swing.JLabel master_detail_home_lable3;
     private javax.swing.JLabel master_detail_home_lable4;
-    private javax.swing.JLabel master_detail_home_lable5;
     private javax.swing.JLabel master_detail_home_lable6;
     private javax.swing.JLabel master_detail_home_lable7;
     private javax.swing.JLabel master_detail_home_lable8;
@@ -2263,39 +2266,17 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JLabel master_detail_label1;
     private javax.swing.JLabel master_detail_label2;
     private javax.swing.JLabel master_detail_label3;
+    private javax.swing.JLabel master_detail_label4;
+    private javax.swing.JLabel master_detail_label5;
+    private javax.swing.JLabel master_detail_label6;
     private javax.swing.JLabel master_detail_menu_icon_label;
     private javax.swing.JLabel master_detail_menu_icon_label1;
     private javax.swing.JLabel master_detail_menu_icon_label2;
     private javax.swing.JLabel master_detail_menu_icon_label3;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable1;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable10;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable11;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable12;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable13;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable14;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable15;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable16;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable17;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable18;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable19;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable2;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable20;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable21;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable22;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable23;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable24;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable25;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable26;
+    private javax.swing.JLabel master_detail_menu_icon_label4;
+    private javax.swing.JLabel master_detail_menu_icon_label5;
+    private javax.swing.JLabel master_detail_menu_icon_label6;
     private javax.swing.JLabel master_detail_sub_home_icon_lable27;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable28;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable3;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable4;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable5;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable6;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable7;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable8;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable9;
     private javax.swing.JPanel master_detail_sub_home_lable;
     private javax.swing.JPanel master_detail_sub_home_lable1;
     private javax.swing.JPanel master_detail_sub_home_lable10;
@@ -2308,7 +2289,6 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JPanel master_detail_sub_home_lable17;
     private javax.swing.JPanel master_detail_sub_home_lable18;
     private javax.swing.JPanel master_detail_sub_home_lable19;
-    private javax.swing.JPanel master_detail_sub_home_lable2;
     private javax.swing.JPanel master_detail_sub_home_lable20;
     private javax.swing.JPanel master_detail_sub_home_lable21;
     private javax.swing.JPanel master_detail_sub_home_lable22;
@@ -2317,10 +2297,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JPanel master_detail_sub_home_lable25;
     private javax.swing.JPanel master_detail_sub_home_lable26;
     private javax.swing.JPanel master_detail_sub_home_lable27;
-    private javax.swing.JPanel master_detail_sub_home_lable28;
-    private javax.swing.JPanel master_detail_sub_home_lable3;
     private javax.swing.JPanel master_detail_sub_home_lable4;
-    private javax.swing.JPanel master_detail_sub_home_lable5;
     private javax.swing.JPanel master_detail_sub_home_lable6;
     private javax.swing.JPanel master_detail_sub_home_lable7;
     private javax.swing.JPanel master_detail_sub_home_lable8;
