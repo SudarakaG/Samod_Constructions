@@ -51,6 +51,11 @@ public class GUI_Home extends javax.swing.JFrame {
         showTime();
         Home_Panel home_Panel = new Home_Panel();
         panelManager(home_Panel);
+        navigatorSet();
+
+    }
+
+    void navigatorSet() {
         RegistrationPanel.setVisible(false);
         MasterPanel.setVisible(false);
         AllocationPanel.setVisible(false);
@@ -1861,11 +1866,11 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lable9MouseClicked
 
     private void master_detail_home_lableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lableMouseClicked
-        if(master_detail_home_lable.getBackground() == Color.GREEN){
-        
+        if (master_detail_home_lable.getBackground() == Color.GREEN) {
+
             master_detail_home_lable.setBackground(Color.WHITE);
-        }else{
-        
+        } else {
+
             master_detail_home_lable.setBackground(Color.GREEN);
         }
         try {
@@ -2022,6 +2027,7 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void master_detail_label4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label4MouseClicked
+        navigatorSet();
         if (regiPanelStates == 0) {
             RegistrationPanel.setVisible(true);
             regiPanelStates = 1;
@@ -2032,6 +2038,7 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_label4MouseClicked
 
     private void master_detail_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_labelMouseClicked
+        navigatorSet();
         if (masterPanelStates == 0) {
             MasterPanel.setVisible(true);
             masterPanelStates = 1;
@@ -2042,6 +2049,7 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_labelMouseClicked
 
     private void master_detail_label5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label5MouseClicked
+        navigatorSet();
         if (salaryStates == 0) {
 
             SalaryPanel.setVisible(true);
@@ -2054,6 +2062,8 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_label5MouseClicked
 
     private void master_detail_label6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label6MouseClicked
+
+        navigatorSet();
         if (approvalStates == 0) {
             ApprovalPanel.setVisible(true);
             approvalStates = 1;
@@ -2064,6 +2074,7 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_label6MouseClicked
 
     private void master_detail_label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label2MouseClicked
+        navigatorSet();
         if (accountingStates == 0) {
             AccountingPanel.setVisible(true);
             accountingStates = 1;
@@ -2074,6 +2085,7 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_label2MouseClicked
 
     private void master_detail_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label1MouseClicked
+        navigatorSet();
         if (allocationStates == 0) {
             AllocationPanel.setVisible(true);
             allocationStates = 1;
