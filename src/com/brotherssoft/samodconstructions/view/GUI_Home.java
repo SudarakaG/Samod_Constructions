@@ -109,21 +109,14 @@ public class GUI_Home extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         Master_Detail_Menu = new javax.swing.JPanel();
-        master_detail_menu_icon_label = new javax.swing.JLabel();
         master_detail_label = new javax.swing.JLabel();
         Master_Detail_Menu1 = new javax.swing.JPanel();
-        master_detail_menu_icon_label1 = new javax.swing.JLabel();
         master_detail_label1 = new javax.swing.JLabel();
         Master_Detail_Menu2 = new javax.swing.JPanel();
-        master_detail_menu_icon_label2 = new javax.swing.JLabel();
         master_detail_label2 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         Master_Detail_Menu3 = new javax.swing.JPanel();
-        master_detail_menu_icon_label3 = new javax.swing.JLabel();
         master_detail_label3 = new javax.swing.JLabel();
-        master_detail_sub_home_lable27 = new javax.swing.JPanel();
-        master_detail_sub_home_icon_lable27 = new javax.swing.JLabel();
-        master_detail_home_lable27 = new javax.swing.JLabel();
         MasterPanel = new javax.swing.JPanel();
         master_detail_sub_home_lable = new javax.swing.JPanel();
         master_detail_home_lable = new javax.swing.JLabel();
@@ -149,7 +142,6 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable13 = new javax.swing.JPanel();
         master_detail_home_lable13 = new javax.swing.JLabel();
         Master_Detail_Menu4 = new javax.swing.JPanel();
-        master_detail_menu_icon_label4 = new javax.swing.JLabel();
         master_detail_label4 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         AllocationPanel = new javax.swing.JPanel();
@@ -173,7 +165,6 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable8 = new javax.swing.JLabel();
         jSeparator7 = new javax.swing.JSeparator();
         Master_Detail_Menu5 = new javax.swing.JPanel();
-        master_detail_menu_icon_label5 = new javax.swing.JLabel();
         master_detail_label5 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
         ApprovalPanel = new javax.swing.JPanel();
@@ -184,7 +175,6 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable26 = new javax.swing.JPanel();
         master_detail_home_lable26 = new javax.swing.JLabel();
         Master_Detail_Menu6 = new javax.swing.JPanel();
-        master_detail_menu_icon_label6 = new javax.swing.JLabel();
         master_detail_label6 = new javax.swing.JLabel();
         AccountingPanel = new javax.swing.JPanel();
         master_detail_sub_home_lable25 = new javax.swing.JPanel();
@@ -250,13 +240,11 @@ public class GUI_Home extends javax.swing.JFrame {
 
         Master_Detail_Menu.setBackground(new java.awt.Color(85, 65, 118));
 
-        master_detail_menu_icon_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/receptionist.png"))); // NOI18N
-
-        master_detail_label.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        master_detail_label.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        master_detail_label.setText("Master Details");
-        master_detail_label.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        master_detail_label.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
+        master_detail_label.setText(" - Master Details");
+        master_detail_label.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_labelMouseClicked(evt);
@@ -267,22 +255,20 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu.setLayout(Master_Detail_MenuLayout);
         Master_Detail_MenuLayout.setHorizontalGroup(
             Master_Detail_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Master_Detail_MenuLayout.createSequentialGroup()
-                .addComponent(master_detail_menu_icon_label, javax.swing.GroupLayout.PREFERRED_SIZE, 56, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_label, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(master_detail_label, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
         );
         Master_Detail_MenuLayout.setVerticalGroup(
             Master_Detail_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_menu_icon_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(master_detail_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(master_detail_label, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
         Master_Detail_Menu1.setBackground(new java.awt.Color(85, 65, 118));
 
-        master_detail_label1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        master_detail_label1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label1.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label1.setText("Allocations");
+        master_detail_label1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
+        master_detail_label1.setText(" - Allocations");
+        master_detail_label1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_label1MouseClicked(evt);
@@ -293,23 +279,20 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu1.setLayout(Master_Detail_Menu1Layout);
         Master_Detail_Menu1Layout.setHorizontalGroup(
             Master_Detail_Menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Master_Detail_Menu1Layout.createSequentialGroup()
-                .addComponent(master_detail_menu_icon_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(master_detail_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
         );
         Master_Detail_Menu1Layout.setVerticalGroup(
             Master_Detail_Menu1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_menu_icon_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(master_detail_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+            .addComponent(master_detail_label1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
         Master_Detail_Menu2.setBackground(new java.awt.Color(85, 65, 118));
 
-        master_detail_label2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        master_detail_label2.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label2.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label2.setText("Accounting");
+        master_detail_label2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
+        master_detail_label2.setText(" - Accounting");
+        master_detail_label2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_label2MouseClicked(evt);
@@ -320,73 +303,30 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu2.setLayout(Master_Detail_Menu2Layout);
         Master_Detail_Menu2Layout.setHorizontalGroup(
             Master_Detail_Menu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Master_Detail_Menu2Layout.createSequentialGroup()
-                .addComponent(master_detail_menu_icon_label2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_label2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(master_detail_label2, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
         );
         Master_Detail_Menu2Layout.setVerticalGroup(
             Master_Detail_Menu2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_menu_icon_label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(master_detail_label2, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+            .addComponent(master_detail_label2, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
         Master_Detail_Menu3.setBackground(new java.awt.Color(85, 65, 118));
 
-        master_detail_label3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        master_detail_label3.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label3.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label3.setText("Reports");
+        master_detail_label3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
+        master_detail_label3.setText(" - Reports");
+        master_detail_label3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout Master_Detail_Menu3Layout = new javax.swing.GroupLayout(Master_Detail_Menu3);
         Master_Detail_Menu3.setLayout(Master_Detail_Menu3Layout);
         Master_Detail_Menu3Layout.setHorizontalGroup(
             Master_Detail_Menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Master_Detail_Menu3Layout.createSequentialGroup()
-                .addComponent(master_detail_menu_icon_label3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_label3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(master_detail_label3, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
         );
         Master_Detail_Menu3Layout.setVerticalGroup(
             Master_Detail_Menu3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_menu_icon_label3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(master_detail_label3, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-        );
-
-        master_detail_sub_home_lable27.setBackground(new java.awt.Color(85, 65, 118));
-        master_detail_sub_home_lable27.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        master_detail_sub_home_lable27.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        master_detail_home_lable27.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        master_detail_home_lable27.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_home_lable27.setText("Report Module");
-        master_detail_home_lable27.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable27MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable27MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                master_detail_home_lable27MouseExited(evt);
-            }
-        });
-
-        javax.swing.GroupLayout master_detail_sub_home_lable27Layout = new javax.swing.GroupLayout(master_detail_sub_home_lable27);
-        master_detail_sub_home_lable27.setLayout(master_detail_sub_home_lable27Layout);
-        master_detail_sub_home_lable27Layout.setHorizontalGroup(
-            master_detail_sub_home_lable27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable27Layout.createSequentialGroup()
-                .addComponent(master_detail_sub_home_icon_lable27, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_home_lable27, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        master_detail_sub_home_lable27Layout.setVerticalGroup(
-            master_detail_sub_home_lable27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_sub_home_icon_lable27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(master_detail_home_lable27, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+            .addComponent(master_detail_label3, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
         MasterPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
@@ -416,9 +356,7 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable.setLayout(master_detail_sub_home_lableLayout);
         master_detail_sub_home_lableLayout.setHorizontalGroup(
             master_detail_sub_home_lableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lableLayout.createSequentialGroup()
-                .addComponent(master_detail_home_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 23, Short.MAX_VALUE))
+            .addComponent(master_detail_home_lable, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
         );
         master_detail_sub_home_lableLayout.setVerticalGroup(
             master_detail_sub_home_lableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -451,9 +389,7 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable1.setLayout(master_detail_sub_home_lable1Layout);
         master_detail_sub_home_lable1Layout.setHorizontalGroup(
             master_detail_sub_home_lable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(master_detail_sub_home_lable1Layout.createSequentialGroup()
-                .addComponent(master_detail_home_lable1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+            .addComponent(master_detail_home_lable1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
         );
         master_detail_sub_home_lable1Layout.setVerticalGroup(
             master_detail_sub_home_lable1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -822,10 +758,11 @@ public class GUI_Home extends javax.swing.JFrame {
 
         Master_Detail_Menu4.setBackground(new java.awt.Color(85, 65, 118));
 
-        master_detail_label4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        master_detail_label4.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label4.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label4.setText("Registrations");
-        master_detail_label4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        master_detail_label4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
+        master_detail_label4.setText(" - Registrations");
+        master_detail_label4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_label4MouseClicked(evt);
@@ -836,16 +773,11 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu4.setLayout(Master_Detail_Menu4Layout);
         Master_Detail_Menu4Layout.setHorizontalGroup(
             Master_Detail_Menu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Master_Detail_Menu4Layout.createSequentialGroup()
-                .addComponent(master_detail_menu_icon_label4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_label4, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+            .addComponent(master_detail_label4, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
         );
         Master_Detail_Menu4Layout.setVerticalGroup(
             Master_Detail_Menu4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_menu_icon_label4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(master_detail_label4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(master_detail_label4, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
         AllocationPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
@@ -1172,9 +1104,11 @@ public class GUI_Home extends javax.swing.JFrame {
 
         Master_Detail_Menu5.setBackground(new java.awt.Color(85, 65, 118));
 
-        master_detail_label5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        master_detail_label5.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label5.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label5.setText("Salary - Payment");
+        master_detail_label5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
+        master_detail_label5.setText(" - Salary - Payment");
+        master_detail_label5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_label5MouseClicked(evt);
@@ -1185,16 +1119,11 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu5.setLayout(Master_Detail_Menu5Layout);
         Master_Detail_Menu5Layout.setHorizontalGroup(
             Master_Detail_Menu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Master_Detail_Menu5Layout.createSequentialGroup()
-                .addComponent(master_detail_menu_icon_label5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_label5, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(master_detail_label5, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
         );
         Master_Detail_Menu5Layout.setVerticalGroup(
             Master_Detail_Menu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_menu_icon_label5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(master_detail_label5, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+            .addComponent(master_detail_label5, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
         ApprovalPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
@@ -1321,9 +1250,11 @@ public class GUI_Home extends javax.swing.JFrame {
 
         Master_Detail_Menu6.setBackground(new java.awt.Color(85, 65, 118));
 
-        master_detail_label6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        master_detail_label6.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label6.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label6.setText("Approvals");
+        master_detail_label6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
+        master_detail_label6.setText(" - Approvals");
+        master_detail_label6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_label6MouseClicked(evt);
@@ -1334,16 +1265,11 @@ public class GUI_Home extends javax.swing.JFrame {
         Master_Detail_Menu6.setLayout(Master_Detail_Menu6Layout);
         Master_Detail_Menu6Layout.setHorizontalGroup(
             Master_Detail_Menu6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Master_Detail_Menu6Layout.createSequentialGroup()
-                .addComponent(master_detail_menu_icon_label6, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_label6, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(master_detail_label6, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
         );
         Master_Detail_Menu6Layout.setVerticalGroup(
             Master_Detail_Menu6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(master_detail_menu_icon_label6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(master_detail_label6, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+            .addComponent(master_detail_label6, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
         );
 
         AccountingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
@@ -1438,21 +1364,23 @@ public class GUI_Home extends javax.swing.JFrame {
             menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu_panelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(111, Short.MAX_VALUE))
+            .addGroup(menu_panelLayout.createSequentialGroup()
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_panelLayout.createSequentialGroup()
-                        .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(master_detail_sub_home_lable27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menu_panelLayout.createSequentialGroup()
-                                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(menu_panelLayout.createSequentialGroup()
-                                        .addGap(43, 43, 43)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menu_panelLayout.createSequentialGroup()
-                        .addComponent(Master_Detail_Menu1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(AllocationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Master_Detail_Menu6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Master_Detail_Menu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(menu_panelLayout.createSequentialGroup()
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Master_Detail_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1460,45 +1388,41 @@ public class GUI_Home extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(MasterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menu_panelLayout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Master_Detail_Menu4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(menu_panelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(RegistrationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(menu_panelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(SalaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Master_Detail_Menu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(menu_panelLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(5, 34, Short.MAX_VALUE))
-            .addGroup(menu_panelLayout.createSequentialGroup()
-                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(Master_Detail_Menu2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menu_panelLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(AllocationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menu_panelLayout.createSequentialGroup()
-                            .addGap(61, 61, 61)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menu_panelLayout.createSequentialGroup()
-                            .addGap(59, 59, 59)
-                            .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(Master_Detail_Menu5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Master_Detail_Menu6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, menu_panelLayout.createSequentialGroup()
-                            .addGap(57, 57, 57)
-                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(ApprovalPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(AccountingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Master_Detail_Menu4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Master_Detail_Menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(menu_panelLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
+                        .addGap(59, 59, 59)
+                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Master_Detail_Menu5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ApprovalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(AccountingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
                         .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(Master_Detail_Menu3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        menu_panelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {Master_Detail_Menu, Master_Detail_Menu1, Master_Detail_Menu2, Master_Detail_Menu3, Master_Detail_Menu4, Master_Detail_Menu5, Master_Detail_Menu6});
+
         menu_panelLayout.setVerticalGroup(
             menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu_panelLayout.createSequentialGroup()
@@ -1512,42 +1436,42 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addComponent(MasterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(Master_Detail_Menu4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RegistrationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(Master_Detail_Menu1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AllocationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(Master_Detail_Menu5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SalaryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(Master_Detail_Menu6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ApprovalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(Master_Detail_Menu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AccountingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(Master_Detail_Menu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(master_detail_sub_home_lable27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
+
+        menu_panelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {Master_Detail_Menu, Master_Detail_Menu1, Master_Detail_Menu2, Master_Detail_Menu3, Master_Detail_Menu4, Master_Detail_Menu5, Master_Detail_Menu6});
 
         jScrollPane2.setViewportView(menu_panel);
 
@@ -1815,14 +1739,6 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_home_lable26.setForeground(Color.WHITE);
     }//GEN-LAST:event_master_detail_home_lable26MouseExited
 
-    private void master_detail_home_lable27MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable27MouseEntered
-        master_detail_home_lable27.setForeground(Color.GREEN);
-    }//GEN-LAST:event_master_detail_home_lable27MouseEntered
-
-    private void master_detail_home_lable27MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable27MouseExited
-        master_detail_home_lable27.setForeground(Color.WHITE);
-    }//GEN-LAST:event_master_detail_home_lable27MouseExited
-
     private void master_detail_home_lable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable4MouseClicked
         try {
             ReleaseAllReservation.releaseAllReservation();
@@ -1946,6 +1862,13 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_home_lable9MouseClicked
 
     private void master_detail_home_lableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lableMouseClicked
+        if(master_detail_home_lable.getBackground() == Color.GREEN){
+        
+            master_detail_home_lable.setBackground(Color.WHITE);
+        }else{
+        
+            master_detail_home_lable.setBackground(Color.GREEN);
+        }
         try {
             ReleaseAllReservation.releaseAllReservation();
             Home_Panel home_Panel = new Home_Panel();
@@ -2065,14 +1988,6 @@ public class GUI_Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_master_detail_home_lable26MouseClicked
 
-    private void master_detail_home_lable27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable27MouseClicked
-        try {
-            ReleaseAllReservation.releaseAllReservation();
-        } catch (Exception ex) {
-            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_master_detail_home_lable27MouseClicked
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setState(GUI_Home.ICONIFIED);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -2127,16 +2042,6 @@ public class GUI_Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_master_detail_labelMouseClicked
 
-    private void master_detail_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label1MouseClicked
-        if (allocationStates == 0) {
-            AllocationPanel.setVisible(true);
-            allocationStates = 1;
-        } else if (allocationStates == 1) {
-            AllocationPanel.setVisible(false);
-            allocationStates = 0;
-        }
-    }//GEN-LAST:event_master_detail_label1MouseClicked
-
     private void master_detail_label5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label5MouseClicked
         if (salaryStates == 0) {
 
@@ -2168,6 +2073,16 @@ public class GUI_Home extends javax.swing.JFrame {
             accountingStates = 0;
         }
     }//GEN-LAST:event_master_detail_label2MouseClicked
+
+    private void master_detail_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label1MouseClicked
+        if (allocationStates == 0) {
+            AllocationPanel.setVisible(true);
+            allocationStates = 1;
+        } else if (allocationStates == 1) {
+            AllocationPanel.setVisible(false);
+            allocationStates = 0;
+        }
+    }//GEN-LAST:event_master_detail_label1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -2256,7 +2171,6 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JLabel master_detail_home_lable24;
     private javax.swing.JLabel master_detail_home_lable25;
     private javax.swing.JLabel master_detail_home_lable26;
-    private javax.swing.JLabel master_detail_home_lable27;
     private javax.swing.JLabel master_detail_home_lable4;
     private javax.swing.JLabel master_detail_home_lable6;
     private javax.swing.JLabel master_detail_home_lable7;
@@ -2269,14 +2183,6 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JLabel master_detail_label4;
     private javax.swing.JLabel master_detail_label5;
     private javax.swing.JLabel master_detail_label6;
-    private javax.swing.JLabel master_detail_menu_icon_label;
-    private javax.swing.JLabel master_detail_menu_icon_label1;
-    private javax.swing.JLabel master_detail_menu_icon_label2;
-    private javax.swing.JLabel master_detail_menu_icon_label3;
-    private javax.swing.JLabel master_detail_menu_icon_label4;
-    private javax.swing.JLabel master_detail_menu_icon_label5;
-    private javax.swing.JLabel master_detail_menu_icon_label6;
-    private javax.swing.JLabel master_detail_sub_home_icon_lable27;
     private javax.swing.JPanel master_detail_sub_home_lable;
     private javax.swing.JPanel master_detail_sub_home_lable1;
     private javax.swing.JPanel master_detail_sub_home_lable10;
@@ -2296,7 +2202,6 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JPanel master_detail_sub_home_lable24;
     private javax.swing.JPanel master_detail_sub_home_lable25;
     private javax.swing.JPanel master_detail_sub_home_lable26;
-    private javax.swing.JPanel master_detail_sub_home_lable27;
     private javax.swing.JPanel master_detail_sub_home_lable4;
     private javax.swing.JPanel master_detail_sub_home_lable6;
     private javax.swing.JPanel master_detail_sub_home_lable7;

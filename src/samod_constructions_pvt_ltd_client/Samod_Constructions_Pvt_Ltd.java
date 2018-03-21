@@ -5,6 +5,13 @@
  */
 package samod_constructions_pvt_ltd_client;
 
+import com.brotherssoft.samodconstructions.view.Login;
+import com.brotherssoft.samodconstructions.view.Splash;
+import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import jdk.nashorn.internal.codegen.CompilerConstants;
+
 /**
  *
  * @author gksde
@@ -15,7 +22,23 @@ public class Samod_Constructions_Pvt_Ltd {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Splash s = new Splash();
+        s.setVisible(true);
+         Login login = new Login();
+
+        for (int i = 0; i < 101; i++) {
+            
+            try {
+                Thread.sleep(60);
+                s.jLabel4.setText(Integer.toString(i)+"%");
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Samod_Constructions_Pvt_Ltd.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             
+          
+        }
+        s.dispose();
+        login.setVisible(true);
     }
-    
+
 }
