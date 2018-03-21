@@ -94,8 +94,6 @@ public class Home_Panel extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(102, 102, 102));
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 3));
 
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/employees.png"))); // NOI18N
         jLabel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 204, 0), 2));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -124,8 +122,6 @@ public class Home_Panel extends javax.swing.JPanel {
         jPanel7.setBackground(new java.awt.Color(102, 102, 102));
         jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 3));
 
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/boss.png"))); // NOI18N
         jLabel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 204, 0), 2));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -154,8 +150,6 @@ public class Home_Panel extends javax.swing.JPanel {
         jPanel8.setBackground(new java.awt.Color(102, 102, 102));
         jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 3));
 
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/employees.png"))); // NOI18N
         jLabel21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 204, 0), 2));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -184,8 +178,6 @@ public class Home_Panel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 3));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/delivery-truck.png"))); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 0), 2));
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -213,8 +205,6 @@ public class Home_Panel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 3));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/cash.png"))); // NOI18N
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 0), 2));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -242,8 +232,6 @@ public class Home_Panel extends javax.swing.JPanel {
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 3));
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/cash-register(1).png"))); // NOI18N
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 0), 2));
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
