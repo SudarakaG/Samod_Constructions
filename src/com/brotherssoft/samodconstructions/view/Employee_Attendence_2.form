@@ -115,7 +115,7 @@
                           <Group type="102" attributes="0">
                               <Component id="btn_back_list" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="bank_panel_input_area1" pref="527" max="32767" attributes="0"/>
+                              <Component id="bank_panel_input_area1" pref="538" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="panel_attendance_details" min="-2" max="-2" attributes="0"/>

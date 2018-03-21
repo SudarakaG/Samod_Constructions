@@ -1004,6 +1004,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
     private void btn_back_listActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_back_listActionPerformed
         Employee_View_Panel.setVisible(true);
         Company_Account_Registration.setVisible(false);
+        loadAttApproveTable();
         clearSubmitDetails();
         clearFields();
 
@@ -1516,6 +1517,8 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
         
         btn_att_save.setText("Transefer");
         btn_att_save.setEnabled(false);
+        lbl_sub_contractor.setVisible(false);
+        cmb_sub_contractor.setVisible(false);
     }
 
     private void loadAttFromTable() {
