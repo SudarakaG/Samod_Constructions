@@ -111,32 +111,34 @@ public class Bank_Panel extends javax.swing.JPanel {
         Branch_panel.setBackground(new java.awt.Color(255, 255, 255));
         Branch_panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        bank_panel_hedding1.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding1.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Administrations / System Management / Master Detail /");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Branch Manager");
+
+        jSeparator7.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator7.setForeground(new java.awt.Color(204, 0, 51));
+        jSeparator7.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_hedding1Layout = new javax.swing.GroupLayout(bank_panel_hedding1);
         bank_panel_hedding1.setLayout(bank_panel_hedding1Layout);
         bank_panel_hedding1Layout.setHorizontalGroup(
             bank_panel_hedding1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bank_panel_hedding1Layout.createSequentialGroup()
-                .addGroup(bank_panel_hedding1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bank_panel_hedding1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(bank_panel_hedding1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(527, Short.MAX_VALUE))
+            .addGroup(bank_panel_hedding1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator7))
         );
         bank_panel_hedding1Layout.setVerticalGroup(
             bank_panel_hedding1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +148,7 @@ public class Bank_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(bank_panel_hedding1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel12)
-                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -418,8 +420,10 @@ public class Bank_Panel extends javax.swing.JPanel {
                 .addComponent(txt_Input_Panel_Branch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tbl_panel_Branch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
-            .addComponent(bank_panel_hedding1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(Branch_panelLayout.createSequentialGroup()
+                .addComponent(bank_panel_hedding1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Branch_panelLayout.setVerticalGroup(
             Branch_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,32 +439,33 @@ public class Bank_Panel extends javax.swing.JPanel {
         Bank_panel.setBackground(new java.awt.Color(255, 255, 255));
         Bank_panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        bank_panel_hedding.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Administrations / System Management / Master Detail /");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Bank Manager");
+
+        jSeparator6.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator6.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_heddingLayout = new javax.swing.GroupLayout(bank_panel_hedding);
         bank_panel_hedding.setLayout(bank_panel_heddingLayout);
         bank_panel_heddingLayout.setHorizontalGroup(
             bank_panel_heddingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bank_panel_heddingLayout.createSequentialGroup()
-                .addGroup(bank_panel_heddingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bank_panel_heddingLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(bank_panel_heddingLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(527, Short.MAX_VALUE))
+            .addGroup(bank_panel_heddingLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE))
         );
         bank_panel_heddingLayout.setVerticalGroup(
             bank_panel_heddingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -470,7 +475,7 @@ public class Bank_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(bank_panel_heddingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -723,9 +728,9 @@ public class Bank_Panel extends javax.swing.JPanel {
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Branch_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE)
+            .addComponent(Branch_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Bank_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE))
+                .addComponent(Bank_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

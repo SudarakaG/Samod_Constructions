@@ -99,32 +99,33 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
             }
         });
 
-        bank_panel_hedding2.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding2.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel19.setBackground(new java.awt.Color(255, 255, 255));
         jLabel19.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Administrations / System Management / Master Detail /");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Company Account Registration");
+
+        jSeparator8.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator8.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_hedding2Layout = new javax.swing.GroupLayout(bank_panel_hedding2);
         bank_panel_hedding2.setLayout(bank_panel_hedding2Layout);
         bank_panel_hedding2Layout.setHorizontalGroup(
             bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bank_panel_hedding2Layout.createSequentialGroup()
-                .addGroup(bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bank_panel_hedding2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(bank_panel_hedding2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel20)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(518, Short.MAX_VALUE))
+            .addGroup(bank_panel_hedding2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator8))
         );
         bank_panel_hedding2Layout.setVerticalGroup(
             bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,9 +133,9 @@ public class Company_Account_Registration_Panel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20)
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 

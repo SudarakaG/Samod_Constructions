@@ -102,33 +102,33 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
         Vehical_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Vehical_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        user_panel_hedding8.setBackground(new java.awt.Color(122, 72, 222));
+        user_panel_hedding8.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel86.setBackground(new java.awt.Color(255, 255, 255));
         jLabel86.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel86.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel86.setForeground(new java.awt.Color(255, 255, 255));
         jLabel86.setText("Administrations / System Management / Master Details /");
 
         jLabel87.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel87.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel87.setForeground(new java.awt.Color(255, 255, 255));
         jLabel87.setText("Vehical Registration");
+
+        jSeparator20.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator20.setOpaque(true);
 
         javax.swing.GroupLayout user_panel_hedding8Layout = new javax.swing.GroupLayout(user_panel_hedding8);
         user_panel_hedding8.setLayout(user_panel_hedding8Layout);
         user_panel_hedding8Layout.setHorizontalGroup(
             user_panel_hedding8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(user_panel_hedding8Layout.createSequentialGroup()
-                .addGroup(user_panel_hedding8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(user_panel_hedding8Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(user_panel_hedding8Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel87)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator20)))
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(user_panel_hedding8Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel87)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator20))
         );
         user_panel_hedding8Layout.setVerticalGroup(
             user_panel_hedding8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +138,7 @@ public class Vehical_Registration_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(user_panel_hedding8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel87)
-                    .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 

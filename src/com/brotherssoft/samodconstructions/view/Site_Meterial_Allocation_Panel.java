@@ -45,16 +45,19 @@ public class Site_Meterial_Allocation_Panel extends javax.swing.JPanel {
         Site_Meterial_allocation_panel.setBackground(new java.awt.Color(255, 255, 255));
         Site_Meterial_allocation_panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        user_panel_hedding1.setBackground(new java.awt.Color(122, 72, 222));
+        user_panel_hedding1.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel64.setBackground(new java.awt.Color(255, 255, 255));
         jLabel64.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel64.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel64.setForeground(new java.awt.Color(255, 255, 255));
         jLabel64.setText("Administrations / System Management / Operations /");
 
         jLabel65.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel65.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel65.setForeground(new java.awt.Color(255, 255, 255));
         jLabel65.setText("Site Meterial Allocations");
+
+        jSeparator13.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator13.setOpaque(true);
 
         javax.swing.GroupLayout user_panel_hedding1Layout = new javax.swing.GroupLayout(user_panel_hedding1);
         user_panel_hedding1.setLayout(user_panel_hedding1Layout);
@@ -79,9 +82,9 @@ public class Site_Meterial_Allocation_Panel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(user_panel_hedding1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(user_panel_hedding1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel65)
-                    .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 

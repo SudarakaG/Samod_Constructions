@@ -59,16 +59,19 @@ public class Employee_Attendence_New extends javax.swing.JPanel {
         Company_Account_Registration.setBackground(new java.awt.Color(255, 255, 255));
         Company_Account_Registration.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        bank_panel_hedding2.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding2.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel19.setBackground(new java.awt.Color(255, 255, 255));
         jLabel19.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Administrations / System Management / Operations/");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Employee Attendence");
+
+        jSeparator8.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator8.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_hedding2Layout = new javax.swing.GroupLayout(bank_panel_hedding2);
         bank_panel_hedding2.setLayout(bank_panel_hedding2Layout);
@@ -90,9 +93,9 @@ public class Employee_Attendence_New extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20)
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -409,7 +412,7 @@ public class Employee_Attendence_New extends javax.swing.JPanel {
                 .addGroup(AttendanceDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(392, Short.MAX_VALUE))
+                .addContainerGap(395, Short.MAX_VALUE))
         );
 
         jLayeredPane2.setLayer(Attendance, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -519,36 +522,28 @@ public class Employee_Attendence_New extends javax.swing.JPanel {
     private javax.swing.JPanel AttendanceDetails;
     private javax.swing.JPanel Company_Account_Registration;
     private javax.swing.JPanel bank_panel_hedding2;
-    private javax.swing.JPanel bank_panel_input_area1;
     private javax.swing.JPanel bank_panel_input_area2;
     private javax.swing.JPanel bank_panel_tbl1;
-    private javax.swing.JButton btn_acc_save;
     private javax.swing.JButton btn_acc_save1;
-    private javax.swing.JComboBox<String> cmb_emp_cate;
     private javax.swing.JComboBox<String> cmb_emp_cate1;
     private org.jdesktop.swingx.JXDatePicker date_picker_joinDate;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel133;
     private javax.swing.JLabel jLabel134;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
-    private org.jdesktop.swingx.JXTable jXTable1;
     private org.jdesktop.swingx.JXTable jXTable2;
     private javax.swing.JTable tbl_acc;
     private javax.swing.JTextField txt_acc_search;
-    private org.jdesktop.swingx.JXDatePicker txt_date;
     private org.jdesktop.swingx.JXDatePicker txt_date1;
     // End of variables declaration//GEN-END:variables
 }

@@ -35,7 +35,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="Expences_View_Panel" alignment="0" pref="1058" max="32767" attributes="0"/>
+              <Component id="Expences_View_Panel" alignment="0" pref="1060" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Component id="New_Expences_Panel" alignment="0" pref="1058" max="32767" attributes="0"/>
               </Group>
@@ -68,12 +68,12 @@
             <Container class="javax.swing.JPanel" name="bank_panel_hedding3">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="de" green="48" red="7a" type="rgb"/>
+                  <Color blue="99" green="99" red="0" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="0" width="1050" height="-1"/>
+                  <AbsoluteConstraints x="0" y="0" width="1060" height="-1"/>
                 </Constraint>
               </Constraints>
 
@@ -84,12 +84,12 @@
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                           <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSeparator9" pref="820" max="32767" attributes="0"/>
+                          <Component id="jSeparator9" pref="830" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="512" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -99,9 +99,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel24" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel28" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jSeparator9" alignment="1" min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                              <Component id="jSeparator9" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="33" max="32767" attributes="0"/>
                       </Group>
@@ -118,7 +118,7 @@
                       <Font name="Times New Roman" size="18" style="3"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Administrations / System Management / Accounting / Income Manager"/>
                   </Properties>
@@ -129,12 +129,18 @@
                       <Font name="Segoe UI" size="24" style="3"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Income Manager"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator9">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="0" red="cc" type="rgb"/>
+                    </Property>
+                    <Property name="opaque" type="boolean" value="true"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -879,7 +885,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="tbl_panel_Branch2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -898,7 +904,7 @@
             <Container class="javax.swing.JPanel" name="bank_panel_hedding5">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="de" green="48" red="7a" type="rgb"/>
+                  <Color blue="99" green="99" red="0" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -924,9 +930,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel60" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel61" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="jSeparator11" alignment="1" min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel61" min="-2" max="-2" attributes="0"/>
+                              <Component id="jSeparator11" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="33" max="32767" attributes="0"/>
                       </Group>
@@ -943,7 +949,7 @@
                       <Font name="Times New Roman" size="18" style="3"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="cc" red="cc" type="rgb"/>
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Administrations / System Management / Accounting / Income"/>
                   </Properties>
@@ -954,12 +960,18 @@
                       <Font name="Segoe UI" size="24" style="3"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Show All Incomes"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator11">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="0" red="cc" type="rgb"/>
+                    </Property>
+                    <Property name="opaque" type="boolean" value="true"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

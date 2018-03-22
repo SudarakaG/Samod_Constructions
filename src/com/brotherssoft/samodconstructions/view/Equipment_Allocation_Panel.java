@@ -60,16 +60,19 @@ public class Equipment_Allocation_Panel extends javax.swing.JPanel {
         Equipment_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Equipment_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        bank_panel_hedding6.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding6.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel62.setBackground(new java.awt.Color(255, 255, 255));
         jLabel62.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel62.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel62.setForeground(new java.awt.Color(255, 255, 255));
         jLabel62.setText("Administrations / System Management / Master Detail /");
 
         jLabel63.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel63.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel63.setForeground(new java.awt.Color(255, 255, 255));
         jLabel63.setText("Equipment Allocations Manager");
+
+        jSeparator12.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator12.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_hedding6Layout = new javax.swing.GroupLayout(bank_panel_hedding6);
         bank_panel_hedding6.setLayout(bank_panel_hedding6Layout);
@@ -91,9 +94,9 @@ public class Equipment_Allocation_Panel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bank_panel_hedding6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(bank_panel_hedding6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel63)
-                    .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 

@@ -48,16 +48,19 @@ public class Employee_Attendence extends javax.swing.JPanel {
         Company_Account_Registration.setBackground(new java.awt.Color(255, 255, 255));
         Company_Account_Registration.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        bank_panel_hedding2.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding2.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel19.setBackground(new java.awt.Color(255, 255, 255));
         jLabel19.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Administrations / System Management / Operations/");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Employee Attendence");
+
+        jSeparator8.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator8.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_hedding2Layout = new javax.swing.GroupLayout(bank_panel_hedding2);
         bank_panel_hedding2.setLayout(bank_panel_hedding2Layout);
@@ -79,9 +82,9 @@ public class Employee_Attendence extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20)
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 

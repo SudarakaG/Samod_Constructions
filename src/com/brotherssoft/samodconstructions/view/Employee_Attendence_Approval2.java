@@ -155,16 +155,19 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
         Company_Account_Registration.setBackground(new java.awt.Color(255, 255, 255));
         Company_Account_Registration.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        bank_panel_hedding2.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding2.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel19.setBackground(new java.awt.Color(255, 255, 255));
         jLabel19.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Administrations / System Management / Operations/");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Employee Attendence Approval");
+
+        jSeparator8.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator8.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_hedding2Layout = new javax.swing.GroupLayout(bank_panel_hedding2);
         bank_panel_hedding2.setLayout(bank_panel_hedding2Layout);
@@ -173,13 +176,12 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
             .addGroup(bank_panel_hedding2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(509, Short.MAX_VALUE))
+                .addContainerGap(529, Short.MAX_VALUE))
             .addGroup(bank_panel_hedding2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator8)
-                .addContainerGap())
+                .addComponent(jSeparator8, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE))
         );
         bank_panel_hedding2Layout.setVerticalGroup(
             bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,7 +191,7 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel20)
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -708,7 +710,7 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
                 .addGroup(Company_Account_RegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panel_attendance_details, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
             .addComponent(bank_panel_hedding2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         Company_Account_RegistrationLayout.setVerticalGroup(
@@ -725,38 +727,39 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         Employee_View_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Employee_View_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        bank_panel_hedding5.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding5.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel60.setBackground(new java.awt.Color(255, 255, 255));
         jLabel60.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel60.setForeground(new java.awt.Color(255, 255, 255));
         jLabel60.setText("Administrations / System Management / Master Detail / Employee Manager");
 
         jLabel61.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel61.setForeground(new java.awt.Color(255, 255, 255));
         jLabel61.setText("Show All Employees");
+
+        jSeparator11.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator11.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_hedding5Layout = new javax.swing.GroupLayout(bank_panel_hedding5);
         bank_panel_hedding5.setLayout(bank_panel_hedding5Layout);
         bank_panel_hedding5Layout.setHorizontalGroup(
             bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
-                .addGroup(bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel61)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(480, Short.MAX_VALUE))
+            .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel61)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator11, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE))
         );
         bank_panel_hedding5Layout.setVerticalGroup(
             bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -764,9 +767,9 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel61)
-                    .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -848,12 +851,10 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
         Employee_View_PanelLayout.setHorizontalGroup(
             Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Employee_View_PanelLayout.createSequentialGroup()
-                .addGroup(Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(bank_panel_hedding5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Employee_View_PanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addComponent(bank_panel_hedding5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         Employee_View_PanelLayout.setVerticalGroup(
             Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -861,7 +862,7 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
                 .addComponent(bank_panel_hedding5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(Company_Account_Registration, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -871,46 +872,30 @@ public class Employee_Attendence_Approval2 extends javax.swing.JPanel {
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1070, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 1041, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1041, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(Employee_View_Panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1070, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 721, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)))
+                .addComponent(Company_Account_Registration, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 696, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1050, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLayeredPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
     }// </editor-fold>//GEN-END:initComponents
 

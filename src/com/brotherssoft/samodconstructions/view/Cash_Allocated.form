@@ -16,7 +16,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="Project_Primary_Info_Panel" alignment="0" min="-2" pref="1052" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="Project_Primary_Info_Panel" min="-2" pref="1061" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -49,19 +52,22 @@
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Component id="user_panel_hedding2" alignment="0" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="user_panel_hedding2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="user_panel_hedding2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="user_panel_hedding2" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txt_Input_Panel_Branch4" pref="600" max="32767" attributes="0"/>
-                      <Component id="jPanel1" pref="600" max="32767" attributes="0"/>
+                      <Component id="txt_Input_Panel_Branch4" pref="583" max="32767" attributes="0"/>
+                      <Component id="jPanel1" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -70,7 +76,7 @@
         <Container class="javax.swing.JPanel" name="user_panel_hedding2">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="de" green="48" red="7a" type="rgb"/>
+              <Color blue="99" green="99" red="0" type="rgb"/>
             </Property>
           </Properties>
 
@@ -80,7 +86,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel66" min="-2" pref="531" max="-2" attributes="0"/>
-                      <EmptySpace pref="511" max="32767" attributes="0"/>
+                      <EmptySpace pref="520" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
@@ -96,11 +102,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel66" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel69" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jSeparator14" alignment="1" min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel69" min="-2" max="-2" attributes="0"/>
+                          <Component id="jSeparator14" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -115,7 +121,7 @@
                   <Font name="Times New Roman" size="18" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="cc" red="cc" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Administrations / System Management / Operations /"/>
               </Properties>
@@ -126,12 +132,21 @@
                   <Font name="Segoe UI" size="24" style="3"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="cc" type="rgb"/>
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cash Allocation"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator14">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="0" red="cc" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="0" red="cc" type="rgb"/>
+                </Property>
+                <Property name="opaque" type="boolean" value="true"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -165,8 +180,8 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="txt_search_name_" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jScrollPane12" min="-2" pref="520" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="jScrollPane12" min="-2" pref="506" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -278,7 +293,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="380" y="550" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="380" y="530" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -294,7 +309,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="300" y="550" width="76" height="-1"/>
+                  <AbsoluteConstraints x="300" y="530" width="76" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -363,7 +378,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="220" y="550" width="76" height="-1"/>
+                  <AbsoluteConstraints x="220" y="530" width="76" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>

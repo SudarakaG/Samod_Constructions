@@ -195,16 +195,19 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         Project_Primary_Info_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Project_Primary_Info_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        user_panel_hedding2.setBackground(new java.awt.Color(122, 72, 222));
+        user_panel_hedding2.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel66.setBackground(new java.awt.Color(255, 255, 255));
         jLabel66.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel66.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel66.setForeground(new java.awt.Color(255, 255, 255));
         jLabel66.setText("Administrations / System Management / Master Details /");
 
         jLabel69.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel69.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel69.setForeground(new java.awt.Color(255, 255, 255));
         jLabel69.setText("Project Secondary Info");
+
+        jSeparator14.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator14.setOpaque(true);
 
         javax.swing.GroupLayout user_panel_hedding2Layout = new javax.swing.GroupLayout(user_panel_hedding2);
         user_panel_hedding2.setLayout(user_panel_hedding2Layout);
@@ -228,9 +231,9 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(user_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(user_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel69)
-                    .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -1096,7 +1099,7 @@ public class Project_Secondery_Panel extends javax.swing.JPanel {
         jScrollPane11.setViewportView(txt_Input_Panel_Branch4);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Current Primary Projects", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Current Projects", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         jScrollPane12.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
