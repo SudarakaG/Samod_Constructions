@@ -530,6 +530,9 @@
                           <Color id="Hand Cursor"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="master_detail_label3MouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -542,7 +545,6 @@
                         </LineBorder>
                       </Border>
                     </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
 
                   <Layout>
@@ -734,7 +736,6 @@
                         </LineBorder>
                       </Border>
                     </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
 
                   <Layout>
@@ -1238,7 +1239,6 @@
                         </LineBorder>
                       </Border>
                     </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
 
                   <Layout>
@@ -1536,7 +1536,6 @@
                         </LineBorder>
                       </Border>
                     </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
 
                   <Layout>
@@ -1783,7 +1782,7 @@
                         </LineBorder>
                       </Border>
                     </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
+                    <Property name="focusable" type="boolean" value="false"/>
                   </Properties>
 
                   <Layout>
@@ -2020,7 +2019,6 @@
                         </LineBorder>
                       </Border>
                     </Property>
-                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
 
                   <Layout>

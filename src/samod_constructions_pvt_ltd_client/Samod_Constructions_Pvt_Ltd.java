@@ -11,6 +11,7 @@ import com.brotherssoft.samodconstructions.view.Splash;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import jdk.nashorn.internal.codegen.CompilerConstants;
 
@@ -25,7 +26,8 @@ public class Samod_Constructions_Pvt_Ltd {
      */
     
     public static void main(String[] args) {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+      
+                    for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
             if ("Nimbus".equals(info.getName())) {
                 try {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -41,6 +43,7 @@ public class Samod_Constructions_Pvt_Ltd {
                 }
             }
         }
+
         Splash s = new Splash();
         s.setVisible(true);
          Login login = new Login();
