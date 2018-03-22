@@ -134,6 +134,8 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
         SpinnerDateModel sdmout = new SpinnerDateModel(dateout, null, null, Calendar.HOUR_OF_DAY);
         spinner_out = new javax.swing.JSpinner(sdmout);
         btn_att_detail_submit = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        txt_days = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         cmb_added_emp = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
@@ -419,7 +421,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
 
         txt_comment.setColumns(20);
         txt_comment.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_comment.setRows(5);
+        txt_comment.setRows(4);
         jScrollPane2.setViewportView(txt_comment);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -490,6 +492,26 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
             }
         });
 
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        jLabel14.setText("Days");
+        jLabel14.setPreferredSize(new java.awt.Dimension(34, 25));
+
+        txt_days.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_days.setPreferredSize(new java.awt.Dimension(59, 25));
+        txt_days.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_daysActionPerformed(evt);
+            }
+        });
+        txt_days.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_daysKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_daysKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_attendance_detailsLayout = new javax.swing.GroupLayout(panel_attendance_details);
         panel_attendance_details.setLayout(panel_attendance_detailsLayout);
         panel_attendance_detailsLayout.setHorizontalGroup(
@@ -512,6 +534,9 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                             .addComponent(txt_ot, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cmb_work, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)))
+                    .addGroup(panel_attendance_detailsLayout.createSequentialGroup()
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(382, 382, 382))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_attendance_detailsLayout.createSequentialGroup()
                         .addGap(0, 103, Short.MAX_VALUE)
                         .addGroup(panel_attendance_detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -520,13 +545,17 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                             .addComponent(spinner_in, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_ot_rate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_daily_rate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_att_detail_submit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btn_att_detail_submit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_days, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         panel_attendance_detailsLayout.setVerticalGroup(
             panel_attendance_detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_attendance_detailsLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(panel_attendance_detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_days, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_attendance_detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_daily_rate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -558,9 +587,9 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                 .addGroup(panel_attendance_detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(btn_att_detail_submit, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -664,10 +693,10 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                     .addGroup(Company_Account_RegistrationLayout.createSequentialGroup()
                         .addComponent(btn_back_list)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE))
+                        .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE))
                     .addGroup(Company_Account_RegistrationLayout.createSequentialGroup()
-                        .addComponent(panel_attendance_details, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panel_attendance_details, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(96, 96, 96))
         );
@@ -1010,6 +1039,18 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btn_back_listActionPerformed
 
+    private void txt_daysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_daysActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_daysActionPerformed
+
+    private void txt_daysKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_daysKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_daysKeyPressed
+
+    private void txt_daysKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_daysKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_daysKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Company_Account_Registration;
@@ -1031,6 +1072,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel133;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -1060,6 +1102,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
     private javax.swing.JTextField txt_advance;
     private javax.swing.JTextArea txt_comment;
     private javax.swing.JTextField txt_daily_rate;
+    private javax.swing.JTextField txt_days;
     private javax.swing.JTextField txt_ot;
     private javax.swing.JTextField txt_ot_rate;
     // End of variables declaration//GEN-END:variables
@@ -1340,6 +1383,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
             String attStatus = "";
             if (status) {
                 attStatus = "1";
+                txt_days.setText(decimalFormat.format(1));
             } else {
                 attStatus = "0";
             }
@@ -1354,6 +1398,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
 
             T_Attendance searchAttendance = attendanceController.searchAttendance(dp_attendance_date.getDate(), attendanceGlobal.getAttendance_employeeId());
             if (searchAttendance != null) {
+                txt_days.setText(decimalFormat.format(searchAttendance.getAttendance_days()));
                 txt_daily_rate.setText(decimalFormat.format(searchAttendance.getAttendance_dailyRate()));
                 txt_ot_rate.setText(decimalFormat.format(searchAttendance.getAttendance_otRate()));
                 if (searchAttendance.getAttendance_in() != null && !"".equals(searchAttendance.getAttendance_in())) {
@@ -1379,6 +1424,10 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
 
     private void submitAttendanceDetails() {
         try {
+            double days = 0;
+            if (!"".equals(txt_days.getText())) {
+                days = Double.parseDouble(txt_days.getText().replaceAll(",", ""));
+            }
             double dailyRate = 0;
             if (!"".equals(txt_daily_rate.getText())) {
                 dailyRate = Double.parseDouble(txt_daily_rate.getText().replaceAll(",", ""));
@@ -1389,6 +1438,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
             }
             String in = de1.getFormat().format(spinner_in.getValue());
             String out = de2.getFormat().format(spinner_out.getValue());
+            
             double advance = 0;
             if (!"".equals(txt_advance.getText())) {
                 advance = Double.parseDouble(txt_advance.getText().replaceAll(",", ""));
@@ -1405,6 +1455,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
 
             for (int i = 0; i < attendanceListGlobal.size(); i++) {
                 if (attendanceListGlobal.get(i).getAttendance_employeeId() == attendanceGlobal.getAttendance_employeeId()) {
+                    attendanceListGlobal.get(i).setAttendance_days(days);
                     attendanceListGlobal.get(i).setAttendance_dailyRate(dailyRate);
                     attendanceListGlobal.get(i).setAttendance_otRate(otRate);
                     attendanceListGlobal.get(i).setAttendance_in(in);

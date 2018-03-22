@@ -58,7 +58,6 @@ public class IncomeNew extends javax.swing.JPanel {
         Expences_View_Panel.setVisible(true);
         dp_incomeDate.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
         dp_enterd_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
-        dp_approved_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
         dp_issue_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
         dp_receive_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
 
@@ -130,10 +129,6 @@ public class IncomeNew extends javax.swing.JPanel {
         cmb_income_entered_emp = new javax.swing.JComboBox<>();
         jLabel108 = new javax.swing.JLabel();
         dp_enterd_date = new org.jdesktop.swingx.JXDatePicker();
-        jLabel123 = new javax.swing.JLabel();
-        cmb_income_approved_emp = new javax.swing.JComboBox<>();
-        jLabel110 = new javax.swing.JLabel();
-        dp_approved_date = new org.jdesktop.swingx.JXDatePicker();
         jLabel124 = new javax.swing.JLabel();
         dp_issue_date = new org.jdesktop.swingx.JXDatePicker();
         jLabel125 = new javax.swing.JLabel();
@@ -427,22 +422,6 @@ public class IncomeNew extends javax.swing.JPanel {
             }
         });
 
-        jLabel123.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel123.setText("Approved By");
-
-        cmb_income_approved_emp.setEditable(true);
-        cmb_income_approved_emp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cmb_income_approved_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Approved Employee -" }));
-
-        jLabel110.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jLabel110.setText("Aproved Date");
-
-        dp_approved_date.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dp_approved_dateActionPerformed(evt);
-            }
-        });
-
         jLabel124.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel124.setText("Issue Date");
 
@@ -470,50 +449,30 @@ public class IncomeNew extends javax.swing.JPanel {
         txt_Input_Panel_Branch4Layout.setHorizontalGroup(
             txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel109)
+                            .addComponent(jLabel113)
+                            .addComponent(jLabel114)
+                            .addComponent(jLabel107))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(dp_incomeDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmb_income_type, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmb_income_subType, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel124)
                             .addComponent(jLabel125))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(50, 50, 50)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(dp_receive_date, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(dp_issue_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel110)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel109)
-                                    .addComponent(jLabel113)
-                                    .addComponent(jLabel114)
-                                    .addComponent(jLabel107))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(cmb_income_subType, javax.swing.GroupLayout.Alignment.LEADING, 0, 350, Short.MAX_VALUE)
-                                    .addComponent(cmb_income_type, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(dp_incomeDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)))
-                            .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cmb_income_approved_emp, 0, 350, Short.MAX_VALUE)
-                                .addComponent(dp_approved_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(cmb_income_entered_emp, 0, 348, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel108)
-                        .addGap(49, 49, 49)
-                        .addComponent(dp_enterd_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                            .addComponent(dp_receive_date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dp_issue_date, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
@@ -547,6 +506,18 @@ public class IncomeNew extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(btn_new_expence)))
                 .addContainerGap())
+            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(cmb_income_entered_emp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, txt_Input_Panel_Branch4Layout.createSequentialGroup()
+                        .addComponent(jLabel108)
+                        .addGap(49, 49, 49)
+                        .addComponent(dp_enterd_date, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         txt_Input_Panel_Branch4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_new_expence, btn_save_Income});
@@ -573,7 +544,15 @@ public class IncomeNew extends javax.swing.JPanel {
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dp_issue_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dp_receive_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54)
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
@@ -584,25 +563,7 @@ public class IncomeNew extends javax.swing.JPanel {
                             .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                                 .addGap(2, 2, 2)
-                                .addComponent(dp_enterd_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cmb_income_approved_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dp_approved_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel124, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dp_issue_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(dp_receive_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel125, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(dp_enterd_date, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(txt_Input_Panel_Branch4Layout.createSequentialGroup()
@@ -636,7 +597,7 @@ public class IncomeNew extends javax.swing.JPanel {
                         .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btn_new_expence, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_save_Income, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         New_Expences_Panel.add(txt_Input_Panel_Branch4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 154, 1050, 560));
@@ -949,10 +910,6 @@ public class IncomeNew extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_dp_enterd_dateActionPerformed
 
-    private void dp_approved_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_approved_dateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dp_approved_dateActionPerformed
-
     private void cmb_income_entered_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_income_entered_empActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_income_entered_empActionPerformed
@@ -1070,14 +1027,12 @@ public class IncomeNew extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmb_authority;
     private javax.swing.JComboBox<String> cmb_companyAccount;
-    private javax.swing.JComboBox<String> cmb_income_approved_emp;
     private javax.swing.JComboBox<String> cmb_income_entered_emp;
     private javax.swing.JComboBox<String> cmb_income_subType;
     private javax.swing.JComboBox<String> cmb_income_type;
     private javax.swing.JComboBox<String> cmb_searchIncome_approval;
     private javax.swing.JComboBox<String> cmb_searchIncome_project;
     private javax.swing.JComboBox<String> cmb_site;
-    private org.jdesktop.swingx.JXDatePicker dp_approved_date;
     private org.jdesktop.swingx.JXDatePicker dp_enterd_date;
     private org.jdesktop.swingx.JXDatePicker dp_incomeDate;
     private org.jdesktop.swingx.JXDatePicker dp_issue_date;
@@ -1086,7 +1041,6 @@ public class IncomeNew extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel107;
     private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
-    private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel113;
     private javax.swing.JLabel jLabel114;
     private javax.swing.JLabel jLabel116;
@@ -1096,7 +1050,6 @@ public class IncomeNew extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel120;
     private javax.swing.JLabel jLabel121;
     private javax.swing.JLabel jLabel122;
-    private javax.swing.JLabel jLabel123;
     private javax.swing.JLabel jLabel124;
     private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel24;
@@ -1137,13 +1090,11 @@ public class IncomeNew extends javax.swing.JPanel {
 
     private void loadEmployeeCombo() {
         cmb_income_entered_emp.removeAll();
-        cmb_income_approved_emp.removeAll();
         try {
             List<M_Employee> allEmployees = employeeController.getAllEmployees();
             for (M_Employee allEmployee : allEmployees) {
                 if (allEmployee.getEmp_jobType_id() == 1) {
                     cmb_income_entered_emp.addItem(allEmployee.getEmp_id() + " : " + allEmployee.getEmp_firstName() + " " + allEmployee.getEmp_middleName() + " " + allEmployee.getEmp_surName());
-                    cmb_income_approved_emp.addItem(allEmployee.getEmp_id() + " : " + allEmployee.getEmp_firstName() + " " + allEmployee.getEmp_middleName() + " " + allEmployee.getEmp_surName());
                 }
             }
         } catch (Exception ex) {
@@ -1264,15 +1215,9 @@ public class IncomeNew extends javax.swing.JPanel {
                 ref = Integer.parseInt(cmb_income_entered_emp.getSelectedItem().toString().split(" : ")[0]);
             }
             int approvedEmp = 0;
-            if (cmb_income_approved_emp.getSelectedIndex() != 0) {
-                ref = Integer.parseInt(cmb_income_approved_emp.getSelectedItem().toString().split(" : ")[0]);
-            }
+            
             Date enteredDate = dp_enterd_date.getDate();
-            Date approvedDate = dp_approved_date.getDate();
-            String status = "P";
-            if (cmb_income_approved_emp.getSelectedIndex() != 0) {
-                status = "A";
-            }
+            String status = "REQUESTED";
             int account = 0;
             if (cmb_companyAccount.getSelectedIndex() != 0) {
                 account = accountController.searchAccount(cmb_companyAccount.getSelectedItem().toString().split(" : ")[1]).getAccount_id();
@@ -1280,7 +1225,7 @@ public class IncomeNew extends javax.swing.JPanel {
 
             if (btn_save_Income.getText().equalsIgnoreCase("Save")) {
                 int incomeId = IDGenerator.getNewID("t_income", "INCOME_ID");
-                T_Income t_Income = new T_Income(incomeId, incomeDesc, incomeTypeId, incomeSubType, incomeDate, siteId, voucherNo, billAmount, vatAmount, payModeID, doi, dor, ref, enteredEmp, approvedEmp, enteredDate, approvedDate, status, account);
+                T_Income t_Income = new T_Income(incomeId, incomeDesc, incomeTypeId, incomeSubType, incomeDate, siteId, voucherNo, billAmount, vatAmount, payModeID, doi, dor, ref, enteredEmp, approvedEmp, enteredDate, null, status, account);
                 boolean addIncome = incomeController.addIncome(t_Income);
                 if (addIncome) {
                     JOptionPane.showMessageDialog(this, "Income Details Saved Successfully..");
@@ -1291,7 +1236,7 @@ public class IncomeNew extends javax.swing.JPanel {
                 }
             } else {
                 int incomeId = incomeIdPub;
-                T_Income t_Income = new T_Income(incomeId, incomeDesc, incomeTypeId, incomeSubType, incomeDate, siteId, voucherNo, billAmount, vatAmount, payModeID, doi, dor, ref, enteredEmp, approvedEmp, enteredDate, approvedDate, status, account);
+                T_Income t_Income = new T_Income(incomeId, incomeDesc, incomeTypeId, incomeSubType, incomeDate, siteId, voucherNo, billAmount, vatAmount, payModeID, doi, dor, ref, enteredEmp, approvedEmp, enteredDate, null, status, account);
                 boolean updateIncome = incomeController.updateIncome(t_Income);
                 if (updateIncome) {
                     incomeController.releaseIncome(incomeId);
@@ -1315,8 +1260,6 @@ public class IncomeNew extends javax.swing.JPanel {
         txt_income_description.setText("");
         cmb_income_entered_emp.setSelectedIndex(0);
         dp_enterd_date.setDate(null);
-        cmb_income_approved_emp.setSelectedIndex(0);
-        dp_approved_date.setDate(null);
         dp_issue_date.setDate(null);
         dp_receive_date.setDate(null);
         txt_voucherNo.setText("");
@@ -1353,16 +1296,7 @@ public class IncomeNew extends javax.swing.JPanel {
                 if (null != incomeGlobal.getIncome_enteredDate()) {
                     dp_enterd_date.setDate(incomeGlobal.getIncome_enteredDate());
                 }
-                if (incomeGlobal.getIncome_approvedUser() != 0) {
-                    for (int i = 1; i < cmb_income_approved_emp.getItemCount(); i++) {
-                        if (Integer.parseInt(cmb_income_approved_emp.getItemAt(i).toString().split(" : ")[0]) == incomeGlobal.getIncome_approvedUser()) {
-                            cmb_income_approved_emp.setSelectedIndex(i);
-                        }
-                    }
-                }
-                if (null != incomeGlobal.getIncome_approvedDate()) {
-                    dp_approved_date.setDate(incomeGlobal.getIncome_approvedDate());
-                }
+                
                 if (null != incomeGlobal.getIncome_dateOfIssue()) {
                     dp_issue_date.setDate(incomeGlobal.getIncome_dateOfIssue());
                 }
