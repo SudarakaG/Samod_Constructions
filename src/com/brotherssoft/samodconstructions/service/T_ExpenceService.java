@@ -50,6 +50,10 @@ public class T_ExpenceService {
     
     public T_Expences searchExpence(Date date, int project, double amount)throws Exception{
         return dbaf.getExpencesDBAccess().searchExpence(date, project, amount);
-    }   
+    }  
+    
+    public T_Expences searchExpence(Date date, int exType, int exSubType, int project, double amount)throws Exception{
+        return dbaf.getExpencesDBAccess().searchExpence(date, exType, exSubType, project, amount);
+    }  
     
 }

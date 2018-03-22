@@ -72,5 +72,10 @@ public class T_ExpenceControllerImpl extends UnicastRemoteObject implements T_Ex
     public boolean releaseExpence(int id) throws Exception {
         return EXPENCE_RESERVER.releaseExpence(id, this);
     }
+
+    @Override
+    public T_Expences searchExpence(Date date, int exType, int exSubType, int project, double amount) throws Exception {
+        return sf.getExpenceService().searchExpence(date, exType, exSubType, project, amount);
+    }
     
 }

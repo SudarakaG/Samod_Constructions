@@ -51,4 +51,8 @@ public class T_IncomeService {
         return dbaf.getIncomeDBAccess().searchIncome(date, project, amount);
     }
     
+    public T_Income searchIncome(Date date, int inType, int inSubType, int project, double amount)throws Exception{
+        return dbaf.getIncomeDBAccess().searchIncome(date, inType, inSubType, project, amount);
+    }
+    
 }

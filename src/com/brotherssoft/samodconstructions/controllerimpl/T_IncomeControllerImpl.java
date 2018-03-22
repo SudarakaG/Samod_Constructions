@@ -71,5 +71,10 @@ public class T_IncomeControllerImpl extends UnicastRemoteObject implements T_Inc
     public boolean releaseIncome(int id) throws Exception {
         return INCOME_RESERVER.releaseIncome(id, this);
     }
+
+    @Override
+    public T_Income searchIncome(Date date, int inType, int inSubType, int project, double amount) throws Exception {
+        return sf.getIncomeService().searchIncome(date, inType, inSubType, project, amount);
+    }
     
 }

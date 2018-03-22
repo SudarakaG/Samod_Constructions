@@ -149,4 +149,24 @@ public class T_IncomeDBAccess {
             }
             return incomes;      
     }
+    
+    public T_Income searchIncome(Date date, int inType, int inSubType, int project, double amount) throws Exception {
+        
+            String sql = "Select * From t_income where INCOME_DATE=? AND INCOME_SITEID=? AND INCOME_BILL_AMOUNT=? AND TINCOMETYPE_ID=? AND TINCOMESUBTYPE_ID=?";
+            Connection conn = DBConnection.getDBConnection().getConnection();
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setObject(1, date);
+            stm.setObject(2, project);
+            stm.setObject(3, amount);
+            stm.setObject(4, inType);
+            stm.setObject(5, inSubType);
+            ResultSet rst = stm.executeQuery();
+            T_Income income = null;
+            if (rst.next()) {
+                income = new T_Income(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getDate(11), rst.getDate(12), rst.getInt(13), rst.getInt(14), rst.getInt(15), rst.getDate(16), rst.getDate(17), rst.getString(18), rst.getInt(19));
+
+            }
+            return income;
+        
+    }
 }

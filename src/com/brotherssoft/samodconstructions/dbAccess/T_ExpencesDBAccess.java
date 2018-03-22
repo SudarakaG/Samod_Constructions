@@ -155,4 +155,24 @@ public class T_ExpencesDBAccess {
             return expenceses;        
     }
     
+    public T_Expences searchExpence(Date date, int exType, int exSubType, int project, double amount) throws Exception {
+        
+            String sql = "Select * From t_expences where EXPENCES_DATE=? AND EXPENCES_REFSITEID=? AND EXPENCES_INV_AMOUNT=? AND TEXPENCESTYPE_ID=? AND TEXPENCESSUBTYPE_ID=?";
+            Connection conn = DBConnection.getDBConnection().getConnection();
+            PreparedStatement stm = conn.prepareStatement(sql);
+            stm.setObject(1, date);
+            stm.setObject(2, project);
+            stm.setObject(3, amount);
+            stm.setObject(4, exType);
+            stm.setObject(5, exSubType);
+            ResultSet rst = stm.executeQuery();
+            T_Expences expences = null;
+            if (rst.next()) {
+                expences = new T_Expences(rst.getInt(1), rst.getString(2), rst.getInt(3), rst.getInt(4), rst.getDate(5), rst.getInt(6), rst.getString(7), rst.getDouble(8), rst.getDouble(9), rst.getInt(10), rst.getString(11), rst.getDate(12), rst.getDate(13), rst.getInt(14), rst.getInt(15), rst.getInt(16), rst.getInt(17), rst.getDate(18), rst.getDate(19), rst.getString(20), rst.getInt(21));
+
+            }
+            return expences;
+        
+    }
+    
 }
