@@ -242,7 +242,6 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
         master_detail_label.setText(" - Master Details");
         master_detail_label.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -266,7 +265,6 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label1.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
         master_detail_label1.setText(" - Allocations");
         master_detail_label1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -290,7 +288,6 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label2.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label2.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
         master_detail_label2.setText(" - Accounting");
         master_detail_label2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -314,9 +311,13 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label3.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label3.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
         master_detail_label3.setText(" - Reports");
         master_detail_label3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        master_detail_label3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                master_detail_label3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout Master_Detail_Menu3Layout = new javax.swing.GroupLayout(Master_Detail_Menu3);
         Master_Detail_Menu3.setLayout(Master_Detail_Menu3Layout);
@@ -760,7 +761,6 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label4.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label4.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
         master_detail_label4.setText(" - Registrations");
         master_detail_label4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1106,7 +1106,6 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label5.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label5.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
         master_detail_label5.setText(" - Salary - Payment");
         master_detail_label5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1252,7 +1251,6 @@ public class GUI_Home extends javax.swing.JFrame {
 
         master_detail_label6.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         master_detail_label6.setForeground(new java.awt.Color(255, 255, 255));
-        master_detail_label6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\click-cursor.png")); // NOI18N
         master_detail_label6.setText(" - Approvals");
         master_detail_label6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_label6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1363,14 +1361,6 @@ public class GUI_Home extends javax.swing.JFrame {
         menu_panelLayout.setHorizontalGroup(
             menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menu_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(menu_panelLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(111, Short.MAX_VALUE))
-            .addGroup(menu_panelLayout.createSequentialGroup()
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(menu_panelLayout.createSequentialGroup()
                         .addContainerGap()
@@ -1383,6 +1373,13 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(menu_panelLayout.createSequentialGroup()
                 .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menu_panelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(menu_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(menu_panelLayout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(Master_Detail_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(menu_panelLayout.createSequentialGroup()
                         .addContainerGap()
@@ -2030,6 +2027,11 @@ public class GUI_Home extends javax.swing.JFrame {
             RegistrationPanel.setVisible(false);
             regiPanelStates = 0;
         }
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_label4MouseClicked
 
     private void master_detail_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_labelMouseClicked
@@ -2039,6 +2041,11 @@ public class GUI_Home extends javax.swing.JFrame {
         } else if (masterPanelStates == 1) {
             MasterPanel.setVisible(false);
             masterPanelStates = 0;
+        }
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_master_detail_labelMouseClicked
 
@@ -2052,6 +2059,11 @@ public class GUI_Home extends javax.swing.JFrame {
             SalaryPanel.setVisible(false);
             salaryStates = 0;
         }
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_label5MouseClicked
 
     private void master_detail_label6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label6MouseClicked
@@ -2061,6 +2073,11 @@ public class GUI_Home extends javax.swing.JFrame {
         } else if (approvalStates == 1) {
             ApprovalPanel.setVisible(false);
             approvalStates = 0;
+        }
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_master_detail_label6MouseClicked
 
@@ -2072,6 +2089,11 @@ public class GUI_Home extends javax.swing.JFrame {
             AccountingPanel.setVisible(false);
             accountingStates = 0;
         }
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_label2MouseClicked
 
     private void master_detail_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label1MouseClicked
@@ -2082,7 +2104,20 @@ public class GUI_Home extends javax.swing.JFrame {
             AllocationPanel.setVisible(false);
             allocationStates = 0;
         }
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_master_detail_label1MouseClicked
+
+    private void master_detail_label3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label3MouseClicked
+        try {
+            ReleaseAllReservation.releaseAllReservation();
+        } catch (Exception ex) {
+            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_master_detail_label3MouseClicked
 
     /**
      * @param args the command line arguments

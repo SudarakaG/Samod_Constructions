@@ -120,7 +120,6 @@ public class Employee_Panel extends javax.swing.JPanel {
         date_picker_joinDate = new org.jdesktop.swingx.JXDatePicker();
         btn_emp_new = new javax.swing.JButton();
         btn_emp_save = new javax.swing.JButton();
-        btn_emp_salary = new javax.swing.JButton();
         lblSubContractor = new javax.swing.JLabel();
         cmb_emp_subContractor = new javax.swing.JComboBox<>();
         jLabel58 = new javax.swing.JLabel();
@@ -422,14 +421,6 @@ public class Employee_Panel extends javax.swing.JPanel {
             }
         });
 
-        btn_emp_salary.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_emp_salary.setText("Salary");
-        btn_emp_salary.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_emp_salaryActionPerformed(evt);
-            }
-        });
-
         lblSubContractor.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lblSubContractor.setText("Sub Contractor");
 
@@ -546,8 +537,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                         .addComponent(btn_emp_save, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_emp_new, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_emp_salary, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(94, 94, 94)))
                 .addContainerGap())
         );
         txt_Input_Panel_Branch2Layout.setVerticalGroup(
@@ -642,8 +632,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                 .addGap(50, 50, 50)
                 .addGroup(txt_Input_Panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_emp_new, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_emp_save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_emp_salary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_emp_save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -679,7 +668,7 @@ public class Employee_Panel extends javax.swing.JPanel {
             .addGroup(Employee_Registration_PanelLayout.createSequentialGroup()
                 .addComponent(bank_panel_hedding3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_Input_Panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(146, 146, 146))
@@ -948,30 +937,6 @@ public class Employee_Panel extends javax.swing.JPanel {
         txt_emp_search1.setText("Search Employee");
         txt_emp_search1.setForeground(Color.GRAY);
     }//GEN-LAST:event_tbl_employeeInfoMouseClicked
-
-    private void btn_emp_salaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_emp_salaryActionPerformed
-        try {
-            if (!txt_nic.getText().equalsIgnoreCase("")) {
-                Employee_Salary employee_Salary = new Employee_Salary(txt_nic.getText());
-                GUI_Home.load_panel.repaint();
-                GUI_Home.load_panel.revalidate();
-                employee_Salary.setSize(GUI_Home.load_panel.getSize());
-                GUI_Home.load_panel.add(employee_Salary);
-                employee_Salary.setVisible(true);
-                this.setVisible(false);
-            } else {
-                Employee_Salary employee_Salary = new Employee_Salary();
-                GUI_Home.load_panel.repaint();
-                GUI_Home.load_panel.revalidate();
-                employee_Salary.setSize(GUI_Home.load_panel.getSize());
-                GUI_Home.load_panel.add(employee_Salary);
-                employee_Salary.setVisible(true);
-                this.setVisible(false);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(Employee_Panel.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_emp_salaryActionPerformed
 
     private void cmb_emp_jobTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_emp_jobTypeActionPerformed
         if (cmb_emp_jobType.getSelectedItem().toString().equalsIgnoreCase("Sub contractor staff")) {
@@ -1254,7 +1219,6 @@ public class Employee_Panel extends javax.swing.JPanel {
     private javax.swing.JPanel bank_panel_hedding5;
     private javax.swing.JButton btn_branch1;
     private javax.swing.JButton btn_emp_new;
-    private javax.swing.JButton btn_emp_salary;
     private javax.swing.JButton btn_emp_save;
     private javax.swing.JComboBox<String> cmb_emp_designation;
     private javax.swing.JComboBox<String> cmb_emp_jobType;

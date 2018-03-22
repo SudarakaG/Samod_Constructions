@@ -61,12 +61,12 @@ public class Expences extends javax.swing.JPanel {
         initComponents();
         New_Expences_Panel.setVisible(false);
         Expences_View_Panel.setVisible(true);
-        
-        dp_expenceDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_entered_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_approved_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_issue_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_receive_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+
+        dp_expenceDate.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_entered_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_approved_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_issue_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_receive_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
 
         expenceSubTypeController = ServerConnector.getServerConnetor().getExpenceSubTypeController();
         expenceTypeController = ServerConnector.getServerConnetor().getExpenceTypeController();
@@ -1237,12 +1237,14 @@ public class Expences extends javax.swing.JPanel {
         try {
             List<T_Expences> allExpences = expencesController.getAllExpences();
             for (T_Expences allExpence : allExpences) {
-                String exDate = "";
-                if (allExpence.getExpence_date() != null) {
-                    exDate = allExpence.getExpence_date().toString();
+                if (allExpence.getExpence_status().equalsIgnoreCase("PENDING")) {
+                    String exDate = "";
+                    if (allExpence.getExpence_date() != null) {
+                        exDate = allExpence.getExpence_date().toString();
+                    }
+                    String[] rowData = {exDate, allExpence.getExpence_invoiceNo(), projectController.searchPrimaryProject(allExpence.getExpence_refSiteId()).getProject_primary_name(), Double.toString(allExpence.getExpence_invoiceAmount()), allExpence.getExpence_description()};
+                    dtmExpenceTable.addRow(rowData);
                 }
-                String[] rowData = {exDate, allExpence.getExpence_invoiceNo(), projectController.searchPrimaryProject(allExpence.getExpence_refSiteId()).getProject_primary_name(), Double.toString(allExpence.getExpence_invoiceAmount()), allExpence.getExpence_description()};
-                dtmExpenceTable.addRow(rowData);
             }
         } catch (Exception ex) {
             Logger.getLogger(Expences.class.getName()).log(Level.SEVERE, null, ex);

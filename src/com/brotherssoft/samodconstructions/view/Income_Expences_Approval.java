@@ -6,15 +6,21 @@
 package com.brotherssoft.samodconstructions.view;
 
 import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
-import com.brotherssoft.samodconstructions.controller.R_DesignationController;
-import com.brotherssoft.samodconstructions.controller.R_JobTypeController;
-import com.brotherssoft.samodconstructions.custom.IDGenerator;
-import com.brotherssoft.samodconstructions.custom.Validation;
+import com.brotherssoft.samodconstructions.controller.M_Project_PrimaryController;
+import com.brotherssoft.samodconstructions.controller.R_ExpenceSubTypeController;
+import com.brotherssoft.samodconstructions.controller.R_ExpenceTypeController;
+import com.brotherssoft.samodconstructions.controller.R_IncomeSubTypeController;
+import com.brotherssoft.samodconstructions.controller.R_IncomeTypeControler;
+import com.brotherssoft.samodconstructions.controller.R_PaymentModeController;
+import com.brotherssoft.samodconstructions.controller.T_ExpencesController;
+import com.brotherssoft.samodconstructions.controller.T_IncomeController;
 import com.brotherssoft.samodconstructions.model.M_Employee;
-import com.brotherssoft.samodconstructions.model.R_Designation;
-import com.brotherssoft.samodconstructions.model.R_JobType;
+import com.brotherssoft.samodconstructions.model.T_Expences;
+import com.brotherssoft.samodconstructions.model.T_Income;
 import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
-import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -28,10 +34,17 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Income_Expences_Approval extends javax.swing.JPanel {
 
-    R_JobTypeController jobTypeController;
-    R_DesignationController designationController;
     M_EmployeeController employeeController;
-    DefaultTableModel dtmEmployee;
+    T_IncomeController incomeController;
+    T_ExpencesController expencesController;
+    R_ExpenceTypeController expenceTypeController;
+    R_ExpenceSubTypeController expenceSubTypeController;
+    R_PaymentModeController paymentModeController;
+    R_IncomeTypeControler incomeTypeControler;
+    R_IncomeSubTypeController incomeSubTypeController;
+    M_Project_PrimaryController projectController;
+    DefaultTableModel dtmPendingIE;
+    DefaultTableModel dtmApproval;
     public static int empIdPub;
 
     /**
@@ -39,8 +52,29 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
      */
     public Income_Expences_Approval() throws Exception {
         initComponents();
-       New_Expences_Panel.setVisible(false);
-       Expences_View_Panel.setVisible(true);
+        dp_accountDate.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_accountDate.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_accountDate.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_accountDate.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_accountDate.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        New_Expences_Panel.setVisible(false);
+        Expences_View_Panel.setVisible(true);
+
+        incomeController = ServerConnector.getServerConnetor().getIncomeController();
+        expencesController = ServerConnector.getServerConnetor().getExpencesController();
+        employeeController = ServerConnector.getServerConnetor().getEmployeeController();
+        expenceTypeController = ServerConnector.getServerConnetor().getExpenceTypeController();
+        expenceSubTypeController = ServerConnector.getServerConnetor().getExpenceSubTypeController();
+        incomeTypeControler = ServerConnector.getServerConnetor().getIncomeTypeControler();
+        incomeSubTypeController = ServerConnector.getServerConnetor().getIncomeSubTypeController();
+        projectController = ServerConnector.getServerConnetor().getPrimary_ProjectController();
+        paymentModeController = ServerConnector.getServerConnetor().getPaymentModeController();
+
+        dtmPendingIE = (DefaultTableModel) tbl_pendingIncomeExpences.getModel();
+        dtmApproval = (DefaultTableModel) tble_approval.getModel();
+
+        loadPendinIEDetails();
+        loadEmpCombo();
 
     }
 
@@ -56,7 +90,6 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         New_Expences_Panel = new javax.swing.JPanel();
-        txt_emp_search2 = new javax.swing.JTextField();
         bank_panel_hedding3 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
@@ -64,44 +97,26 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         txt_Input_Panel_Branch1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jXTable1 = new org.jdesktop.swingx.JXTable();
-        btn_new_primary_project5 = new javax.swing.JButton();
-        btn_new_primary_project2 = new javax.swing.JButton();
+        tble_approval = new org.jdesktop.swingx.JXTable();
+        btn_transfer_approval = new javax.swing.JButton();
+        cmb_approved_emp = new javax.swing.JComboBox<>();
+        dp_approvedDate = new org.jdesktop.swingx.JXDatePicker();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        dp_accountDate = new org.jdesktop.swingx.JXDatePicker();
+        jLabel3 = new javax.swing.JLabel();
         Expences_View_Panel = new javax.swing.JPanel();
         bank_panel_hedding5 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
         jLabel61 = new javax.swing.JLabel();
         jSeparator11 = new javax.swing.JSeparator();
         tbl_panel_Branch2 = new javax.swing.JPanel();
-        btn_branch1 = new javax.swing.JButton();
         jScrollPane8 = new javax.swing.JScrollPane();
-        tbl_employeeInfo = new javax.swing.JTable();
-        txt_emp_search1 = new javax.swing.JTextField();
+        tbl_pendingIncomeExpences = new javax.swing.JTable();
+        dp_accountDateSearch = new org.jdesktop.swingx.JXDatePicker();
 
         New_Expences_Panel.setBackground(new java.awt.Color(255, 255, 255));
         New_Expences_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
-
-        txt_emp_search2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txt_emp_search2.setForeground(new java.awt.Color(102, 102, 102));
-        txt_emp_search2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_emp_search2.setText("yyyy/mm/dd");
-        txt_emp_search2.setToolTipText("Use Invoice Number To Search !");
-        txt_emp_search2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_emp_search2MouseClicked(evt);
-            }
-        });
-        txt_emp_search2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_emp_search2KeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_emp_search2KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_emp_search2KeyTyped(evt);
-            }
-        });
 
         bank_panel_hedding3.setBackground(new java.awt.Color(122, 72, 222));
 
@@ -156,60 +171,60 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
         txt_Input_Panel_Branch1.setBackground(new java.awt.Color(255, 255, 255));
         txt_Input_Panel_Branch1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pending Approvels", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
-        jXTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tble_approval.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Approve", "Project", "Transaction", "Sub Transaction", "Amount", "Desc", "Payment Mode", "Enterd Employee", "Referance No"
+                "Approve", "Type", "Project", "Transaction", "Sub Transaction", "Amount", "Desc", "Payment Mode", "Enterd Employee", "Referance No"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -220,29 +235,49 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jXTable1);
+        jScrollPane1.setViewportView(tble_approval);
 
-        btn_new_primary_project5.setBackground(new java.awt.Color(255, 0, 51));
-        btn_new_primary_project5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_new_primary_project5.setForeground(new java.awt.Color(255, 255, 255));
-        btn_new_primary_project5.setText("Reject");
-        btn_new_primary_project5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_new_primary_project5.addActionListener(new java.awt.event.ActionListener() {
+        btn_transfer_approval.setBackground(new java.awt.Color(51, 51, 255));
+        btn_transfer_approval.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_transfer_approval.setForeground(new java.awt.Color(255, 255, 255));
+        btn_transfer_approval.setText("Transfer");
+        btn_transfer_approval.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_transfer_approval.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_new_primary_project5ActionPerformed(evt);
+                btn_transfer_approvalActionPerformed(evt);
             }
         });
 
-        btn_new_primary_project2.setBackground(new java.awt.Color(51, 51, 255));
-        btn_new_primary_project2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_new_primary_project2.setForeground(new java.awt.Color(255, 255, 255));
-        btn_new_primary_project2.setText("Approve");
-        btn_new_primary_project2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_new_primary_project2.addActionListener(new java.awt.event.ActionListener() {
+        cmb_approved_emp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Approved Employee -" }));
+        cmb_approved_emp.setPreferredSize(new java.awt.Dimension(167, 25));
+        cmb_approved_emp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_new_primary_project2ActionPerformed(evt);
+                cmb_approved_empActionPerformed(evt);
             }
         });
+
+        dp_approvedDate.setPreferredSize(new java.awt.Dimension(110, 25));
+        dp_approvedDate.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                dp_approvedDateComponentAdded(evt);
+            }
+        });
+        dp_approvedDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dp_approvedDateActionPerformed(evt);
+            }
+        });
+        dp_approvedDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                dp_approvedDatePropertyChange(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setText("Approved Date");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("Approved Employee");
 
         javax.swing.GroupLayout txt_Input_Panel_Branch1Layout = new javax.swing.GroupLayout(txt_Input_Panel_Branch1);
         txt_Input_Panel_Branch1.setLayout(txt_Input_Panel_Branch1Layout);
@@ -250,13 +285,19 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
             txt_Input_Panel_Branch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(txt_Input_Panel_Branch1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(txt_Input_Panel_Branch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(txt_Input_Panel_Branch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1)
                     .addGroup(txt_Input_Panel_Branch1Layout.createSequentialGroup()
-                        .addComponent(btn_new_primary_project2)
-                        .addGap(46, 46, 46)
-                        .addComponent(btn_new_primary_project5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_approved_emp, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dp_approvedDate, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_transfer_approval)))
                 .addContainerGap())
         );
         txt_Input_Panel_Branch1Layout.setVerticalGroup(
@@ -266,12 +307,36 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(txt_Input_Panel_Branch1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_new_primary_project2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_new_primary_project5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_transfer_approval, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmb_approved_emp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dp_approvedDate, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        txt_Input_Panel_Branch1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_new_primary_project2, btn_new_primary_project5});
+        dp_accountDate.setEditable(false);
+        dp_accountDate.setEnabled(false);
+        dp_accountDate.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        dp_accountDate.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                dp_accountDateComponentAdded(evt);
+            }
+        });
+        dp_accountDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dp_accountDateActionPerformed(evt);
+            }
+        });
+        dp_accountDate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                dp_accountDatePropertyChange(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setText("* Mark Approving Data by Ticking & Click Transfer. Other (Unmarked) Data will Send Back to Reconsideriation.");
 
         javax.swing.GroupLayout New_Expences_PanelLayout = new javax.swing.GroupLayout(New_Expences_Panel);
         New_Expences_Panel.setLayout(New_Expences_PanelLayout);
@@ -285,8 +350,10 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
                         .addGroup(New_Expences_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_Input_Panel_Branch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(New_Expences_PanelLayout.createSequentialGroup()
-                                .addComponent(txt_emp_search2, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(dp_accountDate, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(8, 8, 8))
         );
@@ -294,13 +361,14 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
             New_Expences_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(New_Expences_PanelLayout.createSequentialGroup()
                 .addComponent(bank_panel_hedding3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(13, 13, 13)
                 .addGroup(New_Expences_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_emp_search2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(jButton4)
+                    .addComponent(dp_accountDate, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_Input_Panel_Branch1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(txt_Input_Panel_Branch1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Expences_View_Panel.setBackground(new java.awt.Color(255, 255, 255));
@@ -346,91 +414,76 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
         tbl_panel_Branch2.setBackground(new java.awt.Color(255, 255, 255));
         tbl_panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Currunt Inomes and Expences ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
-        btn_branch1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_branch1.setText("Approve Pending ");
-        btn_branch1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_branch1MouseClicked(evt);
-            }
-        });
-        btn_branch1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_branch1ActionPerformed(evt);
-            }
-        });
-
-        tbl_employeeInfo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tbl_employeeInfo.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_pendingIncomeExpences.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tbl_pendingIncomeExpences.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Date", "Income", "Expence"
+                "Date", "Type"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tbl_employeeInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tbl_employeeInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbl_pendingIncomeExpences.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_pendingIncomeExpences.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_employeeInfoMouseClicked(evt);
+                tbl_pendingIncomeExpencesMouseClicked(evt);
             }
         });
-        jScrollPane8.setViewportView(tbl_employeeInfo);
+        jScrollPane8.setViewportView(tbl_pendingIncomeExpences);
+        if (tbl_pendingIncomeExpences.getColumnModel().getColumnCount() > 0) {
+            tbl_pendingIncomeExpences.getColumnModel().getColumn(1).setHeaderValue("Type");
+        }
 
-        txt_emp_search1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        txt_emp_search1.setForeground(new java.awt.Color(102, 102, 102));
-        txt_emp_search1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt_emp_search1.setText("yyyy/mm/dd");
-        txt_emp_search1.setToolTipText("Use Invoice Number To Search !");
-        txt_emp_search1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txt_emp_search1MouseClicked(evt);
+        dp_accountDateSearch.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        dp_accountDateSearch.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                dp_accountDateSearchComponentAdded(evt);
             }
         });
-        txt_emp_search1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_emp_search1KeyPressed(evt);
+        dp_accountDateSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dp_accountDateSearchActionPerformed(evt);
             }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_emp_search1KeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_emp_search1KeyTyped(evt);
+        });
+        dp_accountDateSearch.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                dp_accountDateSearchPropertyChange(evt);
             }
         });
 
@@ -438,23 +491,19 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
         tbl_panel_Branch2.setLayout(tbl_panel_Branch2Layout);
         tbl_panel_Branch2Layout.setHorizontalGroup(
             tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane8)
-            .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
-                .addComponent(btn_branch1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txt_emp_search1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 1036, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbl_panel_Branch2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dp_accountDateSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         tbl_panel_Branch2Layout.setVerticalGroup(
             tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tbl_panel_Branch2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_branch1)
-                    .addComponent(txt_emp_search1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addComponent(dp_accountDateSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout Expences_View_PanelLayout = new javax.swing.GroupLayout(Expences_View_Panel);
@@ -489,7 +538,7 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Expences_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(New_Expences_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE))
+                .addComponent(New_Expences_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 713, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -504,67 +553,121 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_branch1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_branch1MouseClicked
-        
-    }//GEN-LAST:event_btn_branch1MouseClicked
-
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        
+
     }//GEN-LAST:event_jButton4MouseClicked
 
-    private void btn_branch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_branch1ActionPerformed
-       New_Expences_Panel.setVisible(true);
-       Expences_View_Panel.setVisible(false);
-    }//GEN-LAST:event_btn_branch1ActionPerformed
-
-    private void tbl_employeeInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_employeeInfoMouseClicked
-       
-    }//GEN-LAST:event_tbl_employeeInfoMouseClicked
+    private void tbl_pendingIncomeExpencesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_pendingIncomeExpencesMouseClicked
+        clearFields();
+        try {
+            Date parse = new SimpleDateFormat("yyyy-MM-dd").parse(dtmPendingIE.getValueAt(tbl_pendingIncomeExpences.getSelectedRow(), 0).toString());
+            dp_accountDate.setDate(parse);
+        } catch (ParseException ex) {
+            Logger.getLogger(Income_Expences_Approval.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        New_Expences_Panel.setVisible(true);
+        Expences_View_Panel.setVisible(false);
+    }//GEN-LAST:event_tbl_pendingIncomeExpencesMouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       New_Expences_Panel.setVisible(false);
-       Expences_View_Panel.setVisible(true);
+        New_Expences_Panel.setVisible(false);
+        Expences_View_Panel.setVisible(true);
+        loadPendinIEDetails();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void txt_emp_search1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyTyped
+    private void btn_transfer_approvalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transfer_approvalActionPerformed
+        transferApproval();
+    }//GEN-LAST:event_btn_transfer_approvalActionPerformed
 
-    }//GEN-LAST:event_txt_emp_search1KeyTyped
+    private void dp_accountDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_accountDateActionPerformed
+        loadApprovalDetails();
+    }//GEN-LAST:event_dp_accountDateActionPerformed
 
-    private void txt_emp_search1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyReleased
+    private void dp_accountDateComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_dp_accountDateComponentAdded
+    }//GEN-LAST:event_dp_accountDateComponentAdded
 
-    }//GEN-LAST:event_txt_emp_search1KeyReleased
+    private void dp_accountDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dp_accountDatePropertyChange
+        if (dp_accountDate.getDate() != null) {
+            loadApprovalDetails();
+            btn_transfer_approval.setEnabled(false);
+        }
 
-    private void txt_emp_search1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search1KeyPressed
+    }//GEN-LAST:event_dp_accountDatePropertyChange
 
-    }//GEN-LAST:event_txt_emp_search1KeyPressed
-
-    private void txt_emp_search1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_emp_search1MouseClicked
-
-    }//GEN-LAST:event_txt_emp_search1MouseClicked
-
-    private void txt_emp_search2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_emp_search2MouseClicked
+    private void dp_approvedDateComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_dp_approvedDateComponentAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_emp_search2MouseClicked
+    }//GEN-LAST:event_dp_approvedDateComponentAdded
 
-    private void txt_emp_search2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search2KeyPressed
+    private void dp_approvedDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_approvedDateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_emp_search2KeyPressed
+    }//GEN-LAST:event_dp_approvedDateActionPerformed
 
-    private void txt_emp_search2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search2KeyReleased
+    private void dp_approvedDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dp_approvedDatePropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_emp_search2KeyReleased
+    }//GEN-LAST:event_dp_approvedDatePropertyChange
 
-    private void txt_emp_search2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emp_search2KeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_emp_search2KeyTyped
+    private void cmb_approved_empActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_approved_empActionPerformed
+        btn_transfer_approval.setEnabled(true);
+    }//GEN-LAST:event_cmb_approved_empActionPerformed
 
-    private void btn_new_primary_project2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_project2ActionPerformed
+    private void dp_accountDateSearchComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_dp_accountDateSearchComponentAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_new_primary_project2ActionPerformed
+    }//GEN-LAST:event_dp_accountDateSearchComponentAdded
 
-    private void btn_new_primary_project5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_new_primary_project5ActionPerformed
+    private void dp_accountDateSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dp_accountDateSearchActionPerformed
+        dtmPendingIE.setRowCount(0);
+        try {
+            List<Date> inDateList = new ArrayList<>();
+            List<T_Income> allIncomes = incomeController.getAllIncomes();
+            for (T_Income allIncome : allIncomes) {
+                if (allIncome.getIncome_status().equalsIgnoreCase("REQUESTED") && allIncome.getIncome_date() == dp_accountDateSearch.getDate()) {
+                    if (inDateList.size() != 0) {
+                        for (int i = 0; i < inDateList.size(); i++) {
+                            if (inDateList.get(i) == allIncome.getIncome_date()) {
+                                inDateList.remove(i);
+                            }
+                        }
+                        inDateList.add(allIncome.getIncome_date());
+                    } else {
+                        inDateList.add(allIncome.getIncome_date());
+                    }
+                }
+            }
+
+            List<T_Expences> allExpences = expencesController.getAllExpences();
+            List<Date> exDateList = new ArrayList<>();
+            for (T_Expences allExpence : allExpences) {
+                if (allExpence.getExpence_status().equalsIgnoreCase("REQUESTED") && allExpence.getExpence_date() == dp_accountDateSearch.getDate()) {
+                    if (exDateList.size() != 0) {
+                        for (int i = 0; i < exDateList.size(); i++) {
+                            if (exDateList.get(i) == allExpence.getExpence_date()) {
+                                exDateList.remove(i);
+                            }
+                        }
+                        exDateList.add(allExpence.getExpence_date());
+                    } else {
+                        exDateList.add(allExpence.getExpence_date());
+                    }
+                }
+            }
+
+            for (Date date : exDateList) {
+                Object[] rowDataex = {date, "EXPENCE"};
+                dtmPendingIE.addRow(rowDataex);
+            }
+            for (Date date : inDateList) {
+                Object[] rowDataIn = {date, "INCOME"};
+                dtmPendingIE.addRow(rowDataIn);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Income_Expences_Approval.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_dp_accountDateSearchActionPerformed
+
+    private void dp_accountDateSearchPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dp_accountDateSearchPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_new_primary_project5ActionPerformed
+    }//GEN-LAST:event_dp_accountDateSearchPropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -572,12 +675,17 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
     private javax.swing.JPanel New_Expences_Panel;
     private javax.swing.JPanel bank_panel_hedding3;
     private javax.swing.JPanel bank_panel_hedding5;
-    private javax.swing.JButton btn_branch1;
-    private javax.swing.JButton btn_new_primary_project2;
-    private javax.swing.JButton btn_new_primary_project5;
+    private javax.swing.JButton btn_transfer_approval;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cmb_approved_emp;
+    private org.jdesktop.swingx.JXDatePicker dp_accountDate;
+    private org.jdesktop.swingx.JXDatePicker dp_accountDateSearch;
+    private org.jdesktop.swingx.JXDatePicker dp_approvedDate;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
@@ -586,14 +694,296 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator9;
-    private org.jdesktop.swingx.JXTable jXTable1;
-    private javax.swing.JTable tbl_employeeInfo;
     private javax.swing.JPanel tbl_panel_Branch2;
+    private javax.swing.JTable tbl_pendingIncomeExpences;
+    private org.jdesktop.swingx.JXTable tble_approval;
     private javax.swing.JPanel txt_Input_Panel_Branch1;
-    private javax.swing.JTextField txt_emp_search1;
-    private javax.swing.JTextField txt_emp_search2;
     // End of variables declaration//GEN-END:variables
 
-   
-    
+    private void loadPendinIEDetails() {
+        dtmPendingIE.setRowCount(0);
+        try {
+            List<Date> inDateList = new ArrayList<>();
+            List<T_Income> allIncomes = incomeController.getAllIncomes();
+            for (T_Income allIncome : allIncomes) {
+                if (allIncome.getIncome_status().equalsIgnoreCase("REQUESTED")) {
+                    if (inDateList.size() != 0) {
+                        for (int i = 0; i < inDateList.size(); i++) {
+                            if (inDateList.get(i) == allIncome.getIncome_date()) {
+                                inDateList.remove(i);
+                            }
+                        }
+                        inDateList.add(allIncome.getIncome_date());
+                    } else {
+                        inDateList.add(allIncome.getIncome_date());
+                    }
+                }
+            }
+
+            List<T_Expences> allExpences = expencesController.getAllExpences();
+            List<Date> exDateList = new ArrayList<>();
+            for (T_Expences allExpence : allExpences) {
+                if (allExpence.getExpence_status().equalsIgnoreCase("REQUESTED")) {
+                    if (exDateList.size() != 0) {
+                        for (int i = 0; i < exDateList.size(); i++) {
+                            if (exDateList.get(i) == allExpence.getExpence_date()) {
+                                exDateList.remove(i);
+                            }
+                        }
+                        exDateList.add(allExpence.getExpence_date());
+                    } else {
+                        exDateList.add(allExpence.getExpence_date());
+                    }
+                }
+            }
+
+            for (Date date : exDateList) {
+                Object[] rowDataex = {date, "EXPENCE"};
+                dtmPendingIE.addRow(rowDataex);
+            }
+            for (Date date : inDateList) {
+                Object[] rowDataIn = {date, "INCOME"};
+                dtmPendingIE.addRow(rowDataIn);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Income_Expences_Approval.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadApprovalDetails() {
+        dtmApproval.setRowCount(0);
+        System.out.println("date eka wada...");
+
+        try {
+            String accDate = null;
+            if (dp_accountDate.getDate() != null) {
+                accDate = new SimpleDateFormat("yyyy-MM-dd").format(dp_accountDate.getDate());
+            }
+
+            System.out.println("DDDDD" + accDate);
+            String expenceType = "";
+            String exSubType = "";
+            String inType = "";
+            String inSubType = "";
+            String payMode = "";
+            String enteredEmp = "";
+            String project = "";
+            List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
+            List<T_Income> allIncomes = incomeController.getAllIncomes();
+            for (T_Income allIncome : allIncomes) {
+                System.out.println(">>>>>" + allIncome.getIncome_date());
+                if (allIncome.getIncome_status().equalsIgnoreCase("REQUESTED") && allIncome.getIncome_date().toString().equalsIgnoreCase(accDate)) {
+                    System.out.println("Income hari");
+                    if (allIncome.getIncome_typeId() != 0) {
+                        inType = incomeTypeControler.searchIncomeType(allIncome.getIncome_typeId()).getIncomeType_name();
+                    } else {
+                        inType = "";
+                    }
+                    if (allIncome.getIncome_subTypeId() != 0) {
+                        inSubType = incomeSubTypeController.searchIncomeSubType(allIncome.getIncome_subTypeId()).getIncomeSubType_name();
+                    } else {
+                        inSubType = "";
+                    }
+                    if (allIncome.getIncome_paymentModeId() != 0) {
+                        payMode = paymentModeController.searchPaymentMode(allIncome.getIncome_paymentModeId()).getPaymentMode_name();
+                    } else {
+                        payMode = "";
+                    }
+                    if (allIncome.getIncome_enteredUser() != 0) {
+                        for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+                            if (allIncome.getIncome_enteredUser() == allLastAddedEmployee.getEmp_id()) {
+                                enteredEmp = allLastAddedEmployee.getEmp_initials() + " " + allLastAddedEmployee.getEmp_firstName();
+                                break;
+                            }
+                        }
+
+                    } else {
+                        enteredEmp = "";
+                    }
+                    if (allIncome.getIncome_siteId() != 0) {
+                        project = projectController.searchPrimaryProject(allIncome.getIncome_siteId()).getProject_primary_name();
+                    } else {
+                        project = "";
+                    }
+
+                    Object[] rowData = {false, "INCOME", project, inType, inSubType, allIncome.getIncome_billAmount(), allIncome.getIncome_description(), payMode, enteredEmp, allIncome.getIncome_paymentVoucherNo()};
+                    dtmApproval.addRow(rowData);
+                }
+            }
+            List<T_Expences> allExpences = expencesController.getAllExpences();
+
+            for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+
+            }
+
+            for (T_Expences allExpence : allExpences) {
+                if (allExpence.getExpence_status().equalsIgnoreCase("REQUESTED") && allExpence.getExpence_date().toString().equalsIgnoreCase(accDate)) {
+                    System.out.println("Expence Hari");
+                    if (allExpence.getExpence_typeId() != 0) {
+                        expenceType = expenceTypeController.searchExpencesType(allExpence.getExpence_typeId()).getExpencesType_name();
+                    }
+                    if (allExpence.getExpence_subTypeId() != 0) {
+                        exSubType = expenceSubTypeController.searchExpencesSubType(allExpence.getExpence_subTypeId()).getExpencesSubTytpe_name();
+                    }
+                    if (allExpence.getExpence_paymentModeId() != 0) {
+                        payMode = paymentModeController.searchPaymentMode(allExpence.getExpence_paymentModeId()).getPaymentMode_name();
+                    }
+                    if (allExpence.getExpence_enteredUser() != 0) {
+                        for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+                            if (allExpence.getExpence_enteredUser() == allLastAddedEmployee.getEmp_id()) {
+                                enteredEmp = allLastAddedEmployee.getEmp_initials() + " " + allLastAddedEmployee.getEmp_firstName();
+                                break;
+                            }
+                        }
+
+                    }
+                    if (allExpence.getExpence_refSiteId() != 0) {
+                        project = projectController.searchPrimaryProject(allExpence.getExpence_refSiteId()).getProject_primary_name();
+                    }
+
+                    Object[] rowData = {false, "EXPENCE", project, expenceType, exSubType, allExpence.getExpence_invoiceAmount(), allExpence.getExpence_description(), payMode, enteredEmp, allExpence.getExpence_invoiceNo()};
+                    dtmApproval.addRow(rowData);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Income_Expences_Approval.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void transferApproval() {
+        try {
+            int approvedEmp = 0;
+            if (cmb_approved_emp.getSelectedIndex() != 0) {
+                approvedEmp = Integer.parseInt(cmb_approved_emp.getSelectedItem().toString().split(" : ")[0]);
+            }
+            Date approvedDate = dp_approvedDate.getDate();
+            boolean updated = true;
+            Date accDate = dp_accountDate.getDate();
+            for (int i = 0; i < dtmApproval.getRowCount(); i++) {
+
+                if (dtmApproval.getValueAt(i, 1).toString().equalsIgnoreCase("EXPENCE")) {
+                    int exTypeID = 0;
+                    int exSubTypeId = 0;
+                    int projectId = 0;
+                    double amount = 0;
+                    if (!"".equals(dtmApproval.getValueAt(i, 3).toString())) {
+                        exTypeID = expenceTypeController.searchExpencesType(dtmApproval.getValueAt(i, 3).toString()).getExpencesType_id();
+                    } else {
+                        exTypeID = 0;
+                    }
+                    if (!"".equals(dtmApproval.getValueAt(i, 4).toString())) {
+                        exSubTypeId = expenceSubTypeController.searchExpencesSubType(dtmApproval.getValueAt(i, 4).toString()).getExpencesSubTytpe_id();
+                    } else {
+                        exSubTypeId = 0;
+                    }
+                    if (!"".equals(dtmApproval.getValueAt(i, 2).toString())) {
+                        projectId = projectController.searchPrimaryProjectByName(dtmApproval.getValueAt(i, 2).toString()).getProject_id();
+                    } else {
+                        projectId = 0;
+                    }
+                    if (!"".equals(dtmApproval.getValueAt(i, 5).toString())) {
+                        amount = Double.parseDouble(dtmApproval.getValueAt(i, 5).toString());
+                    } else {
+                        amount = 0;
+                    }
+                    T_Expences searchExpence = expencesController.searchExpence(accDate, exTypeID, exSubTypeId, projectId, amount);
+
+                    boolean status = (boolean) dtmApproval.getValueAt(i, 0);
+                    if (status) {
+                        searchExpence.setExpence_status("APPROVED");
+                        searchExpence.setExpence_approvedDate(approvedDate);
+                        searchExpence.setExpence_approvedUser(approvedEmp);
+
+                    } else {
+                        searchExpence.setExpence_status("PENDING");
+                    }
+                    if (updated) {
+                        boolean updateExpence = expencesController.updateExpence(searchExpence);
+                        if (updateExpence) {
+                            updated = true;
+                        } else {
+                            updated = false;
+                        }
+                    }
+
+                } else {
+                    int inTypeId = 0;
+                    int inSubTypeId = 0;
+                    int projectId = 0;
+                    double value = 0;
+                    if (!"".equals(dtmApproval.getValueAt(i, 3).toString())) {
+                        inTypeId = incomeTypeControler.searchIncomeType(dtmApproval.getValueAt(i, 3).toString()).getIncomeType_id();
+                    } else {
+                        inTypeId = 0;
+                    }
+                    if (!"".equals(dtmApproval.getValueAt(i, 4).toString())) {
+                        inSubTypeId = incomeSubTypeController.searchIncomeSubType(dtmApproval.getValueAt(i, 4).toString()).getIncomeSubType_id();
+                    } else {
+                        inSubTypeId = 0;
+                    }
+                    if (!"".equals(dtmApproval.getValueAt(i, 2).toString())) {
+                        projectId = projectController.searchPrimaryProjectByName(dtmApproval.getValueAt(i, 2).toString()).getProject_id();
+                    } else {
+                        projectId = 0;
+                    }
+                    if (!"".equals(dtmApproval.getValueAt(i, 5).toString())) {
+                        value = Double.parseDouble(dtmApproval.getValueAt(i, 5).toString());
+                    } else {
+                        value = 0;
+                    }
+                    T_Income searchIncome = incomeController.searchIncome(accDate, inTypeId, inSubTypeId, projectId, value);
+                    if ((boolean) dtmApproval.getValueAt(i, 0) == true) {
+                        searchIncome.setIncome_status("APPROVED");
+                        searchIncome.setIncome_approvedDate(approvedDate);
+                        searchIncome.setIncome_approvedUser(approvedEmp);
+                    } else {
+                        searchIncome.setIncome_status("PENDING");
+                    }
+                    if (updated) {
+                        boolean updateIncome = incomeController.updateIncome(searchIncome);
+                        if (updateIncome) {
+                            updated = true;
+                        } else {
+                            updated = false;
+                        }
+                    }
+                }
+            }
+
+            if (updated) {
+                JOptionPane.showMessageDialog(this, "Approval Transfered Successfully..");
+                clearFields();
+                New_Expences_Panel.setVisible(false);
+                Expences_View_Panel.setVisible(true);
+                loadPendinIEDetails();
+            } else {
+                JOptionPane.showMessageDialog(this, "Something Went Wrong.. Please Check Again..");
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(Income_Expences_Approval.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void clearFields() {
+        dp_accountDate.setDate(null);
+        dp_approvedDate.setDate(null);
+        cmb_approved_emp.setSelectedIndex(0);
+    }
+
+    private void loadEmpCombo() {
+        cmb_approved_emp.removeAll();
+        try {
+            List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
+            for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+                if (allLastAddedEmployee.getEmp_jobType_id() == 1) {
+                    cmb_approved_emp.addItem(allLastAddedEmployee.getEmp_id()+" : "+allLastAddedEmployee.getEmp_initials()+" "+allLastAddedEmployee.getEmp_firstName()+" "+allLastAddedEmployee.getEmp_middleName());
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Income_Expences_Approval.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

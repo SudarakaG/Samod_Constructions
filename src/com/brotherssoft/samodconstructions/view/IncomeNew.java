@@ -56,11 +56,11 @@ public class IncomeNew extends javax.swing.JPanel {
         initComponents();
         New_Expences_Panel.setVisible(false);
         Expences_View_Panel.setVisible(true);
-        dp_incomeDate.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_enterd_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_approved_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_issue_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        dp_receive_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
+        dp_incomeDate.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_enterd_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_approved_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_issue_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        dp_receive_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
 
         incomeTypeControler = ServerConnector.getServerConnetor().getIncomeTypeControler();
         incomeSubTypeController = ServerConnector.getServerConnetor().getIncomeSubTypeController();
@@ -1185,11 +1185,13 @@ public class IncomeNew extends javax.swing.JPanel {
             String date = "";
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             for (T_Income allIncome : allIncomes) {
-                if (allIncome.getIncome_date() != null) {
-                    date = sdf.format(allIncome.getIncome_date());
+                if (allIncome.getIncome_status().equalsIgnoreCase("PENDING")) {
+                    if (allIncome.getIncome_date() != null) {
+                        date = sdf.format(allIncome.getIncome_date());
+                    }
+                    String[] rowData = {date, allIncome.getIncome_paymentVoucherNo(), siteController.searchPrimaryProject(allIncome.getIncome_siteId()).getProject_primary_name(), Double.toString(allIncome.getIncome_billAmount()), allIncome.getIncome_description()};
+                    dtmIncome.addRow(rowData);
                 }
-                String[] rowData = {date, allIncome.getIncome_paymentVoucherNo(), siteController.searchPrimaryProject(allIncome.getIncome_siteId()).getProject_primary_name(), Double.toString(allIncome.getIncome_billAmount()), allIncome.getIncome_description()};
-                dtmIncome.addRow(rowData);
             }
         } catch (Exception ex) {
             Logger.getLogger(IncomeNew.class.getName()).log(Level.SEVERE, null, ex);
