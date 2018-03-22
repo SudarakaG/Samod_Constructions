@@ -24,13 +24,14 @@ public class Samod_Constructions_Pvt_Ltd {
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String[] args) {
-      
-                    for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+
+        
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
             if ("Nimbus".equals(info.getName())) {
                 try {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
+
                     break;
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(Samod_Constructions_Pvt_Ltd.class.getName()).log(Level.SEVERE, null, ex);
@@ -44,20 +45,21 @@ public class Samod_Constructions_Pvt_Ltd {
             }
         }
 
+        
+
         Splash s = new Splash();
         s.setVisible(true);
-         Login login = new Login();
+        Login login = new Login();
 
         for (int i = 0; i < 101; i++) {
-            
+
             try {
                 Thread.sleep(60);
-                s.jLabel4.setText(Integer.toString(i)+"%");
+                s.jLabel4.setText(Integer.toString(i) + "%");
             } catch (InterruptedException ex) {
                 Logger.getLogger(Samod_Constructions_Pvt_Ltd.class.getName()).log(Level.SEVERE, null, ex);
             }
-             
-          
+
         }
         s.dispose();
         login.setVisible(true);

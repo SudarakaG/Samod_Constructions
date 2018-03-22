@@ -5,6 +5,7 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -98,7 +99,7 @@ public class Home_Panel extends javax.swing.JPanel {
         );
 
         jPanel6.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 3));
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 3));
         jPanel6.setOpaque(false);
         jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -148,7 +149,7 @@ public class Home_Panel extends javax.swing.JPanel {
         );
 
         jPanel7.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 3));
+        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 3));
         jPanel7.setOpaque(false);
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -191,7 +192,7 @@ public class Home_Panel extends javax.swing.JPanel {
         );
 
         jPanel8.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 3));
+        jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 3));
         jPanel8.setOpaque(false);
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -234,7 +235,7 @@ public class Home_Panel extends javax.swing.JPanel {
         );
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 3));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 3));
         jPanel1.setOpaque(false);
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -276,7 +277,7 @@ public class Home_Panel extends javax.swing.JPanel {
         );
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 3));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 3));
         jPanel2.setOpaque(false);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -318,7 +319,7 @@ public class Home_Panel extends javax.swing.JPanel {
         );
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51), 3));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 3));
         jPanel3.setOpaque(false);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -489,6 +490,8 @@ public class Home_Panel extends javax.swing.JPanel {
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         JOptionPane.showMessageDialog(null, "this function is currently not supported to your system. \n please contact the developers to activate this feature.. \n You will be able to contact any user who logged into the system. \n NOTE :- this feature is currently under testing mode.. \n if you want to activate this feature you will be charged.");
+       
+        
     }//GEN-LAST:event_jLabel10MouseClicked
 
 
