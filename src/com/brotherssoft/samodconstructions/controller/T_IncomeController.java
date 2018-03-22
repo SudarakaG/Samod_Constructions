@@ -23,6 +23,7 @@ public interface T_IncomeController extends Remote{
     public List<T_Income> getAllIncomes()throws Exception;
     public List<T_Income> getIncomesByLetter(String phrase)throws Exception;
     public T_Income searchIncome(Date date, int project, double amount)throws Exception;
+    public T_Income searchIncome(Date date, int inType, int inSubType, int project, double amount)throws Exception;
     
     public boolean reserveIncome(int id)throws Exception;
     public boolean releaseIncome(int id)throws Exception;

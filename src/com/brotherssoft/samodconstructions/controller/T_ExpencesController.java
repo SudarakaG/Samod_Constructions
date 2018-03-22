@@ -23,6 +23,7 @@ public interface T_ExpencesController extends Remote{
     public List<T_Expences> getAllExpences()throws Exception;
     public List<T_Expences> getExpencesByLetter(String phrase)throws Exception;
     public T_Expences searchExpence(Date date, int project, double amount)throws Exception;
+    public T_Expences searchExpence(Date date, int exType, int exSubType, int project, double amount)throws Exception;
     
     public boolean reserveExpence(int id)throws Exception;
     public boolean releaseExpence(int id)throws Exception;
