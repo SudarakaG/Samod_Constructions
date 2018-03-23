@@ -152,16 +152,19 @@ public class IncomeNew extends javax.swing.JPanel {
         New_Expences_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
         New_Expences_Panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bank_panel_hedding3.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding3.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel24.setBackground(new java.awt.Color(255, 255, 255));
         jLabel24.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Administrations / System Management / Accounting / Income Manager");
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Income Manager");
+
+        jSeparator9.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator9.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_hedding3Layout = new javax.swing.GroupLayout(bank_panel_hedding3);
         bank_panel_hedding3.setLayout(bank_panel_hedding3Layout);
@@ -171,11 +174,11 @@ public class IncomeNew extends javax.swing.JPanel {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator9, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE))
+                .addComponent(jSeparator9, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE))
             .addGroup(bank_panel_hedding3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel24)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 512, Short.MAX_VALUE))
         );
         bank_panel_hedding3Layout.setVerticalGroup(
             bank_panel_hedding3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,13 +186,13 @@ public class IncomeNew extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bank_panel_hedding3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(bank_panel_hedding3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel28)
-                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        New_Expences_Panel.add(bank_panel_hedding3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, -1));
+        New_Expences_Panel.add(bank_panel_hedding3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, -1));
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setText("Income List");
@@ -605,16 +608,19 @@ public class IncomeNew extends javax.swing.JPanel {
         Expences_View_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Expences_View_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        bank_panel_hedding5.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding5.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel60.setBackground(new java.awt.Color(255, 255, 255));
         jLabel60.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel60.setForeground(new java.awt.Color(255, 255, 255));
         jLabel60.setText("Administrations / System Management / Accounting / Income");
 
         jLabel61.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel61.setForeground(new java.awt.Color(255, 255, 255));
         jLabel61.setText("Show All Incomes");
+
+        jSeparator11.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator11.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_hedding5Layout = new javax.swing.GroupLayout(bank_panel_hedding5);
         bank_panel_hedding5.setLayout(bank_panel_hedding5Layout);
@@ -636,9 +642,9 @@ public class IncomeNew extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel61)
-                    .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -784,7 +790,7 @@ public class IncomeNew extends javax.swing.JPanel {
             .addGroup(Expences_View_PanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         Expences_View_PanelLayout.setVerticalGroup(
             Expences_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -802,9 +808,9 @@ public class IncomeNew extends javax.swing.JPanel {
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Expences_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE)
+            .addComponent(Expences_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(New_Expences_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1058, Short.MAX_VALUE))
+                .addComponent(New_Expences_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 1058, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

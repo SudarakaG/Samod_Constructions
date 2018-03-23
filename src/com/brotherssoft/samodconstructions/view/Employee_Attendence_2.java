@@ -97,6 +97,15 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        Employee_View_Panel = new javax.swing.JPanel();
+        bank_panel_hedding5 = new javax.swing.JPanel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel61 = new javax.swing.JLabel();
+        jSeparator11 = new javax.swing.JSeparator();
+        tbl_panel_Branch2 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tbl_attApproval = new javax.swing.JTable();
+        btn_branch1 = new javax.swing.JButton();
         Company_Account_Registration = new javax.swing.JPanel();
         bank_panel_hedding2 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
@@ -143,29 +152,178 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         btn_att_save = new javax.swing.JButton();
         btn_back_list = new javax.swing.JButton();
-        Employee_View_Panel = new javax.swing.JPanel();
-        bank_panel_hedding5 = new javax.swing.JPanel();
-        jLabel60 = new javax.swing.JLabel();
-        jLabel61 = new javax.swing.JLabel();
-        jSeparator11 = new javax.swing.JSeparator();
-        tbl_panel_Branch2 = new javax.swing.JPanel();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        tbl_attApproval = new javax.swing.JTable();
-        btn_branch1 = new javax.swing.JButton();
+
+        Employee_View_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Employee_View_Panel.setForeground(new java.awt.Color(255, 255, 255));
+        Employee_View_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
+
+        bank_panel_hedding5.setBackground(new java.awt.Color(0, 153, 153));
+
+        jLabel60.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel60.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel60.setText("Administrations / System Management / Master Detail / Employee Manager");
+
+        jLabel61.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel61.setText("Show All Employees");
+
+        jSeparator11.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator11.setOpaque(true);
+
+        javax.swing.GroupLayout bank_panel_hedding5Layout = new javax.swing.GroupLayout(bank_panel_hedding5);
+        bank_panel_hedding5.setLayout(bank_panel_hedding5Layout);
+        bank_panel_hedding5Layout.setHorizontalGroup(
+            bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel61)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator11))
+        );
+        bank_panel_hedding5Layout.setVerticalGroup(
+            bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel61)
+                    .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
+        tbl_panel_Branch2.setBackground(new java.awt.Color(255, 255, 255));
+        tbl_panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Approval Pending Attendance", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+
+        tbl_attApproval.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        tbl_attApproval.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Attendance Date", "Employee Category"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbl_attApproval.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tbl_attApproval.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_attApprovalMouseClicked(evt);
+            }
+        });
+        jScrollPane8.setViewportView(tbl_attApproval);
+
+        javax.swing.GroupLayout tbl_panel_Branch2Layout = new javax.swing.GroupLayout(tbl_panel_Branch2);
+        tbl_panel_Branch2.setLayout(tbl_panel_Branch2Layout);
+        tbl_panel_Branch2Layout.setHorizontalGroup(
+            tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 999, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        tbl_panel_Branch2Layout.setVerticalGroup(
+            tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        btn_branch1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_branch1.setText("New Attendance");
+        btn_branch1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_branch1MouseClicked(evt);
+            }
+        });
+        btn_branch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_branch1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout Employee_View_PanelLayout = new javax.swing.GroupLayout(Employee_View_Panel);
+        Employee_View_Panel.setLayout(Employee_View_PanelLayout);
+        Employee_View_PanelLayout.setHorizontalGroup(
+            Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Employee_View_PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_branch1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(bank_panel_hedding5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(Employee_View_PanelLayout.createSequentialGroup()
+                .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 491, Short.MAX_VALUE))
+        );
+        Employee_View_PanelLayout.setVerticalGroup(
+            Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Employee_View_PanelLayout.createSequentialGroup()
+                .addComponent(bank_panel_hedding5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_branch1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(114, Short.MAX_VALUE))
+        );
 
         Company_Account_Registration.setBackground(new java.awt.Color(255, 255, 255));
         Company_Account_Registration.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        bank_panel_hedding2.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding2.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel19.setBackground(new java.awt.Color(255, 255, 255));
         jLabel19.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Administrations / System Management / Operations/");
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Employee Attendence");
+
+        jSeparator8.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator8.setForeground(new java.awt.Color(204, 0, 51));
+        jSeparator8.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_hedding2Layout = new javax.swing.GroupLayout(bank_panel_hedding2);
         bank_panel_hedding2.setLayout(bank_panel_hedding2Layout);
@@ -174,7 +332,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
             .addGroup(bank_panel_hedding2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(509, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(bank_panel_hedding2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel20)
@@ -187,9 +345,9 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(bank_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel20)
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -345,7 +503,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                     .addComponent(lbl_sub_contractor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmb_sub_contractor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
 
@@ -681,7 +839,7 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                 .addGroup(Company_Account_RegistrationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panel_attendance_details, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(493, Short.MAX_VALUE))
             .addComponent(bank_panel_hedding2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         Company_Account_RegistrationLayout.setVerticalGroup(
@@ -693,170 +851,16 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
                     .addGroup(Company_Account_RegistrationLayout.createSequentialGroup()
                         .addComponent(btn_back_list)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE))
+                        .addComponent(bank_panel_input_area1, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE))
                     .addGroup(Company_Account_RegistrationLayout.createSequentialGroup()
-                        .addComponent(panel_attendance_details, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panel_attendance_details, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(96, 96, 96))
         );
 
-        Employee_View_Panel.setBackground(new java.awt.Color(255, 255, 255));
-        Employee_View_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
-
-        bank_panel_hedding5.setBackground(new java.awt.Color(122, 72, 222));
-
-        jLabel60.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel60.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel60.setText("Administrations / System Management / Master Detail / Employee Manager");
-
-        jLabel61.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel61.setText("Show All Employees");
-
-        javax.swing.GroupLayout bank_panel_hedding5Layout = new javax.swing.GroupLayout(bank_panel_hedding5);
-        bank_panel_hedding5.setLayout(bank_panel_hedding5Layout);
-        bank_panel_hedding5Layout.setHorizontalGroup(
-            bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
-                .addGroup(bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel61)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        bank_panel_hedding5Layout.setVerticalGroup(
-            bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel61)
-                    .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
-
-        tbl_panel_Branch2.setBackground(new java.awt.Color(255, 255, 255));
-        tbl_panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Approval Pending Attendance", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
-
-        tbl_attApproval.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        tbl_attApproval.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Attendance Date", "Employee Category"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tbl_attApproval.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tbl_attApproval.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_attApprovalMouseClicked(evt);
-            }
-        });
-        jScrollPane8.setViewportView(tbl_attApproval);
-
-        javax.swing.GroupLayout tbl_panel_Branch2Layout = new javax.swing.GroupLayout(tbl_panel_Branch2);
-        tbl_panel_Branch2.setLayout(tbl_panel_Branch2Layout);
-        tbl_panel_Branch2Layout.setHorizontalGroup(
-            tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 989, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        tbl_panel_Branch2Layout.setVerticalGroup(
-            tbl_panel_Branch2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tbl_panel_Branch2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        btn_branch1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btn_branch1.setText("New Attendance");
-        btn_branch1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_branch1MouseClicked(evt);
-            }
-        });
-        btn_branch1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_branch1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout Employee_View_PanelLayout = new javax.swing.GroupLayout(Employee_View_Panel);
-        Employee_View_Panel.setLayout(Employee_View_PanelLayout);
-        Employee_View_PanelLayout.setHorizontalGroup(
-            Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Employee_View_PanelLayout.createSequentialGroup()
-                .addGroup(Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bank_panel_hedding5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(Employee_View_PanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_branch1)
-                            .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 9, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        Employee_View_PanelLayout.setVerticalGroup(
-            Employee_View_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Employee_View_PanelLayout.createSequentialGroup()
-                .addComponent(bank_panel_hedding5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_branch1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tbl_panel_Branch2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
-        jLayeredPane1.setLayer(Company_Account_Registration, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(Employee_View_Panel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(Company_Account_Registration, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -864,28 +868,20 @@ public class Employee_Attendence_2 extends javax.swing.JPanel {
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1522, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 1502, Short.MAX_VALUE)
-                    .addContainerGap()))
+                .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 1522, Short.MAX_VALUE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1511, Short.MAX_VALUE)
-                    .addGap(1, 1, 1)))
+                .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1522, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 810, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                    .addComponent(Company_Account_Registration, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
                     .addContainerGap()))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                    .addComponent(Employee_View_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 

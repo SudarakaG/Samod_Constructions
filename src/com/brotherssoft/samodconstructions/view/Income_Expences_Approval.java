@@ -118,15 +118,18 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
         New_Expences_Panel.setBackground(new java.awt.Color(255, 255, 255));
         New_Expences_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        bank_panel_hedding3.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding3.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Income - Expence Approval");
+
+        jSeparator9.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator9.setOpaque(true);
 
         jLabel35.setBackground(new java.awt.Color(255, 255, 255));
         jLabel35.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setText("Administrations / System Management / Accounting");
 
         javax.swing.GroupLayout bank_panel_hedding3Layout = new javax.swing.GroupLayout(bank_panel_hedding3);
@@ -149,9 +152,9 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bank_panel_hedding3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(bank_panel_hedding3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel28)
-                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -375,16 +378,19 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
         Expences_View_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Expences_View_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        bank_panel_hedding5.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding5.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel60.setBackground(new java.awt.Color(255, 255, 255));
         jLabel60.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel60.setForeground(new java.awt.Color(255, 255, 255));
         jLabel60.setText("Administrations / System Management / Accounting");
 
         jLabel61.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel61.setForeground(new java.awt.Color(255, 255, 255));
         jLabel61.setText("Show All Incomes And Expences");
+
+        jSeparator11.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator11.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_hedding5Layout = new javax.swing.GroupLayout(bank_panel_hedding5);
         bank_panel_hedding5.setLayout(bank_panel_hedding5Layout);
@@ -393,7 +399,7 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
             .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(460, Short.MAX_VALUE))
+                .addContainerGap(468, Short.MAX_VALUE))
             .addGroup(bank_panel_hedding5Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel61)
@@ -406,9 +412,9 @@ public class Income_Expences_Approval extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel61)
-                    .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 

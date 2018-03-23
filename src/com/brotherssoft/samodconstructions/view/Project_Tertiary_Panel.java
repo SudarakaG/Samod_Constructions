@@ -181,32 +181,33 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         Project_Tertiary_Info_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Project_Tertiary_Info_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        user_panel_hedding6.setBackground(new java.awt.Color(122, 72, 222));
+        user_panel_hedding6.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel82.setBackground(new java.awt.Color(255, 255, 255));
         jLabel82.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel82.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel82.setForeground(new java.awt.Color(255, 255, 255));
         jLabel82.setText("Administrations / System Management / Master Details /");
 
         jLabel83.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel83.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel83.setForeground(new java.awt.Color(255, 255, 255));
         jLabel83.setText("Project Tertiary Infomations");
+
+        jSeparator18.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator18.setOpaque(true);
 
         javax.swing.GroupLayout user_panel_hedding6Layout = new javax.swing.GroupLayout(user_panel_hedding6);
         user_panel_hedding6.setLayout(user_panel_hedding6Layout);
         user_panel_hedding6Layout.setHorizontalGroup(
             user_panel_hedding6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(user_panel_hedding6Layout.createSequentialGroup()
-                .addGroup(user_panel_hedding6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(user_panel_hedding6Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel82, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(user_panel_hedding6Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel83)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel82, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(532, Short.MAX_VALUE))
+            .addGroup(user_panel_hedding6Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel83)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator18))
         );
         user_panel_hedding6Layout.setVerticalGroup(
             user_panel_hedding6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +217,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(user_panel_hedding6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel83)
-                    .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -1183,7 +1184,7 @@ public class Project_Tertiary_Panel extends javax.swing.JPanel {
         jScrollPane11.setViewportView(txt_Input_Panel_Branch4);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Current Primary Projects", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Current Projects", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
         jScrollPane12.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 

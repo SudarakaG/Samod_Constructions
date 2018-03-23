@@ -85,33 +85,33 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
         Meterial_Registration_Panel1.setBackground(new java.awt.Color(255, 255, 255));
         Meterial_Registration_Panel1.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        user_panel_hedding9.setBackground(new java.awt.Color(122, 72, 222));
+        user_panel_hedding9.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel88.setBackground(new java.awt.Color(255, 255, 255));
         jLabel88.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel88.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel88.setForeground(new java.awt.Color(255, 255, 255));
         jLabel88.setText("Administrations / System Management / Master Details /");
 
         jLabel89.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel89.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel89.setForeground(new java.awt.Color(255, 255, 255));
         jLabel89.setText("Meterial Registration");
+
+        jSeparator21.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator21.setOpaque(true);
 
         javax.swing.GroupLayout user_panel_hedding9Layout = new javax.swing.GroupLayout(user_panel_hedding9);
         user_panel_hedding9.setLayout(user_panel_hedding9Layout);
         user_panel_hedding9Layout.setHorizontalGroup(
             user_panel_hedding9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(user_panel_hedding9Layout.createSequentialGroup()
-                .addGroup(user_panel_hedding9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(user_panel_hedding9Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(user_panel_hedding9Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel89)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator21)))
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(user_panel_hedding9Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel89)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator21))
         );
         user_panel_hedding9Layout.setVerticalGroup(
             user_panel_hedding9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +121,7 @@ public class Meterial_Registration_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(user_panel_hedding9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel89)
-                    .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 

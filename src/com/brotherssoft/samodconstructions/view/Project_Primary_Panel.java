@@ -215,32 +215,33 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
         Project_Primary_Info_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Project_Primary_Info_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        user_panel_hedding2.setBackground(new java.awt.Color(122, 72, 222));
+        user_panel_hedding2.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel66.setBackground(new java.awt.Color(255, 255, 255));
         jLabel66.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel66.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel66.setForeground(new java.awt.Color(255, 255, 255));
         jLabel66.setText("Administrations / System Management / Master Details /");
 
         jLabel69.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel69.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel69.setForeground(new java.awt.Color(255, 255, 255));
         jLabel69.setText("Project Registration");
+
+        jSeparator14.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator14.setOpaque(true);
 
         javax.swing.GroupLayout user_panel_hedding2Layout = new javax.swing.GroupLayout(user_panel_hedding2);
         user_panel_hedding2.setLayout(user_panel_hedding2Layout);
         user_panel_hedding2Layout.setHorizontalGroup(
             user_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(user_panel_hedding2Layout.createSequentialGroup()
-                .addGroup(user_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(user_panel_hedding2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(user_panel_hedding2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel69)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(user_panel_hedding2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel69)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator14))
         );
         user_panel_hedding2Layout.setVerticalGroup(
             user_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,7 +251,7 @@ public class Project_Primary_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(user_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel69)
-                    .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 

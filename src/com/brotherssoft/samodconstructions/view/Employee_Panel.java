@@ -138,35 +138,36 @@ public class Employee_Panel extends javax.swing.JPanel {
         cmb_searchEmp_jobType = new javax.swing.JComboBox<>();
         cmb_searchEmp_subContractor = new javax.swing.JComboBox<>();
 
-        Employee_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
+        Employee_Registration_Panel.setBackground(new java.awt.Color(153, 153, 153));
         Employee_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        bank_panel_hedding3.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding3.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel24.setBackground(new java.awt.Color(255, 255, 255));
         jLabel24.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Administrations / System Management / Master Detail /");
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Employee Manager");
+
+        jSeparator9.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator9.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_hedding3Layout = new javax.swing.GroupLayout(bank_panel_hedding3);
         bank_panel_hedding3.setLayout(bank_panel_hedding3Layout);
         bank_panel_hedding3Layout.setHorizontalGroup(
             bank_panel_hedding3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bank_panel_hedding3Layout.createSequentialGroup()
-                .addGroup(bank_panel_hedding3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bank_panel_hedding3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(bank_panel_hedding3Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(517, Short.MAX_VALUE))
+            .addGroup(bank_panel_hedding3Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator9, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE))
         );
         bank_panel_hedding3Layout.setVerticalGroup(
             bank_panel_hedding3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,17 +177,19 @@ public class Employee_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(bank_panel_hedding3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel28)
-                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        txt_Input_Panel_Branch2.setBackground(new java.awt.Color(255, 255, 255));
+        txt_Input_Panel_Branch2.setBackground(new java.awt.Color(102, 102, 102));
         txt_Input_Panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Profile", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel31.setText("Title");
 
+        cmb_employee_title.setBackground(new java.awt.Color(0, 102, 102));
         cmb_employee_title.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cmb_employee_title.setForeground(new java.awt.Color(255, 255, 255));
         cmb_employee_title.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mrs", "Ms", "Rev", "Dr", "Master" }));
         cmb_employee_title.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -636,6 +639,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        jButton4.setBackground(new java.awt.Color(0, 102, 102));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setText("List of Employees");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -677,16 +681,19 @@ public class Employee_Panel extends javax.swing.JPanel {
         Employee_View_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Employee_View_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        bank_panel_hedding5.setBackground(new java.awt.Color(122, 72, 222));
+        bank_panel_hedding5.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel60.setBackground(new java.awt.Color(255, 255, 255));
         jLabel60.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel60.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel60.setForeground(new java.awt.Color(255, 255, 255));
         jLabel60.setText("Administrations / System Management / Master Detail / Employee Manager");
 
         jLabel61.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel61.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel61.setForeground(new java.awt.Color(255, 255, 255));
         jLabel61.setText("Show All Employees");
+
+        jSeparator11.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator11.setOpaque(true);
 
         javax.swing.GroupLayout bank_panel_hedding5Layout = new javax.swing.GroupLayout(bank_panel_hedding5);
         bank_panel_hedding5.setLayout(bank_panel_hedding5Layout);
@@ -700,8 +707,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel61)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator11)
-                .addGap(155, 155, 155))
+                .addComponent(jSeparator11))
         );
         bank_panel_hedding5Layout.setVerticalGroup(
             bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -711,7 +717,7 @@ public class Employee_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(bank_panel_hedding5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel61)
-                    .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 

@@ -106,16 +106,19 @@ public class Vehical_Allocation extends javax.swing.JPanel {
         Project_Primary_Info_Panel2.setBackground(new java.awt.Color(255, 255, 255));
         Project_Primary_Info_Panel2.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        user_panel_hedding4.setBackground(new java.awt.Color(122, 72, 222));
+        user_panel_hedding4.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel68.setBackground(new java.awt.Color(255, 255, 255));
         jLabel68.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel68.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel68.setForeground(new java.awt.Color(255, 255, 255));
         jLabel68.setText("Administrations / System Management / Operations /");
 
         jLabel71.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel71.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel71.setForeground(new java.awt.Color(255, 255, 255));
         jLabel71.setText("Vehical Allocation");
+
+        jSeparator16.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator16.setOpaque(true);
 
         javax.swing.GroupLayout user_panel_hedding4Layout = new javax.swing.GroupLayout(user_panel_hedding4);
         user_panel_hedding4.setLayout(user_panel_hedding4Layout);
@@ -137,10 +140,10 @@ public class Vehical_Allocation extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(user_panel_hedding4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(user_panel_hedding4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel71)
-                    .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jSeparator16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -447,7 +450,7 @@ public class Vehical_Allocation extends javax.swing.JPanel {
                     .addGroup(txt_Input_Panel_Branch4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_to_secondary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_new_primary_project, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(47, 47, 47))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout Project_Primary_Info_Panel2Layout = new javax.swing.GroupLayout(Project_Primary_Info_Panel2);
@@ -466,11 +469,11 @@ public class Vehical_Allocation extends javax.swing.JPanel {
             Project_Primary_Info_Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Project_Primary_Info_Panel2Layout.createSequentialGroup()
                 .addComponent(user_panel_hedding4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Project_Primary_Info_Panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

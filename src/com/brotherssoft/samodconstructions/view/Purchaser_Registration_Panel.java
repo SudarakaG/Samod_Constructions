@@ -95,33 +95,33 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
         Purchaser_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Purchaser_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        user_panel_hedding11.setBackground(new java.awt.Color(122, 72, 222));
+        user_panel_hedding11.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel92.setBackground(new java.awt.Color(255, 255, 255));
         jLabel92.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel92.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel92.setForeground(new java.awt.Color(255, 255, 255));
         jLabel92.setText("Administrations / System Management / Master Details /");
 
         jLabel93.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel93.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel93.setForeground(new java.awt.Color(255, 255, 255));
         jLabel93.setText("Purchaser Registration");
+
+        jSeparator23.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator23.setOpaque(true);
 
         javax.swing.GroupLayout user_panel_hedding11Layout = new javax.swing.GroupLayout(user_panel_hedding11);
         user_panel_hedding11.setLayout(user_panel_hedding11Layout);
         user_panel_hedding11Layout.setHorizontalGroup(
             user_panel_hedding11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(user_panel_hedding11Layout.createSequentialGroup()
-                .addGroup(user_panel_hedding11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(user_panel_hedding11Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel92, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(user_panel_hedding11Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel93)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator23)))
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jLabel92, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(user_panel_hedding11Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel93)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator23))
         );
         user_panel_hedding11Layout.setVerticalGroup(
             user_panel_hedding11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +131,7 @@ public class Purchaser_Registration_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(user_panel_hedding11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel93)
-                    .addComponent(jSeparator23, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 

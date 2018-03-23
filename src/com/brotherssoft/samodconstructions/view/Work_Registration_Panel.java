@@ -73,33 +73,33 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         Work_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Work_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        user_panel_hedding10.setBackground(new java.awt.Color(122, 72, 222));
+        user_panel_hedding10.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel90.setBackground(new java.awt.Color(255, 255, 255));
         jLabel90.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel90.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel90.setForeground(new java.awt.Color(255, 255, 255));
         jLabel90.setText("Administrations / System Management / Master Details /");
 
         jLabel91.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel91.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel91.setForeground(new java.awt.Color(255, 255, 255));
         jLabel91.setText("Work Registration");
+
+        jSeparator22.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator22.setOpaque(true);
 
         javax.swing.GroupLayout user_panel_hedding10Layout = new javax.swing.GroupLayout(user_panel_hedding10);
         user_panel_hedding10.setLayout(user_panel_hedding10Layout);
         user_panel_hedding10Layout.setHorizontalGroup(
             user_panel_hedding10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(user_panel_hedding10Layout.createSequentialGroup()
-                .addGroup(user_panel_hedding10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(user_panel_hedding10Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 511, Short.MAX_VALUE))
-                    .addGroup(user_panel_hedding10Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel91)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator22)))
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(520, Short.MAX_VALUE))
+            .addGroup(user_panel_hedding10Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel91)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator22))
         );
         user_panel_hedding10Layout.setVerticalGroup(
             user_panel_hedding10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +109,7 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(user_panel_hedding10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel91)
-                    .addComponent(jSeparator22, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -296,7 +296,7 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
             bank_panel_tbl3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bank_panel_tbl3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+                .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(bank_panel_tbl3Layout.createSequentialGroup()
                 .addGap(243, 243, 243)
@@ -339,7 +339,7 @@ public class Work_Registration_Panel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Work_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1062, Short.MAX_VALUE)
+            .addComponent(Work_Registration_Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 1061, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

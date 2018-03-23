@@ -51,16 +51,19 @@ public class Office_Salary_Approval extends javax.swing.JPanel {
         Meterial_Allocation_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Meterial_Allocation_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        user_panel_hedding4.setBackground(new java.awt.Color(122, 72, 222));
+        user_panel_hedding4.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel68.setBackground(new java.awt.Color(255, 255, 255));
         jLabel68.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel68.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel68.setForeground(new java.awt.Color(255, 255, 255));
         jLabel68.setText("Administrations / System Management / Operations /");
 
         jLabel71.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel71.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel71.setForeground(new java.awt.Color(255, 255, 255));
         jLabel71.setText("Office Salary Approval");
+
+        jSeparator16.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator16.setOpaque(true);
 
         javax.swing.GroupLayout user_panel_hedding4Layout = new javax.swing.GroupLayout(user_panel_hedding4);
         user_panel_hedding4.setLayout(user_panel_hedding4Layout);
@@ -82,9 +85,9 @@ public class Office_Salary_Approval extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel68, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(user_panel_hedding4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(user_panel_hedding4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel71)
-                    .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 

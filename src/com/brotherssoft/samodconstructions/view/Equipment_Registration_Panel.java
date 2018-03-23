@@ -107,33 +107,33 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
         Equipment_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Equipment_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        user_panel_hedding12.setBackground(new java.awt.Color(122, 72, 222));
+        user_panel_hedding12.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel94.setBackground(new java.awt.Color(255, 255, 255));
         jLabel94.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel94.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel94.setForeground(new java.awt.Color(255, 255, 255));
         jLabel94.setText("Administrations / System Management / Master Details /");
 
         jLabel95.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel95.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel95.setForeground(new java.awt.Color(255, 255, 255));
         jLabel95.setText("Equipment Registration");
+
+        jSeparator24.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator24.setOpaque(true);
 
         javax.swing.GroupLayout user_panel_hedding12Layout = new javax.swing.GroupLayout(user_panel_hedding12);
         user_panel_hedding12.setLayout(user_panel_hedding12Layout);
         user_panel_hedding12Layout.setHorizontalGroup(
             user_panel_hedding12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(user_panel_hedding12Layout.createSequentialGroup()
-                .addGroup(user_panel_hedding12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(user_panel_hedding12Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(user_panel_hedding12Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel95)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator24)))
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(517, Short.MAX_VALUE))
+            .addGroup(user_panel_hedding12Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel95)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator24))
         );
         user_panel_hedding12Layout.setVerticalGroup(
             user_panel_hedding12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +143,7 @@ public class Equipment_Registration_Panel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(user_panel_hedding12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel95)
-                    .addComponent(jSeparator24, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 

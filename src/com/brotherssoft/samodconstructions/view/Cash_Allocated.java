@@ -128,16 +128,20 @@ public class Cash_Allocated extends javax.swing.JPanel {
         Project_Primary_Info_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Project_Primary_Info_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
-        user_panel_hedding2.setBackground(new java.awt.Color(122, 72, 222));
+        user_panel_hedding2.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel66.setBackground(new java.awt.Color(255, 255, 255));
         jLabel66.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
-        jLabel66.setForeground(new java.awt.Color(204, 204, 255));
+        jLabel66.setForeground(new java.awt.Color(255, 255, 255));
         jLabel66.setText("Administrations / System Management / Operations /");
 
         jLabel69.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        jLabel69.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel69.setForeground(new java.awt.Color(255, 255, 255));
         jLabel69.setText("Cash Allocation");
+
+        jSeparator14.setBackground(new java.awt.Color(204, 0, 51));
+        jSeparator14.setForeground(new java.awt.Color(204, 0, 51));
+        jSeparator14.setOpaque(true);
 
         javax.swing.GroupLayout user_panel_hedding2Layout = new javax.swing.GroupLayout(user_panel_hedding2);
         user_panel_hedding2.setLayout(user_panel_hedding2Layout);
@@ -146,7 +150,7 @@ public class Cash_Allocated extends javax.swing.JPanel {
             .addGroup(user_panel_hedding2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(511, Short.MAX_VALUE))
+                .addContainerGap(520, Short.MAX_VALUE))
             .addGroup(user_panel_hedding2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel69)
@@ -159,10 +163,10 @@ public class Cash_Allocated extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(user_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(user_panel_hedding2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel69)
-                    .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jSeparator14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -267,8 +271,8 @@ public class Cash_Allocated extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(txt_search_name_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61))
         );
 
         txt_Input_Panel_Branch4.setBackground(new java.awt.Color(255, 255, 255));
@@ -282,7 +286,7 @@ public class Cash_Allocated extends javax.swing.JPanel {
                 btn_to_secondary_projectActionPerformed(evt);
             }
         });
-        txt_Input_Panel_Branch4.add(btn_to_secondary_project, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 550, -1, -1));
+        txt_Input_Panel_Branch4.add(btn_to_secondary_project, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 530, -1, -1));
 
         btn_add_cashRequest.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_add_cashRequest.setText("Save");
@@ -291,7 +295,7 @@ public class Cash_Allocated extends javax.swing.JPanel {
                 btn_add_cashRequestActionPerformed(evt);
             }
         });
-        txt_Input_Panel_Branch4.add(btn_add_cashRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 550, 76, -1));
+        txt_Input_Panel_Branch4.add(btn_add_cashRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 76, -1));
 
         jLabel104.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel104.setText("Requested Amount");
@@ -331,7 +335,7 @@ public class Cash_Allocated extends javax.swing.JPanel {
                 btn_new_primary_projectActionPerformed(evt);
             }
         });
-        txt_Input_Panel_Branch4.add(btn_new_primary_project, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 550, 76, -1));
+        txt_Input_Panel_Branch4.add(btn_new_primary_project, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 530, 76, -1));
 
         jLabel113.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel113.setText("Allocated Employee");
@@ -476,24 +480,28 @@ public class Cash_Allocated extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addComponent(user_panel_hedding2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(Project_Primary_Info_PanelLayout.createSequentialGroup()
+                .addComponent(user_panel_hedding2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         Project_Primary_Info_PanelLayout.setVerticalGroup(
             Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Project_Primary_Info_PanelLayout.createSequentialGroup()
-                .addComponent(user_panel_hedding2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(user_panel_hedding2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Project_Primary_Info_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                    .addComponent(txt_Input_Panel_Branch4, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Project_Primary_Info_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 1052, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Project_Primary_Info_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, 1061, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
