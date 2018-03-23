@@ -2170,7 +2170,7 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void master_detail_label4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label4MouseClicked
-        if (user.getUser_role_id() == 2 || user.getUser_role_id() == 0) {
+        if (new AccessDenied().accepted() == 2) {
             navigatorSet();
             if (regiPanelStates == 0) {
                 RegistrationPanel.setVisible(true);
@@ -2192,7 +2192,8 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_label4MouseClicked
 
     private void master_detail_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_labelMouseClicked
-        if (user.getUser_role_id() == 1 || user.getUser_role_id() == 0) {
+        
+        if (new AccessDenied().accepted() == 1) {
             navigatorSet();
             if (masterPanelStates == 0) {
                 MasterPanel.setVisible(true);
@@ -2214,7 +2215,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_label5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label5MouseClicked
 
-        if (user.getUser_role_id() == 4 || user.getUser_role_id() == 0) {
+        if (new AccessDenied().accepted() == 4) {
             navigatorSet();
             if (salaryStates == 0) {
 
@@ -2236,7 +2237,7 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_label5MouseClicked
 
     private void master_detail_label6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label6MouseClicked
-        if (user.getUser_role_id() == 5 || user.getUser_role_id() == 0) {
+        if (new AccessDenied().accepted() == 5) {
             navigatorSet();
             if (approvalStates == 0) {
                 ApprovalPanel.setVisible(true);
@@ -2258,7 +2259,7 @@ public class GUI_Home extends javax.swing.JFrame {
 
     private void master_detail_label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label2MouseClicked
 
-        if (user.getUser_role_id() == 5 || user.getUser_role_id() == 0) {
+        if (new AccessDenied().accepted() == 6) {
             navigatorSet();
             if (accountingStates == 0) {
                 AccountingPanel.setVisible(true);
@@ -2278,7 +2279,7 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_label2MouseClicked
 
     private void master_detail_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label1MouseClicked
-        if (user.getUser_role_id() == 3 || user.getUser_role_id() == 0) {
+        if (new AccessDenied().accepted() == 3) {
             navigatorSet();
             if (allocationStates == 0) {
                 AllocationPanel.setVisible(true);
@@ -2300,7 +2301,7 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_master_detail_label1MouseClicked
 
     private void master_detail_label3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label3MouseClicked
-        if (user.getUser_role_id() == 7 || user.getUser_role_id() == 0 && user.getUser_permission() == 10) {
+        if (new AccessDenied().accepted() == 7) {
             Report r = new Report();
             r.setVisible(true);
         } else {
