@@ -67,6 +67,7 @@ import com.brotherssoft.samodconstructions.controller.T_CashAllocationController
 import com.brotherssoft.samodconstructions.controller.T_ExpencesController;
 import com.brotherssoft.samodconstructions.controller.T_IncomeController;
 import com.brotherssoft.samodconstructions.controller.T_RunchartController;
+import com.brotherssoft.samodconstructions.controller.T_SalaryController;
 import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
 import com.brotherssoft.samodconstructions.controllerimpl.M_MainStockControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.M_Project_SecondaryControllerImpl;
@@ -80,6 +81,7 @@ import com.brotherssoft.samodconstructions.controllerimpl.T_CashAllocationContro
 import com.brotherssoft.samodconstructions.controllerimpl.T_ExpenceControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.T_IncomeControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.T_RunchartControllerImpl;
+import com.brotherssoft.samodconstructions.controllerimpl.T_SalaryControllerImpl;
 import com.brotherssoft.samodconstructions.controllerimpl.T_SiteAllocationControllerImpl;
 
 /**
@@ -275,6 +277,11 @@ public class ControllerFactoryImpl extends UnicastRemoteObject implements Contro
     @Override
     public T_AttendanceController getAttendanceController() throws Exception {
         return new T_AttendanceControllerImpl();
+    }
+
+    @Override
+    public T_SalaryController getSalaryController() throws Exception {
+        return new T_SalaryControllerImpl();
     }
     
 }

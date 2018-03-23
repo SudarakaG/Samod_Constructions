@@ -41,6 +41,7 @@ import com.brotherssoft.samodconstructions.service.T_CashAllocationService;
 import com.brotherssoft.samodconstructions.service.T_ExpenceService;
 import com.brotherssoft.samodconstructions.service.T_IncomeService;
 import com.brotherssoft.samodconstructions.service.T_RunchartService;
+import com.brotherssoft.samodconstructions.service.T_SalaryService;
 import com.brotherssoft.samodconstructions.service.T_SiteAllocationService;
 
 /**
@@ -86,5 +87,6 @@ public interface ServiceFactory {
     public R_IncomeTypeService getIncomeTypeService();
     public T_IncomeService getIncomeService();
     public T_AttendanceService getAttendanceService();
+    public T_SalaryService getSalaryService();
     
 }

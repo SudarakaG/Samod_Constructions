@@ -193,4 +193,24 @@ public class T_AttendanceDBAccess {
         return attendances;
 
     }
+    
+    public List<T_Attendance> getAllAttendance(Date fromDate, Date toDate) throws Exception {
+
+        String sql = "Select * From t_att WHERE ATT_DATE between ? and ?";
+        Connection conn = DBConnection.getDBConnection().getConnection();
+        PreparedStatement stm = conn.prepareStatement(sql);
+        stm.setObject(1, fromDate);
+        stm.setObject(2, toDate);
+        ResultSet rst = stm.executeQuery();
+        List<T_Attendance> attendances = new ArrayList<>();
+        while (rst.next()) {
+            T_Attendance attendance = new T_Attendance(rst.getInt(1), rst.getDate(2), rst.getInt(3), rst.getInt(4), rst.getString(5), rst.getString(6), rst.getDouble(7), rst.getDouble(8), rst.getInt(9), rst.getInt(10), rst.getInt(11), rst.getString(12), rst.getString(13), rst.getDate(14), rst.getDate(15), rst.getDouble(16), rst.getDouble(17), rst.getDouble(18), rst.getString(19), rst.getInt(20),rst.getInt(21));
+            System.out.println("(((((((((("+attendance.getAttendance_date());
+            if (attendance.getAttendance_id() != 0) {
+                attendances.add(attendance);
+            }
+        }
+        return attendances;
+
+    }
 }

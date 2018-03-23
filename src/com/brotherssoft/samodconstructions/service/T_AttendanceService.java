@@ -59,4 +59,8 @@ public class T_AttendanceService {
         return dbaf.getAttendanceDBAccess().getAllAttendance(date,jobTypeId);
     }
     
+    public List<T_Attendance> getAllAttendances(Date fromDate,Date toDate)throws Exception{
+        return dbaf.getAttendanceDBAccess().getAllAttendance(fromDate, toDate);
+    }
+    
 }

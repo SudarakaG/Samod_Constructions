@@ -41,6 +41,7 @@ import com.brotherssoft.samodconstructions.dbAccess.T_CashAllocationDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_ExpencesDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_IncomeDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_RunchartDBAccess;
+import com.brotherssoft.samodconstructions.dbAccess.T_SalaryDBAccess;
 import com.brotherssoft.samodconstructions.dbAccess.T_SiteAllocationDBAccess;
 import com.brotherssoft.samodconstructions.dbAccessFactory.DBAccessFactory;
 
@@ -238,6 +239,11 @@ public class DBAccessFactoryImpl implements DBAccessFactory{
     @Override
     public T_AttendanceDBAccess getAttendanceDBAccess() {
         return new T_AttendanceDBAccess();
+    }
+
+    @Override
+    public T_SalaryDBAccess getSalaryDBAccess() {
+        return new T_SalaryDBAccess();
     }
 
     

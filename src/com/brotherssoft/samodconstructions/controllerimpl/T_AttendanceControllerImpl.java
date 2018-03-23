@@ -81,6 +81,11 @@ public class T_AttendanceControllerImpl extends UnicastRemoteObject implements T
     public List<T_Attendance> getAllAttendances(Date date, int jobTypeId) throws Exception {
         return sf.getAttendanceService().getAllAttendances(date, jobTypeId);
     }
+
+    @Override
+    public List<T_Attendance> getAllAttendances(Date fromDate, Date toDate) throws Exception {
+        return sf.getAttendanceService().getAllAttendances(fromDate, toDate);
+    }
     
     
     
