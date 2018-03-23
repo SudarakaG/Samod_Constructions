@@ -225,7 +225,7 @@ public class GUI_Home extends javax.swing.JFrame {
         background_panel.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setFont(new java.awt.Font("Serif", 3, 18)); // NOI18N
-        jLabel2.setText("The leading Construction Company in Sri Lanka");
+        jLabel2.setText("THE LEADING CONSTRUCTON COMPANY IN SRILANKA");
 
         date_lable.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         date_lable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1611,7 +1611,7 @@ public class GUI_Home extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addComponent(date_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(time_lable)
@@ -2085,7 +2085,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private void master_detail_home_lable21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable21MouseClicked
         try {
             ReleaseAllReservation.releaseAllReservation();
-            Office_Salary_Payment osp = new Office_Salary_Payment();
+            Office_Salary_Payment1 osp = new Office_Salary_Payment1();
             panelManager(osp);
         } catch (Exception ex) {
             Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);

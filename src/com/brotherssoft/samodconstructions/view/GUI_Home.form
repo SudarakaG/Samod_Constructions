@@ -93,7 +93,7 @@
                   <Component id="jScrollPane2" min="-2" pref="315" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="164" max="32767" attributes="0"/>
+                  <EmptySpace pref="59" max="32767" attributes="0"/>
                   <Component id="date_lable" min="-2" pref="140" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="time_lable" min="-2" max="-2" attributes="0"/>
@@ -133,7 +133,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Serif" size="18" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="The leading Construction Company in Sri Lanka"/>
+            <Property name="text" type="java.lang.String" value="THE LEADING CONSTRUCTON COMPANY IN SRILANKA"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="date_lable">
