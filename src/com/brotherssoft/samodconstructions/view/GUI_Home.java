@@ -6,6 +6,7 @@
 package com.brotherssoft.samodconstructions.view;
 
 import com.brotherssoft.samodconstructions.custom.ReleaseAllReservation;
+import com.brotherssoft.samodconstructions.model.M_User;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -42,8 +43,9 @@ public class GUI_Home extends javax.swing.JFrame {
     private int salaryStates = 0;
     private int approvalStates = 0;
     private int accountingStates = 0;
+    private static M_User user;
 
-    public GUI_Home() {
+    public GUI_Home(M_User mu) {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setVisible(true);
@@ -52,6 +54,7 @@ public class GUI_Home extends javax.swing.JFrame {
         Home_Panel home_Panel = new Home_Panel(this);
         panelManager(home_Panel);
         navigatorSet();
+        user = mu;
 
     }
 
@@ -2134,18 +2137,21 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int option = JOptionPane.YES_NO_OPTION;
-        option = JOptionPane.showConfirmDialog(rootPane, "Do You Really Want To Exit?", "Warning", option);
-        if (option == 0) {
-            try {
-                ReleaseAllReservation.releaseAllReservation();
-            } catch (Exception ex) {
-                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            JOptionPane.showMessageDialog(rootPane, "Have a nice day!");
-            //this.dispose();
-            System.exit(0);
-        }
+//        int option = JOptionPane.YES_NO_OPTION;
+//        option = JOptionPane.showConfirmDialog(rootPane, "Do You Really Want To Exit?", "Warning", option);
+//        if (option == 0) {
+//            try {
+//                ReleaseAllReservation.releaseAllReservation();
+//            } catch (Exception ex) {
+//                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            JOptionPane.showMessageDialog(rootPane, "Have a nice day!");
+//            //this.dispose();
+//            System.exit(0);
+//        }
+
+        CloseOption closeOption = new CloseOption(user.getUser_name(), this);
+        closeOption.show();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -2164,145 +2170,181 @@ public class GUI_Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void master_detail_label4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label4MouseClicked
-        navigatorSet();
-        if (regiPanelStates == 0) {
-            RegistrationPanel.setVisible(true);
-            regiPanelStates = 1;
-        } else if (regiPanelStates == 1) {
-            RegistrationPanel.setVisible(false);
-            regiPanelStates = 0;
+        if (user.getUser_role_id() == 2 || user.getUser_role_id() == 0) {
+            navigatorSet();
+            if (regiPanelStates == 0) {
+                RegistrationPanel.setVisible(true);
+                regiPanelStates = 1;
+            } else if (regiPanelStates == 1) {
+                RegistrationPanel.setVisible(false);
+                regiPanelStates = 0;
+            }
+            try {
+                ReleaseAllReservation.releaseAllReservation();
+            } catch (Exception ex) {
+                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            new AccessDenied().setVisible(true);
         }
-        try {
-            ReleaseAllReservation.releaseAllReservation();
-        } catch (Exception ex) {
-            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+
     }//GEN-LAST:event_master_detail_label4MouseClicked
 
     private void master_detail_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_labelMouseClicked
-        navigatorSet();
-        if (masterPanelStates == 0) {
-            MasterPanel.setVisible(true);
-            masterPanelStates = 1;
-        } else if (masterPanelStates == 1) {
-            MasterPanel.setVisible(false);
-            masterPanelStates = 0;
+        if (user.getUser_role_id() == 1 || user.getUser_role_id() == 0) {
+            navigatorSet();
+            if (masterPanelStates == 0) {
+                MasterPanel.setVisible(true);
+                masterPanelStates = 1;
+            } else if (masterPanelStates == 1) {
+                MasterPanel.setVisible(false);
+                masterPanelStates = 0;
+            }
+            try {
+                ReleaseAllReservation.releaseAllReservation();
+            } catch (Exception ex) {
+                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            new AccessDenied().setVisible(true);
         }
-        try {
-            ReleaseAllReservation.releaseAllReservation();
-        } catch (Exception ex) {
-            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }//GEN-LAST:event_master_detail_labelMouseClicked
 
     private void master_detail_label5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label5MouseClicked
-        navigatorSet();
-        if (salaryStates == 0) {
 
-            SalaryPanel.setVisible(true);
-            salaryStates = 1;
-        } else if (salaryStates == 1) {
+        if (user.getUser_role_id() == 4 || user.getUser_role_id() == 0) {
+            navigatorSet();
+            if (salaryStates == 0) {
 
-            SalaryPanel.setVisible(false);
-            salaryStates = 0;
-        }
-        try {
-            ReleaseAllReservation.releaseAllReservation();
-        } catch (Exception ex) {
-            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+                SalaryPanel.setVisible(true);
+                salaryStates = 1;
+            } else if (salaryStates == 1) {
+
+                SalaryPanel.setVisible(false);
+                salaryStates = 0;
+            }
+            try {
+                ReleaseAllReservation.releaseAllReservation();
+            } catch (Exception ex) {
+                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            new AccessDenied().setVisible(true);
         }
     }//GEN-LAST:event_master_detail_label5MouseClicked
 
     private void master_detail_label6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label6MouseClicked
+        if (user.getUser_role_id() == 5 || user.getUser_role_id() == 0) {
+            navigatorSet();
+            if (approvalStates == 0) {
+                ApprovalPanel.setVisible(true);
+                approvalStates = 1;
+            } else if (approvalStates == 1) {
+                ApprovalPanel.setVisible(false);
+                approvalStates = 0;
+            }
+            try {
+                ReleaseAllReservation.releaseAllReservation();
+            } catch (Exception ex) {
+                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            new AccessDenied().setVisible(true);
+        }
 
-        navigatorSet();
-        if (approvalStates == 0) {
-            ApprovalPanel.setVisible(true);
-            approvalStates = 1;
-        } else if (approvalStates == 1) {
-            ApprovalPanel.setVisible(false);
-            approvalStates = 0;
-        }
-        try {
-            ReleaseAllReservation.releaseAllReservation();
-        } catch (Exception ex) {
-            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_master_detail_label6MouseClicked
 
     private void master_detail_label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label2MouseClicked
-        navigatorSet();
-        if (accountingStates == 0) {
-            AccountingPanel.setVisible(true);
-            accountingStates = 1;
-        } else if (accountingStates == 1) {
-            AccountingPanel.setVisible(false);
-            accountingStates = 0;
-        }
-        try {
-            ReleaseAllReservation.releaseAllReservation();
-        } catch (Exception ex) {
-            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+
+        if (user.getUser_role_id() == 5 || user.getUser_role_id() == 0) {
+            navigatorSet();
+            if (accountingStates == 0) {
+                AccountingPanel.setVisible(true);
+                accountingStates = 1;
+            } else if (accountingStates == 1) {
+                AccountingPanel.setVisible(false);
+                accountingStates = 0;
+            }
+            try {
+                ReleaseAllReservation.releaseAllReservation();
+            } catch (Exception ex) {
+                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            new AccessDenied().setVisible(true);
         }
     }//GEN-LAST:event_master_detail_label2MouseClicked
 
     private void master_detail_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label1MouseClicked
-        navigatorSet();
-        if (allocationStates == 0) {
-            AllocationPanel.setVisible(true);
-            allocationStates = 1;
-        } else if (allocationStates == 1) {
-            AllocationPanel.setVisible(false);
-            allocationStates = 0;
+        if (user.getUser_role_id() == 3 || user.getUser_role_id() == 0) {
+            navigatorSet();
+            if (allocationStates == 0) {
+                AllocationPanel.setVisible(true);
+                allocationStates = 1;
+            } else if (allocationStates == 1) {
+                AllocationPanel.setVisible(false);
+                allocationStates = 0;
+            }
+            try {
+                ReleaseAllReservation.releaseAllReservation();
+            } catch (Exception ex) {
+                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            new AccessDenied().setVisible(true);
         }
-        try {
-            ReleaseAllReservation.releaseAllReservation();
-        } catch (Exception ex) {
-            Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+
     }//GEN-LAST:event_master_detail_label1MouseClicked
 
     private void master_detail_label3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label3MouseClicked
-        Report r = new Report();
-        r.setVisible(true);
-    }//GEN-LAST:event_master_detail_label3MouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                try {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InstantiationException ex) {
-                    Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IllegalAccessException ex) {
-                    Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (UnsupportedLookAndFeelException ex) {
-                    Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+        if (user.getUser_role_id() == 7 || user.getUser_role_id() == 0 && user.getUser_permission() == 10) {
+            Report r = new Report();
+            r.setVisible(true);
+        } else {
+            new AccessDenied().setVisible(true);
         }
 
-        //</editor-fold>
+    }//GEN-LAST:event_master_detail_label3MouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GUI_Home().setVisible(true);
-            }
-        });
-    }
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//
+//        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//            if ("Nimbus".equals(info.getName())) {
+//                try {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                } catch (ClassNotFoundException ex) {
+//                    Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (InstantiationException ex) {
+//                    Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (IllegalAccessException ex) {
+//                    Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (UnsupportedLookAndFeelException ex) {
+//                    Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            }
+//        }
+//
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new GUI_Home().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AccountingPanel;
