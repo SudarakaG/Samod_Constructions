@@ -138,7 +138,7 @@ public class Employee_Panel extends javax.swing.JPanel {
         cmb_searchEmp_jobType = new javax.swing.JComboBox<>();
         cmb_searchEmp_subContractor = new javax.swing.JComboBox<>();
 
-        Employee_Registration_Panel.setBackground(new java.awt.Color(153, 153, 153));
+        Employee_Registration_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Employee_Registration_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
 
         bank_panel_hedding3.setBackground(new java.awt.Color(0, 153, 153));
@@ -181,13 +181,13 @@ public class Employee_Panel extends javax.swing.JPanel {
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        txt_Input_Panel_Branch2.setBackground(new java.awt.Color(102, 102, 102));
+        txt_Input_Panel_Branch2.setBackground(new java.awt.Color(255, 255, 255));
         txt_Input_Panel_Branch2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee Profile", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel31.setText("Title");
 
-        cmb_employee_title.setBackground(new java.awt.Color(0, 102, 102));
+        cmb_employee_title.setBackground(new java.awt.Color(204, 204, 204));
         cmb_employee_title.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cmb_employee_title.setForeground(new java.awt.Color(255, 255, 255));
         cmb_employee_title.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mr", "Mrs", "Ms", "Rev", "Dr", "Master" }));
@@ -639,7 +639,6 @@ public class Employee_Panel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jButton4.setBackground(new java.awt.Color(0, 102, 102));
         jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton4.setText("List of Employees");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
