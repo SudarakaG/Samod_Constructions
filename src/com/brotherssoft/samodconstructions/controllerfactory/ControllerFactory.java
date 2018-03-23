@@ -42,6 +42,7 @@ import com.brotherssoft.samodconstructions.controller.T_CashAllocationController
 import com.brotherssoft.samodconstructions.controller.T_ExpencesController;
 import com.brotherssoft.samodconstructions.controller.T_IncomeController;
 import com.brotherssoft.samodconstructions.controller.T_RunchartController;
+import com.brotherssoft.samodconstructions.controller.T_SalaryController;
 import com.brotherssoft.samodconstructions.controller.T_SiteAllocationController;
 
 /**
@@ -87,5 +88,6 @@ public interface ControllerFactory extends Remote{
     public R_IncomeTypeControler getIncomeTypeControler()throws Exception;
     public T_IncomeController getIncomeController()throws Exception;
     public T_AttendanceController getAttendanceController()throws Exception;
+    public T_SalaryController getSalaryController()throws Exception;
     
 }

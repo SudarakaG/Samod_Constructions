@@ -25,6 +25,7 @@ public interface T_AttendanceController extends Remote{
     public List<T_Attendance> getAllAttendancesByLetter(String phrase)throws Exception;
     public List<T_Attendance> getAllAttendancesByDate(Date date)throws Exception;
     public List<T_Attendance> getAllAttendances(Date date,int jobTypeId)throws Exception;
+    public List<T_Attendance> getAllAttendances(Date fromDate,Date toDate)throws Exception;
     
     public boolean reserveAttendance(int id)throws Exception;
     public boolean releaseAttendance(int id)throws Exception;
