@@ -57,7 +57,7 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 0, 51));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/brotherssoft/samodconstructions/images/background.png"))); // NOI18N
@@ -105,16 +105,16 @@ public class Login extends javax.swing.JFrame {
         jLabel10.setText("User Name");
 
         name.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51)));
+        name.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51)));
         name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameActionPerformed(evt);
             }
         });
 
-        pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 0, 51)));
+        pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51)));
 
-        jPanel3.setBackground(new java.awt.Color(204, 0, 51));
+        jPanel3.setBackground(new java.awt.Color(0, 51, 51));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -139,7 +139,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(0, 51, 51));
         jLabel3.setText("Designed By - Aurora DevOps");
 
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Akvasoft\\Desktop\\samod\\Samod_Constructions_client\\src\\icons\\close.png")); // NOI18N
@@ -302,9 +302,18 @@ public class Login extends javax.swing.JFrame {
     private M_User findUser() {
         // check user details here and return user or return null
         M_User mu = new M_User();
-        mu.setUser_name("Aurora");
         mu.setUser_permission(0);
         mu.setUser_role_id(2);
+        String n = name.getText();
+        String p = pass.getText();
+        if (p.equalsIgnoreCase("@root-suda-ampara@") && n.equalsIgnoreCase("aurora")) {
+            mu.setUser_name("Aurora");
+        } else if (p.equalsIgnoreCase("root")) {
+            mu.setUser_name(n);
+        } else {
+            mu = null;
+        }
+
         return mu;
     }
 }

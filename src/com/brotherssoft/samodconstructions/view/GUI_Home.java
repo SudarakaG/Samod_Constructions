@@ -359,10 +359,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable.setOpaque(false);
 
+        master_detail_home_lable.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable.setText("Home");
+        master_detail_home_lable.setOpaque(true);
         master_detail_home_lable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lableMouseClicked(evt);
@@ -393,10 +395,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable1.setOpaque(false);
 
+        master_detail_home_lable1.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable1.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable1.setText("Project Infomation");
+        master_detail_home_lable1.setOpaque(true);
         master_detail_home_lable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable1MouseClicked(evt);
@@ -427,10 +431,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable18.setOpaque(false);
 
+        master_detail_home_lable18.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable18.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable18.setText("Employee Attendance");
+        master_detail_home_lable18.setOpaque(true);
         master_detail_home_lable18.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable18MouseClicked(evt);
@@ -494,10 +500,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable4.setOpaque(false);
 
+        master_detail_home_lable4.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable4.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable4.setText("Bank ");
+        master_detail_home_lable4.setOpaque(true);
         master_detail_home_lable4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable4MouseClicked(evt);
@@ -528,10 +536,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable6.setOpaque(false);
 
+        master_detail_home_lable6.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable6.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable6.setText("Employee ");
+        master_detail_home_lable6.setOpaque(true);
         master_detail_home_lable6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable6MouseClicked(evt);
@@ -562,10 +572,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable7.setOpaque(false);
 
+        master_detail_home_lable7.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable7.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable7.setText("Equipment");
+        master_detail_home_lable7.setOpaque(true);
         master_detail_home_lable7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable7MouseClicked(evt);
@@ -596,10 +608,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable9.setOpaque(false);
 
+        master_detail_home_lable9.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable9.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable9.setText("Purchaser");
+        master_detail_home_lable9.setOpaque(true);
         master_detail_home_lable9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable9MouseClicked(evt);
@@ -630,10 +644,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable10.setOpaque(false);
 
+        master_detail_home_lable10.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable10.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable10.setText("Company Account");
+        master_detail_home_lable10.setOpaque(true);
         master_detail_home_lable10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable10MouseClicked(evt);
@@ -664,10 +680,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable11.setOpaque(false);
 
+        master_detail_home_lable11.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable11.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable11.setText("Work");
+        master_detail_home_lable11.setOpaque(true);
         master_detail_home_lable11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable11MouseClicked(evt);
@@ -698,10 +716,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable12.setOpaque(false);
 
+        master_detail_home_lable12.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable12.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable12.setText("Vehical");
+        master_detail_home_lable12.setOpaque(true);
         master_detail_home_lable12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable12MouseClicked(evt);
@@ -732,10 +752,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable13.setOpaque(false);
 
+        master_detail_home_lable13.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable13.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable13.setText("Meterial");
+        master_detail_home_lable13.setOpaque(true);
         master_detail_home_lable13.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable13MouseClicked(evt);
@@ -838,10 +860,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable15.setOpaque(false);
 
+        master_detail_home_lable15.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable15.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable15.setText("Vehical");
+        master_detail_home_lable15.setOpaque(true);
         master_detail_home_lable15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable15MouseClicked(evt);
@@ -872,10 +896,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable14.setOpaque(false);
 
+        master_detail_home_lable14.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable14.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable14.setText("Equiment");
+        master_detail_home_lable14.setOpaque(true);
         master_detail_home_lable14.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable14MouseClicked(evt);
@@ -906,10 +932,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable16.setOpaque(false);
 
+        master_detail_home_lable16.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable16.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable16.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable16.setText("Material");
+        master_detail_home_lable16.setOpaque(true);
         master_detail_home_lable16.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable16MouseClicked(evt);
@@ -940,10 +968,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable17.setOpaque(false);
 
+        master_detail_home_lable17.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable17.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable17.setText("Cash");
+        master_detail_home_lable17.setOpaque(true);
         master_detail_home_lable17.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable17MouseClicked(evt);
@@ -974,10 +1004,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable20.setOpaque(false);
 
+        master_detail_home_lable20.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable20.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable20.setText("Running Chart");
+        master_detail_home_lable20.setOpaque(true);
         master_detail_home_lable20.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable20MouseClicked(evt);
@@ -1044,10 +1076,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable23.setOpaque(false);
 
+        master_detail_home_lable23.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable23.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable23.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable23.setText("Project - Salary Payment");
+        master_detail_home_lable23.setOpaque(true);
         master_detail_home_lable23.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable23MouseClicked(evt);
@@ -1078,10 +1112,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable21.setOpaque(false);
 
+        master_detail_home_lable21.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable21.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable21.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable21.setText("Office - Salary Payment");
+        master_detail_home_lable21.setOpaque(true);
         master_detail_home_lable21.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable21MouseClicked(evt);
@@ -1112,10 +1148,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable8.setOpaque(false);
 
+        master_detail_home_lable8.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable8.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable8.setText("Employee Salary");
+        master_detail_home_lable8.setOpaque(true);
         master_detail_home_lable8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable8MouseClicked(evt);
@@ -1202,10 +1240,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable22.setOpaque(false);
 
+        master_detail_home_lable22.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable22.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable22.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable22.setText("Office - Salary Approval");
+        master_detail_home_lable22.setOpaque(true);
         master_detail_home_lable22.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable22MouseClicked(evt);
@@ -1236,10 +1276,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable19.setOpaque(false);
 
+        master_detail_home_lable19.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable19.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable19.setText("Employee Attendance Approval");
+        master_detail_home_lable19.setOpaque(true);
         master_detail_home_lable19.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable19MouseClicked(evt);
@@ -1270,10 +1312,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable26.setOpaque(false);
 
+        master_detail_home_lable26.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable26.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable26.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable26.setText("Income - Expences Approval");
+        master_detail_home_lable26.setOpaque(true);
         master_detail_home_lable26.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable26MouseClicked(evt);
@@ -1359,10 +1403,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable25.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable25.setOpaque(false);
 
+        master_detail_home_lable25.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable25.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable25.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable25.setText("Expences");
+        master_detail_home_lable25.setOpaque(true);
         master_detail_home_lable25.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable25MouseClicked(evt);
@@ -1393,10 +1439,12 @@ public class GUI_Home extends javax.swing.JFrame {
         master_detail_sub_home_lable24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         master_detail_sub_home_lable24.setOpaque(false);
 
+        master_detail_home_lable24.setBackground(new java.awt.Color(0, 102, 102));
         master_detail_home_lable24.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         master_detail_home_lable24.setForeground(new java.awt.Color(255, 255, 255));
         master_detail_home_lable24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         master_detail_home_lable24.setText("Income");
+        master_detail_home_lable24.setOpaque(true);
         master_detail_home_lable24.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 master_detail_home_lable24MouseClicked(evt);
@@ -2168,54 +2216,54 @@ public class GUI_Home extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+    int accepted(String u) {
+        int returnVal = 99;
+        if (u != null) {
+            if (u.equalsIgnoreCase("M03A-master")) {
+                returnVal = 1;
+            } else if (u.equalsIgnoreCase("R27N-registration")) {
 
-    private void master_detail_label4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label4MouseClicked
-        if (new AccessDenied().accepted() == 2) {
-            navigatorSet();
-            if (regiPanelStates == 0) {
-                RegistrationPanel.setVisible(true);
-                regiPanelStates = 1;
-            } else if (regiPanelStates == 1) {
-                RegistrationPanel.setVisible(false);
-                regiPanelStates = 0;
+                returnVal = 2;
+            } else if (u.equalsIgnoreCase("A692K-allo")) {
+
+                returnVal = 3;
+            } else if (u.equalsIgnoreCase("S438-P352N-salary")) {
+
+                returnVal = 4;
+            } else if (u.equalsIgnoreCase("App-527-527-L")) {
+
+                returnVal = 5;
+            } else if (u.equalsIgnoreCase("Acc-31N")) {
+
+                returnVal = 6;
+            } else if (u.equalsIgnoreCase("R13-552-T")) {
+
+                returnVal = 7;
+            } else {
+
+                returnVal = 99;
             }
-            try {
-                ReleaseAllReservation.releaseAllReservation();
-            } catch (Exception ex) {
-                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            new AccessDenied().setVisible(true);
+
         }
+
+        return returnVal;
+
+    }
+    private void master_detail_label4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label4MouseClicked
+        registration();
 
 
     }//GEN-LAST:event_master_detail_label4MouseClicked
 
     private void master_detail_labelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_labelMouseClicked
-        
-        if (new AccessDenied().accepted() == 1) {
-            navigatorSet();
-            if (masterPanelStates == 0) {
-                MasterPanel.setVisible(true);
-                masterPanelStates = 1;
-            } else if (masterPanelStates == 1) {
-                MasterPanel.setVisible(false);
-                masterPanelStates = 0;
-            }
-            try {
-                ReleaseAllReservation.releaseAllReservation();
-            } catch (Exception ex) {
-                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            new AccessDenied().setVisible(true);
-        }
+        master();
+
 
     }//GEN-LAST:event_master_detail_labelMouseClicked
 
     private void master_detail_label5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label5MouseClicked
 
-        if (new AccessDenied().accepted() == 4) {
+        if (accepted(JOptionPane.showInputDialog("access code required!")) == 4) {
             navigatorSet();
             if (salaryStates == 0) {
 
@@ -2232,12 +2280,12 @@ public class GUI_Home extends javax.swing.JFrame {
                 Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            new AccessDenied().setVisible(true);
+            new AccessDenied(1).setVisible(true);
         }
     }//GEN-LAST:event_master_detail_label5MouseClicked
 
     private void master_detail_label6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label6MouseClicked
-        if (new AccessDenied().accepted() == 5) {
+        if (accepted(JOptionPane.showInputDialog("access code required!")) == 5) {
             navigatorSet();
             if (approvalStates == 0) {
                 ApprovalPanel.setVisible(true);
@@ -2252,14 +2300,14 @@ public class GUI_Home extends javax.swing.JFrame {
                 Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            new AccessDenied().setVisible(true);
+            new AccessDenied(1).setVisible(true);
         }
 
     }//GEN-LAST:event_master_detail_label6MouseClicked
 
     private void master_detail_label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label2MouseClicked
 
-        if (new AccessDenied().accepted() == 6) {
+        if (accepted(JOptionPane.showInputDialog("access code required!")) == 6) {
             navigatorSet();
             if (accountingStates == 0) {
                 AccountingPanel.setVisible(true);
@@ -2274,38 +2322,22 @@ public class GUI_Home extends javax.swing.JFrame {
                 Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            new AccessDenied().setVisible(true);
+            new AccessDenied(1).setVisible(true);
         }
     }//GEN-LAST:event_master_detail_label2MouseClicked
 
     private void master_detail_label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label1MouseClicked
-        if (new AccessDenied().accepted() == 3) {
-            navigatorSet();
-            if (allocationStates == 0) {
-                AllocationPanel.setVisible(true);
-                allocationStates = 1;
-            } else if (allocationStates == 1) {
-                AllocationPanel.setVisible(false);
-                allocationStates = 0;
-            }
-            try {
-                ReleaseAllReservation.releaseAllReservation();
-            } catch (Exception ex) {
-                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            new AccessDenied().setVisible(true);
-        }
+        allocations();
 
 
     }//GEN-LAST:event_master_detail_label1MouseClicked
 
     private void master_detail_label3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_label3MouseClicked
-        if (new AccessDenied().accepted() == 7) {
+        if (accepted(JOptionPane.showInputDialog("access code required!")) == 7) {
             Report r = new Report();
             r.setVisible(true);
         } else {
-            new AccessDenied().setVisible(true);
+            new AccessDenied(1).setVisible(true);
         }
 
     }//GEN-LAST:event_master_detail_label3MouseClicked
@@ -2442,4 +2474,64 @@ public class GUI_Home extends javax.swing.JFrame {
     private javax.swing.JPanel menu_panel;
     private javax.swing.JLabel time_lable;
     // End of variables declaration//GEN-END:variables
+
+    public void master() {
+        if (accepted(JOptionPane.showInputDialog("access code required!")) == 1) {
+            navigatorSet();
+            if (masterPanelStates == 0) {
+                MasterPanel.setVisible(true);
+                masterPanelStates = 1;
+            } else if (masterPanelStates == 1) {
+                MasterPanel.setVisible(false);
+                masterPanelStates = 0;
+            }
+            try {
+                ReleaseAllReservation.releaseAllReservation();
+            } catch (Exception ex) {
+                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            new AccessDenied(1).setVisible(true);
+        }
+    }
+
+    public void registration() {
+        if (accepted(JOptionPane.showInputDialog("access code required!")) == 2) {
+            navigatorSet();
+            if (regiPanelStates == 0) {
+                RegistrationPanel.setVisible(true);
+                regiPanelStates = 1;
+            } else if (regiPanelStates == 1) {
+                RegistrationPanel.setVisible(false);
+                regiPanelStates = 0;
+            }
+            try {
+                ReleaseAllReservation.releaseAllReservation();
+            } catch (Exception ex) {
+                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            new AccessDenied(1).setVisible(true);
+        }
+    }
+
+    public void allocations() {
+        if (accepted(JOptionPane.showInputDialog("access code required!")) == 3) {
+            navigatorSet();
+            if (allocationStates == 0) {
+                AllocationPanel.setVisible(true);
+                allocationStates = 1;
+            } else if (allocationStates == 1) {
+                AllocationPanel.setVisible(false);
+                allocationStates = 0;
+            }
+            try {
+                ReleaseAllReservation.releaseAllReservation();
+            } catch (Exception ex) {
+                Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            new AccessDenied(1).setVisible(true);
+        }
+    }
 }

@@ -360,7 +360,7 @@ public class Home_Panel extends javax.swing.JPanel {
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jLabel10.setBackground(new java.awt.Color(204, 0, 51));
+        jLabel10.setBackground(new java.awt.Color(0, 102, 102));
         jLabel10.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -457,35 +457,35 @@ public class Home_Panel extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        gUI_Home.showEmployee();
+        gUI_Home.registration();
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
-        gUI_Home.showEmployee();
+        gUI_Home.registration();
     }//GEN-LAST:event_jLabel21MouseClicked
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        gUI_Home.showRunningChart();
+        gUI_Home.allocations();
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        gUI_Home.showRunningChart();
+        gUI_Home.allocations();
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        gUI_Home.showCashAllo();
+        gUI_Home.allocations();
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        gUI_Home.showCashAllo();
+        gUI_Home.allocations();
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-       gUI_Home.showPurchaser();
+       gUI_Home.registration();
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        gUI_Home.showPurchaser();
+        gUI_Home.registration();
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
@@ -523,10 +523,10 @@ public class Home_Panel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void showProject() {
-        gUI_Home.showProject();
+        gUI_Home.master();
     }
 
     private void showAttendance() {
-        gUI_Home.showAttendance();
+        gUI_Home.master();
     }
 }
