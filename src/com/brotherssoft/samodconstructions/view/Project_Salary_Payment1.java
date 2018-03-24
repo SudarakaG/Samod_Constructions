@@ -5,20 +5,46 @@
  */
 package com.brotherssoft.samodconstructions.view;
 
+import com.brotherssoft.samodconstructions.controller.M_EmployeeController;
+import com.brotherssoft.samodconstructions.controller.R_JobTypeController;
+import com.brotherssoft.samodconstructions.controller.T_AttendanceController;
+import com.brotherssoft.samodconstructions.model.M_Employee;
+import com.brotherssoft.samodconstructions.model.R_JobType;
+import com.brotherssoft.samodconstructions.serverconnector.ServerConnector;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Akvasoft
  */
-public class Project_Salary_Payment extends javax.swing.JPanel {
+public class Project_Salary_Payment1 extends javax.swing.JPanel {
+
+    M_EmployeeController employeeController;
+    T_AttendanceController attendanceController;
+    R_JobTypeController jobTypeController;
+
+    DefaultTableModel dtmEmp;
 
     /**
      * Creates new form Project_Salary_Payment
      */
-    public Project_Salary_Payment() {
+    public Project_Salary_Payment1() throws Exception {
         initComponents();
-        from_date.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        from_date1.setFormats("yyyy-MM-dd","yyyy/MM/dd");
-        
+        from_date.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+        from_date1.setFormats("yyyy-MM-dd", "yyyy/MM/dd");
+
+        employeeController = ServerConnector.getServerConnetor().getEmployeeController();
+        attendanceController = ServerConnector.getServerConnetor().getAttendanceController();
+        jobTypeController = ServerConnector.getServerConnetor().getJobTypeController();
+
+        dtmEmp = (DefaultTableModel) tblEmp.getModel();
+
+        laodEmpTable();
+        loadJobTypeCombo();
+
     }
 
     /**
@@ -38,10 +64,8 @@ public class Project_Salary_Payment extends javax.swing.JPanel {
         txt_Input_Panel_Branch4 = new javax.swing.JPanel();
         btn_new_primary_project = new javax.swing.JButton();
         jLabel106 = new javax.swing.JLabel();
-        txt_project_tender_result1 = new javax.swing.JTextField();
         btn_new_primary_project1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel107 = new javax.swing.JLabel();
         from_date = new org.jdesktop.swingx.JXDatePicker();
         jLabel108 = new javax.swing.JLabel();
@@ -49,13 +73,14 @@ public class Project_Salary_Payment extends javax.swing.JPanel {
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel109 = new javax.swing.JLabel();
         jLabel110 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        cmbJobType = new javax.swing.JComboBox<>();
         jLabel111 = new javax.swing.JLabel();
         btn_new_primary_project2 = new javax.swing.JButton();
         btn_new_primary_project3 = new javax.swing.JButton();
         txt_project_tender_result2 = new javax.swing.JTextField();
         jLabel112 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblEmp = new javax.swing.JTable();
 
         Meterial_Allocation_Panel.setBackground(new java.awt.Color(255, 255, 255));
         Meterial_Allocation_Panel.setPreferredSize(new java.awt.Dimension(1050, 710));
@@ -119,14 +144,6 @@ public class Project_Salary_Payment extends javax.swing.JPanel {
         jLabel106.setText("Site");
         txt_Input_Panel_Branch4.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, 23));
 
-        txt_project_tender_result1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_project_tender_result1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_project_tender_result1ActionPerformed(evt);
-            }
-        });
-        txt_Input_Panel_Branch4.add(txt_project_tender_result1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 520, 241));
-
         btn_new_primary_project1.setBackground(new java.awt.Color(51, 51, 255));
         btn_new_primary_project1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_new_primary_project1.setForeground(new java.awt.Color(255, 255, 255));
@@ -142,10 +159,6 @@ public class Project_Salary_Payment extends javax.swing.JPanel {
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Select Site -" }));
         txt_Input_Panel_Branch4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 400, 31));
-
-        jCheckBox1.setForeground(new java.awt.Color(255, 0, 51));
-        jCheckBox1.setText("All");
-        txt_Input_Panel_Branch4.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 30, -1, 31));
 
         jLabel107.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel107.setText("From Date");
@@ -182,16 +195,15 @@ public class Project_Salary_Payment extends javax.swing.JPanel {
         jLabel110.setText("Employee ID");
         txt_Input_Panel_Branch4.add(jLabel110, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, 23));
 
-        jComboBox3.setEditable(true);
-        jComboBox3.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "leave empty to load all employees within the selection" }));
-        txt_Input_Panel_Branch4.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 400, 31));
-
-        jButton1.setBackground(new java.awt.Color(51, 51, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Load");
-        txt_Input_Panel_Branch4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 86, 33));
+        cmbJobType.setEditable(true);
+        cmbJobType.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        cmbJobType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "leave empty to load all employees within the selection" }));
+        cmbJobType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbJobTypeActionPerformed(evt);
+            }
+        });
+        txt_Input_Panel_Branch4.add(cmbJobType, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 400, 31));
 
         jLabel111.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel111.setText("Daily Salary to be Paid(Summary)");
@@ -230,6 +242,21 @@ public class Project_Salary_Payment extends javax.swing.JPanel {
         jLabel112.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel112.setText("Daily Salary to be Paid(Detail)");
         txt_Input_Panel_Branch4.add(jLabel112, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, -1, 23));
+
+        tblEmp.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Category"
+            }
+        ));
+        jScrollPane1.setViewportView(tblEmp);
+
+        txt_Input_Panel_Branch4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 520, 240));
 
         javax.swing.GroupLayout Meterial_Allocation_PanelLayout = new javax.swing.GroupLayout(Meterial_Allocation_Panel);
         Meterial_Allocation_Panel.setLayout(Meterial_Allocation_PanelLayout);
@@ -290,9 +317,9 @@ public class Project_Salary_Payment extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_project_tender_result2ActionPerformed
 
-    private void txt_project_tender_result1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_project_tender_result1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_project_tender_result1ActionPerformed
+    private void cmbJobTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbJobTypeActionPerformed
+        loadEmpTableByJobType();
+    }//GEN-LAST:event_cmbJobTypeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -301,13 +328,11 @@ public class Project_Salary_Payment extends javax.swing.JPanel {
     private javax.swing.JButton btn_new_primary_project1;
     private javax.swing.JButton btn_new_primary_project2;
     private javax.swing.JButton btn_new_primary_project3;
+    private javax.swing.JComboBox<String> cmbJobType;
     private org.jdesktop.swingx.JXDatePicker from_date;
     private org.jdesktop.swingx.JXDatePicker from_date1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel106;
     private javax.swing.JLabel jLabel107;
     private javax.swing.JLabel jLabel108;
@@ -317,10 +342,56 @@ public class Project_Salary_Payment extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel112;
     private javax.swing.JLabel jLabel68;
     private javax.swing.JLabel jLabel71;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator16;
+    private javax.swing.JTable tblEmp;
     private javax.swing.JPanel txt_Input_Panel_Branch4;
-    private javax.swing.JTextField txt_project_tender_result1;
     private javax.swing.JTextField txt_project_tender_result2;
     private javax.swing.JPanel user_panel_hedding4;
     // End of variables declaration//GEN-END:variables
+
+    private void laodEmpTable() {
+        dtmEmp.setRowCount(0);
+        try {
+            List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
+            for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+                if (allLastAddedEmployee.getEmp_jobType_id() != 1) {
+                    Object[] rowData = {allLastAddedEmployee.getEmp_id(), allLastAddedEmployee.getEmp_initials() + " " + allLastAddedEmployee.getEmp_firstName() + " " + allLastAddedEmployee.getEmp_middleName()};
+                    dtmEmp.addRow(rowData);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Salary_Payment1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadJobTypeCombo() {
+        cmbJobType.removeAll();
+        try {
+            List<R_JobType> allJobTypes = jobTypeController.getAllJobTypes();
+            for (R_JobType allJobType : allJobTypes) {
+                if (allJobType.getJobType_id() != 1) {
+                    cmbJobType.addItem(allJobType.getJobType_name());
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Salary_Payment1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void loadEmpTableByJobType() {
+        dtmEmp.setRowCount(0);
+        try {
+            int jobTypeId = jobTypeController.searchJobType(cmbJobType.getSelectedItem().toString()).getJobType_id();
+            List<M_Employee> allLastAddedEmployees = employeeController.getAllLastAddedEmployees();
+            for (M_Employee allLastAddedEmployee : allLastAddedEmployees) {
+                if (allLastAddedEmployee.getEmp_jobType_id() != 1 && allLastAddedEmployee.getEmp_jobType_id() == jobTypeId) {
+                    Object[] rowData = {allLastAddedEmployee.getEmp_id(), allLastAddedEmployee.getEmp_initials() + " " + allLastAddedEmployee.getEmp_firstName() + " " + allLastAddedEmployee.getEmp_middleName()};
+                    dtmEmp.addRow(rowData);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Project_Salary_Payment1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

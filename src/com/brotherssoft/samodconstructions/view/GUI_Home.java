@@ -2143,7 +2143,7 @@ public class GUI_Home extends javax.swing.JFrame {
     private void master_detail_home_lable23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_master_detail_home_lable23MouseClicked
         try {
             ReleaseAllReservation.releaseAllReservation();
-            Project_Salary_Payment payment = new Project_Salary_Payment();
+            Project_Salary_Payment1 payment = new Project_Salary_Payment1();
             panelManager(payment);
         } catch (Exception ex) {
             Logger.getLogger(GUI_Home.class.getName()).log(Level.SEVERE, null, ex);
